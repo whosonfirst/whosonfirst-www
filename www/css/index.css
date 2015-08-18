@@ -1,0 +1,51 @@
+html {
+     background-color:#fff;
+     font-family: sans-serif;
+     margin:0px;
+     padding:0px;
+}
+
+body {
+     margin:2em;
+     margin-left:3.5em;
+     margin-right:5em;
+     line-height:1.55em;
+}
+
+blockquote {
+	   border: 1px solid #ccc;
+	   font-family: serif;
+	   padding:1.5em;
+}
+
+.links {
+       font-size:2em;
+       margin-left:3em;
+}
+
+.links li {
+       line-height:1.75em;
+}
+
+@media (max-width: 320px) {
+       
+       body {
+       	    margin:1.5em !important;
+       }
+
+       blockquote {
+       		  margin:0px !important;
+	}
+
+.links {
+font-size:1em !important;
+margin:0px !important;
+padding:1em !important;
+font-weight: 700;
+}
+
+.links li {
+line-height:auto;
+}
+
+}

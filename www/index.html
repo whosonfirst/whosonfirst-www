@@ -8,53 +8,55 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   <meta name="HandheldFriendly" content="true" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+  <!--<link rel="stylesheet" type="text/css" href="/css/index.css" />-->
   <style type="text/css">
 html {
-background-color:#fff;
-font-family: sans-serif;
-margin:0px;
-padding:0px;
+     background-color:#fff;
+     font-family: sans-serif;
+     margin:0px;
+     padding:0px;
 }
 
 body {
-margin:2em;
-margin-left:3.5em;
-margin-right:5em;
-line-height:1.55em;
+     margin:2em;
+     margin-left:3.5em;
+     margin-right:5em;
+     line-height:1.55em;
 }
 
 blockquote {
-border: 1px solid #ccc;
-font-family: serif;
-padding:1.5em;
+	   border: 1px solid #ccc;
+	   font-family: serif;
+	   padding:1.5em;
 }
 
-#links {
-font-size:2em;
-margin-left:3em;
+.links {
+       font-size:2em;
+       margin-left:3em;
 }
 
-#links li {
-line-height:1.75em;
+.links li {
+       line-height:1.75em;
 }
 
 @media (max-width: 320px) {
-body {
-margin:1.5em !important;
-}
+       
+       body {
+       	    margin:1.5em !important;
+       }
 
-blockquote {
-margin:0px !important;
-}
+       blockquote {
+       		  margin:0px !important;
+	}
 
-#links {
+.links {
 font-size:1em !important;
 margin:0px !important;
 padding:1em !important;
 font-weight: 700;
 }
 
-#links li {
+.links li {
 line-height:auto;
 }
 
@@ -67,7 +69,9 @@ line-height:auto;
 
    <p>Who's On First is a gazetteer of places. Not quite <em>all</em> the places in the world but a whole lot of them and, we hope, the kinds of places that we mostly share in common.</p>
 
-   <p>A gazetteer is a big list of places, each with a stable identifier and some number of descriptive properties about that location. An interesting way to think about a gazetteer is to consider it as the space where debate about a place is _managed_ but not decided. We call our gazetteer <strong>Who's On First</strong> (or sometimes "WOF" for short). According to <a href="https://en.wikipedia.org/wiki/Who's_on_First%3F">Wikipedia</a>, Who’s on First:</p>
+   <p style="font-weight:700;text-align:center;font-size:1.2em;">A gazetteer is a big list of places, each with a stable identifier and some number of descriptive properties about that location.</p>
+
+   <p>An interesting way to think about a gazetteer is to consider it as the space where debate about a place is _managed_ but not decided. We call our gazetteer <strong>Who's On First</strong> (or sometimes "WOF" for short). According to <a href="https://en.wikipedia.org/wiki/Who's_on_First%3F">Wikipedia</a>, Who’s on First:</p>
 
    
    <blockquote>
@@ -78,12 +82,24 @@ line-height:auto;
 
    <p>Our gazetteer is absolutely not finished – both in terms of data coverage as well as data quality – so, in the near-term, you should adjust your expectations accordingly when you approach the data. We are releasing the data now because <em>we believe it is important not just to articulate our goals and intentions around the project but also to back them up with tangible proofs</em>. As of this writing the raw Who’s On First GeoJSON data files exist in two places: A public AWS S3 bucket and as a GitHub repository with lots of tiny little files. Their URLs respectively are:</p>
 
-<ul id="links">
-<li><a href="https://whosonfirst.mapzen.com/data/">https://whosonfirst.mapzen.com/data/</a></li>
+<ul class="links">
+<li><a href="https://s3.amazonaws.com/whosonfirst.mapzen.com/data/">https://s3.amazonaws.com/whosonfirst.mapzen.com/data/</a></li>
  <li><a href="https://github.com/whosonfirst/whosonfirst-data/">https://github.com/whosonfirst/whosonfirst-data/</a></li>
 </ul>
 
-<p>The Who's On First dataset is made available under <a href="https://creativecommons.org/choose/zero/">a Creative Commons Zero</a> designation. We make use of a number of open data sources, some of whom request attribution. <a href="https://github.com/whosonfirst/whosonfirst-data/#sources">We have listed them over here</a>. Who's On First does not require attribution itself but a shout-out is always nice is you are so inclined.</p>
+<p>Tools and documentation for Who's On First are available from our GitHub repository:</p>
+
+<ul class="links">
+<li><a href="https://github.com/whosonfirst/">https://github.com/whosonfirst/</a></li>
+</ul>
+
+<p>And if you're feeling like getting in to the details there is a very thorough (and very long) introductory blog post about Who's On First:</p>
+
+<ul class="links">
+<li><a href="https://mapzen.com/blog/whos-on-first/">https://mapzen.com/blog/whos-on-first/</a></li>
+</ul>
+
+<p>The Who's On First dataset is made available under <a href="https://creativecommons.org/choose/zero/">a Creative Commons Zero</a> designation. We make use of a number of open data sources, some of whom request attribution. <a href="https://github.com/whosonfirst/whosonfirst-data/#sources">We have listed them over here</a>.</p>
 
  </body>
 </html>
