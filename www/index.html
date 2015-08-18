@@ -24,7 +24,9 @@ line-height:1.55em;
 }
 
 blockquote {
+border: 1px solid #ccc;
 font-family: serif;
+padding:1.5em;
 }
 
 #links {
@@ -34,6 +36,28 @@ margin-left:3em;
 
 #links li {
 line-height:1.75em;
+}
+
+@media (max-width: 320px) {
+body {
+margin:1.5em !important;
+}
+
+blockquote {
+margin:0px !important;
+}
+
+#links {
+font-size:1em !important;
+margin:0px !important;
+padding:1em !important;
+font-weight: 700;
+}
+
+#links li {
+line-height:auto;
+}
+
 }
 
   </style>
@@ -58,6 +82,8 @@ line-height:1.75em;
 <li><a href="https://whosonfirst.mapzen.com/data/">https://whosonfirst.mapzen.com/data/</a></li>
  <li><a href="https://github.com/whosonfirst/whosonfirst-data/">https://github.com/whosonfirst/whosonfirst-data/</a></li>
 </ul>
+
+<p>The Who's On First dataset is made available under <a href="https://creativecommons.org/choose/zero/">a Creative Commons Zero</a> designation. We make use of a number of open data sources, some of whom request attribution. <a href="https://github.com/whosonfirst/whosonfirst-data/#sources">We have listed them over here</a>. Who's On First does not require attribution itself but a shout-out is always nice is you are so inclined.</p>
 
  </body>
 </html>
