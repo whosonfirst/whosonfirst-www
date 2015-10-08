@@ -5,11 +5,29 @@ html {
      padding:0px;
 }
 
+h2 {
+   margin-top:2em;
+}	
+
+pre {
+    background-color:#ededed;
+    font-size: small;
+    padding:2em;
+    line-height:1.3em;
+}
+
 body {
      margin:2em;
      margin-left:3.5em;
      margin-right:5em;
      line-height:1.55em;
+
+     padding-left:3em;
+     padding-right:3em;
+
+     font-size:1.4em;
+     line-height:1.6em;
+     font-weight:300;
 }
 
 blockquote {
@@ -19,12 +37,36 @@ blockquote {
 }
 
 .links {
-       font-size:2em;
+       font-size:1.25em;
+       margin: 0px;
+       padding:0px;
        margin-left:3em;
 }
 
 .links li {
-       line-height:1.75em;
+       list-style-type:none;
+       line-height:1.8em;
+       font-weight:700;
+}
+
+.links li a {
+       text-decoration: none;
+       color: darkslategray;
+}
+
+.links li a strong {
+       font-weight: 700;
+}
+
+
+.links li small {
+       display:block;
+       font-weight:100;
+       font-size:.6em;
+}
+
+code strong {
+     font-weight: 700 !important;
 }
 
 @media (max-width: 320px) {

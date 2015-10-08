@@ -8,61 +8,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   <meta name="HandheldFriendly" content="true" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
-  <!--<link rel="stylesheet" type="text/css" href="/css/index.css" />-->
-  <style type="text/css">
-html {
-     background-color:#fff;
-     font-family: sans-serif;
-     margin:0px;
-     padding:0px;
-}
-
-body {
-     margin:2em;
-     margin-left:3.5em;
-     margin-right:5em;
-     line-height:1.55em;
-}
-
-blockquote {
-	   border: 1px solid #ccc;
-	   font-family: serif;
-	   padding:1.5em;
-}
-
-.links {
-       font-size:2em;
-       margin-left:3em;
-}
-
-.links li {
-       line-height:1.75em;
-}
-
-@media (max-width: 320px) {
-       
-       body {
-       	    margin:1.5em !important;
-       }
-
-       blockquote {
-       		  margin:0px !important;
-	}
-
-.links {
-font-size:1em !important;
-margin:0px !important;
-padding:1em !important;
-font-weight: 700;
-}
-
-.links li {
-line-height:auto;
-}
-
-}
-
-  </style>
+  <link rel="stylesheet" type="text/css" href="css/index.css" />
  </head>
  <body>
    <h1>Who's On First</h1>
@@ -71,23 +17,19 @@ line-height:auto;
 
    <p>Who's On First is a gazetteer of places. Not quite <em>all</em> the places in the world but a whole lot of them and, we hope, the kinds of places that we mostly share in common.</p>
    
-   <p style="font-weight:700;text-align:center;font-size:1.2em;margin-bottom:1.5em;">A gazetteer is a big list of places, each with a stable identifier and some number of descriptive properties about that location.</p>
+   <p style="font-weight:700;font-size:1.2em;margin-bottom:1.5em;">A gazetteer is a big list of places, each with a stable identifier and some number of descriptive properties about that location.</p>
 
    <p>An interesting way to think about a gazetteer is to consider it as the space where debate about a place is managed but not decided. We call our gazetteer <strong>Who's On First</strong> (or sometimes "WOF" for short). According to <a href="https://en.wikipedia.org/wiki/Who's_on_First%3F">Wikipedia</a>, Who’s on First:</p>
 
-   
    <blockquote>
      <p>...is a comedy routine made famous by Abbott and Costello. The premise of the sketch is that Abbott is identifying the players on a baseball team for Costello, but their names and nicknames can be interpreted as non-responsive answers to Costello's questions. For example, the first baseman is named "Who"; thus, the utterance "Who's on first" is ambiguous between the question ("Which person is the first baseman?") and the answer ("The name of the first baseman is 'Who'"). "Who's on First?" is descended from turn-of-the-century burlesque sketches that used plays on words and names. Examples are "The Baker Scene" (the shop is located on Watt Street) and "Who Dyed" (the owner is named Who). In the 1930 movie Cracked Nuts, comedians Bert Wheeler and Robert Woolsey examine a map of a mythical kingdom with dialogue like this: "What is next to Which." "What is the name of the town next to Which?" "Yes." In English music halls (Britain's equivalent of vaudeville theatres), comedian Will Hay performed a routine in the early 1930s (and possibly earlier) as a schoolmaster interviewing a schoolboy named Howe who came from Ware but now lives in Wye.</p>
   </blockquote>
 
    <p>Which sort of sums up the <q>problem</q> of geo, nicely. It might be easier, perhaps, if we all understood and experienced the world as coordinate data but we don’t, so the burden of “place” and its many meanings is one we trundle along with to this day.</p>
 
-   <p>Our gazetteer is absolutely not finished – both in terms of data coverage as well as data quality – so, in the near-term, you should adjust your expectations accordingly when you approach the data. We are releasing the data now because <em>we believe it is important not just to articulate our goals and intentions around the project but also to back them up with tangible proofs</em>. As of this writing the raw Who’s On First GeoJSON data files exist in two places: A public AWS S3 bucket and as a GitHub repository with lots of tiny little files. Their URLs respectively are:</p>
+   <p>Our gazetteer is absolutely not finished – both in terms of data coverage as well as data quality – so, in the near-term, you should adjust your expectations accordingly when you approach the data. We are releasing the data now because <em>we believe it is important not just to articulate our goals and intentions around the project but also to back them up with tangible proofs</em>. 
 
-<ul class="links">
-<li><a href="https://s3.amazonaws.com/whosonfirst.mapzen.com/data/">https://s3.amazonaws.com/whosonfirst.mapzen.com/data/</a></li>
- <li><a href="https://github.com/whosonfirst/whosonfirst-data/">https://github.com/whosonfirst/whosonfirst-data/</a></li>
-</ul>
+<h4>Documentation</h4>
 
 <p>Tools and documentation for Who's On First are available from our GitHub repository:</p>
 
@@ -95,12 +37,46 @@ line-height:auto;
 <li><a href="https://github.com/whosonfirst/">https://github.com/whosonfirst/</a></li>
 </ul>
 
-<p>And if you're feeling like getting in to the details there is a very thorough (and very long) introductory blog post about Who's On First:</p>
+<h4>Examples</h4>
+
+<p>There is also a public <q>spelunker</q>, a tool for browsing the data itself:</p>
+
+<ul class="links">
+<li><a href="http://whosonfirst.mapzen.com/spelunker/">http://whosonfirst.mapzen.com/spelunker/</a></li>
+</ul>
+
+<h4>Theory</h4>
+
+<p>And if you're feeling like getting in to the details there is a very thorough (and very long) introductory blog post about Who's On First and another one that's almost as long about the spelunker:</p>
 
 <ul class="links">
 <li><a href="https://mapzen.com/blog/who-s-on-first/">https://mapzen.com/blog/who-s-on-first/</a></li>
+<li><a href="https://mapzen.com/blog/spelunker-jumping-into-who-s-on-first">https://mapzen.com/blog/spelunker-jumping-into-who-s-on-first</a></li>
 </ul>
 
+<h4>Data</h4>
+
+   <h5>Any individual Who's Of First ID</h5>
+
+   <ul class="links">
+     <li><code>http://whosonfirst.mapzen.com/data/{PATH}/{ID}.geojson</code>
+       <small> for example: <a href="http://whosonfirst.mapzen.com/data/101/736/545/101736545.geojson">http://whosonfirst.mapzen.com/data/<strong>101/736/545/101736545.geojson</strong></a></small></li>
+   </ul>
+   
+   <h5>Amazon S3</h5>
+
+   <ul class="links">
+     <li><a href="https://s3.amazonaws.com/whosonfirst.mapzen.com/data/">https://s3.amazonaws.com/whosonfirst.mapzen.com/data/</a></li>     
+   </ul>
+   
+   <h5>GitHub</h5>
+
+   <ul class="links">
+     <li><a href="https://github.com/whosonfirst/whosonfirst-data/">https://github.com/whosonfirst/whosonfirst-data/</a></li>
+     <li><a href="https://github.com/whosonfirst/whosonfirst-venue/">https://github.com/whosonfirst/whosonfirst-venue/</a></li>
+   </ul>
+
+<p>There is <a href="data.html">a detailed discussion</a> around the how and why and what of the data. If you have not already read it <a href="data.html">we recommend that you do</a>.</p>
 
 <h3>License</h3>
 

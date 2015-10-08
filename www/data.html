@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title>Who's On First</title>
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="referrer" content="origin">
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+  <link rel="stylesheet" type="text/css" href="css/index.css" />
+ </head>
+ <body>
+
+   <h1><a href="http://whosonfirst.mapzen.com/">Who's On First</a> &#8212; it's full of ... DATA!!</h1>
+
+   <a name="tldr"></a>
+   <h2>tl;dr</h2>
+
+   <p>If you already understand all the details (discussed below) or just feel like throwing caution to wind the Who's On First data is available from the following places:</p>
+
+   <h3>Any individual Who's Of First ID</h3>
+
+   <ul class="links">
+     <li><code>http://whosonfirst.mapzen.com/data/{PATH}/{ID}.geojson</code>
+       <small> for example: <a href="http://whosonfirst.mapzen.com/data/101/736/545/101736545.geojson">http://whosonfirst.mapzen.com/data/<strong>101/736/545/101736545.geojson</strong></a></small></li>
+   </ul>
+   
+   <h3>Amazon S3</h3>
+
+   <ul class="links">
+     <li><a href="https://s3.amazonaws.com/whosonfirst.mapzen.com/data/">https://s3.amazonaws.com/whosonfirst.mapzen.com/data/</a></li>     
+   </ul>
+   
+   <h3>GitHub</h3>
+
+   <ul class="links">
+     <li><a href="https://github.com/whosonfirst/whosonfirst-data/">https://github.com/whosonfirst/whosonfirst-data/</a></li>
+     <li><a href="https://github.com/whosonfirst/whosonfirst-venue/">https://github.com/whosonfirst/whosonfirst-venue/</a></li>
+   </ul>
+
+   <a name="details"></a>
+   <h2>But... what does it mean?</h2>
+
+   <a name="firstprinciples"></a>
+   <h3>First principles</h3>
+
+   <ul>
+     <li>The <q>canonical</q> URL for any given Who's On First ID is relative. This might seem counter-intuitive to the point of even being contradictory.</li>
+     <li>Given any Who's On First ID it should be possible to generate a (relative) URL for that record using a simple and well-defined formula.</li>
+   </ul>
+
+   <p>The current model is to split a Who's On First ID in 3-number chunks representing nested subdirectories, followed by filename consisting of the ID followed by <code>.geojson</code>.</p>
+
+   <p>For example the ID for <a href="http://whosonfirst.mapzen.com/spelunker/id/101736545/">Montréal</a> is <code><strong>101736545</strong></code> which becomes <code>101/736/545/<strong>101736545</strong>.geojson</code>.</p>
+   
+   <p>As of this writing it remains clear that this approach (lots of tiny files parented by lots of nested directories) can be problematic. We <em>may</em> be forced choose another approach, like fewer subdirectories but nothing has been decided and anything we do will be backwards compatible. By definition this means anything we do (to rewrite or redirect any existing URLs that people are using) should be possible for anyone else hosting their own copy of the data.</p>
+
+   <p>And that's the important bit: It should be possible for multiple groups to host their own copy of the Who's On First data while still maintaining stable references to any place in the dataset.</p>
+
+   <p>For example, consider two organizations each with their own domains: <code>http://<strong>foo.com</strong>/data/<strong>101/736/545/101736545.geojson</strong></code> and <code>http://<strong>bar.com</strong>/wof-data/<strong>101/736/545/101736545.geojson</strong></code> both refer to the city of Montréal.</p>
+
+   <p>Even though each organization hosts their own copy of the Who's On First dataset (and the reasons for doing so are entirely their own business) they still have a simple and unintrusive way to preserve parity when refering to places.</p>
+
+   <p>Mapzen's canonical URL for Who's On First data is <code><strong>http://whosonfirst.mapzen.com/data/</strong></code> and we expect that these URLs will become canonical for other people by virtue of our efforts around the project but we've tried to design things in such a way that this doesn't <em>have</em> to be the case for everyone.</p>
+
+   <h2>The gory details</h2>
+
+   <p>And by <q>gory details</q> we're assuming a basic familiarity and comfort-level with any of the specific technologies described here.</p>
+
+   <h3>Amazon S3</h3>
+
+   <p>Our copy of the Who's On First data is stored in big-honking Amazon Web Services (AWS) S3 bucket called <code>whosonfirst.mapzen.com</code> in a sub-directory, or <q>prefix</q> in AWS-speak, called <code>data</code>.</p>
+
+   <p>The details of <a href="">fetching the entirety of all the contents of an S3 bucket</a> are outside the scope of this document but the fact that you can is one of the reasons we chose S3.</p>
+
+   <h3>GitHub</h3>
+
+   <p>We haven’t quite figured out what the
+best way of both distributing the Who’s On First data and of accepting
+corrections or suggestions from community. Even though the nice people at GitHub continue to do excellent work at
+making Git easier for a broader population to use, the reality remains
+that Git is a significant barrier to participation for many
+people.</p>
+
+   <p>Absent a more formal decision about an alternative, GitHub at
+least allows us to point in the general direction of:</p>
+
+   <ul>
+     <li>An open and readily distributed dataset that people can download and work with.</li>
+     <li>A way for people to contribute corrections (and general nuance) about a place.</li>
+     <li>A way for us to be able to do everything above while still assuring us a measure of authority around the assertions we make about the data.</li>
+     <li>Also a way for us to think about how and where we store an audit trail (of sorts) for updates to a place.</li>
+     </ul>
+
+   <p>There are some very real problems working with Who's On First data in Git repositories, still, so it's possible that we will stop using entirely.</p>
+
+   <h4>whosonfirst-data versus whosonfirst-venue</h4>
+
+   <p>For the time being we have separated the Who's Of First venues dataset from the other placetypes that are more administrative in nature. The venues dataset will begin life as a full import of the <em>20 million</em> business listings that SimpleGeo released as a CC0 dataset in 2010. That's a lot of records and part of the reason we started with the SimpleGeo dataset is because it forces us to address issues around working with that much data on the file system or in version control.</p>
+
+   <p>It is safest to assume that at some point we will replace the single monolitic <code>whosonfirst-venue</code> repository with many smaller ones.</p>
+
+   <h4>Git and large files</h4>
+
+   <p>We have started using <a href="https://github.com/github/git-lfs">git-lfs</a> for managing large files in the <code>whosonfirst-data</code> repository. For example, the record for New Zealand which contains a <em>very very very very very</em> detailed coastline geometry is fast approaching the 100MB filesize limit for any individual file on GitHub.</p>
+
+   <p>A full discussion of how to use git-lfs is outside the scope of this document but you can see the current list of files being managed by invoking the <code>git lfs ls-files</code> command, like this:</p>
+
+   <pre>
+$> cd /usr/local/mapzen/whosonfirst-data
+$> git lfs ls-files
+65ccc4825e * data/856/333/45/85633345.geojson
+   </pre>
+
+   <p>When you clone the <code>whosonfirst-data</code> repo the files (managed by git-lfs) only contain metadata, like this:</p>
+
+<pre>
+$> cat data/856/333/45/85633345.geojson
+version https://git-lfs.github.com/spec/v1
+oid sha256:65ccc4825e65c30f00fcebf1f3d57f4385f18a47e3c5e524114a67050186ae48
+size 71879893
+</pre>
+
+<p>In order to fetch the file itself you will need to run <code>git lfs fetch</code>, like this: </p>
+
+<pre>
+$> git lfs fetch
+Fetching master
+(1 of 1 files) 68.54 MB / 68.55 MB                                                                                               
+
+$> cat data/856/333/45/85633345.geojson
+{
+  "id": 85633345,
+  "type": "Feature",
+  "properties": {
+    "edtf:cessation":"u",
+    "edtf:inception":"u",
+    "geom:area":29.187792061074827,
+    "geom:bbox":"166.426148,-47.289992,178.577244,-33
+</pre>
+
+   <p>Depending on when you read this we may have already pre-emptively moved <em>all</em> the records for countries in to <code>git-lfs</code>. If the goal is to have details <q>ground truth</q> geometries for every place in the Who's On First gazetteer it stands to reason that most if not all countries will bump up against GitHub's existing file size limits.</p>
+
+   <a name="knownknowns"></a>
+   <h2>Known knowns</h2>
+
+   <a name="knownknown-tls"></a>
+   <h3>TLS for whosonfirst.mapzen.com</h3>
+   <p>It's coming. It will be the default.</p>
+
+   <a name="knownknown-s3"></a>
+   <h3>Visiting <code>https://s3.amazonaws.com/whosonfirst.mapzen.com/data/</code> in a browser</h3>
+
+   <p>So, yeah. We probably should never have published this URL as-is. It's tricky because we need to share the URL people who are going to try and download data using the AWS S3 API but the reality is that when you visit that URL in a web browser... you get unhelpful silence. Or more specifically your web browser tries to download an empty file. This is one of those unfortunate mismatches between the technology and people's expectations.</p>
+
+ </body>
+</html>
