@@ -8,7 +8,10 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   <meta name="HandheldFriendly" content="true" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
-  <link rel="stylesheet" type="text/css" href="css/index.css" />
+  <!-- this may seem wrong but the thing is that we are proxying http://whosonfirst.mapzen.com/data/ through to
+       http://whosonfirst.mapzen.com/all-the-data.html so we need to do this extra bit of hoop-jumping
+       (2015108/thisisaaronland) -->
+  <link rel="stylesheet" type="text/css" href="../css/index.css" />
  </head>
  <body>
 
@@ -19,6 +22,7 @@
 
    <p>If you already understand all the details (discussed below) or just feel like throwing caution to wind the Who's On First data is available from the following places:</p>
 
+   <a name="urls"></a>
    <h3>Any individual Who's Of First ID</h3>
 
    <ul class="links">
@@ -26,12 +30,17 @@
        <small> for example: <a href="http://whosonfirst.mapzen.com/data/101/736/545/101736545.geojson">http://whosonfirst.mapzen.com/data/<strong>101/736/545/101736545.geojson</strong></a></small></li>
    </ul>
    
+   <a name="s3"></a>
    <h3>Amazon S3</h3>
 
    <ul class="links">
-     <li><a href="https://s3.amazonaws.com/whosonfirst.mapzen.com/data/">https://s3.amazonaws.com/whosonfirst.mapzen.com/data/</a></li>     
+     <li>
+       <a href="https://s3.amazonaws.com/whosonfirst.mapzen.com/data/">https://s3.amazonaws.com/whosonfirst.mapzen.com/data/</a>
+       <small> see also: <a href="#knownknown-s3">known knowns about S3</a> and why you shouldn't try to view that URL in a web browser</small>
+     </li>     
    </ul>
    
+   <a name="github"></a>
    <h3>GitHub</h3>
 
    <ul class="links">
@@ -58,11 +67,13 @@
 
    <p>And that's the important bit: It should be possible for multiple groups to host their own copy of the Who's On First data while still maintaining stable references to any place in the dataset.</p>
 
-   <p>For example, consider two organizations each with their own domains: <code>http://<strong>foo.com</strong>/data/<strong>101/736/545/101736545.geojson</strong></code> and <code>http://<strong>bar.com</strong>/wof-data/<strong>101/736/545/101736545.geojson</strong></code> both refer to the city of Montréal.</p>
+   <p>For example, consider two organizations each with their own domains:</p>
 
-   <p>Even though each organization hosts their own copy of the Who's On First dataset (and the reasons for doing so are entirely their own business) they still have a simple and unintrusive way to preserve parity when refering to places.</p>
+   <p>The URLs <code>http://<strong>foo.com</strong>/data/<strong>101/736/545/101736545.geojson</strong></code> and <code>http://<strong>bar.com</strong>/wof-data/<strong>101/736/545/101736545.geojson</strong></code> may be completely different but both refer to the city of Montréal, or Who's On First ID <code><strong>101736545</strong></code>.</p>
 
-   <p>Mapzen's canonical URL for Who's On First data is <code><strong>http://whosonfirst.mapzen.com/data/</strong></code> and we expect that these URLs will become canonical for other people by virtue of our efforts around the project but we've tried to design things in such a way that this doesn't <em>have</em> to be the case for everyone.</p>
+   <p>Even though each organization hosts their own copy of the Who's On First dataset &#8212; <em>and the reasons for doing so are entirely their own business</em> &#8212; they still have a simple and unintrusive way to preserve parity when refering to places.</p>
+
+   <p>Mapzen's canonical URL for Who's On First data is <code><strong>http://whosonfirst.mapzen.com/data/</strong></code> and we expect that these URLs will become canonical for <em>other people</em> by virtue of our efforts around the project but we've tried to design things in such a way that this doesn't <em>have</em> to be the case for everyone.</p>
 
    <h2>The gory details</h2>
 
@@ -73,6 +84,8 @@
    <p>Our copy of the Who's On First data is stored in big-honking Amazon Web Services (AWS) S3 bucket called <code>whosonfirst.mapzen.com</code> in a sub-directory, or <q>prefix</q> in AWS-speak, called <code>data</code>.</p>
 
    <p>The details of <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html">fetching the entirety of all the contents of an S3 bucket</a> are outside the scope of this document but the fact that you can is one of the reasons we chose S3.</p>
+
+   <p><small>We will eventually release our own tool for fetching the entirety of the S3 bucket but it's not ready yet.</small></p>
 
    <h3>GitHub</h3>
 
@@ -103,7 +116,7 @@ least allows us to point in the general direction of:</p>
 
    <h4>Git and large files</h4>
 
-   <p>We have started using <a href="https://github.com/github/git-lfs">git-lfs</a> for managing large files in the <code>whosonfirst-data</code> repository. For example, the record for New Zealand which contains a <em>very very very very very</em> detailed coastline geometry is fast approaching the 100MB filesize limit for any individual file on GitHub.</p>
+   <p>We have started using <a href="https://github.com/github/git-lfs">git-lfs</a> for managing large files in the <code>whosonfirst-data</code> repository. For example, the record for New Zealand which contains a <em>very very very very very</em> detailed coastline geometry exceeds the 100MB filesize limit for any individual file on GitHub.</p>
 
    <p>A full discussion of how to use git-lfs is outside the scope of this document but you can see the current list of files being managed by invoking the <code>git lfs ls-files</code> command, like this:</p>
 
