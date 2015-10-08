@@ -135,7 +135,7 @@ oid sha256:65ccc4825e65c30f00fcebf1f3d57f4385f18a47e3c5e524114a67050186ae48
 size 71879893
 </pre>
 
-<p>In order to fetch the file itself you will need to run <code>git lfs fetch</code>, like this: </p>
+<p>In order to retrieve the contents of the file itself you will need to run <code>git lfs fetch</code>, like this: </p>
 
 <pre>
 $> git lfs fetch
@@ -153,7 +153,7 @@ $> cat data/856/333/45/85633345.geojson
     "geom:bbox":"166.426148,-47.289992,178.577244,-33
 </pre>
 
-   <p>Depending on when you read this we may have already pre-emptively moved <em>all</em> the records for countries in to <code>git-lfs</code>. If the goal is to have details <q>ground truth</q> geometries for every place in the Who's On First gazetteer it stands to reason that most if not all countries will bump up against GitHub's existing file size limits.</p>
+   <p>Depending on when you read this we may have already pre-emptively moved <a href="https://github.com/whosonfirst/whosonfirst-data/blob/master/meta/wof-country-latest.csv">all the records for countries</a> in to <code>git-lfs</code>. If the goal is to have details <q>ground truth</q> geometries for every place in the Who's On First gazetteer it stands to reason that most if not all countries will bump up against GitHub's existing file size limits.</p>
 
    <a name="knownknowns"></a>
    <h2>Known knowns</h2>
