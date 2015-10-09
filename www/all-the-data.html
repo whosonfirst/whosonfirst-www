@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html 🌐>
  <head>
   <title>Who's On First</title>
    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -29,7 +29,7 @@
      <li><code>http://whosonfirst.mapzen.com/data/{PATH}/{ID}.geojson</code>
        <small> for example: <a href="http://whosonfirst.mapzen.com/data/101/736/545/101736545.geojson">http://whosonfirst.mapzen.com/data/<strong>101/736/545/101736545.geojson</strong></a></small></li>
    </ul>
-   
+
    <a name="s3"></a>
    <h3>Amazon S3</h3>
 
@@ -37,9 +37,9 @@
      <li>
        <a href="https://s3.amazonaws.com/whosonfirst.mapzen.com/data/">https://s3.amazonaws.com/whosonfirst.mapzen.com/data/</a>
        <small> see also: <a href="#knownknown-s3">known knowns about S3</a> and why you shouldn't try to view that URL in a web browser</small>
-     </li>     
+     </li>
    </ul>
-   
+
    <a name="github"></a>
    <h3>GitHub</h3>
 
@@ -71,7 +71,7 @@
    <p>The current model is to split a Who's On First ID in 3-number chunks representing nested subdirectories, followed by filename consisting of the ID followed by <code>.geojson</code>.</p>
 
    <p>For example the ID for <a href="http://whosonfirst.mapzen.com/spelunker/id/101736545/">Montréal</a> is <code><strong>101736545</strong></code> which becomes <code>101/736/545/<strong>101736545</strong>.geojson</code>.</p>
-   
+
    <p>As of this writing it remains clear that this approach (lots of tiny files parented by lots of nested directories) can be problematic. We <em>may</em> be forced choose another approach, like fewer subdirectories but nothing has been decided and anything we do will be backwards compatible. By definition this means anything we do (to rewrite or redirect any existing URLs that people are using) should be possible for anyone else hosting their own copy of the data.</p>
 
    <p>And that's the important bit: It should be possible for multiple groups to host their own copy of the Who's On First data while still maintaining stable references to any place in the dataset.</p>
@@ -149,7 +149,7 @@ size 71879893
 <pre>
 $> git lfs fetch
 Fetching master
-(1 of 1 files) 68.54 MB / 68.55 MB                                                                                               
+(1 of 1 files) 68.54 MB / 68.55 MB
 
 $> cat data/856/333/45/85633345.geojson
 {
