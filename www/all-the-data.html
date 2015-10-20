@@ -15,7 +15,7 @@
  </head>
  <body>
 
-   <h1><a href="http://whosonfirst.mapzen.com/">Who's On First</a> &#8212; it's full of ... DATA!!</h1>
+   <h1><a href="https://whosonfirst.mapzen.com/">Who's On First</a> &#8212; it's full of ... DATA!!</h1>
 
    <a name="tldr"></a>
    <h2>tl;dr</h2>
@@ -26,8 +26,8 @@
    <h3>Any individual Who's Of First ID</h3>
 
    <ul class="links">
-     <li><code>http://whosonfirst.mapzen.com/data/{PATH}/{ID}.geojson</code>
-       <small> for example: <a href="http://whosonfirst.mapzen.com/data/101/736/545/101736545.geojson">http://whosonfirst.mapzen.com/data/<strong>101/736/545/101736545.geojson</strong></a></small></li>
+     <li><code>https://whosonfirst.mapzen.com/data/{PATH}/{ID}.geojson</code>
+       <small> for example: <a href="https://whosonfirst.mapzen.com/data/101/736/545/101736545.geojson">https://whosonfirst.mapzen.com/data/<strong>101/736/545/101736545.geojson</strong></a></small></li>
    </ul>
 
    <a name="s3"></a>
@@ -70,7 +70,7 @@
 
    <p>The current model is to split a Who's On First ID in 3-number chunks representing nested subdirectories, followed by filename consisting of the ID followed by <code>.geojson</code>.</p>
 
-   <p>For example the ID for <a href="http://whosonfirst.mapzen.com/spelunker/id/101736545/">Montréal</a> is <code><strong>101736545</strong></code> which becomes <code>101/736/545/<strong>101736545</strong>.geojson</code>.</p>
+   <p>For example the ID for <a href="https://whosonfirst.mapzen.com/spelunker/id/101736545/">Montréal</a> is <code><strong>101736545</strong></code> which becomes <code>101/736/545/<strong>101736545</strong>.geojson</code>.</p>
 
    <p>As of this writing it remains clear that this approach (lots of tiny files parented by lots of nested directories) can be problematic. We <em>may</em> be forced choose another approach, like fewer subdirectories but nothing has been decided and anything we do will be backwards compatible. By definition this means anything we do (to rewrite or redirect any existing URLs that people are using) should be possible for anyone else hosting their own copy of the data.</p>
 
@@ -82,7 +82,7 @@
 
    <p>Even though each organization hosts their own copy of the Who's On First dataset &#8212; <em>and the reasons for doing so are entirely their own business</em> &#8212; they still have a simple and unintrusive way to preserve parity when refering to places.</p>
 
-   <p>Mapzen's canonical URL for Who's On First data is <code><strong>http://whosonfirst.mapzen.com/data/</strong></code> and we expect that these URLs will become canonical for <em>other people</em> by virtue of our efforts around the project but we've tried to design things in such a way that this doesn't <em>have</em> to be the case for everyone.</p>
+   <p>Mapzen's canonical URL for Who's On First data is <code><strong>https://whosonfirst.mapzen.com/data/</strong></code> and we expect that these URLs will become canonical for <em>other people</em> by virtue of our efforts around the project but we've tried to design things in such a way that this doesn't <em>have</em> to be the case for everyone.</p>
 
    <h2>The gory details</h2>
 
@@ -169,7 +169,7 @@ $> cat data/856/333/45/85633345.geojson
 
    <a name="knownknown-tls"></a>
    <h3>TLS for whosonfirst.mapzen.com</h3>
-   <p>It's coming. It will be the default.</p>
+   <p>Yes! <small style="font-style:italic;">As in, it is enabled across the board and everything on a non-secure port is redirected to a secure one.</small></p>
 
    <a name="knownknown-s3"></a>
    <h3>Visiting <code>https://s3.amazonaws.com/whosonfirst.mapzen.com/data/</code> in a browser</h3>
