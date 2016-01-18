@@ -1,0 +1,13 @@
+/* These are meant to supersede mapzen.css */
+
+body {
+     line-height:1.8em !important;
+}
+
+footer {
+       margin-bottom: 5em !important;
+}
+
+h1 {
+   margin-bottom: .3em !important;
+}

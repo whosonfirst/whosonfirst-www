@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html 🌐>
+<html>
  <head>
   <title>Who's On First</title>
-   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta name="referrer" content="origin">
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="referrer" content="origin" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   <meta name="HandheldFriendly" content="true" />
@@ -11,11 +11,15 @@
   <!-- this may seem wrong but the thing is that we are proxying http://whosonfirst.mapzen.com/data/ through to
        http://whosonfirst.mapzen.com/all-the-data.html so we need to do this extra bit of hoop-jumping
        (2015108/thisisaaronland) -->
-  <link rel="stylesheet" type="text/css" href="../css/index.css" />
- </head>
- <body>
+  <link rel="stylesheet" type="text/css" href="../css/mapzen.css" />
+  <link rel="stylesheet" type="text/css" href="../css/whosonfirst.css" />
 
-   <h1><a href="https://whosonfirst.mapzen.com/">Who's On First</a> &#8212; it's full of ... DATA!!</h1>
+  <link rel="stylesheet" type="text/css" href="css/mapzen.css" />
+  <link rel="stylesheet" type="text/css" href="css/whosonfirst.css" />
+ </head>
+ <body class="container">
+
+   <h1>Who's On First &#8212; Data</h1>
 
    <a name="tldr"></a>
    <h2>tl;dr</h2>
@@ -176,5 +180,6 @@ $> cat data/856/333/45/85633345.geojson
 
    <p>So, yeah. We probably should never have published this URL as-is. It's tricky because we need to share the URL with people who are going to try and download data using the AWS S3 API but the reality is that when you visit that URL in a web browser... you get unhelpful silence. Or more specifically your web browser tries to download an empty file. This is one of those unfortunate mismatches between the technology and people's expectations.</p>
 
+  <footer></footer>
  </body>
 </html>

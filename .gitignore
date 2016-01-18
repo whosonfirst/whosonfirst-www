@@ -1,2 +1,7 @@
 *~
+*.bak
 .DS_Store
+www/bundles/*bundle.txt
+www/bundles/*sha1.txt
+www/bundles/*.csv
+www/bundles/*.bz2
