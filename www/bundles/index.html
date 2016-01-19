@@ -24,6 +24,12 @@
 
    <h2>Placetypes</h2>
 
+   <p>There is only ever one bundle-per-placetype at any given moment. When a new bundle is generated it replaces the old one. If you need to test whether a bundle has changed without downloading the bundle itself the best way is to compare the <code>SHA1</code> hash of the meta file for that placetype.</p>
+
+   <p>For example if the bundle in question <code>wof-region-bundle.tar.bz2</code> then its corresponding meta file will be <code>wof-region-latest.csv</code>.</p>
+
+   <p>You can determine the <code>SHA1</code> hash for the meta file either by downloading the meta file directly and calculating its hash locally or you can download the <code>wof-country-latest.csv.sha1.txt</code> file which is a plain text file containing the value of the hash.</p>
+
    <h3>Continents</h3>
 
    <ul>
@@ -58,7 +64,6 @@
      <li><a href="wof-neighbourhood-bundle.tar.bz2">wof-neighbourhood-bundle.tar.bz2</a> <small>(<a href="wof-neighbourhood-bundle.tar.bz2.sha1.txt">SHA1</a>)</small></li>
      <li><a href="wof-neighbourhood-latest.csv">wof-neighbourhood-latest.csv</a> <small>(<a href="wof-neighbourhood-latest.csv.sha1.txt">SHA1</a>)</small></li>
    </ul>
-
 
    <footer></footer>
  </body>
