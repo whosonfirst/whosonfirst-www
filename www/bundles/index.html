@@ -20,15 +20,17 @@
  <body class="container">
    <h1>Who's On First &#8212; Bundles</h1>
 
-   <p>Bundles (of Who's On First data) are still considered <em>experimental</em>. If you've somehow discovered this page then <q>Welcome!</q> but please understand that this is still work in progress so things may not be quite right yet.</p>
+   <p class="caveat">Bundles (of Who's On First data) are still considered experimental. If you've somehow discovered this page then <q>Welcome!</q> but please understand that this is still work in progress so things may not be quite right yet.</p>
 
-   <h2>Placetypes</h2>
+   <p>Bundles are a collection of GeoJSON formatted files (Who's On First data) grouped by a specific property, like placetype. They allow for people to more easily bulk download a subset of the entire Who's On First dataset. Currently there are only bundles by placetype (and not even all of them... yet) but eventually we will add a variety of different <q>slices</q> of the data as demand and interest require.</p>
 
-   <p>There is only ever one bundle-per-placetype at any given moment. When a new bundle is generated it replaces the old one. If you need to test whether a bundle has changed without downloading the bundle itself the best way is to compare the <code>SHA1</code> hash of the meta file for that placetype.</p>
+   <p>There is only ever one bundle-per-property at any given moment. When a new bundle is generated it replaces the old one. If you need to test whether a bundle has changed without downloading the bundle itself the best way is to compare the <code>SHA1</code> hash of the meta file for that property.</p>
 
    <p>For example if the bundle in question <code>wof-region-bundle.tar.bz2</code> then its corresponding meta file will be <code>wof-region-latest.csv</code>.</p>
 
    <p>You can determine the <code>SHA1</code> hash for the meta file either by downloading the meta file directly and calculating its hash locally or you can download the <code>wof-country-latest.csv.sha1.txt</code> file which is a plain text file containing the value of the hash.</p>
+
+   <h2>Placetypes</h2>
 
    <h3>Continents</h3>
 

@@ -11,3 +11,7 @@ footer {
 h1 {
    margin-bottom: .3em !important;
 }
+
+.caveat {
+	font-style: italic;
+}
