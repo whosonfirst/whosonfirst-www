@@ -21,5 +21,26 @@ h1 {
 	     columns:2;
 	     -webkit-columns: 2;
 	     -moz-columns: 2;
-	     list-style-position: inside;
+}
+
+@media (max-width: 1000px) {
+
+       h3 {
+       	  margin-bottom: .75em;
+       }
+
+       .bundle-list {
+	     columns:1 !important;
+	     -webkit-columns: 1 !important;
+	     -moz-columns: 1 !important;
+	     margin:0px;
+	     padding:0px;
+       }
+
+       .bundle-list ul {
+	     list-style-type: none !important;
+	     margin:0px;
+	     padding:0px;
+	     margin-bottom:1em;
+       }
 }
