@@ -1,92 +1,308 @@
+<?xml version="1.0"?>
 <!DOCTYPE html>
 <html>
- <head>
-  <title>Who's On First &#8212; Bundles</title>
-   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <meta name="referrer" content="origin" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  <meta name="HandheldFriendly" content="true" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
-  <!-- this may seem wrong but the thing is that we are proxying http://whosonfirst.mapzen.com/data/ through to
+  <head>
+    <title>Who's On First &#x2014; Bundles</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="referrer" content="origin"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+    <!-- this may seem wrong but the thing is that we are proxying http://whosonfirst.mapzen.com/data/ through to
        http://whosonfirst.mapzen.com/all-the-data.html so we need to do this extra bit of hoop-jumping
        (2015108/thisisaaronland) -->
+    <!--
+	<link rel="stylesheet" type="text/css" href="../css/mapzen.css" />
+	<link rel="stylesheet" type="text/css" href="../css/whosonfirst.css" />
+	-->
+    <link rel="stylesheet" type="text/css" href="../css/mapzen.whosonfirst.min.css"/>
+  </head>
+  <body class="container">
+    <h1>Who's On First &#x2014; Bundles</h1>
+    <p class="caveat">Bundles (of Who's On First data) are still considered experimental. If you've somehow discovered this page then <q>Welcome!</q> but please understand that this is still work in progress so things may not be quite right yet.</p>
+    <p>Bundles are a collection of GeoJSON formatted files (Who's On First data) grouped by a specific property, like placetype. They allow for people to more easily bulk download a subset of the entire Who's On First dataset. Currently there are only bundles by placetype (and not even all of them... yet) but eventually we will add a variety of different <q>slices</q> of the data as demand and interest require.</p>
+    <p>There is only ever one bundle-per-property at any given moment. When a new bundle is generated it replaces the old one. If you need to test whether a bundle has changed without downloading the bundle itself the best way is to compare the <code>SHA1</code> hash of the meta file for that property.</p>
+    <p>For example if the bundle in question <code>wof-region-bundle.tar.bz2</code> then its corresponding meta file will be <code>wof-region-latest.csv</code>.</p>
+    <p>You can determine the <code>SHA1</code> hash for the meta file either by downloading the meta file directly and calculating its hash locally or you can download the <code>wof-country-latest.csv.sha1.txt</code> file which is a plain text file containing the value of the hash.</p>
 
-  <!--
-  <link rel="stylesheet" type="text/css" href="../css/mapzen.css" />
-  <link rel="stylesheet" type="text/css" href="../css/whosonfirst.css" />
-  -->
+    <!-- See also: https://github.com/whosonfirst/whosonfirst-placetypes/issues/2 -->
+    <h2 id="placetypes">Placetypes</h2>
 
-  <link rel="stylesheet" type="text/css" href="../css/mapzen.whosonfirst.min.css" />
- </head>
- <body class="container">
-   <h1>Who's On First &#8212; Bundles</h1>
+    <h3 id="placetypes-common">Common</h3>
+    <ul class="bundle-list">
+      <li>
+        <h4>Continents</h4>
+        <ul>
+          <li>
+            <a href="wof-continent-bundle.tar.bz2">wof-continent-bundle.tar.bz2</a>
+            <small>(<a href="wof-continent-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
+          </li>
+          <li>
+            <a href="wof-continent-latest.csv">wof-continent-latest.csv</a>
+            <small>(<a href="wof-continent-latest.csv.sha1.txt">SHA1</a>)</small>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <h4>Countries</h4>
+        <ul>
+          <li>
+            <a href="wof-country-bundle.tar.bz2">wof-country-bundle.tar.bz2</a>
+            <small>(<a href="wof-country-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
+          </li>
+          <li>
+            <a href="wof-country-latest.csv">wof-country-latest.csv</a>
+            <small>(<a href="wof-country-latest.csv.sha1.txt">SHA1</a>)</small>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <h4>Regions</h4>
+        <ul>
+          <li>
+            <a href="wof-region-bundle.tar.bz2">wof-region-bundle.tar.bz2</a>
+            <small>(<a href="wof-region-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
+          </li>
+          <li>
+            <a href="wof-region-latest.csv">wof-region-latest.csv</a>
+            <small>(<a href="wof-region-latest.csv.sha1.txt">SHA1</a>)</small>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <h4>Localities</h4>
+        <ul>
+          <li>
+            <a href="wof-locality-bundle.tar.bz2">wof-locality-bundle.tar.bz2</a>
+            <small>(<a href="wof-locality-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
+          </li>
+          <li>
+            <a href="wof-locality-latest.csv">wof-locality-latest.csv</a>
+            <small>(<a href="wof-locality-latest.csv.sha1.txt">SHA1</a>)</small>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <h4>Neighbourhoods</h4>
+        <ul>
+          <li>
+            <a href="wof-neighbourhood-bundle.tar.bz2">wof-neighbourhood-bundle.tar.bz2</a>
+            <small>(<a href="wof-neighbourhood-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
+          </li>
+          <li>
+            <a href="wof-neighbourhood-latest.csv">wof-neighbourhood-latest.csv</a>
+            <small>(<a href="wof-neighbourhood-latest.csv.sha1.txt">SHA1</a>)</small>
+          </li>
+        </ul>
+      </li>
+    </ul>
 
-   <p class="caveat">Bundles (of Who's On First data) are still considered experimental. If you've somehow discovered this page then <q>Welcome!</q> but please understand that this is still work in progress so things may not be quite right yet.</p>
+   <h3 id="placetypes-common-optional">Common Optional</h3>
 
-   <p>Bundles are a collection of GeoJSON formatted files (Who's On First data) grouped by a specific property, like placetype. They allow for people to more easily bulk download a subset of the entire Who's On First dataset. Currently there are only bundles by placetype (and not even all of them... yet) but eventually we will add a variety of different <q>slices</q> of the data as demand and interest require.</p>
+    <ul class="bundle-list">
+      <li>
+        <h4>Planets</h4>
+        <ul>
+          <li>
+            <a href="wof-planet-bundle.tar.bz2">wof-planet-bundle.tar.bz2</a>
+            <small>(<a href="wof-planet-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
+          </li>
+          <li>
+            <a href="wof-planet-latest.csv">wof-planet-latest.csv</a>
+            <small>(<a href="wof-planet-latest.csv.sha1.txt">SHA1</a>)</small>
+          </li>
+        </ul>
+      </li>
 
-   <p>There is only ever one bundle-per-property at any given moment. When a new bundle is generated it replaces the old one. If you need to test whether a bundle has changed without downloading the bundle itself the best way is to compare the <code>SHA1</code> hash of the meta file for that property.</p>
+      <li>
+        <h4>Oceans</h4>
+        <ul>
+          <li>
+            <a href="wof-ocean-bundle.tar.bz2">wof-ocean-bundle.tar.bz2</a>
+            <small>(<a href="wof-ocean-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
+          </li>
+          <li>
+            <a href="wof-ocean-latest.csv">wof-ocean-latest.csv</a>
+            <small>(<a href="wof-ocean-latest.csv.sha1.txt">SHA1</a>)</small>
+          </li>
+        </ul>
+      </li>
 
-   <p>For example if the bundle in question <code>wof-region-bundle.tar.bz2</code> then its corresponding meta file will be <code>wof-region-latest.csv</code>.</p>
+      <li>
+        <h4>Empires</h4>
+        <ul>
+          <li>
+            <a href="wof-empire-bundle.tar.bz2">wof-empire-bundle.tar.bz2</a>
+            <small>(<a href="wof-empire-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
+          </li>
+          <li>
+            <a href="wof-empire-latest.csv">wof-empire-latest.csv</a>
+            <small>(<a href="wof-empire-latest.csv.sha1.txt">SHA1</a>)</small>
+          </li>
+        </ul>
+      </li>
 
-   <p>You can determine the <code>SHA1</code> hash for the meta file either by downloading the meta file directly and calculating its hash locally or you can download the <code>wof-country-latest.csv.sha1.txt</code> file which is a plain text file containing the value of the hash.</p>
+      <li>
+        <h4>Dependencies</h4>
+        <ul>
+          <li>
+            <a href="wof-dependency-bundle.tar.bz2">wof-dependency-bundle.tar.bz2</a>
+            <small>(<a href="wof-dependency-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
+          </li>
+          <li>
+            <a href="wof-dependency-latest.csv">wof-dependency-latest.csv</a>
+            <small>(<a href="wof-dependency-latest.csv.sha1.txt">SHA1</a>)</small>
+          </li>
+        </ul>
+      </li>
 
-   <h2>Placetypes</h2>
+      <li>
+        <h4>Disputed Areas</h4>
+        <ul>
+          <li>
+            <a href="wof-disputed-bundle.tar.bz2">wof-disputed-bundle.tar.bz2</a>
+            <small>(<a href="wof-disputed-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
+          </li>
+          <li>
+            <a href="wof-disputed-latest.csv">wof-disputed-latest.csv</a>
+            <small>(<a href="wof-disputed-latest.csv.sha1.txt">SHA1</a>)</small>
+          </li>
+        </ul>
+      </li>
 
-   <h3>Common</h3>
+      <li>
+        <h4>Marine Areas</h4>
+        <ul>
+          <li>
+            <a href="wof-marinearea-bundle.tar.bz2">wof-marinearea-bundle.tar.bz2</a>
+            <small>(<a href="wof-marinearea-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
+          </li>
+          <li>
+            <a href="wof-marinearea-latest.csv">wof-marinearea-latest.csv</a>
+            <small>(<a href="wof-marinearea-latest.csv.sha1.txt">SHA1</a>)</small>
+          </li>
+        </ul>
+      </li>
 
-   <ul class="bundle-list">
+      <li>
+        <h4>Timezones</h4>
+        <ul>
+          <li>
+            <a href="wof-timezone-bundle.tar.bz2">wof-timezone-bundle.tar.bz2</a>
+            <small>(<a href="wof-timezone-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
+          </li>
+          <li>
+            <a href="wof-timezone-latest.csv">wof-timezone-latest.csv</a>
+            <small>(<a href="wof-timezone-latest.csv.sha1.txt">SHA1</a>)</small>
+          </li>
+        </ul>
+      </li>
 
-    <li>
-   <h4>Continents</h4>
+      <li>
+        <h4>Counties</h4>
+        <ul>
+          <li>
+            <a href="wof-county-bundle.tar.bz2">wof-county-bundle.tar.bz2</a>
+            <small>(<a href="wof-county-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
+          </li>
+          <li>
+            <a href="wof-county-latest.csv">wof-county-latest.csv</a>
+            <small>(<a href="wof-county-latest.csv.sha1.txt">SHA1</a>)</small>
+          </li>
+        </ul>
+      </li>
 
-   <ul>
-     <li><a href="wof-continent-bundle.tar.bz2">wof-continent-bundle.tar.bz2</a> <small>(<a href="wof-continent-bundle.tar.bz2.sha1.txt">SHA1</a>)</small></li>
-     <li><a href="wof-continent-latest.csv">wof-continent-latest.csv</a> <small>(<a href="wof-continent-latest.csv.sha1.txt">SHA1</a>)</small></li>
-   </ul>
+      <li>
+        <h4>Local Admins</h4>
+        <ul>
+          <li>
+            <a href="wof-localadmin-bundle.tar.bz2">wof-localadmin-bundle.tar.bz2</a>
+            <small>(<a href="wof-localadmin-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
+          </li>
+          <li>
+            <a href="wof-localadmin-latest.csv">wof-localadmin-latest.csv</a>
+            <small>(<a href="wof-localadmin-latest.csv.sha1.txt">SHA1</a>)</small>
+          </li>
+        </ul>
+      </li>
 
-   </li>
-    
-    <li>
-   <h4>Countries</h4>
-
-   <ul>
-     <li><a href="wof-country-bundle.tar.bz2">wof-country-bundle.tar.bz2</a> <small>(<a href="wof-country-bundle.tar.bz2.sha1.txt">SHA1</a>)</small></li>
-     <li><a href="wof-country-latest.csv">wof-country-latest.csv</a> <small>(<a href="wof-country-latest.csv.sha1.txt">SHA1</a>)</small></li>
-   </ul>
-
-   </li>
-
-    <li>
-   <h4>Regions</h4>
-
-   <ul>
-     <li><a href="wof-region-bundle.tar.bz2">wof-region-bundle.tar.bz2</a> <small>(<a href="wof-region-bundle.tar.bz2.sha1.txt">SHA1</a>)</small></li>
-     <li><a href="wof-region-latest.csv">wof-region-latest.csv</a> <small>(<a href="wof-region-latest.csv.sha1.txt">SHA1</a>)</small></li>
-   </ul>
-   </li>
-
-    <li>
-   <h4>Localities</h4>
-
-   <ul>
-     <li><a href="wof-locality-bundle.tar.bz2">wof-locality-bundle.tar.bz2</a> <small>(<a href="wof-locality-bundle.tar.bz2.sha1.txt">SHA1</a>)</small></li>
-     <li><a href="wof-locality-latest.csv">wof-locality-latest.csv</a> <small>(<a href="wof-locality-latest.csv.sha1.txt">SHA1</a>)</small></li>
-   </ul>
-   </li>
-
-    <li>
-   <h4>Neighbourhoods</h4>
-
-   <ul>
-     <li><a href="wof-neighbourhood-bundle.tar.bz2">wof-neighbourhood-bundle.tar.bz2</a> <small>(<a href="wof-neighbourhood-bundle.tar.bz2.sha1.txt">SHA1</a>)</small></li>
-     <li><a href="wof-neighbourhood-latest.csv">wof-neighbourhood-latest.csv</a> <small>(<a href="wof-neighbourhood-latest.csv.sha1.txt">SHA1</a>)</small></li>
-   </ul>
-   </li>
+      <li>
+        <h4>Campuses</h4>
+        <ul>
+          <li>
+            <a href="wof-campus-bundle.tar.bz2">wof-campus-bundle.tar.bz2</a>
+            <small>(<a href="wof-campus-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
+          </li>
+          <li>
+            <a href="wof-campus-latest.csv">wof-campus-latest.csv</a>
+            <small>(<a href="wof-campus-latest.csv.sha1.txt">SHA1</a>)</small>
+          </li>
+        </ul>
+      </li>
 
     </ul>
 
-   <footer></footer>
- </body>
+   <h3 id="placetypes-optional">Optional</h3>
+
+    <ul class="bundle-list">
+      <li>
+        <h4>Macroregions</h4>
+        <ul>
+          <li>
+            <a href="wof-macroregion-bundle.tar.bz2">wof-macroregion-bundle.tar.bz2</a>
+            <small>(<a href="wof-macroregion-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
+          </li>
+          <li>
+            <a href="wof-macroregion-latest.csv">wof-macroregion-latest.csv</a>
+            <small>(<a href="wof-macroregion-latest.csv.sha1.txt">SHA1</a>)</small>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <h4>Macrocounties</h4>
+        <ul>
+          <li>
+            <a href="wof-macrocounty-bundle.tar.bz2">wof-macrocounty-bundle.tar.bz2</a>
+            <small>(<a href="wof-macrocounty-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
+          </li>
+          <li>
+            <a href="wof-macrocounty-latest.csv">wof-macrocounty-latest.csv</a>
+            <small>(<a href="wof-macrocounty-latest.csv.sha1.txt">SHA1</a>)</small>
+          </li>
+        </ul>
+      </li>
+
+      <li>
+        <h4>Macrohoods</h4>
+        <ul>
+          <li>
+            <a href="wof-macrohood-bundle.tar.bz2">wof-macrohood-bundle.tar.bz2</a>
+            <small>(<a href="wof-macrohood-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
+          </li>
+          <li>
+            <a href="wof-macrohood-latest.csv">wof-macrohood-latest.csv</a>
+            <small>(<a href="wof-macrohood-latest.csv.sha1.txt">SHA1</a>)</small>
+          </li>
+        </ul>
+      </li>
+
+      <li>
+        <h4>Microhoods</h4>
+        <ul>
+          <li>
+            <a href="wof-microhood-bundle.tar.bz2">wof-microhood-bundle.tar.bz2</a>
+            <small>(<a href="wof-microhood-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
+          </li>
+          <li>
+            <a href="wof-microhood-latest.csv">wof-microhood-latest.csv</a>
+            <small>(<a href="wof-microhood-latest.csv.sha1.txt">SHA1</a>)</small>
+          </li>
+        </ul>
+      </li>
+
+    </ul>
+
+    <footer/>
+  </body>
 </html>
