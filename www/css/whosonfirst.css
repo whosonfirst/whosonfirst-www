@@ -32,6 +32,23 @@ h3 {
 	     margin-top: 0px !important;
 }
 
+.bundle-list ul {
+	     margin-bottom: 1em; !important;
+}
+
+.tellmemore {
+	    font-weight: 300 !important;
+	    font-size:.7em !important;
+}
+
+.tellmemore:before {
+	    content: "[ ";
+}	     
+
+.tellmemore:after {
+	    content: " ]";
+}	     
+
 @media (max-width: 1000px) {
 
        h3 {
