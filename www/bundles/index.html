@@ -316,18 +316,18 @@
 #!/bin/sh
 
 PLACETYPES='continent country region locality neighbourhood'
-DEST="data"
+DATA="data"
 
-if [ ! -d ${DEST} ]
+if [ ! -d ${DATA} ]
 then
-    mkdir ${DEST}
+    mkdir ${DATA}
 fi
 
 for PT in ${PLACETYPES}
 do
 
-    DATA="wof-${PT}-bundle"
-    COMPRESSED="${DATA}.tar.bz2"
+    BUNDLE="wof-${PT}-bundle"
+    COMPRESSED="${BUNDLE}.tar.bz2"
 
     if [ -e ${COMPRESSED} ]
     then
@@ -335,10 +335,10 @@ do
         rm -i ${COMPRESSED}
     fi
 
-    if [ -d ${DATA} ]
+    if [ -d ${BUNDLE} ]
     then
-        echo "remove ${DATA}"
-        rm -ri ${DATA}
+        echo "remove ${BUNDLE}"
+        rm -ri ${BUNDLE}
     fi
 
     echo "fetch ${COMPRESSED}"
@@ -347,8 +347,8 @@ do
     echo "expand ${COMPRESSED}"
     tar -xvjf ${COMPRESSED}
 
-    echo "sync ${DATA}"
-    rsync -av ${DATA}/data/ ${DEST}/
+    echo "sync ${BUNDLE}"
+    rsync -av ${BUNDLE}/data/ ${DATA}/
 
 done
     </pre>
