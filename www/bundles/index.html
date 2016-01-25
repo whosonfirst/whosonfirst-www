@@ -304,6 +304,53 @@
 
     </ul>
 
+    <h2 id="working-with">Working with Bundles</h2>
+
+    <p>Bundles all have the same directory structure. A single <code>data</code> directory and a <code>wof-PLACETYPE-OR-BUNDLE-NAME-latest.csv</code> CSV "meta" file. It is left up to individual users of the data to decide how and whether data from multiple bundles should be merged.</p>
+
+    <p>Here is a working example script that will download all the bundles for continents, countries, regions, localities and neighbourhoods and merge the records from each in to a single <code>data</code> folder, located in the directory that the script is run from. Please note that there is little to no error-checking in the example below so you should adjust this to taste.</p>
+
+    <pre>
+#!/bin/sh
+
+PLACETYPES='continent country region locality neighbourhood'
+DEST="data"
+
+if [ ! -d ${DEST} ]
+then
+    mkdir ${DEST}
+fi
+
+for PT in ${PLACETYPES}
+do
+
+    DATA="wof-${PT}-bundle"
+    COMPRESSED="${DATA}.tar.bz2"
+
+    if [ -e ${COMPRESSED} ]
+    then
+        echo "remove ${COMPRESSED}"
+        rm -i ${COMPRESSED}
+    fi
+
+    if [ -d ${DATA} ]
+    then
+        echo "remove ${DATA}"
+        rm -ri ${DATA}
+    fi
+
+    echo "fetch ${COMPRESSED}"
+    curl -s -o ${COMPRESSED} https://whosonfirst.mapzen.com/bundles/${COMPRESSED}
+
+    echo "expand ${COMPRESSED}"
+    tar -xvjf ${COMPRESSED}
+
+    echo "sync ${DATA}"
+    rsync -av ${DATA}/data/ ${DEST}/
+
+done
+    </pre>
+
     <footer/>
   </body>
 </html>
