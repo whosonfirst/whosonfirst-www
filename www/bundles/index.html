@@ -306,9 +306,11 @@
 
     <h2 id="working-with">Working with Bundles</h2>
 
-    <p>Bundles all have the same directory structure. A single <code>data</code> directory and a <code>wof-PLACETYPE-OR-BUNDLE-NAME-latest.csv</code> CSV "meta" file. It is left up to individual users of the data to decide how and whether data from multiple bundles should be merged.</p>
+    <p>Bundles all have the same directory structure: A single <code>data</code> directory and a <code>wof-PLACETYPE-OR-BUNDLE-NAME-latest.csv</code> CSV "meta" file. It is left up to individual users of the data to decide how and whether data from multiple bundles should be merged.</p>
 
-    <p>Here is a working example script that will download all the bundles for continents, countries, regions, localities and neighbourhoods and merge the records from each in to a single <code>data</code> folder, located in the directory that the script is run from. Please note that there is little to no error-checking in the example below so you should adjust this to taste.</p>
+    <p>Here is a working example script that will download all the bundles for continents, countries, regions, localities and neighbourhoods and merge the records from each in to a single <code>data</code> folder, located in the directory that the script is run from.</p>
+
+    <p><small>Please note that there is little to no error-checking in the example below so you should adjust this to taste. Also it assumes that you are comfortable working on the command-line and that computer have copies of the <code>tar</code>, <code>curl</code> and <code>rsync</code> utilities installed (this is true for all Linux and OS X computers).</small></p>
 
     <pre>
 #!/bin/sh
