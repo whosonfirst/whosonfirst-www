@@ -18,7 +18,7 @@
     <p class="caveat">Bundles (of Who's On First data) are still considered experimental. If you've somehow discovered this page then <q>Welcome!</q> but please understand that this is still work in progress so things may not be quite right yet.</p>
     <p>Bundles are a collection of GeoJSON formatted files (Who's On First data) grouped by a specific property, like placetype. They allow for people to more easily bulk download a subset of the entire Who's On First dataset. Currently there are only bundles by placetype (and not even all of them... yet) but eventually we will add a variety of different <q>slices</q> of the data as demand and interest require.</p>
     <p>There is only ever one bundle-per-property at any given moment. When a new bundle is generated it replaces the old one. If you need to test whether a bundle has changed without downloading the bundle itself the best way is to compare the <code>SHA1</code> hash of the meta file for that property.</p>
-    <p>For example if the bundle in question <code>wof-region-bundle.tar.bz2</code> then its corresponding meta file will be <code>wof-region-latest.csv</code>.</p>
+    <p>For example if the bundle in question <code>wof-region-latest-bundle.tar.bz2</code> then its corresponding meta file will be <code>wof-region-latest.csv</code>.</p>
     <p>You can determine the <code>SHA1</code> hash for the meta file either by downloading the meta file directly and calculating its hash locally or you can download the <code>wof-country-latest.csv.sha1.txt</code> file which is a plain text file containing the value of the hash.</p>
 
     <!-- See also: https://github.com/whosonfirst/whosonfirst-placetypes/issues/2 -->
@@ -30,8 +30,8 @@
         <h4>Continents <small><a href="https://github.com/whosonfirst/whosonfirst-placetypes#continent" target="docs" class="tellmemore" title="tell me more">?</a></small></h4>
         <ul>
           <li>
-            <a href="wof-continent-bundle.tar.bz2">wof-continent-bundle.tar.bz2</a>
-            <small>(<a href="wof-continent-bundle.tar.bz2.sha1.txt">SHA1</a> | <a href="http://whosonfirst.mapzen.com.s3.amazonaws.com/bundles/wof-continent-bundle.tar.bz2?torrent">torrent</a>)</small>
+            <a href="wof-continent-latest-bundle.tar.bz2">wof-continent-latest-bundle.tar.bz2</a>
+            <small>(<a href="wof-continent-latest-bundle.tar.bz2.sha1.txt">SHA1</a> | <a href="http://whosonfirst.mapzen.com.s3.amazonaws.com/bundles/wof-continent-latest-bundle.tar.bz2?torrent">torrent</a>)</small>
           </li>
           <li>
             <a href="wof-continent-latest.csv">wof-continent-latest.csv</a>
@@ -43,8 +43,8 @@
         <h4>Countries <small><a href="https://github.com/whosonfirst/whosonfirst-placetypes#country" target="docs" class="tellmemore" title="tell me more">?</a></small></h4>
         <ul>
           <li>
-            <a href="wof-country-bundle.tar.bz2">wof-country-bundle.tar.bz2</a>
-            <small>(<a href="wof-country-bundle.tar.bz2.sha1.txt">SHA1</a> | <a href="http://whosonfirst.mapzen.com.s3.amazonaws.com/bundles/wof-country-bundle.tar.bz2?torrent">torrent</a>)</small>
+            <a href="wof-country-latest-bundle.tar.bz2">wof-country-latest-bundle.tar.bz2</a>
+            <small>(<a href="wof-country-latest-bundle.tar.bz2.sha1.txt">SHA1</a> | <a href="http://whosonfirst.mapzen.com.s3.amazonaws.com/bundles/wof-country-latest-bundle.tar.bz2?torrent">torrent</a>)</small>
           </li>
           <li>
             <a href="wof-country-latest.csv">wof-country-latest.csv</a>
@@ -56,8 +56,8 @@
         <h4>Regions <small><a href="https://github.com/whosonfirst/whosonfirst-placetypes#region" target="docs" class="tellmemore" title="tell me more">?</a></small></h4>
         <ul>
           <li>
-            <a href="wof-region-bundle.tar.bz2">wof-region-bundle.tar.bz2</a>
-            <small>(<a href="wof-region-bundle.tar.bz2.sha1.txt">SHA1</a> | <a href="http://whosonfirst.mapzen.com.s3.amazonaws.com/bundles/wof-region-bundle.tar.bz2?torrent">torrent</a>)</small>
+            <a href="wof-region-latest-bundle.tar.bz2">wof-region-latest-bundle.tar.bz2</a>
+            <small>(<a href="wof-region-latest-bundle.tar.bz2.sha1.txt">SHA1</a> | <a href="http://whosonfirst.mapzen.com.s3.amazonaws.com/bundles/wof-region-latest-bundle.tar.bz2?torrent">torrent</a>)</small>
           </li>
           <li>
             <a href="wof-region-latest.csv">wof-region-latest.csv</a>
@@ -70,8 +70,8 @@
         <h4>Localities <small><a href="https://github.com/whosonfirst/whosonfirst-placetypes#locality" target="docs" class="tellmemore" title="tell me more">?</a></small></h4>
         <ul>
           <li>
-            <a href="wof-locality-bundle.tar.bz2">wof-locality-bundle.tar.bz2</a>
-            <small>(<a href="wof-locality-bundle.tar.bz2.sha1.txt">SHA1</a> | <a href="http://whosonfirst.mapzen.com.s3.amazonaws.com/bundles/wof-locality-bundle.tar.bz2?torrent">torrent</a>)</small>
+            <a href="wof-locality-latest-bundle.tar.bz2">wof-locality-latest-bundle.tar.bz2</a>
+            <small>(<a href="wof-locality-latest-bundle.tar.bz2.sha1.txt">SHA1</a> | <a href="http://whosonfirst.mapzen.com.s3.amazonaws.com/bundles/wof-locality-latest-bundle.tar.bz2?torrent">torrent</a>)</small>
           </li>
           <li>
             <a href="wof-locality-latest.csv">wof-locality-latest.csv</a>
@@ -84,8 +84,8 @@
         <h4>Neighbourhoods <small><a href="https://github.com/whosonfirst/whosonfirst-placetypes#neighbourhood" target="docs" class="tellmemore" title="tell me more">?</a></small></h4>
         <ul>
           <li>
-            <a href="wof-neighbourhood-bundle.tar.bz2">wof-neighbourhood-bundle.tar.bz2</a>
-            <small>(<a href="wof-neighbourhood-bundle.tar.bz2.sha1.txt">SHA1</a> | <a href="http://whosonfirst.mapzen.com.s3.amazonaws.com/bundles/wof-neighbourhood-bundle.tar.bz2?torrent">torrent</a>)</small>
+            <a href="wof-neighbourhood-latest-bundle.tar.bz2">wof-neighbourhood-latest-bundle.tar.bz2</a>
+            <small>(<a href="wof-neighbourhood-latest-bundle.tar.bz2.sha1.txt">SHA1</a> | <a href="http://whosonfirst.mapzen.com.s3.amazonaws.com/bundles/wof-neighbourhood-latest-bundle.tar.bz2?torrent">torrent</a>)</small>
           </li>
           <li>
             <a href="wof-neighbourhood-latest.csv">wof-neighbourhood-latest.csv</a>
@@ -102,8 +102,8 @@
         <h4>Planets <small><a href="https://github.com/whosonfirst/whosonfirst-placetypes#planet" target="docs" class="tellmemore" title="tell me more">?</a></small></h4>
         <ul>
           <li>
-            <a href="wof-planet-bundle.tar.bz2">wof-planet-bundle.tar.bz2</a>
-            <small>(<a href="wof-planet-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
+            <a href="wof-planet-latest-bundle.tar.bz2">wof-planet-latest-bundle.tar.bz2</a>
+            <small>(<a href="wof-planet-latest-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
           </li>
           <li>
             <a href="wof-planet-latest.csv">wof-planet-latest.csv</a>
@@ -116,8 +116,8 @@
         <h4>Oceans <small><a href="https://github.com/whosonfirst/whosonfirst-placetypes#ocean" target="docs" class="tellmemore" title="tell me more">?</a></small></h4>
         <ul>
           <li>
-            <a href="wof-ocean-bundle.tar.bz2">wof-ocean-bundle.tar.bz2</a>
-            <small>(<a href="wof-ocean-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
+            <a href="wof-ocean-latest-bundle.tar.bz2">wof-ocean-latest-bundle.tar.bz2</a>
+            <small>(<a href="wof-ocean-latest-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
           </li>
           <li>
             <a href="wof-ocean-latest.csv">wof-ocean-latest.csv</a>
@@ -130,8 +130,8 @@
         <h4>Empires <small><a href="https://github.com/whosonfirst/whosonfirst-placetypes#empire" target="docs" class="tellmemore" title="tell me more">?</a></small></h4>
         <ul>
           <li>
-            <a href="wof-empire-bundle.tar.bz2">wof-empire-bundle.tar.bz2</a>
-            <small>(<a href="wof-empire-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
+            <a href="wof-empire-latest-bundle.tar.bz2">wof-empire-latest-bundle.tar.bz2</a>
+            <small>(<a href="wof-empire-latest-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
           </li>
           <li>
             <a href="wof-empire-latest.csv">wof-empire-latest.csv</a>
@@ -144,8 +144,8 @@
         <h4>Dependencies <small><a href="https://github.com/whosonfirst/whosonfirst-placetypes#dependency" target="docs" class="tellmemore" title="tell me more">?</a></small></h4>
         <ul>
           <li>
-            <a href="wof-dependency-bundle.tar.bz2">wof-dependency-bundle.tar.bz2</a>
-            <small>(<a href="wof-dependency-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
+            <a href="wof-dependency-latest-bundle.tar.bz2">wof-dependency-latest-bundle.tar.bz2</a>
+            <small>(<a href="wof-dependency-latest-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
           </li>
           <li>
             <a href="wof-dependency-latest.csv">wof-dependency-latest.csv</a>
@@ -158,8 +158,8 @@
         <h4>Disputed Areas <small><a href="https://github.com/whosonfirst/whosonfirst-placetypes#disputed" target="docs" class="tellmemore" title="tell me more">?</a></small></h4>
         <ul>
           <li>
-            <a href="wof-disputed-bundle.tar.bz2">wof-disputed-bundle.tar.bz2</a>
-            <small>(<a href="wof-disputed-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
+            <a href="wof-disputed-latest-bundle.tar.bz2">wof-disputed-latest-bundle.tar.bz2</a>
+            <small>(<a href="wof-disputed-latest-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
           </li>
           <li>
             <a href="wof-disputed-latest.csv">wof-disputed-latest.csv</a>
@@ -172,8 +172,8 @@
         <h4>Marine Areas <small><a href="https://github.com/whosonfirst/whosonfirst-placetypes#marinearea" target="docs" class="tellmemore" title="tell me more">?</a></small></h4>
         <ul>
           <li>
-            <a href="wof-marinearea-bundle.tar.bz2">wof-marinearea-bundle.tar.bz2</a>
-            <small>(<a href="wof-marinearea-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
+            <a href="wof-marinearea-latest-bundle.tar.bz2">wof-marinearea-latest-bundle.tar.bz2</a>
+            <small>(<a href="wof-marinearea-latest-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
           </li>
           <li>
             <a href="wof-marinearea-latest.csv">wof-marinearea-latest.csv</a>
@@ -186,8 +186,8 @@
         <h4>Timezones <small><a href="https://github.com/whosonfirst/whosonfirst-placetypes#timezone" target="docs" class="tellmemore" title="tell me more">?</a></small></h4>
         <ul>
           <li>
-            <a href="wof-timezone-bundle.tar.bz2">wof-timezone-bundle.tar.bz2</a>
-            <small>(<a href="wof-timezone-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
+            <a href="wof-timezone-latest-bundle.tar.bz2">wof-timezone-latest-bundle.tar.bz2</a>
+            <small>(<a href="wof-timezone-latest-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
           </li>
           <li>
             <a href="wof-timezone-latest.csv">wof-timezone-latest.csv</a>
@@ -200,8 +200,8 @@
         <h4>Counties <small><a href="https://github.com/whosonfirst/whosonfirst-placetypes#county" target="docs" class="tellmemore" title="tell me more">?</a></small></h4>
         <ul>
           <li>
-            <a href="wof-county-bundle.tar.bz2">wof-county-bundle.tar.bz2</a>
-            <small>(<a href="wof-county-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
+            <a href="wof-county-latest-bundle.tar.bz2">wof-county-latest-bundle.tar.bz2</a>
+            <small>(<a href="wof-county-latest-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
           </li>
           <li>
             <a href="wof-county-latest.csv">wof-county-latest.csv</a>
@@ -214,8 +214,8 @@
         <h4>Local Admins <small><a href="https://github.com/whosonfirst/whosonfirst-placetypes#localadmin" target="docs" class="tellmemore" title="tell me more">?</a></small></h4>
         <ul>
           <li>
-            <a href="wof-localadmin-bundle.tar.bz2">wof-localadmin-bundle.tar.bz2</a>
-            <small>(<a href="wof-localadmin-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
+            <a href="wof-localadmin-latest-bundle.tar.bz2">wof-localadmin-latest-bundle.tar.bz2</a>
+            <small>(<a href="wof-localadmin-latest-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
           </li>
           <li>
             <a href="wof-localadmin-latest.csv">wof-localadmin-latest.csv</a>
@@ -228,8 +228,8 @@
         <h4>Campuses <small><a href="https://github.com/whosonfirst/whosonfirst-placetypes#campus" target="docs" class="tellmemore" title="tell me more">?</a></small></h4>
         <ul>
           <li>
-            <a href="wof-campus-bundle.tar.bz2">wof-campus-bundle.tar.bz2</a>
-            <small>(<a href="wof-campus-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
+            <a href="wof-campus-latest-bundle.tar.bz2">wof-campus-latest-bundle.tar.bz2</a>
+            <small>(<a href="wof-campus-latest-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
           </li>
           <li>
             <a href="wof-campus-latest.csv">wof-campus-latest.csv</a>
@@ -247,8 +247,8 @@
         <h4>Macroregions <small><a href="https://github.com/whosonfirst/whosonfirst-placetypes#macroregion" target="docs" class="tellmemore" title="tell me more">?</a></small></h4>
         <ul>
           <li>
-            <a href="wof-macroregion-bundle.tar.bz2">wof-macroregion-bundle.tar.bz2</a>
-            <small>(<a href="wof-macroregion-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
+            <a href="wof-macroregion-latest-bundle.tar.bz2">wof-macroregion-latest-bundle.tar.bz2</a>
+            <small>(<a href="wof-macroregion-latest-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
           </li>
           <li>
             <a href="wof-macroregion-latest.csv">wof-macroregion-latest.csv</a>
@@ -260,8 +260,8 @@
         <h4>Macrocounties <small><a href="https://github.com/whosonfirst/whosonfirst-placetypes#macrocounty" target="docs" class="tellmemore" title="tell me more">?</a></small></h4>
         <ul>
           <li>
-            <a href="wof-macrocounty-bundle.tar.bz2">wof-macrocounty-bundle.tar.bz2</a>
-            <small>(<a href="wof-macrocounty-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
+            <a href="wof-macrocounty-latest-bundle.tar.bz2">wof-macrocounty-latest-bundle.tar.bz2</a>
+            <small>(<a href="wof-macrocounty-latest-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
           </li>
           <li>
             <a href="wof-macrocounty-latest.csv">wof-macrocounty-latest.csv</a>
@@ -274,8 +274,8 @@
         <h4>Macrohoods <small><a href="https://github.com/whosonfirst/whosonfirst-placetypes#macrohood" target="docs" class="tellmemore" title="tell me more">?</a></small></h4>
         <ul>
           <li>
-            <a href="wof-macrohood-bundle.tar.bz2">wof-macrohood-bundle.tar.bz2</a>
-            <small>(<a href="wof-macrohood-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
+            <a href="wof-macrohood-latest-bundle.tar.bz2">wof-macrohood-latest-bundle.tar.bz2</a>
+            <small>(<a href="wof-macrohood-latest-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
           </li>
           <li>
             <a href="wof-macrohood-latest.csv">wof-macrohood-latest.csv</a>
@@ -288,8 +288,8 @@
         <h4>Microhoods <small><a href="https://github.com/whosonfirst/whosonfirst-placetypes#microhood" target="docs" class="tellmemore" title="tell me more">?</a></small></h4>
         <ul>
           <li>
-            <a href="wof-microhood-bundle.tar.bz2">wof-microhood-bundle.tar.bz2</a>
-            <small>(<a href="wof-microhood-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
+            <a href="wof-microhood-latest-bundle.tar.bz2">wof-microhood-latest-bundle.tar.bz2</a>
+            <small>(<a href="wof-microhood-latest-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
           </li>
           <li>
             <a href="wof-microhood-latest.csv">wof-microhood-latest.csv</a>
@@ -302,7 +302,7 @@
 
     <h2 id="working-with">Working with Bundles</h2>
 
-    <p>Bundles all have the same directory structure: A single <code>data</code> directory and a <code>wof-PLACETYPE-OR-BUNDLE-NAME-latest.csv</code> comma-separated "meta" file. It is left up to individual users of the data to decide how and whether data from multiple bundles should be merged.</p>
+    <p>Bundles all have the same directory structure: A single <code>data</code> directory and a <code>wof-PLACETYPE-OR-LATEST-BUNDLE-NAME-latest.csv</code> comma-separated "meta" file. It is left up to individual users of the data to decide how and whether data from multiple bundles should be merged.</p>
 
     <p>Here is a working example script that will download all the bundles for continents, countries, regions, localities and neighbourhoods and merge the records from each in to a single <code>data</code> folder, located in the directory that the script is run from.</p>
 
@@ -322,7 +322,7 @@ fi
 for PT in ${PLACETYPES}
 do
 
-    BUNDLE="wof-${PT}-bundle"
+    BUNDLE="wof-${PT}-latest-bundle"
     COMPRESSED="${BUNDLE}.tar.bz2"
 
     if [ -e ${COMPRESSED} ]
