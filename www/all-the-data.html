@@ -1,29 +1,21 @@
 <!DOCTYPE html>
 <html>
- <head>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
   <title>Who's On First &#8212; Data</title>
-   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <meta name="referrer" content="origin" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  <meta name="HandheldFriendly" content="true" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--<link rel="stylesheet" href="https://mapzen.com/common/styleguide/styles/styleguide.css">-->
+  <link rel="stylesheet" type="text/css" href="css/mapzen.whosonfirst.min.css"/>
+
   <!-- this may seem wrong but the thing is that we are proxying http://whosonfirst.mapzen.com/data/ through to
        http://whosonfirst.mapzen.com/all-the-data.html so we need to do this extra bit of hoop-jumping
        (2015108/thisisaaronland) -->
-
-  <link rel="stylesheet" type="text/css" href="../css/mapzen.whosonfirst.min.css" />
-
-  <!--
-  <link rel="stylesheet" type="text/css" href="../css/mapzen.css" />
-  <link rel="stylesheet" type="text/css" href="../css/whosonfirst.css" />
-
-  <link rel="stylesheet" type="text/css" href="css/mapzen.css" />
-  <link rel="stylesheet" type="text/css" href="css/whosonfirst.css" />
-  -->
-
- </head>
- <body class="container">
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
 
    <h1>Who's On First &#8212; Data</h1>
 
@@ -186,6 +178,9 @@ $> cat data/856/333/45/85633345.geojson
 
    <p>So, yeah. We probably should never have published this URL as-is. It's tricky because we need to share the URL with people who are going to try and download data using the AWS S3 API but the reality is that when you visit that URL in a web browser... you get unhelpful silence. Or more specifically your web browser tries to download an empty file. This is one of those unfortunate mismatches between the technology and people's expectations.</p>
 
-  <footer></footer>
- </body>
+      </div>
+    </div>
+  </div>
+  <script src="https://mapzen.com/common/styleguide/scripts/mapzen-styleguide.min.js"></script>
+</body>
 </html>
