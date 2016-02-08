@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Who's On First &#8212; Vagrant</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" type="text/css" href="../css/mapzen.whosonfirst.min.css"/>
+
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+
+   <h1>Who's On First &#8212; Vagrant</h1>
+
+   <h2 id="spelunker">spelunker.box</h2>
+
+   <p><code>spelunker.box</code> is a <a href="https://www.vagrantup.com/">Vagrant virtual machine</a> with all the software to run the <a href="https://whosonfirst.mapzen.com/spelunker/">Who's On First spelunker application</a> locally and pre-loaded with common (as in <a href="https://github.com/whosonfirst/whosonfirst-placetypes#common-c">common placetypes)</a> Who's On First records.</p>
+
+   <p><small>Translation: Not all of Who's On First is included. It's not that we don't care about all the other places, only that we are starting <q>small</q> and will figure out a way to include all the other places in time. Just not today.</small></p>
+
+   <h3>The short version</h3>
+
+   <ul>
+     <li><a href="https://whosonfirst.mapzen.com/vagrant/spelunker/spelunker.box">spelunker.box</a> <small>(<a href="https://whosonfirst.mapzen.com/vagrant/spelunker/spelunker.box.sha1.txt">SHA1</a>)</small></li>
+     <li><a href="https://whosonfirst.mapzen.com/vagrant/spelunker/Vagrantfile.txt">Vagrantfile</a> <small>(.txt)</small></li>
+   </ul>
+
+   <h3>The long version</h3>
+
+   <p>The following assumes a basic familiarity doing work on your computer's command-line (or terminal) and with Vagrant, specifically. If Vagrant is still new and mysterious you should spend a little time <a href="https://www.vagrantup.com/docs/">with their documentation</a> before going any further. It's very well written.</p>
+
+   <p>Okay, the first thing you'll need to do is add the <code>spelunker.box</code> to the list of virtual machine providers (or "boxes") that Vagrant knows about. Like this:</p>
+
+   <pre>
+$> vagrant box add --checksum 85936ba7c6415f780adc5c4f1bef644881a92ef5 --checksum-type sha1 --name spelunker.box https://whosonfirst.mapzen.com/vagrant/spelunker/spelunker.box</pre>
+
+   <p><code>spelunker.box</code> is a nearly 4GB file so depending on how fast your internet connection is you may want to get a cup of coffee while you wait.</p>
+
+   <p>If you're already familiar with Vagrant you can initialize a new virtual machine, point it at your new <code>spelunker.box</code> and be off to the races. If not you may want to download the starter <code>Vagrantfile</code> that we've provided:</p>
+
+   <pre>
+$> mkdir spelunker
+$> curl -o Vagrantfile https://whosonfirst.mapzen.com/vagrant/spelunker/Vagrantfile.txt</pre>
+
+   <p>A "Vagrantfile" is a configuration file that is created when you initialize a new virtual machine. It contains pointers to and instructions for Vagrant that tell it how to create a new virtual machine. For example our starter file tells Vagrant to build a new machine using the <code>spelunker.box</code> image, to forward HTTPS connections to your local machine on port <code>8994</code>, how much memory to use and to make sure that all the software on the machine is up to date:</p>
+
+   <pre>
+$> cat Vagrantfile 
+Vagrant.configure(2) do |config|
+
+  config.vm.box = "spelunker.box"
+
+  config.vm.network "forwarded_port", guest: 443, host: 8994
+
+  config.vm.provider "virtualbox" do |vb|
+     vb.memory = "4096"
+  end
+
+  config.vm.provision "shell", inline: <<-SHELL
+      sudo apt-get update
+      sudo apt-get upgrade -y
+  SHELL
+end</pre>
+
+     <p>Finally you are ready to tell Vagrant to spin up your new machine. You do this by invoking the <code>up</code> command from the command-line:</p>
+
+     <pre>
+$> vagrant up</pre>
+
+      <p>Again, depending on your computer and your internet connection when Vagrant finishes everything it is doing you should have a working copy of the Who's On First <a href="https://whosonfirst.mapzen.com/spelunker/">spelunker</a> application running locally on your computer and available for browsing at <code>https://localhost:8994/</code>.</p>
+
+      <h4>One more thing &#8212; and it's a bit fiddly but also important</h4>
+
+   <p>The <code>spelunker.box</code> virtual machine runs the spelunker application over an encrypted connection using what is called a <q>self-signed TLS (or SSL) certificate</q>. That means the spelunker both created <em>and</em> validated the TLS certificate it is using to establish the encrypted connection. This cozy relationship will almost certainly make your browser nervous and cause it to present you with a notice about an <q>untrusted certificate</q>.</p>
+
+   <p><em>This is the correct thing for your browser to do</em>.</p>
+					  
+   <p>In this instance you can (you will need to) confirm that you really want to use this TLS certificate. Self-signed certificates are very useful for running and testing applications on your local machine but are generally a bad idea for anything on the public internet. On the other hand distributing <q>real</q> TLS certificates with bundled applications like this is a very serious security no-no so this is the middle-ground we are left with.</p>
+
+   <p>As a rule, any time a website presents you with a self-signed certificate you should be wary. You should inspect the details (of the certificate and the issuer). You should <em>not</em> store the certificate permanently. You should proceed with caution.</p>
+
+   <br /><br />
+
+      </div>
+    </div>
+  </div>
+  <!-- <script src="https://mapzen.com/common/styleguide/scripts/mapzen-styleguide.min.js"></script> -->
+
+</body>
+</html>
