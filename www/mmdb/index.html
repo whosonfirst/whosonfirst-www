@@ -14,9 +14,56 @@
     <div class="row">
       <div class="col-md-8 col-md-offset-2">
 
-   <h1>Who's On First &#8212; MaxMind Databases (mmdb)</h1>
+	<h1>Who's On First &#8212; MaxMind Databases (mmdb)</h1>
 
-   <p>MaxMind databases (of Who's On First data) are still considered <em>experimental</em>. If you've somehow discovered this page then <q>Welcome!</q> but please understand that this is still work in progress so things may not be quite right yet.</p>
+	<p>MaxMind databases (of Who's On First data) are still considered <em>experimental</em>. Specifically not all of the data has been conflated (assigned a Who's On First ID) nor have we settled on how to automate releases yet.</p>
+
+	<h2>GeoLite2 databases</h2>
+
+	<h3>whosonfirst-maxmind-city</h3>
+
+	  <ul>
+	    <li><a href="http://whosonfirst.mapzen.com.s3.amazonaws.com/mmdb/whosonfirst-maxmind-city-20160113.mmdb.gz">whosonfirst-maxmind-city-20160113.mmdb.gz</a></li>
+	  </ul>
+
+	<h3>whosonfirst-city</h3>
+
+	<p>This is a modified version of the standard MaxMind GeoLiteIP city database to include Who's On First hierarchy information, label centroids and bounding boxes.</p>
+
+	  <pre># query for 8.8.8.8
+
+{
+    "continent_id": 102191575,
+    "country_id": 85633793,
+    "disputed_id": 0,
+    "geom_bbox": "-122.117724,37.354068,-122.044473,37.469887",
+    "geom_latitude": 37.400493,
+    "geom_longitude": -122.079536,
+    "geoname_id": 5375480,
+    "lbl_latitude": 37.413921,
+    "lbl_longitude": -122.085078,
+    "localadmin_id": 0,
+    "locality_id": 85922355,
+    "macroregion_id": 0,
+    "mm_latitude": 37.386,
+    "mm_longitude": -122.0838,
+    "name": "Mountain View",
+    "placetype": "locality",
+    "region_id": 85688637,
+    "whosonfirst_id": 85922355
+}
+</pre>
+
+	  <ul>
+	    <li><a href="http://whosonfirst.mapzen.com.s3.amazonaws.com/mmdb/whosonfirst-city-20160111.mmdb.gz">whosonfirst-city-20160111.mmdb.gz</a></li>
+	  </ul>
+
+	  <h2>Code</h2>
+
+	  <ul>
+	    <li><a href="https://github.com/whosonfirst/p5-Whosonfirst-MaxMind-Writer">p5-Whosonfirst-MaxMind-Writer</a> <small>(Perl)</small></li>
+	    <li><a href="https://github.com/whosonfirst/go-whosonfirst-iplookup">go-whosonfirst-iplookup</a> <small>(Go)</small></li>
+	  </ul>
 
       </div>
     </div>
