@@ -16,19 +16,109 @@
 
 	<h1>Who's On First &#8212; MaxMind Databases (mmdb)</h1>
 
-	<p>MaxMind databases (of Who's On First data) are still considered <em>experimental</em>. Specifically not all of the data has been conflated (assigned a Who's On First ID) nor have we settled on how to automate releases yet.</p>
+	<p>MaxMind databases (of Who's On First data) are still considered <em>experimental</em> and a work in progress. Specifically not all of the data has been conflated (assigned a Who's On First ID) nor have we settled on how to automate releases yet.</p>
 
 	<h2>GeoLite2 databases</h2>
 
-	<h3>whosonfirst-maxmind-city</h3>
+	<h3>whosonfirst-maxmind-city <small>(20160113)</small></h3>
+
+	<p>This is the standard MaxMind GeoLite2 city database with Who's On First IDs appended based on <a href="https://github.com/whosonfirst/whosonfirst-data/blob/master/meta/wof-concordances-latest.csv">their concordance with the Geonames ID</a> already included in the database. We have concordances for <em>most</em> but definitely not all the Geonames places referenced by MaxMind, as you can see with <a href="https://whosonfirst.mapzen.com/spelunker/id/102191575/">North America</a> in the example below. Also not every placetype (specifically subdivisions) in the city has been processed yet.</p>
+
+<pre>
+# query for 8.8.8.8
+
+{
+    "city": {
+        "geoname_id": 5375480,
+        "names": {
+            "de": "Mountain View",
+            "en": "Mountain View",
+            "fr": "Mountain View",
+            "ja": "\u30de\u30a6\u30f3\u30c6\u30f3\u30d3\u30e5\u30fc",
+            "ru": "\u041c\u0430\u0443\u043d\u0442\u0438\u043d-\u0412\u044c\u044e",
+            "zh-CN": "\u8292\u5ef7\u7ef4\u5c24"
+        },
+        "whosonfirst_id": 85922355
+    },
+    "continent": {
+        "code": "NA",
+        "geoname_id": 6255149,
+        "names": {
+            "de": "Nordamerika",
+            "en": "North America",
+            "es": "Norteam\u00e9rica",
+            "fr": "Am\u00e9rique du Nord",
+            "ja": "\u5317\u30a2\u30e1\u30ea\u30ab",
+            "pt-BR": "Am\u00e9rica do Norte",
+            "ru": "\u0421\u0435\u0432\u0435\u0440\u043d\u0430\u044f \u0410\u043c\u0435\u0440\u0438\u043a\u0430",
+            "zh-CN": "\u5317\u7f8e\u6d32"
+        },
+        "whosonfirst_id": 0
+    },
+    "country": {
+        "geoname_id": 6252001,
+        "iso_code": "US",
+        "names": {
+            "de": "USA",
+            "en": "United States",
+            "es": "Estados Unidos",
+            "fr": "\u00c9tats-Unis",
+            "ja": "\u30a2\u30e1\u30ea\u30ab\u5408\u8846\u56fd",
+            "pt-BR": "Estados Unidos",
+            "ru": "\u0421\u0428\u0410",
+            "zh-CN": "\u7f8e\u56fd"
+        },
+        "whosonfirst_id": 85633793
+    },
+    "location": {
+        "latitude": 37.3845,
+        "longitude": -122.0881,
+        "metro_code": "807",
+        "time_zone": "America/Los_Angeles"
+    },
+    "postal": {
+        "code": "94040"
+    },
+    "registered_country": {
+        "geoname_id": 6252001,
+        "iso_code": "US",
+        "names": {
+            "de": "USA",
+            "en": "United States",
+            "es": "Estados Unidos",
+            "fr": "\u00c9tats-Unis",
+            "ja": "\u30a2\u30e1\u30ea\u30ab\u5408\u8846\u56fd",
+            "pt-BR": "Estados Unidos",
+            "ru": "\u0421\u0428\u0410",
+            "zh-CN": "\u7f8e\u56fd"
+        },
+        "whosonfirst_id": 85633793
+    },
+    "subdivisions": [
+        {
+            "geoname_id": 5332921,
+            "iso_code": "CA",
+            "names": {
+                "de": "Kalifornien",
+                "en": "California",
+                "es": "California",
+                "fr": "Californie",
+                "ja": "\u30ab\u30ea\u30d5\u30a9\u30eb\u30cb\u30a2\u5dde",
+                "pt-BR": "Calif\u00f3rnia",
+                "ru": "\u041a\u0430\u043b\u0438\u0444\u043e\u0440\u043d\u0438\u044f",
+                "zh-CN": "\u52a0\u5229\u798f\u5c3c\u4e9a\u5dde"
+            }
+        }
+    ]
+}</pre>
 
 	  <ul>
-	    <li><a href="http://whosonfirst.mapzen.com.s3.amazonaws.com/mmdb/whosonfirst-maxmind-city-20160113.mmdb.gz">whosonfirst-maxmind-city-20160113.mmdb.gz</a></li>
+	    <li><a href="http://whosonfirst.mapzen.com.s3.amazonaws.com/mmdb/whosonfirst-maxmind-city-latest.mmdb.gz">whosonfirst-maxmind-city-latest.mmdb.gz</a> <small>(58MB)</small></li>
 	  </ul>
 
-	<h3>whosonfirst-city</h3>
+	<h3>whosonfirst-city <small>(20160111)</small></h3>
 
-	<p>This is a modified version of the standard MaxMind GeoLiteIP city database to include Who's On First hierarchy information, label centroids and bounding boxes.</p>
+	<p>This is a modified version of the standard MaxMind GeoLite2 city database where each record has been <a href="https://github.com/whosonfirst/go-whosonfirst-pip/">reverse-geocoded</a> to include Who's On First hierarchy information, label centroids and bounding boxes. <span style="font-style:italic;"><code>mm_latitude</code> and <code>mm_longitude</code> are the original coordinates included in the GeoLite2 city database.</span></p>
 
 	  <pre># query for 8.8.8.8
 
@@ -55,7 +145,7 @@
 </pre>
 
 	  <ul>
-	    <li><a href="http://whosonfirst.mapzen.com.s3.amazonaws.com/mmdb/whosonfirst-city-20160111.mmdb.gz">whosonfirst-city-20160111.mmdb.gz</a></li>
+	    <li><a href="http://whosonfirst.mapzen.com.s3.amazonaws.com/mmdb/whosonfirst-city-latest.mmdb.gz">whosonfirst-city-latest.mmdb.gz</a> <small>(16MB)</small></li>
 	  </ul>
 
 	  <h2>Code</h2>
