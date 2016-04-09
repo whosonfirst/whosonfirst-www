@@ -5,7 +5,9 @@ body {
 }
 
 footer {
-       margin-bottom: 5em !important;
+    margin-bottom: 5em !important;
+    margin-top: 3em !important;
+    text-align:right !important;
 }
 
 h1 {
