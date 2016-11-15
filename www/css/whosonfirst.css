@@ -61,7 +61,7 @@ h5 {
 	     margin-bottom: 1em; !important;
 }
 
-.links li a:after {
+.theory-links li a:after {
     content: attr(href) " (" attr(data-pubdate) ")";
     font-size: small;
     font-weight: 200;
