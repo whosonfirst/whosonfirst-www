@@ -9,7 +9,9 @@
   <!-- this may seem wrong but the thing is that we are proxying http://whosonfirst.mapzen.com/data/ through to
        http://whosonfirst.mapzen.com/all-the-data.html so we need to do this extra bit of hoop-jumping
        (2015108/thisisaaronland) -->
-  <link rel="stylesheet" type="text/css" href="../css/mapzen.whosonfirst.min.css"/>
+
+  <link rel="stylesheet" type="text/css" href="../css/mapzen.whosonfirst.www.bundle.min.css"/>
+  <script src="../javascript/mapzen.whosonfirst.www.bundle.min.js"></script>  
 
 </head>
 <body>
@@ -204,6 +206,5 @@ $> cat data/856/333/45/85633345.geojson
     </div>
   </div>
 
-  <script src="https://whosonfirst.mapzen.com/javascript/whosonfirst.www.js"></script>
 </body>
 </html>
