@@ -18,9 +18,9 @@ placetypes:
 	curl -s -o www/images/placetypes-latest.png https://raw.githubusercontent.com/whosonfirst/whosonfirst-placetypes/master/images/placetypes-latest.png
 
 dev-www:
-	wof-clone-website -ignore \~ -ignore .DS_Store -ignore .gitignore -strict -s3-bucket whosonfirst.dev.mapzen.com -source www/
+	utils/darwin/wof-clone-website -ignore \~ -ignore .DS_Store -ignore .gitignore -strict -s3-bucket whosonfirst.dev.mapzen.com -source www/
 
 prod-www:
-	wof-clone-website -ignore \~ -ignore .DS_Store -ignore .gitignore -strict -s3-bucket -source www/
+	utils/darwin/wof-clone-website -ignore \~ -ignore .DS_Store -ignore .gitignore -strict -source www/
 
 www: dev-www prod-www
