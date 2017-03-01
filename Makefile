@@ -1,7 +1,7 @@
 all: mapzen js css placetypes
 
 mapzen:
-	curl -s -o www/css/mapzen-styleguide.css https://mapzen.com/common/styleguide/styles/styleguide.css
+	curl -s -o www/css/mapzen-styleguide.css https://dev.mapzen.com/common/styleguide/styles/styleguide.css
 
 css:
 	curl -s -o www/css/mapzen.whosonfirst.chrome.css https://raw.githubusercontent.com/whosonfirst/css-mapzen-whosonfirst/master/css/mapzen.whosonfirst.chrome.css
