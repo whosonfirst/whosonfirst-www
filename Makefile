@@ -1,7 +1,7 @@
 all: mapzen js css placetypes
 
 mapzen:
-	curl -s -o www/css/mapzen-styleguide.css https://dev.mapzen.com/common/styleguide/styles/styleguide.css
+	curl -s -o www/css/mapzen-styleguide.css https://mapzen.com/common/styleguide/styles/styleguide.css
 
 css:
 	curl -s -o www/css/mapzen.whosonfirst.chrome.css https://raw.githubusercontent.com/whosonfirst/css-mapzen-whosonfirst/master/css/mapzen.whosonfirst.chrome.css
@@ -17,10 +17,10 @@ js:
 placetypes:
 	curl -s -o www/images/placetypes-latest.png https://raw.githubusercontent.com/whosonfirst/whosonfirst-placetypes/master/images/placetypes-latest.png
 
-dev-www:
+dev-www: css
 	utils/darwin/wof-clone-website -ignore \~ -ignore .DS_Store -ignore .gitignore -strict -s3-bucket whosonfirst.dev.mapzen.com -source www/
 
-prod-www:
+prod-www: css
 	utils/darwin/wof-clone-website -ignore \~ -ignore .DS_Store -ignore .gitignore -strict -source www/
 
 www: dev-www prod-www
