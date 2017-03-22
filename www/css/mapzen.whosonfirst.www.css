@@ -1,7 +1,8 @@
 /* These are meant to supersede mapzen.css */
 
 body {
-     line-height:1.8em !important;
+    line-height:1.8em !important;
+    background-color: #fff !important;
 }
 
 blockquote {
