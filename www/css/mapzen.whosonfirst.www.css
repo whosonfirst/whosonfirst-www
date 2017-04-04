@@ -72,13 +72,14 @@ h5 {
 }
 
 .theory-links li a:after {
-    content: attr(href) " (" attr(data-pubdate) ")";
+    content: attr(href) " | " attr(data-pubdate) " (" attr(data-word-count) " words or " attr(data-au) " AU)";
     font-size: small;
     font-weight: 200;
     color:#999;
     text-decoration: none;
     display: block;
 }
+
 .tellmemore {
 	    font-weight: 300 !important;
 	    font-size:.7em !important;
