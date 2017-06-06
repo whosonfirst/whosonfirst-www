@@ -7,8 +7,8 @@ PROJECT=`dirname $UBUNTU`
 
 PROJECT_NAME=`basename ${PROJECT}`
 
-#sudo apt-get update
-#sudo apt-get install -y nginx
+sudo apt-get update
+sudo apt-get install -y nginx
 
 NGINX="${PROJECT}/nginx"
 CONF="${NGINX}/${PROJECT_NAME}"
