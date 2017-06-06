@@ -5,3 +5,5 @@ www/bundles/*bundle.txt
 www/bundles/*sha1.txt
 www/bundles/*.csv
 www/bundles/*.bz2
+nginx/whosonfirst-www
+nginx/whosonfirst-www.bak
