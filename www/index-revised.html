@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Who’s On First</title>
+        <meta name='description' content="Who's on First is a gazetteer of places.">
+        <link rel='apple-touch-icon' href='https://mapzen.com/common/styleguide/images/favicons/apple-touch-icon.png' sizes='180x180'>
+        <link rel='icon' type='image/png' href='https://mapzen.com/common/styleguide/images/favicons/favicon-16x16.png' sizes='16x16'>
+        <link rel='icon' type='image/png' href='https://mapzen.com/common/styleguide/images/favicons/favicon-32x32.png' sizes='32x32'>
+        <link rel='manifest' href='https://mapzen.com/common/styleguide/images/favicons/manifest.json'>
+        <link rel='mask-icon' href='https://mapzen.com/common/styleguide/images/favicons/safari-pinned-tab.svg' color='#2C1E3F'>
+        
+        
+        <script src="javascript/mapzen.whosonfirst.www.bundle.min.js"></script>
+        <script src="javascript/mapzen.whosonfirst.chrome.js"></script>
+        <link rel="stylesheet" href="https://mapzen.com/common/styleguide/styles/blog.css">
+        <link rel="stylesheet" href="https://mapzen.com/js/mapzen.css">
+        <link rel="stylesheet" href="css/mapzen-whosonfirstindexrevised.css">
+        <script src="https://mapzen.com/js/mapzen.min.js"></script>
+        <link rel="stylesheet" href="css/mapzen.whosonfirst.chrome.css">
+        
+    </head>
+    <body class="project" onload="runWhosOnFirstAPI()">
+        <nav class='navbar navbar-default navbar-fixed-top' role='navigation'>
+            <div class='container'>
+                <div class='navbar-header'>
+                    <button type='button' class='navbar-toggle collapsed' data-toggle='collapse' data-target='#navbar-menu'>
+                        <span class='sr-only'>Toggle navigation</span>
+                        <span class='icon-bar top-bar'></span>
+                        <span class='icon-bar middle-bar'></span>
+                        <span class='icon-bar bottom-bar'></span>
+                    </button>
+                    <a class='navbar-brand' href='https://mapzen.com/'>
+                        <div class='mapzen-logo'></div>
+                        <h1 class='sr-only'>Mapzen</h1>
+                    </a>
+                </div>
+            <!-- new nav bar showing user's login status -->
+                <div class='collapse navbar-collapse' id='navbar-menu'>
+                    <ul class='nav navbar-nav navbar-left'>
+                        <li class='active'><a href='https://mapzen.com/products/'>Products</a></li>
+                        <li class='inactive'><a href='https://mapzen.com/documentation/'>Documentation</a></li>
+                        <li class='inactive'><a href='https://mapzen.com/pricing/'>Pricing</a></li>
+                        <li class='inactive'><a href='https://mapzen.com/blog/'>Blog</a></li>
+                    </ul>
+                    <ul class='nav navbar-nav navbar-right'>
+                        <li class="inactive dropdown"><a id='sign-in' href='/developers/sign_in'> </a></li>
+                        <li class="inactive"><a id='sign-up' href='/developers/sign_up'> </a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class='section-nav' id='project-nav' role='navigation' aria-label='project-name'>
+            <div class='container'>
+                <div class='section-nav-container'>
+                    <div class='section-nav-title'>
+                        <h2 id='project-name'><a href='#'>Who's On First</a></h2>
+                    </div>
+                    <div class='section-nav-items'>
+                        <ul class='section-nav-scroll-container'>
+                        </ul>
+                        <div class='section-nav-dropdown'>&#9698;</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class='section-nav-hitbox'></div>
+        <section class='demo-container js-section-navigable' id='demo' data-section-name='Demo' data-section-nav-collapse='false'>
+            <div class='project-demo'>
+                <div id="map"></div>
+            </div>
+        </section>
+        <section class='project-content' id='content' role='main'>
+            <div class='container'>
+                <div class='row'>
+                    <div class='col-xs-12 col-md-10 col-md-offset-1 static-content'>
+                        <h1 id="whos-on-first">Who's On First: "better than yesterday"</h1>
+                        <p>Who's On First is a gazetteer of places. Not quite <em>all</em> the places in the world but a whole lot of them and, we hope, the kinds of places that we mostly share in common.</p>
+                        <quote>A gazetteer is a big list of places, each with a stable identifier and some number of descriptive properties about that location.</quote>
+                        <p>An interesting way to think about a gazetteer is to consider it as the space where debate about a place is managed but not decided. We call our gazetteer <strong>Who's On First</strong> (or sometimes "WOF" for short). According to <a href="https://en.wikipedia.org/wiki/Who's_on_First%3F">Wikipedia</a>, Who’s on First:</p>
+                        <blockquote>
+                            <p>...is a comedy routine made famous by Abbott and Costello. The premise of the sketch is that Abbott is identifying the players on a baseball team for Costello, but their names and nicknames can be interpreted as non-responsive answers to Costello's questions. For example, the first baseman is named "Who"; thus, the utterance "Who's on first" is ambiguous between the question ("Which person is the first baseman?") and the answer ("The name of the first baseman is 'Who'"). <strong>"Who's on First?" is descended from turn-of-the-century burlesque sketches that used plays on words and names.</strong> Examples are "The Baker Scene" (the shop is located on Watt Street) and "Who Dyed" (the owner is named Who). In the 1930 movie Cracked Nuts, comedians Bert Wheeler and Robert Woolsey examine a map of a mythical kingdom with dialogue like this: "What is next to Which." "What is the name of the town next to Which?" "Yes." In English music halls (Britain's equivalent of vaudeville theatres), comedian Will Hay performed a routine in the early 1930s (and possibly earlier) as a schoolmaster interviewing a schoolboy named Howe who came from Ware but now lives in Wye.</p>
+                        </blockquote>
+                        <p>Which sort of sums up the <q>problem</q> of geo, nicely. It might be easier, perhaps, if we all understood and experienced the world as coordinate data but we don’t, so the burden of “place” and its many meanings is one we trundle along with to this day.</p>
+                        <p>Our gazetteer is absolutely not finished – both in terms of data coverage as well as data quality – so, in the near-term, you should adjust your expectations accordingly when you approach the data. We are releasing the data now because <em>we believe it is important not just to articulate our goals and intentions around the project but also to back them up with tangible proofs</em>.</p>
+                        <h2 id="documentation">Documentation</h2>
+                        <p class="link-below">Tools and documentation for Who's On First are available from our GitHub repository:</p>
+                        <div class="p-2 background-light link-within">
+                            <a href="https://github.com/whosonfirst/">https://github.com/whosonfirst/</a>
+                        </div>
+                        <h2 id="examples">Examples</h2>
+                        <p class="link-below">There is also a public <q>spelunker</q>, a tool for browsing the data and a <q>get lat lon</q> style application for investigating specific points on the big planet-ball we all live on.</p>
+                        <div class="p-2 background-light link-within">
+                            <a href="https://whosonfirst.mapzen.com/spelunker/">https://whosonfirst.mapzen.com/spelunker</a> <small>(<a href="https://mapzen.com/blog/spelunker-jumping-into-who-s-on-first">blog post</a>)</small>
+                        </div>
+                        <div class="p-2 background-light link-within">
+                            <a href="https://whosonfirst.mapzen.com/iamhere/">https://whosonfirst.mapzen.com/iamhere</a> <small>(<a href="https://mapzen.com/blog/iamhere">blog post</a>)</small>
+                        </div>
+                        <h2 id="theory">Theory</h2>
+                        <p class="link-below">And if you're feeling like getting in to the details there is <a href="https://mapzen.com/blog/who-s-on-first">a very thorough and very long introductory blog post</a> about Who's On First followed by another twenty-or-so thousand words (and counting) of thinking about the project, as it evolves:</p>
+                        <div class="p-2 background-light link-within">
+                            <a href="https://whosonfirst.mapzen.com/theory/">https://whosonfirst.mapzen.com/theory/</a>
+                        </div>
+                        <h2 id="data">Data</h2>
+                        <h3>The short version</h3>
+                        <p class="link-below"><em>https://whosonfirst.mapzen.com/data/{PATH}/{ID}.geojson</em> for example:</p> 
+                        <div class="p-2 background-light link-within">
+                            <a href="https://whosonfirst.mapzen.com/data/101/736/545/101736545.geojson">https://whosonfirst.mapzen.com/data/<strong>101/736/545/101736545.geojson</strong></a>
+                        </div>
+                        <h3>The longer version</h3>
+                        <div class="p-2 background-light link-within">
+                            <a href="https://github.com/whosonfirst-data/">https://github.com/whosonfirst-data/</a>
+                        </div>
+                        <p>This is where the actual data repositories live, ranging from administrative data which is bundled together in the <a href="https://github.com/whosonfirst-data/whosonfirst-data">whosonfirst-data</a> repo or placetype-specific bundles like <a href="https://github.com/whosonfirst-data/?query=postalcode">postalcodes</a> or <a href="https://github.com/whosonfirst-data/?query=venue">venues</a> that have been broken out in to discrete repositories.</p>
+                        <h3>The long version</h3>
+                        <p>It's still a little more complicated than we'd like. There is <a href="https://whosonfirst.mapzen.com/data/">a detailed discussion</a> around the how and why and what of the data. If you have not already read it <a href="https://whosonfirst.mapzen.com/data/">we recommend that you do</a>.</p>
+                        <h2 id="sources">Sources</h2>
+                        <p class="link-below">When we <a href="https://github.com/whosonfirst/whosonfirst-sources/">source</a> other open data projects we make best effort to indicate them (e.g.: <code>src:geom:naturalearth</code>). We also include the original source's properties prefixed with a suitable namespaces. A complete list of sources and their namespaces is maintained in a separate <a href="https://github.com/whosonfirst/whosonfirst-sources">whosonfirst-sources</a> GitHub repository:</p>
+                        <div class="p-2 background-light link-within">    
+                            <a class="source-break" href="https://github.com/whosonfirst/whosonfirst-sources/blob/master/sources/README.md">Human-friendly list of all known Who's On First sources</a>
+                        </div>
+                        <div class="p-2 background-light link-within">
+                            <a class="source-break" href="https://github.com/whosonfirst/whosonfirst-sources/tree/master/data">Machine-readable (JSON) list of all known Who's On First sources</a>
+                        </div>
+                        <p>Please notify us if you believe that an open data project has not been properly noted. Our original work is generally indicated with properties prefixed with <code>wof:</code> or is not prefixed (like "name"). </p>
+                        <h2 id="license">License</h2>
+                        <p class="link-below">Crediting Who's On First is recommended and linking back to the License is required. For example:</p>
+                            <pre class="license-text">Data from Who's On First. <a href="https://github.com/whosonfirst/whosonfirst-data/blob/master/LICENSE.md">License</a>.</pre>
+                        <p>The Who's On First dataset is both original work and a modification of existing open data. Some of those open data projects <b>do</b> require attribution. We have listed all sources in the full <a href="https://github.com/whosonfirst/whosonfirst-data/blob/master/LICENSE.md">license</a> file.</p>
+                        <p>Remember, some sources <b>require attribution</b>, some do not. Mapzen's original work, including the format and structure that allows Who's On First to operate, is made available under a <a href="https://creativecommons.org/choose/zero/">Creative Commons Zero</a> designation, and <a href="https://twitter.com/mapzen/">a shout out</a> would be lovely.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class='container headroom-large'>
+            <div class='row'>
+                <div class='col-xs-12 col-md-10 col-md-offset-1 static-content'>
+                    <div class='cta-container'>
+                        <div class='cta-text'>
+                            <p>Get your API key for access to Mapzen Search.</p>
+                        </div>
+                        <div class='cta-btn'>
+                            <a href='https://mapzen.com/developers/sign_in' class='btn btn-mapzen'>Sign up</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <div class='container hidden-print footer-no-background'>
+                <div class='row headroom-extra-large'>
+                    <div class='col-xs-12 text-center'>
+                        <img src='https://mapzen.com/common/styleguide/images/divider/compass-primary-lg.png'>
+                        <h2 class="headroom">Get in touch</h2>
+                    </div>
+                </div>
+                <div class='row headroom footroom-large'>
+                    <div class='col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 text-center'>
+                        <p>Working on an interesting problem? Want to know more about what we're doing? Have questions about working with our products and services?</p>
+                        <p>Send a note to <a href='mailto:hello@mapzen.com' target='_blank'>hello@mapzen.com</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class='headroom-large footer-background'>
+                <div class='container'>
+                    <div class='row headroom'>
+                        <div class='col-xs-12 text-center headroom-large footroom'>
+                            <p><strong>Get a rundown of Mapzen happenings at the beginning of every month!</strong></p>
+                            <p><a href='https://mapzen.com/newsletter-signup/'><button class="btn btn-white">Sign up for our Newsletter</button></a></p>
+                        </div>
+                    </div>
+                    <div class='row headroom-large footer-menu hidden-print'>
+                        <div class='col-xs-5 col-xs-offset-2 col-sm-5 col-sm-offset-0'>
+                            <div class='row'>
+                                <div class="col-xs-12 col-sm-6">
+                                    <h6><a href="https://mapzen.com/products/">Products</a></h6>
+                                    <ul>
+                                        <li><a href="https://mapzen.com/products/maps/">Maps</a></li>
+                                        <li><a href="https://mapzen.com/products/search">Mapzen Search</a></li>
+                                        <li><a href="https://mapzen.com/products/turn-by-turn">Mapzen Mobility</a></li>
+                                        <li><a href="https://mapzen.com/projects/mobile/">Mobile</a></li>
+                                        <li><a href="https://mapzen.com/pricing/">Pricing</a></li>
+                                    </ul>
+                                </div>
+                                <div class="col-xs-12 col-sm-6">
+                                <h6><a href="https://mapzen.com/products/#data">Data</a></h6>
+                                <ul>
+                                    <li><a href="https://mapzen.com/data/metro-extracts/">Metro Extracts</a></li>
+                                    <li><a href="https://mapzen.com/projects/vector-tiles/">Vector Tile Service</a></li>
+                                    <li><a href="https://mapzen.com/documentation/terrain-tiles/">Terrain Tile Service</a></li>
+                                    <li><a href='https://whosonfirst.mapzen.com/'>Who's On First</a></li>
+                                    <li><a href='https://transit.land/'>Transitland</a></li>
+                                </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='col-xs-5 col-sm-7'>
+                            <div class='row'>
+                                <div class="col-xs-12 col-sm-5">
+                                    <h6>Developers</h6>
+                                    <ul>
+                                        <li><a href="https://mapzen.com/dashboard/">Developer Platform</a></li>
+                                        <li><a href="https://mapzen.com/documentation/">Documentation</a></li>
+                                    </ul>
+                                </div>
+                            <div class="col-xs-12 col-sm-4">
+                                <h6>About</h6>
+                                <ul>
+                                    <li><a href="https://mapzen.com/about/">Who we are</a></li>
+                                    <li><a href="https://mapzen.com/jobs/">Jobs</a></li>
+                                    <li><a href="https://mapzen.com/terms/">Terms</a></li>
+                                    <li><a href="https://mapzen.com/privacy/">Privacy policy</a></li>
+                                    <li><a href="https://mapzen.com/media-resources/">Media resources</a></li>
+                                    <li><a href="http://status.mapzen.com">Status</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-xs-12 col-sm-3">
+                                <h6>Hello</h6>
+                                <ul>
+                                <li><a href="https://mapzen.com/blog/"><i class='fa fa-fw fa-rss'></i>Blog</a></li>
+                                <li><a href='https://github.com/mapzen/'><i class='fa fa-fw fa-github'></i>GitHub</a></li>
+                                <li><a href='https://twitter.com/mapzen/'><i class='fa fa-fw fa-twitter'></i>Twitter</a></li>
+                                <li><a href='mailto:hello@mapzen.com'><i class='fa fa-fw fa-envelope'></i>E-mail</a></li>
+                                </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='row headroom-large footroom-large'>
+                        <div class='col-xs-12 text-center'>
+                            <div class="compass-logo"></div>
+                            <small class='copyright'>&#169; 2017 Mapzen</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        
+        <script src="javascript/mapzen.whosonfirst.api.js"></script>
+        <script src="javascript/mapzen-whosonfirstdemo.js"></script>
+        <script src='https://mapzen.com/common/styleguide/scripts/mapzen-styleguide.min.js'></script>
+        <script src='https://code.jquery.com/jquery-2.2.0.min.js'></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.0/jquery.scrollTo.min.js'></script>
+        <script src='javascript/mapzen-sectionnav.js'></script>
+        <script src='javascript/mapzen-projects.js'></script>
+    </body>
+</html>
