@@ -46,8 +46,10 @@
                         <li class='inactive'><a href='https://mapzen.com/blog/'>Blog</a></li>
                     </ul>
                     <ul class='nav navbar-nav navbar-right'>
+                        <!--
                         <li class="inactive dropdown"><a id='sign-in' href='/developers/sign_in'> </a></li>
                         <li class="inactive"><a id='sign-up' href='/developers/sign_up'> </a></li>
+                        -->
                     </ul>
                 </div>
             </div>
@@ -71,10 +73,11 @@
             <div class='project-demo'>
                 <div id="map"></div>
                 <div id="map-explanation">
-                    <p class="caption map-explanation-caption">Who's On First Places in <span id="whosFirstDescendantLocation"></span>. To retrieve this data run:</p>
+                    <p class="caption map-explanation-caption">Who's On First places in <span id="whosFirstDescendantLocation"></span>. To retrieve this data run:</p>
                     <div class="map-explanation-subcaption">
                         <code class="subcaption-code">curl -X GET 'https://whosonfirst-api.mapzen.com/?method=whosonfirst.places.getDescendants&api_key=[your-mapzen-key]&id=<span id="whosFirstDescendantKey"></span>&per_page=500'</code>
                     </div>
+                    <p class="caption map-explanation-caption-bottom">Learn more about the Who's On First API at <a href="https://mapzen.com/documentation/wof/" class="map-explanation-caption-link">https://mapzen.com/documentation/wof/</a>.</p>
                 </div>
             </div>
         </section>

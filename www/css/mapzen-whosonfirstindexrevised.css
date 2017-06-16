@@ -46,14 +46,26 @@
 
 .map-explanation-caption {
     color: #ffffff;
-    padding: 10px 20px 5px 12%;
+    padding: 10px 20px 5px 10%;
+    margin: 0px;
+    font-size: 14px;
+}
+
+.map-explanation-caption-link {
+    font-weight: 600;
+    word-break: break-all;
+}
+
+.map-explanation-caption-bottom {
+    color: #ffffff;
+    padding: 5px 25px 10px 10%;
     margin: 0px;
     font-size: 14px;
 }
 
 .map-explanation-subcaption {
     background-color: rgba(15, 15, 15, 0.75);
-    margin: 0px 20px 10px 10%;
+    margin: 0px 20px 0px 10%;
     padding: 2%;
 }
 
