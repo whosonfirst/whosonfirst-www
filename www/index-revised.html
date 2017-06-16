@@ -70,6 +70,12 @@
         <section class='demo-container js-section-navigable' id='demo' data-section-name='Demo' data-section-nav-collapse='false'>
             <div class='project-demo'>
                 <div id="map"></div>
+                <div id="map-explanation">
+                    <p class="caption map-explanation-caption">Who's On First Places in <span id="whosFirstDescendantLocation"></span>. To retrieve this data run:</p>
+                    <div class="map-explanation-subcaption">
+                        <code class="subcaption-code">curl -X GET 'https://whosonfirst-api.mapzen.com/?method=whosonfirst.places.getDescendants&api_key=[your-mapzen-key]&id=<span id="whosFirstDescendantKey"></span>&per_page=500'</code>
+                    </div>
+                </div>
             </div>
         </section>
         <section class='project-content' id='content' role='main'>
