@@ -28,7 +28,8 @@
 
 .leaflet-container a.leaflet-popup-close-button, .leaflet-popup-content {
     color: #ffffff;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "Open Sans", Helvetica, Arial, sans-serif;
+    font-weight: 400;
 }
 
 .project-demo {
