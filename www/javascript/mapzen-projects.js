@@ -9,7 +9,7 @@ function setDemoContainerHeight () {
   var minHeight = 600
   var maxHeightPercentage = 0.6
   // On small width screens, demo is always a percentage of the screen height
-  if (document.documentElement.clientWidth < 768) {
+  if (document.documentElement.clientWidth < 768 || (document.documentElement.clientHeight < 850 && document.documentElement.clientWidth > 750)) {
     maxHeightPercentage = 0.6
     demoContainerEl.style.height = Math.floor(maxHeightPercentage * viewportHeight) + 'px'
   } else {
@@ -17,9 +17,21 @@ function setDemoContainerHeight () {
   }
 }
 
+function setMapExplanation() {
+    if (document.documentElement.clientWidth > 768) {
+        document.getElementById("map-explanation-revised").style.display = "none"
+        document.getElementById("map-explanation").style.display = "inline"
+    } else {
+        document.getElementById("map-explanation").style.display = "none"
+        document.getElementById("map-explanation-revised").style.display = "block"
+    }
+}
+
 // Set demo height
 setDemoContainerHeight()
+setMapExplanation()
 window.addEventListener('resize', setDemoContainerHeight)
+window.addEventListener('resize', setMapExplanation)
 
 // PRODUCT NAVIGATION
 // --------------------------------------------------------

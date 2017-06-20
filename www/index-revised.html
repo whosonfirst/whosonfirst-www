@@ -81,6 +81,13 @@
                 </div>
             </div>
         </section>
+         <div id="map-explanation-revised">
+            <p class="caption map-explanation-caption map-explanation-caption-revised">Who's On First places in <span id="whosFirstDescendantLocation"></span>. To retrieve this data run:</p>
+            <div class="map-explanation-subcaption-revised">
+                <code class="subcaption-code">curl -X GET 'https://whosonfirst-api.mapzen.com/?method=whosonfirst.places.getDescendants&api_key=[your-mapzen-key]&id=<span id="whosFirstDescendantKey"></span>&per_page=500'</code>
+            </div>
+            <p class="caption map-explanation-caption-bottom map-explanation-caption-bottom-revised">Learn more about the Who's On First API at <a href="https://mapzen.com/documentation/wof/" class="map-explanation-caption-link">https://mapzen.com/documentation/wof/</a>.</p>
+        </div>
         <section class='project-content' id='content' role='main'>
             <div class='container'>
                 <div class='row'>

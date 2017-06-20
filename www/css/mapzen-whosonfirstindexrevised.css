@@ -44,11 +44,23 @@
     background-color: rgba(15, 15, 15, 0.75);
 }
 
+#map-explanation-revised {
+    position: inherit;
+    z-index: 2000;
+    width: inherit;
+    bottom: inherit;
+    background-color: rgba(15, 15, 15, 0.75);
+}
+
 .map-explanation-caption {
     color: #ffffff;
     padding: 10px 20px 5px 10%;
     margin: 0px;
     font-size: 14px;
+}
+
+.map-explanation-caption-revised {
+    padding: 10px 10% 5px;
 }
 
 .map-explanation-caption-link {
@@ -63,10 +75,20 @@
     font-size: 14px;
 }
 
+.map-explanation-caption-bottom-revised {
+    padding: 5px 10% 10px;
+}
+
 .map-explanation-subcaption {
     background-color: rgba(15, 15, 15, 0.75);
     margin: 0px 20px 0px 10%;
-    padding: 2%;
+    padding: 1% 2% 2%;
+}
+
+.map-explanation-subcaption-revised {
+    background-color: rgba(15, 15, 15, 0.75);
+    margin: 0px 10% 0px 10%;
+    padding: .5% 2% 1%;
 }
 
 .subcaption-code {
