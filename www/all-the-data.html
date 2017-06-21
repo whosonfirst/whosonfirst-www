@@ -1,210 +1,240 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Who's On First &#8212; Data</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Who's On First &#8212; Data</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- this may seem wrong but the thing is that we are proxying http://whosonfirst.mapzen.com/data/ through to
-       http://whosonfirst.mapzen.com/all-the-data.html so we need to do this extra bit of hoop-jumping
-       (2015108/thisisaaronland) -->
+        <!-- this may seem wrong but the thing is that we are proxying http://whosonfirst.mapzen.com/data/ through to
+        http://whosonfirst.mapzen.com/all-the-data.html so we need to do this extra bit of hoop-jumping
+        (2015108/thisisaaronland) -->
 
-  <link rel="stylesheet" type="text/css" href="../css/mapzen.whosonfirst.www.bundle.min.css"/>
-  <script src="../javascript/mapzen.whosonfirst.www.bundle.min.js"></script>  
+        <link rel="stylesheet" type="text/css" href="../css/mapzen.whosonfirst.www.bundle.min.css"/>
+        <link rel="stylesheet" href="https://mapzen.com/common/styleguide/styles/blog.css">
+        <link rel="stylesheet" href="https://mapzen.com/js/mapzen.css">
+        <link rel="stylesheet" href="../css/mapzenwhosonfirstsubpage.css">
+        <script src="../javascript/mapzen.whosonfirst.www.bundle.min.js"></script>  
+    </head>
+    <body>
+        <nav class='navbar navbar-default navbar-fixed-top' role='navigation'>
+            <div class='container'>
+                <div class='navbar-header'>
+                    <button type='button' class='navbar-toggle collapsed' data-toggle='collapse' data-target='#navbar-menu'>
+                        <span class='sr-only'>Toggle navigation</span>
+                        <span class='icon-bar top-bar'></span>
+                        <span class='icon-bar middle-bar'></span>
+                        <span class='icon-bar bottom-bar'></span>
+                    </button>
+                    <a class='navbar-brand' href='https://mapzen.com/'>
+                        <div class='mapzen-logo'></div>
+                        <h1 class='sr-only'>Mapzen</h1>
+                    </a>
+                </div>
+            <!-- new nav bar showing user's login status -->
+                <div class='collapse navbar-collapse' id='navbar-menu'>
+                    <ul class='nav navbar-nav navbar-left'>
+                        <li class='active'><a href='https://mapzen.com/products/'>Products</a></li>
+                        <li class='inactive'><a href='https://mapzen.com/documentation/'>Documentation</a></li>
+                        <li class='inactive'><a href='https://mapzen.com/pricing/'>Pricing</a></li>
+                        <li class='inactive'><a href='https://mapzen.com/blog/'>Blog</a></li>
+                    </ul>
+                    <ul class='nav navbar-nav navbar-right'>
+                        <!--
+                        <li class="inactive dropdown"><a id='sign-in' href='/developers/sign_in'> </a></li>
+                        <li class="inactive"><a id='sign-up' href='/developers/sign_up'> </a></li>
+                        -->
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <h1>Who's On First &#8212; Data</h1>
 
-</head>
-<body>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-8 col-md-offset-2">
+                    <a name="tldr"></a>
+                    <h2>tl;dr</h2>
 
-   <h1>Who's On First &#8212; Data</h1>
+                    <p>If you already understand all the details (discussed below) or just feel like throwing caution to wind the Who's On First data is available from the following places:</p>
 
-   <a name="tldr"></a>
-   <h2>tl;dr</h2>
+                    <a name="urls"></a>
+                    <h3>Any individual Who's Of First ID</h3>
 
-   <p>If you already understand all the details (discussed below) or just feel like throwing caution to wind the Who's On First data is available from the following places:</p>
+                    <ul class="links">
+                        <li><code>https://whosonfirst.mapzen.com/data/{PATH}/{ID}.geojson</code>
+                        <small> for example: <a href="https://whosonfirst.mapzen.com/data/101/736/545/101736545.geojson">https://whosonfirst.mapzen.com/data/<strong>101/736/545/101736545.geojson</strong></a></small></li>
+                    </ul>
 
-   <a name="urls"></a>
-   <h3>Any individual Who's Of First ID</h3>
+                    <a name="s3"></a>
+                    <h3>Amazon S3</h3>
 
-   <ul class="links">
-     <li><code>https://whosonfirst.mapzen.com/data/{PATH}/{ID}.geojson</code>
-       <small> for example: <a href="https://whosonfirst.mapzen.com/data/101/736/545/101736545.geojson">https://whosonfirst.mapzen.com/data/<strong>101/736/545/101736545.geojson</strong></a></small></li>
-   </ul>
+                    <ul class="links">
+                        <li>
+                            <a href="https://s3.amazonaws.com/whosonfirst.mapzen.com/data/">https://s3.amazonaws.com/whosonfirst.mapzen.com/data/</a>
+                            <small> see also: <a href="#knownknown-s3">known knowns about S3</a> and why you shouldn't try to view that URL in a web browser</small>
+                        </li>
+                    </ul>
 
-   <a name="s3"></a>
-   <h3>Amazon S3</h3>
+                    <a name="github"></a>
+                    <h3>GitHub</h3>
 
-   <ul class="links">
-     <li>
-       <a href="https://s3.amazonaws.com/whosonfirst.mapzen.com/data/">https://s3.amazonaws.com/whosonfirst.mapzen.com/data/</a>
-       <small> see also: <a href="#knownknown-s3">known knowns about S3</a> and why you shouldn't try to view that URL in a web browser</small>
-     </li>
-   </ul>
+                    <ul class="links">
+                        <li><a href="https://github.com/whosonfirst-data/whosonfirst-data/">https://github.com/whosonfirst-data/whosonfirst-data/</a> <small>&#8212; it's not complicated but <a href="#github-repos">but it is complex</a></small></li>
+                    </ul>
 
-   <a name="github"></a>
-   <h3>GitHub</h3>
+                    <!--
+                    <a name="archive"></a>
+                    <h3>Internet Archive</h3>
 
-   <ul class="links">
-     <li><a href="https://github.com/whosonfirst-data/whosonfirst-data/">https://github.com/whosonfirst-data/whosonfirst-data/</a> <small>&#8212; it's not complicated but <a href="#github-repos">but it is complex</a></small></li>
-   </ul>
+                    <ul class="links">
+                     <li><a href="https://archive.org/search.php?query=subject%3A%22whosonfirst%22">https://archive.org/search.php?query=subject%3A%22whosonfirst%22</a></li>
+                    </ul>
+                    -->
 
-   <!--
-   <a name="archive"></a>
-   <h3>Internet Archive</h3>
+                    <a name="details"></a>
+                    <h2>But... what does it mean?</h2>
 
-   <ul class="links">
-     <li><a href="https://archive.org/search.php?query=subject%3A%22whosonfirst%22">https://archive.org/search.php?query=subject%3A%22whosonfirst%22</a></li>
-   </ul>
-   -->
+                    <a name="firstprinciples"></a>
+                    <h3>First principles</h3>
 
-   <a name="details"></a>
-   <h2>But... what does it mean?</h2>
+                    <ul>
+                        <li>The <q>canonical</q> URL for any given Who's On First ID is relative. This might seem counter-intuitive to the point of even being contradictory.</li>
+                        <li>Given any Who's On First ID it should be possible to generate a (relative) URL for that record using a simple and well-defined formula.</li>
+                    </ul>
 
-   <a name="firstprinciples"></a>
-   <h3>First principles</h3>
+                    <p>The current model is to split a Who's On First ID in 3-number chunks representing nested subdirectories, followed by filename consisting of the ID followed by <code>.geojson</code>.</p>
 
-   <ul>
-     <li>The <q>canonical</q> URL for any given Who's On First ID is relative. This might seem counter-intuitive to the point of even being contradictory.</li>
-     <li>Given any Who's On First ID it should be possible to generate a (relative) URL for that record using a simple and well-defined formula.</li>
-   </ul>
+                    <p>For example the ID for <a href="https://whosonfirst.mapzen.com/spelunker/id/101736545/">Montréal</a> is <code><strong>101736545</strong></code> which becomes <code>101/736/545/<strong>101736545</strong>.geojson</code>.</p>
 
-   <p>The current model is to split a Who's On First ID in 3-number chunks representing nested subdirectories, followed by filename consisting of the ID followed by <code>.geojson</code>.</p>
+                    <p>As of this writing it remains clear that this approach (lots of tiny files parented by lots of nested directories) can be problematic. We <em>may</em> be forced choose another approach, like fewer subdirectories but nothing has been decided and anything we do will be backwards compatible. By definition this means anything we do (to rewrite or redirect any existing URLs that people are using) should be possible for anyone else hosting their own copy of the data.</p>
 
-   <p>For example the ID for <a href="https://whosonfirst.mapzen.com/spelunker/id/101736545/">Montréal</a> is <code><strong>101736545</strong></code> which becomes <code>101/736/545/<strong>101736545</strong>.geojson</code>.</p>
+                    <p>And that's the important bit: It should be possible for multiple groups to host their own copy of the Who's On First data while still maintaining stable references to any place in the dataset.</p>
 
-   <p>As of this writing it remains clear that this approach (lots of tiny files parented by lots of nested directories) can be problematic. We <em>may</em> be forced choose another approach, like fewer subdirectories but nothing has been decided and anything we do will be backwards compatible. By definition this means anything we do (to rewrite or redirect any existing URLs that people are using) should be possible for anyone else hosting their own copy of the data.</p>
+                    <p>For example, consider two organizations each with their own domains:</p>
 
-   <p>And that's the important bit: It should be possible for multiple groups to host their own copy of the Who's On First data while still maintaining stable references to any place in the dataset.</p>
+                    <p>The URLs <code>http://<strong>foo.com</strong>/data/<strong>101/736/545/101736545.geojson</strong></code> and <code>http://<strong>bar.com</strong>/wof-data/<strong>101/736/545/101736545.geojson</strong></code> may be completely different but both refer to the city of Montréal, or Who's On First ID <code><strong>101736545</strong></code>.</p>
 
-   <p>For example, consider two organizations each with their own domains:</p>
+                    <p>Even though each organization hosts their own copy of the Who's On First dataset &#8212; <em>and the reasons for doing so are entirely their own business</em> &#8212; they still have a simple and unintrusive way to preserve parity when refering to places.</p>
 
-   <p>The URLs <code>http://<strong>foo.com</strong>/data/<strong>101/736/545/101736545.geojson</strong></code> and <code>http://<strong>bar.com</strong>/wof-data/<strong>101/736/545/101736545.geojson</strong></code> may be completely different but both refer to the city of Montréal, or Who's On First ID <code><strong>101736545</strong></code>.</p>
+                    <p>Mapzen's canonical URL for Who's On First data is <code><strong>https://whosonfirst.mapzen.com/data/</strong></code> and we expect that these URLs will become canonical for <em>other people</em> by virtue of our efforts around the project but we've tried to design things in such a way that this doesn't <em>have</em> to be the case for everyone.</p>
 
-   <p>Even though each organization hosts their own copy of the Who's On First dataset &#8212; <em>and the reasons for doing so are entirely their own business</em> &#8212; they still have a simple and unintrusive way to preserve parity when refering to places.</p>
+                    <h2>The gory details</h2>
 
-   <p>Mapzen's canonical URL for Who's On First data is <code><strong>https://whosonfirst.mapzen.com/data/</strong></code> and we expect that these URLs will become canonical for <em>other people</em> by virtue of our efforts around the project but we've tried to design things in such a way that this doesn't <em>have</em> to be the case for everyone.</p>
+                    <p>And by <q>gory details</q> we're assuming a basic familiarity and comfort-level with any of the specific technologies described here.</p>
 
-   <h2>The gory details</h2>
+                    <h3>Amazon S3</h3>
 
-   <p>And by <q>gory details</q> we're assuming a basic familiarity and comfort-level with any of the specific technologies described here.</p>
+                    <p>Our copy of the Who's On First data is stored in big-honking Amazon Web Services (AWS) S3 bucket called <code>whosonfirst.mapzen.com</code> in a sub-directory, or <q>prefix</q> in AWS-speak, called <code>data</code>.</p>
 
-   <h3>Amazon S3</h3>
+                    <p>The details of <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html">fetching the entirety of all the contents of an S3 bucket</a> are outside the scope of this document but the fact that you can is one of the reasons we chose S3.</p>
 
-   <p>Our copy of the Who's On First data is stored in big-honking Amazon Web Services (AWS) S3 bucket called <code>whosonfirst.mapzen.com</code> in a sub-directory, or <q>prefix</q> in AWS-speak, called <code>data</code>.</p>
+                    <p><small>We will eventually release our own tool for fetching the entirety of the S3 bucket but it's not ready yet.</small></p>
 
-   <p>The details of <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html">fetching the entirety of all the contents of an S3 bucket</a> are outside the scope of this document but the fact that you can is one of the reasons we chose S3.</p>
+                    <a name="github"></a>
+                    <h3>GitHub</h3>
 
-   <p><small>We will eventually release our own tool for fetching the entirety of the S3 bucket but it's not ready yet.</small></p>
+                    <p>We haven’t quite figured out what the
+                    best way of both distributing the Who’s On First data and of accepting
+                    corrections or suggestions from community. Even though the nice people at GitHub continue to do excellent work at
+                    making Git easier for a broader population to use, the reality remains
+                    that Git is a significant barrier to participation for many
+                    people.</p>
 
-   <a name="github"></a>
-   <h3>GitHub</h3>
+                    <p>Absent a more formal decision about an alternative, GitHub at
+                    least allows us to point in the general direction of:</p>
 
-   <p>We haven’t quite figured out what the
-best way of both distributing the Who’s On First data and of accepting
-corrections or suggestions from community. Even though the nice people at GitHub continue to do excellent work at
-making Git easier for a broader population to use, the reality remains
-that Git is a significant barrier to participation for many
-people.</p>
+                    <ul>
+                     <li>An open and readily distributed dataset that people can download and work with.</li>
+                     <li>A way for people to contribute corrections (and general nuance) about a place.</li>
+                     <li>A way for us to be able to do everything above while still assuring us a measure of authority around the assertions we make about the data.</li>
+                     <li>Also a way for us to think about how and where we store an audit trail (of sorts) for updates to a place.</li>
+                     </ul>
 
-   <p>Absent a more formal decision about an alternative, GitHub at
-least allows us to point in the general direction of:</p>
+                    <p>There are some very real problems working with Who's On First data in Git repositories, still, so it's possible that we will stop using entirely.</p>
 
-   <ul>
-     <li>An open and readily distributed dataset that people can download and work with.</li>
-     <li>A way for people to contribute corrections (and general nuance) about a place.</li>
-     <li>A way for us to be able to do everything above while still assuring us a measure of authority around the assertions we make about the data.</li>
-     <li>Also a way for us to think about how and where we store an audit trail (of sorts) for updates to a place.</li>
-     </ul>
+                    <a name="github-repos"></a>
+                    <h4>whosonfirst-data versus whosonfirst-data-SOMETHING repositories</h4>
 
-   <p>There are some very real problems working with Who's On First data in Git repositories, still, so it's possible that we will stop using entirely.</p>
+                    <p>There is a lot of data in Who's On First, more than can practically fit in a single GitHub repository. Someday it may be possible but today it is not. To account for this fact Who's On First data has been separated in to a number of different GitHub repositories organized by placetype and region.</p>
 
-   <a name="github-repos"></a>
-   <h4>whosonfirst-data versus whosonfirst-data-SOMETHING repositories</h4>
+                    <p>The naming conventions for repositories at their <em>most granular</em> is as follows:</p>
 
-   <p>There is a lot of data in Who's On First, more than can practically fit in a single GitHub repository. Someday it may be possible but today it is not. To account for this fact Who's On First data has been separated in to a number of different GitHub repositories organized by placetype and region.</p>
+                    <pre style="font-size:0.8em;">whosonfirst-data + "-" + WHOSONFIRST_PLACETYPE + "-" + WHOSONFIRST_COUNTRY + "-" + WHOSONFIRST_SUBDIVISION</pre>
 
-   <p>The naming conventions for repositories at their <em>most granular</em> is as follows:</p>
+                    <p>For example:</p>
 
-   <pre style="font-size:0.8em;">whosonfirst-data + "-" + WHOSONFIRST_PLACETYPE + "-" + WHOSONFIRST_COUNTRY + "-" + WHOSONFIRST_SUBDIVISION</pre>
+                    <ul class="list">
+                        <li><a href="https://github.com/whosonfirst-data/whosonfirst-data">whosonfirst-data</a> <small>&#8212; administrative data (<a href="https://github.com/whosonfirst/whosonfirst-placetypes">continents - microhoods</a>) for the world</small></li>
+                        <li><a href="https://github.com/whosonfirst-data/whosonfirst-data-venue-us-ca">whosonfirst-data-venue-us-ca</a> <small>&#8212; venues in California, USA</small></li>
+                        <li><a href="https://github.com/whosonfirst-data/whosonfirst-venue-ca">whosonfirst-data-venue-ca</a> <small>&#8212; venues in Canada</small></li>
+                        <li><a href="https://github.com/whosonfirst-data/whosonfirst-data-postalcode-fi">whosonfirst-data-postalcode-fi</a> <small>&#8212; postalcodes in Finland</small></li>           
+                    </ul>
 
-   <p>For example:</p>
+                    <p>The first thing to note is that not all repositories are as granular as the rules described above. Wherever feasible we try to bundle records with the least amount of granularity as possible. For example postalcodes are grouped by country as are venues unless there are so many of them, like in the USA, that it is not practical to keep them in a single parent repository.</p>
 
-   <ul class="list">
-     <li><a href="https://github.com/whosonfirst-data/whosonfirst-data">whosonfirst-data</a> <small>&#8212; administrative data (<a href="https://github.com/whosonfirst/whosonfirst-placetypes">continents - microhoods</a>) for the world</small></li>
-     <li><a href="https://github.com/whosonfirst-data/whosonfirst-data-venue-us-ca">whosonfirst-data-venue-us-ca</a> <small>&#8212; venues in California, USA</small></li>
-     <li><a href="https://github.com/whosonfirst-data/whosonfirst-venue-ca">whosonfirst-data-venue-ca</a> <small>&#8212; venues in Canada</small></li>
-     <li><a href="https://github.com/whosonfirst-data/whosonfirst-data-postalcode-fi">whosonfirst-data-postalcode-fi</a> <small>&#8212; postalcodes in Finland</small></li>           
-   </ul>
+                    <p>If a repository grows so much data that it is no longer practical to keep everything in one place then it <em>may</em> be subdivided in to a number of child repositories. Venues are a good example of this.</p>
 
-   <p>The first thing to note is that not all repositories are as granular as the rules described above. Wherever feasible we try to bundle records with the least amount of granularity as possible. For example postalcodes are grouped by country as are venues unless there are so many of them, like in the USA, that it is not practical to keep them in a single parent repository.</p>
+                    <p>We try to maintain a separate <q>parent</q> repository for things that have been broken out in to multiple child repositories. For example there is a <a href="https://github.com/whosonfirst-data/whosonfirst-data-postalcode">whosonfirst-data-postalcode</a> repository that contains no data but instead <a href="https://github.com/whosonfirst-data/whosonfirst-data-postalcode/blob/master/DATA.md">a pointer to all the repositories</a> that do have postalcode data. We also do the same for <a href="https://github.com/whosonfirst-data/whosonfirst-data-venue-us">venues in the USA</a>. <em>This practice is still in its early stages so we apologize in advance if it's bumpy or incomplete.</em></p>
 
-   <p>If a repository grows so much data that it is no longer practical to keep everything in one place then it <em>may</em> be subdivided in to a number of child repositories. Venues are a good example of this.</p>
+                    <p>The <a href="https://github.com/whosonfirst-data/whosonfirst-data">whosonfirst-data</a> repository is the obvious exception (or perfect example, depending on how you look at it) to the scenario described above. This repository contains all <q>administrative</q> placetypes (<a href="https://github.com/whosonfirst/whosonfirst-placetypes">all the places between and inclusive of continents to microhoods</a>) for the entire world. While it is possible to imagine that the sum total of all the neighbourhoods in the world will require putting them in a separate repository but we are going to hold off doing that for as long as we can.</p>
 
-   <p>We try to maintain a separate <q>parent</q> repository for things that have been broken out in to multiple child repositories. For example there is a <a href="https://github.com/whosonfirst-data/whosonfirst-data-postalcode">whosonfirst-data-postalcode</a> repository that contains no data but instead <a href="https://github.com/whosonfirst-data/whosonfirst-data-postalcode/blob/master/DATA.md">a pointer to all the repositories</a> that do have postalcode data. We also do the same for <a href="https://github.com/whosonfirst-data/whosonfirst-data-venue-us">venues in the USA</a>. <em>This practice is still in its early stages so we apologize in advance if it's bumpy or incomplete.</em></p>
-     
-   <p>The <a href="https://github.com/whosonfirst-data/whosonfirst-data">whosonfirst-data</a> repository is the obvious exception (or perfect example, depending on how you look at it) to the scenario described above. This repository contains all <q>administrative</q> placetypes (<a href="https://github.com/whosonfirst/whosonfirst-placetypes">all the places between and inclusive of continents to microhoods</a>) for the entire world. While it is possible to imagine that the sum total of all the neighbourhoods in the world will require putting them in a separate repository but we are going to hold off doing that for as long as we can.</p>
-     
-   <p>Who's On First records <em>should</em> always have a <code>wof:repo</code> property indicating the repository to which they belong. If they don't that's a bug.</p>
-     
-   <h4>Git and large files</h4>
+                    <p>Who's On First records <em>should</em> always have a <code>wof:repo</code> property indicating the repository to which they belong. If they don't that's a bug.</p>
 
-   <p>We have started using <a href="https://github.com/github/git-lfs">git-lfs</a> for managing large files in the <code>whosonfirst-data</code> repository. For example, the record for New Zealand which contains a <em>very very very very very</em> detailed coastline geometry exceeds the 100MB filesize limit for any individual file on GitHub.</p>
+                    <h4>Git and large files</h4>
 
-   <p>A full discussion of how to use git-lfs is outside the scope of this document but you can see the current list of files being managed by invoking the <code>git lfs ls-files</code> command, like this:</p>
+                    <p>We have started using <a href="https://github.com/github/git-lfs">git-lfs</a> for managing large files in the <code>whosonfirst-data</code> repository. For example, the record for New Zealand which contains a <em>very very very very very</em> detailed coastline geometry exceeds the 100MB filesize limit for any individual file on GitHub.</p>
 
-   <pre>
-$> cd /usr/local/mapzen/whosonfirst-data
-$> git lfs ls-files
-65ccc4825e * data/856/333/45/85633345.geojson
-   </pre>
+                    <p>A full discussion of how to use git-lfs is outside the scope of this document but you can see the current list of files being managed by invoking the <code>git lfs ls-files</code> command, like this:</p>
 
-   <p>When you clone the <code>whosonfirst-data</code> repo the files (managed by git-lfs) only contain metadata, like this:</p>
+                    <pre>
+                    $> cd /usr/local/mapzen/whosonfirst-data
+                    $> git lfs ls-files
+                    65ccc4825e * data/856/333/45/85633345.geojson
+                    </pre>
 
-<pre>
-$> cat data/856/333/45/85633345.geojson
-version https://git-lfs.github.com/spec/v1
-oid sha256:65ccc4825e65c30f00fcebf1f3d57f4385f18a47e3c5e524114a67050186ae48
-size 71879893
-</pre>
+                    <p>When you clone the <code>whosonfirst-data</code> repo the files (managed by git-lfs) only contain metadata, like this:</p>
 
-<p>In order to retrieve the contents of the file itself you will need to run <code>git lfs pull</code>, like this: </p>
+                    <pre>
+                    $> cat data/856/333/45/85633345.geojson
+                    version https://git-lfs.github.com/spec/v1
+                    oid sha256:65ccc4825e65c30f00fcebf1f3d57f4385f18a47e3c5e524114a67050186ae48
+                    size 71879893
+                    </pre>
 
-<pre>
-$> git lfs pull
-Fetching master
-(1 of 1 files) 68.54 MB / 68.55 MB
+                    <p>In order to retrieve the contents of the file itself you will need to run <code>git lfs pull</code>, like this: </p>
 
-$> cat data/856/333/45/85633345.geojson
-{
-  "id": 85633345,
-  "type": "Feature",
-  "properties": {
-    "edtf:cessation":"u",
-    "edtf:inception":"u",
-    "geom:area":29.187792061074827,
-    "geom:bbox":"166.426148,-47.289992,178.577244,-33
-</pre>
+                    <pre>
+                    $> git lfs pull
+                    Fetching master
+                    (1 of 1 files) 68.54 MB / 68.55 MB
 
-   <p>Depending on when you read this we may have already pre-emptively moved <a href="https://github.com/whosonfirst/whosonfirst-data/blob/master/meta/wof-country-latest.csv">all the records for countries</a> in to <code>git-lfs</code>. If the goal is to have details <q>ground truth</q> geometries for every place in the Who's On First gazetteer it stands to reason that most if not all countries will bump up against GitHub's existing file size limits.</p>
+                    $> cat data/856/333/45/85633345.geojson
+                    {
+                    "id": 85633345,
+                    "type": "Feature",
+                    "properties": {
+                    "edtf:cessation":"u",
+                    "edtf:inception":"u",
+                    "geom:area":29.187792061074827,
+                    "geom:bbox":"166.426148,-47.289992,178.577244,-33
+                    </pre>
 
-   <a name="knownknowns"></a>
-   <h2>Known knowns</h2>
+                    <p>Depending on when you read this we may have already pre-emptively moved <a href="https://github.com/whosonfirst/whosonfirst-data/blob/master/meta/wof-country-latest.csv">all the records for countries</a> in to <code>git-lfs</code>. If the goal is to have details <q>ground truth</q> geometries for every place in the Who's On First gazetteer it stands to reason that most if not all countries will bump up against GitHub's existing file size limits.</p>
 
-   <a name="knownknown-tls"></a>
-   <h3>TLS for whosonfirst.mapzen.com</h3>
-   <p>Yes! <small style="font-style:italic;">As in, it is enabled across the board and everything on a non-secure port is redirected to a secure one.</small></p>
+                    <a name="knownknowns"></a>
+                    <h2>Known knowns</h2>
 
-   <a name="knownknown-s3"></a>
-   <h3>Visiting <code>https://s3.amazonaws.com/whosonfirst.mapzen.com/data/</code> in a browser</h3>
+                    <a name="knownknown-tls"></a>
+                    <h3>TLS for whosonfirst.mapzen.com</h3>
+                    <p>Yes! <small style="font-style:italic;">As in, it is enabled across the board and everything on a non-secure port is redirected to a secure one.</small></p>
 
-   <p>So, yeah. We probably should never have published this URL as-is. It's tricky because we need to share the URL with people who are going to try and download data using the AWS S3 API but the reality is that when you visit that URL in a web browser... you get unhelpful silence. Or more specifically your web browser tries to download an empty file. This is one of those unfortunate mismatches between the technology and people's expectations.</p>
+                    <a name="knownknown-s3"></a>
+                    <h3>Visiting <code>https://s3.amazonaws.com/whosonfirst.mapzen.com/data/</code> in a browser</h3>
 
-      </div>
-    </div>
-  </div>
-
-</body>
+                    <p>So, yeah. We probably should never have published this URL as-is. It's tricky because we need to share the URL with people who are going to try and download data using the AWS S3 API but the reality is that when you visit that URL in a web browser... you get unhelpful silence. Or more specifically your web browser tries to download an empty file. This is one of those unfortunate mismatches between the technology and people's expectations.</p>
+                </div>
+            </div>
+        </div>
+    </body>
 </html>

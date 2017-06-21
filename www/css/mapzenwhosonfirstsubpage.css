@@ -1,0 +1,18 @@
+.header-container {
+    background-color: #f7beb4;
+    padding: 12%;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.center-subject {
+    padding: 0;
+    margin: 0px 0px 0px 0px !important;
+}
+
+#theory-wrapper {
+    margin-top: 3em;
+    margin-bottom: 3em;
+}
