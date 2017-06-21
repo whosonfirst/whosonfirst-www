@@ -10,9 +10,41 @@
 .center-subject {
     padding: 0;
     margin: 0px 0px 0px 0px !important;
+    color: #ffffff;
 }
 
 #theory-wrapper {
-    margin-top: 3em;
-    margin-bottom: 3em;
+    margin-top: 1em;
+}
+
+.link-within {
+    margin-top: 12px;
+    margin-bottom: 12px;
+    line-height: normal;
+    padding: 10%;
+}
+
+.link-subtext {
+    display: block;
+    font-size: 13px;
+    font-weight: 200;
+    color: #666;
+    line-height: 18px;
+}
+
+.link-subtext:active, .link-subtext:hover, .link-subtext:visited {
+    color: #666;
+    text-decoration: none;
+}
+
+.link-highlight {
+    line-height: 19.2px;
+}
+
+#theory-2015, #theory-2016, #theory-2017 {
+    margin-top: 36px;
+}
+
+footer {
+    margin-bottom: 0 !important;
 }
