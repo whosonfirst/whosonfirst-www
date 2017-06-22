@@ -17,6 +17,10 @@
     margin-top: 1em;
 }
 
+.subpage-wrapper {
+    margin-top: 1em;
+}
+
 .link-within {
     margin-top: 12px;
     margin-bottom: 12px;
@@ -47,4 +51,25 @@
 
 footer {
     margin-bottom: 0 !important;
+    margin-top: 0 !important;
+}
+
+pre {
+    padding-bottom: 2px;
+}
+
+.link-below {
+    margin-bottom: 6px;
+}
+
+.link-above {
+    margin-top: 6px;
+}
+
+.caveat {
+    margin-top: 48px;
+}
+
+.first-entry {
+    margin-top: 48px;
 }
