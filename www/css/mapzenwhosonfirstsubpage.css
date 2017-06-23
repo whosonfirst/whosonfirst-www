@@ -1,5 +1,5 @@
 .header-container {
-    background-color: #f7beb4;
+    background-color: #ff4947;
     padding: 12%;
     display: flex;
     text-align: center;
@@ -72,4 +72,8 @@ pre {
 
 .first-entry {
     margin-top: 48px;
+}
+
+.background-light {
+    background-color: #fcdbdb;
 }
