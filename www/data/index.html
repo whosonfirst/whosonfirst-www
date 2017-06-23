@@ -6,6 +6,11 @@
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>Who's On First &#8212; Data</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- this may seem wrong but the thing is that we are proxying http://whosonfirst.mapzen.com/data/ through to
+        http://whosonfirst.mapzen.com/all-the-data.html so we need to do this extra bit of hoop-jumping
+        (2015108/thisisaaronland) -->
+
         <meta name='description' content="Who's on First is a gazetteer of places.">
         <link rel='apple-touch-icon' href='https://mapzen.com/common/styleguide/images/favicons/apple-touch-icon.png' sizes='180x180'>
         <link rel='icon' type='image/png' href='https://mapzen.com/common/styleguide/images/favicons/favicon-16x16.png' sizes='16x16'>
@@ -14,11 +19,11 @@
         <link rel='mask-icon' href='https://mapzen.com/common/styleguide/images/favicons/safari-pinned-tab.svg' color='#2C1E3F'>
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" type="text/css" href="../css/mapzen.whosonfirst.www.bundle.min.css"/>
+        <link rel="stylesheet" type="text/css" href="css/mapzen.whosonfirst.www.bundle.min.css"/>
         <link rel="stylesheet" href="https://mapzen.com/common/styleguide/styles/blog.css">
         <link rel="stylesheet" href="https://mapzen.com/js/mapzen.css">
-        <link rel="stylesheet" href="../css/mapzenwhosonfirstsubpage.css">
-        <script src="../javascript/mapzen.whosonfirst.www.bundle.min.js"></script> 
+        <link rel="stylesheet" href="css/mapzenwhosonfirstsubpage.css">
+        <script src="javascript/mapzen.whosonfirst.www.bundle.min.js"></script> 
     </head>
     <body>
         <nav class='navbar navbar-default navbar-fixed-top' role='navigation'>
@@ -140,8 +145,7 @@
                     <h4>whosonfirst-data versus whosonfirst-data-SOMETHING repositories</h4>
                     <p>There is a lot of data in Who's On First, more than can practically fit in a single GitHub repository. Someday it may be possible but today it is not. To account for this fact Who's On First data has been separated in to a number of different GitHub repositories organized by placetype and region.</p>
                     <p>The naming conventions for repositories at their <em>most granular</em> is as follows:</p>
-                    <pre style="font-size:0.8em;">whosonfirst-data + "-" + WHOSONFIRST_PLACETYPE + "-" + WHOSONFIRST_COUNTRY + "-" + WHOSONFIRST_SUBDIVISION
-                    </pre>
+                    <pre style="font-size:0.8em;">whosonfirst-data + "-" + WHOSONFIRST_PLACETYPE + "-" + WHOSONFIRST_COUNTRY + "-" + WHOSONFIRST_SUBDIVISION</pre>
                     <p>For example:</p>
                     <ul class="list">
                         <li><a href="https://github.com/whosonfirst-data/whosonfirst-data">whosonfirst-data</a> <small>&#8212; administrative data (<a href="https://github.com/whosonfirst/whosonfirst-placetypes">continents - microhoods</a>) for the world</small></li>
