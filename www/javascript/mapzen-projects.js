@@ -20,9 +20,9 @@ function setDemoContainerHeight () {
 function setMapExplanation() {
     if (document.documentElement.clientWidth > 768) {
         document.getElementById("map-explanation-revised").style.display = "none"
-        document.getElementById("map-explanation").style.display = "inline"
+        document.getElementById("map-explanation-thirds").style.display = "inline"
     } else {
-        document.getElementById("map-explanation").style.display = "none"
+        document.getElementById("map-explanation-thirds").style.display = "none"
         document.getElementById("map-explanation-revised").style.display = "block"
     }
 }

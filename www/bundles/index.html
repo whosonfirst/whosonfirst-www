@@ -58,7 +58,17 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-md-10 col-md-offset-1 static-content">
-                    <p class="caveat">Bundles (of Who's On First data) are still considered experimental. They are being actively used (by Mapzen itself) but they are a still work in progress so some things may not be quite right, yet.</p>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <ol class="breadcrumb">
+                                <li>
+                                  <a href="../index.html">Who's On First</a>
+                                </li>
+                                <li class="active">Bundles</li>
+                            </ol>
+                        </div>
+                    </div>
+                    <p>Bundles (of Who's On First data) are still considered experimental. They are being actively used (by Mapzen itself) but they are a still work in progress so some things may not be quite right, yet.</p>
                     <p>Bundles are a collection of GeoJSON formatted files (Who's On First data) grouped by a specific property, like placetype. They allow for people to more easily bulk download a subset of the entire Who's On First dataset. Currently there are only bundles by placetype but eventually we will add a variety of different <q>slices</q> of the data as demand and interest require.</p>
                     <p>There is only ever one bundle-per-property at any given moment. When a new bundle is generated it replaces the old one. If you need to test whether a bundle has changed without downloading the bundle itself the best way is to compare the <code>SHA1</code> hash of the meta file for that property.</p>
                     <p>For example if the bundle in question <code>wof-region-latest-bundle.tar.bz2</code> then its corresponding meta file will be <code>wof-region-latest.csv</code>.</p>
