@@ -37,7 +37,7 @@
             <!-- new nav bar showing user's login status -->
                 <div class='collapse navbar-collapse' id='navbar-menu'>
                     <ul class='nav navbar-nav navbar-left'>
-                        <li class='active'><a href='https://mapzen.com/products/'>Products</a></li>
+                        <li class='inactive'><a href='https://mapzen.com/products/'>Products</a></li>
                         <li class='inactive'><a href='https://mapzen.com/documentation/'>Documentation</a></li>
                         <li class='inactive'><a href='https://mapzen.com/pricing/'>Pricing</a></li>
                         <li class='inactive'><a href='https://mapzen.com/blog/'>Blog</a></li>
@@ -51,24 +51,64 @@
                 </div>
             </div>
         </nav>
-        <div class="header-container">
-            <h1 class="center-subject">Who's On First &#8212; MaxMind Databases (mmdb)</h1>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12 col-md-10 col-md-offset-1 static-content">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <ol class="breadcrumb">
-                                <li>
-                                  <a href="../index.html">Who's On First</a>
-                                </li>
-                                <li class="active">MaxMind Databases (mmdb)</li>
-                            </ol>
-                        </div>
+        <div class='container documentation-container'>
+            <div class='row'>
+                <div class="col-xs-12 col-md-3">
+                    <div class="toc toc-sub-left" role="directory">
+                        <ul class="nav toc-nav">
+                            <li class="toc-top-level">
+                                <a href="https://whosonfirst.mapzen.com">Home</a>
+                            </li>
+                            <li class="toc-top-level">
+                                <a href="https://whosonfirst.mapzen.com/bundles/">Bundles</a>
+                                <ul class="toc-subnav">
+                                    <li><a href="#placetypes">Placetypes</a></li>
+                                    <li><a href="#working-with">Working with Bundles</a></li>
+                                </ul>
+                            </li>
+                            <li class="toc-top-level">
+                                <a href="https://whosonfirst.mapzen.com/data/">Data</a>
+                                <ul class="toc-subnav">
+                                    <li><a href="#theory-wrapper">tl;dr</a></li>
+                                    <li><a href="#what-mean">But... what does it mean?</a></li>
+                                    <li><a href="#gory-details">The gory details</a></li>
+                                    <li><a href="#know-knows">Known knowns</a></li>
+                                </ul>
+                            </li>
+                            <li class="toc-top-level">
+                                <a href="https://whosonfirst.mapzen.com/interns/">Internships 2017</a>
+                            </li>
+                            <li class="toc-top-level toc-current">
+                                <a href="#">Maxmind Databases (mmdb)</a>
+                                <ul class="toc-subnav toc-expand">
+                                    <li><a href="#geolite2">GeoLite2 Databases</a></li>
+                                    <li><a href="#code">Code</a></li>
+                                </ul>
+                            </li>
+                            <li class="toc-top-level">
+                                <a href="https://whosonfirst.mapzen.com/placetypes/">Placetypes</a>
+                            </li>
+                            <li class="toc-top-level">
+                                <a href="https://whosonfirst.mapzen.com/theory/">Theory</a>
+                                <ul class="toc-subnav">
+                                    <li><a href="#theory-2015">2015</a></li>
+                                    <li><a href="#theory-2016">2016</a></li>
+                                    <li><a href="#theory-2017">2017</a></li>
+                                </ul>
+                            </li>
+                            <li class="toc-top-level">
+                                <a href="https://whosonfirst.mapzen.com/vagrant/">Vagrant</a>
+                                <ul class="toc-subnav">
+                                    <li><a href="#spelunker">spelunker.box</a></li>
+                                </ul>
+                            </li>
+                        </ul>
                     </div>
+                </div>
+                <div class='col-xs-12 col-md-9 static-content'>
+                    <h1 id="whos-on-first" class="center-subject subpage-header-two">Who's On First &#x2014; Maxmind Databases (mmdb)</h1>
                     <p>MaxMind databases (of Who's On First data) are still considered <em>experimental</em> and a work in progress. Specifically not all of the data has been conflated (assigned a Who's On First ID) nor have we settled on how to automate releases yet.</p>
-                    <h2>GeoLite2 databases</h2>
+                    <h2 id="geolite2">GeoLite2 databases</h2>
                     <h3 id="whosonfirst-maxmind-city">whosonfirst-maxmind-city <small>(20160113)</small></h3>
                     <p>This is the standard MaxMind GeoLite2 city database with Who's On First IDs appended based on <a href="https://github.com/whosonfirst/whosonfirst-data/blob/master/meta/wof-concordances-latest.csv">their concordance with the Geonames ID</a> already included in the database. We have concordances for <em>most</em> but definitely not all the Geonames places referenced by MaxMind, as you can see with <a href="https://whosonfirst.mapzen.com/spelunker/id/102191575/">North America</a> in the example below. Also not every placetype (specifically subdivisions) in the city database has been processed yet.</p>
                     <pre>
@@ -189,7 +229,7 @@
                     <div class="p-2 background-light link-within">
                         <a href="http://whosonfirst.mapzen.com.s3.amazonaws.com/mmdb/whosonfirst-city-latest.mmdb.gz" class="link-highlight">whosonfirst-city-latest.mmdb.gz</a> <small>(16MB)</small>
                     </div>
-                    <h2>Code</h2>
+                    <h2 id="code">Code</h2>
                     <div class="p-2 background-light link-within">
                         <a href="https://github.com/whosonfirst/p5-Whosonfirst-MaxMind-Writer" class="link-highlight">p5-Whosonfirst-MaxMind-Writer</a> <small>(Perl)</small>
                     </div>
@@ -289,4 +329,9 @@
             </div>
         </div>
     </footer>
+    
+    <script src="../javascript/mapzen.whosonfirst.api.js"></script>
+    <script src='https://mapzen.com/common/styleguide/scripts/mapzen-styleguide.min.js'></script>
+    <script src='https://code.jquery.com/jquery-2.2.0.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.0/jquery.scrollTo.min.js'></script>
 </html>

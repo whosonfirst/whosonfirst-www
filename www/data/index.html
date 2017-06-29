@@ -1,3 +1,4 @@
+<?xml version="1.0"?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -16,13 +17,15 @@
         <link rel='icon' type='image/png' href='https://mapzen.com/common/styleguide/images/favicons/favicon-32x32.png' sizes='32x32'>
         <link rel='manifest' href='https://mapzen.com/common/styleguide/images/favicons/manifest.json'>
         <link rel='mask-icon' href='https://mapzen.com/common/styleguide/images/favicons/safari-pinned-tab.svg' color='#2C1E3F'>
-
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" type="text/css" href="../css/mapzen.whosonfirst.www.bundle.min.css"/>
+        
+        <script src="../javascript/mapzen.whosonfirst.www.bundle.min.js"></script>
+        <script src="../javascript/mapzen.whosonfirst.chrome.js"></script>
         <link rel="stylesheet" href="https://mapzen.com/common/styleguide/styles/blog.css">
         <link rel="stylesheet" href="https://mapzen.com/js/mapzen.css">
         <link rel="stylesheet" href="../css/mapzenwhosonfirstsubpage.css">
-        <script src="../javascript/mapzen.whosonfirst.www.bundle.min.js"></script> 
+        <script src="https://mapzen.com/js/mapzen.min.js"></script>
+        <link rel="stylesheet" href="../css/mapzen.whosonfirst.chrome.css">
     </head>
     <body>
         <nav class='navbar navbar-default navbar-fixed-top' role='navigation'>
@@ -42,7 +45,7 @@
             <!-- new nav bar showing user's login status -->
                 <div class='collapse navbar-collapse' id='navbar-menu'>
                     <ul class='nav navbar-nav navbar-left'>
-                        <li class='active'><a href='https://mapzen.com/products/'>Products</a></li>
+                        <li class='inactive'><a href='https://mapzen.com/products/'>Products</a></li>
                         <li class='inactive'><a href='https://mapzen.com/documentation/'>Documentation</a></li>
                         <li class='inactive'><a href='https://mapzen.com/pricing/'>Pricing</a></li>
                         <li class='inactive'><a href='https://mapzen.com/blog/'>Blog</a></li>
@@ -56,22 +59,36 @@
                 </div>
             </div>
         </nav>
-        <div class="header-container">
-            <h1 class="center-subject">Who's On First &#8212; Data</h1>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12 col-md-10 col-md-offset-1 static-content">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <ol class="breadcrumb">
-                                <li>
-                                  <a href="../index.html">Who's On First</a>
-                                </li>
-                                <li class="active">Data</li>
-                            </ol>
-                        </div>
+        <div class='container documentation-container'>
+            <div class='row'>
+                <div class="col-xs-12 col-md-3">
+                    <div class="toc toc-sub-left" role="directory">
+                        <ul class="nav toc-nav">
+                            <li class="toc-top-level">
+                                <a href="https://whosonfirst.mapzen.com">Home</a>
+                            </li>
+                            <li class="toc-top-level toc-current">
+                                <a href="#">Data</a>
+                                <ul class="toc-subnav toc-expand">
+                                    <li><a href="#theory-wrapper">tl;dr</a></li>
+                                    <li><a href="#what-mean">But... what does it mean?</a></li>
+                                    <li><a href="#gory-details">The gory details</a></li>
+                                    <li><a href="#know-knows">Known knowns</a></li>
+                                </ul>
+                            </li>
+                            <li class="toc-top-level">
+                                <a href="https://whosonfirst.mapzen.com/theory/">Theory</a>
+                                <ul class="toc-subnav">
+                                    <li><a href="#theory-2015">2015</a></li>
+                                    <li><a href="#theory-2016">2016</a></li>
+                                    <li><a href="#theory-2017">2017</a></li>
+                                </ul>
+                            </li>
+                        </ul>
                     </div>
+                </div>
+                <div class='col-xs-12 col-md-9 static-content'>
+                    <h1 id="whos-on-first" class="center-subject subpage-header-two">Who's On First &#x2014; Data</h1>
                     <a name="tldr"></a>
                     <h2 id="theory-wrapper">tl;dr</h2>
                     <p>If you already understand all the details (discussed below) or just feel like throwing caution to wind the Who's On First data is available from the following places:</p>
@@ -102,7 +119,7 @@
                     </ul>
                     -->
                     <a name="details"></a>
-                    <h2>But... what does it mean?</h2>
+                    <h2 id="what-mean">But... what does it mean?</h2>
                     <a name="firstprinciples"></a>
                     <h3>First principles</h3>
                     <ul>
@@ -117,7 +134,7 @@
                     <p>The URLs <code>http://<strong>foo.com</strong>/data/<strong>101/736/545/101736545.geojson</strong></code> and <code>http://<strong>bar.com</strong>/wof-data/<strong>101/736/545/101736545.geojson</strong></code> may be completely different but both refer to the city of Montréal, or Who's On First ID <code><strong>101736545</strong></code>.</p>
                     <p>Even though each organization hosts their own copy of the Who's On First dataset &#8212; <em>and the reasons for doing so are entirely their own business</em> &#8212; they still have a simple and unintrusive way to preserve parity when refering to places.</p>
                     <p>Mapzen's canonical URL for Who's On First data is <code><strong>https://whosonfirst.mapzen.com/data/</strong></code> and we expect that these URLs will become canonical for <em>other people</em> by virtue of our efforts around the project but we've tried to design things in such a way that this doesn't <em>have</em> to be the case for everyone.</p>
-                    <h2>The gory details</h2>
+                    <h2 id="gory-details">The gory details</h2>
                     <p>And by <q>gory details</q> we're assuming a basic familiarity and comfort-level with any of the specific technologies described here.</p>
                     <h3>Amazon S3</h3>
                     <p>Our copy of the Who's On First data is stored in big-honking Amazon Web Services (AWS) S3 bucket called <code>whosonfirst.mapzen.com</code> in a sub-directory, or <q>prefix</q> in AWS-speak, called <code>data</code>.</p>
@@ -144,7 +161,8 @@
                     <h4>whosonfirst-data versus whosonfirst-data-SOMETHING repositories</h4>
                     <p>There is a lot of data in Who's On First, more than can practically fit in a single GitHub repository. Someday it may be possible but today it is not. To account for this fact Who's On First data has been separated in to a number of different GitHub repositories organized by placetype and region.</p>
                     <p>The naming conventions for repositories at their <em>most granular</em> is as follows:</p>
-                    <pre style="font-size:0.8em;">whosonfirst-data + "-" + WHOSONFIRST_PLACETYPE + "-" + WHOSONFIRST_COUNTRY + "-" + WHOSONFIRST_SUBDIVISION</pre>
+                    <pre style="font-size:0.8em;">whosonfirst-data + "-" + WHOSONFIRST_PLACETYPE + "-" + WHOSONFIRST_COUNTRY + "-" + WHOSONFIRST_SUBDIVISION
+                    </pre>
                     <p>For example:</p>
                     <ul class="list">
                         <li><a href="https://github.com/whosonfirst-data/whosonfirst-data">whosonfirst-data</a> <small>&#8212; administrative data (<a href="https://github.com/whosonfirst/whosonfirst-placetypes">continents - microhoods</a>) for the world</small></li>
@@ -189,7 +207,7 @@
                     </pre>
                     <p>Depending on when you read this we may have already pre-emptively moved <a href="https://github.com/whosonfirst/whosonfirst-data/blob/master/meta/wof-country-latest.csv">all the records for countries</a> in to <code>git-lfs</code>. If the goal is to have details <q>ground truth</q> geometries for every place in the Who's On First gazetteer it stands to reason that most if not all countries will bump up against GitHub's existing file size limits.</p>
                     <a name="knownknowns"></a>
-                    <h2>Known knowns</h2>
+                    <h2 id="know-knows">Known knowns</h2>
                     <a name="knownknown-tls"></a>
                     <h3>TLS for whosonfirst.mapzen.com</h3>
                     <p>Yes! <small style="font-style:italic;">As in, it is enabled across the board and everything on a non-secure port is redirected to a secure one.</small></p>
@@ -289,4 +307,9 @@
             </div>
         </div>
     </footer>
+    
+    <script src="../javascript/mapzen.whosonfirst.api.js"></script>
+    <script src='https://mapzen.com/common/styleguide/scripts/mapzen-styleguide.min.js'></script>
+    <script src='https://code.jquery.com/jquery-2.2.0.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.0/jquery.scrollTo.min.js'></script>
 </html>

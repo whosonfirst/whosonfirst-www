@@ -17,7 +17,7 @@ var map = L.Mapzen.map('map', {
         scene: {
             import: [
                 'https://mapzen.com/carto/refill-style/7.1/refill-style.zip',
-                'https://mapzen.com/carto/refill-style/7.1/themes/high-contrast.zip'],
+                'https://mapzen.com/carto/refill-style/7.1/themes/gray.zip'],
             global: {
                 sdk_mapzen_api_key: api_key,
                 sdk_building_extrude: 'false'
@@ -32,11 +32,11 @@ map.setView([lat, lon], randomLocation[3]);
 
 // Venues are shown as a green circle
 var markerStyle = {
-    "color": "#ff4947",
+    "color": "#666",
     "weight": 1,
     "opacity": 1,
     "radius": 5,
-    "fillColor": "#ff4947",
+    "fillColor": "#666",
     "fillOpacity": 0.7
 };
 

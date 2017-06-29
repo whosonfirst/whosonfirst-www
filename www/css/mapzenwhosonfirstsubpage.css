@@ -73,3 +73,25 @@ pre {
 .first-entry {
     margin-top: 48px;
 }
+
+.subpage-header {
+    color: #2C1E3F;
+    padding: 36px 0px 12px;
+}
+
+.subpage-header-two {
+    color: #2C1E3F;
+    padding: 0px 0px 12px;
+}
+
+.project-content-sub {
+    padding-top: 72px;
+}
+
+.toc-sub-left {
+    margin-top: 0px;
+}
+
+.documentation-container {
+    padding-top: 5em;
+}

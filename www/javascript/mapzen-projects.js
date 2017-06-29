@@ -28,6 +28,9 @@ function setMapExplanation() {
 }
 
 // Set demo height
+document.getElementsByClassName("section-nav")[0].style.display = "block"
+document.getElementsByClassName("demo-container")[0].style.display = "block"
+document.getElementById("map-explanation-revised").style.display = "block"
 setDemoContainerHeight()
 setMapExplanation()
 window.addEventListener('resize', setDemoContainerHeight)

@@ -133,3 +133,7 @@
     padding: 0;
     margin: 0;
 }
+
+.section-nav, .demo-container, #map-explanation-revised {
+    display: none;
+}
