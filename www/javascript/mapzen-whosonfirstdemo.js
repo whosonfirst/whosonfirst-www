@@ -2,12 +2,12 @@
 // To generate your key, go to https://mapzen.com/developers/
 var api_key = 'mapzen-aetZmeQ';
 // Add a map to the 'map' div
-var nyclocation = [40.74315,-73.990481,85869245,17,"New York's Flatiron District neighborhood"]
-var sflocation = [37.787019,-122.40007,85887417,17,"San Francisco's Finanical District South neighborhood"]
-var berlinlocation = [52.513351,13.388243,85899637,15,"Berlin's Moabit neighborhood"]
-var mumbailocation = [19.10074,72.858075,102030609,12,"Mumbai"]
-var seoullocation = [25.066207,121.548109,102026641,13,"Taipei"]
-var locationOptions = [nyclocation,sflocation,berlinlocation,mumbailocation,seoullocation]
+var nyclocation = [40.74145,-73.988481,85869245,17,"New York's Flatiron District neighborhood"]
+var sflocation = [37.795492,-122.406569,85810881,17,"San Francisco's Chinatown neighborhood"]
+var berlinlocation = [52.513351,13.388243,85899637,14,"Berlin's Moabit neighborhood"]
+var mumbailocation = [19.10074,72.888075,102030609,12,"Mumbai"]
+var melbournelocation = [-37.813963,144.965188,85775095,16,"Melbourne's Museum neighborhood"]
+var locationOptions = [nyclocation,sflocation,berlinlocation,mumbailocation,melbournelocation]
 var randomLocation = locationOptions[Math.floor(Math.random()*5)];
 
 var map = L.Mapzen.map('map', {
