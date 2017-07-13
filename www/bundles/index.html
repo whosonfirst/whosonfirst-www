@@ -21,7 +21,7 @@
         <script src="../javascript/mapzen.whosonfirst.www.bundle.min.js"></script> 
     </head>
     <body>
-        <nav class='navbar navbar-default navbar-fixed-top' role='navigation'>
+        <nav class='navbar-default navbar-fixed-top custom-navbar' role='navigation'>
             <div class='container'>
                 <div class='navbar-header'>
                     <button type='button' class='navbar-toggle collapsed' data-toggle='collapse' data-target='#navbar-menu'>
@@ -30,25 +30,20 @@
                         <span class='icon-bar middle-bar'></span>
                         <span class='icon-bar bottom-bar'></span>
                     </button>
-                    <a class='navbar-brand' href='https://mapzen.com/'>
-                        <div class='mapzen-logo'></div>
-                        <h1 class='sr-only'>Mapzen</h1>
-                    </a>
+                    <a class="navbar-brand custom-navbar-type custom-navbar-header" href="#">Who's On First</a>
                 </div>
             <!-- new nav bar showing user's login status -->
                 <div class='collapse navbar-collapse' id='navbar-menu'>
-                    <ul class='nav navbar-nav navbar-left'>
-                        <li class='active'><a href='https://mapzen.com/products/'>Products</a></li>
-                        <li class='inactive'><a href='https://mapzen.com/documentation/'>Documentation</a></li>
-                        <li class='inactive'><a href='https://mapzen.com/pricing/'>Pricing</a></li>
-                        <li class='inactive'><a href='https://mapzen.com/blog/'>Blog</a></li>
-                    </ul>
                     <ul class='nav navbar-nav navbar-right'>
-                        <!--
+                        <li class='inactive'><a href='https://whosonfirst.mapzen.com/theory/' class="custom-navbar-type">Theory</a></li>
+                        <li class='inactive'><a href='https://whosonfirst.mapzen.com/data/' class="custom-navbar-type">Data</a></li>
+                    </ul>
+                    <!--
+                    <ul class='nav navbar-nav navbar-right'>
                         <li class="inactive dropdown"><a id='sign-in' href='/developers/sign_in'> </a></li>
                         <li class="inactive"><a id='sign-up' href='/developers/sign_up'> </a></li>
-                        -->
                     </ul>
+                    -->
                 </div>
             </div>
         </nav>
@@ -437,89 +432,13 @@
         </div>
     </body>
     <footer>
-        <div class='container hidden-print footer-no-background'>
-            <div class='row headroom-extra-large'>
-                <div class='col-xs-12 text-center'>
-                    <img src='https://mapzen.com/common/styleguide/images/divider/compass-primary-lg.png'>
-                    <h2 class="headroom">Get in touch</h2>
-                </div>
-            </div>
-            <div class='row headroom footroom-large'>
-                <div class='col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 text-center'>
-                    <p>Working on an interesting problem? Want to know more about what we're doing? Have questions about working with our products and services?</p>
-                    <p>Send a note to <a href='mailto:hello@mapzen.com' target='_blank'>hello@mapzen.com</a></p>
-                </div>
-            </div>
-        </div>
-        <div class='headroom-large footer-background'>
+        <div class='headroom-large custom-footer'>
             <div class='container'>
-                <div class='row headroom'>
-                    <div class='col-xs-12 text-center headroom-large footroom'>
-                        <p><strong>Get a rundown of Mapzen happenings at the beginning of every month!</strong></p>
-                        <p><a href='https://mapzen.com/newsletter-signup/'><button class="btn btn-white">Sign up for our Newsletter</button></a></p>
-                    </div>
-                </div>
-                <div class='row headroom-large footer-menu hidden-print'>
-                    <div class='col-xs-5 col-xs-offset-2 col-sm-5 col-sm-offset-0'>
-                        <div class='row'>
-                            <div class="col-xs-12 col-sm-6">
-                                <h6><a href="https://mapzen.com/products/">Products</a></h6>
-                                <ul>
-                                    <li><a href="https://mapzen.com/products/maps/">Maps</a></li>
-                                    <li><a href="https://mapzen.com/products/search">Mapzen Search</a></li>
-                                    <li><a href="https://mapzen.com/products/turn-by-turn">Mapzen Mobility</a></li>
-                                    <li><a href="https://mapzen.com/projects/mobile/">Mobile</a></li>
-                                    <li><a href="https://mapzen.com/pricing/">Pricing</a></li>
-                                </ul>
-                            </div>
-                            <div class="col-xs-12 col-sm-6">
-                            <h6><a href="https://mapzen.com/products/#data">Data</a></h6>
-                            <ul>
-                                <li><a href="https://mapzen.com/data/metro-extracts/">Metro Extracts</a></li>
-                                <li><a href="https://mapzen.com/projects/vector-tiles/">Vector Tile Service</a></li>
-                                <li><a href="https://mapzen.com/documentation/terrain-tiles/">Terrain Tile Service</a></li>
-                                <li><a href='https://whosonfirst.mapzen.com/'>Who's On First</a></li>
-                                <li><a href='https://transit.land/'>Transitland</a></li>
-                            </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class='col-xs-5 col-sm-7'>
-                        <div class='row'>
-                            <div class="col-xs-12 col-sm-5">
-                                <h6>Developers</h6>
-                                <ul>
-                                    <li><a href="https://mapzen.com/dashboard/">Developer Platform</a></li>
-                                    <li><a href="https://mapzen.com/documentation/">Documentation</a></li>
-                                </ul>
-                            </div>
-                        <div class="col-xs-12 col-sm-4">
-                            <h6>About</h6>
-                            <ul>
-                                <li><a href="https://mapzen.com/about/">Who we are</a></li>
-                                <li><a href="https://mapzen.com/jobs/">Jobs</a></li>
-                                <li><a href="https://mapzen.com/terms/">Terms</a></li>
-                                <li><a href="https://mapzen.com/privacy/">Privacy policy</a></li>
-                                <li><a href="https://mapzen.com/media-resources/">Media resources</a></li>
-                                <li><a href="http://status.mapzen.com">Status</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-xs-12 col-sm-3">
-                            <h6>Hello</h6>
-                            <ul>
-                            <li><a href="https://mapzen.com/blog/"><i class='fa fa-fw fa-rss'></i>Blog</a></li>
-                            <li><a href='https://github.com/mapzen/'><i class='fa fa-fw fa-github'></i>GitHub</a></li>
-                            <li><a href='https://twitter.com/mapzen/'><i class='fa fa-fw fa-twitter'></i>Twitter</a></li>
-                            <li><a href='mailto:hello@mapzen.com'><i class='fa fa-fw fa-envelope'></i>E-mail</a></li>
-                            </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class='row headroom-large footroom-large'>
-                    <div class='col-xs-12 text-center'>
-                        <div class="compass-logo"></div>
-                        <small class='copyright'>&#169; 2017 Mapzen</small>
+                <div class='row'>
+                    <div class='col-xs-12 text-left custom-footer'>
+                        <p>Who's On First is a Mapzen gig</p>
+                        <p class="custom-footer-link custom-footer-first-link "><i class='fa fa-lg fa-fw fa-twitter'></i>Follow <a href='https://twitter.com/alloftheplaces/' class="custom-footer-actual-link">@alloftheplaces</a> on Twitter</p>
+                        <p class="custom-footer-link"><i class='fa fa-lg fa-fw fa-github'></i>Check out our <a href='https://github.com/mapzen/' class="custom-footer-actual-link">whosonfirst</a> and <a href='https://github.com/whosonfirst-data/' class="custom-footer-actual-link">whosonfirst-data</a> organizations on Github</p>
                     </div>
                 </div>
             </div>

@@ -40,6 +40,8 @@ window.addEventListener('resize', setMapExplanation)
 // --------------------------------------------------------
 
 // makes global for debug reasons
+/*
 var productNav = new SectionNavigation('#project-nav', {
   sectionSelector: '.project-content h2, .js-section-navigable'
 })
+*/
