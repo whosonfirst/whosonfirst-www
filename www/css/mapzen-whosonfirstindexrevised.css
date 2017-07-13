@@ -187,3 +187,12 @@
 .custom-footer-first-link {
     padding-top: 8px;
 }
+
+.no-nav {
+    height: 0;
+    margin-top: 0;
+}
+
+.section-nav {
+    top: 20px;
+}

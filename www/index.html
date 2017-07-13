@@ -22,8 +22,9 @@
         <link rel="stylesheet" href="css/mapzen.whosonfirst.chrome.css">
         
     </head>
-    <body class="project" onload="runWhosOnFirstAPI()">
-        <nav class='navbar-default navbar-fixed-top custom-navbar' role='navigation'>
+    <body class="project no-nav" onload="runWhosOnFirstAPI()">
+        <nav class='navbar-default navbar-fixed-top custom-navbar no-nav' role='navigation'>
+        <!--
             <div class='container'>
                 <div class='navbar-header'>
                     <button type='button' class='navbar-toggle collapsed' data-toggle='collapse' data-target='#navbar-menu'>
@@ -34,7 +35,7 @@
                     </button>
                     <a class="navbar-brand custom-navbar-type custom-navbar-header" href="#">Who's On First</a>
                 </div>
-            <!-- new nav bar showing user's login status -->
+            <!-- new nav bar showing user's login status
                 <div class='collapse navbar-collapse' id='navbar-menu'>
                     <ul class='nav navbar-nav navbar-right'>
                         <li class='inactive'><a href='https://whosonfirst.mapzen.com/theory/' class="custom-navbar-type">Theory</a></li>
@@ -45,13 +46,13 @@
                         <li class="inactive dropdown"><a id='sign-in' href='/developers/sign_in'> </a></li>
                         <li class="inactive"><a id='sign-up' href='/developers/sign_up'> </a></li>
                     </ul>
-                    -->
+
                 </div>
             </div>
+        -->
         </nav>
         <div class='section-nav' id='project-nav' role='navigation' aria-label='project-name'>
             <div class='container'>
-                <!--
                 <div class='section-nav-container'>
                     <div class='section-nav-title'>
                         <h2 id='project-name'><a href='#'>Who's On First</a></h2>
@@ -62,7 +63,6 @@
                         <div class='section-nav-dropdown'>&#9698;</div>
                     </div>
                 </div>
-                -->
             </div>
         </div>
         <div class='section-nav-hitbox'></div>
