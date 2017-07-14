@@ -150,6 +150,7 @@ pre {
 .no-nav {
     height: 0;
     margin-top: 0;
+    min-height: 0;
 }
 
 .section-nav {
@@ -159,6 +160,10 @@ pre {
 @media (max-width: 767px) {
     .section-nav {
         top: 0px !important;
+    }
+    
+    .small-responsive-image {
+        width: auto;
     }
 }
 
