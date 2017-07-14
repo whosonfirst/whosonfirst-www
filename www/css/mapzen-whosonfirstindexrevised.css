@@ -196,3 +196,9 @@
 .section-nav {
     top: 20px;
 }
+
+@media (max-width: 767px) {
+    .section-nav {
+        top: 0px !important;
+    }
+}
