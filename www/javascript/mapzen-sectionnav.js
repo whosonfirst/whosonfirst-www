@@ -386,7 +386,8 @@ var SectionNavigation = (function ($) {
 
     // Scroll-to position is modified based on current position of the navbar
     // No buffer for the first position (hacky for demo)
-    if (sectionIndex === 0) {
+    if (sectionIndex === 0  && document.querySelector('.navbar') != null) {
+        console.log("Bounding Client Rectangle" + document.querySelector('.navbar'))
       position = this.sectionPositions[sectionIndex] - document.querySelector('.navbar').getBoundingClientRect().bottom
     } else {
       position = this.sectionPositions[sectionIndex] - navEl.getBoundingClientRect().bottom + SECTION_POSITION_BUFFER

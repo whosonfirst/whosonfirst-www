@@ -51,6 +51,7 @@
             </div>
         -->
         </nav>
+        <!--
         <div class='section-nav' id='project-nav' role='navigation' aria-label='project-name'>
             <div class='container'>
                 <div class='section-nav-container'>
@@ -65,6 +66,36 @@
                 </div>
             </div>
         </div>
+        -->
+        <div class='section-nav' id='project-nav' role='navigation' aria-label='project-name'>
+            <div class='container'>
+                <div class='section-nav-container'>
+                    <div class='section-nav-title'>
+                        <h2 id='project-name'><a href='#'>Who's On First</a></h2>
+                    </div>
+                    <div class='section-nav-items'>
+                        <ul class='section-nav-scroll-container'>
+                            <li class="section-nav-item">
+                                <a href="https://whosonfirst.mapzen.com/data/">Data</a>
+                            </li>
+                            <li class="section-nav-item">
+                                <a href="https://whosonfirst.mapzen.com/theory/">Theory</a>
+                            </li>
+                            <li class="section-nav-item">
+                                <a href="https://whosonfirst.mapzen.com/bundles/">Bundles</a>
+                            </li>
+                            <li class="section-nav-item">
+                                <a href="https://whosonfirst.mapzen.com/mmdb/">mmdb</a>
+                            </li>
+                            <li class="section-nav-item">
+                                <a href="https://whosonfirst.mapzen.com/placetypes/">Placetypes</a>
+                            </li>
+                        </ul>
+                        <div class='section-nav-dropdown'>&#9698;</div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class='section-nav-hitbox'></div>
         <section class='demo-container js-section-navigable' id='demo' data-section-name='Demo' data-section-nav-collapse='false'>
             <div class='project-demo'>
@@ -72,7 +103,7 @@
                 <div id="map-explanation-thirds">
                     <p class="caption map-explanation-caption-thirds">WOF places in <span id="whosFirstDescendantLocation"></span>. To retrieve these results run:</p>
                     <div class="map-explanation-subcaption">
-                        <code class="subcaption-code-thirds">curl -X GET 'https://whosonfirst-api.mapzen.com/?method=whosonfirst.places.getDescendants&api_key=[your-mapzen-key]&id=<span id="whosFirstDescendantKey"></span>&per_page=500'</code>
+                        <code class="subcaption-code-thirds">curl -X GET 'https://whosonfirst-api.mapzen.com/?method=whosonfirst.places.getDescendants&api_key=[your-mapzen-api-key]&id=<span id="whosFirstDescendantKey"></span>&per_page=500'</code>
                     </div>
                     <p class="caption map-explanation-caption-bottom-thirds">Visit the  <a href="https://mapzen.com/documentation/wof/" class="map-explanation-caption-link">WOF API</a> to learn more.</p>
                 </div>
@@ -81,7 +112,7 @@
         <div id="map-explanation-revised">
             <p class="caption map-explanation-caption-thirds">WOF places in <span id="whosFirstDescendantLocation"></span>. To retrieve these results run:</p>
             <div class="map-explanation-subcaption-revised">
-                <code class="subcaption-code-thirds">curl -X GET 'https://whosonfirst-api.mapzen.com/?method=whosonfirst.places.getDescendants&api_key=[your-mapzen-key]&id=<span id="whosFirstDescendantKey"></span>&per_page=500'</code>
+                <code class="subcaption-code-thirds">curl -X GET 'https://whosonfirst-api.mapzen.com/?method=whosonfirst.places.getDescendants&api_key=[your-mapzen-api-key]&id=<span id="whosFirstDescendantKey"></span>&per_page=500'</code>
             </div>
             <p class="caption map-explanation-caption-bottom-thirds">Visit the  <a href="https://mapzen.com/documentation/wof/" class="map-explanation-caption-link">WOF API</a> to learn more.</p>
         </div>
@@ -166,7 +197,7 @@
                 <div class='container'>
                     <div class='row'>
                         <div class='col-xs-12 text-left custom-footer'>
-                            <p>Who's On First is a Mapzen gig</p>
+                            <p>Who's On First is a <a href='https://mapzen.com/' class="custom-footer-actual-link">Mapzen</a> gig</p>
                             <p class="custom-footer-link custom-footer-first-link "><i class='fa fa-lg fa-fw fa-twitter'></i>Follow <a href='https://twitter.com/alloftheplaces/' class="custom-footer-actual-link">@alloftheplaces</a> on Twitter</p>
                             <p class="custom-footer-link"><i class='fa fa-lg fa-fw fa-github'></i>Check out our <a href='https://github.com/mapzen/' class="custom-footer-actual-link">whosonfirst</a> and <a href='https://github.com/whosonfirst-data/' class="custom-footer-actual-link">whosonfirst-data</a> organizations on Github</p>
                         </div>
@@ -180,7 +211,7 @@
         <script src='javascript/mapzen-styleguide.js'></script>
         <script src='https://code.jquery.com/jquery-2.2.0.min.js'></script>
         <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.0/jquery.scrollTo.min.js'></script>
-        <script src='javascript/mapzen-sectionnav.js'></script>
+        <!--<script src='javascript/mapzen-sectionnav.js'></script>-->
         <script src='javascript/mapzen-projects.js'></script>
         <script src="javascript/mapzen-whosonfirstdemo.js"></script>
     </body>

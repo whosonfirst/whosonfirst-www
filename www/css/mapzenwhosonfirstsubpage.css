@@ -9,7 +9,7 @@
 
 .center-subject {
     padding: 0;
-    margin: 0px 0px 0px 0px !important;
+    margin: 0px 0px 0px 0px;
     color: #ffffff;
 }
 
@@ -171,4 +171,12 @@ pre {
     body {
         margin-top: 0px;
     }
+}
+
+.bundle-list {
+    list-style-type: none;
+    columns: 1;
+    -webkit-columns: 1;
+    -moz-columns: 1;
+    margin-bottom: 2em;
 }
