@@ -28,7 +28,7 @@
         <link rel="stylesheet" href="../css/mapzen.whosonfirst.chrome.css">
     </head>
     <body>
-        <nav class='navbar navbar-default navbar-fixed-top custom-navbar no-nav' role='navigation'>
+        <nav class='navbar-default navbar-fixed-top custom-navbar no-nav' role='navigation'>
             <!--
             <div class='container'>
                 <div class='navbar-header'>
@@ -38,21 +38,16 @@
                         <span class='icon-bar middle-bar'></span>
                         <span class='icon-bar bottom-bar'></span>
                     </button>
-                    <a class='navbar-brand' href='https://mapzen.com/'>
-                        <div class='mapzen-logo'></div>
-                        <h1 class='sr-only'>Mapzen</h1>
-                    </a>
+                    <a class="navbar-brand custom-navbar-type custom-navbar-header" href="#">Who's On First</a>
                 </div>
             <!-- new nav bar showing user's login status
                 <div class='collapse navbar-collapse' id='navbar-menu'>
-                    <ul class='nav navbar-nav navbar-left'>
-                        <li class='active'><a href='https://mapzen.com/products/'>Products</a></li>
-                        <li class='inactive'><a href='https://mapzen.com/documentation/'>Documentation</a></li>
-                        <li class='inactive'><a href='https://mapzen.com/pricing/'>Pricing</a></li>
-                        <li class='inactive'><a href='https://mapzen.com/blog/'>Blog</a></li>
-                    </ul>
                     <ul class='nav navbar-nav navbar-right'>
-                        <!--
+                        <li class='inactive'><a href='https://whosonfirst.mapzen.com/theory/' class="custom-navbar-type">Theory</a></li>
+                        <li class='inactive'><a href='https://whosonfirst.mapzen.com/data/' class="custom-navbar-type">Data</a></li>
+                    </ul>
+                    <!--
+                    <ul class='nav navbar-nav navbar-right'>
                         <li class="inactive dropdown"><a id='sign-in' href='/developers/sign_in'> </a></li>
                         <li class="inactive"><a id='sign-up' href='/developers/sign_up'> </a></li>
                     </ul>
@@ -171,7 +166,11 @@
                     <p><small>We will eventually release our own tool for fetching the entirety of the S3 bucket but it's not ready yet.</small></p>
                     <a name="github"></a>
                     <h3>GitHub</h3>
-                    <p>We haven’t quite figured out what the best way of both distributing the Who’s On First data and of accepting corrections or suggestions from community. Even though the nice people at GitHub continue to do excellent work at making Git easier for a broader population to use, the reality remains that Git is a significant barrier to participation for many
+                    <p>We haven’t quite figured out what the
+                    best way of both distributing the Who’s On First data and of accepting
+                    corrections or suggestions from community. Even though the nice people at GitHub continue to do excellent work at
+                    making Git easier for a broader population to use, the reality remains
+                    that Git is a significant barrier to participation for many
                     people.</p>
                     <p>Absent a more formal decision about an alternative, GitHub at
                     least allows us to point in the general direction of:</p>
@@ -239,8 +238,8 @@
     </footer>
     
     <script src="../javascript/mapzen.whosonfirst.api.js"></script>
-    <script src="../javascript/mapzen-styleguide.js"></script>
-    <!--<script src='https://mapzen.com/common/styleguide/scripts/mapzen-styleguide.min.js'></script>-->
     <script src='https://code.jquery.com/jquery-2.2.0.min.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.0/jquery.scrollTo.min.js'></script>
+    <!--<script src='https://mapzen.com/common/styleguide/scripts/mapzen-styleguide.min.js'></script>-->
+    <script src='../javascript/mapzen-styleguide.js'></script>
 </html>

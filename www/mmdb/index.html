@@ -1,164 +1,181 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Who's On First &#8212; MaxMind Databases</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Who's On First &#8212; MaxMind Databases</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name='description' content="Who's on First is a gazetteer of places.">
+        <link rel='apple-touch-icon' href='https://mapzen.com/common/styleguide/images/favicons/apple-touch-icon.png' sizes='180x180'>
+        <link rel='icon' type='image/png' href='https://mapzen.com/common/styleguide/images/favicons/favicon-16x16.png' sizes='16x16'>
+        <link rel='icon' type='image/png' href='https://mapzen.com/common/styleguide/images/favicons/favicon-32x32.png' sizes='32x32'>
+        <link rel='manifest' href='https://mapzen.com/common/styleguide/images/favicons/manifest.json'>
+        <link rel='mask-icon' href='https://mapzen.com/common/styleguide/images/favicons/safari-pinned-tab.svg' color='#2C1E3F'>
 
-  <link rel="stylesheet" type="text/css" href="../css/mapzen.whosonfirst.www.bundle.min.css"/>
-  <script src="../javascript/mapzen.whosonfirst.www.bundle.min.js"></script>  
-
-</head>
-<body>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-8 col-md-offset-2">
-
-	<h1>Who's On First &#8212; MaxMind Databases (mmdb)</h1>
-
-	<p>MaxMind databases (of Who's On First data) are still considered <em>experimental</em> and a work in progress. Specifically not all of the data has been conflated (assigned a Who's On First ID) nor have we settled on how to automate releases yet.</p>
-
-	<h2>GeoLite2 databases</h2>
-
-	<h3 id="whosonfirst-maxmind-city">whosonfirst-maxmind-city <small>(20160113)</small></h3>
-
-	<p>This is the standard MaxMind GeoLite2 city database with Who's On First IDs appended based on <a href="https://github.com/whosonfirst/whosonfirst-data/blob/master/meta/wof-concordances-latest.csv">their concordance with the Geonames ID</a> already included in the database. We have concordances for <em>most</em> but definitely not all the Geonames places referenced by MaxMind, as you can see with <a href="https://whosonfirst.mapzen.com/spelunker/id/102191575/">North America</a> in the example below. Also not every placetype (specifically subdivisions) in the city database has been processed yet.</p>
-
-<pre>
-# query for 8.8.8.8
-
-{
-    "city": {
-        "geoname_id": 5375480,
-        "names": {
-            "de": "Mountain View",
-            "en": "Mountain View",
-            "fr": "Mountain View",
-            "ja": "\u30de\u30a6\u30f3\u30c6\u30f3\u30d3\u30e5\u30fc",
-            "ru": "\u041c\u0430\u0443\u043d\u0442\u0438\u043d-\u0412\u044c\u044e",
-            "zh-CN": "\u8292\u5ef7\u7ef4\u5c24"
-        },
-        "whosonfirst_id": 85922355
-    },
-    "continent": {
-        "code": "NA",
-        "geoname_id": 6255149,
-        "names": {
-            "de": "Nordamerika",
-            "en": "North America",
-            "es": "Norteam\u00e9rica",
-            "fr": "Am\u00e9rique du Nord",
-            "ja": "\u5317\u30a2\u30e1\u30ea\u30ab",
-            "pt-BR": "Am\u00e9rica do Norte",
-            "ru": "\u0421\u0435\u0432\u0435\u0440\u043d\u0430\u044f \u0410\u043c\u0435\u0440\u0438\u043a\u0430",
-            "zh-CN": "\u5317\u7f8e\u6d32"
-        },
-        "whosonfirst_id": 0
-    },
-    "country": {
-        "geoname_id": 6252001,
-        "iso_code": "US",
-        "names": {
-            "de": "USA",
-            "en": "United States",
-            "es": "Estados Unidos",
-            "fr": "\u00c9tats-Unis",
-            "ja": "\u30a2\u30e1\u30ea\u30ab\u5408\u8846\u56fd",
-            "pt-BR": "Estados Unidos",
-            "ru": "\u0421\u0428\u0410",
-            "zh-CN": "\u7f8e\u56fd"
-        },
-        "whosonfirst_id": 85633793
-    },
-    "location": {
-        "latitude": 37.3845,
-        "longitude": -122.0881,
-        "metro_code": "807",
-        "time_zone": "America/Los_Angeles"
-    },
-    "postal": {
-        "code": "94040"
-    },
-    "registered_country": {
-        "geoname_id": 6252001,
-        "iso_code": "US",
-        "names": {
-            "de": "USA",
-            "en": "United States",
-            "es": "Estados Unidos",
-            "fr": "\u00c9tats-Unis",
-            "ja": "\u30a2\u30e1\u30ea\u30ab\u5408\u8846\u56fd",
-            "pt-BR": "Estados Unidos",
-            "ru": "\u0421\u0428\u0410",
-            "zh-CN": "\u7f8e\u56fd"
-        },
-        "whosonfirst_id": 85633793
-    },
-    "subdivisions": [
-        {
-            "geoname_id": 5332921,
-            "iso_code": "CA",
-            "names": {
-                "de": "Kalifornien",
-                "en": "California",
-                "es": "California",
-                "fr": "Californie",
-                "ja": "\u30ab\u30ea\u30d5\u30a9\u30eb\u30cb\u30a2\u5dde",
-                "pt-BR": "Calif\u00f3rnia",
-                "ru": "\u041a\u0430\u043b\u0438\u0444\u043e\u0440\u043d\u0438\u044f",
-                "zh-CN": "\u52a0\u5229\u798f\u5c3c\u4e9a\u5dde"
-            }
-        }
-    ]
-}</pre>
-
-	  <ul>
-	    <li><a href="http://whosonfirst.mapzen.com.s3.amazonaws.com/mmdb/whosonfirst-maxmind-city-latest.mmdb.gz">whosonfirst-maxmind-city-latest.mmdb.gz</a> <small>(58MB)</small></li>
-	  </ul>
-
-	<h3 id="whosonfirst-city">whosonfirst-city <small>(20160111)</small></h3>
-
-	<p>This is a modified version of the standard MaxMind GeoLite2 city database where each record has been <a href="https://github.com/whosonfirst/go-whosonfirst-pip/">reverse-geocoded</a> to include Who's On First hierarchy information, label centroids and bounding boxes. <span style="font-style:italic;"><code>mm_latitude</code> and <code>mm_longitude</code> are the original coordinates included in the GeoLite2 city database.</span></p>
-
-	  <pre># query for 8.8.8.8
-
-{
-    "continent_id": 102191575,
-    "country_id": 85633793,
-    "disputed_id": 0,
-    "geom_bbox": "-122.117724,37.354068,-122.044473,37.469887",
-    "geom_latitude": 37.400493,
-    "geom_longitude": -122.079536,
-    "geoname_id": 5375480,
-    "lbl_latitude": 37.413921,
-    "lbl_longitude": -122.085078,
-    "localadmin_id": 0,
-    "locality_id": 85922355,
-    "macroregion_id": 0,
-    "mm_latitude": 37.386,
-    "mm_longitude": -122.0838,
-    "name": "Mountain View",
-    "placetype": "locality",
-    "region_id": 85688637,
-    "whosonfirst_id": 85922355
-}
-</pre>
-
-	  <ul>
-	    <li><a href="http://whosonfirst.mapzen.com.s3.amazonaws.com/mmdb/whosonfirst-city-latest.mmdb.gz">whosonfirst-city-latest.mmdb.gz</a> <small>(16MB)</small></li>
-	  </ul>
-
-	  <h2>Code</h2>
-
-	  <ul>
-	    <li><a href="https://github.com/whosonfirst/p5-Whosonfirst-MaxMind-Writer">p5-Whosonfirst-MaxMind-Writer</a> <small>(Perl)</small></li>
-	    <li><a href="https://github.com/whosonfirst/go-whosonfirst-iplookup">go-whosonfirst-iplookup</a> <small>(Go)</small></li>
-	  </ul>
-
-      </div>
-    </div>
-  </div>
-
-</body>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="../css/mapzen.whosonfirst.www.bundle.min.css"/>
+        <link rel="stylesheet" href="https://mapzen.com/common/styleguide/styles/blog.css">
+        <link rel="stylesheet" href="https://mapzen.com/js/mapzen.css">
+        <link rel="stylesheet" href="../css/mapzenwhosonfirstsubpage.css">
+        <script src="../javascript/mapzen.whosonfirst.www.bundle.min.js"></script>  
+    </head>
+    <body>
+        <nav class='navbar-default navbar-fixed-top custom-navbar no-nav' role='navigation'>
+            <!--
+            <div class='container'>
+                <div class='navbar-header'>
+                    <button type='button' class='navbar-toggle collapsed' data-toggle='collapse' data-target='#navbar-menu'>
+                        <span class='sr-only'>Toggle navigation</span>
+                        <span class='icon-bar top-bar'></span>
+                        <span class='icon-bar middle-bar'></span>
+                        <span class='icon-bar bottom-bar'></span>
+                    </button>
+                    <a class="navbar-brand custom-navbar-type custom-navbar-header" href="#">Who's On First</a>
+                </div>
+            <!-- new nav bar showing user's login status
+                <div class='collapse navbar-collapse' id='navbar-menu'>
+                    <ul class='nav navbar-nav navbar-right'>
+                        <li class='inactive'><a href='https://whosonfirst.mapzen.com/theory/' class="custom-navbar-type">Theory</a></li>
+                        <li class='inactive'><a href='https://whosonfirst.mapzen.com/data/' class="custom-navbar-type">Data</a></li>
+                    </ul>
+                    <!--
+                    <ul class='nav navbar-nav navbar-right'>
+                        <li class="inactive dropdown"><a id='sign-in' href='/developers/sign_in'> </a></li>
+                        <li class="inactive"><a id='sign-up' href='/developers/sign_up'> </a></li>
+                    </ul>
+                </div>
+            </div>
+            -->
+        </nav>
+        <div class='section-nav' id='project-nav' role='navigation' aria-label='project-name'>
+            <div class='container'>
+                <div class='section-nav-container'>
+                    <div class='section-nav-title'>
+                        <h2 id='project-name'><a href='https://whosonfirst.mapzen.com'>Who's On First</a></h2>
+                    </div>
+                    <div class='section-nav-items'>
+                        <ul class='section-nav-scroll-container'>
+                            <li class="section-nav-item">
+                                <a href="https://whosonfirst.mapzen.com/data/">Data</a>
+                            </li>
+                            <li class="section-nav-item">
+                                <a href="https://whosonfirst.mapzen.com/theory/">Theory</a>
+                            </li>
+                            <li class="section-nav-item">
+                                <a href="https://whosonfirst.mapzen.com/bundles/">Bundles</a>
+                            </li>
+                            <li class="section-nav-item">
+                                <a href="https://whosonfirst.mapzen.com/placetypes/">Placetypes</a>
+                            </li>
+                        </ul>
+                        <div class='section-nav-dropdown'>&#9698;</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class='container documentation-container'>
+            <div class='row'>
+                <!--
+                <div class="col-xs-12 col-md-3">
+                    <div class="toc toc-sub-left" role="directory">
+                        <ul class="nav toc-nav">
+                            <li class="toc-top-level">
+                                <a href="https://whosonfirst.mapzen.com">Home</a>
+                            </li>
+                            <li class="toc-top-level">
+                                <a href="https://whosonfirst.mapzen.com/bundles/">Bundles</a>
+                                <ul class="toc-subnav">
+                                    <li><a href="#placetypes">Placetypes</a></li>
+                                    <li><a href="#working-with">Working with Bundles</a></li>
+                                </ul>
+                            </li>
+                            <li class="toc-top-level">
+                                <a href="https://whosonfirst.mapzen.com/data/">Data</a>
+                                <ul class="toc-subnav">
+                                    <li><a href="#theory-wrapper">tl;dr</a></li>
+                                    <li><a href="#what-mean">But... what does it mean?</a></li>
+                                    <li><a href="#gory-details">The gory details</a></li>
+                                    <li><a href="#know-knows">Known knowns</a></li>
+                                </ul>
+                            </li>
+                            <li class="toc-top-level">
+                                <a href="https://whosonfirst.mapzen.com/interns/">Internships 2017</a>
+                            </li>
+                            <li class="toc-top-level toc-current">
+                                <a href="#">Maxmind Databases (mmdb)</a>
+                                <ul class="toc-subnav toc-expand">
+                                    <li><a href="#geolite2">GeoLite2 Databases</a></li>
+                                    <li><a href="#code">Code</a></li>
+                                </ul>
+                            </li>
+                            <li class="toc-top-level">
+                                <a href="https://whosonfirst.mapzen.com/placetypes/">Placetypes</a>
+                            </li>
+                            <!--
+                            <li class="toc-top-level">
+                                <a href="https://whosonfirst.mapzen.com/theory/">Theory</a>
+                                <ul class="toc-subnav">
+                                    <li><a href="#theory-2015">2015</a></li>
+                                    <li><a href="#theory-2016">2016</a></li>
+                                    <li><a href="#theory-2017">2017</a></li>
+                                </ul>
+                            </li>
+                            <li class="toc-top-level">
+                                <a href="https://whosonfirst.mapzen.com/vagrant/">Vagrant</a>
+                                <ul class="toc-subnav">
+                                    <li><a href="#spelunker">spelunker.box</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                -->
+                <div class='col-xs-12 col-md-10 col-md-offset-1 static-content'>
+                    <h1 id="whos-on-first" class="center-subject subpage-header-two">Who's On First &#x2014; Maxmind Databases (mmdb)</h1>
+                    <p>MaxMind databases (of Who's On First data) are still considered <em>experimental</em> and a work in progress. Specifically not all of the data has been conflated (assigned a Who's On First ID) nor have we settled on how to automate releases yet.</p>
+                    <h2 id="geolite2">GeoLite2 databases</h2>
+                    <h3 id="whosonfirst-maxmind-city">whosonfirst-maxmind-city <small>(20160113)</small></h3>
+                    <p>This is the standard MaxMind GeoLite2 city database with Who's On First IDs appended based on <a href="https://github.com/whosonfirst/whosonfirst-data/blob/master/meta/wof-concordances-latest.csv">their concordance with the Geonames ID</a> already included in the database. We have concordances for <em>most</em> but definitely not all the Geonames places referenced by MaxMind, as you can see with <a href="https://whosonfirst.mapzen.com/spelunker/id/102191575/">North America</a> in the example below. Also not every placetype (specifically subdivisions) in the city database has been processed yet.</p>
+                    <pre># query for 8.8.8.8<br><br>{<div class="pre-block">"city": {<div class="pre-block">"geoname_id": 5375480,<br>"names": {<div class="pre-block">"de": "Mountain View",<br>"en": "Mountain View",<br>"fr": "Mountain View",<br>"ja": "\u30de\u30a6\u30f3\u30c6\u30f3\u30d3\u30e5\u30fc",<br>"ru": "\u041c\u0430\u0443\u043d\u0442\u0438\u043d-\u0412\u044c\u044e",<br>"zh-CN": "\u8292\u5ef7\u7ef4\u5c24"</div>},<br>"whosonfirst_id": 85922355</div>},<br>"continent": {<div class="pre-block">"code": "NA",<br>"geoname_id": 6255149,<br>"names": {<div class="pre-block">"de": "Nordamerika",<br>"en": "North America",<br>"es": "Norteam\u00e9rica",<br>"fr": "Am\u00e9rique du Nord",<br>"ja": "\u5317\u30a2\u30e1\u30ea\u30ab",<br>"pt-BR": "Am\u00e9rica do Norte",<br>"ru": "\u0421\u0435\u0432\u0435\u0440\u043d\u0430\u044f \u0410\u043c\u0435\u0440\u0438\u043a\u0430",<br>"zh-CN": "\u5317\u7f8e\u6d32"</div>},<br>"whosonfirst_id": 0</div>},<br>"country": {<div class="pre-block">"geoname_id": 6252001,<br>"iso_code": "US",<br>"names": {<div class="pre-block">"de": "USA",<br>"en": "United States",<br>"es": "Estados Unidos",<br>"fr": "\u00c9tats-Unis",<br>"ja": "\u30a2\u30e1\u30ea\u30ab\u5408\u8846\u56fd",<br>"pt-BR": "Estados Unidos",<br>"ru": "\u0421\u0428\u0410",<br>"zh-CN": "\u7f8e\u56fd"</div>},<br>"whosonfirst_id": 85633793</div>},<br>"location": {<div class="pre-block">"latitude": 37.3845,<br>"longitude": -122.0881,<br>"metro_code": "807",<br>"time_zone": "America/Los_Angeles"</div>},<br>"postal": {<div class="pre-block">"code": "94040"</div>},<br>"registered_country": {<div class="pre-block">"geoname_id": 6252001,<br>"iso_code": "US",<br>"names": {<div class="pre-block">"de": "USA",<br>"en": "United States",<br>"es": "Estados Unidos",<br>"fr": "\u00c9tats-Unis",<br>"ja": "\u30a2\u30e1\u30ea\u30ab\u5408\u8846\u56fd",<br>"pt-BR": "Estados Unidos",<br>"ru": "\u0421\u0428\u0410",<br>"zh-CN": "\u7f8e\u56fd"</div>},<br>"whosonfirst_id": 85633793</div>},<br>"subdivisions": [{<div class="pre-block">"geoname_id": 5332921,<br>"iso_code": "CA",<br>"names": {<div class="pre-block">"de": "Kalifornien",<br>"en": "California",<br>"es": "California",<br>"fr": "Californie",<br>"ja": "\u30ab\u30ea\u30d5\u30a9\u30eb\u30cb\u30a2\u5dde",<br>"pt-BR": "Calif\u00f3rnia",<br>"ru": "\u041a\u0430\u043b\u0438\u0444\u043e\u0440\u043d\u0438\u044f",<br>"zh-CN": "\u52a0\u5229\u798f\u5c3c\u4e9a\u5dde"</div>}</div>}]</div>}
+                    </pre>
+                    <div class="p-2 background-light link-within">
+                        <a href="http://whosonfirst.mapzen.com.s3.amazonaws.com/mmdb/whosonfirst-maxmind-city-latest.mmdb.gz" class="link-highlight">whosonfirst-maxmind-city-latest.mmdb.gz</a> <small>(58MB)</small>
+                    </div>
+                    <h3 id="whosonfirst-city">whosonfirst-city <small>(20160111)</small></h3>
+                    <p>This is a modified version of the standard MaxMind GeoLite2 city database where each record has been <a href="https://github.com/whosonfirst/go-whosonfirst-pip/">reverse-geocoded</a> to include Who's On First hierarchy information, label centroids and bounding boxes. <span style="font-style:italic;"><code>mm_latitude</code> and <code>mm_longitude</code> are the original coordinates included in the GeoLite2 city database.</span></p>
+                    <pre># query for 8.8.8.8<br><br>{<div class="pre-block">"continent_id": 102191575,<br>"country_id": 85633793,"disputed_id": 0,<br>"geom_bbox": "-122.117724,37.354068,-122.044473,37.469887",<br>"geom_latitude": 37.400493,<br>"geom_longitude": -122.079536,<br>"geoname_id": 5375480,<br>"lbl_latitude": 37.413921,<br>"lbl_longitude": -122.085078,<br>"localadmin_id": 0,<br>"locality_id": 85922355,<br>"macroregion_id": 0,<br>"mm_latitude": 37.386,<br>"mm_longitude": -122.0838,<br>"name": "Mountain View",<br>"placetype": "locality",<br>"region_id": 85688637,<br>"whosonfirst_id": 85922355</div>}
+                    </pre>
+                    <div class="p-2 background-light link-within">
+                        <a href="http://whosonfirst.mapzen.com.s3.amazonaws.com/mmdb/whosonfirst-city-latest.mmdb.gz" class="link-highlight">whosonfirst-city-latest.mmdb.gz</a> <small>(16MB)</small>
+                    </div>
+                    <h2 id="code">Code</h2>
+                    <div class="p-2 background-light link-within">
+                        <a href="https://github.com/whosonfirst/p5-Whosonfirst-MaxMind-Writer" class="link-highlight">p5-Whosonfirst-MaxMind-Writer</a> <small>(Perl)</small>
+                    </div>
+                    <div class="p-2 background-light link-within">
+                        <a href="https://github.com/whosonfirst/go-whosonfirst-iplookup" class="link-highlight">go-whosonfirst-iplookup</a> <small>(Go)</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <footer>
+        <div class='headroom-large custom-footer'>
+            <div class='container'>
+                <div class='row'>
+                    <div class='col-xs-12 text-left custom-footer'>
+                        <p>Who's On First is a <a href='https://mapzen.com/' class="custom-footer-actual-link">Mapzen</a> gig</p>
+                        <p class="custom-footer-link custom-footer-first-link "><i class='fa fa-lg fa-fw fa-twitter'></i>Follow <a href='https://twitter.com/alloftheplaces/' class="custom-footer-actual-link">@alloftheplaces</a> on Twitter</p>
+                        <p class="custom-footer-link"><i class='fa fa-lg fa-fw fa-github'></i>Check out our <a href='https://github.com/mapzen/' class="custom-footer-actual-link">whosonfirst</a> and <a href='https://github.com/whosonfirst-data/' class="custom-footer-actual-link">whosonfirst-data</a> organizations on Github</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="../javascript/mapzen.whosonfirst.api.js"></script>
+    <script src='../javascript/mapzen-styleguide.js'></script>
+    <!--<script src='https://mapzen.com/common/styleguide/scripts/mapzen-styleguide.min.js'></script>-->
+    <script src='https://code.jquery.com/jquery-2.2.0.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.0/jquery.scrollTo.min.js'></script>
 </html>
