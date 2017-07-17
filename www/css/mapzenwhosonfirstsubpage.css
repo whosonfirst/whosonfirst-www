@@ -180,3 +180,10 @@ pre {
     -moz-columns: 1;
     margin-bottom: 2em;
 }
+
+.pre-block {
+    padding: 0 20px;
+    margin: 0;
+    font-size: inherit;
+    border-left: none;
+}

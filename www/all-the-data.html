@@ -78,9 +78,6 @@
                                 <a href="https://whosonfirst.mapzen.com/bundles/">Bundles</a>
                             </li>
                             <li class="section-nav-item">
-                                <a href="https://whosonfirst.mapzen.com/mmdb/">mmdb</a>
-                            </li>
-                            <li class="section-nav-item">
                                 <a href="https://whosonfirst.mapzen.com/placetypes/">Placetypes</a>
                             </li>
                         </ul>
@@ -206,32 +203,13 @@
                     <h4>Git and large files</h4>
                     <p>We have started using <a href="https://github.com/github/git-lfs">git-lfs</a> for managing large files in the <code>whosonfirst-data</code> repository. For example, the record for New Zealand which contains a <em>very very very very very</em> detailed coastline geometry exceeds the 100MB filesize limit for any individual file on GitHub.</p>
                     <p>A full discussion of how to use git-lfs is outside the scope of this document but you can see the current list of files being managed by invoking the <code>git lfs ls-files</code> command, like this:</p>
-                    <pre>
-                    $> cd /usr/local/mapzen/whosonfirst-data
-                    $> git lfs ls-files
-                    65ccc4825e * data/856/333/45/85633345.geojson
+                    <pre>$> cd /usr/local/mapzen/whosonfirst-data<br>$> git lfs ls-files65ccc4825e * data/856/333/45/85633345.geojson
                     </pre>
                     <p>When you clone the <code>whosonfirst-data</code> repo the files (managed by git-lfs) only contain metadata, like this:</p>
-                    <pre>
-                    $> cat data/856/333/45/85633345.geojson
-                    version https://git-lfs.github.com/spec/v1
-                    oid sha256:65ccc4825e65c30f00fcebf1f3d57f4385f18a47e3c5e524114a67050186ae48
-                    size 71879893
+                    <pre>$> cat data/856/333/45/85633345.geojson<br>version https://git-lfs.github.com/spec/v1<br>oid sha256:65ccc4825e65c30f00fcebf1f3d57f4385f18a47e3c5e524114a67050186ae48<br>size 71879893
                     </pre>
                     <p>In order to retrieve the contents of the file itself you will need to run <code>git lfs pull</code>, like this: </p>
-                    <pre>
-                    $> git lfs pull
-                    Fetching master
-                    (1 of 1 files) 68.54 MB / 68.55 MB
-                    $> cat data/856/333/45/85633345.geojson
-                    {
-                    "id": 85633345,
-                    "type": "Feature",
-                    "properties": {
-                    "edtf:cessation":"u",
-                    "edtf:inception":"u",
-                    "geom:area":29.187792061074827,
-                    "geom:bbox":"166.426148,-47.289992,178.577244,-33
+                    <pre>$> git lfs pull<br>Fetching master<br>(1 of 1 files) 68.54 MB / 68.55 MB<br><br>$> cat data/856/333/45/85633345.geojson<br>{<br><div class="pre-block">"id": 85633345,<br>"type": "Feature",<br>"properties": {<div class="pre-block">"edtf:cessation":"u",<br>"edtf:inception":"u",<br>"geom:area":29.187792061074827,<br>"geom:bbox":"166.426148,-47.289992,178.577244,-33</div></div>
                     </pre>
                     <p>Depending on when you read this we may have already pre-emptively moved <a href="https://github.com/whosonfirst/whosonfirst-data/blob/master/meta/wof-country-latest.csv">all the records for countries</a> in to <code>git-lfs</code>. If the goal is to have details <q>ground truth</q> geometries for every place in the Who's On First gazetteer it stands to reason that most if not all countries will bump up against GitHub's existing file size limits.</p>
                     <a name="knownknowns"></a>

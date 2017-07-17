@@ -66,9 +66,6 @@
                                 <a href="https://whosonfirst.mapzen.com/bundles/">Bundles</a>
                             </li>
                             <li class="section-nav-item">
-                                <a href="https://whosonfirst.mapzen.com/mmdb/">mmdb</a>
-                            </li>
-                            <li class="section-nav-item">
                                 <a href="https://whosonfirst.mapzen.com/placetypes/">Placetypes</a>
                             </li>
                         </ul>
@@ -421,45 +418,7 @@
                     <p>Bundles all have the same directory structure: A single <code>data</code> directory and a <code>wof-PLACETYPE-OR-LATEST-BUNDLE-NAME-latest.csv</code> comma-separated "meta" file. It is left up to individual users of the data to decide how and whether data from multiple bundles should be merged.</p>
                     <p>Here is a working example script that will download all the bundles for continents, countries, regions, localities and neighbourhoods and merge the records from each in to a single <code>data</code> folder, located in the directory that the script is run from.</p>
                     <p><small>Please note that there is little to no error-checking in the example below so you should adjust this to taste. Also it assumes that you are comfortable working on the command-line and that your computer has copies of the <code>tar</code>, <code>curl</code> and <code>rsync</code> utilities pre-installed (this is true for all Linux and OS X computers).</small></p>
-                    <pre>
-                    #!/bin/sh
-
-                    PLACETYPES='continent country region locality neighbourhood'
-                    DATA="data"
-
-                    if [ ! -d ${DATA} ]
-                    then
-                    mkdir ${DATA}
-                    fi
-
-                    for PT in ${PLACETYPES}
-                    do
-
-                    BUNDLE="wof-${PT}-latest-bundle"
-                    COMPRESSED="${BUNDLE}.tar.bz2"
-
-                    if [ -e ${COMPRESSED} ]
-                    then
-                        echo "remove ${COMPRESSED}"
-                        rm -i ${COMPRESSED}
-                    fi
-
-                    if [ -d ${BUNDLE} ]
-                    then
-                        echo "remove ${BUNDLE}"
-                        rm -ri ${BUNDLE}
-                    fi
-
-                    echo "fetch ${COMPRESSED}"
-                    curl -s -o ${COMPRESSED} https://whosonfirst.mapzen.com/bundles/${COMPRESSED}
-
-                    echo "expand ${COMPRESSED}"
-                    tar -xvjf ${COMPRESSED}
-
-                    echo "sync ${BUNDLE}"
-                    rsync -av ${BUNDLE}/data/ ${DATA}/
-
-                    done
+                    <pre>#!/bin/sh<br>PLACETYPES='continent country region locality neighbourhood'<br>DATA="data"<br><br>if [ ! -d ${DATA} ]<br>then<div class="pre-block">mkdir ${DATA}</div>fi<br><br>for PT in ${PLACETYPES}<br>do<div class="pre-block">BUNDLE="wof-${PT}-latest-bundle"<br>COMPRESSED="${BUNDLE}.tar.bz2"<br><br>if [ -e ${COMPRESSED} ]<br>then<div class="pre-block">echo "remove ${COMPRESSED}"<br>rm -i ${COMPRESSED}</div>fi<br><br>if [ -d ${BUNDLE} ]<br>then<div class="pre-block">echo "remove ${BUNDLE}"<br>rm -ri ${BUNDLE}</div>fi<br><br>echo "fetch ${COMPRESSED}"<br>curl -s -o ${COMPRESSED} https://whosonfirst.mapzen.com/bundles/${COMPRESSED}<br><br>echo "expand ${COMPRESSED}"<br>tar -xvjf ${COMPRESSED}<br><br>echo "sync ${BUNDLE}"<br>rsync -av ${BUNDLE}/data/ ${DATA}/<br><br>done</div>
                     </pre>
                 </div>
             </div>

@@ -65,9 +65,6 @@
                                 <a href="https://whosonfirst.mapzen.com/bundles/">Bundles</a>
                             </li>
                             <li class="section-nav-item">
-                                <a href="https://whosonfirst.mapzen.com/mmdb/">mmdb</a>
-                            </li>
-                            <li class="section-nav-item">
                                 <a href="https://whosonfirst.mapzen.com/placetypes/">Placetypes</a>
                             </li>
                         </ul>
@@ -153,32 +150,13 @@
                     </pre>
                     <p><code>spelunker.box</code> is a nearly 4GB file so depending on how fast your internet connection is you may want to get a cup of coffee while you wait.</p>
                     <p>If you're already familiar with Vagrant you can initialize a new virtual machine, point it at your new <code>spelunker.box</code> and be off to the races. If not you may want to download the starter <code>Vagrantfile</code> that we've provided:</p>
-                    <pre>
-                    $> mkdir spelunker
-                    $> curl -o Vagrantfile https://whosonfirst.mapzen.com/vagrant/spelunker/Vagrantfile.txt
+                    <pre>$> mkdir spelunker<br>$> curl -o Vagrantfile https://whosonfirst.mapzen.com/vagrant/spelunker/Vagrantfile.txt
                     </pre>
                     <p>A "Vagrantfile" is a configuration file that is created when you initialize a new virtual machine. It contains pointers to and instructions for Vagrant that tell it how to create a new virtual machine. For example our starter file tells Vagrant to build a new machine using the <code>spelunker.box</code> image, to forward HTTPS connections to your local machine on port <code>8994</code>, how much memory to use and to make sure that all the software on the machine is up to date:</p>
-                    <pre>
-                    $> cat Vagrantfile 
-                    Vagrant.configure(2) do |config|
-
-                    config.vm.box = "spelunker.box"
-
-                    config.vm.network "forwarded_port", guest: 443, host: 8994
-
-                    config.vm.provider "virtualbox" do |vb|
-                    vb.memory = "4096"
-                    end
-
-                    config.vm.provision "shell", inline: <<-SHELL
-                    sudo apt-get update
-                    sudo apt-get upgrade -y
-                    SHELL
-                    end
+                    <pre>$> cat Vagrantfile<br>Vagrant.configure(2) do |config|<div class="pre-block">config.vm.box = "spelunker.box"<br><br>config.vm.network "forwarded_port", guest: 443, host: 8994<br><br>config.vm.provider "virtualbox" do |vb|<div class="pre-block">vb.memory = "4096"</div>end<br><br>config.vm.provision "shell", inline: <<-SHELL<div class="pre-block">sudo apt-get update<br>sudo apt-get upgrade -y</div>SHELL</div>end
                     </pre>
                     <p>Finally you are ready to tell Vagrant to spin up your new machine. You do this by invoking the <code>up</code> command from the command-line:</p>
-                    <pre>
-                    $> vagrant up
+                    <pre>$> vagrant up
                     </pre>
                     <p>Again, depending on your computer and your internet connection when Vagrant finishes everything it is doing you should have a working copy of the Who's On First <a href="https://whosonfirst.mapzen.com/spelunker/">spelunker</a> application running locally on your computer and available for browsing at <code>https://localhost:8994/</code>.</p>
                     <h4>One more thing &#8212; and it's a bit fiddly but also important</h4>

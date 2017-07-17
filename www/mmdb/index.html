@@ -64,9 +64,6 @@
                             <li class="section-nav-item">
                                 <a href="https://whosonfirst.mapzen.com/bundles/">Bundles</a>
                             </li>
-                            <li class="section-nav-item active">
-                                <a href="https://whosonfirst.mapzen.com/mmdb/">mmdb</a>
-                            </li>
                             <li class="section-nav-item">
                                 <a href="https://whosonfirst.mapzen.com/placetypes/">Placetypes</a>
                             </li>
@@ -139,120 +136,14 @@
                     <h2 id="geolite2">GeoLite2 databases</h2>
                     <h3 id="whosonfirst-maxmind-city">whosonfirst-maxmind-city <small>(20160113)</small></h3>
                     <p>This is the standard MaxMind GeoLite2 city database with Who's On First IDs appended based on <a href="https://github.com/whosonfirst/whosonfirst-data/blob/master/meta/wof-concordances-latest.csv">their concordance with the Geonames ID</a> already included in the database. We have concordances for <em>most</em> but definitely not all the Geonames places referenced by MaxMind, as you can see with <a href="https://whosonfirst.mapzen.com/spelunker/id/102191575/">North America</a> in the example below. Also not every placetype (specifically subdivisions) in the city database has been processed yet.</p>
-                    <pre>
-                    # query for 8.8.8.8
-
-                    {
-                        "city": {
-                            "geoname_id": 5375480,
-                            "names": {
-                                "de": "Mountain View",
-                                "en": "Mountain View",
-                                "fr": "Mountain View",
-                                "ja": "\u30de\u30a6\u30f3\u30c6\u30f3\u30d3\u30e5\u30fc",
-                                "ru": "\u041c\u0430\u0443\u043d\u0442\u0438\u043d-\u0412\u044c\u044e",
-                                "zh-CN": "\u8292\u5ef7\u7ef4\u5c24"
-                            },
-                            "whosonfirst_id": 85922355
-                        },
-                        "continent": {
-                            "code": "NA",
-                            "geoname_id": 6255149,
-                            "names": {
-                                "de": "Nordamerika",
-                                "en": "North America",
-                                "es": "Norteam\u00e9rica",
-                                "fr": "Am\u00e9rique du Nord",
-                                "ja": "\u5317\u30a2\u30e1\u30ea\u30ab",
-                                "pt-BR": "Am\u00e9rica do Norte",
-                                "ru": "\u0421\u0435\u0432\u0435\u0440\u043d\u0430\u044f \u0410\u043c\u0435\u0440\u0438\u043a\u0430",
-                                "zh-CN": "\u5317\u7f8e\u6d32"
-                            },
-                            "whosonfirst_id": 0
-                        },
-                        "country": {
-                            "geoname_id": 6252001,
-                            "iso_code": "US",
-                            "names": {
-                                "de": "USA",
-                                "en": "United States",
-                                "es": "Estados Unidos",
-                                "fr": "\u00c9tats-Unis",
-                                "ja": "\u30a2\u30e1\u30ea\u30ab\u5408\u8846\u56fd",
-                                "pt-BR": "Estados Unidos",
-                                "ru": "\u0421\u0428\u0410",
-                                "zh-CN": "\u7f8e\u56fd"
-                            },
-                            "whosonfirst_id": 85633793
-                        },
-                        "location": {
-                            "latitude": 37.3845,
-                            "longitude": -122.0881,
-                            "metro_code": "807",
-                            "time_zone": "America/Los_Angeles"
-                        },
-                        "postal": {
-                            "code": "94040"
-                        },
-                        "registered_country": {
-                            "geoname_id": 6252001,
-                            "iso_code": "US",
-                            "names": {
-                                "de": "USA",
-                                "en": "United States",
-                                "es": "Estados Unidos",
-                                "fr": "\u00c9tats-Unis",
-                                "ja": "\u30a2\u30e1\u30ea\u30ab\u5408\u8846\u56fd",
-                                "pt-BR": "Estados Unidos",
-                                "ru": "\u0421\u0428\u0410",
-                                "zh-CN": "\u7f8e\u56fd"
-                            },
-                            "whosonfirst_id": 85633793
-                        },
-                        "subdivisions": [{
-                            "geoname_id": 5332921,
-                            "iso_code": "CA",
-                            "names": {
-                                "de": "Kalifornien",
-                                "en": "California",
-                                "es": "California",
-                                "fr": "Californie",
-                                "ja": "\u30ab\u30ea\u30d5\u30a9\u30eb\u30cb\u30a2\u5dde",
-                                "pt-BR": "Calif\u00f3rnia",
-                                "ru": "\u041a\u0430\u043b\u0438\u0444\u043e\u0440\u043d\u0438\u044f",
-                                "zh-CN": "\u52a0\u5229\u798f\u5c3c\u4e9a\u5dde"
-                            }
-                        }]
-                    }
+                    <pre># query for 8.8.8.8<br><br>{<div class="pre-block">"city": {<div class="pre-block">"geoname_id": 5375480,<br>"names": {<div class="pre-block">"de": "Mountain View",<br>"en": "Mountain View",<br>"fr": "Mountain View",<br>"ja": "\u30de\u30a6\u30f3\u30c6\u30f3\u30d3\u30e5\u30fc",<br>"ru": "\u041c\u0430\u0443\u043d\u0442\u0438\u043d-\u0412\u044c\u044e",<br>"zh-CN": "\u8292\u5ef7\u7ef4\u5c24"</div>},<br>"whosonfirst_id": 85922355</div>},<br>"continent": {<div class="pre-block">"code": "NA",<br>"geoname_id": 6255149,<br>"names": {<div class="pre-block">"de": "Nordamerika",<br>"en": "North America",<br>"es": "Norteam\u00e9rica",<br>"fr": "Am\u00e9rique du Nord",<br>"ja": "\u5317\u30a2\u30e1\u30ea\u30ab",<br>"pt-BR": "Am\u00e9rica do Norte",<br>"ru": "\u0421\u0435\u0432\u0435\u0440\u043d\u0430\u044f \u0410\u043c\u0435\u0440\u0438\u043a\u0430",<br>"zh-CN": "\u5317\u7f8e\u6d32"</div>},<br>"whosonfirst_id": 0</div>},<br>"country": {<div class="pre-block">"geoname_id": 6252001,<br>"iso_code": "US",<br>"names": {<div class="pre-block">"de": "USA",<br>"en": "United States",<br>"es": "Estados Unidos",<br>"fr": "\u00c9tats-Unis",<br>"ja": "\u30a2\u30e1\u30ea\u30ab\u5408\u8846\u56fd",<br>"pt-BR": "Estados Unidos",<br>"ru": "\u0421\u0428\u0410",<br>"zh-CN": "\u7f8e\u56fd"</div>},<br>"whosonfirst_id": 85633793</div>},<br>"location": {<div class="pre-block">"latitude": 37.3845,<br>"longitude": -122.0881,<br>"metro_code": "807",<br>"time_zone": "America/Los_Angeles"</div>},<br>"postal": {<div class="pre-block">"code": "94040"</div>},<br>"registered_country": {<div class="pre-block">"geoname_id": 6252001,<br>"iso_code": "US",<br>"names": {<div class="pre-block">"de": "USA",<br>"en": "United States",<br>"es": "Estados Unidos",<br>"fr": "\u00c9tats-Unis",<br>"ja": "\u30a2\u30e1\u30ea\u30ab\u5408\u8846\u56fd",<br>"pt-BR": "Estados Unidos",<br>"ru": "\u0421\u0428\u0410",<br>"zh-CN": "\u7f8e\u56fd"</div>},<br>"whosonfirst_id": 85633793</div>},<br>"subdivisions": [{<div class="pre-block">"geoname_id": 5332921,<br>"iso_code": "CA",<br>"names": {<div class="pre-block">"de": "Kalifornien",<br>"en": "California",<br>"es": "California",<br>"fr": "Californie",<br>"ja": "\u30ab\u30ea\u30d5\u30a9\u30eb\u30cb\u30a2\u5dde",<br>"pt-BR": "Calif\u00f3rnia",<br>"ru": "\u041a\u0430\u043b\u0438\u0444\u043e\u0440\u043d\u0438\u044f",<br>"zh-CN": "\u52a0\u5229\u798f\u5c3c\u4e9a\u5dde"</div>}</div>}]</div>}
                     </pre>
                     <div class="p-2 background-light link-within">
                         <a href="http://whosonfirst.mapzen.com.s3.amazonaws.com/mmdb/whosonfirst-maxmind-city-latest.mmdb.gz" class="link-highlight">whosonfirst-maxmind-city-latest.mmdb.gz</a> <small>(58MB)</small>
                     </div>
                     <h3 id="whosonfirst-city">whosonfirst-city <small>(20160111)</small></h3>
                     <p>This is a modified version of the standard MaxMind GeoLite2 city database where each record has been <a href="https://github.com/whosonfirst/go-whosonfirst-pip/">reverse-geocoded</a> to include Who's On First hierarchy information, label centroids and bounding boxes. <span style="font-style:italic;"><code>mm_latitude</code> and <code>mm_longitude</code> are the original coordinates included in the GeoLite2 city database.</span></p>
-                    <pre>
-                    # query for 8.8.8.8
-                        
-                    {
-                        "continent_id": 102191575,
-                        "country_id": 85633793,
-                        "disputed_id": 0,
-                        "geom_bbox": "-122.117724,37.354068,-122.044473,37.469887",
-                        "geom_latitude": 37.400493,
-                        "geom_longitude": -122.079536,
-                        "geoname_id": 5375480,
-                        "lbl_latitude": 37.413921,
-                        "lbl_longitude": -122.085078,
-                        "localadmin_id": 0,
-                        "locality_id": 85922355,
-                        "macroregion_id": 0,
-                        "mm_latitude": 37.386,
-                        "mm_longitude": -122.0838,
-                        "name": "Mountain View",
-                        "placetype": "locality",
-                        "region_id": 85688637,
-                        "whosonfirst_id": 85922355
-                    }
+                    <pre># query for 8.8.8.8<br><br>{<div class="pre-block">"continent_id": 102191575,<br>"country_id": 85633793,"disputed_id": 0,<br>"geom_bbox": "-122.117724,37.354068,-122.044473,37.469887",<br>"geom_latitude": 37.400493,<br>"geom_longitude": -122.079536,<br>"geoname_id": 5375480,<br>"lbl_latitude": 37.413921,<br>"lbl_longitude": -122.085078,<br>"localadmin_id": 0,<br>"locality_id": 85922355,<br>"macroregion_id": 0,<br>"mm_latitude": 37.386,<br>"mm_longitude": -122.0838,<br>"name": "Mountain View",<br>"placetype": "locality",<br>"region_id": 85688637,<br>"whosonfirst_id": 85922355</div>}
                     </pre>
                     <div class="p-2 background-light link-within">
                         <a href="http://whosonfirst.mapzen.com.s3.amazonaws.com/mmdb/whosonfirst-city-latest.mmdb.gz" class="link-highlight">whosonfirst-city-latest.mmdb.gz</a> <small>(16MB)</small>
