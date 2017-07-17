@@ -1,31 +1,134 @@
 <?xml version="1.0"?>
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Who's On First &#x2014; Placetypes</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Who's On First &#x2014; Placetypes</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name='description' content="Who's on First is a gazetteer of places.">
+        <link rel='apple-touch-icon' href='https://mapzen.com/common/styleguide/images/favicons/apple-touch-icon.png' sizes='180x180'>
+        <link rel='icon' type='image/png' href='https://mapzen.com/common/styleguide/images/favicons/favicon-16x16.png' sizes='16x16'>
+        <link rel='icon' type='image/png' href='https://mapzen.com/common/styleguide/images/favicons/favicon-32x32.png' sizes='32x32'>
+        <link rel='manifest' href='https://mapzen.com/common/styleguide/images/favicons/manifest.json'>
+        <link rel='mask-icon' href='https://mapzen.com/common/styleguide/images/favicons/safari-pinned-tab.svg' color='#2C1E3F'>
 
-  <link rel="stylesheet" type="text/css" href="../css/mapzen.whosonfirst.www.bundle.min.css"/>
-  <script src="../javascript/mapzen.whosonfirst.www.bundle.min.js"></script>  
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="../css/mapzen.whosonfirst.www.bundle.min.css"/>
+        <link rel="stylesheet" href="https://mapzen.com/common/styleguide/styles/blog.css">
+        <link rel="stylesheet" href="https://mapzen.com/js/mapzen.css">
+        <link rel="stylesheet" href="../css/mapzenwhosonfirstsubpage.css">
+        <script src="../javascript/mapzen.whosonfirst.www.bundle.min.js"></script>
+    </head>
+    <body>
+        <nav class='navbar-default navbar-fixed-top custom-navbar no-nav' role='navigation'>
+            <!--
+            <div class='container'>
+                <div class='navbar-header'>
+                    <button type='button' class='navbar-toggle collapsed' data-toggle='collapse' data-target='#navbar-menu'>
+                        <span class='sr-only'>Toggle navigation</span>
+                        <span class='icon-bar top-bar'></span>
+                        <span class='icon-bar middle-bar'></span>
+                        <span class='icon-bar bottom-bar'></span>
+                    </button>
+                    <a class="navbar-brand custom-navbar-type custom-navbar-header" href="#">Who's On First</a>
+                </div>
+            <!-- new nav bar showing user's login status
+                <div class='collapse navbar-collapse' id='navbar-menu'>
+                    <ul class='nav navbar-nav navbar-right'>
+                        <li class='inactive'><a href='https://whosonfirst.mapzen.com/theory/' class="custom-navbar-type">Theory</a></li>
+                        <li class='inactive'><a href='https://whosonfirst.mapzen.com/data/' class="custom-navbar-type">Data</a></li>
+                    </ul>
+                    <!--
+                    <ul class='nav navbar-nav navbar-right'>
+                        <li class="inactive dropdown"><a id='sign-in' href='/developers/sign_in'> </a></li>
+                        <li class="inactive"><a id='sign-up' href='/developers/sign_up'> </a></li>
+                    </ul>
+                </div>
+            </div>
+            -->
+        </nav>
+        <div class='container documentation-container'>
+            <div class='row'>
+                <div class="col-xs-12 col-md-3">
+                    <div class="toc toc-sub-left" role="directory">
+                        <ul class="nav toc-nav">
+                            <li class="toc-top-level">
+                                <a href="https://whosonfirst.mapzen.com">Home</a>
+                            </li>
+                            <li class="toc-top-level">
+                                <a href="https://whosonfirst.mapzen.com/bundles/">Bundles</a>
+                                <ul class="toc-subnav">
+                                    <li><a href="#placetypes">Placetypes</a></li>
+                                    <li><a href="#working-with">Working with Bundles</a></li>
+                                </ul>
+                            </li>
+                            <li class="toc-top-level">
+                                <a href="https://whosonfirst.mapzen.com/data/">Data</a>
+                                <ul class="toc-subnav">
+                                    <li><a href="#theory-wrapper">tl;dr</a></li>
+                                    <li><a href="#what-mean">But... what does it mean?</a></li>
+                                    <li><a href="#gory-details">The gory details</a></li>
+                                    <li><a href="#know-knows">Known knowns</a></li>
+                                </ul>
+                            </li>
+                            <li class="toc-top-level">
+                                <a href="https://whosonfirst.mapzen.com/interns/">Internships 2017</a>
+                            </li>
+                            <li class="toc-top-level">
+                                <a href="https://whosonfirst.mapzen.com/mmdb/">Maxmind Databases (mmdb)</a>
+                                <ul class="toc-subnav">
+                                    <li><a href="#geolite2">GeoLite2 Databases</a></li>
+                                    <li><a href="#code">Code</a></li>
+                                </ul>
+                            </li>
+                            <li class="toc-top-level toc-current">
+                                <a href="#">Placetypes</a>
+                            </li>
+                            <li class="toc-top-level">
+                                <a href="https://whosonfirst.mapzen.com/theory/">Theory</a>
+                                <ul class="toc-subnav">
+                                    <li><a href="#theory-2015">2015</a></li>
+                                    <li><a href="#theory-2016">2016</a></li>
+                                    <li><a href="#theory-2017">2017</a></li>
+                                </ul>
+                            </li>
+                            <li class="toc-top-level">
+                                <a href="https://whosonfirst.mapzen.com/vagrant/">Vagrant</a>
+                                <ul class="toc-subnav">
+                                    <li><a href="#spelunker">spelunker.box</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class='col-xs-12 col-md-9 static-content'>
+                    <h1 id="whos-on-first" class="center-subject subpage-header-two">Who's On First &#x2014; Placetypes</h1>
+                    <p>Here is a picture of the current list of placetypes in Who's On First. For complete details you should consult <a href="https://github.com/whosonfirst/whosonfirst-placetypes">the whosonfirst-placetypes documentation</a>.</p>
+                    <div style=" margin: 0 auto;margin-top:1.5em; margin-bottom:3em;" class="small-responsive-image">
+                        <img src="../images/placetypes-latest.png" style="border:solid thin; padding:1em; width: 100%; margin-left:0%; margin-right:0%" class="img-responsive"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <footer>
+        <div class='headroom-large custom-footer'>
+            <div class='container'>
+                <div class='row'>
+                    <div class='col-xs-12 text-left custom-footer'>
+                        <p>Who's On First is a Mapzen gig</p>
+                        <p class="custom-footer-link custom-footer-first-link "><i class='fa fa-lg fa-fw fa-twitter'></i>Follow <a href='https://twitter.com/alloftheplaces/' class="custom-footer-actual-link">@alloftheplaces</a> on Twitter</p>
+                        <p class="custom-footer-link"><i class='fa fa-lg fa-fw fa-github'></i>Check out our <a href='https://github.com/mapzen/' class="custom-footer-actual-link">whosonfirst</a> and <a href='https://github.com/whosonfirst-data/' class="custom-footer-actual-link">whosonfirst-data</a> organizations on Github</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
     
-</head>
-<body>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-8 col-md-offset-2">
-
-	<h1>Who's On First &#x2014; Placetypes</h1>
-
-	<p>Here is a picture of the current list of placetypes in Who's On First. For complete details you should consult <a href="https://github.com/whosonfirst/whosonfirst-placetypes">the whosonfirst-placetypes documentation</a>.</p>
-	
-	<div style="width: 642px; margin: 0 auto;margin-top:1.5em; margin-bottom:3em;">
-	  <img src="../images/placetypes-latest.png" style="border:solid thin; padding:1em;"/>
-	</div>
-
-      </div>
-    </div>
-  </div>
-
-</body>
+    <script src="../javascript/mapzen.whosonfirst.api.js"></script>
+    <script src='../javascript/mapzen-styleguide.js'></script>
+    <!--<script src='https://mapzen.com/common/styleguide/scripts/mapzen-styleguide.min.js'></script>-->
+    <script src='https://code.jquery.com/jquery-2.2.0.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.0/jquery.scrollTo.min.js'></script>
+</html>

@@ -1,103 +1,188 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Who's On First &#8212; Vagrant</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Who's On First &#8212; Vagrant</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name='description' content="Who's on First is a gazetteer of places.">
+        <link rel='apple-touch-icon' href='https://mapzen.com/common/styleguide/images/favicons/apple-touch-icon.png' sizes='180x180'>
+        <link rel='icon' type='image/png' href='https://mapzen.com/common/styleguide/images/favicons/favicon-16x16.png' sizes='16x16'>
+        <link rel='icon' type='image/png' href='https://mapzen.com/common/styleguide/images/favicons/favicon-32x32.png' sizes='32x32'>
+        <link rel='manifest' href='https://mapzen.com/common/styleguide/images/favicons/manifest.json'>
+        <link rel='mask-icon' href='https://mapzen.com/common/styleguide/images/favicons/safari-pinned-tab.svg' color='#2C1E3F'>
 
-  <script src="https://whosonfirst.mapzen.com/javascript/whosonfirst.www.js"></script>
-  <link rel="stylesheet" type="text/css" href="../css/mapzen.whosonfirst.min.css"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="../css/mapzen.whosonfirst.www.bundle.min.css"/>
+        <link rel="stylesheet" href="https://mapzen.com/common/styleguide/styles/blog.css">
+        <link rel="stylesheet" href="https://mapzen.com/js/mapzen.css">
+        <link rel="stylesheet" href="../css/mapzenwhosonfirstsubpage.css">
+        <script src="../javascript/mapzen.whosonfirst.www.bundle.min.js"></script> 
+    </head>
+    <body>
+        <nav class='navbar-default navbar-fixed-top custom-navbar no-nav' role='navigation'>
+            <!--
+            <div class='container'>
+                <div class='navbar-header'>
+                    <button type='button' class='navbar-toggle collapsed' data-toggle='collapse' data-target='#navbar-menu'>
+                        <span class='sr-only'>Toggle navigation</span>
+                        <span class='icon-bar top-bar'></span>
+                        <span class='icon-bar middle-bar'></span>
+                        <span class='icon-bar bottom-bar'></span>
+                    </button>
+                    <a class="navbar-brand custom-navbar-type custom-navbar-header" href="#">Who's On First</a>
+                </div>
+            <!-- new nav bar showing user's login status
+                <div class='collapse navbar-collapse' id='navbar-menu'>
+                    <ul class='nav navbar-nav navbar-right'>
+                        <li class='inactive'><a href='https://whosonfirst.mapzen.com/theory/' class="custom-navbar-type">Theory</a></li>
+                        <li class='inactive'><a href='https://whosonfirst.mapzen.com/data/' class="custom-navbar-type">Data</a></li>
+                    </ul>
+                    <!--
+                    <ul class='nav navbar-nav navbar-right'>
+                        <li class="inactive dropdown"><a id='sign-in' href='/developers/sign_in'> </a></li>
+                        <li class="inactive"><a id='sign-up' href='/developers/sign_up'> </a></li>
+                    </ul>
+                </div>
+            </div>
+            -->
+        </nav>
+        <div class='container documentation-container'>
+            <div class='row'>
+                <div class="col-xs-12 col-md-3">
+                    <div class="toc toc-sub-left" role="directory">
+                        <ul class="nav toc-nav">
+                            <li class="toc-top-level">
+                                <a href="https://whosonfirst.mapzen.com">Home</a>
+                            </li>
+                            <li class="toc-top-level">
+                                <a href="https://whosonfirst.mapzen.com/bundles/">Bundles</a>
+                                <ul class="toc-subnav">
+                                    <li><a href="#placetypes">Placetypes</a></li>
+                                    <li><a href="#working-with">Working with Bundles</a></li>
+                                </ul>
+                            </li>
+                            <li class="toc-top-level">
+                                <a href="https://whosonfirst.mapzen.com/data/">Data</a>
+                                <ul class="toc-subnav">
+                                    <li><a href="#theory-wrapper">tl;dr</a></li>
+                                    <li><a href="#what-mean">But... what does it mean?</a></li>
+                                    <li><a href="#gory-details">The gory details</a></li>
+                                    <li><a href="#know-knows">Known knowns</a></li>
+                                </ul>
+                            </li>
+                            <li class="toc-top-level">
+                                <a href="https://whosonfirst.mapzen.com/interns/">Internships 2017</a>
+                            </li>
+                            <li class="toc-top-level">
+                                <a href="https://whosonfirst.mapzen.com/mmdb/">Maxmind Databases (mmdb)</a>
+                                <ul class="toc-subnav">
+                                    <li><a href="#geolite2">GeoLite2 Databases</a></li>
+                                    <li><a href="#code">Code</a></li>
+                                </ul>
+                            </li>
+                            <li class="toc-top-level">
+                                <a href="https://whosonfirst.mapzen.com/placetypes/">Placetypes</a>
+                            </li>
+                            <li class="toc-top-level">
+                                <a href="https://whosonfirst.mapzen.com/theory/">Theory</a>
+                                <ul class="toc-subnav">
+                                    <li><a href="#theory-2015">2015</a></li>
+                                    <li><a href="#theory-2016">2016</a></li>
+                                    <li><a href="#theory-2017">2017</a></li>
+                                </ul>
+                            </li>
+                            <li class="toc-top-level toc-current">
+                                <a href="#">Vagrant</a>
+                                <ul class="toc-subnav toc-expand">
+                                    <li><a href="#spelunker">spelunker.box</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class='col-xs-12 col-md-9 static-content'>
+                    <h1 id="whos-on-first" class="center-subject subpage-header-two">Who's On First &#x2014; Vagrant</h1>
+                    <h2 id="spelunker" class="first-entry">spelunker.box</h2>
+                    <p><code>spelunker.box</code> is a <a href="https://www.vagrantup.com/">Vagrant virtual machine</a> with all the software to run the <a href="https://whosonfirst.mapzen.com/spelunker/">Who's On First spelunker application</a> locally and pre-loaded with common (as in <a href="https://github.com/whosonfirst/whosonfirst-placetypes#common-c">common placetypes)</a> Who's On First records.</p>
+                    <p><small>Translation: Not all of Who's On First is included. It's not that we don't care about all the other places, only that we are starting <q>small</q> and will figure out a way to include all the other places in time. Just not today.</small></p>
+                    <h3>The short version</h3>
+                    <div class="p-2 background-light link-within">
+                        <a href="https://whosonfirst.mapzen.com/vagrant/spelunker/spelunker.box">spelunker.box</a> <small>(<a href="https://whosonfirst.mapzen.com/vagrant/spelunker/spelunker.box.sha1.txt">SHA1</a>)</small>
+                    </div>
+                    <div class="p-2 background-light link-within">
+                        <a href="https://whosonfirst.mapzen.com/vagrant/spelunker/Vagrantfile.txt">Vagrantfile</a> <small>(.txt)</small>
+                    </div>
+                    <h3>The long version</h3>
+                    <p>The following assumes a basic familiarity doing work on your computer's command-line (or terminal) and with Vagrant, specifically. If Vagrant is still new and mysterious you should spend a little time <a href="https://www.vagrantup.com/docs/">with their documentation</a> before going any further. It's very well written.</p>
+                    <p>Okay, the first thing you'll need to do is add the <code>spelunker.box</code> to the list of virtual machine providers (or "boxes") that Vagrant knows about. Like this:</p>
+                    <pre>
+                    $> vagrant box add --checksum 85936ba7c6415f780adc5c4f1bef644881a92ef5 --checksum-type sha1 --name spelunker.box https://whosonfirst.mapzen.com/vagrant/spelunker/spelunker.box
+                    </pre>
+                    <p><code>spelunker.box</code> is a nearly 4GB file so depending on how fast your internet connection is you may want to get a cup of coffee while you wait.</p>
+                    <p>If you're already familiar with Vagrant you can initialize a new virtual machine, point it at your new <code>spelunker.box</code> and be off to the races. If not you may want to download the starter <code>Vagrantfile</code> that we've provided:</p>
+                    <pre>
+                    $> mkdir spelunker
+                    $> curl -o Vagrantfile https://whosonfirst.mapzen.com/vagrant/spelunker/Vagrantfile.txt
+                    </pre>
+                    <p>A "Vagrantfile" is a configuration file that is created when you initialize a new virtual machine. It contains pointers to and instructions for Vagrant that tell it how to create a new virtual machine. For example our starter file tells Vagrant to build a new machine using the <code>spelunker.box</code> image, to forward HTTPS connections to your local machine on port <code>8994</code>, how much memory to use and to make sure that all the software on the machine is up to date:</p>
+                    <pre>
+                    $> cat Vagrantfile 
+                    Vagrant.configure(2) do |config|
 
-</head>
-<body>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-8 col-md-offset-2">
+                    config.vm.box = "spelunker.box"
 
-   <h1>Who's On First &#8212; Vagrant</h1>
+                    config.vm.network "forwarded_port", guest: 443, host: 8994
 
-   <h2 id="spelunker">spelunker.box</h2>
+                    config.vm.provider "virtualbox" do |vb|
+                    vb.memory = "4096"
+                    end
 
-   <p><code>spelunker.box</code> is a <a href="https://www.vagrantup.com/">Vagrant virtual machine</a> with all the software to run the <a href="https://whosonfirst.mapzen.com/spelunker/">Who's On First spelunker application</a> locally and pre-loaded with common (as in <a href="https://github.com/whosonfirst/whosonfirst-placetypes#common-c">common placetypes)</a> Who's On First records.</p>
-
-   <p><small>Translation: Not all of Who's On First is included. It's not that we don't care about all the other places, only that we are starting <q>small</q> and will figure out a way to include all the other places in time. Just not today.</small></p>
-
-   <h3>The short version</h3>
-
-   <ul>
-     <li><a href="https://whosonfirst.mapzen.com/vagrant/spelunker/spelunker.box">spelunker.box</a> <small>(<a href="https://whosonfirst.mapzen.com/vagrant/spelunker/spelunker.box.sha1.txt">SHA1</a>)</small></li>
-     <li><a href="https://whosonfirst.mapzen.com/vagrant/spelunker/Vagrantfile.txt">Vagrantfile</a> <small>(.txt)</small></li>
-   </ul>
-
-   <h3>The long version</h3>
-
-   <p>The following assumes a basic familiarity doing work on your computer's command-line (or terminal) and with Vagrant, specifically. If Vagrant is still new and mysterious you should spend a little time <a href="https://www.vagrantup.com/docs/">with their documentation</a> before going any further. It's very well written.</p>
-
-   <p>Okay, the first thing you'll need to do is add the <code>spelunker.box</code> to the list of virtual machine providers (or "boxes") that Vagrant knows about. Like this:</p>
-
-   <pre>
-$> vagrant box add --checksum 85936ba7c6415f780adc5c4f1bef644881a92ef5 --checksum-type sha1 --name spelunker.box https://whosonfirst.mapzen.com/vagrant/spelunker/spelunker.box</pre>
-
-   <p><code>spelunker.box</code> is a nearly 4GB file so depending on how fast your internet connection is you may want to get a cup of coffee while you wait.</p>
-
-   <p>If you're already familiar with Vagrant you can initialize a new virtual machine, point it at your new <code>spelunker.box</code> and be off to the races. If not you may want to download the starter <code>Vagrantfile</code> that we've provided:</p>
-
-   <pre>
-$> mkdir spelunker
-$> curl -o Vagrantfile https://whosonfirst.mapzen.com/vagrant/spelunker/Vagrantfile.txt</pre>
-
-   <p>A "Vagrantfile" is a configuration file that is created when you initialize a new virtual machine. It contains pointers to and instructions for Vagrant that tell it how to create a new virtual machine. For example our starter file tells Vagrant to build a new machine using the <code>spelunker.box</code> image, to forward HTTPS connections to your local machine on port <code>8994</code>, how much memory to use and to make sure that all the software on the machine is up to date:</p>
-
-   <pre>
-$> cat Vagrantfile 
-Vagrant.configure(2) do |config|
-
-  config.vm.box = "spelunker.box"
-
-  config.vm.network "forwarded_port", guest: 443, host: 8994
-
-  config.vm.provider "virtualbox" do |vb|
-     vb.memory = "4096"
-  end
-
-  config.vm.provision "shell", inline: <<-SHELL
-      sudo apt-get update
-      sudo apt-get upgrade -y
-  SHELL
-end</pre>
-
-     <p>Finally you are ready to tell Vagrant to spin up your new machine. You do this by invoking the <code>up</code> command from the command-line:</p>
-
-     <pre>
-$> vagrant up</pre>
-
-      <p>Again, depending on your computer and your internet connection when Vagrant finishes everything it is doing you should have a working copy of the Who's On First <a href="https://whosonfirst.mapzen.com/spelunker/">spelunker</a> application running locally on your computer and available for browsing at <code>https://localhost:8994/</code>.</p>
-
-      <h4>One more thing &#8212; and it's a bit fiddly but also important</h4>
-
-   <p>The <code>spelunker.box</code> virtual machine runs the spelunker application over an encrypted connection using what is called a <q>self-signed TLS (or SSL) certificate</q>. That means the spelunker both created <em>and</em> validated the TLS certificate it is using to establish the encrypted connection. This cozy relationship will almost certainly make your browser nervous and cause it to present you with a notice about an <q>untrusted certificate</q>.</p>
-
-   <p><em>This is the correct thing for your browser to do</em>.</p>
-					  
-   <p>In this instance you can (you will need to) confirm that you really want to use this TLS certificate. Self-signed certificates are very useful for running and testing applications on your local machine but are generally a bad idea for anything on the public internet. On the other hand distributing <q>real</q> TLS certificates with bundled applications like this is a very serious security no-no so this is the middle-ground we are left with.</p>
-
-   <p>As a rule, any time a website presents you with a self-signed certificate you should be wary. You should inspect the details (of the certificate and the issuer). You should <em>not</em> store the certificate permanently. You should proceed with caution.</p>
-
-   <h3>The details</h3>
-
-   <p>The <code>spelunker.box</code> virtual machine is put together using the following bits of code:</p>
-
-     <ul>
-       <li><a href="https://github.com/whosonfirst/whosonfirst-www-spelunker">https://github.com/whosonfirst/whosonfirst-www-spelunker</a></li>
-       <li><a href="https://github.com/whosonfirst/vagrant-whosonfirst-www-spelunker">https://github.com/whosonfirst/vagrant-whosonfirst-www-spelunker</a></li>       
-       </ul>
-
-   <br /><br />
-
-      </div>
-    </div>
-  </div>
-
-</body>
+                    config.vm.provision "shell", inline: <<-SHELL
+                    sudo apt-get update
+                    sudo apt-get upgrade -y
+                    SHELL
+                    end
+                    </pre>
+                    <p>Finally you are ready to tell Vagrant to spin up your new machine. You do this by invoking the <code>up</code> command from the command-line:</p>
+                    <pre>
+                    $> vagrant up
+                    </pre>
+                    <p>Again, depending on your computer and your internet connection when Vagrant finishes everything it is doing you should have a working copy of the Who's On First <a href="https://whosonfirst.mapzen.com/spelunker/">spelunker</a> application running locally on your computer and available for browsing at <code>https://localhost:8994/</code>.</p>
+                    <h4>One more thing &#8212; and it's a bit fiddly but also important</h4>
+                    <p>The <code>spelunker.box</code> virtual machine runs the spelunker application over an encrypted connection using what is called a <q>self-signed TLS (or SSL) certificate</q>. That means the spelunker both created <em>and</em> validated the TLS certificate it is using to establish the encrypted connection. This cozy relationship will almost certainly make your browser nervous and cause it to present you with a notice about an <q>untrusted certificate</q>.</p>
+                    <p><em>This is the correct thing for your browser to do</em>.</p>
+                    <p>In this instance you can (you will need to) confirm that you really want to use this TLS certificate. Self-signed certificates are very useful for running and testing applications on your local machine but are generally a bad idea for anything on the public internet. On the other hand distributing <q>real</q> TLS certificates with bundled applications like this is a very serious security no-no so this is the middle-ground we are left with.</p>
+                    <p>As a rule, any time a website presents you with a self-signed certificate you should be wary. You should inspect the details (of the certificate and the issuer). You should <em>not</em> store the certificate permanently. You should proceed with caution.</p>
+                    <h3>The details</h3>
+                    <p>The <code>spelunker.box</code> virtual machine is put together using the following bits of code:</p>
+                    <div class="p-2 background-light link-within">
+                        <a href="https://github.com/whosonfirst/whosonfirst-www-spelunker">https://github.com/whosonfirst/whosonfirst-www-spelunker</a>
+                    </div>
+                    <div class="p-2 background-light link-within">
+                        <a href="https://github.com/whosonfirst/vagrant-whosonfirst-www-spelunker">https://github.com/whosonfirst/vagrant-whosonfirst-www-spelunker</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <footer>
+        <div class='headroom-large custom-footer'>
+            <div class='container'>
+                <div class='row'>
+                    <div class='col-xs-12 text-left custom-footer'>
+                        <p>Who's On First is a Mapzen gig</p>
+                        <p class="custom-footer-link custom-footer-first-link "><i class='fa fa-lg fa-fw fa-twitter'></i>Follow <a href='https://twitter.com/alloftheplaces/' class="custom-footer-actual-link">@alloftheplaces</a> on Twitter</p>
+                        <p class="custom-footer-link"><i class='fa fa-lg fa-fw fa-github'></i>Check out our <a href='https://github.com/mapzen/' class="custom-footer-actual-link">whosonfirst</a> and <a href='https://github.com/whosonfirst-data/' class="custom-footer-actual-link">whosonfirst-data</a> organizations on Github</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="../javascript/mapzen.whosonfirst.api.js"></script>
+    <script src='../javascript/mapzen-styleguide.js'></script>
+    <!--<script src='https://mapzen.com/common/styleguide/scripts/mapzen-styleguide.min.js'></script>-->
+    <script src='https://code.jquery.com/jquery-2.2.0.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.0/jquery.scrollTo.min.js'></script>
 </html>

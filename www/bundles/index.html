@@ -1,377 +1,454 @@
 <?xml version="1.0"?>
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Who's On First &#x2014; Bundles</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Who's On First &#x2014; Bundles</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name='description' content="Who's on First is a gazetteer of places.">
+        <link rel='apple-touch-icon' href='https://mapzen.com/common/styleguide/images/favicons/apple-touch-icon.png' sizes='180x180'>
+        <link rel='icon' type='image/png' href='https://mapzen.com/common/styleguide/images/favicons/favicon-16x16.png' sizes='16x16'>
+        <link rel='icon' type='image/png' href='https://mapzen.com/common/styleguide/images/favicons/favicon-32x32.png' sizes='32x32'>
+        <link rel='manifest' href='https://mapzen.com/common/styleguide/images/favicons/manifest.json'>
+        <link rel='mask-icon' href='https://mapzen.com/common/styleguide/images/favicons/safari-pinned-tab.svg' color='#2C1E3F'>
 
-  <link rel="stylesheet" type="text/css" href="../css/mapzen.whosonfirst.www.bundle.min.css"/>
-  <script src="../javascript/mapzen.whosonfirst.www.bundle.min.js"></script>  
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="../css/mapzen.whosonfirst.www.bundle.min.css"/>
+        <link rel="stylesheet" href="https://mapzen.com/common/styleguide/styles/blog.css">
+        <link rel="stylesheet" href="https://mapzen.com/js/mapzen.css">
+        <link rel="stylesheet" href="../css/mapzenwhosonfirstsubpage.css">
+        <script src="../javascript/mapzen.whosonfirst.www.bundle.min.js"></script> 
+    </head>
+    <body>
+        <nav class='navbar-default navbar-fixed-top custom-navbar no-nav' role='navigation'>
+            <!--
+            <div class='container'>
+                <div class='navbar-header'>
+                    <button type='button' class='navbar-toggle collapsed' data-toggle='collapse' data-target='#navbar-menu'>
+                        <span class='sr-only'>Toggle navigation</span>
+                        <span class='icon-bar top-bar'></span>
+                        <span class='icon-bar middle-bar'></span>
+                        <span class='icon-bar bottom-bar'></span>
+                    </button>
+                    <a class="navbar-brand custom-navbar-type custom-navbar-header" href="#">Who's On First</a>
+                </div>
+            <!-- new nav bar showing user's login status
+                <div class='collapse navbar-collapse' id='navbar-menu'>
+                    <ul class='nav navbar-nav navbar-right'>
+                        <li class='inactive'><a href='https://whosonfirst.mapzen.com/theory/' class="custom-navbar-type">Theory</a></li>
+                        <li class='inactive'><a href='https://whosonfirst.mapzen.com/data/' class="custom-navbar-type">Data</a></li>
+                    </ul>
+                    <!--
+                    <ul class='nav navbar-nav navbar-right'>
+                        <li class="inactive dropdown"><a id='sign-in' href='/developers/sign_in'> </a></li>
+                        <li class="inactive"><a id='sign-up' href='/developers/sign_up'> </a></li>
+                    </ul>
+                </div>
+            </div>
+            -->
+        </nav>
+        <div class='container documentation-container'>
+            <div class='row'>
+                <div class="col-xs-12 col-md-3">
+                    <div class="toc toc-sub-left" role="directory">
+                        <ul class="nav toc-nav">
+                            <li class="toc-top-level">
+                                <a href="https://whosonfirst.mapzen.com">Home</a>
+                            </li>
+                            <li class="toc-top-level toc-current">
+                                <a href="#">Bundles</a>
+                                <ul class="toc-subnav toc-expand">
+                                    <li><a href="#placetypes">Placetypes</a></li>
+                                    <li><a href="#working-with">Working with Bundles</a></li>
+                                </ul>
+                            </li>
+                            <li class="toc-top-level">
+                                <a href="https://whosonfirst.mapzen.com/data/">Data</a>
+                                <ul class="toc-subnav">
+                                    <li><a href="#theory-wrapper">tl;dr</a></li>
+                                    <li><a href="#what-mean">But... what does it mean?</a></li>
+                                    <li><a href="#gory-details">The gory details</a></li>
+                                    <li><a href="#know-knows">Known knowns</a></li>
+                                </ul>
+                            </li>
+                            <li class="toc-top-level">
+                                <a href="https://whosonfirst.mapzen.com/interns/">Internships 2017</a>
+                            </li>
+                            <li class="toc-top-level">
+                                <a href="https://whosonfirst.mapzen.com/mmdb/">Maxmind Databases (mmdb)</a>
+                                <ul class="toc-subnav">
+                                    <li><a href="#geolite2">GeoLite2 Databases</a></li>
+                                    <li><a href="#code">Code</a></li>
+                                </ul>
+                            </li>
+                            <li class="toc-top-level">
+                                <a href="https://whosonfirst.mapzen.com/placetypes/">Placetypes</a>
+                            </li>
+                            <li class="toc-top-level">
+                                <a href="https://whosonfirst.mapzen.com/theory/">Theory</a>
+                                <ul class="toc-subnav">
+                                    <li><a href="#theory-2015">2015</a></li>
+                                    <li><a href="#theory-2016">2016</a></li>
+                                    <li><a href="#theory-2017">2017</a></li>
+                                </ul>
+                            </li>
+                            <li class="toc-top-level">
+                                <a href="https://whosonfirst.mapzen.com/vagrant/">Vagrant</a>
+                                <ul class="toc-subnav">
+                                    <li><a href="#spelunker">spelunker.box</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class='col-xs-12 col-md-9 static-content'>
+                    <h1 id="whos-on-first" class="center-subject subpage-header-two">Who's On First &#x2014; Bundles</h1>
+                    <p>Bundles (of Who's On First data) are still considered experimental. They are being actively used (by Mapzen itself) but they are a still work in progress so some things may not be quite right, yet.</p>
+                    <p>Bundles are a collection of GeoJSON formatted files (Who's On First data) grouped by a specific property, like placetype. They allow for people to more easily bulk download a subset of the entire Who's On First dataset. Currently there are only bundles by placetype but eventually we will add a variety of different <q>slices</q> of the data as demand and interest require.</p>
+                    <p>There is only ever one bundle-per-property at any given moment. When a new bundle is generated it replaces the old one. If you need to test whether a bundle has changed without downloading the bundle itself the best way is to compare the <code>SHA1</code> hash of the meta file for that property.</p>
+                    <p>For example if the bundle in question <code>wof-region-latest-bundle.tar.bz2</code> then its corresponding meta file will be <code>wof-region-latest.csv</code>.</p>
+                    <p>You can determine the <code>SHA1</code> hash for the meta file either by downloading the meta file directly and calculating its hash locally or you can download the <code>wof-country-latest.csv.sha1.txt</code> file which is a plain text file containing the value of the hash.</p>
+                    <div class="caveat" style="margin-top:1em;">
+                        <p>What follows are the list of bundles for administrative placetypes that are part of the <a href="https://github.com/whosonfirst-data/whosonfirst-data">whosonfirst-data</a> repository. There are actually <em>560</em> individual bundles (there are reasons why discussed in detail, <a href="/data#github-repos">over here</a>) so we've made a handy index file for all the bundles. It lives at <a href="https://whosonfirst.mapzen.com/bundles/index.txt">https://whosonfirst.mapzen.com/bundles/index.txt</a> and is a line-separated text file with the name of every available bundle. All the same naming conventions for meta files and SHA1 hashes, discussed above, apply to the bundles listed in index file.</p>
+                    </div>
+                    <!-- See also: https://github.com/whosonfirst/whosonfirst-placetypes/issues/2 -->
+                    <h2 id="placetypes">Placetypes</h2>
+                    <h3 id="placetypes-common">Common <small><a href="https://github.com/whosonfirst/whosonfirst-placetypes#common-c" target="docs" class="tellmemore" title="tell me more">?</a></small></h3>
+                    <ul class="bundle-list">
+                        <li>
+                            <h4>Continents <small><a href="https://github.com/whosonfirst/whosonfirst-placetypes#continent" target="docs" class="tellmemore" title="tell me more">?</a></small></h4>
+                            <ul>
+                                <li>
+                                    <a href="wof-continent-latest-bundle.tar.bz2">wof-continent-latest-bundle.tar.bz2</a>
+                                    <small>(<a href="wof-continent-latest-bundle.tar.bz2.sha1.txt">SHA1</a> | <a href="http://whosonfirst.mapzen.com.s3.amazonaws.com/bundles/wof-continent-latest-bundle.tar.bz2?torrent">torrent</a>)</small>
+                                </li>
+                                <li>
+                                    <a href="wof-continent-latest.csv">wof-continent-latest.csv</a>
+                                    <small>(<a href="wof-continent-latest.csv.sha1.txt">SHA1</a>)</small>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <h4>Countries <small><a href="https://github.com/whosonfirst/whosonfirst-placetypes#country" target="docs" class="tellmemore" title="tell me more">?</a></small></h4>
+                            <ul>
+                                <li>
+                                    <a href="wof-country-latest-bundle.tar.bz2">wof-country-latest-bundle.tar.bz2</a>
+                                    <small>(<a href="wof-country-latest-bundle.tar.bz2.sha1.txt">SHA1</a> | <a href="http://whosonfirst.mapzen.com.s3.amazonaws.com/bundles/wof-country-latest-bundle.tar.bz2?torrent">torrent</a>)</small>
+                                </li>
+                                <li>
+                                    <a href="wof-country-latest.csv">wof-country-latest.csv</a>
+                                    <small>(<a href="wof-country-latest.csv.sha1.txt">SHA1</a>)</small>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <h4>Regions <small><a href="https://github.com/whosonfirst/whosonfirst-placetypes#region" target="docs" class="tellmemore" title="tell me more">?</a></small></h4>
+                            <ul>
+                                <li>
+                                    <a href="wof-region-latest-bundle.tar.bz2">wof-region-latest-bundle.tar.bz2</a>
+                                    <small>(<a href="wof-region-latest-bundle.tar.bz2.sha1.txt">SHA1</a> | <a href="http://whosonfirst.mapzen.com.s3.amazonaws.com/bundles/wof-region-latest-bundle.tar.bz2?torrent">torrent</a>)</small>
+                                </li>
+                                <li>
+                                    <a href="wof-region-latest.csv">wof-region-latest.csv</a>
+                                    <small>(<a href="wof-region-latest.csv.sha1.txt">SHA1</a>)</small>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <h4>Localities <small><a href="https://github.com/whosonfirst/whosonfirst-placetypes#locality" target="docs" class="tellmemore" title="tell me more">?</a></small></h4>
+                            <ul>
+                                <li>
+                                    <a href="wof-locality-latest-bundle.tar.bz2">wof-locality-latest-bundle.tar.bz2</a>
+                                    <small>(<a href="wof-locality-latest-bundle.tar.bz2.sha1.txt">SHA1</a> | <a href="http://whosonfirst.mapzen.com.s3.amazonaws.com/bundles/wof-locality-latest-bundle.tar.bz2?torrent">torrent</a>)</small>
+                                </li>
+                                <li>
+                                    <a href="wof-locality-latest.csv">wof-locality-latest.csv</a>
+                                    <small>(<a href="wof-locality-latest.csv.sha1.txt">SHA1</a>)</small>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <h4>Neighbourhoods <small><a href="https://github.com/whosonfirst/whosonfirst-placetypes#neighbourhood" target="docs" class="tellmemore" title="tell me more">?</a></small></h4>
+                            <ul>
+                                <li>
+                                    <a href="wof-neighbourhood-latest-bundle.tar.bz2">wof-neighbourhood-latest-bundle.tar.bz2</a>
+                                    <small>(<a href="wof-neighbourhood-latest-bundle.tar.bz2.sha1.txt">SHA1</a> | <a href="http://whosonfirst.mapzen.com.s3.amazonaws.com/bundles/wof-neighbourhood-latest-bundle.tar.bz2?torrent">torrent</a>)</small>
+                                </li>
+                                <li>
+                                    <a href="wof-neighbourhood-latest.csv">wof-neighbourhood-latest.csv</a>
+                                    <small>(<a href="wof-neighbourhood-latest.csv.sha1.txt">SHA1</a>)</small>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <h3 id="placetypes-common-optional">Common Optional <small><a href="https://github.com/whosonfirst/whosonfirst-placetypes#common-optional-co" target="docs" class="tellmemore" title="tell me more">?</a></small></h3>
+                    <ul class="bundle-list">
+                        <li>
+                            <h4>Planets <small><a href="https://github.com/whosonfirst/whosonfirst-placetypes#planet" target="docs" class="tellmemore" title="tell me more">?</a></small></h4>
+                            <ul>
+                                <li>
+                                    <a href="wof-planet-latest-bundle.tar.bz2">wof-planet-latest-bundle.tar.bz2</a>
+                                    <small>(<a href="wof-planet-latest-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
+                                </li>
+                                <li>
+                                    <a href="wof-planet-latest.csv">wof-planet-latest.csv</a>
+                                    <small>(<a href="wof-planet-latest.csv.sha1.txt">SHA1</a>)</small>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <h4>Oceans <small><a href="https://github.com/whosonfirst/whosonfirst-placetypes#ocean" target="docs" class="tellmemore" title="tell me more">?</a></small></h4>
+                            <ul>
+                                <li>
+                                    <a href="wof-ocean-latest-bundle.tar.bz2">wof-ocean-latest-bundle.tar.bz2</a>
+                                    <small>(<a href="wof-ocean-latest-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
+                                </li>
+                                <li>
+                                    <a href="wof-ocean-latest.csv">wof-ocean-latest.csv</a>
+                                    <small>(<a href="wof-ocean-latest.csv.sha1.txt">SHA1</a>)</small>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <h4>Empires <small><a href="https://github.com/whosonfirst/whosonfirst-placetypes#empire" target="docs" class="tellmemore" title="tell me more">?</a></small></h4>
+                            <ul>
+                                <li>
+                                    <a href="wof-empire-latest-bundle.tar.bz2">wof-empire-latest-bundle.tar.bz2</a>
+                                    <small>(<a href="wof-empire-latest-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
+                                </li>
+                                <li>
+                                    <a href="wof-empire-latest.csv">wof-empire-latest.csv</a>
+                                    <small>(<a href="wof-empire-latest.csv.sha1.txt">SHA1</a>)</small>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <h4>Dependencies <small><a href="https://github.com/whosonfirst/whosonfirst-placetypes#dependency" target="docs" class="tellmemore" title="tell me more">?</a></small></h4>
+                            <ul>
+                                <li>
+                                    <a href="wof-dependency-latest-bundle.tar.bz2">wof-dependency-latest-bundle.tar.bz2</a>
+                                    <small>(<a href="wof-dependency-latest-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
+                                </li>
+                                <li>
+                                    <a href="wof-dependency-latest.csv">wof-dependency-latest.csv</a>
+                                    <small>(<a href="wof-dependency-latest.csv.sha1.txt">SHA1</a>)</small>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <h4>Disputed Areas <small><a href="https://github.com/whosonfirst/whosonfirst-placetypes#disputed" target="docs" class="tellmemore" title="tell me more">?</a></small></h4>
+                            <ul>
+                                <li>
+                                    <a href="wof-disputed-latest-bundle.tar.bz2">wof-disputed-latest-bundle.tar.bz2</a>
+                                    <small>(<a href="wof-disputed-latest-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
+                                </li>
+                                <li>
+                                    <a href="wof-disputed-latest.csv">wof-disputed-latest.csv</a>
+                                    <small>(<a href="wof-disputed-latest.csv.sha1.txt">SHA1</a>)</small>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <h4>Marine Areas <small><a href="https://github.com/whosonfirst/whosonfirst-placetypes#marinearea" target="docs" class="tellmemore" title="tell me more">?</a></small></h4>
+                            <ul>
+                                <li>
+                                    <a href="wof-marinearea-latest-bundle.tar.bz2">wof-marinearea-latest-bundle.tar.bz2</a>
+                                    <small>(<a href="wof-marinearea-latest-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
+                                </li>
+                                <li>
+                                    <a href="wof-marinearea-latest.csv">wof-marinearea-latest.csv</a>
+                                    <small>(<a href="wof-marinearea-latest.csv.sha1.txt">SHA1</a>)</small>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <h4>Timezones <small><a href="https://github.com/whosonfirst/whosonfirst-placetypes#timezone" target="docs" class="tellmemore" title="tell me more">?</a></small></h4>
+                            <ul>
+                                <li>
+                                    <a href="wof-timezone-latest-bundle.tar.bz2">wof-timezone-latest-bundle.tar.bz2</a>
+                                    <small>(<a href="wof-timezone-latest-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
+                                </li>
+                                <li>
+                                    <a href="wof-timezone-latest.csv">wof-timezone-latest.csv</a>
+                                    <small>(<a href="wof-timezone-latest.csv.sha1.txt">SHA1</a>)</small>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <h4>Counties <small><a href="https://github.com/whosonfirst/whosonfirst-placetypes#county" target="docs" class="tellmemore" title="tell me more">?</a></small></h4>
+                            <ul>
+                                <li>
+                                    <a href="wof-county-latest-bundle.tar.bz2">wof-county-latest-bundle.tar.bz2</a>
+                                    <small>(<a href="wof-county-latest-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
+                                </li>
+                                <li>
+                                    <a href="wof-county-latest.csv">wof-county-latest.csv</a>
+                                    <small>(<a href="wof-county-latest.csv.sha1.txt">SHA1</a>)</small>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <h4>Local Admins <small><a href="https://github.com/whosonfirst/whosonfirst-placetypes#localadmin" target="docs" class="tellmemore" title="tell me more">?</a></small></h4>
+                            <ul>
+                                <li>
+                                    <a href="wof-localadmin-latest-bundle.tar.bz2">wof-localadmin-latest-bundle.tar.bz2</a>
+                                    <small>(<a href="wof-localadmin-latest-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
+                                </li>
+                                <li>
+                                    <a href="wof-localadmin-latest.csv">wof-localadmin-latest.csv</a>
+                                    <small>(<a href="wof-localadmin-latest.csv.sha1.txt">SHA1</a>)</small>
+                                </li>
+                            </ul>
+                        </li>
 
-</head>
-<body>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-8 col-md-offset-2">
+                        <li>
+                            <h4>Boroughs <small><a href="https://github.com/whosonfirst/whosonfirst-placetypes#borough" target="docs" class="tellmemore" title="tell me more">?</a></small></h4>
+                            <ul>
+                                <li>
+                                    <a href="wof-borough-latest-bundle.tar.bz2">wof-borough-latest-bundle.tar.bz2</a>
+                                    <small>(<a href="wof-borough-latest-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
+                                </li>
+                                <li>
+                                    <a href="wof-borough-latest.csv">wof-borough-latest.csv</a>
+                                    <small>(<a href="wof-borough-latest.csv.sha1.txt">SHA1</a>)</small>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <h4>Campuses <small><a href="https://github.com/whosonfirst/whosonfirst-placetypes#campus" target="docs" class="tellmemore" title="tell me more">?</a></small></h4>
+                            <ul>
+                                <li>
+                                    <a href="wof-campus-latest-bundle.tar.bz2">wof-campus-latest-bundle.tar.bz2</a>
+                                    <small>(<a href="wof-campus-latest-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
+                                </li>
+                                <li>
+                                    <a href="wof-campus-latest.csv">wof-campus-latest.csv</a>
+                                    <small>(<a href="wof-campus-latest.csv.sha1.txt">SHA1</a>)</small>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <h3 id="placetypes-optional">Optional <small><a href="https://github.com/whosonfirst/whosonfirst-placetypes#optional-o" target="docs" title="tell me more" class="tellmemore">?</a></small></h3>
+                    <ul class="bundle-list">
+                        <li>
+                            <h4>Macroregions <small><a href="https://github.com/whosonfirst/whosonfirst-placetypes#macroregion" target="docs" class="tellmemore" title="tell me more">?</a></small></h4>
+                            <ul>
+                                <li>
+                                    <a href="wof-macroregion-latest-bundle.tar.bz2">wof-macroregion-latest-bundle.tar.bz2</a>
+                                    <small>(<a href="wof-macroregion-latest-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
+                                </li>
+                                <li>
+                                    <a href="wof-macroregion-latest.csv">wof-macroregion-latest.csv</a>
+                                    <small>(<a href="wof-macroregion-latest.csv.sha1.txt">SHA1</a>)</small>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <h4>Macrocounties <small><a href="https://github.com/whosonfirst/whosonfirst-placetypes#macrocounty" target="docs" class="tellmemore" title="tell me more">?</a></small></h4>
+                            <ul>
+                                <li>
+                                    <a href="wof-macrocounty-latest-bundle.tar.bz2">wof-macrocounty-latest-bundle.tar.bz2</a>
+                                    <small>(<a href="wof-macrocounty-latest-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
+                                </li>
+                                <li>
+                                    <a href="wof-macrocounty-latest.csv">wof-macrocounty-latest.csv</a>
+                                    <small>(<a href="wof-macrocounty-latest.csv.sha1.txt">SHA1</a>)</small>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <h4>Macrohoods <small><a href="https://github.com/whosonfirst/whosonfirst-placetypes#macrohood" target="docs" class="tellmemore" title="tell me more">?</a></small></h4>
+                            <ul>
+                                <li>
+                                    <a href="wof-macrohood-latest-bundle.tar.bz2">wof-macrohood-latest-bundle.tar.bz2</a>
+                                    <small>(<a href="wof-macrohood-latest-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
+                                </li>
+                                <li>
+                                    <a href="wof-macrohood-latest.csv">wof-macrohood-latest.csv</a>
+                                    <small>(<a href="wof-macrohood-latest.csv.sha1.txt">SHA1</a>)</small>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <h4>Microhoods <small><a href="https://github.com/whosonfirst/whosonfirst-placetypes#microhood" target="docs" class="tellmemore" title="tell me more">?</a></small></h4>
+                            <ul>
+                                <li>
+                                    <a href="wof-microhood-latest-bundle.tar.bz2">wof-microhood-latest-bundle.tar.bz2</a>
+                                    <small>(<a href="wof-microhood-latest-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
+                                </li>
+                                <li>
+                                    <a href="wof-microhood-latest.csv">wof-microhood-latest.csv</a>
+                                    <small>(<a href="wof-microhood-latest.csv.sha1.txt">SHA1</a>)</small>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <h2 id="working-with">Working with Bundles</h2>
+                    <p>Bundles all have the same directory structure: A single <code>data</code> directory and a <code>wof-PLACETYPE-OR-LATEST-BUNDLE-NAME-latest.csv</code> comma-separated "meta" file. It is left up to individual users of the data to decide how and whether data from multiple bundles should be merged.</p>
+                    <p>Here is a working example script that will download all the bundles for continents, countries, regions, localities and neighbourhoods and merge the records from each in to a single <code>data</code> folder, located in the directory that the script is run from.</p>
+                    <p><small>Please note that there is little to no error-checking in the example below so you should adjust this to taste. Also it assumes that you are comfortable working on the command-line and that your computer has copies of the <code>tar</code>, <code>curl</code> and <code>rsync</code> utilities pre-installed (this is true for all Linux and OS X computers).</small></p>
+                    <pre>
+                    #!/bin/sh
 
-    <h1>Who's On First &#x2014; Bundles</h1>
-    <p class="caveat">Bundles (of Who's On First data) are still considered experimental. They are being actively used (by Mapzen itself) but they are a still work in progress so some things may not be quite right, yet.</p>
+                    PLACETYPES='continent country region locality neighbourhood'
+                    DATA="data"
 
-    <p>Bundles are a collection of GeoJSON formatted files (Who's On First data) grouped by a specific property, like placetype. They allow for people to more easily bulk download a subset of the entire Who's On First dataset. Currently there are only bundles by placetype but eventually we will add a variety of different <q>slices</q> of the data as demand and interest require.</p>
-    <p>There is only ever one bundle-per-property at any given moment. When a new bundle is generated it replaces the old one. If you need to test whether a bundle has changed without downloading the bundle itself the best way is to compare the <code>SHA1</code> hash of the meta file for that property.</p>
-    <p>For example if the bundle in question <code>wof-region-latest-bundle.tar.bz2</code> then its corresponding meta file will be <code>wof-region-latest.csv</code>.</p>
-    <p>You can determine the <code>SHA1</code> hash for the meta file either by downloading the meta file directly and calculating its hash locally or you can download the <code>wof-country-latest.csv.sha1.txt</code> file which is a plain text file containing the value of the hash.</p>
+                    if [ ! -d ${DATA} ]
+                    then
+                    mkdir ${DATA}
+                    fi
 
-    <div class="caveat" style="margin-top:1em;">
-      <p>What follows are the list of bundles for administrative placetypes that are part of the <a href="https://github.com/whosonfirst-data/whosonfirst-data">whosonfirst-data</a> repository. There are actually <em>560</em> individual bundles (there are reasons why discussed in detail, <a href="/data#github-repos">over here</a>) so we've made a handy index file for all the bundles. It lives at <a href="https://whosonfirst.mapzen.com/bundles/index.txt">https://whosonfirst.mapzen.com/bundles/index.txt</a> and is a line-separated text file with the name of every available bundle. All the same naming conventions for meta files and SHA1 hashes, discussed above, apply to the bundles listed in index file.</p>
-    </div>
+                    for PT in ${PLACETYPES}
+                    do
+
+                    BUNDLE="wof-${PT}-latest-bundle"
+                    COMPRESSED="${BUNDLE}.tar.bz2"
+
+                    if [ -e ${COMPRESSED} ]
+                    then
+                        echo "remove ${COMPRESSED}"
+                        rm -i ${COMPRESSED}
+                    fi
+
+                    if [ -d ${BUNDLE} ]
+                    then
+                        echo "remove ${BUNDLE}"
+                        rm -ri ${BUNDLE}
+                    fi
+
+                    echo "fetch ${COMPRESSED}"
+                    curl -s -o ${COMPRESSED} https://whosonfirst.mapzen.com/bundles/${COMPRESSED}
+
+                    echo "expand ${COMPRESSED}"
+                    tar -xvjf ${COMPRESSED}
+
+                    echo "sync ${BUNDLE}"
+                    rsync -av ${BUNDLE}/data/ ${DATA}/
+
+                    done
+                    </pre>
+                </div>
+            </div>
+        </div>
+    </body>
+    <footer>
+        <div class='headroom-large custom-footer'>
+            <div class='container'>
+                <div class='row'>
+                    <div class='col-xs-12 text-left custom-footer'>
+                        <p>Who's On First is a Mapzen gig</p>
+                        <p class="custom-footer-link custom-footer-first-link "><i class='fa fa-lg fa-fw fa-twitter'></i>Follow <a href='https://twitter.com/alloftheplaces/' class="custom-footer-actual-link">@alloftheplaces</a> on Twitter</p>
+                        <p class="custom-footer-link"><i class='fa fa-lg fa-fw fa-github'></i>Check out our <a href='https://github.com/mapzen/' class="custom-footer-actual-link">whosonfirst</a> and <a href='https://github.com/whosonfirst-data/' class="custom-footer-actual-link">whosonfirst-data</a> organizations on Github</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
     
-    <!-- See also: https://github.com/whosonfirst/whosonfirst-placetypes/issues/2 -->
-    <h2 id="placetypes">Placetypes</h2>
-    
-    <h3 id="placetypes-common">Common <small><a href="https://github.com/whosonfirst/whosonfirst-placetypes#common-c" target="docs" class="tellmemore" title="tell me more">?</a></small></h3>
-    <ul class="bundle-list">
-      <li>
-        <h4>Continents <small><a href="https://github.com/whosonfirst/whosonfirst-placetypes#continent" target="docs" class="tellmemore" title="tell me more">?</a></small></h4>
-        <ul>
-          <li>
-            <a href="wof-continent-latest-bundle.tar.bz2">wof-continent-latest-bundle.tar.bz2</a>
-            <small>(<a href="wof-continent-latest-bundle.tar.bz2.sha1.txt">SHA1</a> | <a href="http://whosonfirst.mapzen.com.s3.amazonaws.com/bundles/wof-continent-latest-bundle.tar.bz2?torrent">torrent</a>)</small>
-          </li>
-          <li>
-            <a href="wof-continent-latest.csv">wof-continent-latest.csv</a>
-            <small>(<a href="wof-continent-latest.csv.sha1.txt">SHA1</a>)</small>
-          </li>
-        </ul>
-      </li>
-      <li>
-        <h4>Countries <small><a href="https://github.com/whosonfirst/whosonfirst-placetypes#country" target="docs" class="tellmemore" title="tell me more">?</a></small></h4>
-        <ul>
-          <li>
-            <a href="wof-country-latest-bundle.tar.bz2">wof-country-latest-bundle.tar.bz2</a>
-            <small>(<a href="wof-country-latest-bundle.tar.bz2.sha1.txt">SHA1</a> | <a href="http://whosonfirst.mapzen.com.s3.amazonaws.com/bundles/wof-country-latest-bundle.tar.bz2?torrent">torrent</a>)</small>
-          </li>
-          <li>
-            <a href="wof-country-latest.csv">wof-country-latest.csv</a>
-            <small>(<a href="wof-country-latest.csv.sha1.txt">SHA1</a>)</small>
-          </li>
-        </ul>
-      </li>
-      <li>
-        <h4>Regions <small><a href="https://github.com/whosonfirst/whosonfirst-placetypes#region" target="docs" class="tellmemore" title="tell me more">?</a></small></h4>
-        <ul>
-          <li>
-            <a href="wof-region-latest-bundle.tar.bz2">wof-region-latest-bundle.tar.bz2</a>
-            <small>(<a href="wof-region-latest-bundle.tar.bz2.sha1.txt">SHA1</a> | <a href="http://whosonfirst.mapzen.com.s3.amazonaws.com/bundles/wof-region-latest-bundle.tar.bz2?torrent">torrent</a>)</small>
-          </li>
-          <li>
-            <a href="wof-region-latest.csv">wof-region-latest.csv</a>
-            <small>(<a href="wof-region-latest.csv.sha1.txt">SHA1</a>)</small>
-          </li>
-        </ul>
-      </li>
-
-      <li>
-        <h4>Localities <small><a href="https://github.com/whosonfirst/whosonfirst-placetypes#locality" target="docs" class="tellmemore" title="tell me more">?</a></small></h4>
-        <ul>
-          <li>
-            <a href="wof-locality-latest-bundle.tar.bz2">wof-locality-latest-bundle.tar.bz2</a>
-            <small>(<a href="wof-locality-latest-bundle.tar.bz2.sha1.txt">SHA1</a> | <a href="http://whosonfirst.mapzen.com.s3.amazonaws.com/bundles/wof-locality-latest-bundle.tar.bz2?torrent">torrent</a>)</small>
-          </li>
-          <li>
-            <a href="wof-locality-latest.csv">wof-locality-latest.csv</a>
-            <small>(<a href="wof-locality-latest.csv.sha1.txt">SHA1</a>)</small>
-          </li>
-        </ul>
-      </li>
-
-      <li>
-        <h4>Neighbourhoods <small><a href="https://github.com/whosonfirst/whosonfirst-placetypes#neighbourhood" target="docs" class="tellmemore" title="tell me more">?</a></small></h4>
-        <ul>
-          <li>
-            <a href="wof-neighbourhood-latest-bundle.tar.bz2">wof-neighbourhood-latest-bundle.tar.bz2</a>
-            <small>(<a href="wof-neighbourhood-latest-bundle.tar.bz2.sha1.txt">SHA1</a> | <a href="http://whosonfirst.mapzen.com.s3.amazonaws.com/bundles/wof-neighbourhood-latest-bundle.tar.bz2?torrent">torrent</a>)</small>
-          </li>
-          <li>
-            <a href="wof-neighbourhood-latest.csv">wof-neighbourhood-latest.csv</a>
-            <small>(<a href="wof-neighbourhood-latest.csv.sha1.txt">SHA1</a>)</small>
-          </li>
-        </ul>
-      </li>
-    </ul>
-
-   <h3 id="placetypes-common-optional">Common Optional <small><a href="https://github.com/whosonfirst/whosonfirst-placetypes#common-optional-co" target="docs" class="tellmemore" title="tell me more">?</a></small></h3>
-
-    <ul class="bundle-list">
-      <li>
-        <h4>Planets <small><a href="https://github.com/whosonfirst/whosonfirst-placetypes#planet" target="docs" class="tellmemore" title="tell me more">?</a></small></h4>
-        <ul>
-          <li>
-            <a href="wof-planet-latest-bundle.tar.bz2">wof-planet-latest-bundle.tar.bz2</a>
-            <small>(<a href="wof-planet-latest-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
-          </li>
-          <li>
-            <a href="wof-planet-latest.csv">wof-planet-latest.csv</a>
-            <small>(<a href="wof-planet-latest.csv.sha1.txt">SHA1</a>)</small>
-          </li>
-        </ul>
-      </li>
-
-      <li>
-        <h4>Oceans <small><a href="https://github.com/whosonfirst/whosonfirst-placetypes#ocean" target="docs" class="tellmemore" title="tell me more">?</a></small></h4>
-        <ul>
-          <li>
-            <a href="wof-ocean-latest-bundle.tar.bz2">wof-ocean-latest-bundle.tar.bz2</a>
-            <small>(<a href="wof-ocean-latest-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
-          </li>
-          <li>
-            <a href="wof-ocean-latest.csv">wof-ocean-latest.csv</a>
-            <small>(<a href="wof-ocean-latest.csv.sha1.txt">SHA1</a>)</small>
-          </li>
-        </ul>
-      </li>
-
-      <li>
-        <h4>Empires <small><a href="https://github.com/whosonfirst/whosonfirst-placetypes#empire" target="docs" class="tellmemore" title="tell me more">?</a></small></h4>
-        <ul>
-          <li>
-            <a href="wof-empire-latest-bundle.tar.bz2">wof-empire-latest-bundle.tar.bz2</a>
-            <small>(<a href="wof-empire-latest-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
-          </li>
-          <li>
-            <a href="wof-empire-latest.csv">wof-empire-latest.csv</a>
-            <small>(<a href="wof-empire-latest.csv.sha1.txt">SHA1</a>)</small>
-          </li>
-        </ul>
-      </li>
-
-      <li>
-        <h4>Dependencies <small><a href="https://github.com/whosonfirst/whosonfirst-placetypes#dependency" target="docs" class="tellmemore" title="tell me more">?</a></small></h4>
-        <ul>
-          <li>
-            <a href="wof-dependency-latest-bundle.tar.bz2">wof-dependency-latest-bundle.tar.bz2</a>
-            <small>(<a href="wof-dependency-latest-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
-          </li>
-          <li>
-            <a href="wof-dependency-latest.csv">wof-dependency-latest.csv</a>
-            <small>(<a href="wof-dependency-latest.csv.sha1.txt">SHA1</a>)</small>
-          </li>
-        </ul>
-      </li>
-
-      <li>
-        <h4>Disputed Areas <small><a href="https://github.com/whosonfirst/whosonfirst-placetypes#disputed" target="docs" class="tellmemore" title="tell me more">?</a></small></h4>
-        <ul>
-          <li>
-            <a href="wof-disputed-latest-bundle.tar.bz2">wof-disputed-latest-bundle.tar.bz2</a>
-            <small>(<a href="wof-disputed-latest-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
-          </li>
-          <li>
-            <a href="wof-disputed-latest.csv">wof-disputed-latest.csv</a>
-            <small>(<a href="wof-disputed-latest.csv.sha1.txt">SHA1</a>)</small>
-          </li>
-        </ul>
-      </li>
-
-      <li>
-        <h4>Marine Areas <small><a href="https://github.com/whosonfirst/whosonfirst-placetypes#marinearea" target="docs" class="tellmemore" title="tell me more">?</a></small></h4>
-        <ul>
-          <li>
-            <a href="wof-marinearea-latest-bundle.tar.bz2">wof-marinearea-latest-bundle.tar.bz2</a>
-            <small>(<a href="wof-marinearea-latest-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
-          </li>
-          <li>
-            <a href="wof-marinearea-latest.csv">wof-marinearea-latest.csv</a>
-            <small>(<a href="wof-marinearea-latest.csv.sha1.txt">SHA1</a>)</small>
-          </li>
-        </ul>
-      </li>
-
-      <li>
-        <h4>Timezones <small><a href="https://github.com/whosonfirst/whosonfirst-placetypes#timezone" target="docs" class="tellmemore" title="tell me more">?</a></small></h4>
-        <ul>
-          <li>
-            <a href="wof-timezone-latest-bundle.tar.bz2">wof-timezone-latest-bundle.tar.bz2</a>
-            <small>(<a href="wof-timezone-latest-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
-          </li>
-          <li>
-            <a href="wof-timezone-latest.csv">wof-timezone-latest.csv</a>
-            <small>(<a href="wof-timezone-latest.csv.sha1.txt">SHA1</a>)</small>
-          </li>
-        </ul>
-      </li>
-
-      <li>
-        <h4>Counties <small><a href="https://github.com/whosonfirst/whosonfirst-placetypes#county" target="docs" class="tellmemore" title="tell me more">?</a></small></h4>
-        <ul>
-          <li>
-            <a href="wof-county-latest-bundle.tar.bz2">wof-county-latest-bundle.tar.bz2</a>
-            <small>(<a href="wof-county-latest-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
-          </li>
-          <li>
-            <a href="wof-county-latest.csv">wof-county-latest.csv</a>
-            <small>(<a href="wof-county-latest.csv.sha1.txt">SHA1</a>)</small>
-          </li>
-        </ul>
-      </li>
-
-      <li>
-        <h4>Local Admins <small><a href="https://github.com/whosonfirst/whosonfirst-placetypes#localadmin" target="docs" class="tellmemore" title="tell me more">?</a></small></h4>
-        <ul>
-          <li>
-            <a href="wof-localadmin-latest-bundle.tar.bz2">wof-localadmin-latest-bundle.tar.bz2</a>
-            <small>(<a href="wof-localadmin-latest-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
-          </li>
-          <li>
-            <a href="wof-localadmin-latest.csv">wof-localadmin-latest.csv</a>
-            <small>(<a href="wof-localadmin-latest.csv.sha1.txt">SHA1</a>)</small>
-          </li>
-        </ul>
-      </li>
-
-      <li>
-        <h4>Boroughs <small><a href="https://github.com/whosonfirst/whosonfirst-placetypes#borough" target="docs" class="tellmemore" title="tell me more">?</a></small></h4>
-        <ul>
-          <li>
-            <a href="wof-borough-latest-bundle.tar.bz2">wof-borough-latest-bundle.tar.bz2</a>
-            <small>(<a href="wof-borough-latest-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
-          </li>
-          <li>
-            <a href="wof-borough-latest.csv">wof-borough-latest.csv</a>
-            <small>(<a href="wof-borough-latest.csv.sha1.txt">SHA1</a>)</small>
-          </li>
-        </ul>
-      </li>
-
-      <li>
-        <h4>Campuses <small><a href="https://github.com/whosonfirst/whosonfirst-placetypes#campus" target="docs" class="tellmemore" title="tell me more">?</a></small></h4>
-        <ul>
-          <li>
-            <a href="wof-campus-latest-bundle.tar.bz2">wof-campus-latest-bundle.tar.bz2</a>
-            <small>(<a href="wof-campus-latest-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
-          </li>
-          <li>
-            <a href="wof-campus-latest.csv">wof-campus-latest.csv</a>
-            <small>(<a href="wof-campus-latest.csv.sha1.txt">SHA1</a>)</small>
-          </li>
-        </ul>
-      </li>
-
-    </ul>
-
-   <h3 id="placetypes-optional">Optional <small><a href="https://github.com/whosonfirst/whosonfirst-placetypes#optional-o" target="docs" title="tell me more" class="tellmemore">?</a></small></h3>
-
-    <ul class="bundle-list">
-      <li>
-        <h4>Macroregions <small><a href="https://github.com/whosonfirst/whosonfirst-placetypes#macroregion" target="docs" class="tellmemore" title="tell me more">?</a></small></h4>
-        <ul>
-          <li>
-            <a href="wof-macroregion-latest-bundle.tar.bz2">wof-macroregion-latest-bundle.tar.bz2</a>
-            <small>(<a href="wof-macroregion-latest-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
-          </li>
-          <li>
-            <a href="wof-macroregion-latest.csv">wof-macroregion-latest.csv</a>
-            <small>(<a href="wof-macroregion-latest.csv.sha1.txt">SHA1</a>)</small>
-          </li>
-        </ul>
-      </li>
-      <li>
-        <h4>Macrocounties <small><a href="https://github.com/whosonfirst/whosonfirst-placetypes#macrocounty" target="docs" class="tellmemore" title="tell me more">?</a></small></h4>
-        <ul>
-          <li>
-            <a href="wof-macrocounty-latest-bundle.tar.bz2">wof-macrocounty-latest-bundle.tar.bz2</a>
-            <small>(<a href="wof-macrocounty-latest-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
-          </li>
-          <li>
-            <a href="wof-macrocounty-latest.csv">wof-macrocounty-latest.csv</a>
-            <small>(<a href="wof-macrocounty-latest.csv.sha1.txt">SHA1</a>)</small>
-          </li>
-        </ul>
-      </li>
-
-      <li>
-        <h4>Macrohoods <small><a href="https://github.com/whosonfirst/whosonfirst-placetypes#macrohood" target="docs" class="tellmemore" title="tell me more">?</a></small></h4>
-        <ul>
-          <li>
-            <a href="wof-macrohood-latest-bundle.tar.bz2">wof-macrohood-latest-bundle.tar.bz2</a>
-            <small>(<a href="wof-macrohood-latest-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
-          </li>
-          <li>
-            <a href="wof-macrohood-latest.csv">wof-macrohood-latest.csv</a>
-            <small>(<a href="wof-macrohood-latest.csv.sha1.txt">SHA1</a>)</small>
-          </li>
-        </ul>
-      </li>
-
-      <li>
-        <h4>Microhoods <small><a href="https://github.com/whosonfirst/whosonfirst-placetypes#microhood" target="docs" class="tellmemore" title="tell me more">?</a></small></h4>
-        <ul>
-          <li>
-            <a href="wof-microhood-latest-bundle.tar.bz2">wof-microhood-latest-bundle.tar.bz2</a>
-            <small>(<a href="wof-microhood-latest-bundle.tar.bz2.sha1.txt">SHA1</a>)</small>
-          </li>
-          <li>
-            <a href="wof-microhood-latest.csv">wof-microhood-latest.csv</a>
-            <small>(<a href="wof-microhood-latest.csv.sha1.txt">SHA1</a>)</small>
-          </li>
-        </ul>
-      </li>
-
-    </ul>
-
-    <h2 id="working-with">Working with Bundles</h2>
-
-    <p>Bundles all have the same directory structure: A single <code>data</code> directory and a <code>wof-PLACETYPE-OR-LATEST-BUNDLE-NAME-latest.csv</code> comma-separated "meta" file. It is left up to individual users of the data to decide how and whether data from multiple bundles should be merged.</p>
-
-    <p>Here is a working example script that will download all the bundles for continents, countries, regions, localities and neighbourhoods and merge the records from each in to a single <code>data</code> folder, located in the directory that the script is run from.</p>
-
-    <p><small>Please note that there is little to no error-checking in the example below so you should adjust this to taste. Also it assumes that you are comfortable working on the command-line and that your computer has copies of the <code>tar</code>, <code>curl</code> and <code>rsync</code> utilities pre-installed (this is true for all Linux and OS X computers).</small></p>
-
-    <pre>
-#!/bin/sh
-
-PLACETYPES='continent country region locality neighbourhood'
-DATA="data"
-
-if [ ! -d ${DATA} ]
-then
-    mkdir ${DATA}
-fi
-
-for PT in ${PLACETYPES}
-do
-
-    BUNDLE="wof-${PT}-latest-bundle"
-    COMPRESSED="${BUNDLE}.tar.bz2"
-
-    if [ -e ${COMPRESSED} ]
-    then
-        echo "remove ${COMPRESSED}"
-        rm -i ${COMPRESSED}
-    fi
-
-    if [ -d ${BUNDLE} ]
-    then
-        echo "remove ${BUNDLE}"
-        rm -ri ${BUNDLE}
-    fi
-
-    echo "fetch ${COMPRESSED}"
-    curl -s -o ${COMPRESSED} https://whosonfirst.mapzen.com/bundles/${COMPRESSED}
-
-    echo "expand ${COMPRESSED}"
-    tar -xvjf ${COMPRESSED}
-
-    echo "sync ${BUNDLE}"
-    rsync -av ${BUNDLE}/data/ ${DATA}/
-
-done
-    </pre>
-
-      </div>
-    </div>
-  </div>
-
-</body>
+    <script src="../javascript/mapzen.whosonfirst.api.js"></script>
+    <script src='../javascript/mapzen-styleguide.js'></script>
+    <!--<script src='https://mapzen.com/common/styleguide/scripts/mapzen-styleguide.min.js'></script>-->
+    <script src='https://code.jquery.com/jquery-2.2.0.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.0/jquery.scrollTo.min.js'></script>
+</html>
