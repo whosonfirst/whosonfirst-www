@@ -256,12 +256,14 @@ Venues are considered `common optional`.
 ## ISO Country codes
 
 Per the ISO 3166 spec which states:
-
-    User-assigned code elements are codes at the disposal of users who need to add further names of countries, territories, or other geographical entities to their in-house application of ISO 3166-1, and the ISO 3166/MA will never use these codes in the updating process of the standard. The following codes can be user-assigned:[19]
+ 
+ ```
+User-assigned code elements are codes at the disposal of users who need to add further names of countries, territories, or other geographical entities to their in-house application of ISO 3166-1, and the ISO 3166/MA will never use these codes in the updating process of the standard. The following codes can be user-assigned:[19]
 	
-	Alpha-2: AA, QM to QZ, XA to XZ, and ZZ
-	Alpha-3: AAA to AAZ, QMA to QZZ, XAA to XZZ, and ZZA to ZZZ
-	Numeric: 900 to 999
+Alpha-2: AA, QM to QZ, XA to XZ, and ZZ
+Alpha-3: AAA to AAZ, QMA to QZZ, XAA to XZZ, and ZZA to ZZZ
+Numeric: 900 to 999
+```
 
 We use the following ISO country codes:
 
