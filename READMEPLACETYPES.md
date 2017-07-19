@@ -22,14 +22,12 @@ These are the parts of a hierarchy specific, typically, to a country or region. 
 
 So the minimum list of place types for a hierarchy applied globally looks like this:
 
-```
-- continent (C)
-  - country (C)
-    - region (C)
-	  - "county" (CO)
-	    - locality (C)
-		  - neighbourhood (C)
-```
+    - continent (C)
+		- country (C)
+			- region (C)
+				- "county" (CO)
+					- locality (C)
+						- neightbourhood (C)
 
 A more nuanced version might look like this:
 
