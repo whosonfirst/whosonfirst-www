@@ -187,3 +187,7 @@ pre {
     font-size: inherit;
     border-left: none;
 }
+
+.octicon {
+	display: none;
+}

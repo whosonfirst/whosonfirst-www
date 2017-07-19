@@ -1,0 +1,1191 @@
+<?xml version="1.0"?>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Who's On First &#x2014; Placetypes</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name='description' content="Who's on First is a gazetteer of places.">
+        <link rel='apple-touch-icon' href='https://mapzen.com/common/styleguide/images/favicons/apple-touch-icon.png' sizes='180x180'>
+        <link rel='icon' type='image/png' href='https://mapzen.com/common/styleguide/images/favicons/favicon-16x16.png' sizes='16x16'>
+        <link rel='icon' type='image/png' href='https://mapzen.com/common/styleguide/images/favicons/favicon-32x32.png' sizes='32x32'>
+        <link rel='manifest' href='https://mapzen.com/common/styleguide/images/favicons/manifest.json'>
+        <link rel='mask-icon' href='https://mapzen.com/common/styleguide/images/favicons/safari-pinned-tab.svg' color='#2C1E3F'>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="../css/mapzen.whosonfirst.www.bundle.min.css"/>
+        <link rel="stylesheet" href="https://mapzen.com/common/styleguide/styles/blog.css">
+        <link rel="stylesheet" href="https://mapzen.com/js/mapzen.css">
+        <link rel="stylesheet" href="../css/mapzenwhosonfirstsubpage.css">
+        <script src="../javascript/mapzen.whosonfirst.www.bundle.min.js"></script>
+    </head>
+    <body>
+        <nav class='navbar-default navbar-fixed-top custom-navbar no-nav' role='navigation'>
+            <!--
+            <div class='container'>
+                <div class='navbar-header'>
+                    <button type='button' class='navbar-toggle collapsed' data-toggle='collapse' data-target='#navbar-menu'>
+                        <span class='sr-only'>Toggle navigation</span>
+                        <span class='icon-bar top-bar'></span>
+                        <span class='icon-bar middle-bar'></span>
+                        <span class='icon-bar bottom-bar'></span>
+                    </button>
+                    <a class="navbar-brand custom-navbar-type custom-navbar-header" href="#">Who's On First</a>
+                </div>
+            <!-- new nav bar showing user's login status
+                <div class='collapse navbar-collapse' id='navbar-menu'>
+                    <ul class='nav navbar-nav navbar-right'>
+                        <li class='inactive'><a href='https://whosonfirst.mapzen.com/theory/' class="custom-navbar-type">Theory</a></li>
+                        <li class='inactive'><a href='https://whosonfirst.mapzen.com/data/' class="custom-navbar-type">Data</a></li>
+                    </ul>
+                    <!--
+                    <ul class='nav navbar-nav navbar-right'>
+                        <li class="inactive dropdown"><a id='sign-in' href='/developers/sign_in'> </a></li>
+                        <li class="inactive"><a id='sign-up' href='/developers/sign_up'> </a></li>
+                    </ul>
+                </div>
+            </div>
+            -->
+        </nav>
+        <div class='section-nav' id='project-nav' role='navigation' aria-label='project-name'>
+            <div class='container'>
+                <div class='section-nav-container'>
+                    <div class='section-nav-title'>
+                        <h2 id='project-name'><a href='https://whosonfirst.mapzen.com'>Who's On First</a></h2>
+                    </div>
+                    <div class='section-nav-items'>
+                        <ul class='section-nav-scroll-container'>
+                            <li id="nav-item-data" class="section-nav-item">
+                                <a href="https://whosonfirst.mapzen.com/data/">Data</a>
+                            </li>
+                            <li id="nav-item-theory" class="section-nav-item">
+                                <a href="https://whosonfirst.mapzen.com/theory/">Theory</a>
+                            </li>
+                            <li id="nav-item-bundles" class="section-nav-item">
+                                <a href="https://whosonfirst.mapzen.com/bundles/">Bundles</a>
+                            </li>
+                            <li id="nav-item-placetypes" class="section-nav-item active">
+								<a href="https://whosonfirst.mapzen.com/placetypes/">Placetypes</a>
+                            </li>
+                        </ul>
+                        <div class='section-nav-dropdown'>&#9698;</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section class='container documentation-container'>
+            <div class='row'>
+                <!--
+                <div class="col-xs-12 col-md-3">
+                    <div class="toc toc-sub-left" role="directory">
+                        <ul class="nav toc-nav">
+                            <li class="toc-top-level">
+                                <a href="https://whosonfirst.mapzen.com">Home</a>
+                            </li>
+                            <li class="toc-top-level">
+                                <a href="https://whosonfirst.mapzen.com/bundles/">Bundles</a>
+                                <ul class="toc-subnav">
+                                    <li><a href="#placetypes">Placetypes</a></li>
+                                    <li><a href="#working-with">Working with Bundles</a></li>
+                                </ul>
+                            </li>
+                            <li class="toc-top-level">
+                                <a href="https://whosonfirst.mapzen.com/data/">Data</a>
+                                <ul class="toc-subnav">
+                                    <li><a href="#theory-wrapper">tl;dr</a></li>
+                                    <li><a href="#what-mean">But... what does it mean?</a></li>
+                                    <li><a href="#gory-details">The gory details</a></li>
+                                    <li><a href="#know-knows">Known knowns</a></li>
+                                </ul>
+                            </li>
+                            <li class="toc-top-level">
+                                <a href="https://whosonfirst.mapzen.com/interns/">Internships 2017</a>
+                            </li>
+                            <li class="toc-top-level">
+                                <a href="https://whosonfirst.mapzen.com/mmdb/">Maxmind Databases (mmdb)</a>
+                                <ul class="toc-subnav">
+                                    <li><a href="#geolite2">GeoLite2 Databases</a></li>
+                                    <li><a href="#code">Code</a></li>
+                                </ul>
+                            </li>
+                            <li class="toc-top-level toc-current">
+                                <a href="#">Placetypes</a>
+                            </li>
+                            <!--
+                            <li class="toc-top-level">
+                                <a href="https://whosonfirst.mapzen.com/theory/">Theory</a>
+                                <ul class="toc-subnav">
+                                    <li><a href="#theory-2015">2015</a></li>
+                                    <li><a href="#theory-2016">2016</a></li>
+                                    <li><a href="#theory-2017">2017</a></li>
+                                </ul>
+                            </li>
+                            <li class="toc-top-level">
+                                <a href="https://whosonfirst.mapzen.com/vagrant/">Vagrant</a>
+                                <ul class="toc-subnav">
+                                    <li><a href="#spelunker">spelunker.box</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                -->
+                <div class='col-xs-12 col-md-10 col-md-offset-1 static-content'>
+<article class="markdown-body entry-content" itemprop="text">
+    <h1>
+        <a id="user-content-whosonfirst-placetypes" class="anchor" href="#whosonfirst-placetypes" aria-hidden="true">
+            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+                </path>
+            </svg>
+        </a>
+        whosonfirst-placetypes
+    </h1>
+    <p>
+        Where things are (and what they mean) in Who&#39;s On First
+    </p>
+    <h2>
+        <a id="user-content-roles" class="anchor" href="#roles" aria-hidden="true">
+            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+                </path>
+            </svg>
+        </a>
+        Roles
+    </h2>
+    <p>
+        For any hierarchy of place types we have identified three “roles” that any one of those place types can fall into. That doesn&#39;t mean there can&#39;t be others (roles or place types) only that these are the ones we&#39;ve identified as a good place to start.
+    </p>
+    <h4>
+        <a id="user-content-common-c" class="anchor" href="#common-c" aria-hidden="true">
+            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+                </path>
+            </svg>
+        </a>
+        Common (C)
+    </h4>
+    <p>
+        These are, well, common across
+        <em>
+            any
+        </em>
+        hierarchy for any place in Who&#39;s On First.
+    </p>
+    <p>
+        This part is important: It means that at some point every single record shares at least one or more common ancestors (for example a country or a continent or occasionally just the Earth). That doesn&#39;t preclude very specific additions to the hierarchy for a given location only that those additions need to fit within a common hierarchy shared across all locations.
+    </p>
+    <h4>
+        <a id="user-content-common-optional-co" class="anchor" href="#common-optional-co" aria-hidden="true">
+            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+                </path>
+            </svg>
+        </a>
+        Common-optional (CO)
+    </h4>
+    <p>
+        These are meant to be part of a common hierarchy but may not be present because they aren&#39;t relevant or because we don&#39;t have the data. Counties are a good example of this.
+    </p>
+    <h4>
+        <a id="user-content-optional-o" class="anchor" href="#optional-o" aria-hidden="true">
+            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+                </path>
+            </svg>
+        </a>
+        Optional (O)
+    </h4>
+    <p>
+        These are the parts of a hierarchy specific, typically, to a country or region. For example, the many nested &#34;departments&#34; in France or Germany. The only rule is that an optional (O) place type has to fit somewhere inside the common (C) hierarchy.
+    </p>
+    <p>
+        So the minimum list of place types for a hierarchy applied globally looks like this:
+    </p>
+    <pre>
+        <code>
+            - continent (C)
+  - country (C)
+    - region (C)
+       - &#34;county&#34; (CO)
+          - locality (C)
+            - neighbourhood (C)
+        </code>
+    </pre>
+    <p>
+        A more nuanced version might look like this:
+    </p>
+    <pre>
+        <code>
+            - continent (C)
+  - empire (CO)
+    - country (C)
+     - macroregion (O)
+      - region (C)
+       - macrocounty (O)
+        - &#34;county&#34; (CO)
+         - &#34;metro area&#34; (CO)
+          - locality (C)
+           - macrohood (O)
+            - neighbourhood (C)
+             - microhood (O)
+              - campus  (CO)
+               - building (CO)
+                - address (CO)
+                 - venue (C)
+        </code>
+    </pre>
+    <h2>
+        <a id="user-content-here-is-a-pretty-picture" class="anchor" href="#here-is-a-pretty-picture" aria-hidden="true">
+            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+                </path>
+            </svg>
+        </a>
+        Here is a pretty picture
+    </h2>
+    <p>
+        The blue boxes are
+        <code>
+            common
+        </code>
+        placetypes, the green ones
+        <code>
+            common_optional
+        </code>
+        and the yellow ones are
+        <code>
+            optional
+        </code>
+        .
+    </p>
+    <p>
+        <a href="../images/placetypes-latest.png" target="_blank">
+            <img src="../images/placetypes-latest.png" alt="" style="max-width:100%;">
+        </a>
+    </p>
+    <p>
+        <em>
+            This image was generated using the
+            <a href="https://github.com/whosonfirst/py-mapzen-whosonfirst-placetypes/blob/master/scripts/wof-graph-placetypes">
+                handy wof-graph-placetypes script in the py-mapzen-whosonfirst-placetypes library
+            </a>
+        </em>
+    </p>
+    <h2>
+        <a id="user-content-placetypes" class="anchor" href="#placetypes" aria-hidden="true">
+            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+                </path>
+            </svg>
+        </a>
+        Placetypes
+    </h2>
+    <p>
+        All place types have a unique 64-bit numeric ID. It should always be possible to
+query or filter for places by that numeric ID so that the burden of remembering
+whether it is
+        <code>
+            neighbourhood
+        </code>
+        or
+        <code>
+            neighborhood
+        </code>
+        or
+        <code>
+            quartier
+        </code>
+        or whatever is
+reserved for friendly banter over drinks.
+    </p>
+    <p>
+        In alphabetical order the current list of placetypes in Who&#39;s On First is:
+    </p>
+    <h3>
+        <a id="user-content-address" class="anchor" href="#address" aria-hidden="true">
+            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+                </path>
+            </svg>
+        </a>
+        address
+    </h3>
+    <p>
+        <code>
+            102312329
+        </code>
+    </p>
+    <p>
+        This is an open question. The question being: How/what do we do with
+OpenAddresses? We aren&#39;t sure of anything, yet, except maybe to put
+this here as a placeholder for probably between buildings and venues
+    </p>
+    <p>
+        Addresses are considered
+        <code>
+            common optional
+        </code>
+        .
+    </p>
+    <h3>
+        <a id="user-content-building" class="anchor" href="#building" aria-hidden="true">
+            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+                </path>
+            </svg>
+        </a>
+        building
+    </h3>
+    <p>
+        <code>
+            102312327
+        </code>
+    </p>
+    <p>
+        See also:
+        <a href="https://builtworksregistry.wordpress.com/imagining-the-built-works-registry-by-aaron-straup-cope-christine-kuan/">
+            Imagining the Built Works Registry
+        </a>
+    </p>
+    <p>
+        Buildings are considered
+        <code>
+            common optional
+        </code>
+        .
+    </p>
+    <h3>
+        <a id="user-content-campus" class="anchor" href="#campus" aria-hidden="true">
+            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+                </path>
+            </svg>
+        </a>
+        campus
+    </h3>
+    <p>
+        <code>
+            102312331
+        </code>
+    </p>
+    <p>
+        Things like universities or office complexes and
+        <a href="https://github.com/whosonfirst/whosonfirst-data/blob/master/meta/wof-campus-latest.csv">
+            airports
+        </a>
+        . Something something something, Burning Man and other annual events.
+    </p>
+    <p>
+        Campuses are considered
+        <code>
+            common optional
+        </code>
+        .
+    </p>
+    <h3>
+        <a id="user-content-continent" class="anchor" href="#continent" aria-hidden="true">
+            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+                </path>
+            </svg>
+        </a>
+        continent
+    </h3>
+    <p>
+        <code>
+            102312309
+        </code>
+    </p>
+    <p>
+        I think we&#39;re all in pretty broad agreement about continents, yeah?
+    </p>
+    <p>
+        Continents are considered
+        <code>
+            common
+        </code>
+        .
+    </p>
+    <h3>
+        <a id="user-content-country" class="anchor" href="#country" aria-hidden="true">
+            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+                </path>
+            </svg>
+        </a>
+        country
+    </h3>
+    <p>
+        <code>
+            102312307
+        </code>
+    </p>
+    <p>
+        Basically places that issue passports, notwithstanding the details (like
+empires which actually issue the passports...)
+    </p>
+    <p>
+        Continents are considered
+        <code>
+            common
+        </code>
+        .
+    </p>
+    <h3>
+        <a id="user-content-county" class="anchor" href="#county" aria-hidden="true">
+            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+                </path>
+            </svg>
+        </a>
+        county
+    </h3>
+    <p>
+        This needs a better - that is more abstract - name. Like &#34;region&#34; instead of
+state, province, whatever... but for counties.
+    </p>
+    <p>
+        Counties are considered
+        <code>
+            common optional
+        </code>
+        .
+    </p>
+    <h3>
+        <a id="user-content-dependency" class="anchor" href="#dependency" aria-hidden="true">
+            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+                </path>
+            </svg>
+        </a>
+        dependency
+    </h3>
+    <p>
+        <code>
+            102312313
+        </code>
+    </p>
+    <p>
+        It&#39;s not a sub-region of a country but rather dependent on a parent country for
+defence, passport control, subsidies, etc.
+    </p>
+    <p>
+        Dependencies are considered
+        <code>
+            common optional
+        </code>
+        .
+    </p>
+    <h3>
+        <a id="user-content-disputed" class="anchor" href="#disputed" aria-hidden="true">
+            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+                </path>
+            </svg>
+        </a>
+        disputed
+    </h3>
+    <p>
+        <code>
+            102322043
+        </code>
+    </p>
+    <p>
+        Places that one or more parties claim as their own. As of this writing
+        <em>
+            all
+        </em>
+        disputed places are parented only by the country (and higher) IDs of the
+claimants. This isn&#39;t to say there aren&#39;t more granular hierarchies to be
+applied to these place only that we are starting with the simple stuff first.
+    </p>
+    <p>
+        Disputed areas are considered
+        <code>
+            common optional
+        </code>
+        .
+    </p>
+    <h3>
+        <a id="user-content-empire" class="anchor" href="#empire" aria-hidden="true">
+            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+                </path>
+            </svg>
+        </a>
+        empire
+    </h3>
+    <p>
+        <code>
+            102312335
+        </code>
+    </p>
+    <p>
+        Or &#34;sovereignty&#34; but really... empire. For example the Meta United States that
+contains both the US and Puerto Rico.
+    </p>
+    <p>
+        Empires are considered
+        <code>
+            common optional
+        </code>
+        .
+    </p>
+    <h3>
+        <a id="user-content-localadmin" class="anchor" href="#localadmin" aria-hidden="true">
+            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+                </path>
+            </svg>
+        </a>
+        localadmin
+    </h3>
+    <p>
+        <code>
+            404221409
+        </code>
+    </p>
+    <p>
+        In many countries, the lowest level of government. They contain one or more localities (or &#34;populated places&#34;) which themselves have no authority. Often but not exclusively found in Europe.
+    </p>
+    <p>
+        Localadmins are considered
+        <code>
+            common optional
+        </code>
+    </p>
+    <h3>
+        <a id="user-content-locality" class="anchor" href="#locality" aria-hidden="true">
+            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+                </path>
+            </svg>
+        </a>
+        locality
+    </h3>
+    <p>
+        <code>
+            102312317
+        </code>
+    </p>
+    <p>
+        Towns and cities, independent of size or population. Things with neighbourhoods,
+basically.
+    </p>
+    <p>
+        Localities are considered
+        <code>
+            common
+        </code>
+        .
+    </p>
+    <h3>
+        <a id="user-content-macrocounty" class="anchor" href="#macrocounty" aria-hidden="true">
+            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+                </path>
+            </svg>
+        </a>
+        macrocounty
+    </h3>
+    <p>
+        <code>
+            404221413
+        </code>
+    </p>
+    <p>
+        Bundles of counties!
+    </p>
+    <p>
+        Macrocounties are considered
+        <code>
+            optional
+        </code>
+        . These exists mostly in Europe.
+    </p>
+    <h3>
+        <a id="user-content-macrohood" class="anchor" href="#macrohood" aria-hidden="true">
+            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+                </path>
+            </svg>
+        </a>
+        macrohood
+    </h3>
+    <p>
+        <code>
+            102312323
+        </code>
+    </p>
+    <p>
+        Like &#34;BoCoCa&#34; which in WOE is a neighbourhood that parents another... neighbourhood.
+    </p>
+    <p>
+        Macrohoods are considered
+        <code>
+            optional
+        </code>
+        .
+    </p>
+    <h3>
+        <a id="user-content-macroregion" class="anchor" href="#macroregion" aria-hidden="true">
+            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+                </path>
+            </svg>
+        </a>
+        macroregion
+    </h3>
+    <p>
+        <code>
+            404221411
+        </code>
+    </p>
+    <p>
+        Bundles of regions! These exists mostly in Europe.
+    </p>
+    <p>
+        Macroregions are considered
+        <code>
+            optional
+        </code>
+        .
+    </p>
+    <h3>
+        <a id="user-content-marinearea" class="anchor" href="#marinearea" aria-hidden="true">
+            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+                </path>
+            </svg>
+        </a>
+        marinearea
+    </h3>
+    <p>
+        <code>
+            404528655
+        </code>
+    </p>
+    <p>
+        Places with fish and boats.
+    </p>
+    <p>
+        Marine areas are considered
+        <code>
+            common_optional
+        </code>
+        .
+    </p>
+    <h3>
+        <a id="user-content-metroarea" class="anchor" href="#metroarea" aria-hidden="true">
+            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+                </path>
+            </svg>
+        </a>
+        metroarea
+    </h3>
+    <p>
+        <code>
+            102371933
+        </code>
+    </p>
+    <p>
+        Things like &#34;The Bay Area&#34; – this one is hard so we shouldn&#39;t spend too much
+time worrying about the details yet but instead treat as something we want to do
+eventually.
+    </p>
+    <p>
+        Metropolitain areas are considered
+        <code>
+            common optional
+        </code>
+        .
+    </p>
+    <h3>
+        <a id="user-content-microhood" class="anchor" href="#microhood" aria-hidden="true">
+            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+                </path>
+            </svg>
+        </a>
+        microhood
+    </h3>
+    <p>
+        <code>
+            102312321
+        </code>
+    </p>
+    <p>
+        Because all place is disputed. And everyone has a name for a place that will
+offend someone else.
+    </p>
+    <p>
+        Microhoods are considered
+        <code>
+            optional
+        </code>
+        .
+    </p>
+    <h3>
+        <a id="user-content-neighbourhood" class="anchor" href="#neighbourhood" aria-hidden="true">
+            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+                </path>
+            </svg>
+        </a>
+        neighbourhood
+    </h3>
+    <p>
+        <code>
+            102312319
+        </code>
+    </p>
+    <p>
+        Things no one will agree on. Ever.
+    </p>
+    <p>
+        Neighbourhoods are considered
+        <code>
+            common
+        </code>
+        .
+    </p>
+    <h3>
+        <a id="user-content-ocean" class="anchor" href="#ocean" aria-hidden="true">
+            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+                </path>
+            </svg>
+        </a>
+        ocean
+    </h3>
+    <p>
+        <code>
+            404528653
+        </code>
+    </p>
+    <p>
+        The really big marine areas. The ones that you sometimes feel cast adrift on...
+    </p>
+    <p>
+        Oceans are considered
+        <code>
+            common_optional
+        </code>
+        .
+    </p>
+    <h3>
+        <a id="user-content-planet" class="anchor" href="#planet" aria-hidden="true">
+            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+                </path>
+            </svg>
+        </a>
+        planet
+    </h3>
+    <p>
+        <code>
+            102312341
+        </code>
+    </p>
+    <p>
+        The big round thing you&#39;re standing on.
+    </p>
+    <h3>
+        <a id="user-content-region" class="anchor" href="#region" aria-hidden="true">
+            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+                </path>
+            </svg>
+        </a>
+        region
+    </h3>
+    <p>
+        <code>
+            102312311
+        </code>
+    </p>
+    <p>
+        States, provinces, regions. We call them
+        <code>
+            regions
+        </code>
+        . These are places that would have
+a bone in a &#34;
+        <a href="https://en.wikipedia.org/wiki/States&#39;_rights">
+            states rights
+        </a>
+        &#34; argument.
+    </p>
+    <p>
+        Regions are considered
+        <code>
+            common
+        </code>
+        .
+    </p>
+    <h3>
+        <a id="user-content-venue" class="anchor" href="#venue" aria-hidden="true">
+            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+                </path>
+            </svg>
+        </a>
+        venue
+    </h3>
+    <p>
+        <code>
+            102312325
+        </code>
+    </p>
+    <p>
+        Things with walls, often but mostly things that people stand around
+        <em>
+            together
+        </em>
+        . Things with walls  might be public (a bar) or private (your apartment) by default.
+    </p>
+    <p>
+        Venues are considered
+        <code>
+            common optional
+        </code>
+        .
+    </p>
+    <h2>
+        <a id="user-content-iso-country-codes" class="anchor" href="#iso-country-codes" aria-hidden="true">
+            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+                </path>
+            </svg>
+        </a>
+        ISO Country codes
+    </h2>
+    <p>
+        Per the ISO 3166 spec which states:
+    </p>
+    <pre>
+        <code>
+            User-assigned code elements are codes at the disposal of users who need to add further names of countries, territories, or other geographical entities to their in-house application of ISO 3166-1, and the ISO 3166/MA will never use these codes in the updating process of the standard. The following codes can be user-assigned:[19]
+
+    Alpha-2: AA, QM to QZ, XA to XZ, and ZZ
+    Alpha-3: AAA to AAZ, QMA to QZZ, XAA to XZZ, and ZZA to ZZZ
+    Numeric: 900 to 999
+        </code>
+    </pre>
+    <p>
+        We use the following ISO country codes:
+    </p>
+    <h3>
+        <a id="user-content-xk" class="anchor" href="#xk" aria-hidden="true">
+            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+                </path>
+            </svg>
+        </a>
+        XK
+    </h3>
+    <p>
+        We just followed
+        <a href="https://geonames.wordpress.com/2010/03/08/xk-country-code-for-kosovo/">
+            Geonames&#39; lead
+        </a>
+        and have assigned
+        <code>
+            XK
+        </code>
+        to be the ISO country code for Kosovo.
+    </p>
+    <h3>
+        <a id="user-content-xn" class="anchor" href="#xn" aria-hidden="true">
+            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+                </path>
+            </svg>
+        </a>
+        XN
+    </h3>
+    <p>
+        For
+        <a href="http://www.nullisland.com/">
+            Null Island
+        </a>
+        .
+    </p>
+    <h3>
+        <a id="user-content-xx" class="anchor" href="#xx" aria-hidden="true">
+            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+                </path>
+            </svg>
+        </a>
+        XX
+    </h3>
+    <p>
+        <code>
+            XX
+        </code>
+        denotes a place disputed by two or more (ISO) countries.
+    </p>
+    <h3>
+        <a id="user-content-xy" class="anchor" href="#xy" aria-hidden="true">
+            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+                </path>
+            </svg>
+        </a>
+        XY
+    </h3>
+    <p>
+        <code>
+            XY
+        </code>
+        denotes an ISO country that has yet to be determined (by us). You might typically see this is a record for a freshly created place that hasn&#39;t been fully vetted or editorialized yet.
+    </p>
+    <h3>
+        <a id="user-content-xz" class="anchor" href="#xz" aria-hidden="true">
+            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+                </path>
+            </svg>
+        </a>
+        XZ
+    </h3>
+    <p>
+        <code>
+            XZ
+        </code>
+        is the ISO country code equivalent of
+        <code>
+            wof:parent_id=-2
+        </code>
+        or
+        <code>
+            :shrug: the world is a complicated place
+        </code>
+        .
+    </p>
+    <h2>
+        <a id="user-content-hierarchies" class="anchor" href="#hierarchies" aria-hidden="true">
+            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+                </path>
+            </svg>
+        </a>
+        Hierarchies
+    </h2>
+    <p>
+        A Who&#39;s On First (
+        <code>
+            wof:
+        </code>
+        ) hierarchy is a list of dictionaries, which each item is a dictionary containing a full hierarchy. Like this:
+    </p>
+    <pre>
+        <code>
+            &#34;wof:hierarchy&#34;: [
+	{ &#34;neighbourhood_id&#34;: 9997, &#34;locality_id&#34;: 9997, &#34;metro_id&#34;: 9998, &#34;county_id&#34;: 9998, &#34;region_id&#34;: 9998, &#34;country_id&#34;: 9998, &#34;continent_id&#34;: 9998 },
+	{ &#34;neighbourhood_id&#34;: 9997, &#34;locality_id: 9997, &#34;metro_id&#34;: 9999, &#34;county_id&#34;: 9999, &#34;region_id&#34;: 9999, &#34;country_id&#34;: 9999, &#34;continent_id&#34;: 9999 }
+]
+        </code>
+    </pre>
+    <p>
+        See below for details and rationale.
+    </p>
+    <h3>
+        <a id="user-content-how-did-we-get-here" class="anchor" href="#how-did-we-get-here" aria-hidden="true">
+            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+                </path>
+            </svg>
+        </a>
+        How did we get here?
+    </h3>
+    <p>
+        <em>
+            The following is a verbatim written exercise to work through the issue of how a hierarchy should be represented or, more specifically, how the potentially multiple hierarchies that a given place might encompass should be represented.
+        </em>
+    </p>
+    <p>
+        Something something something as elements on the root
+        <code>
+            properties
+        </code>
+        dictionary. Like this:
+    </p>
+    <pre>
+        <code>
+            {
+	&#34;wof:neighbourhood_id&#34;: 9999,
+	&#34;wof:locality_id&#34;: 9999,
+	&#34;wof:county_id&#34;: 9999,
+	&#34;wof:region_id&#34;: 9999,
+	&#34;wof:country_id&#34;: 9999,
+	&#34;wof:continent_id&#34;: 9999
+}
+        </code>
+    </pre>
+    <p>
+        Something something something as a dictionary on the root
+        <code>
+            properties
+        </code>
+        dictionary. Like this:
+    </p>
+    <pre>
+        <code>
+            &#34;wof:hierarchy&#34;: {
+	&#34;neighbourhood_id&#34;: 9999,
+	&#34;locality_id&#34;: 9999,
+	&#34;county_id&#34;: 9999,
+	&#34;region_id&#34;: 9999,
+	&#34;country_id&#34;: 9999,
+	&#34;continent_id&#34;: 9999
+}
+        </code>
+    </pre>
+    <p>
+        This has the advantage of keeping all the hierarchy information in one place however it is left as an exercise to the user to enforce the actual order of the hierarchy since there is no way to be certain that
+        <code>
+            programming langage X
+        </code>
+        will ensure the ordering of the dictionary keys. We could define the hierarchy as a list of dictionaries which would allow to explicitly encode the parent for that node but those extra bytes in each record will add up fast when dealing with a global hierarchy. Like this:
+    </p>
+    <pre>
+        <code>
+            &#34;wof:hierarchy&#34;: [
+	{ &#34;neighbourhood_id&#34;: 9999, &#34;parent&#34;: &#34;locality_id&#34; },
+	{ &#34;locality_id&#34;: 9999, &#34;parent: &#34;county_id&#34; },
+	{ &#34;county_id&#34;: 9999, &#34;parent&#34;: &#34;region_id&#34; },
+	{ &#34;region_id&#34;: 9999, &#34;parent&#34;: &#34;country_id&#34; },
+	{ &#34;country_id&#34;: 9999, &#34;parent&#34;: &#34;continent_id&#34; },
+	{ &#34;continent_id&#34;: 9999, &#34;parent&#34;: &#34;&#34; }
+}
+        </code>
+    </pre>
+    <p>
+        Meanwhile we also know that we want to support certain place types that will have multiple parents (because geography) like metropolitain areas or, if we choose to include them in the gazetteer proper, road networks.
+    </p>
+    <p>
+        At a minimum this means that some of the values for placetypes have to be lists which probably means
+        <em>
+            all
+        </em>
+        of the values should be lists so that people don&#39;t have to think about context or test data types. For example:
+    </p>
+    <pre>
+        <code>
+            &#34;wof:hierarchy&#34;: {
+	&#34;neighbourhood_id&#34;: [ 9999 ],
+	&#34;locality_id&#34;: [ 9999 ],
+	&#34;metropolitain_area&#34;: [ 9999 ],
+	&#34;county_id&#34;: [ 9999, 9999 ],
+	&#34;region_id&#34;: [ 9999 ],
+	&#34;country_id&#34;: [ 9999 ],
+	&#34;continent_id&#34;: [ 9999 ],
+}
+        </code>
+    </pre>
+    <p>
+        However, it is possible to imagine a place type with not only multiple parents but multiple ancestors. A timezone or, again, a road network. In which case you find yourself with a dictionary whose values are lists of dictionaries. At which point you risk spiralling off in to Semantic Web graph theory quicksand.
+    </p>
+    <p>
+        So maybe the thing to do is suffer mixed content (unique IDs and lists) where the rule is the immediate (outer) hierarchy stops the moment there are multiple parents. Like this:
+    </p>
+    <pre>
+        <code>
+            &#34;wof:hierarchy&#34;: {
+	&#34;neighbourhood_id&#34;: 9999,
+	&#34;locality_id&#34;: 9999,
+	&#34;metro_id&#34;: [
+		{ &#34;metro_id&#34;: 9998, &#34;county_id&#34;: 9998, &#34;region_id&#34;: 9998, &#34;country_id&#34;: 9998, &#34;continent_id&#34;: 9998 },
+		{ &#34;metro_id&#34;: 9999, &#34;county_id&#34;: 9999, &#34;region_id&#34;: 9999, &#34;country_id&#34;: 9999, &#34;continent_id&#34;: 9999 }
+	]
+}
+        </code>
+    </pre>
+    <p>
+        Or maybe the hierarchy is always just a list of dictionaries, each containing a full hierarchy. Like this:
+    </p>
+    <pre>
+        <code>
+            &#34;wof:hierarchy&#34;: [
+	{ &#34;neighbourhood_id&#34;: 9997, &#34;locality_id&#34;: 9997, &#34;metro_id&#34;: 9998, &#34;county_id&#34;: 9998, &#34;region_id&#34;: 9998, &#34;country_id&#34;: 9998, &#34;continent_id&#34;: 9998 },
+	{ &#34;neighbourhood_id&#34;: 9997, &#34;locality_id: 9997, &#34;metro_id&#34;: 9999, &#34;county_id&#34;: 9999, &#34;region_id&#34;: 9999, &#34;country_id&#34;: 9999, &#34;continent_id&#34;: 9999 }
+]
+        </code>
+    </pre>
+    <p>
+        Reasons why this last suggestion is good:
+    </p>
+    <ul>
+        <li>
+            It is explicit
+        </li>
+        <li>
+            It is easy to compare multiple hierarchies
+        </li>
+        <li>
+            It doesn&#39;t require the user do a lot of mental arithmetic to construct the complete hierarchy or to support whatever &#34;efficiencies&#34; we dream up in the moment
+        </li>
+        <li>
+            It is easier to change going forward (say before an &#34;official&#34; launch) than the alternatives
+        </li>
+    </ul>
+    <p>
+        Reasons why this last suggestion is, or might be, bad:
+    </p>
+    <ul>
+        <li>
+            If we support metropolitain areas then many places (localities, neighbourhood, venues) may have multiple hierarchies where the only difference will (likely) be the county, leaving all the remaining ancestors in common
+        </li>
+        <li>
+            File size, disk space and bandwidth - this is the corollary of the first point and akin to whitespace or coordinates with &gt; 6 decimal points in GeoJSON files
+        </li>
+    </ul>
+    <p>
+        In the end the &#34;good&#34; reasons outweighed the &#34;bad&#34; reasons.
+    </p>
+    <h2>
+        <a id="user-content-see-also" class="anchor" href="#see-also" aria-hidden="true">
+            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+                </path>
+            </svg>
+        </a>
+        See also
+    </h2>
+    <ul>
+        <li>
+            <a href="https://github.com/whosonfirst/py-mapzen-whosonfirst-placetypes">
+                https://github.com/whosonfirst/py-mapzen-whosonfirst-placetypes
+            </a>
+        </li>
+    </ul>
+</article>
+            	</div>
+        	</div>
+    	</section>
+	</body>
+    <footer>
+        <div class='headroom-large custom-footer'>
+            <div class='container'>
+                <div class='row'>
+                    <div class='col-xs-12 text-left custom-footer'>
+                        <p>Who's On First is a <a href='https://mapzen.com/' class="custom-footer-actual-link">Mapzen</a> gig</p>
+                        <p class="custom-footer-link custom-footer-first-link "><i class='fa fa-lg fa-fw fa-twitter'></i>Follow <a href='https://twitter.com/alloftheplaces/' class="custom-footer-actual-link">@alloftheplaces</a> on Twitter</p>
+                        <p class="custom-footer-link"><i class='fa fa-lg fa-fw fa-github'></i>Check out our <a href='https://github.com/mapzen/' class="custom-footer-actual-link">whosonfirst</a> and <a href='https://github.com/whosonfirst-data/' class="custom-footer-actual-link">whosonfirst-data</a> organizations on Github</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="../javascript/mapzen.whosonfirst.api.js"></script>
+    <script src='../javascript/mapzen-styleguide.js'></script>
+    <!--<script src='https://mapzen.com/common/styleguide/scripts/mapzen-styleguide.min.js'></script>-->
+    <script src='https://code.jquery.com/jquery-2.2.0.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.0/jquery.scrollTo.min.js'></script>
+</html>

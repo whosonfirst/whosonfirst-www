@@ -202,3 +202,7 @@
         top: 0px !important;
     }
 }
+
+.octicon {
+	display: none;
+}
