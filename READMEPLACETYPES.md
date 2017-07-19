@@ -24,11 +24,11 @@ So the minimum list of place types for a hierarchy applied globally looks like t
 
 ```
 - continent (C)
-    - country (C)
-	    - region (C)
-		    - "county" (CO)
-			    - locality (C)
-				    - neighbourhood (C)
+  - country (C)
+    - region (C)
+	  - "county" (CO)
+	    - locality (C)
+		  - neighbourhood (C)
 ```
 
 A more nuanced version might look like this:
