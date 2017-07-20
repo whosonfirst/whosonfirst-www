@@ -1,3 +1,5 @@
+UNAME_S := $(shell uname -s)
+
 all: mapzen js css placetypes
 
 css:
@@ -27,3 +29,6 @@ www-dev: css
 
 www-prod: css
 	utils/darwin/wof-clone-website -ignore \~ -ignore .DS_Store -ignore .gitignore -strict -source www/
+
+tools:
+	./utils/mk-utils.sh go-whosonfirst-www wof-clone-website 
