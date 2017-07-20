@@ -175,7 +175,7 @@ contributing:
 	sed -i -e 's/Who'\''s On First &#x2014;/Who'\''s On First - Contributing/' www/docs/contributing.html
 	rm www/docs/contributing.html-e
 	rm www/docs/contributing-content.html
-	
+
 licensing:
 	curl -s https://github.com/whosonfirst-data/whosonfirst-data/blob/master/LICENSE.md | pup -i 0 'article.markdown-body' > www/docs/licensing-content.html
 	cat www/components/header.html www/docs/licensing-content.html www/components/footer.html > www/docs/licensing.html
@@ -185,6 +185,24 @@ licensing:
 	rm www/docs/licensing-content.html
 	
 docs: licensing contributing tests source-pages dates geometry-pages names properties-pages
+	
+pull-request:
+	curl -s https://github.com/whosonfirst-data/whosonfirst-data/blob/master/PULL_REQUEST_TEMPLATE_NEIGHBOURHOOD.md | pup -i 0 'article.markdown-body' > www/data/pull-request-content.html
+	cat www/components/header.html www/data/pull-request-content.html www/components/footer.html > www/data/pull-request.html
+	sed -i -e 's/Who'\''s On First &#x2014;/Who'\''s On First - Pull Request Template/' www/data/pull-request.html
+	sed -i -e 's/\<li id\=\"nav\-item\-data\" class\=\"section-nav\-item\">/\<li id\=\"nav\-item\-data\" class\=\"section-nav\-item active\">/' www/data/pull-request.html
+	rm www/data/pull-request.html-e
+	rm www/data/pull-request-content.html
+	
+data-known-knowns:
+	curl -s https://github.com/whosonfirst-data/whosonfirst-data/blob/master/README.KNOWN.KNOWNS.md | pup -i 0 'article.markdown-body' > www/data/known-knowns-content.html
+	cat www/components/header.html www/data/known-knowns-content.html www/components/footer.html > www/data/known-knowns.html
+	sed -i -e 's/Who'\''s On First &#x2014;/Who'\''s On First - Known Knowns/' www/data/known-knowns.html
+	sed -i -e 's/\<li id\=\"nav\-item\-data\" class\=\"section-nav\-item\">/\<li id\=\"nav\-item\-data\" class\=\"section-nav\-item active\">/' www/data/known-knowns.html
+	rm www/data/known-knowns.html-e
+	rm www/data/known-knowns-content.html
+	
+data: pull-requests data-known-knowns
 	
 setup:
 	ubuntu/setup-nginx.sh
