@@ -215,6 +215,9 @@
                     <pre>$> git lfs pull<br>Fetching master<br>(1 of 1 files) 68.54 MB / 68.55 MB<br><br>$> cat data/856/333/45/85633345.geojson<br>{<br><div class="pre-block">"id": 85633345,<br>"type": "Feature",<br>"properties": {<div class="pre-block">"edtf:cessation":"u",<br>"edtf:inception":"u",<br>"geom:area":29.187792061074827,<br>"geom:bbox":"166.426148,-47.289992,178.577244,-33</div></div>
                     </pre>
                     <p>Depending on when you read this we may have already pre-emptively moved <a href="https://github.com/whosonfirst/whosonfirst-data/blob/master/meta/wof-country-latest.csv">all the records for countries</a> in to <code>git-lfs</code>. If the goal is to have details <q>ground truth</q> geometries for every place in the Who's On First gazetteer it stands to reason that most if not all countries will bump up against GitHub's existing file size limits.</p>
+					<div class="p-2 background-light link-within">
+						<a href="../data/pull-request.html">Pull Request Template</a>
+					</div>
                     <a name="knownknowns"></a>
                     <h2 id="know-knows">Known knowns</h2>
                     <a name="knownknown-tls"></a>
@@ -223,6 +226,9 @@
                     <a name="knownknown-s3"></a>
                     <h3>Visiting <code>https://s3.amazonaws.com/whosonfirst.mapzen.com/data/</code> in a browser</h3>
                     <p>So, yeah. We probably should never have published this URL as-is. It's tricky because we need to share the URL with people who are going to try and download data using the AWS S3 API but the reality is that when you visit that URL in a web browser... you get unhelpful silence. Or more specifically your web browser tries to download an empty file. This is one of those unfortunate mismatches between the technology and people's expectations.</p>
+					<div class="p-2 background-light link-within">
+						<a href="../data/known-knowns.html">Other Known Knowns</a>
+					</div>
                 </div>
             </div>
         </div>
