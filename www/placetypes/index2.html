@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Who's On First &#x2014; Placetypes</title>
+        <title>Who's On First - Placetypes</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name='description' content="Who's on First is a gazetteer of places.">
         <link rel='apple-touch-icon' href='https://mapzen.com/common/styleguide/images/favicons/apple-touch-icon.png' sizes='180x180'>
@@ -56,11 +56,14 @@
                     </div>
                     <div class='section-nav-items'>
                         <ul class='section-nav-scroll-container'>
-                            <li id="nav-item-data" class="section-nav-item">
-                                <a href="https://whosonfirst.mapzen.com/data/">Data</a>
+							<li id="nav-item-docs" class="section-nav-item">
+                                <a href="../docs/index.html">Docs</a>
                             </li>
                             <li id="nav-item-theory" class="section-nav-item">
                                 <a href="https://whosonfirst.mapzen.com/theory/">Theory</a>
+                            </li>
+                            <li id="nav-item-data" class="section-nav-item">
+                                <a href="https://whosonfirst.mapzen.com/data/">Data</a>
                             </li>
                             <li id="nav-item-bundles" class="section-nav-item">
                                 <a href="https://whosonfirst.mapzen.com/bundles/">Bundles</a>
@@ -205,12 +208,12 @@ So the minimum list of place types for a hierarchy applied globally looks like t
 </p>
 <pre>
 <code>
-* continent (C)
-	- country (C)
-		- region (C)
-			- &#34;county&#34; (CO)
-				- locality (C)
-					- neightbourhood (C)
+- continent (C)
+  - country (C)
+    - region (C)
+       - &#34;county&#34; (CO)
+          - locality (C)
+            - neighbourhood (C)
 </code>
 </pre>
 <p>
@@ -261,8 +264,8 @@ optional
 .
 </p>
 <p>
-<a href="/whosonfirst/whosonfirst-www/blob/sdombkow-nav-newheaderfooter-optiontwo/images/placetypes-latest.png" target="_blank">
-<img src="/whosonfirst/whosonfirst-www/raw/sdombkow-nav-newheaderfooter-optiontwo/images/placetypes-latest.png" alt="" style="max-width:100%;">
+<a href="/whosonfirst/whosonfirst-placetypes/blob/master/images/placetypes-latest.png" target="_blank">
+<img src="../images/placetypes-latest.png" alt="" style="max-width:100%;">
 </a>
 </p>
 <p>
@@ -869,10 +872,10 @@ Per the ISO 3166 spec which states:
 <pre>
 <code>
 User-assigned code elements are codes at the disposal of users who need to add further names of countries, territories, or other geographical entities to their in-house application of ISO 3166-1, and the ISO 3166/MA will never use these codes in the updating process of the standard. The following codes can be user-assigned:[19]
-   
-Alpha-2: AA, QM to QZ, XA to XZ, and ZZ
-Alpha-3: AAA to AAZ, QMA to QZZ, XAA to XZZ, and ZZA to ZZZ
-Numeric: 900 to 999
+
+    Alpha-2: AA, QM to QZ, XA to XZ, and ZZ
+    Alpha-3: AAA to AAZ, QMA to QZZ, XAA to XZZ, and ZZA to ZZZ
+    Numeric: 900 to 999
 </code>
 </pre>
 <p>

@@ -4,21 +4,28 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Who's On First &#x2014; Internships</title>
+        <title>Who's On First &#8212; Docs</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- this may seem wrong but the thing is that we are proxying http://whosonfirst.mapzen.com/data/ through to
+        http://whosonfirst.mapzen.com/all-the-data.html so we need to do this extra bit of hoop-jumping
+        (2015108/thisisaaronland) -->
+
         <meta name='description' content="Who's on First is a gazetteer of places.">
         <link rel='apple-touch-icon' href='https://mapzen.com/common/styleguide/images/favicons/apple-touch-icon.png' sizes='180x180'>
         <link rel='icon' type='image/png' href='https://mapzen.com/common/styleguide/images/favicons/favicon-16x16.png' sizes='16x16'>
         <link rel='icon' type='image/png' href='https://mapzen.com/common/styleguide/images/favicons/favicon-32x32.png' sizes='32x32'>
         <link rel='manifest' href='https://mapzen.com/common/styleguide/images/favicons/manifest.json'>
         <link rel='mask-icon' href='https://mapzen.com/common/styleguide/images/favicons/safari-pinned-tab.svg' color='#2C1E3F'>
-
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="../css/mapzen.whosonfirst.www.bundle.min.css"/>
+        
+        <script src="../javascript/mapzen.whosonfirst.www.bundle.min.js"></script>
+        <script src="../javascript/mapzen.whosonfirst.chrome.js"></script>
         <link rel="stylesheet" href="https://mapzen.com/common/styleguide/styles/blog.css">
         <link rel="stylesheet" href="https://mapzen.com/js/mapzen.css">
         <link rel="stylesheet" href="../css/mapzenwhosonfirstsubpage.css">
-        <script src="../javascript/mapzen.whosonfirst.www.bundle.min.js"></script> 
+        <script src="https://mapzen.com/js/mapzen.min.js"></script>
+        <link rel="stylesheet" href="../css/mapzen.whosonfirst.chrome.css">
     </head>
     <body>
         <nav class='navbar-default navbar-fixed-top custom-navbar no-nav' role='navigation'>
@@ -56,7 +63,7 @@
                     </div>
                     <div class='section-nav-items'>
                         <ul class='section-nav-scroll-container'>
-							<li id="nav-item-docs" class="section-nav-item">
+							<li id="nav-item-docs" class="section-nav-item active">
                                 <a href="https://whosonfirst.mapzen.com/docs/">Docs</a>
                             </li>
                             <li id="nav-item-theory" class="section-nav-item">
@@ -86,36 +93,15 @@
                             <li class="toc-top-level">
                                 <a href="https://whosonfirst.mapzen.com">Home</a>
                             </li>
-                            <li class="toc-top-level">
-                                <a href="https://whosonfirst.mapzen.com/bundles/">Bundles</a>
-                                <ul class="toc-subnav">
-                                    <li><a href="#placetypes">Placetypes</a></li>
-                                    <li><a href="#working-with">Working with Bundles</a></li>
-                                </ul>
-                            </li>
-                            <li class="toc-top-level">
-                                <a href="https://whosonfirst.mapzen.com/data/">Data</a>
-                                <ul class="toc-subnav">
+                            <li class="toc-top-level toc-current">
+                                <a href="#">Data</a>
+                                <ul class="toc-subnav toc-expand">
                                     <li><a href="#theory-wrapper">tl;dr</a></li>
                                     <li><a href="#what-mean">But... what does it mean?</a></li>
                                     <li><a href="#gory-details">The gory details</a></li>
                                     <li><a href="#know-knows">Known knowns</a></li>
                                 </ul>
                             </li>
-                            <li class="toc-top-level toc-current">
-                                <a href="#">Internships 2017</a>
-                            </li>
-                            <li class="toc-top-level">
-                                <a href="https://whosonfirst.mapzen.com/mmdb/">Maxmind Databases (mmdb)</a>
-                                <ul class="toc-subnav">
-                                    <li><a href="#geolite2">GeoLite2 Databases</a></li>
-                                    <li><a href="#code">Code</a></li>
-                                </ul>
-                            </li>
-                            <li class="toc-top-level">
-                                <a href="https://whosonfirst.mapzen.com/placetypes/">Placetypes</a>
-                            </li>
-                            <!--
                             <li class="toc-top-level">
                                 <a href="https://whosonfirst.mapzen.com/theory/">Theory</a>
                                 <ul class="toc-subnav">
@@ -124,27 +110,77 @@
                                     <li><a href="#theory-2017">2017</a></li>
                                 </ul>
                             </li>
-                            <li class="toc-top-level">
-                                <a href="https://whosonfirst.mapzen.com/vagrant/">Vagrant</a>
-                                <ul class="toc-subnav">
-                                    <li><a href="#spelunker">spelunker.box</a></li>
-                                </ul>
-                            </li>
                         </ul>
                     </div>
                 </div>
                 -->
                 <div class='col-xs-12 col-md-10 col-md-offset-1 static-content'>
-                    <h1 id="whos-on-first" class="center-subject subpage-header-two">Who's On First &#x2014; Internships 2017</h1>
-                    <div id="theory-wrapper" style="margin-bottom: 5em;">
-                        <h2 id="2017-ux">User experience, documentation and general sense-making</h2>
-                        <p style="font-style:italic;">Application deadline is April 21, 2017.</p>
-                        <p>The <a href="https://www.mapzen.com/">Mapzen</a> data team is looking for an intern interested in user experience, usability, and the importance of good documentation. <span class="hey-look">If selected, you will work on improving how we present Who’s On First to the world.</span> Who’s On First (WOF) is our open data gazetteer (“a big list of places”) that we would like to make more accessible to a wider range of users.</p>
-                        <p>The WOF project aims to provide convenient access to useful data about all the places in the world. At present we have around 26 million records, encoding data about places like cities, continents, parks, nation states, museums, bus stations, restaurants, music venues, congressional districts &#8212; <a href="https://whosonfirst.mapzen.com/spelunker/placetypes/" class="hey-look">basically anything you might point to out in the physical world that exists at a location</a>.</p>
-                        <p>To apply, send a brief (less than 500 words) introduction to <code>wof-interns @ mapzen.com</code> and describe some specific ideas you might want to pursue during the course of a 12-week internship. The start date is flexible. We will prefer proposals that have a realistic scope within the timeframe. <span class="hey-look">The purpose of the Mapzen data internship is for you to upgrade your skills and create something of lasting value.</span> You will work on a project you can finish before you leave, something tangible that other people can use.</p>
-                        <p>You will work from our New York office in the Flatiron District on some regular schedule, alongside a team of creative map enthusiasts. You will work independently, but with guidance and assistance from Mapzen (mostly Dan and Stephen). <span class="hey-look">We’re eager to learn how we might adapt our approach by seeing our work through your fresh eyes.</span> The position is paid, commensurate with experience and background.</p>
-                        <p>If you'd like to know more about the Who's On First project <a href="http://s.mlkshk-cdn.com/r/1BCLX">the long version</a> is over here: <a href="https://whosonfirst.mapzen.com/theory/" class="hey-look">https://whosonfirst.mapzen.com/theory/</a></p>
-                    </div>
+                    <h1 id="whos-on-first" class="center-subject subpage-header-two">Who's On First &#x2014; Docs</h1>
+					<h2>Properties</h2>
+					<div class="p-2 background-light link-within">
+						<a href="../properties/addr-properties.html">Address Properties</a>
+					</div>
+					<div class="p-2 background-light link-within">
+						<a href="../properties/edtf-properties.html">Extended Date/Time Format (EDTF) Properties</a>
+					</div>
+					<div class="p-2 background-light link-within">
+						<a href="../properties/geom-properties.html">Geometry Properties</a>
+					</div>
+					<div class="p-2 background-light link-within">
+						<a href="../properties/lbl-properties.html">Label Properties</a>
+					</div>
+					<div class="p-2 background-light link-within">
+						<a href="../properties/mz-properties.html">Mapzen Properties</a>
+					</div>
+					<div class="p-2 background-light link-within">
+						<a href="../properties/name-properties.html">Name Properties</a>
+					</div>
+					<div class="p-2 background-light link-within">
+						<a href="../properties/resto-properties.html">Restaurant Properties</a>
+					</div>
+					<div class="p-2 background-light link-within">
+						<a href="../properties/reversegeo-properties.html">ReverseGeo Properties</a>
+					</div>
+					<div class="p-2 background-light link-within">
+						<a href="../properties/src-properties.html">Source Properties</a>
+					</div>
+					<div class="p-2 background-light link-within">
+						<a href="../properties/wof-properties.html">Who's On First Properties</a>
+					</div>
+					<h2>Names</h2>
+					<div class="p-2 background-light link-within">
+						<a href="../docs/names.html">What things are called in Who's On First</a>
+					</div>
+					<h2>Geometries</h2>
+					<div class="p-2 background-light link-within">
+						<a href="../docs/geometries.html">Types of geometries in Who's On First, and their meaning.</a>
+					</div>
+					<div class="p-2 background-light link-within">
+						<a href="../docs/alt-geometries.html">What is an alt-geometry and how are they defined and catalogued in Who's On First?</a>
+					</div>
+					<h2>Dates</h2>
+					<div class="p-2 background-light link-within">
+						<a href="../docs/dates.html">This is where we will think about time. Which is hard. Because it can not be denied...</a>
+					</div>
+					<h2>Sources</h2>
+					<div class="p-2 background-light link-within">
+						<a href="../docs/sources.html">Where things come from in Who's On First.</a>
+					</div>
+					<div class="p-2 background-light link-within">
+						<a href="../docs/source-list.html">Full list of Who's On First sources</a>
+					</div>
+					<h2>Tests</h2>
+					<div class="p-2 background-light link-within">
+						<a href="../docs/tests.html">Testing known-knowns and properties in Who's On First records.</a>
+					</div>
+					<h2>Contributing</h2>
+					<div class="p-2 background-light link-within">
+						<a href="../docs/contributing.html">How to contribute to Who's On First</a>
+					</div>
+					<h2>Licensing</h2>
+					<div class="p-2 background-light link-within">
+						<a href="../docs/licensing.html">How to credit Who's On First</a>
+					</div>
                 </div>
             </div>
         </div>
@@ -164,8 +200,8 @@
     </footer>
     
     <script src="../javascript/mapzen.whosonfirst.api.js"></script>
-    <script src='../javascript/mapzen-styleguide.js'></script>
-    <!--<script src='https://mapzen.com/common/styleguide/scripts/mapzen-styleguide.min.js'></script>-->
     <script src='https://code.jquery.com/jquery-2.2.0.min.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.0/jquery.scrollTo.min.js'></script>
+    <!--<script src='https://mapzen.com/common/styleguide/scripts/mapzen-styleguide.min.js'></script>-->
+    <script src='../javascript/mapzen-styleguide.js'></script>
 </html>
