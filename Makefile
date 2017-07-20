@@ -25,10 +25,28 @@ setup:
 www: www-dev www-prod
 
 www-dev: css
+ifeq ($(UNAME_S),Darwin)
 	utils/darwin/wof-clone-website -ignore \~ -ignore .DS_Store -ignore .gitignore -strict -s3-bucket whosonfirst.dev.mapzen.com -source www/
+else ifeq ($(UNAME_S),Linux)
+	utils/linux/wof-clone-website -ignore \~ -ignore .DS_Store -ignore .gitignore -strict -s3-bucket whosonfirst.dev.mapzen.com -source www/
+else ifeq ($(UNAME_S),Windows)
+	utils/windows/wof-clone-website -ignore \~ -ignore .DS_Store -ignore .gitignore -strict -s3-bucket whosonfirst.dev.mapzen.com -source www/
+else
+	echo "this OS is not supported yet"
+	exit 1
+endif
 
 www-prod: css
+ifeq ($(UNAME_S),Darwin)
 	utils/darwin/wof-clone-website -ignore \~ -ignore .DS_Store -ignore .gitignore -strict -source www/
+else ifeq ($(UNAME_S),Linux)
+	utils/linux/wof-clone-website -ignore \~ -ignore .DS_Store -ignore .gitignore -strict -source www/
+else ifeq ($(UNAME_S),Windows)
+	utils/windows/wof-clone-website -ignore \~ -ignore .DS_Store -ignore .gitignore -strict -source www/
+else
+	echo "this OS is not supported yet"
+	exit 1
+endif
 
 tools:
 	./utils/mk-utils.sh go-whosonfirst-www wof-clone-website 
