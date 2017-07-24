@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Who's On First</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://mapzen.com/js/mapzen.css">
+    <script src="https://mapzen.com/js/mapzen.min.js"></script>
+    <style>
+      #map {
+        height: 90%;
+        width: 100%;
+        position: absolute;
+      }
+      #footer {
+      top:90%;
+      height:10%;
+      width:100%;
+      position:absolute;
+      padding-top:2em;
+      text-align:center;
+      font-family:sans-serif;
+      color: #666;
+      }
+      html,body{margin: 0; padding: 0;}
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <div id="footer">This is work in progress, so no refunds accepted. Sorry.</div>
+    <script>
+      L.Mapzen.apiKey = 'mapzen-5bWTTbo';
+
+      var tangram_options = {
+      	scene: L.Mapzen.BasemapStyles.RefillNoLabels
+      }
+      
+      var map = L.Mapzen.map('map', tangram_options);
+      map.setView([37.7749, -122.4194], 12);
+
+      var opts = {
+      'url': 'https://whosonfirst-api.mapzen.com/pelias/v1',
+      'focus': false,
+      };
+      
+      var geocoder = L.Mapzen.geocoder(opts);
+      geocoder.addTo(map);
+
+    </script>
+  </body>
+</html>
