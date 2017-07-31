@@ -1,0 +1,375 @@
+.whosonfirst-thirds-col {
+	height: 390px;
+	width: 390px;
+	padding: 5px;
+}
+
+.whosonfirst-half-col {
+	height: 390px;
+	width: 585px;
+	padding: 5px;
+}
+
+.whosonfirst-doubleheight-col {
+	height: 780px;
+	width: 390px;
+	padding: 5px;
+}
+
+.whosonfirst-doublewidth-col {
+	height: 390px;
+	width: 780px;
+	padding: 5px;
+}
+
+.whosonfirst-tripleheight-col {
+	height: 1170px;
+	width: 390px;
+	padding: 5px;
+}
+
+.whosonfirst-doublewidth-doubleheight-col {
+	height: 780px;
+	width: 780px;
+	padding: 5px;
+}
+
+.whosonfirst-doublewidth-tripleheight-col {
+	height: 1170px;
+	width: 780px;
+	padding: 5px;
+}
+
+.whosonfirst-thirds-card {
+	height: 380px;
+	width: 380px;
+	border-radius: 4px;
+}
+
+.whosonfirst-half-card {
+	height: 380px;
+	width: 575px;
+	border-radius: 4px;
+}
+
+.whosonfirst-doubleheight-card {
+	height: 770px;
+	width: 380px;
+	border-radius: 4px;
+}
+
+.whosonfirst-doublewidth-card {
+	height: 380px;
+	width: 770px;
+	border-radius: 4px;
+}
+
+.whosonfirst-doublewidth-doubleheight-card {
+	height: 770px;
+	width: 770px;
+	border-radius: 4px;
+}
+
+.whosonfirst-smallercard-topmargin {
+	margin-top: 10px;
+}
+
+.whosonfirst-twocards-onecol {
+	display: inline-block;
+}
+
+.whosonfirst-twocards-onecol-secondcard {
+	margin-left: 6.12px;
+}
+
+.whosonfirst-dark-gradient {
+	background: #1F1F1F; /* For browsers that do not support gradients */
+	background: -webkit-linear-gradient(left top, #1F1F1F, #242424); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(bottom right, #1F1F1F, #242424); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(bottom right, #1F1F1F, #242424); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(to bottom right, #1F1F1F, #242424); /* Standard syntax */
+}
+
+@media (max-width: 1200px) {
+	.whosonfirst-thirds-col {
+		height: 323.33px;
+		width: 323.33px;
+		padding: 4px;
+	}
+
+	.whosonfirst-half-col {
+		height: 323.33px;
+		width: 485px;
+		padding: 4px;
+	}
+
+	.whosonfirst-doubleheight-col {
+		height: 646.66px;
+		width: 323.33px;
+		padding: 4px;
+	}
+
+	.whosonfirst-doublewidth-col {
+		height: 323.33px;
+		width: 646.66px;
+		padding: 4px;
+	}
+
+	.whosonfirst-tripleheight-col {
+		height: 969.99px;
+		width: 323.33px;
+		padding: 4px;
+	}
+
+	.whosonfirst-doublewidth-doubleheight-col {
+		height: 646.66px;
+		width: 646.66px;
+		padding: 4px;
+	}
+
+	.whosonfirst-doublewidth-tripleheight-col {
+		height: 969.99px;
+		width: 646.66px;
+		padding: 4px;
+	}
+
+	.whosonfirst-thirds-card {
+		height: 315.33px;
+		width: 315.33px;
+		border-radius: 4px;
+	}
+
+	.whosonfirst-half-card {
+		height: 315.33px;
+		width: 477px;
+		border-radius: 4px;
+	}
+
+	.whosonfirst-doubleheight-card {
+		height: 638.66px;
+		width: 315.33px;
+		border-radius: 4px;
+	}
+
+	.whosonfirst-doublewidth-card {
+		height: 315.33px;
+		width: 638.66px;
+		border-radius: 4px;
+	}
+
+	.whosonfirst-doublewidth-doubleheight-card {
+		height: 638.66px;
+		width: 638.66px;
+		border-radius: 4px;
+	}
+	
+	.whosonfirst-twocards-onecol-secondcard {
+		margin-left: 4.12px;
+	}
+	
+	.whosonfirst-smallercard-topmargin {
+		margin-top: 8px;
+	}
+}
+
+@media (max-width: 992px) {
+	.whosonfirst-thirds-col {
+		height: 250px;
+		width: 250px;
+		padding: 4px;
+		float: left;
+	}
+
+	.whosonfirst-half-col {
+		height: 250px;
+		width: 375px;
+		padding: 4px;
+		float: left;
+	}
+
+	.whosonfirst-doubleheight-col {
+		height: 500px;
+		width: 250px;
+		padding: 4px;
+		float: left;
+	}
+
+	.whosonfirst-doublewidth-col {
+		height: 250px;
+		width: 500px;
+		padding: 4px;
+		float: left;
+	}
+
+	.whosonfirst-tripleheight-col {
+		height: 750px;
+		width: 250px;
+		padding: 4px;
+		float: left;
+	}
+
+	.whosonfirst-doublewidth-doubleheight-col {
+		height: 500px;
+		width: 500px;
+		padding: 4px;
+		float: left;
+	}
+
+	.whosonfirst-doublewidth-tripleheight-col {
+		height: 750px;
+		width: 500px;
+		padding: 4px;
+		float: left;
+	}
+
+	.whosonfirst-thirds-card {
+		height: 242px;
+		width: 242px;
+		border-radius: 4px;
+	}
+
+	.whosonfirst-half-card {
+		height: 242px;
+		width: 367px;
+		border-radius: 4px;
+	}
+
+	.whosonfirst-doubleheight-card {
+		height: 492px;
+		width: 242px;
+		border-radius: 4px;
+	}
+
+	.whosonfirst-doublewidth-card {
+		height: 242px;
+		width: 492px;
+		border-radius: 4px;
+	}
+
+	.whosonfirst-doublewidth-doubleheight-card {
+		height: 492px;
+		width: 492px;
+		border-radius: 4px;
+	}
+	
+	.whosonfirst-twocards-onecol-secondcard {
+		margin-left: 2px;
+	}
+	
+	.whosonfirst-smallercard-topmargin {
+		margin-top: 8px;
+	}
+}
+
+@media (max-width: 768px) {
+	.whosonfirst-thirds-col {
+		width: 100%;
+		height: 180px;
+		padding: 5px 4%;
+		float: left;
+	}
+
+	.whosonfirst-half-col {
+		width: 100%;
+		height: 240px;
+		padding: 5px 4%;
+		float: left;
+	}
+
+	.whosonfirst-doubleheight-col {
+		width: 100%;
+		height: 240px;
+		padding: 5px 4%;
+		float: left;
+	}
+
+	.whosonfirst-doublewidth-col {
+		width: 100%;
+		height: 240px;
+		padding: 5px 4%;
+		float: left;
+	}
+
+	.whosonfirst-tripleheight-col {
+		width: 100%;
+		height: 240px;
+		padding: 5px 4%;
+		float: left;
+	}
+
+	.whosonfirst-doublewidth-doubleheight-col {
+		width: 100%;
+		height: 240px;
+		padding: 5px 4%;
+		float: left;
+	}
+
+	.whosonfirst-doublewidth-tripleheight-col {
+		width: 100%;
+		height: 240px;
+		padding: 5px 4%;
+		float: left;
+	}
+	
+	.whosonfirst-doubleheight-double-col {
+		width: 100%;
+		height: 480px;
+		padding: 5px 4%;
+		float: left;
+	}
+	
+	.whosonfirst-doubleheight-triple-col {
+		width: 100%;
+		height: 720px;
+		padding: 5px 4%;
+		float: left;
+	}
+
+	.whosonfirst-thirds-card {
+		height: 100%;
+		width: 100%;
+		border-radius: 4px;
+	}
+
+	.whosonfirst-half-card {
+		height: 100%;
+		width: 100%;
+		border-radius: 4px;
+	}
+
+	.whosonfirst-doubleheight-card {
+		height: 100%;
+		width: 100%;
+		border-radius: 4px;
+	}
+
+	.whosonfirst-doublewidth-card {
+		height: 100%;
+		width: 100%;
+		border-radius: 4px;
+	}
+
+	.whosonfirst-doublewidth-doubleheight-card {
+		height: 100%;
+		width: 100%;
+		border-radius: 4px;
+	}
+	
+	.whosonfirst-double-card {
+		height: 230px;
+		width: 100%;
+		border-radius: 4px;
+	}
+	
+	.whosonfirst-twocards-onecol-secondcard {
+		margin-left: 0px;
+	}
+	
+	.whosonfirst-smallercard-topmargin {
+		margin-top: 10px;
+	}
+	
+	.whosonfirst-smallercard-third-topmargin {
+		margin-top: 5px;
+	}
+}
