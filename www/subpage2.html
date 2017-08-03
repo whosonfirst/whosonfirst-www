@@ -16,15 +16,15 @@
 		<link rel="stylesheet" href="css/mapzen.whosonfirst.css">
     </head>
 	<body>
-		<nav class="navbar navbar-default navbar-fixed-top">
+		<nav class="navbar navbar-default navbar-fixed-top whosonfirst-fixed-subpage-navbar">
 			<div class="container">
 				<!-- Brand and toggle get grouped for better mobile display -->
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
 					</button>
 					<a class="navbar-brand" href="#">Who's On First</a>
 				</div>
@@ -50,7 +50,7 @@
 		</nav>
 		<div class="container whosonfirst-subpage-container">
 			<div class="row">
-				<div class="col-md-3">
+				<div class="col-lg-3 col-md-3 col-sm-3 col-xs-0">
 					<aside>
 						<div class="whosonfirst-sidenav-container">
 							<ul class="whosonfirst-sidenav-list">
@@ -82,16 +82,16 @@
 						</div>
 					</aside>
 				</div>
-  				<div class="col-md-6">
+  				<div class="col-lg-6 col-md-9 col-sm-9 col-xs-12">
 					<article>
 						<h1 class="whosonfirst-subpage-header">Get Started</h1>
 						<div class="whosonfirst-tabs-container">
-							<div class="whosonfirst-tabs-menu">
+							<div class="whosonfirst-tabs-subpage-menu whosonfirst-tabs-menu">
 								<div class="whosonfirst-tabs-menu-content">
-									<div class="whosonfirst-tab-selection">
+									<a class="whosonfirst-tab-selection" href="">
 										selection 1
-									</div>
-									<div class="whosonfirst-tab-selection">
+									</a>
+									<div class="whosonfirst-tab-selection whosonfirst-tab-selection-active">
 										selection 1
 									</div>
 									<div class="whosonfirst-tab-selection">
@@ -102,8 +102,43 @@
 									</div>
 								</div>
 							</div>
+							<div class="whosonfirst-extrasmall-tabs-menu">
+								<div class="whosonfirst-extrasmall-tabs-menu-content">
+										<div class="whosonfirst-extrasmall-tabs-menu-content-header">
+										<a class="whosonfirst-extrasmall-tab-selection" href="">
+											topic number 1
+										</a>
+										<button type="button" class="navbar-toggle collapsed whosonfirst-extrasmall-menu-chevron-down" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2" aria-expanded="false">
+											<span class="glyphicon glyphicon-chevron-down whosonfirst-extrasmall-menu-actual-chevron-down"></span>
+										</button>
+									</div>
+									<div class="collapse" id="bs-example-navbar-collapse-2">
+										<div class="whosonfirst-extrasmall-nav-collection">
+											<ul class="nav navbar-nav navbar-right whosonfirst-extrasmall-nav">
+												<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+													<a href="#" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">data</a>
+												</li>
+												<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+													<a href="#" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">docs</a>
+												</li>
+												<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+													<a href="#" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">tools</a>
+												</li>
+												<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+													<a href="#" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed whosonfirst-extrasmall-nav-link-collapsed-last">blog</a>
+												</li>
+											</ul>
+										</div>
+									</div><!-- /.navbar-collapse -->
+								</div>
+							</div>
 							<div class="whosonfirst-tabs-content">
-								<p>This is some really bad example test to test out this grid and see what it looks like when more than one line and we can see what is going on. This is some really bad example test to test out this grid and see what it looks like when more than one line and we can see what is going on. This is some really bad example test to test out this grid and see what it looks like when more than one line and we can see what is going on. This is some really bad example test to test out this grid and see what it looks like when more than one line and we can see what is going on. <a class="whosonfirst-content-link" href="">This ggggis it.</a>This is some really bad example test to test out this grid and see what it looks like when more than one line and we can see what is going on. This is some really bad example test to test out this grid and see what it looks like when more than one line and we can see what is going on. This is some really bad example test to test out this grid and see what it looks like when more than one line and we can see what is going on. This is some really <a class="whosonfirst-content-link" href="">bad example</a> test to test out this grid and see what it looks like when more than one line and we can see what is going on. This is some really bad example test to test out this grid and see what it looks like when more than one line and we can see what is going on. This is some really bad example test to test out this grid and see what it looks like when more than one line and we can see what is going on.</p>
+								<p>This is some really bad example test to test out this grid and see what it looks like when more than one line and we can see what is going on. This is some really bad example test to test out this grid and see what</p>
+								<ol class="whosonfirst-content-list">
+									<li class="whosonfirst-content-list-item"><a href="" class="whosonfirst-content-list-item-link">First Content Item</a></li>
+									<li class="whosonfirst-content-list-item"><a href="" class="whosonfirst-content-list-item-link">First Content Item</a></li>
+								</ol>
+								<p>it looks like when more than one line and we can see what is going on. This is some really bad example test to test out this grid and see what it looks like when more than one line and we can see what is going on. This is some really bad example test to test out this grid and see what it looks like when more than one line and we can see what is going on. <a class="whosonfirst-content-link" href="">This ggggis it.</a>This is some really bad example test to test out this grid and see what it looks like when more than one line and we can see what is going on. This is some really bad example test to test out this grid and see what it looks like when more than one line and we can see what is going on. This is some really bad example test to test out this grid and see what it looks like when more than one line and we can see what is going on. This is some really <a class="whosonfirst-content-link" href="">bad example</a> test to test out this grid and see what it looks like when more than one line and we can see what is going on. This is some really bad example test to test out this grid and see what it looks like when more than one line and we can see what is going on. This is some really bad example test to test out this grid and see what it looks like when more than one line and we can see what is going on.</p>
 								<h5 class="whosonfirst-subpage-subheader"> Second Header</h5>
 								<div class="whosonfirst-code-box">
 									<code>his is some really bad example test to test out this grid and see what it looks like when more than one line and we can see what is going on. This is some really bad example test to test out this grid and see what it looks like when more than one line and we can see what is going on. This</code>
@@ -134,7 +169,7 @@
 						</div>
 					</article>
 				</div>
-				<div class="col-md-3"></div>
+				<div class="col-lg-3 col-md-0 col-sm-0 col-xs-0"></div>
 			</div>
 		</div>
 		<footer>
