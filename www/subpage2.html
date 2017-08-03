@@ -109,7 +109,7 @@
 											topic number 1
 										</a>
 										<button type="button" class="navbar-toggle collapsed whosonfirst-extrasmall-menu-chevron-down" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2" aria-expanded="false">
-											<span class="glyphicon glyphicon-chevron-down whosonfirst-extrasmall-menu-actual-chevron-down"></span>
+											<span id="glyphicon-one" class="glyphicon glyphicon-chevron-down whosonfirst-extrasmall-menu-actual-chevron-down"></span>
 										</button>
 									</div>
 									<div class="collapse" id="bs-example-navbar-collapse-2">
@@ -191,5 +191,20 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
 		<script src="javascript/bootstrap.min.js"></script>
+		
+		<script>
+			$(document).ready(function(){
+				console.log(123123123);
+				$("#bs-example-navbar-collapse-2").on("show.bs.collapse", function(){
+					console.log("In here");
+					document.getElementById("glyphicon-one").classList.add("glyphicon-chevron-up");
+					document.getElementById("glyphicon-one").classList.remove("glyphicon-chevron-down");
+				});
+				$("#bs-example-navbar-collapse-2").on("hide.bs.collapse", function(){
+					document.getElementById("glyphicon-one").classList.add("glyphicon-chevron-down");
+					document.getElementById("glyphicon-one").classList.remove("glyphicon-chevron-up");
+				});
+			});
+		</script>
 	</body>
 </html>
