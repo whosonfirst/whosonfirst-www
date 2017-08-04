@@ -205,6 +205,18 @@ data-known-knowns:
 	rm www/data/known-knowns-content.html
 	
 data: pull-requests data-known-knowns
+
+v2-test:
+	curl -s https://github.com/whosonfirst-data/whosonfirst-data/blob/master/README.KNOWN.KNOWNS.md | pup -i 0 'article.markdown-body h1' > www/test/v2-test-content.html
+	curl -s https://github.com/whosonfirst-data/whosonfirst-data/blob/master/README.KNOWN.KNOWNS.md | pup -i 0 'article.markdown-body :not(h1)' > www/test/v2-test-content-two.html
+	cat www/componentsv2/head.html www/componentsv2/navbar.html www/componentsv2/subnav1.html www/test/v2-test-content.html www/componentsv2/subnav2.html www/test/v2-test-content-two.html www/componentsv2/footer.html > www/test/v2-test.html
+	rm www/test/v2-test-content.html
+	rm www/test/v2-test-content-two.html
+	
+v2-testtwo:
+	curl -s https://github.com/whosonfirst/whosonfirst-dates/blob/master/README.md | pup -i 0 'article.markdown-body h1' > www/test/v2-test-content-three.html
+	curl -s https://github.com/whosonfirst/whosonfirst-dates/blob/master/README.md | pup -i 0 'article.markdown-body :not(h1)' > www/test/v2-test-content-four.html
+	cat www/componentsv2/head.html www/componentsv2/navbar.html www/componentsv2/subnav1.html www/test/v2-test-content-three.html www/componentsv2/subnav2.html www/test/v2-test-content-four.html www/componentsv2/footer.html > www/test/v2-test-two.html
 	
 setup:
 	ubuntu/setup-nginx.sh
