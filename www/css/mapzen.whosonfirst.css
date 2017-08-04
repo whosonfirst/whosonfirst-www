@@ -332,6 +332,7 @@ article div.whosonfirst-fulltabs-container ul li a {
 	font-weight: 300;
 	line-height: 1.3;
 	color: #888888;
+	word-break: normal;
 }
 
 .whosonfirst-card-map-explantation {
