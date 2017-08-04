@@ -131,7 +131,7 @@
 								<h5 class="whosonfirst-subpage-subheader">Step 1: Create a Map</h5>
 								<p>Utilize <a class="whosonfirst-content-link" href="">mapzen.js</a> to make a map centered around New York City’s Flatiron District.</p>
 								<div class="whosonfirst-code-box">
-									<code>
+									<code class="whosonfirst-code">
 										&lt;title&gt;My Web Map&lt;/title&gt;&lt;/p&gt;<br />
 										&lt;!DOCTYPE html&gt;<br />
 										&lt;html lang="en"&gt;<br />
@@ -171,13 +171,13 @@
 								<p>One of the available API methods is whosonfirst.places.getDescendants. The getDescendants method returns all the descendants for a Who’s On First ID. We have the Flatiron’s ID, so we can use this method.</p>
 								<p>We can also specify the specific placetype we want records to have. For this example, we can call</p>
 								<div class="whosonfirst-code-box">
-									<code>curl -X GET 'https://whosonfirst-api.mapzen.com/?method=whosonfirst.places.getDescendants&api_key=your-mapzen-api-key&id=85869245&placetype=venue&per_page=500’</code>
+									<code class="whosonfirst-code">curl -X GET 'https://whosonfirst-api.mapzen.com/?method=whosonfirst.places.getDescendants&api_key=your-mapzen-api-key&id=85869245&placetype=venue&per_page=500’</code>
 								</div>
 								<p>This will retireve 500 venue descendants of the Flatiron District.</p>
 								<h5 class="whosonfirst-subpage-subheader">Step 4: Manipulate Data</h5>
 								<p>Manipulate the data in whatever manner you would like. If you want to display it on a map, you could implement this code.</p>
 								<div class="whosonfirst-code-box">
-									<code>
+									<code class="whosonfirst-code">
 										function runWhosOnFirstAPI() {<br />
 											&emsp;// Setup the API key<br /><br />
 											&emsp;mapzen.whosonfirst.api.set_handler('authentication', function() {<br />
@@ -202,7 +202,7 @@
 								<h5 class="whosonfirst-subpage-subheader">Step 5: Display Results</h5>
 								<p>Utilize the results whatever way you see fit, here we want to display the results on a map we do this with this function. </p>
 								<div class="whosonfirst-code-box">
-									<code>
+									<code class="whosonfirst-code">
 										var onprogress = function(rsp) {<br />
 											&emsp;//console.log(rsp);<br />
 											&emsp;for (var i = 0; i < rsp.places.length; i++) {<br />
