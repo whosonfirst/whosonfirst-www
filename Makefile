@@ -217,6 +217,15 @@ v2-testtwo:
 	curl -s https://github.com/whosonfirst/whosonfirst-dates/blob/master/README.md | pup -i 0 'article.markdown-body h1' > www/test/v2-test-content-three.html
 	curl -s https://github.com/whosonfirst/whosonfirst-dates/blob/master/README.md | pup -i 0 'article.markdown-body :not(h1)' > www/test/v2-test-content-four.html
 	cat www/componentsv2/head.html www/componentsv2/navbar.html www/componentsv2/subnav1.html www/test/v2-test-content-three.html www/componentsv2/subnav2.html www/test/v2-test-content-four.html www/componentsv2/footer.html > www/test/v2-test-two.html
+	rm www/test/v2-test-content-three.html
+	rm www/test/v2-test-content-four.html
+	
+v2-testthree:
+	curl -s https://github.com/whosonfirst/whosonfirst-names/blob/master/README.md | pup -i 0 'article.markdown-body h1' > www/test/v2-test-content-five.html
+	curl -s https://github.com/whosonfirst/whosonfirst-names/blob/master/README.md | pup -i 0 'article.markdown-body :not(h1)' > www/test/v2-test-content-six.html
+	cat www/componentsv2/head.html www/componentsv2/navbar.html www/componentsv2/subnav1.html www/test/v2-test-content-five.html www/componentsv2/subnav2.html www/test/v2-test-content-six.html www/componentsv2/footer.html > www/test/v2-test-three.html
+	rm www/test/v2-test-content-five.html
+	rm www/test/v2-test-content-six.html
 	
 setup:
 	ubuntu/setup-nginx.sh

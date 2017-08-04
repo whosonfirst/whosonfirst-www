@@ -256,6 +256,10 @@ article div.whosonfirst-fulltabs-container a {
 	text-decoration: none;
 }
 
+article div.whosonfirst-fulltabs-container p a {
+	border-bottom: 1px solid #1F1F1F;
+}
+
 article div.whosonfirst-fulltabs-container a:hover {
 	color: #FE189B;
 	text-decoration: none;
@@ -801,6 +805,10 @@ blockquote {
 	border-left: 2px solid #1F1F1F;
 }
 
+a {
+	word-break: break-all;
+}
+
 @media (max-width: 1200px) {
 	.whosonfirst-thirds-col {
 		height: 323.33px;
@@ -884,6 +892,7 @@ blockquote {
 		
 	h1 {
 		font-size: 54px;
+		line-height: 1.2;
 	}
 
 	h2 {
@@ -1486,6 +1495,7 @@ blockquote {
 	
 	h1 {
 		font-size: 32px;
+		line-height: 1.2;
 	}
 	
 	.whosonfirst-subpage-header-long {
