@@ -361,6 +361,20 @@ h5 {
 	border-top-right-radius: 4px;
 }
 
+.whosonfirst-content-link {
+	border-bottom: 2px solid #1F1F1F;
+}
+
+.whosonfirst-card-map-code-content {
+	font-family: "Roboto", Helvetica, Arial, sans-serif;
+	font-size: 20px;
+	font-weight: 300;
+	line-height: 1.3;
+	color: #D6D6D6;
+	padding: 1% 2% 0%;
+	word-break: break-all;
+}
+
 .whosonfirst-card-explore-code {
 	border: 1px solid #7A7A7A;
 	border-bottom: 0px;
@@ -390,14 +404,13 @@ h5 {
 	overflow: hidden;
 }
 
-.whosonfirst-card-map-code-content {
-	font-family: "Roboto", Helvetica, Arial, sans-serif;
-	font-size: 20px;
-	font-weight: 300;
-	line-height: 1.3;
-	color: #D6D6D6;
-	padding: 1% 2% 0%;
-	word-break: break-all;
+.whosonfirst-card-explore-content-box {
+	display: inline-block;
+	position: absolute;
+	height: 113px;
+	width: 675px;
+	padding: 6px 6px 0px;
+	overflow: hidden;
 }
 
 .whosonfirst-card-explore-content {
@@ -411,13 +424,10 @@ h5 {
 	word-break: break-all;
 }
 
-.whosonfirst-card-explore-content-box {
+.whosonfirst-card-explore-lines {
 	display: inline-block;
-	position: absolute;
-	height: 113px;
-	width: 675px;
-	padding: 6px 6px 0px;
-	overflow: hidden;
+	border-right: 1px solid #5C5C5C;
+	padding-top: 8px;
 }
 
 .whosonfirst-card-explore-individual-line {
@@ -425,16 +435,9 @@ h5 {
 	font-family: "Roboto", Helvetica, Arial, sans-serif;
 	font-size: 16px;
 	font-weight: 300;
-	line-height: 1.3;
 	color: #5C5C5C;
 	padding: 0px 6px;
 	line-height: 26px;
-}
-
-.whosonfirst-card-explore-lines {
-	display: inline-block;
-	border-right: 1px solid #5C5C5C;
-	padding-top: 8px;
 }
 
 .whosonfirst-card-map-content {
