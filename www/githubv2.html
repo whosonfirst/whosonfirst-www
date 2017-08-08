@@ -131,7 +131,7 @@
 									<li>Also a way for us to think about how and where we store an audit trail (of sorts) for updates to a place.</li>
 								</ul>
 								<p>There are some very real problems working with Who's On First data in Git repositories, still, so it's possible that we will stop using entirely.</p>
-								<h5 class="whosonfirst-subpage-subheader">whosonfirst-data versus whosonfirst-data-SOMETHING repositories</h5>
+								<h2 class="whosonfirst-subpage-subheader">whosonfirst-data versus whosonfirst-data-SOMETHING repositories</h2>
 								<p>There is a lot of data in Who's On First, more than can practically fit in a single GitHub repository. Someday it may be possible but today it is not. To account for this fact Who's On First data has been separated in to a number of different GitHub repositories organized by placetype and region.</p>
 								<p>The naming conventions for repositories at their most granular is as follows:</p>
 								<pre>whosonfirst-data + "-" + WHOSONFIRST_PLACETYPE + "-" + WHOSONFIRST_COUNTRY + "-" + WHOSONFIRST_SUBDIVISION</pre>
@@ -147,7 +147,7 @@
 								<p>We try to maintain a separate parent repository for things that have been broken out in to multiple child repositories. For example there is a whosonfirst-data-postalcode repository that contains no data but instead a pointer to all the repositories that do have postalcode data. We also do the same for venues in the USA. This practice is still in its early stages so we apologize in advance if it's bumpy or incomplete.</p>
 								<p>The whosonfirst-data repository is the obvious exception (or perfect example, depending on how you look at it) to the scenario described above. This repository contains all administrative placetypes (all the places between and inclusive of continents to microhoods) for the entire world. While it is possible to imagine that the sum total of all the neighbourhoods in the world will require putting them in a separate repository but we are going to hold off doing that for as long as we can.</p>
 								<p>Who's On First records should always have a wof:repo property indicating the repository to which they belong. If they don't that's a bug.</p>
-								<h5 class="whosonfirst-subpage-subheader">Git and large files</h5>
+								<h2 class="whosonfirst-subpage-subheader">Git and large files</h2>
 								<p>We have started using git-lfs for managing large files in the whosonfirst-data repository. For example, the record for New Zealand which contains a very very very very very detailed coastline geometry exceeds the 100MB filesize limit for any individual file on GitHub.</p>
 								<p>A full discussion of how to use git-lfs is outside the scope of this document but you can see the current list of files being managed by invoking the git lfs ls-files command, like this:</p>
 								<pre>$> cd /usr/local/mapzen/whosonfirst-data
