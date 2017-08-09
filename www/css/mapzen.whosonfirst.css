@@ -261,13 +261,13 @@ h2, h3, h4, h5, .h2, .h3, .h4, .h5 {
 	font-weight: 400;
 	line-height: 1.2;
 	color: #1F1F1F;
-	margin-top: 12px;
+	margin-top: 18px;
 	margin-bottom: 6px;
 }
 
 h2 {
 	font-size: 22px;
-	margin-top: 18px;
+	margin-top: 24px;
 }
 
 h3 {
@@ -483,7 +483,7 @@ p {
 }
 
 .whosonfirst-sidenav-link-twoliner {
-	line-height: 27px;
+	line-height: 25px;
 	display: inline;
 }
 
@@ -520,8 +520,8 @@ p {
     margin: 0 0 6px;
 }
 
-article div.whosonfirst-fulltabs-container a:hover {
-	border-color: #FE189B;
+article div.whosonfirst-fulltabs-container a:hover, article div.whosonfirst-tabs-container a:hover {
+	border-color: #FE189B !important;
 }
 
 article div.whosonfirst-fulltabs-container ul {
@@ -677,6 +677,10 @@ ol, .whosonfirst-content-list {
 	color: #888888;
 }
 
+ol, ul {
+	margin-bottom: 12px;
+}
+
 
 /* Links Styling */
 
@@ -714,7 +718,7 @@ a.whosonfirst-emphasis:hover {
 	color: #FE189D;
 }
 
-article div.whosonfirst-fulltabs-container p a {
+article div.whosonfirst-fulltabs-container p a, article div.whosonfirst-tabs-container div.whosonfirst-tabs-content p a {
 	border-bottom: .9px solid #1F1F1F;
 }
 
@@ -911,7 +915,7 @@ blockquote {
 	}
 	
 	.whosonfirst-card-explore-code-half {
-		margin-top: 15px;
+		margin-top: 13px;
 	}
 	
 	.whosonfirst-card-explore-content-box-half {
@@ -1077,26 +1081,30 @@ blockquote {
 	}
 	
 	.whosonfirst-card-explore-code-half {
-		margin-top: 22px;
+		margin-top: 21px;
 		margin-left:20px;
 		margin-right: 20px;
 		height: 88px;
 	}
 	
 	.whosonfirst-card-explore-lines {
-		padding-top: 6px;
+		padding-top: 7px;
 		height: 58px;
 		overflow: hidden;
 	}
 	
+	.whosonfirst-card-explore-lines-half {
+		height: 88px;
+	}
+	
 	.whosonfirst-card-explore-individual-line {
-		font-size: 12px;
-		line-height: 18px;
+		font-size: 10px;
+		line-height: 16.5px;
 	}
 	
 	.whosonfirst-card-explore-content-box-half {
 		height: 86px;
-		width: 280px;
+		width: 300px;
 	}
 	
 	.whosonfirst-card-explore-content {
@@ -1207,6 +1215,10 @@ blockquote {
 	article div.whosonfirst-fulltabs-container p a {
 		border-bottom: .8px solid #1F1F1F;
 	}
+	
+	.whosonfirst-content-link {
+		border-bottom: 1.1px solid #1F1F1F;
+	}
 }
 
 @media (max-width: 768px) {
@@ -1310,6 +1322,10 @@ blockquote {
 		font-size: 15px;
 	}
 	
+	.whosonfirst-subpage-header {
+		padding-left: 0px;
+	}
+	
 	.whosonfirst-main-headline {
 		margin: 72px 0px 96px;
 		padding: 0 4%;
@@ -1340,6 +1356,7 @@ blockquote {
 	.whosonfirst-navbar-element-collapsed {
 		float: right;
 		width: 100%;
+		margin-right: 10px;
 	}
 	
 	.whoosonfooter-gig {
@@ -1372,7 +1389,7 @@ blockquote {
 		float: right;
 		margin-bottom: 4px !important;
 		padding-top: 5px !important;
-		color: #888888 !important;
+		color: #888888 !important;s
 	}
 	
 	.whosonfirst-nav-link-collapsed:hover {
@@ -1415,7 +1432,7 @@ blockquote {
 	}
 	
 	.whosonfirst-card-explore-lines {
-		padding-top: 7px;
+		padding-top: 6px;
 		height: 48px;
 	}
 	
@@ -1426,7 +1443,7 @@ blockquote {
 	
 	.whosonfirst-card-explore-content-box {
 		height: 51px;
-		width: 80%;
+		width: 83%;
 	}
 
 	.whosonfirst-card-explore-content {
@@ -1542,7 +1559,7 @@ blockquote {
 
 	.whosonfirst-card-explore-content-box-half {
 		height: 86px;
-		width: 82%;
+		width: 83%;
 	}
 	
 	.whosonfirst-card-explore-lines-half {
@@ -1564,5 +1581,17 @@ blockquote {
 	
 	a {
 		word-break: break-all;
+	}
+	
+	.whosonfirst-smallnav-link-twoliner {
+		line-height: 1.9 !important;
+		display: inline !important;
+		float: initial;
+		word-break: keep-all;
+	}
+	
+	.whosonfirst-smallnav-link-twoliner-container {
+		padding-bottom: 6px;
+		margin-top: -3px 1important;
 	}
 }

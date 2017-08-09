@@ -15,7 +15,8 @@
 		<link rel="stylesheet" href="../css/bootstrap.min.css">
 		<link rel="stylesheet" href="../css/mapzen.whosonfirst.css">
     </head>
-	<body><nav class="navbar navbar-default navbar-fixed-top whosonfirst-fixed-subpage-navbar">
+	<body>
+		<div class="whosonfirst-wrapper"><nav class="navbar navbar-default navbar-fixed-top whosonfirst-fixed-subpage-navbar">
 	<div class="container">
 		<!-- Brand and toggle get grouped for better mobile display -->
 		<div class="navbar-header">
@@ -53,20 +54,32 @@
 				<div class="whosonfirst-sidenav-container">
 					<ul class="whosonfirst-sidenav-list">
 						<li class="whosonfirst-sidenav-list-element">
-							<a href="" class="whosonfirst-nav-link whosonfirst-sidenav-link whosonfirst-nav-active">get started</a>
+							<a href="" class="whosonfirst-nav-link whosonfirst-sidenav-link">data principles</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="" class="whosonfirst-nav-link whosonfirst-sidenav-link">available data</a>
 						</li>
 						<li class="whosonfirst-sidenav-list-element whosonfirst-sidenav-list-element-secondlevel">
-							<a href="" class="whosonfirst-nav-link whosonfirst-sidenav-link">retrieve venues</a>
+							<a href="" class="whosonfirst-nav-link whosonfirst-sidenav-link">administrative data</a>
 						</li>
 						<li class="whosonfirst-sidenav-list-element whosonfirst-sidenav-list-element-secondlevel">
-							<a href="" class="whosonfirst-nav-link whosonfirst-sidenav-link">retrieve countries</a>
+							<a href="" class="whosonfirst-nav-link whosonfirst-sidenav-link">venue data</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element whosonfirst-sidenav-list-element-secondlevel">
+							<a href="" class="whosonfirst-nav-link whosonfirst-sidenav-link">other data</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="" class="whosonfirst-nav-link whosonfirst-sidenav-link">amazon s3</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="" class="whosonfirst-nav-link whosonfirst-sidenav-link  whosonfirst-nav-active">github</a>
 						</li>
 					</ul>
 				</div>
 			</aside>
 		</div>
 		<div class="col-lg-6 col-md-9 col-sm-9 col-xs-12">
-			<article><h1>
+			<article><h1 class="whosonfirst-subpage-header">
 <a id="user-content-whosonfirst-names" class="anchor" href="#whosonfirst-names" aria-hidden="true">
 <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
 <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
@@ -75,34 +88,45 @@
 </a>
 whosonfirst-names
 </h1>
-
-	<div class="whosonfirst-fulltabs-container">
-		<div class="whosonfirst-extrasmall-tabs-menu">
-			<div class="whosonfirst-extrasmall-tabs-menu-content">
-					<div class="whosonfirst-extrasmall-tabs-menu-content-header">
-					<a class="whosonfirst-extrasmall-tab-selection" href="">get started</a>
-					<button type="button" class="navbar-toggle collapsed whosonfirst-extrasmall-menu-chevron-down" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2" aria-expanded="false">
-						<span id="glyphicon-one" class="glyphicon glyphicon-chevron-down whosonfirst-extrasmall-menu-actual-chevron-down"></span>
-					</button>
-				</div>
-				<div class="collapse" id="bs-example-navbar-collapse-2">
-					<div class="whosonfirst-extrasmall-nav-collection">
-						<ul class="nav navbar-nav navbar-right whosonfirst-extrasmall-nav">
-							<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
-								<a href="#" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed whosonfirst-nav-active">get started</a>
-							</li>
-							<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
-								<a href="#" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed whosonfirst-subnav-secondlevel">retrieve venues</a>
-							</li>
-							<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
-								<a href="#" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed whosonfirst-extrasmall-nav-link-collapsed-last whosonfirst-subnav-secondlevel">retrieve countries</a>
-							</li>
-						</ul>
-					</div>
-				</div><!-- /.navbar-collapse -->
+<div class="whosonfirst-fulltabs-container">
+	<div class="whosonfirst-extrasmall-tabs-menu">
+		<div class="whosonfirst-extrasmall-tabs-menu-content">
+				<div class="whosonfirst-extrasmall-tabs-menu-content-header">
+				<a class="whosonfirst-extrasmall-tab-selection" href="">get started</a>
+				<button type="button" class="navbar-toggle collapsed whosonfirst-extrasmall-menu-chevron-down" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2" aria-expanded="false">
+					<span id="glyphicon-one" class="glyphicon glyphicon-chevron-down whosonfirst-extrasmall-menu-actual-chevron-down"></span>
+				</button>
 			</div>
+			<div class="collapse" id="bs-example-navbar-collapse-2">
+				<div class="whosonfirst-extrasmall-nav-collection">
+					<ul class="nav navbar-nav navbar-right whosonfirst-extrasmall-nav">
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="#" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">data principles</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="#" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">available data</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="#" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed whosonfirst-subnav-secondlevel">administrative data</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="#" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed whosonfirst-subnav-secondlevel">venue data</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="#" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed whosonfirst-subnav-secondlevel">other data</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="#" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">amazon s3</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element  whosonfirst-extrasmall-nav-link-collapsed-last">
+							<a href="#" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed whosonfirst-nav-active  whosonfirst-extrasmall-nav-link-collapsed-last">github</a>
+						</li>
+					</ul>
+				</div>
+			</div><!-- /.navbar-collapse -->
 		</div>
-		<div class="whosonfirst-makefile-padding"><a id="user-content-whosonfirst-names" class="anchor" href="#whosonfirst-names" aria-hidden="true">
+	</div>
+	<div class="whosonfirst-tabs-content"><a id="user-content-whosonfirst-names" class="anchor" href="#whosonfirst-names" aria-hidden="true">
 <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
 <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
 </path>
@@ -488,24 +512,25 @@ https://github.com/whosonfirst/whosonfirst-docs
 </a>
 </li>
 </ul>
+								</div>
 							</div>
-						</div>
-					</article>
+						</article>
+					</div>
+					<div class="col-lg-3 col-md-0 col-sm-0 col-xs-0"></div>
 				</div>
-				<div class="col-lg-3 col-md-0 col-sm-0 col-xs-0"></div>
 			</div>
 		</div>
 		<footer>
 			<nav class="navbar navbar-default navbar-bottom">
 				<div class="container">
 					<!-- Collect the nav links, forms, and other content for toggling -->
-						<ul class="nav navbar-nav navbar-right whosonfirst-footer">
-							<li class="whosonfirst-nav-link-nounderline whoosonfooter-gig">who's on first is a <a href="#" class="whosonfirst-nav-link whosonfirst-nav-link-innounderline">mapzen</a> gig</li>
-							<li><a href="#" class="whosonfirst-nav-link whosonfirst-footer-nav-link">contributing</a></li>
-							<li><a href="#" class="whosonfirst-nav-link whosonfirst-footer-nav-link">licensing</a></li>
-							<li><a href="#" class="whosonfirst-nav-link whosonfirst-footer-nav-link">github</a></li>
-							<li><a href="#" class="whosonfirst-nav-link whosonfirst-footer-nav-link">twitter</a></li>
-						</ul>
+					<ul class="nav navbar-nav navbar-right whosonfirst-footer">
+						<li class="whosonfirst-nav-link-nounderline whoosonfooter-gig">who's on first is a <a href="#" class="whosonfirst-nav-link whosonfirst-nav-link-innounderline">mapzen</a> gig</li>
+						<li><a href="#" class="whosonfirst-nav-link whosonfirst-footer-nav-link">contributing</a></li>
+						<li><a href="#" class="whosonfirst-nav-link whosonfirst-footer-nav-link">licensing</a></li>
+						<li><a href="#" class="whosonfirst-nav-link whosonfirst-footer-nav-link">github</a></li>
+						<li><a href="#" class="whosonfirst-nav-link whosonfirst-footer-nav-link">twitter</a></li>
+					</ul>
 				</div>
 			</nav>
 		</footer>
