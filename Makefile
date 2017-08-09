@@ -213,6 +213,7 @@ v2-test:
 	cat www/componentsv2/head.html www/componentsv2/navbar.html www/componentsv2/subnav1.html www/test/v2-test-content.html www/componentsv2/subnav2.html www/test/v2-test-content-two.html www/componentsv2/footer.html > www/test/v2-test.html
 	rm www/test/v2-test-content.html
 	rm www/test/v2-test-content-two.html
+	rm www/test/v2-test-content.html-e
 	
 v2-testtwo:
 	curl -s https://github.com/whosonfirst/whosonfirst-dates/blob/master/README.md | pup -i 0 'article.markdown-body h1' > www/test/v2-test-content-three.html
@@ -221,6 +222,7 @@ v2-testtwo:
 	cat www/componentsv2/head.html www/componentsv2/navbar.html www/componentsv2/subnav1.html www/test/v2-test-content-three.html www/componentsv2/subnav2.html www/test/v2-test-content-four.html www/componentsv2/footer.html > www/test/v2-test-two.html
 	rm www/test/v2-test-content-three.html
 	rm www/test/v2-test-content-four.html
+	rm www/test/v2-test-content-three.html-e
 	
 v2-testthree:
 	curl -s https://github.com/whosonfirst/whosonfirst-names/blob/master/README.md | pup -i 0 'article.markdown-body h1' > www/test/v2-test-content-five.html
@@ -229,6 +231,7 @@ v2-testthree:
 	cat www/componentsv2/head.html www/componentsv2/navbar.html www/componentsv2/subnav1.html www/test/v2-test-content-five.html www/componentsv2/subnav2.html www/test/v2-test-content-six.html www/componentsv2/footer.html > www/test/v2-test-three.html
 	rm www/test/v2-test-content-five.html
 	rm www/test/v2-test-content-six.html
+	rm www/test/v2-test-content-five.html-e
 	
 setup:
 	ubuntu/setup-nginx.sh
@@ -261,3 +264,326 @@ endif
 
 tools:
 	./utils/mk-utils.sh go-whosonfirst-www wof-clone-website 
+
+v2-documents-properties-addr:
+	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/addr.md | pup -i 0 'article.markdown-body h1' > www/v2/docs/properties/temp-content1.html
+	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/addr.md | pup -i 0 'article.markdown-body :not(h1)' > www/v2/docs/properties/temp-content2.html
+	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/v2/docs/properties/temp-content1.html
+	cat www/v2/components/head/head.html www/v2/components/navbar/docs-navbar.html www/v2/components/subnav/docs/properties/subnav-top.html www/v2/docs/properties/temp-content1.html www/v2/components/subnav/docs/properties/subnav-bottom.html  www/v2/docs/properties/temp-content2.html www/v2/components/footer/footer.html > www/v2/docs/properties/addr.html
+	rm www/v2/docs/properties/temp-content1.html
+	rm www/v2/docs/properties/temp-content2.html
+	rm www/v2/docs/properties/temp-content1.html-e
+	
+v2-documents-properties-edtf:
+	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/edtf.md | pup -i 0 'article.markdown-body h1' > www/v2/docs/properties/temp-content1.html
+	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/edtf.md | pup -i 0 'article.markdown-body :not(h1)' > www/v2/docs/properties/temp-content2.html
+	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/v2/docs/properties/temp-content1.html
+	cat www/v2/components/head/head.html www/v2/components/navbar/docs-navbar.html www/v2/components/subnav/docs/properties/subnav-top.html www/v2/docs/properties/temp-content1.html www/v2/components/subnav/docs/properties/subnav-bottom.html  www/v2/docs/properties/temp-content2.html www/v2/components/footer/footer.html > www/v2/docs/properties/edtf.html
+	rm www/v2/docs/properties/temp-content1.html
+	rm www/v2/docs/properties/temp-content2.html
+	rm www/v2/docs/properties/temp-content1.html-e
+
+v2-documents-properties-geom:
+	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/geom.md | pup -i 0 'article.markdown-body h1' > www/v2/docs/properties/temp-content1.html
+	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/geom.md | pup -i 0 'article.markdown-body :not(h1)' > www/v2/docs/properties/temp-content2.html
+	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/v2/docs/properties/temp-content1.html
+	cat www/v2/components/head/head.html www/v2/components/navbar/docs-navbar.html www/v2/components/subnav/docs/properties/subnav-top.html www/v2/docs/properties/temp-content1.html www/v2/components/subnav/docs/properties/subnav-bottom.html  www/v2/docs/properties/temp-content2.html www/v2/components/footer/footer.html > www/v2/docs/properties/geom.html
+	rm www/v2/docs/properties/temp-content1.html
+	rm www/v2/docs/properties/temp-content2.html
+	rm www/v2/docs/properties/temp-content1.html-e
+	
+v2-documents-properties-lbl:
+	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/lbl.md | pup -i 0 'article.markdown-body h1' > www/v2/docs/properties/temp-content1.html
+	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/lbl.md | pup -i 0 'article.markdown-body :not(h1)' > www/v2/docs/properties/temp-content2.html
+	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/v2/docs/properties/temp-content1.html
+	cat www/v2/components/head/head.html www/v2/components/navbar/docs-navbar.html www/v2/components/subnav/docs/properties/subnav-top.html www/v2/docs/properties/temp-content1.html www/v2/components/subnav/docs/properties/subnav-bottom.html  www/v2/docs/properties/temp-content2.html www/v2/components/footer/footer.html > www/v2/docs/properties/lbl.html
+	rm www/v2/docs/properties/temp-content1.html
+	rm www/v2/docs/properties/temp-content2.html
+	rm www/v2/docs/properties/temp-content1.html-e
+	
+v2-documents-properties-mz:
+	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/mz.md | pup -i 0 'article.markdown-body h1' > www/v2/docs/properties/temp-content1.html
+	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/mz.md | pup -i 0 'article.markdown-body :not(h1)' > www/v2/docs/properties/temp-content2.html
+	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/v2/docs/properties/temp-content1.html
+	cat www/v2/components/head/head.html www/v2/components/navbar/docs-navbar.html www/v2/components/subnav/docs/properties/subnav-top.html www/v2/docs/properties/temp-content1.html www/v2/components/subnav/docs/properties/subnav-bottom.html  www/v2/docs/properties/temp-content2.html www/v2/components/footer/footer.html > www/v2/docs/properties/mz.html
+	rm www/v2/docs/properties/temp-content1.html
+	rm www/v2/docs/properties/temp-content2.html
+	rm www/v2/docs/properties/temp-content1.html-e
+	
+v2-documents-properties-name:
+	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/name.md | pup -i 0 'article.markdown-body h1' > www/v2/docs/properties/temp-content1.html
+	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/name.md | pup -i 0 'article.markdown-body :not(h1)' > www/v2/docs/properties/temp-content2.html
+	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/v2/docs/properties/temp-content1.html
+	cat www/v2/components/head/head.html www/v2/components/navbar/docs-navbar.html www/v2/components/subnav/docs/properties/subnav-top.html www/v2/docs/properties/temp-content1.html www/v2/components/subnav/docs/properties/subnav-bottom.html  www/v2/docs/properties/temp-content2.html www/v2/components/footer/footer.html > www/v2/docs/properties/name.html
+	rm www/v2/docs/properties/temp-content1.html
+	rm www/v2/docs/properties/temp-content2.html
+	rm www/v2/docs/properties/temp-content1.html-e
+	
+v2-documents-properties-resto:
+	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/resto.md | pup -i 0 'article.markdown-body h1' > www/v2/docs/properties/temp-content1.html
+	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/resto.md | pup -i 0 'article.markdown-body :not(h1)' > www/v2/docs/properties/temp-content2.html
+	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/v2/docs/properties/temp-content1.html
+	cat www/v2/components/head/head.html www/v2/components/navbar/docs-navbar.html www/v2/components/subnav/docs/properties/subnav-top.html www/v2/docs/properties/temp-content1.html www/v2/components/subnav/docs/properties/subnav-bottom.html  www/v2/docs/properties/temp-content2.html www/v2/components/footer/footer.html > www/v2/docs/properties/resto.html
+	rm www/v2/docs/properties/temp-content1.html
+	rm www/v2/docs/properties/temp-content2.html
+	rm www/v2/docs/properties/temp-content1.html-e
+	
+v2-documents-properties-reversegeo:
+	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/reversegeo.md | pup -i 0 'article.markdown-body h1' > www/v2/docs/properties/temp-content1.html
+	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/reversegeo.md | pup -i 0 'article.markdown-body :not(h1)' > www/v2/docs/properties/temp-content2.html
+	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/v2/docs/properties/temp-content1.html
+	cat www/v2/components/head/head.html www/v2/components/navbar/docs-navbar.html www/v2/components/subnav/docs/properties/subnav-top.html www/v2/docs/properties/temp-content1.html www/v2/components/subnav/docs/properties/subnav-bottom.html  www/v2/docs/properties/temp-content2.html www/v2/components/footer/footer.html > www/v2/docs/properties/reversegeo.html
+	rm www/v2/docs/properties/temp-content1.html
+	rm www/v2/docs/properties/temp-content2.html
+	rm www/v2/docs/properties/temp-content1.html-e
+	
+v2-documents-properties-src:
+	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/src.md | pup -i 0 'article.markdown-body h1' > www/v2/docs/properties/temp-content1.html
+	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/src.md | pup -i 0 'article.markdown-body :not(h1)' > www/v2/docs/properties/temp-content2.html
+	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/v2/docs/properties/temp-content1.html
+	cat www/v2/components/head/head.html www/v2/components/navbar/docs-navbar.html www/v2/components/subnav/docs/properties/subnav-top.html www/v2/docs/properties/temp-content1.html www/v2/components/subnav/docs/properties/subnav-bottom.html  www/v2/docs/properties/temp-content2.html www/v2/components/footer/footer.html > www/v2/docs/properties/src.html
+	rm www/v2/docs/properties/temp-content1.html
+	rm www/v2/docs/properties/temp-content2.html
+	rm www/v2/docs/properties/temp-content1.html-e
+	
+v2-documents-properties-wof:
+	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/wof.md | pup -i 0 'article.markdown-body h1' > www/v2/docs/properties/temp-content1.html
+	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/wof.md | pup -i 0 'article.markdown-body :not(h1)' > www/v2/docs/properties/temp-content2.html
+	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/v2/docs/properties/temp-content1.html
+	cat www/v2/components/head/head.html www/v2/components/navbar/docs-navbar.html www/v2/components/subnav/docs/properties/subnav-top.html www/v2/docs/properties/temp-content1.html www/v2/components/subnav/docs/properties/subnav-bottom.html  www/v2/docs/properties/temp-content2.html www/v2/components/footer/footer.html > www/v2/docs/properties/wof.html
+	rm www/v2/docs/properties/temp-content1.html
+	rm www/v2/docs/properties/temp-content2.html
+	rm www/v2/docs/properties/temp-content1.html-e
+	
+v2-documents-properties: v2-documents-properties-addr v2-documents-properties-edtf v2-documents-properties-geom v2-documents-properties-lbl v2-documents-properties-mz v2-documents-properties-name v2-documents-properties-resto v2-documents-properties-reversegeo v2-documents-properties-src v2-documents-properties-wof
+
+v2-documents-concordances:
+	cat www/v2/content/docs/concordances/concordances.html | pup -i 0 'body h1' > www/v2/docs/concordances/temp-content1.html
+	cat www/v2/content/docs/concordances/concordances.html | pup -i 0 'body :not(h1)' > www/v2/docs/concordances/temp-content2.html
+	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/v2/docs/concordances/temp-content1.html
+	cat www/v2/components/head/head.html www/v2/components/navbar/docs-navbar.html www/v2/components/subnav/docs/properties/subnav-top.html www/v2/docs/concordances/temp-content1.html www/v2/components/subnav/docs/properties/subnav-bottom.html  www/v2/docs/concordances/temp-content2.html www/v2/components/footer/footer.html > www/v2/docs/concordances/index.html
+	rm www/v2/docs/concordances/temp-content1.html
+	rm www/v2/docs/concordances/temp-content2.html
+	rm www/v2/docs/concordances/temp-content1.html-e
+	
+v2-documents-placetypes:
+	curl -s https://github.com/whosonfirst/whosonfirst-placetypes/blob/master/README.md | pup -i 0 'article.markdown-body h1' > www/v2/docs/placetypes/temp-content1.html
+	curl -s https://github.com/whosonfirst/whosonfirst-placetypes/blob/master/README.md | pup -i 0 'article.markdown-body :not(h1)' > www/v2/docs/placetypes/temp-content2.html
+	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/v2/docs/placetypes/temp-content1.html
+	cat www/v2/components/head/head.html www/v2/components/navbar/docs-navbar.html www/v2/components/subnav/docs/properties/subnav-top.html www/v2/docs/placetypes/temp-content1.html www/v2/components/subnav/docs/properties/subnav-bottom.html  www/v2/docs/placetypes/temp-content2.html www/v2/components/footer/footer.html > www/v2/docs/placetypes/index.html
+	rm www/v2/docs/placetypes/temp-content1.html
+	rm www/v2/docs/placetypes/temp-content2.html
+	rm www/v2/docs/placetypes/temp-content1.html-e
+	
+v2-documents-hierachies-index:
+	cat www/v2/content/docs/hierachies/hierachies.html | pup -i 0 'body h1' > www/v2/docs/hierachies/temp-content1.html
+	cat www/v2/content/docs/hierachies/hierachies.html | pup -i 0 'body :not(h1)' > www/v2/docs/hierachies/temp-content2.html
+	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/v2/docs/hierachies/temp-content1.html
+	cat www/v2/components/head/head.html www/v2/components/navbar/docs-navbar.html www/v2/components/subnav/docs/properties/subnav-top.html www/v2/docs/hierachies/temp-content1.html www/v2/components/subnav/docs/properties/subnav-bottom.html  www/v2/docs/hierachies/temp-content2.html www/v2/components/footer/footer.html > www/v2/docs/hierachies/index.html
+	rm www/v2/docs/hierachies/temp-content1.html
+	rm www/v2/docs/hierachies/temp-content2.html
+	rm www/v2/docs/hierachies/temp-content1.html-e
+
+v2-documents-hierachies-disputedareas:
+	cat www/v2/content/docs/hierachies/disputedareas.html | pup -i 0 'body h1' > www/v2/docs/hierachies/temp-content1.html
+	cat www/v2/content/docs/hierachies/disputedareas.html | pup -i 0 'body :not(h1)' > www/v2/docs/hierachies/temp-content2.html
+	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/v2/docs/hierachies/temp-content1.html
+	cat www/v2/components/head/head.html www/v2/components/navbar/docs-navbar.html www/v2/components/subnav/docs/properties/subnav-top.html www/v2/docs/hierachies/temp-content1.html www/v2/components/subnav/docs/properties/subnav-bottom.html  www/v2/docs/hierachies/temp-content2.html www/v2/components/footer/footer.html > www/v2/docs/hierachies/disputedareas.html
+	rm www/v2/docs/hierachies/temp-content1.html
+	rm www/v2/docs/hierachies/temp-content2.html
+	rm www/v2/docs/hierachies/temp-content1.html-e
+
+v2-documents-hierachies-superseded:
+	cat www/v2/content/docs/hierachies/superseded.html | pup -i 0 'body h1' > www/v2/docs/hierachies/temp-content1.html
+	cat www/v2/content/docs/hierachies/superseded.html | pup -i 0 'body :not(h1)' > www/v2/docs/hierachies/temp-content2.html
+	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/v2/docs/hierachies/temp-content1.html
+	cat www/v2/components/head/head.html www/v2/components/navbar/docs-navbar.html www/v2/components/subnav/docs/properties/subnav-top.html www/v2/docs/hierachies/temp-content1.html www/v2/components/subnav/docs/properties/subnav-bottom.html  www/v2/docs/hierachies/temp-content2.html www/v2/components/footer/footer.html > www/v2/docs/hierachies/superseded.html
+	rm www/v2/docs/hierachies/temp-content1.html
+	rm www/v2/docs/hierachies/temp-content2.html
+	rm www/v2/docs/hierachies/temp-content1.html-e
+	
+v2-documents-hierachies: v2-documents-hierachies-index v2-documents-hierachies-disputedareas v2-documents-hierachies-superseded
+
+v2-documents-names:
+	curl -s https://github.com/whosonfirst/whosonfirst-names/blob/master/README.md | pup -i 0 'article.markdown-body h1' > www/v2/docs/names/temp-content1.html
+	curl -s https://github.com/whosonfirst/whosonfirst-names/blob/master/README.md | pup -i 0 'article.markdown-body :not(h1)' > www/v2/docs/names/temp-content2.html
+	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/v2/docs/names/temp-content1.html
+	cat www/v2/components/head/head.html www/v2/components/navbar/docs-navbar.html www/v2/components/subnav/docs/properties/subnav-top.html www/v2/docs/names/temp-content1.html www/v2/components/subnav/docs/properties/subnav-bottom.html  www/v2/docs/names/temp-content2.html www/v2/components/footer/footer.html > www/v2/docs/names/index.html
+	rm www/v2/docs/names/temp-content1.html
+	rm www/v2/docs/names/temp-content2.html
+	rm www/v2/docs/names/temp-content1.html-e
+	
+v2-documents-geometries-index:
+	curl -s https://github.com/whosonfirst/whosonfirst-geometries | pup -i 0 'article.markdown-body h1' > www/v2/docs/geometries/temp-content1.html
+	curl -s https://github.com/whosonfirst/whosonfirst-geometries | pup -i 0 'article.markdown-body :not(h1)' > www/v2/docs/geometries/temp-content2.html
+	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/v2/docs/geometries/temp-content1.html
+	cat www/v2/components/head/head.html www/v2/components/navbar/docs-navbar.html www/v2/components/subnav/docs/properties/subnav-top.html www/v2/docs/geometries/temp-content1.html www/v2/components/subnav/docs/properties/subnav-bottom.html  www/v2/docs/geometries/temp-content2.html www/v2/components/footer/footer.html > www/v2/docs/geometries/index.html
+	rm www/v2/docs/geometries/temp-content1.html
+	rm www/v2/docs/geometries/temp-content2.html
+	rm www/v2/docs/geometries/temp-content1.html-e
+	
+v2-documents-geometries-altgeometries:
+	curl -s https://github.com/whosonfirst/whosonfirst-cookbook/blob/master/how_to/creating_alt_geometries.md | pup -i 0 'article.markdown-body h1' > www/v2/docs/geometries/temp-content1.html
+	curl -s https://github.com/whosonfirst/whosonfirst-cookbook/blob/master/how_to/creating_alt_geometries.md | pup -i 0 'article.markdown-body :not(h1)' > www/v2/docs/geometries/temp-content2.html
+	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/v2/docs/geometries/temp-content1.html
+	cat www/v2/components/head/head.html www/v2/components/navbar/docs-navbar.html www/v2/components/subnav/docs/properties/subnav-top.html www/v2/docs/geometries/temp-content1.html www/v2/components/subnav/docs/properties/subnav-bottom.html  www/v2/docs/geometries/temp-content2.html www/v2/components/footer/footer.html > www/v2/docs/geometries/altgeometries.html
+	rm www/v2/docs/geometries/temp-content1.html
+	rm www/v2/docs/geometries/temp-content2.html
+	rm www/v2/docs/geometries/temp-content1.html-e
+	
+v2-documents-geometries: v2-documents-geometries-index v2-documents-geometries-altgeometries
+
+v2-documents-dates:
+	curl -s https://github.com/whosonfirst/whosonfirst-dates | pup -i 0 'article.markdown-body h1' > www/v2/docs/dates/temp-content1.html
+	curl -s https://github.com/whosonfirst/whosonfirst-dates | pup -i 0 'article.markdown-body :not(h1)' > www/v2/docs/dates/temp-content2.html
+	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/v2/docs/dates/temp-content1.html
+	cat www/v2/components/head/head.html www/v2/components/navbar/docs-navbar.html www/v2/components/subnav/docs/properties/subnav-top.html www/v2/docs/dates/temp-content1.html www/v2/components/subnav/docs/properties/subnav-bottom.html  www/v2/docs/dates/temp-content2.html www/v2/components/footer/footer.html > www/v2/docs/dates/index.html
+	rm www/v2/docs/dates/temp-content1.html
+	rm www/v2/docs/dates/temp-content2.html
+	rm www/v2/docs/dates/temp-content1.html-e
+	
+v2-documents-categories:
+	curl -s https://github.com/whosonfirst/whosonfirst-categories/blob/master/README.md | pup -i 0 'article.markdown-body h1' > www/v2/docs/categories/temp-content1.html
+	curl -s https://github.com/whosonfirst/whosonfirst-categories/blob/master/README.md | pup -i 0 'article.markdown-body :not(h1)' > www/v2/docs/categories/temp-content2.html
+	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/v2/docs/categories/temp-content1.html
+	cat www/v2/components/head/head.html www/v2/components/navbar/docs-navbar.html www/v2/components/subnav/docs/properties/subnav-top.html www/v2/docs/categories/temp-content1.html www/v2/components/subnav/docs/properties/subnav-bottom.html  www/v2/docs/categories/temp-content2.html www/v2/components/footer/footer.html > www/v2/docs/categories/index.html
+	rm www/v2/docs/categories/temp-content1.html
+	rm www/v2/docs/categories/temp-content2.html
+	rm www/v2/docs/categories/temp-content1.html-e
+	
+v2-documents-sources-index:
+	curl -s https://github.com/whosonfirst/whosonfirst-sources | pup -i 0 'article.markdown-body h1' > www/v2/docs/sources/temp-content1.html
+	curl -s https://github.com/whosonfirst/whosonfirst-sources | pup -i 0 'article.markdown-body :not(h1)' > www/v2/docs/sources/temp-content2.html
+	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/v2/docs/sources/temp-content1.html
+	cat www/v2/components/head/head.html www/v2/components/navbar/docs-navbar.html www/v2/components/subnav/docs/properties/subnav-top.html www/v2/docs/sources/temp-content1.html www/v2/components/subnav/docs/properties/subnav-bottom.html  www/v2/docs/sources/temp-content2.html www/v2/components/footer/footer.html > www/v2/docs/sources/index.html
+	rm www/v2/docs/sources/temp-content1.html
+	rm www/v2/docs/sources/temp-content2.html
+	rm www/v2/docs/sources/temp-content1.html-e
+	
+v2-documents-sources-source-list:
+	curl -s https://github.com/whosonfirst/whosonfirst-sources/blob/master/sources/README.md | pup -i 0 'article.markdown-body h1' > www/v2/docs/sources/temp-content1.html
+	curl -s https://github.com/whosonfirst/whosonfirst-sources/blob/master/sources/README.md | pup -i 0 'article.markdown-body :not(h1)' > www/v2/docs/sources/temp-content2.html
+	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/v2/docs/sources/temp-content1.html
+	cat www/v2/components/head/head.html www/v2/components/navbar/docs-navbar.html www/v2/components/subnav/docs/properties/subnav-top.html www/v2/docs/sources/temp-content1.html www/v2/components/subnav/docs/properties/subnav-bottom.html  www/v2/docs/sources/temp-content2.html www/v2/components/footer/footer.html > www/v2/docs/sources/listofsources.html
+	rm www/v2/docs/sources/temp-content1.html
+	rm www/v2/docs/sources/temp-content2.html
+	rm www/v2/docs/sources/temp-content1.html-e
+	
+v2-documents-sources: v2-documents-sources-index v2-documents-sources-source-list
+
+v2-documents-tests:
+	curl -s https://github.com/whosonfirst/whosonfirst-tests/blob/master/README.md | pup -i 0 'article.markdown-body h1' > www/v2/docs/tests/temp-content1.html
+	curl -s https://github.com/whosonfirst/whosonfirst-tests/blob/master/README.md | pup -i 0 'article.markdown-body :not(h1)' > www/v2/docs/tests/temp-content2.html
+	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/v2/docs/tests/temp-content1.html
+	cat www/v2/components/head/head.html www/v2/components/navbar/docs-navbar.html www/v2/components/subnav/docs/properties/subnav-top.html www/v2/docs/tests/temp-content1.html www/v2/components/subnav/docs/properties/subnav-bottom.html  www/v2/docs/tests/temp-content2.html www/v2/components/footer/footer.html > www/v2/docs/tests/index.html
+	rm www/v2/docs/tests/temp-content1.html
+	rm www/v2/docs/tests/temp-content2.html
+	rm www/v2/docs/tests/temp-content1.html-e
+	
+v2-documents-contributing:
+	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/CONTRIBUTING.md | pup -i 0 'article.markdown-body h1:first-of-type' > www/v2/docs/contributing/temp-content1.html
+	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/CONTRIBUTING.md | pup -i 0 'article.markdown-body :not(h1:first-of-type)' > www/v2/docs/contributing/temp-content2.html
+	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/v2/docs/contributing/temp-content1.html
+	cat www/v2/components/head/head.html www/v2/components/navbar/docs-navbar.html www/v2/components/subnav/docs/properties/subnav-top.html www/v2/docs/contributing/temp-content1.html www/v2/components/subnav/docs/properties/subnav-bottom.html  www/v2/docs/contributing/temp-content2.html www/v2/components/footer/footer.html > www/v2/docs/contributing/index.html
+	rm www/v2/docs/contributing/temp-content1.html
+	rm www/v2/docs/contributing/temp-content2.html
+	rm www/v2/docs/contributing/temp-content1.html-e
+	
+v2-documents-licensing-datalicenses:
+	curl -s https://github.com/whosonfirst/whosonfirst-cookbook/blob/master/definition/data_licenses.md | pup -i 0 'article.markdown-body h1:first-of-type' > www/v2/docs/licensing/temp-content1.html
+	curl -s https://github.com/whosonfirst/whosonfirst-cookbook/blob/master/definition/data_licenses.md | pup -i 0 'article.markdown-body :not(h1:first-of-type)' > www/v2/docs/licensing/temp-content2.html
+	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/v2/docs/licensing/temp-content1.html
+	cat www/v2/components/head/head.html www/v2/components/navbar/docs-navbar.html www/v2/components/subnav/docs/properties/subnav-top.html www/v2/docs/licensing/temp-content1.html www/v2/components/subnav/docs/properties/subnav-bottom.html  www/v2/docs/licensing/temp-content2.html www/v2/components/footer/footer.html > www/v2/docs/licensing/datalicenses.html
+	rm www/v2/docs/licensing/temp-content1.html
+	rm www/v2/docs/licensing/temp-content2.html
+	rm www/v2/docs/licensing/temp-content1.html-e
+	
+v2-documents-licensing-index:
+	curl -s https://github.com/whosonfirst-data/whosonfirst-data/blob/master/LICENSE.md | pup -i 0 'article.markdown-body h1:first-of-type' > www/v2/docs/licensing/temp-content1.html
+	curl -s https://github.com/whosonfirst-data/whosonfirst-data/blob/master/LICENSE.md | pup -i 0 'article.markdown-body :not(h1:first-of-type)' > www/v2/docs/licensing/temp-content2.html
+	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/v2/docs/licensing/temp-content1.html
+	cat www/v2/components/head/head.html www/v2/components/navbar/docs-navbar.html www/v2/components/subnav/docs/properties/subnav-top.html www/v2/docs/licensing/temp-content1.html www/v2/components/subnav/docs/properties/subnav-bottom.html  www/v2/docs/licensing/temp-content2.html www/v2/components/footer/footer.html > www/v2/docs/licensing/index.html
+	rm www/v2/docs/licensing/temp-content1.html
+	rm www/v2/docs/licensing/temp-content2.html
+	rm www/v2/docs/licensing/temp-content1.html-e
+
+v2-documents-licensing: v2-documents-licensing-index v2-documents-licensing-datalicenses
+	
+v2-documents-keyterms:
+	curl -s https://github.com/whosonfirst/whosonfirst-cookbook/blob/master/definition/key_terms.md | pup -i 0 'article.markdown-body h1:first-of-type' > www/v2/docs/keyterms/temp-content1.html
+	curl -s https://github.com/whosonfirst/whosonfirst-cookbook/blob/master/definition/key_terms.md | pup -i 0 'article.markdown-body :not(h1:first-of-type)' > www/v2/docs/keyterms/temp-content2.html
+	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/v2/docs/keyterms/temp-content1.html
+	cat www/v2/components/head/head.html www/v2/components/navbar/docs-navbar.html www/v2/components/subnav/docs/properties/subnav-top.html www/v2/docs/keyterms/temp-content1.html www/v2/components/subnav/docs/properties/subnav-bottom.html  www/v2/docs/keyterms/temp-content2.html www/v2/components/footer/footer.html > www/v2/docs/keyterms/index.html
+	rm www/v2/docs/keyterms/temp-content1.html
+	rm www/v2/docs/keyterms/temp-content2.html
+	rm www/v2/docs/keyterms/temp-content1.html-e
+	
+v2-documents-processes-significantevent:
+	curl -s https://github.com/whosonfirst/whosonfirst-cookbook/blob/master/definition/significant_event.md | pup -i 0 'article.markdown-body h1:first-of-type' > www/v2/docs/processes/temp-content1.html
+	curl -s https://github.com/whosonfirst/whosonfirst-cookbook/blob/master/definition/significant_event.md | pup -i 0 'article.markdown-body :not(h1:first-of-type)' > www/v2/docs/processes/temp-content2.html
+	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/v2/docs/processes/temp-content1.html
+	cat www/v2/components/head/head.html www/v2/components/navbar/docs-navbar.html www/v2/components/subnav/docs/properties/subnav-top.html www/v2/docs/processes/temp-content1.html www/v2/components/subnav/docs/properties/subnav-bottom.html  www/v2/docs/processes/temp-content2.html www/v2/components/footer/footer.html > www/v2/docs/processes/significantevent.html
+	rm www/v2/docs/processes/temp-content1.html
+	rm www/v2/docs/processes/temp-content2.html
+	rm www/v2/docs/processes/temp-content1.html-e
+	
+v2-documents-processes-assigningcessation:
+	curl -s https://github.com/whosonfirst/whosonfirst-cookbook/blob/master/definition/deprecated_vs_cessation.md | pup -i 0 'article.markdown-body h1:first-of-type' > www/v2/docs/processes/temp-content1.html
+	curl -s https://github.com/whosonfirst/whosonfirst-cookbook/blob/master/definition/deprecated_vs_cessation.md | pup -i 0 'article.markdown-body :not(h1:first-of-type)' > www/v2/docs/processes/temp-content2.html
+	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/v2/docs/processes/temp-content1.html
+	cat www/v2/components/head/head.html www/v2/components/navbar/docs-navbar.html www/v2/components/subnav/docs/properties/subnav-top.html www/v2/docs/processes/temp-content1.html www/v2/components/subnav/docs/properties/subnav-bottom.html  www/v2/docs/processes/temp-content2.html www/v2/components/footer/footer.html > www/v2/docs/processes/assigningcessation.html
+	rm www/v2/docs/processes/temp-content1.html
+	rm www/v2/docs/processes/temp-content2.html
+	rm www/v2/docs/processes/temp-content1.html-e
+	
+v2-documents-processes-s3requirements:
+	curl -s https://github.com/whosonfirst/whosonfirst-cookbook/blob/master/how_to/requirements_for_s3.md | pup -i 0 'article.markdown-body h1:first-of-type' > www/v2/docs/processes/temp-content1.html
+	curl -s https://github.com/whosonfirst/whosonfirst-cookbook/blob/master/how_to/requirements_for_s3.md | pup -i 0 'article.markdown-body :not(h1:first-of-type)' > www/v2/docs/processes/temp-content2.html
+	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/v2/docs/processes/temp-content1.html
+	cat www/v2/components/head/head.html www/v2/components/navbar/docs-navbar.html www/v2/components/subnav/docs/properties/subnav-top.html www/v2/docs/processes/temp-content1.html www/v2/components/subnav/docs/properties/subnav-bottom.html  www/v2/docs/processes/temp-content2.html www/v2/components/footer/footer.html > www/v2/docs/processes/s3requirements.html
+	rm www/v2/docs/processes/temp-content1.html
+	rm www/v2/docs/processes/temp-content2.html
+	rm www/v2/docs/processes/temp-content1.html-e
+	
+		
+v2-documents-processes-wikipediaconcordances:
+	curl -s https://github.com/whosonfirst/whosonfirst-cookbook/blob/master/issue_workflows/wikipedia_concordances.md | pup -i 0 'article.markdown-body h1:first-of-type' > www/v2/docs/processes/temp-content1.html
+	curl -s https://github.com/whosonfirst/whosonfirst-cookbook/blob/master/issue_workflows/wikipedia_concordances.md | pup -i 0 'article.markdown-body :not(h1:first-of-type)' > www/v2/docs/processes/temp-content2.html
+	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/v2/docs/processes/temp-content1.html
+	cat www/v2/components/head/head.html www/v2/components/navbar/docs-navbar.html www/v2/components/subnav/docs/properties/subnav-top.html www/v2/docs/processes/temp-content1.html www/v2/components/subnav/docs/properties/subnav-bottom.html  www/v2/docs/processes/temp-content2.html www/v2/components/footer/footer.html > www/v2/docs/processes/wikipediaconcordances.html
+	rm www/v2/docs/processes/temp-content1.html
+	rm www/v2/docs/processes/temp-content2.html
+	rm www/v2/docs/processes/temp-content1.html-e
+	
+v2-documents-processes-seattleneighborhoodupdates:
+	curl -s https://github.com/whosonfirst/whosonfirst-cookbook/blob/master/issue_workflows/seattle_neighbourhood_updates.md | pup -i 0 'article.markdown-body h1:first-of-type' > www/v2/docs/processes/temp-content1.html
+	curl -s https://github.com/whosonfirst/whosonfirst-cookbook/blob/master/issue_workflows/seattle_neighbourhood_updates.md | pup -i 0 'article.markdown-body :not(h1:first-of-type)' > www/v2/docs/processes/temp-content2.html
+	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/v2/docs/processes/temp-content1.html
+	cat www/v2/components/head/head.html www/v2/components/navbar/docs-navbar.html www/v2/components/subnav/docs/properties/subnav-top.html www/v2/docs/processes/temp-content1.html www/v2/components/subnav/docs/properties/subnav-bottom.html  www/v2/docs/processes/temp-content2.html www/v2/components/footer/footer.html > www/v2/docs/processes/seattleneighborhoodupdates.html
+	rm www/v2/docs/processes/temp-content1.html
+	rm www/v2/docs/processes/temp-content2.html
+	rm www/v2/docs/processes/temp-content1.html-e
+	
+v2-documents-processes-updatingsanfrancisconeighborhoods:
+	curl -s https://github.com/whosonfirst/whosonfirst-cookbook/blob/master/issue_workflows/sf_neighbourhood_updates_pt_1.md | pup -i 0 'article.markdown-body h1:first-of-type' > www/v2/docs/processes/temp-content1.html
+	curl -s https://github.com/whosonfirst/whosonfirst-cookbook/blob/master/issue_workflows/sf_neighbourhood_updates_pt_1.md | pup -i 0 'article.markdown-body :not(h1:first-of-type)' > www/v2/docs/processes/temp-content2.html
+	curl -s https://github.com/whosonfirst/whosonfirst-cookbook/blob/master/issue_workflows/sf_neighbourhood_updates_pt_2.md | pup -i 0 'article.markdown-body :not(h1:first-of-type)' > www/v2/docs/processes/temp-content3.html
+	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/v2/docs/processes/temp-content1.html
+	cat www/v2/components/head/head.html www/v2/components/navbar/docs-navbar.html www/v2/components/subnav/docs/properties/subnav-top.html www/v2/docs/processes/temp-content1.html www/v2/components/subnav/docs/properties/subnav-bottom.html  www/v2/docs/processes/temp-content2.html www/v2/docs/processes/temp-content3.html www/v2/components/footer/footer.html > www/v2/docs/processes/updatingsanfrancisconeighborhoods.html
+	rm www/v2/docs/processes/temp-content1.html
+	rm www/v2/docs/processes/temp-content2.html
+	rm www/v2/docs/processes/temp-content3.html
+	rm www/v2/docs/processes/temp-content1.html-e
+	
+v2-documents-processes-woflifecycle:
+	curl -s https://github.com/whosonfirst/whosonfirst-cookbook/blob/master/definition/wof:id_lifecycle.md | pup -i 0 'article.markdown-body h1:first-of-type' > www/v2/docs/processes/temp-content1.html
+	curl -s https://github.com/whosonfirst/whosonfirst-cookbook/blob/master/definition/wof:id_lifecycle.md | pup -i 0 'article.markdown-body :not(h1:first-of-type)' > www/v2/docs/processes/temp-content2.html
+	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/v2/docs/processes/temp-content1.html
+	cat www/v2/components/head/head.html www/v2/components/navbar/docs-navbar.html www/v2/components/subnav/docs/properties/subnav-top.html www/v2/docs/processes/temp-content1.html www/v2/components/subnav/docs/properties/subnav-bottom.html  www/v2/docs/processes/temp-content2.html www/v2/components/footer/footer.html > www/v2/docs/processes/woflifecycle.html
+	rm www/v2/docs/processes/temp-content1.html
+	rm www/v2/docs/processes/temp-content2.html
+	rm www/v2/docs/processes/temp-content1.html-e
+	
+v2-documents-processes: v2-documents-processes-significantevent v2-documents-processes-assigningcessation v2-documents-processes-s3requirements v2-documents-processes-wikipediaconcordances v2-documents-processes-seattleneighborhoodupdates v2-documents-processes-updatingsanfrancisconeighborhoods v2-documents-processes-woflifecycle
+
+v2-documents: v2-documents-processes v2-documents-keyterms v2-documents-licensing v2-documents-contributing v2-documents-tests v2-documents-sources v2-documents-categories v2-documents-dates v2-documents-geometries v2-documents-names v2-documents-hierachies v2-documents-placetypes v2-documents-concordances v2-documents-properties

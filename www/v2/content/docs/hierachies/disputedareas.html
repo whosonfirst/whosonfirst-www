@@ -1,0 +1,24 @@
+<h1>Disputed Areas</h1>
+<p>Although it is true that all neighbourhoods and many localities are “disputed” in a friendly-banter kind of way some places are genuinely more disputed than others because they involve two or more countries (and sometimes so-called non-state actors), a real threat of violence and consequences that in no way resemble “friendly banter”.</p>
+<p>For the time being we have explicitly assigned places we know to be disputed a place type of disputed. As of this writing disputed places are parented, in their hierarchies, by two or more countries. This approach does not reflect the subtleties of the facts on the ground in any, of these disputed places. On the other hand it does allow to “block out” areas that are contested and, as we’ve said above, to leave the decisions about how to reflect the dispute to individual applications.</p> 
+<h2>Parent ids and “custody”</h2>
+<p>Even though a place can have multiple hierarchies we still assume that in most cases there is a single “authority” in place, on the ground. For example, the Golan Heights is disputed by both Syria and Israel, a fact reflected in the place hierarchy, but is still “parented” by Israel:</p>
+<pre>
+"wof:hierarchy": [
+    {
+        "continent_id": "102191569",
+        "country_id": "85632315",
+        "disputed_id": "85632221"
+        },
+    {
+        "continent_id": "102191569",
+        "country_id": "85632413",
+        "disputed_id": "85632221"
+    }
+],
+"wof:id": "85632221",
+"wof:name": "Golan Heights",
+"wof:parent_id": "85632315",
+</pre>
+<p>In a few isolated cases we really don’t have a good answer for who the parent is or if we’re just not sure because it’s early days and are still vetting the data we will assign a value of -1 for the parent record.</p>
+<p>Occasionally we will assign a value of -2. This should be interpreted as “:shrug: the world is a complicated place”. For example, the Baykonur Cosmodrome is a little donut hole of Russia surrounded by the nation of Kazakhstan.</p>

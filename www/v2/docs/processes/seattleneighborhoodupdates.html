@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Who’s On First</title>
+        <meta name='description' content="Who's on First is a gazetteer of places.">
+        <link rel='apple-touch-icon' href='https://mapzen.com/common/styleguide/images/favicons/apple-touch-icon.png' sizes='180x180'>
+        <link rel='icon' type='image/png' href='https://mapzen.com/common/styleguide/images/favicons/favicon-16x16.png' sizes='16x16'>
+        <link rel='icon' type='image/png' href='https://mapzen.com/common/styleguide/images/favicons/favicon-32x32.png' sizes='32x32'>
+        <link rel='manifest' href='https://mapzen.com/common/styleguide/images/favicons/manifest.json'>
+        <link rel='mask-icon' href='https://mapzen.com/common/styleguide/images/favicons/safari-pinned-tab.svg' color='#2C1E3F'>
+		
+		<link rel="stylesheet" href="../../../css/bootstrap.min.css">
+		<link rel="stylesheet" href="../../../css/mapzen.whosonfirst.css">
+    </head>
+	<body>
+		<div class="whosonfirst-wrapper"><nav class="navbar navbar-default navbar-fixed-top whosonfirst-fixed-subpage-navbar">
+	<div class="container">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#">Who's On First</a>
+		</div>
+
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav navbar-right">
+				<li class="whosonfirst-navbar-element-collapsed">
+					<a href="#" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">data</a>
+				</li>
+				<li class="whosonfirst-navbar-element-collapsed">
+					<a href="#" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed whosonfirst-nav-active">docs</a>
+				</li>
+				<li class="whosonfirst-navbar-element-collapsed">
+					<a href="#" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">tools</a>
+				</li>
+				<li class="whosonfirst-navbar-element-collapsed">
+					<a href="#" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">blog</a>
+				</li>
+			</ul>
+		</div><!-- /.navbar-collapse -->
+	</div><!-- /.container-fluid -->
+</nav><div class="container whosonfirst-subpage-container">
+	<div class="row">
+		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-0">
+			<aside>
+				<div class="whosonfirst-sidenav-container">
+					<ul class="whosonfirst-sidenav-list">
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="" class="whosonfirst-nav-link whosonfirst-sidenav-link">data principles</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="" class="whosonfirst-nav-link whosonfirst-sidenav-link">available data</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element whosonfirst-sidenav-list-element-secondlevel">
+							<a href="" class="whosonfirst-nav-link whosonfirst-sidenav-link">administrative data</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element whosonfirst-sidenav-list-element-secondlevel">
+							<a href="" class="whosonfirst-nav-link whosonfirst-sidenav-link">venue data</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element whosonfirst-sidenav-list-element-secondlevel">
+							<a href="" class="whosonfirst-nav-link whosonfirst-sidenav-link">other data</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="" class="whosonfirst-nav-link whosonfirst-sidenav-link">amazon s3</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="" class="whosonfirst-nav-link whosonfirst-sidenav-link  whosonfirst-nav-active">github</a>
+						</li>
+					</ul>
+				</div>
+			</aside>
+		</div>
+		<div class="col-lg-6 col-md-9 col-sm-9 col-xs-12">
+			<article><div class="whosonfirst-fulltabs-container">
+	<div class="whosonfirst-extrasmall-tabs-menu">
+		<div class="whosonfirst-extrasmall-tabs-menu-content">
+				<div class="whosonfirst-extrasmall-tabs-menu-content-header">
+				<a class="whosonfirst-extrasmall-tab-selection" href="">get started</a>
+				<button type="button" class="navbar-toggle collapsed whosonfirst-extrasmall-menu-chevron-down" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2" aria-expanded="false">
+					<span id="glyphicon-one" class="glyphicon glyphicon-chevron-down whosonfirst-extrasmall-menu-actual-chevron-down"></span>
+				</button>
+			</div>
+			<div class="collapse" id="bs-example-navbar-collapse-2">
+				<div class="whosonfirst-extrasmall-nav-collection">
+					<ul class="nav navbar-nav navbar-right whosonfirst-extrasmall-nav">
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="#" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">data principles</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="#" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">available data</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="#" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed whosonfirst-subnav-secondlevel">administrative data</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="#" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed whosonfirst-subnav-secondlevel">venue data</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="#" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed whosonfirst-subnav-secondlevel">other data</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="#" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">amazon s3</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element  whosonfirst-extrasmall-nav-link-collapsed-last">
+							<a href="#" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed whosonfirst-nav-active  whosonfirst-extrasmall-nav-link-collapsed-last">github</a>
+						</li>
+					</ul>
+				</div>
+			</div><!-- /.navbar-collapse -->
+		</div>
+	</div>
+	<div class="whosonfirst-tabs-content"><p>
+#The Issue
+A multi-part
+<a href="https://github.com/whosonfirst/whosonfirst-data/issues/162">
+issue
+</a>
+was apparent in the WOF record for the Seattle neighbourhood of
+<code>
+Capitol Hill
+</code>
+. Most notably, three separate records appeared in our WOF dataset -
+<code>
+id:85807733
+</code>
+,
+<code>
+id:85882415
+</code>
+, and
+<code>
+id:85809401
+</code>
+- each with a geometry for a portion of the true Capitol Hill neighbourhood geometry. A workflow was necessary to not only merge these three separate geometries into a single, new record for Capitol Hill, but to also deprecate records deemed incorrect and attach and/or modify values to appropriate records.
+</p>
+<p>
+#Workflow
+##Which Record Should Contain Capitol Hill Data?
+Each WOF record has a
+<code>
+GN:Name
+</code>
+field associated to the
+<a href="http://www.geonames.org/">
+GeoNames
+</a>
+service; after reviewing the three current geojson records&#39;
+<code>
+GN:Name
+</code>
+field, the
+<code>
+id:85882415
+</code>
+record was used as the combined Capitol Hill record because it had the correct
+<code>
+GN:Name
+</code>
+identifier for the Capitol Hill neighbourhood.
+</p>
+<p>
+HOWEVER, this geometry edit is deemed a &#39;Significant Event&#39;, so the the
+<code>
+id:85882415
+</code>
+record was copied into a completely new record,
+<code>
+id:772967579
+</code>
+.
+<a href="http://www.brooklynintegers.com/create/">
+Brooklyn Integers
+</a>
+was used to created a unique repository number to house the new record of
+<code>
+id:772967579
+</code>
+.
+</p>
+<p>
+##Merging Geometries
+Once each .geojson file is downloaded from the WOF repository, they were added into a new QGIS document. Each of the three geometries were added to a single .geojson file. The Dissolve tool was then used to merge all geometries. The Dissolve tool exports this new geometry to a shapefile, so, using ogr2ogr or built-in QGIS functionality (Save As &gt; .geojson), the shapefile is converted back into a .geojson file (three .geojson files &gt; one .shp &gt; one .geojson). Basic bash script below:
+</p>
+<pre>
+<code>
+ogr2ogr -f GeoJSON -t_srs crs:84 newfilename.geojson existingfilename.shp
+</code>
+</pre>
+<p>
+This new .geojson file contained the geometry needed for the updated Capitol Hill record (
+<code>
+id:772967579
+</code>
+).
+</p>
+<p>
+Note: The
+<code>
+Exportify
+</code>
+tool should take care of .geojson formatting, as the ogr2ogr workflow creates blank spaces in the geometry record. The new geometry was pasted into
+<code>
+id:772967579
+</code>
+and processed through the Exportify tool to remove the blank spaces. See below:
+</p>
+<p>
+<a href="https://cloud.githubusercontent.com/assets/18567700/15023303/cc90a81c-11e4-11e6-8ccf-dead8be22bb2.png" target="_blank">
+<img width="647" alt="screen shot 2016-05-04 at 10 26 49 am" src="https://cloud.githubusercontent.com/assets/18567700/15023303/cc90a81c-11e4-11e6-8ccf-dead8be22bb2.png" style="max-width:100%;">
+</a>
+</p>
+<p>
+##Deprecating, Superseding, and Parenting
+Since the
+<code>
+id:772967579
+</code>
+record absorbed geometries of
+<code>
+id:85807733
+</code>
+,
+<code>
+id:85882415
+</code>
+, and
+<code>
+id:85809401
+</code>
+, edits were made to all records to reflect new values. The following edits were made:
+</p>
+<p>
+####id:85809401
+</p>
+<ul>
+<li>
+<code>
+&#34;edtf:deprecated&#34;: &#34;YYYY-MM-DD&#34;
+</code>
+field added.
+</li>
+<li>
+<code>
+&#34;mz:is_current&#34;: 0
+</code>
+field added.
+<code>
+0
+</code>
+value to signify the record is deprecated.
+</li>
+<li>
+<code>
+&#34;wof:lastmodified&#34;: XXXXXXXXXX
+</code>
+field automatically updated from Exportify to reflect most recent update time.
+</li>
+<li>
+<code>
+&#34;wof:superseded_by&#34;:
+</code>
+value updated to
+<code>
+85882415
+</code>
+.
+</li>
+</ul>
+<p>
+<a href="https://cloud.githubusercontent.com/assets/18567700/15028614/8aa3c488-11fe-11e6-9782-b9955411e344.png" target="_blank">
+<img width="492" alt="screen shot 2016-05-04 at 1 45 06 pm" src="https://cloud.githubusercontent.com/assets/18567700/15028614/8aa3c488-11fe-11e6-9782-b9955411e344.png" style="max-width:100%;">
+</a>
+</p>
+<p>
+####id:85807733 (copied to id:772967579)
+</p>
+<ul>
+<li>
+<code>
+&#34;edtf:deprecated&#34;: &#34;YYYY-MM-DD&#34;
+</code>
+field added.
+</li>
+<li>
+<code>
+&#34;mz:is_current&#34;: 0
+</code>
+field added.
+<code>
+0
+</code>
+value to signify the record is deprecated.
+</li>
+<li>
+<code>
+&#34;wof:lastmodified&#34;: XXXXXXXXXX
+</code>
+field automatically updated from Exportify to reflect most recent update time.
+</li>
+<li>
+<code>
+&#34;wof:superseded_by&#34;:
+</code>
+value updated to
+<code>
+772967579
+</code>
+.
+</li>
+</ul>
+<p>
+<a href="https://cloud.githubusercontent.com/assets/18567700/15028619/8c698c62-11fe-11e6-9820-b41317145330.png" target="_blank">
+<img width="491" alt="screen shot 2016-05-04 at 1 45 20 pm" src="https://cloud.githubusercontent.com/assets/18567700/15028619/8c698c62-11fe-11e6-9820-b41317145330.png" style="max-width:100%;">
+</a>
+</p>
+<p>
+####id:85882415
+</p>
+<ul>
+<li>
+<code>
+&#34;edtf:deprecated&#34;: &#34;uuuu&#34;
+</code>
+field added.
+</li>
+<li>
+All fields beginning with
+<code>
+geom:
+</code>
+automatically updated to reflect newly merged geometry.
+</li>
+<li>
+<code>
+wof:geom
+</code>
+field updated to reflect newly merged geometry.
+</li>
+<li>
+<code>
+&#34;wof:lastmodified&#34;: XXXXXXXXXX
+</code>
+field automatically updated from Exportify to reflect most recent update time.
+</li>
+<li>
+<code>
+&#34;wof:supersedes&#34;:
+</code>
+value updated to
+<code>
+85809401
+</code>
+.
+</li>
+<li>
+<code>
+&#34;bbox&#34;:
+</code>
+and
+<code>
+&#34;geometry&#34;:
+</code>
+fields automatically updated to reflect newly merged geometry
+</li>
+</ul>
+<p>
+<a href="https://cloud.githubusercontent.com/assets/18567700/15028612/8826307e-11fe-11e6-87ca-b9a7c33ec34e.png" target="_blank">
+<img width="491" alt="screen shot 2016-05-04 at 1 44 55 pm" src="https://cloud.githubusercontent.com/assets/18567700/15028612/8826307e-11fe-11e6-87ca-b9a7c33ec34e.png" style="max-width:100%;">
+</a>
+</p>
+								</div>
+							</div>
+						</article>
+					</div>
+					<div class="col-lg-3 col-md-0 col-sm-0 col-xs-0"></div>
+				</div>
+			</div>
+		</div>
+		<footer>
+			<nav class="navbar navbar-default navbar-bottom">
+				<div class="container">
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<ul class="nav navbar-nav navbar-right whosonfirst-footer">
+						<li class="whosonfirst-nav-link-nounderline whoosonfooter-gig">who's on first is a <a href="#" class="whosonfirst-nav-link whosonfirst-nav-link-innounderline">mapzen</a> gig</li>
+						<li><a href="#" class="whosonfirst-nav-link whosonfirst-footer-nav-link">contributing</a></li>
+						<li><a href="#" class="whosonfirst-nav-link whosonfirst-footer-nav-link">licensing</a></li>
+						<li><a href="#" class="whosonfirst-nav-link whosonfirst-footer-nav-link">github</a></li>
+						<li><a href="#" class="whosonfirst-nav-link whosonfirst-footer-nav-link">twitter</a></li>
+					</ul>
+				</div>
+			</nav>
+		</footer>
+		
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<!-- Include all compiled plugins (below), or include individual files as needed -->
+		<script src="../../../javascript/bootstrap.min.js"></script>
+		
+		<script>
+			$(document).ready(function(){
+				console.log(123123123);
+				$("#bs-example-navbar-collapse-2").on("show.bs.collapse", function(){
+					console.log("In here");
+					document.getElementById("glyphicon-one").classList.add("glyphicon-chevron-up");
+					document.getElementById("glyphicon-one").classList.remove("glyphicon-chevron-down");
+				});
+				$("#bs-example-navbar-collapse-2").on("hide.bs.collapse", function(){
+					document.getElementById("glyphicon-one").classList.add("glyphicon-chevron-down");
+					document.getElementById("glyphicon-one").classList.remove("glyphicon-chevron-up");
+				});
+			});
+		</script>
+	</body>
+</html>
