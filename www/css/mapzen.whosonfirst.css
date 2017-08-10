@@ -211,6 +211,10 @@ body {
 	border-bottom: .9px solid #1F1F1F;
 }
 
+.navbar-default .navbar-brand:focus, .navbar-default .navbar-brand:hover {
+	color: #1F1F1F;
+}
+
 /* Footer Nav Links Styling */
 
 .whosonfirst-nav-link-innounderline {
@@ -307,8 +311,9 @@ h5 {
 
 .whosonfirst-link-caption {
 	font-size: 16px;
-	margin-top: 6px;
-	margin-bottom: 12px;
+	margin-top: 6px !important;
+	margin-bottom: 12px !important;
+	display: table;
 }
 
 /* Card Heading Styling */
@@ -678,6 +683,15 @@ ol, .whosonfirst-content-list {
 
 .whosonfirst-nonbullet-list-item {
 	color: #1F1F1F;
+}
+
+.whosonfirst-nonbullet-list-item-no-caption {
+	color: #1F1F1F;
+	margin-bottom: 12px !important;
+}
+
+.whosonfirst-nonbullet-list-item-no-caption:last-of-type {
+	margin-bottom: 18px !important;
 }
 
 .whosonfirst-content-list-item {
@@ -1094,11 +1108,11 @@ blockquote {
 		font-weight: 400;
 		border-bottom-width: 2px !important;
 	}
-
+	
 	.whosonfirst-link-caption {
 		font-size: 14px;
-		margin-top: 6px;
-		margin-bottom: 12px;
+		margin-top: 6px !important;
+		margin-bottom: 12px !important;
 	}
 	
 	.whosonfirst-content-list-item {
@@ -1396,6 +1410,7 @@ blockquote {
 		line-height: 30px !important;
 		margin-left: 6px !important;
 		margin-right: 6px !important;
+		word-break: keep-all;
 	}
 	
 	.whosonfirst-footer-nav-link:first-child {

@@ -719,3 +719,23 @@ v2-blog:
 	rm www/v2/blog/temp-content1.html
 	rm www/v2/blog/temp-content2.html
 	rm www/v2/blog/temp-content1.html-e
+	
+v2-tools-index:
+	cat www/v2/content/tools/tools.html | pup -i 0 'body h1' > www/v2/tools/temp-content1.html
+	cat www/v2/content/tools/tools.html | pup -i 0 'body :not(h1)' > www/v2/tools/temp-content2.html
+	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/v2/tools/temp-content1.html
+	cat www/v2/components/head/head-onelevelup.html www/v2/components/navbar/tools-navbar-onelevelup.html www/v2/components/subnav/tools/home/subnav-top.html www/v2/tools/temp-content1.html www/v2/components/subnav/tools/home/subnav-bottom.html  www/v2/tools/temp-content2.html www/v2/components/footer/footer-onelevelup.html > www/v2/tools/index.html
+	rm www/v2/tools/temp-content1.html
+	rm www/v2/tools/temp-content2.html
+	rm www/v2/tools/temp-content1.html-e
+	
+v2-tools-availabletools:
+	cat www/v2/content/tools/availabletools.html | pup -i 0 'body h1' > www/v2/tools/temp-content1.html
+	cat www/v2/content/tools/availabletools.html | pup -i 0 'body :not(h1)' > www/v2/tools/temp-content2.html
+	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/v2/tools/temp-content1.html
+	cat www/v2/components/head/head-onelevelup.html www/v2/components/navbar/tools-navbar-onelevelup.html www/v2/components/subnav/tools/available/subnav-top.html www/v2/tools/temp-content1.html www/v2/components/subnav/tools/available/subnav-bottom.html  www/v2/tools/temp-content2.html www/v2/components/footer/footer-onelevelup.html > www/v2/tools/availabletools.html
+	rm www/v2/tools/temp-content1.html
+	rm www/v2/tools/temp-content2.html
+	rm www/v2/tools/temp-content1.html-e
+	
+v2-tools: v2-tools-index v2-tools-availabletools
