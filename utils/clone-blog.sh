@@ -11,6 +11,7 @@ fi
 
 UTILS=`dirname ${WHOAMI}`
 ROOT=`dirname ${UTILS}`
+
 WWW="${ROOT}/www"
 THEORY="${WWW}/theory"
 BLOG="${WWW}/blog"
@@ -24,23 +25,40 @@ do
     
     FNAME=`basename ${URL}`
     POST="${BLOG}/${FNAME}"
-
-    if [ -e ${POST}/index.html ]
-    then
-	echo "SKIP ${URL}"	
-	continue
-    fi
     
     if [ ! -d ${POST} ]
     then
 	mkdir -p ${POST}
     fi
 
-    echo "FETCH ${URL}"
-    curl -s -L ${URL} | ${PUP} '#content' > ${POST}/index.html 
+    # fetch the post
 
-    # TO DO:
-    # - fetch images
-    # - rewrite post body to reference local images?
-    
+    if [ ! -e ${POST}/index.html ]
+    then
+	echo "FETCH ${URL}"
+	curl -s -L ${URL} | ${PUP} '#content' > ${POST}/index.html 
+    fi
+
+    # fetch the images
+
+    for IMG in `cat ${POST}/index.html | ${PUP} "img attr{src}" | grep mapzen-assets.s3.amazonaws.com`
+    do
+
+	if [ ! -d ${POST}/images ]
+	then
+	    mkdir -p ${POST}/images
+	fi
+	
+	I_FNAME=`basename ${IMG}`
+
+	if [ ! -e ${POST}/images/${I_FNAME} ]
+	then
+	    echo "FETCH ${IMG}"
+	    curl -s -o ${POST}/images/${I_FNAME} ${IMG}
+	fi
+	
+    done
+
+    echo perl -p -i -e "s/https\:\/\/mapzen-assets\.s3\.amazonaws\.com\/images\/${FNAME}\//images\//g" ${POST}/index.html
+        
 done
