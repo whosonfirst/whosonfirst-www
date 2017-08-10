@@ -1,0 +1,494 @@
+<div class="container" id="content">
+ <div class="row text-center headroom-large hidden-print">
+  <div class="col-xs-12">
+   <a class="btn btn-default btn-transparent" href="/blog">
+    <i class="fa fa-angle-left">
+    </i>
+    blog
+   </a>
+  </div>
+ </div>
+ <div class="row headroom-large">
+  <div class="col-md-8 col-md-offset-2">
+   <h2 class="no-margin text-center">
+    The Who&#39;s On First API Explorer
+   </h2>
+   <ul class="tag-list headroom">
+    <a href="/tag/whosonfirst">
+     <li>
+      whosonfirst
+     </li>
+    </a>
+   </ul>
+   <div class="">
+   </div>
+   <div class="static-content headroom-large blog-content">
+    <div style="margin: 0 auto; width:341px;">
+     <a href="https://collection.cooperhewitt.org/objects/18419753/">
+      <img src="https://s3.amazonaws.com/mapzen-assets/images/whosonfirst-api-explorer/light.jpg" height="480" width="341">
+     </a>
+    </div>
+    <p>
+     A few weeks ago
+     <a href="https://mapzen.com/blog/tangram-work-developer-commentary">
+      Lou built an Electron application
+     </a>
+     . For April Fools’ Day he made a version of
+     <a href="https://mapzen.com/blog/introducing-tangram-work">
+      Tangram Play
+     </a>
+     in the style of a 90’s era Windows application and published it as a living breathing desktop application rather than
+     <a href="https://mapzen.com/tangram/play/">
+      the web application
+     </a>
+     we’ve come to know and love. In addition he was able to publish MacOS and Linux native applications, all from the same code base. The same code base that is ultimately just HTML and CSS and Javascript (aka “a web application”). An
+     <a href="https://electron.atom.io/apps">
+      increasing number of desktop applications
+     </a>
+     are being developed this way and it’s what makes Electron pretty exciting.
+    </p>
+    <p>
+     Shortly after Lou’s blog post we pushed the
+     <a href="https://mapzen.com/blog/whosonfirst-api">
+      Who’s On First API
+     </a>
+     out the door. One of the features of the API is that it exposes a suite of
+     <code>
+      api.spec.*
+     </code>
+     methods
+     <a href="https://mapzen.com/documentation/wof/methods/#apispec">
+      that allow you to introspect the API itself
+     </a>
+     . You can fetch all of the
+     <a href="https://mapzen.com/documentation/wof/methods/#api.spec.methods">
+      methods
+     </a>
+     (and their parameters and errors), all of the
+     <a href="https://mapzen.com/documentation/wof/methods/#api.spec.errors">
+      common errors
+     </a>
+     and all of the supported
+     <a href="https://mapzen.com/documentation/wof/methods/#api.spec.formats">
+      output formats
+     </a>
+     . These methods owe a debt of inspiration to the nice people at
+     <a href="http://linode.com">
+      Linode
+     </a>
+     who started doing something similar
+     <a href="http://blog.linode.com/2012/04/04/api_spec/">
+      way back in 2012
+     </a>
+     and from which the
+     <code>
+      api.spec
+     </code>
+     naming convention is derived.
+    </p>
+    <p>
+     The Who’s On First API has always enjoyed a internal web-based “explorer” tool. API explorers are pretty common these days but if you’re not sure they are
+     <a href="https://www.flickr.com/services/api/">
+      have a look at the Flickr API Explorer
+     </a>
+     which is pretty much the ur-Explorer that started them all. Go ahead, we’ll wait…
+    </p>
+    <p>
+     <img src="https://s3.amazonaws.com/mapzen-assets/images/whosonfirst-api-explorer/flickr-api-explorer.png" alt="">
+    </p>
+    <p>
+     <em>
+      Also, Cal Henderson’s 2007 talk
+      <a href="http://www.iamcal.com/talks/open_hack_day.pps">
+       “Flickr and APIs: A Love Story”
+      </a>
+      which is a 22MB PowerPoint presentation because… it was 2007, I guess. Anyway, it it a good talk.
+     </em>
+    </p>
+    <p>
+     We use our own API Explorer extensively for debugging and generally poking around. It is often the fastest way to answer a question about the data. I find it difficult to imagine developing or working with APIs
+     <em>
+      without
+     </em>
+     an API explorer now and that makes the internal-iness of the WOF API Explorer less than awesome. For a variety of reasons it won’t be made public any time soon which is sort of like pouring salt in your own wound.
+    </p>
+    <p>
+     <img src="https://s3.amazonaws.com/mapzen-assets/images/whosonfirst-api-explorer/whosonfirst-api-explorer.png" alt="">
+    </p>
+    <p>
+     By now, some of you might have figured out where this is going: If the WOF API has a full suite of methods for inspecting the API and Electron makes it easy to develop custom applications in HTML and Javascript then why not build…
+     <a href="https://github.com/whosonfirst/electron-whosonfirst-api-explorer">
+      a standalone Who’s On First API Explorer
+     </a>
+     . So we did!
+    </p>
+    <p>
+     After I showed an early version to a friend he asked
+     <em>
+      “Why an Electron application?”
+     </em>
+     for an API explorer. Aside from the reasons outlined above I offered the following rationale:
+    </p>
+    <ol>
+     <li>
+      Curiousity. Does the Who’s On First API lend itself to an Electron application? (It does!)
+     </li>
+     <li>
+      If you set aside some boring details about code-signing and paying Apple or Microsoft for the privilege, there is the possibility of generating native platform specific binaries for Electron applications. That means never having to say
+      <em>
+       “Just install Node.js…”
+      </em>
+      to someone. You can replace
+      <a href="https://nodejs.org/">
+       Node.js
+      </a>
+      with any number of technologies and the dynamic is the same. Tools that don’t require a laundry list of extra steps to get started with are important. Not everyone is interested in the technology details because they are busy being awesome in other endeavours.
+     </li>
+     <li>
+      It was (is) a good way to put the
+      <code>
+       api.spec
+      </code>
+      methods through their paces. We’ve been able to identify a bunch of places where the API doesn’t return enough information to usefully build an explorer-style interface. Many have been fixed already and the rest (notably information about output formats) are slated to be improved shortly.
+     </li>
+     <li>
+      It allows us offer a public version of the API explorer.
+     </li>
+     <li>
+      It is a good way to figure out which out
+      <a href="https://github.com/whosonfirst/js-mapzen-whosonfirst">
+       the Who’s On First Javascript libraries
+      </a>
+      should be rejiggered to hold hands with “modern Javascript” and Node.js – things like the
+      <a href="https://github.com/whosonfirst/electron-whosonfirst-api-explorer/blob/master/mapzen.whosonfirst.api.js">
+       mapzen.whosonfirst.api.js
+      </a>
+      library which we’d like to bless as officially supported alongside the
+      <a href="https://github.com/whosonfirst/go-whosonfirst-api">
+       Go
+      </a>
+      and
+      <a href="https://github.com/whosonfirst/py-mapzen-whosonfirst-api">
+       Python
+      </a>
+      libraries.
+     </li>
+     <li>
+      It works offline because initial calls to the
+      <code>
+       api.spec.*
+      </code>
+      methods are cached locally.
+     </li>
+    </ol>
+    <p>
+     I like to think the WOF API Explorer is another illustration of the idea that
+     <a href="https://mapzen.com/blog/iamhere">
+      “Mapzen should always be Consumer Zero (of Mapzen services)”
+     </a>
+     . The WOF API Explorer is just one of many possible
+     <a href="https://mapzen.com/blog/bundler">
+      targeted and focused applications
+     </a>
+     that we might build with tools like Electron and
+     <a href="https://www.mapzen.com/documentation">
+      our own services
+     </a>
+     .
+    </p>
+    <p>
+     The
+     <a href="https://github.com/whosonfirst/electron-whosonfirst-api-explorer">
+      WOF API Explorer is available for anyone to try
+     </a>
+     . As of this writing, and despite what I said above, you will still need to
+     <em>
+      “Just install Node.js”
+     </em>
+     to get it to work. Hopefully the time when we dig in to the details of building and signing native applications will come soon. Until then there is
+     <a href="https://github.com/whosonfirst/electron-whosonfirst-api-explorer#install">
+      a little bit (possibly a lot, depending on your skill and comfort level) of preamble
+     </a>
+     you’ll need to do to get the WOF API Explorer up and running.
+    </p>
+    <p>
+     In the interim, here are a bunch of screenshots to hopefully make that extra work seem worth doing:
+    </p>
+    <p>
+     <img src="https://s3.amazonaws.com/mapzen-assets/images/whosonfirst-api-explorer/api-explorer-start.png" alt="">
+    </p>
+    <p>
+     <em>
+      Here’s what happens when you start the API Explorer for the first time:
+      <a href="https://mapzen.com/developers">
+       You are asked for a Mapzen API key!
+      </a>
+     </em>
+    </p>
+    <p>
+     <img src="https://s3.amazonaws.com/mapzen-assets/images/whosonfirst-api-explorer/api-explorer-methods.png" alt="">
+    </p>
+    <p>
+     <em>
+      List views appear in the left-hand sidebar. Here’s a list of all the API methods. API methods, errors and formats are fetched from the API when the Explorer starts up and there is a handy “refresh” button at the bottom of each list view update things while the application is running.
+     </em>
+    </p>
+    <p>
+     <img src="https://s3.amazonaws.com/mapzen-assets/images/whosonfirst-api-explorer/api-explorer-docs.png" alt="">
+    </p>
+    <p>
+     <em>
+      Here’s an example of the documentation for the
+      <a href="https://mapzen.com/documentation/wof/methods/#whosonfirst.places.getInfo">
+       whosonfirst.places.getInfo
+      </a>
+      API method, which isn’t that different from what you’d see on the
+      <a href="https://mapzen.com/documentation/wof/">
+       Mapzen website
+      </a>
+      .
+     </em>
+    </p>
+    <p>
+     <img src="https://s3.amazonaws.com/mapzen-assets/images/whosonfirst-api-explorer/api-explorer-request.png" alt="">
+    </p>
+    <p>
+     <em>
+      From any documentation page you can click through to a corresponding “explore” panel for that method. You can update the parameters that will be sent to the API and then click the handy
+      <code>
+       MAKE IT SO!
+      </code>
+      button to start the API request.
+     </em>
+    </p>
+    <p>
+     <img src="https://s3.amazonaws.com/mapzen-assets/images/whosonfirst-api-explorer/api-explorer-fetch.png" alt="">
+    </p>
+    <p>
+     <em>
+      <a href="https://github.com/whosonfirst/electron-whosonfirst-api-explorer/blob/master/images/party-parrot.gif">
+       :partyparrot:
+      </a>
+      will keep you company while your API request is being processed.
+     </em>
+    </p>
+    <p>
+     <img src="https://s3.amazonaws.com/mapzen-assets/images/whosonfirst-api-explorer/api-explorer-results.png" alt="">
+    </p>
+    <p>
+     <em>
+      Oh look, here’s a new part of the Who’s On First API:
+      <a href="https://mapzen.com/documentation/wof/formats/#geojson">
+       GeoJSON
+      </a>
+      as an output format.
+     </em>
+    </p>
+    <p>
+     <img src="https://s3.amazonaws.com/mapzen-assets/images/whosonfirst-api-explorer/api-explorer-csv.png" alt="">
+    </p>
+    <p>
+     <em>
+      The API Explorer can also render non-JSON output formats. There is also
+      <a href="https://github.com/whosonfirst/electron-whosonfirst-api-explorer/issues/21">
+       an open ticket to enable downloading of results
+      </a>
+      from the API Explorer.
+     </em>
+    </p>
+    <p>
+     <img src="https://s3.amazonaws.com/mapzen-assets/images/whosonfirst-api-explorer/api-explorer-offline.png" alt="">
+    </p>
+    <p>
+     <em>
+      Importantly the API Explorer will continue to work offline. See the way the ☁️ in the top-left corner became a 🚫  - that means the API Explorer can’t find the Internets. You won’t be able to send API requests out across the network but you can still read the documentation and construct API requests to review.
+     </em>
+    </p>
+    <p>
+     <img src="https://s3.amazonaws.com/mapzen-assets/images/whosonfirst-api-explorer/api-explorer-settings.png" alt="">
+    </p>
+    <p>
+     <em>
+      You can also change the API endpoint for making requests and by extension information about the API itself. via the
+      <code>
+       api.spec
+      </code>
+      methods. This probably isn’t that useful to anyone else right now but it’s very helpful for us when testing new API methods on our dev servers. Eventually
+      <a href="https://github.com/whosonfirst/electron-whosonfirst-api-explorer/issues/31">
+       we’d like to support “named” and “toggle-able” configurations
+      </a>
+      in the API Explorer to make it easy to switch from one API endpoint to another.
+     </em>
+    </p>
+    <p>
+     <img src="https://s3.amazonaws.com/mapzen-assets/images/whosonfirst-api-explorer/api-explorer-formats.png" alt="">
+    </p>
+    <p>
+     <em>
+      Most of the work, in both the API and the Explorer, has been around API methods. There is still some more work to do for the other things…
+     </em>
+    </p>
+    <p>
+     <em>
+      There’s an
+      <a href="https://github.com/whosonfirst/electron-whosonfirst-api-explorer/issues/10">
+       an experimental and currently disabled print feature
+      </a>
+      to generate print-friendly version of both API documentation and results.
+     </em>
+    </p>
+    <p>
+     <img src="https://s3.amazonaws.com/mapzen-assets/images/whosonfirst-api-explorer/api-explorer-print.png" alt="">
+    </p>
+    <p>
+     <em>
+      Unfortunately, I can’t figure out why print versions are truncated after one “page” so we’ll turned off that functionality for now. Also apparently Emoji (specifically the 👍 signifying a required parameter) are silently dropped in the print output because… computers?
+     </em>
+    </p>
+    <p>
+     Like the API itself, the API Explorer still tilts towards beta as of this writing. There are a number of
+     <a href="https://github.com/whosonfirst/electron-whosonfirst-api-explorer/issues">
+      outstanding issues
+     </a>
+     , most of them minor and nothing that should prevent you from using the API Explorer from… exploring the
+     <a href="https://mapzen.com/documentation/wof">
+      Who’s On First API
+     </a>
+     .
+    </p>
+    <p>
+     The source code is available from
+     <a href="https://github.com/whosonfirst/electron-whosonfirst-api-explorer">
+      https://github.com/whosonfirst/electron-whosonfirst-api-explorer
+     </a>
+     and we would welcome your feedback and suggestions.
+    </p>
+    <hr>
+    <p>
+     Image credits:
+    </p>
+    <ul>
+     <li>
+      <a href="https://collection.cooperhewitt.org/objects/18419753/">
+       Drawing, To Explore by that Cheerless Illumination for Leaks, ca. 1904; Frank Walter Taylor ; USA; point of brush and black, gray wash, white goache, black crayon on bristol board; Sheet: 44.4 x 30.6 cm (17 ½ x 12 1/16 in.); Gift of F. Elizabeth De Voy; 1957-58-15
+      </a>
+     </li>
+    </ul>
+   </div>
+   <div class="headroom-large footroom-large text-center hidden-print">
+    <div class="social-buttons hidden-print">
+     <ul>
+      <li class="social-button social-button-twitter">
+       <a href="http://twitter.com/home?status=The Who&#39;s On First API Explorer%20@mapzen%20https://mapzen.com/blog/whosonfirst-api-explorer" class="social-popup" title="Twitter">
+        <span class="icon">
+         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" space="preserve">
+          <path d="M24.253,8.756C24.689,17.08,18.297,24.182,9.97,24.62c-3.122,0.162-6.219-0.646-8.861-2.32
+            c2.703,0.179,5.376-0.648,7.508-2.321c-2.072-0.247-3.818-1.661-4.489-3.638c0.801,0.128,1.62,0.076,2.399-0.155
+            C4.045,15.72,2.215,13.6,2.115,11.077c0.688,0.275,1.426,0.407,2.168,0.386c-2.135-1.65-2.729-4.621-1.394-6.965
+            C5.575,7.816,9.54,9.84,13.803,10.071c-0.842-2.739,0.694-5.64,3.434-6.482c2.018-0.623,4.212,0.044,5.546,1.683
+            c1.186-0.213,2.318-0.662,3.329-1.317c-0.385,1.256-1.247,2.312-2.399,2.942c1.048-0.106,2.069-0.394,3.019-0.851
+            C26.275,7.229,25.39,8.196,24.253,8.756z">
+          </path>
+         </svg>
+        </span>
+        <span class="sr-only">
+         twitter
+        </span>
+       </a>
+      </li>
+      <li class="social-button social-button-facebook">
+       <a href="https://www.facebook.com/sharer/sharer.php?u=https://mapzen.com/blog/whosonfirst-api-explorer" class="social-popup" title="Facebook">
+        <span class="icon">
+         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" space="preserve">
+          <path d="M27.825,4.783c0-2.427-2.182-4.608-4.608-4.608H4.783c-2.422,0-4.608,2.182-4.608,4.608v18.434
+              c0,2.427,2.181,4.608,4.608,4.608H14V17.379h-3.379v-4.608H14v-1.795c0-3.089,2.335-5.885,5.192-5.885h3.718v4.608h-3.726
+              c-0.408,0-0.884,0.492-0.884,1.236v1.836h4.609v4.608h-4.609v10.446h4.916c2.422,0,4.608-2.188,4.608-4.608V4.783z">
+          </path>
+         </svg>
+        </span>
+        <span class="sr-only">
+         facebook
+        </span>
+       </a>
+      </li>
+      <li class="social-button social-button-pinterest">
+       <a href="http://pinterest.com/pin/create/button/?url=https://mapzen.com/blog/whosonfirst-api-explorer&amp;media=https://s3.amazonaws.com/mapzen-assets/images/whosonfirst-api-explorer/light.jpg&amp;description=The Who&#39;s On First API Explorer" class="social-popup" title="Pinterest">
+        <span class="icon">
+         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" space="preserve">
+          <path d="M14.021,1.57C6.96,1.57,1.236,7.293,1.236,14.355c0,7.062,5.724,12.785,12.785,12.785c7.061,0,12.785-5.725,12.785-12.785
+            C26.807,7.294,21.082,1.57,14.021,1.57z M15.261,18.655c-1.161-0.09-1.649-0.666-2.559-1.219c-0.501,2.626-1.113,5.145-2.925,6.458
+            c-0.559-3.971,0.822-6.951,1.462-10.116c-1.093-1.84,0.132-5.545,2.438-4.632c2.837,1.123-2.458,6.842,1.099,7.557
+            c3.711,0.744,5.227-6.439,2.925-8.775c-3.325-3.374-9.678-0.077-8.897,4.754c0.19,1.178,1.408,1.538,0.489,3.168
+            C7.165,15.378,6.53,13.7,6.611,11.462c0.131-3.662,3.291-6.227,6.46-6.582c4.007-0.448,7.771,1.474,8.29,5.239
+            c0.579,4.255-1.816,8.865-6.102,8.533L15.261,18.655z">
+          </path>
+         </svg>
+        </span>
+        <span class="sr-only">
+         pinterest
+        </span>
+       </a>
+      </li>
+      <li class="social-button social-button-email">
+       <a href="mailto:?subject=The Who&#39;s On First API Explorer&amp;body=https://mapzen.com/blog/whosonfirst-api-explorer" class="social-popup" title="E-mail">
+        <span class="icon">
+         <svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" space="preserve">
+          <g>
+           <path d="M20.111 26.147c-2.336 1.051-4.361 1.401-7.125 1.401c-6.462 0-12.146-4.633-12.146-12.265 c0-7.94 5.762-14.833 14.561-14.833c6.853 0 11.8 4.7 11.8 11.252c0 5.684-3.194 9.265-7.399 9.3 c-1.829 0-3.153-0.934-3.347-2.997h-0.077c-1.208 1.986-2.96 2.997-5.023 2.997c-2.532 0-4.361-1.868-4.361-5.062 c0-4.749 3.504-9.071 9.111-9.071c1.713 0 3.7 0.4 4.6 0.973l-1.169 7.203c-0.388 2.298-0.116 3.3 1 3.4 c1.673 0 3.773-2.102 3.773-6.58c0-5.061-3.27-8.994-9.303-8.994c-5.957 0-11.175 4.673-11.175 12.1 c0 6.5 4.2 10.2 10 10.201c1.986 0 4.089-0.43 5.646-1.245L20.111 26.147z M16.646 10.1 c-0.311-0.078-0.701-0.155-1.207-0.155c-2.571 0-4.595 2.53-4.595 5.529c0 1.5 0.7 2.4 1.9 2.4 c1.441 0 2.959-1.828 3.311-4.087L16.646 10.068z">
+           </path>
+          </g>
+         </svg>
+        </span>
+        <span class="sr-only">
+         email
+        </span>
+       </a>
+      </li>
+     </ul>
+    </div>
+   </div>
+   <div class="post-meta headroom text-center">
+    <div class="byline">
+     <span class="byline-date no-top-margin">
+      28 April 2017
+     </span>
+    </div>
+    <ul class="author-blurbs clearfix">
+     <li class="author-blurb author-blurb-full-width">
+      <div class="author-blurb-portrait">
+       <a href="https://twitter.com/thisisaaronland" class="no-print-link">
+        <img class="avatar" src=" https://avatars0.githubusercontent.com/u/12658759 ">
+       </a>
+      </div>
+      <div class="author-blurb-text">
+       <span class="byline-author">
+        <a href="https://twitter.com/thisisaaronland" class="no-print-link">
+         Aaron Straup Cope
+        </a>
+       </span>
+       <p>
+        Aaron is happiest in the presence of olive oil.
+       </p>
+      </div>
+     </li>
+    </ul>
+   </div>
+   <div class="pagination headroom hidden-print">
+    <a class="pagination-link pagination-previous" href="/blog/mapzen-flex">
+     <i class="fa fa-fw fa-angle-left">
+     </i>
+     <span class="pagination-link-text">
+      Introducing Mapzen Flex
+     </span>
+    </a>
+    <a class="pagination-link pagination-next" href="/blog/mayday">
+     <i class="fa fa-fw fa-angle-right">
+     </i>
+     <span class="pagination-link-text">
+      May Day Mapping
+     </span>
+    </a>
+   </div>
+  </div>
+ </div>
+</div>

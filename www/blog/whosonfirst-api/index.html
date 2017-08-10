@@ -1,0 +1,3479 @@
+<div class="container" id="content">
+ <div class="row text-center headroom-large hidden-print">
+  <div class="col-xs-12">
+   <a class="btn btn-default btn-transparent" href="/blog">
+    <i class="fa fa-angle-left">
+    </i>
+    blog
+   </a>
+  </div>
+ </div>
+ <div class="row headroom-large">
+  <div class="col-md-8 col-md-offset-2">
+   <h2 class="no-margin text-center">
+    The Who&#39;s On First API
+   </h2>
+   <ul class="tag-list headroom">
+    <a href="/tag/whosonfirst">
+     <li>
+      whosonfirst
+     </li>
+    </a>
+   </ul>
+   <div class="">
+   </div>
+   <div class="static-content headroom-large blog-content">
+    <p>
+     <a href="https://en.wikipedia.org/wiki/Common_Gateway_Interface">
+      <img width="600" height="200" src="https://s3.amazonaws.com/mapzen-assets/images/whosonfirst-api/splash.png">
+     </a>
+    </p>
+    <p>
+     Today we are pleased to announce
+     <a href="https://mapzen.com/documentation/wof/">
+      the Who’s On First API
+     </a>
+     . This is something that has been hiding in plain sight for a little while now and that a few people may have noticed if they “looked under the hood” of the
+     <a href="https://github.com/whosonfirst/whosonfirst-www-spelunker/">
+      Spelunker code
+     </a>
+     following the recent blog post about the
+     <a href="https://mapzen.com/blog/bundler/">
+      Who’s On First bundler tool
+     </a>
+     .
+    </p>
+    <p>
+     The API provides programmatic access for you and your robots to all the
+     <a href="https://github.com/whosonfirst-data">
+      Who’s On First data
+     </a>
+     . You can query
+     <a href="https://mapzen.com/documentation/wof/methods/#whosonfirstplaces">
+      individual places
+     </a>
+     and their relations, look for
+     <a href="https://mapzen.com/documentation/wof/methods/#whosonfirstconcordances">
+      concordances
+     </a>
+     and perform
+     <a href="https://mapzen.com/documentation/wof/methods/#whosonfirst.places.getIntersects">
+      basic spatial queries
+     </a>
+     . You can also use the API to query things like all the different
+     <a href="https://mapzen.com/documentation/wof/methods/#whosonfirstplacetypes">
+      placetypes
+     </a>
+     or
+     <a href="https://mapzen.com/documentation/wof/methods/#whosonfirstsources">
+      sources
+     </a>
+     for data. It is not a “complete” API yet. The first goal for the API is to achieve parity with the
+     <a href="https://whosonfirst.mapzen.com/spelunker/">
+      Spelunker
+     </a>
+     : anything you can do by clicking around that website manually should be able to be automated using code.
+    </p>
+    <p>
+     You should treat this API as though it were still in “beta”. Which is to say: the point is for
+     <em>
+      the thing to work
+     </em>
+     but there are probably still some rough edges and lingering gotchas so you should adjust your expectations and your code accordingly. In the meantime have at it and
+     <a href="https://twitter.com/alloftheplaces">
+      please let us know on Twitter
+     </a>
+     or
+     <a href="mailto:hello@mapzen.com">
+      contact us through email
+     </a>
+     if something is busted or just doesn’t feel right.
+    </p>
+    <p>
+     If you want to dive in right away and come back for storytime later the documentation is here:
+    </p>
+    <div style="text-align:center;">
+     <a href="https://mapzen.com/documentation/wof/">
+      https://mapzen.com/documentation/wof/
+     </a>
+    </div>
+    <h2 id="&#34;stuff-over-http&#34;">
+     “Stuff over HTTP”
+    </h2>
+    <p>
+     The API uses a parameter-based
+     <a href="http://www.aaronland.info/weblog/2014/02/10/36hours/#what">
+      stuff over HTTP
+     </a>
+     style interface. Currently all API methods are read-only so everything is sent using
+     <a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.3">
+      the HTTP GET verb
+     </a>
+     . If the method is successful the result with be returned with an HTTP
+     <code>
+      200 OK
+     </code>
+     response. If there was a problem with the request then an error will be returned in
+     <a href="https://mapzen.com/documentation/wof/errors/#client-side-errors">
+      the HTTP 400-499 range
+     </a>
+     . If there was a problem generating a response then an error will be returned in
+     <a href="https://mapzen.com/documentation/wof/errors/#server-side-errors">
+      the HTTP 500-599 range
+     </a>
+     .
+    </p>
+    <p>
+     Successful API responses can be returned in one of three possible formats:
+     <a href="https://mapzen.com/documentation/wof/formats/#json">
+      JSON
+     </a>
+     ,
+     <a href="https://mapzen.com/documentation/wof/formats/#csv">
+      CSV
+     </a>
+     and Who’s On First’s own “
+     <a href="https://mapzen.com/documentation/wof/formats/#meta">
+      meta
+     </a>
+     ” format (which is just a CSV file with fixed headers). JSON is the default response format and available for all methods. CSV is available for most methods. Meta responses are available for methods where it makes sense.
+    </p>
+    <p>
+     Meta files are the CSV files included with every
+     <a href="https://github.com/whosonfirst-data">
+      Who’s On First data repository
+     </a>
+     . The easiest way to think about meta files is that they canned indices or views in to the data; a way for people to grab or work with a slice of the data, say by placetype, without having to set up and load everything in to a database. As such, a lot of tooling has been built to consume meta files from the
+     <a href="https://mapzen.com/blog/iamhere">
+      I Am Here
+     </a>
+     tool, to the Who’s On First
+     <a href="https://github.com/whosonfirst/go-whosonfirst-pip/">
+      point-in-polygon server
+     </a>
+     , to the tools we use to
+     <a href="https://github.com/whosonfirst/go-whosonfirst-clone#example">
+      generate bundles
+     </a>
+     (you can read more about bundles
+     <a href="https://whosonfirst.mapzen.com/bundles/">
+      over here
+     </a>
+     ), to indexing WOF data in
+     <a href="https://github.com/whosonfirst/go-whosonfirst-tile38#example-1">
+      in third-party tools like Tile38
+     </a>
+     to
+     <a href="https://github.com/whosonfirst/py-mapzen-whosonfirst-utils/blob/master/scripts/wof-csv-to-feature-collection">
+      generating FeatureCollections
+     </a>
+     . Now rather than just consuming the
+     <a href="https://github.com/whosonfirst-data/whosonfirst-data/tree/master/meta">
+      default meta files
+     </a>
+     included with each repository all of those tools can be fed the output of whatever query you dream up using the
+     <a href="https://mapzen.com/documentation/wof/methods/#whosonfirst.places.search">
+      whosonfirst.places.search
+     </a>
+     , or similar, API methods.
+    </p>
+    <p>
+     <a href="https://collection.cooperhewitt.org/objects/18214745/">
+      <img width="589" height="589" src="https://s3.amazonaws.com/mapzen-assets/images/whosonfirst-api/gate.jpg">
+     </a>
+    </p>
+    <p>
+     Other API responses can and will be added as time and circumstance permit. We are interested in people
+     <em>
+      using
+     </em>
+     the Who’s On First API in whatever format their software needs and with not in making our opinions about API responses someone else’s problem. If there’s a particular response format you need to start using the Who’s On First API please send up a flare
+     <a href="mailto:hello@mapzen.com">
+      via email
+     </a>
+     or
+     <a href="https://twitter.com/alloftheplaces">
+      Twitter
+     </a>
+     .
+    </p>
+    <h2 id="examples">
+     Examples
+    </h2>
+    <h3 id="whosonfirst.concordances.getbyid">
+     <a href="https://mapzen.com/documentation/wof/methods/#whosonfirst.concordances.getById">
+      whosonfirst.concordances.getById
+     </a>
+    </h3>
+    <p>
+     Here are all the concordances in Who’s On First for the
+     <a href="https://whosonfirst.mapzen.com/spelunker/concordances/geoplanet/">
+      GeoPlanet
+     </a>
+     ID for the city of
+     <a href="https://whosonfirst.mapzen.com/spelunker/101736545">
+      Montreal
+     </a>
+     or
+     <code>
+      gp:id=3534
+     </code>
+     :
+    </p>
+    <div class="highlight">
+     <pre>
+      <code class="language-JSON" data-lang="JSON">
+       <span class="err">
+        curl
+       </span>
+       <span class="err">
+        -s
+       </span>
+       <span class="err">
+        -X
+       </span>
+       <span class="err">
+        GET
+       </span>
+       <span class="err">
+        &#39;https://whosonfirst-api.mapzen.com?method=whosonfirst.concordances.getById&amp;api_key=mapzen-xxxxxx&amp;id=
+       </span>
+       <span class="mi">
+        3534
+       </span>
+       <span class="err">
+        &amp;source=gp:id&amp;page=
+       </span>
+       <span class="mi">
+        1
+       </span>
+       <span class="err">
+        &amp;per_page=
+       </span>
+       <span class="mi">
+        100
+       </span>
+       <span class="err">
+        &#39;
+       </span>
+       <span class="p">
+        {
+       </span>
+       <span class="nt">
+        &#34;concordances&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="p">
+        [
+       </span>
+       <span class="p">
+        {
+       </span>
+       <span class="nt">
+        &#34;dbp:id&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="s2">
+        &#34;Montreal&#34;
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;fb:id&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="s2">
+        &#34;en.montreal&#34;
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;fct:id&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="s2">
+        &#34;03c06bce-8f76-11e1-848f-cfd5bf3ef515&#34;
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;gn:id&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="mi">
+        6077243
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;gp:id&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="mi">
+        3534
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;loc:id&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="s2">
+        &#34;n80132975&#34;
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;nyt:id&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="s2">
+        &#34;N59179828586486930801&#34;
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;qs:id&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="s2">
+        &#34;239659&#34;
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;tgn:id&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="s2">
+        &#34;7013051&#34;
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;wd:id&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="s2">
+        &#34;Q340&#34;
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;wk:page&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="s2">
+        &#34;Montreal&#34;
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;wof:id&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="mi">
+        101736545
+       </span>
+       <span class="p">
+        }
+       </span>
+       <span class="p">
+        ],
+       </span>
+       <span class="nt">
+        &#34;cursor&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="kc">
+        null
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;next_query&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="kc">
+        null
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;page&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="mi">
+        1
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;pages&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="mi">
+        1
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;per_page&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="mi">
+        100
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;stat&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="s2">
+        &#34;ok&#34;
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;total&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="mi">
+        1
+       </span>
+       <span class="p">
+        }
+       </span>
+      </code>
+     </pre>
+    </div>
+    <h3 id="whosonfirst.places.getbylatlon">
+     <a href="https://mapzen.com/documentation/wof/methods/#whosonfirst.places.getByLatLon">
+      whosonfirst.places.getByLatLon
+     </a>
+    </h3>
+    <p>
+     Here are all the neighbourhoods (there’s only one of them) at the corner of
+     <a href="https://whosonfirst.mapzen.com/iamhere/#17/37.76494/-122.41944">
+      16th and Mission
+     </a>
+     in San Francisco:
+    </p>
+    <div class="highlight">
+     <pre>
+      <code class="language-JSON" data-lang="JSON">
+       <span class="err">
+        curl
+       </span>
+       <span class="err">
+        -s
+       </span>
+       <span class="err">
+        -X
+       </span>
+       <span class="err">
+        GET
+       </span>
+       <span class="err">
+        &#39;https://whosonfirst-api.mapzen.com?method=whosonfirst.places.getByLatLon&amp;api_key=mapzen-xxxxxx&amp;latitude=
+       </span>
+       <span class="mf">
+        37.766633
+       </span>
+       <span class="err">
+        &amp;longitude=
+       </span>
+       <span class="mf">
+        -122.417693
+       </span>
+       <span class="err">
+        &amp;placetype=neighbourhood&amp;extras=mz:uri,geom:latitude,geom:longitude&#39;
+       </span>
+       <span class="p">
+        {
+       </span>
+       <span class="nt">
+        &#34;places&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="p">
+        [
+       </span>
+       <span class="p">
+        {
+       </span>
+       <span class="nt">
+        &#34;geom:latitude&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="mf">
+        37.758768
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;geom:longitude&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="mf">
+        -122.413313
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;mz:uri&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="s2">
+        &#34;https://whosonfirst.mapzen.com/data/858/874/43/85887443.geojson&#34;
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;wof:country&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="s2">
+        &#34;US&#34;
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;wof:id&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="mi">
+        85887443
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;wof:name&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="s2">
+        &#34;Mission District&#34;
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;wof:parent_id&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="s2">
+        &#34;85922583&#34;
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;wof:placetype&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="s2">
+        &#34;neighbourhood&#34;
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;wof:repo&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="s2">
+        &#34;whosonfirst-data&#34;
+       </span>
+       <span class="p">
+        }
+       </span>
+       <span class="p">
+        ],
+       </span>
+       <span class="nt">
+        &#34;stat&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="s2">
+        &#34;ok&#34;
+       </span>
+       <span class="p">
+        }
+       </span>
+      </code>
+     </pre>
+    </div>
+    <p>
+     There are a couple things to note about this API response. First, the “
+     <a href="http://code.flickr.net/2008/08/19/standard-photos-response-apis-for-civilized-age/">
+      minimum response data
+     </a>
+     ” for a place and second the use of the
+     <code>
+      extras
+     </code>
+     parameter to include additional information about a place. We’re still working out what the final “minimum response” data structure for a place should be but so far we’ve settled on the following properties:
+    </p>
+    <div class="highlight">
+     <pre>
+      <code class="language-JSON" data-lang="JSON">
+       <span class="p">
+        {
+       </span>
+       <span class="nt">
+        &#34;wof:id&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="err">
+        ...
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;wof:name&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="s2">
+        &#34;...&#34;
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;wof:parent_id&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="err">
+        ...
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;wof:placetype&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="s2">
+        &#34;...&#34;
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;wof:repo&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="s2">
+        &#34;...&#34;
+       </span>
+       <span class="p">
+        }
+       </span>
+      </code>
+     </pre>
+    </div>
+    <p>
+     Every API method that returns a “place” as part of its response will be guaranteed to include those properties. If you need or want additional properties you can list them in the
+     <code>
+      extras
+     </code>
+     parameter. Passing the
+     <code>
+      extras=geom:latitude,geom:longitude
+     </code>
+     parameter will cause the API to add the geographic center a place’s geometry to its response. You can also request entire classes of properties by passing only a prefix.
+    </p>
+    <h3 id="whosonfirst.places.getinfo">
+     <a href="https://mapzen.com/documentation/wof/methods/#whosonfirst.places.getInfo">
+      whosonfirst.places.getInfo
+     </a>
+    </h3>
+    <p>
+     For example to fetch
+     <a href="https://mapzen.com/blog/wikipedia-data/">
+      all the names
+     </a>
+     for the city of Beijing you would pass
+     <code>
+      extras=name:
+     </code>
+     , like this:
+    </p>
+    <div class="highlight">
+     <pre>
+      <code class="language-JSON" data-lang="JSON">
+       <span class="err">
+        curl
+       </span>
+       <span class="err">
+        -s
+       </span>
+       <span class="err">
+        -X
+       </span>
+       <span class="err">
+        GET
+       </span>
+       <span class="err">
+        &#39;https://whosonfirst-api.mapzen.com?method=whosonfirst.places.getInfo&amp;api_key=mapzen-xxxxxx&amp;id=
+       </span>
+       <span class="mi">
+        102027745
+       </span>
+       <span class="err">
+        &amp;extras=name:&#39;
+       </span>
+       <span class="p">
+        {
+       </span>
+       <span class="nt">
+        &#34;place&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="p">
+        {
+       </span>
+       <span class="nt">
+        &#34;name:ace_x_preferred&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="p">
+        [
+       </span>
+       <span class="s2">
+        &#34;Beijing&#34;
+       </span>
+       <span class="p">
+        ],
+       </span>
+       <span class="nt">
+        &#34;name:ady_x_preferred&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="p">
+        [
+       </span>
+       <span class="s2">
+        &#34;\u041f\u0435\u043a\u0438\u043d&#34;
+       </span>
+       <span class="p">
+        ],
+       </span>
+       <span class="nt">
+        &#34;name:afr_x_preferred&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="p">
+        [
+       </span>
+       <span class="s2">
+        &#34;Beijing&#34;
+       </span>
+       <span class="p">
+        ],
+       </span>
+       <span class="nt">
+        &#34;name:als_x_preferred&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="p">
+        [
+       </span>
+       <span class="s2">
+        &#34;Peking&#34;
+       </span>
+       <span class="p">
+        ],
+       </span>
+       <span class="nt">
+        &#34;name:amh_x_preferred&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="p">
+        [
+       </span>
+       <span class="s2">
+        &#34;\u1264\u12ea\u1302\u1295\u130d&#34;
+       </span>
+       <span class="p">
+        ],
+       </span>
+       <span class="nt">
+        &#34;name:ang_x_preferred&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="p">
+        [
+       </span>
+       <span class="s2">
+        &#34;Beicing&#34;
+       </span>
+       <span class="p">
+        ],
+       </span>
+       <span class="err">
+        ...truncated
+       </span>
+       <span class="err">
+        for
+       </span>
+       <span class="err">
+        brevity...
+       </span>
+       <span class="nt">
+        &#34;name:zho_x_preferred&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="p">
+        [
+       </span>
+       <span class="s2">
+        &#34;\u5317\u4eac\u5e02&#34;
+       </span>
+       <span class="p">
+        ],
+       </span>
+       <span class="nt">
+        &#34;name:zho_x_variant&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="p">
+        [
+       </span>
+       <span class="s2">
+        &#34;\u5317\u4eac\u5e02&#34;
+       </span>
+       <span class="p">
+        ],
+       </span>
+       <span class="nt">
+        &#34;name:zho_yue_x_preferred&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="p">
+        [
+       </span>
+       <span class="s2">
+        &#34;\u5317\u4eac&#34;
+       </span>
+       <span class="p">
+        ],
+       </span>
+       <span class="nt">
+        &#34;wof:country&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="s2">
+        &#34;CN&#34;
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;wof:id&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="mi">
+        102027745
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;wof:name&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="s2">
+        &#34;Beijing&#34;
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;wof:parent_id&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="s2">
+        &#34;85669727&#34;
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;wof:placetype&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="s2">
+        &#34;locality&#34;
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;wof:repo&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="s2">
+        &#34;whosonfirst-data&#34;
+       </span>
+       <span class="p">
+        },
+       </span>
+       <span class="nt">
+        &#34;stat&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="s2">
+        &#34;ok&#34;
+       </span>
+       <span class="p">
+        }
+       </span>
+      </code>
+     </pre>
+    </div>
+    <p>
+     You can request any fully-qualified property, or property prefix, in the
+     <code>
+      extras
+     </code>
+     parameter. The API will check to ensure that the prefix for an extras parameter is defined in the
+     <a href="https://github.com/whosonfirst/whosonfirst-sources/tree/master/sources">
+      whosonfirst-sources
+     </a>
+     list (there are
+     <a href="https://mapzen.com/documentation/wof/methods/#whosonfirstsources">
+      corresponding API methods for sources
+     </a>
+     ). As of this writing if an unknown prefix is requested it is silently ignored.
+     <em>
+      That might become an error in time. We’ll see…
+     </em>
+    </p>
+    <h3 id="whosonfirst.places.search">
+     <a href="https://mapzen.com/documentation/wof/methods/#whosonfirst.places.search">
+      whosonfirst.places.search
+     </a>
+    </h3>
+    <p>
+     Here are all the
+     <a href="https://whosonfirst.mapzen.com/spelunker/placetypes/microhood">
+      microhoods
+     </a>
+     in Who’s On First returned as a CSV document:
+    </p>
+    <div class="highlight">
+     <pre>
+      <code class="language-bash" data-lang="bash">
+       curl -s -i -X GET
+       <span class="s1">
+        &#39;https://whosonfirst-api.mapzen.com?method=whosonfirst.places.search&amp;api_key=mapzen-xxxxxx&amp;placetype=microhood&amp;page=1&amp;per_page=10&amp;format=csv&#39;
+       </span>
+       HTTP/1.1
+       <span class="m">
+        200
+       </span>
+       OK
+Access-Control-Allow-Origin: *
+Content-Type: text/csv
+Date: Fri,
+       <span class="m">
+        31
+       </span>
+       Mar
+       <span class="m">
+        2017
+       </span>
+       21:41:50 GMT
+Server: nginx/1.4.6
+       <span class="o">
+        (
+       </span>
+       Ubuntu
+       <span class="o">
+        )
+       </span>
+       Status:
+       <span class="m">
+        200
+       </span>
+       OK
+X-api-format-csv-header: wof_country,wof_id,wof_name,wof_parent_id,wof_placetype,wof_repo
+X-api-pagination-cursor: cXV...c7MDs
+       <span class="o">
+        =
+       </span>
+       X-api-pagination-next-query:
+       <span class="nv">
+        method
+       </span>
+       <span class="o">
+        =
+       </span>
+       whosonfirst.places.search
+       <span class="p">
+        &amp;
+       </span>
+       amp
+       <span class="p">
+        ;
+       </span>
+       <span class="nv">
+        placetype
+       </span>
+       <span class="o">
+        =
+       </span>
+       microhood
+       <span class="p">
+        &amp;
+       </span>
+       amp
+       <span class="p">
+        ;
+       </span>
+       <span class="nv">
+        format
+       </span>
+       <span class="o">
+        =
+       </span>
+       csv
+       <span class="p">
+        &amp;
+       </span>
+       amp
+       <span class="p">
+        ;
+       </span>
+       <span class="nv">
+        per_page
+       </span>
+       <span class="o">
+        =
+       </span>
+       10
+       <span class="p">
+        &amp;
+       </span>
+       amp
+       <span class="p">
+        ;
+       </span>
+       <span class="nv">
+        cursor
+       </span>
+       <span class="o">
+        =
+       </span>
+       cXV...c7MDs%3D
+X-api-pagination-page:
+X-api-pagination-pages: 60
+X-api-pagination-per-page: 10
+X-api-pagination-total: 595
+Content-Length: 746
+Connection: keep-alive
+
+wof_country,wof_id,wof_name,wof_parent_id,wof_placetype,wof_repo
+US,1108802091,
+       <span class="s2">
+        &#34;Scripps Miramar Ranch&#34;
+       </span>
+       ,1108802089,microhood,whosonfirst-data
+US,1108561153,
+       <span class="s2">
+        &#34;La Tuna Canyon&#34;
+       </span>
+       ,85865489,microhood,whosonfirst-data
+US,1108750019,
+       <span class="s2">
+        &#34;Green Valley Ranch&#34;
+       </span>
+       ,420781629,microhood,whosonfirst-data
+US,1075806299,
+       <span class="s2">
+        &#34;Northridge West&#34;
+       </span>
+       ,85838305,microhood,whosonfirst-data
+DE,1108810201,Biesdorf-Sud,-3,microhood,whosonfirst-data
+US,1108719769,
+       <span class="s2">
+        &#34;Rivergate Industrial District&#34;
+       </span>
+       ,85846673,microhood,whosonfirst-data
+US,1108750017,Gateway,420781629,microhood,whosonfirst-data
+US,1108750051,
+       <span class="s2">
+        &#34;Northeast Park Hill&#34;
+       </span>
+       ,85840547,microhood,whosonfirst-data
+US,1091648325,
+       <span class="s2">
+        &#34;Hansen Dam&#34;
+       </span>
+       ,85865477,microhood,whosonfirst-data
+US,1041491317,
+       <span class="s2">
+        &#34;Beverly Glen&#34;
+       </span>
+       ,85869119,microhood,whosonfirst-data
+      </code>
+     </pre>
+    </div>
+    <p>
+     There are a couple of things to note about CSV formatted responses:
+    </p>
+    <ul>
+     <li>
+      The
+      <code>
+       :
+      </code>
+      character that normally separates a prefix from its value has been replaced by a
+      <code>
+       _
+      </code>
+      . For example
+      <code>
+       wof:id
+      </code>
+      becomes
+      <code>
+       wof_id
+      </code>
+      when it is encoded as a CSV column header. It’s not awesome but lots of tools that consume CSV have problems with column headers containing colons so we just live with the inconsistency.
+     </li>
+     <li>
+      Nested values (arrays and dictionaries) are returned as JSON-encoded strings. It is left up to consumers of the API to decode them as necessary.
+     </li>
+    </ul>
+    <p>
+     Also, did you notice the many different pagination properties in the JSON responses and the HTTP headers for the CSV response? Yeah…
+    </p>
+    <h2 id="a-short-miserable-history-of-pagination">
+     A short miserable history of pagination
+    </h2>
+    <p>
+     <a href="https://collection.cooperhewitt.org/objects/18805295/">
+      <img width="589" height="400" src="https://s3.amazonaws.com/mapzen-assets/images/whosonfirst-api/unicorn.jpg">
+     </a>
+    </p>
+    <p>
+     Pagination, the practice of chunking a lot of results in to smaller sets, shouldn’t be complicated. But it is. Because databases, after all these years, are still complicated beasts.
+    </p>
+    <p>
+     Databases have always been about trade-offs. No two databases are the same and so no two sets of trade-offs are the same either. The really short version is that some databases can’t tell you exactly how many results there are for a given query. Some databases can tell you how many results there are but can’t or won’t return results past a certain limit. Other databases can do both but only if you use something called a cursor for pagination rather than the traditional offset and limit model (as in “return the next 5 of 50 results starting from postion 20”).
+    </p>
+    <p>
+     A long time ago,
+     <a href="https://www.flickr.com/photos/paulhammond/2883048077/">
+      I worked at the photo-sharing website Flickr
+     </a>
+     . One of the limits of the
+     <a href="https://www.flickr.com/services/api">
+      Flickr API
+     </a>
+     is that the
+     <code>
+      flickr.photos.search
+     </code>
+     method was, and still is, capped at 4,000 results for any single query. This was a limit of
+     <a href="http://aaronland.info/talks/mw10_machinetags/#92">
+      Flickr’s search engine
+     </a>
+     , an early and proprietary version of applications like
+     <a href="https://lucene.apache.org/solr/">
+      Solr
+     </a>
+     and more recently
+     <a href="https://www.elastic.co/guide/en/elasticsearch">
+      Elasticsearch
+     </a>
+     which are often referred to as “document stores”.
+    </p>
+    <p>
+     Document stores are similar to relational databases (think of the many different
+     <code>
+      something-SQL
+     </code>
+     databases people talk about) in that you can query them and get stuff back. Relational databases and document stores are very different in how they accomplish the same task and one of the limitations of the latter has always been that they aren’t really designed to return the “long tail” of results for a query with lots of results.
+    </p>
+    <p>
+     When I last checked the Flickr website it returns
+     <a href="https://www.flickr.com/search/?text=kittens">
+      1,844,154 photos when you search for kittens
+     </a>
+     . If you query the Flickr API for photos tagged “kittens” it says there are 429,203 photos. The disparity is because people are allowed to opt-out of including their photos in API results.
+    </p>
+    <p>
+     Here is the first result at around the 4,000 mark (500 photos per request * page 8, out of a possible 859):
+    </p>
+    <div class="highlight">
+     <pre>
+      <code class="language-JSON" data-lang="JSON">
+       <span class="err">
+        https://api.flickr.com/services/rest/?method=flickr.photos.search&amp;api_key=*****&amp;tags=kittens&amp;per_page=
+       </span>
+       <span class="mi">
+        500
+       </span>
+       <span class="err">
+        &amp;page=
+       </span>
+       <span class="mi">
+        8
+       </span>
+       <span class="err">
+        &amp;format=json&amp;nojsoncallback=
+       </span>
+       <span class="mi">
+        1
+       </span>
+       <span class="err">
+        &amp;api_sig=*****
+       </span>
+       <span class="p">
+        {
+       </span>
+       <span class="nt">
+        &#34;photos&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="p">
+        {
+       </span>
+       <span class="nt">
+        &#34;page&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="mi">
+        8
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;pages&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="s2">
+        &#34;859&#34;
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;perpage&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="s2">
+        &#34;500&#34;
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;total&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="s2">
+        &#34;429203&#34;
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;photo&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="p">
+        [
+       </span>
+       <span class="p">
+        {
+       </span>
+       <span class="nt">
+        &#34;id&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="s2">
+        &#34;33746803785&#34;
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;owner&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="s2">
+        &#34;148036032@N07&#34;
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;secret&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="s2">
+        &#34;4f91e6622b&#34;
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;server&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="s2">
+        &#34;2809&#34;
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;farm&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="mi">
+        3
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;title&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="s2">
+        &#34;Heineka’s “I’m ready for bed stare” - The Caturday&#34;
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;ispublic&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="mi">
+        1
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;isfriend&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="mi">
+        0
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;isfamily&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="mi">
+        0
+       </span>
+       <span class="p">
+        },
+       </span>
+      </code>
+     </pre>
+    </div>
+    <p>
+     And here’s the same query but at the 5,000 mark (500 photos per request * page 10):
+    </p>
+    <div class="highlight">
+     <pre>
+      <code class="language-JSON" data-lang="JSON">
+       <span class="err">
+        https://api.flickr.com/services/rest/?method=flickr.photos.search&amp;api_key=*****&amp;tags=kittens&amp;per_page=
+       </span>
+       <span class="mi">
+        500
+       </span>
+       <span class="err">
+        &amp;page=
+       </span>
+       <span class="mi">
+        10
+       </span>
+       <span class="err">
+        &amp;format=json&amp;nojsoncallback=
+       </span>
+       <span class="mi">
+        1
+       </span>
+       <span class="err">
+        &amp;api_sig=*****
+       </span>
+       <span class="p">
+        {
+       </span>
+       <span class="nt">
+        &#34;photos&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="p">
+        {
+       </span>
+       <span class="nt">
+        &#34;page&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="mi">
+        10
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;pages&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="s2">
+        &#34;859&#34;
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;perpage&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="s2">
+        &#34;500&#34;
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;total&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="s2">
+        &#34;429203&#34;
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;photo&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="p">
+        [
+       </span>
+       <span class="p">
+        {
+       </span>
+       <span class="nt">
+        &#34;id&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="s2">
+        &#34;33746803785&#34;
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;owner&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="s2">
+        &#34;148036032@N07&#34;
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;secret&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="s2">
+        &#34;4f91e6622b&#34;
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;server&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="s2">
+        &#34;2809&#34;
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;farm&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="mi">
+        3
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;title&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="s2">
+        &#34;Heineka’s “I’m ready for bed stare” - The Caturday&#34;
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;ispublic&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="mi">
+        1
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;isfriend&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="mi">
+        0
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;isfamily&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="mi">
+        0
+       </span>
+       <span class="p">
+        },
+       </span>
+      </code>
+     </pre>
+    </div>
+    <p>
+     See what’s happening there? It’s the same photo at the beginning of the list even though the results are a thousand photos apart. The search engine is configured to return the same results for every request over the 4,000 results limit. This is not a new thing. This is also not a Flickr thing. It’s a document store thing. Even today, ten years, later the state of the art hasn’t improved all that much: In 2017, Elasticsearch still has
+     <a href="https://www.elastic.co/guide/en/elasticsearch/guide/current/pagination.html">
+      a hard limit of 10,000 results
+     </a>
+     for a single query.
+    </p>
+    <p>
+     The reason I mention all of this is not to pick on Flickr or Elasticsearch or anyone else working with document stores. The performance of “traditional” relational databases is also known to increasingly degrade as you offset further and further in to a large result set (the rule of thumb is that things start to get painful around the 500,000 record mark). The limits imposed by document stores are often worth it because they allow you perform complex queries that would otherwise be impossible or impractical in another database. I mention all of this for two reasons:
+    </p>
+    <p>
+     First, there remains a lot of interesting and important work to do designing interfaces and models to account for the inability of databases to reliably (or efficiently) return all the results for a large query. The 4,000 results limit was
+     <a href="https://www.flickr.com/groups/api/discuss/72157663968579450/">
+      well-known by developers
+     </a>
+     using the Flickr API. We didn’t hide that it happened but we also didn’t see it as an opportunity to encourage developers to think about different ways to imagine what search should look like or how people should think about using it. The work that
+     <a href="https://en.wikipedia.org/wiki/George_Oates">
+      George Oates
+     </a>
+     did redesigning the search and subject pages for the
+     <a href="https://archive.org/details/Kohacon2010OpenLibraryPresentation-GeorgeOates">
+      Internet Archive’s Open Library project
+     </a>
+     is a good example of how we might approach that problem, going forward.
+    </p>
+    <p>
+     Second, the reason for telling you all of this “exciting” detail from the past is to help explain how and why we’ve implemented pagination for the Who’s On First API in the present. Who’s On First is all about
+     <a href="https://whosonfirst.mapzen.com/placetypes">
+      the relationship between places
+     </a>
+     and sometimes a place (like a country) will have lots and lots of relationships (like all the venues in that country). We don’t really have the luxury of “ranking” those relationships and only returning the top 4,000 (or 10,000) results. We need to find a way to return
+     <a href="https://mapzen.com/blog/all-of-the-places">
+      all the things
+     </a>
+     .
+    </p>
+    <p>
+     Further, Who’s On First uses multiple, different databases by design. We do this to ensure that the data and the overall data modeling is flexible enough to work with as many tools as possible. That’s very important to the project because we want to make sure that the infrastructure burden required to
+     <em>
+      do
+     </em>
+     something with Who’s On First data is as a light as possible and not a reflection of Mapzen’s specific needs to operationalize things or the inertia of our own preferences.
+    </p>
+    <p>
+     For example the
+     <a href="https://whosonfirst.mapzen.com/spelunker">
+      Spelunker
+     </a>
+     is built using Elasticsearch but has no spatial indices even though they are supported. We set things up this way to make sure, to prove, that it was possible to use the data without
+     <em>
+      requiring
+     </em>
+     a spatial database.
+    </p>
+    <p>
+     Since there is no all-purpose database, the Who’s On First API accounts for multiple different pagination models. We’ve identified four overlapping models (
+     <a href="#pagination-plain">
+      plain
+     </a>
+     ,
+     <a href="#pagination-cursor">
+      cursor
+     </a>
+     ,
+     <a href="#pagination-mixed">
+      mixed
+     </a>
+     and
+     <a href="#pagination-next-query">
+      next-query
+     </a>
+     ) each of which are described in detail below. If you don’t really care and just want to get started
+     <a href="#pagination-next-query">
+      you should skip ahead to the discussion of next-query pagination
+     </a>
+     .
+    </p>
+    <p>
+     <a name="pagination-plain">
+     </a>
+    </p>
+    <h3 id="plain-pagination">
+     Plain pagination
+    </h3>
+    <p>
+     Plain pagination assumes that we know how many results a query yields and that we can fetch any set of results at any given offset. For example, let’s say you wanted to use the API to fetch all the places with a variant name containing the word
+     <code>
+      Paris
+     </code>
+     in sets of five. The API will respond with something like this:
+    </p>
+    <div class="highlight">
+     <pre>
+      <code class="language-JSON" data-lang="JSON">
+       <span class="p">
+        {
+       </span>
+       <span class="nt">
+        &#34;places&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="p">
+        [
+       </span>
+       <span class="err">
+        ...
+       </span>
+       <span class="p">
+        ],
+       </span>
+       <span class="nt">
+        &#34;next_query&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="s2">
+        &#34;method=whosonfirst.places.search&amp;alt=Paris&amp;per_page=5&amp;page=2&#34;
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;total&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="mi">
+        7
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;page&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="mi">
+        1
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;per_page&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="mi">
+        5
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;pages&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="mi">
+        2
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;cursor&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="kc">
+        null
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;stat&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="s2">
+        &#34;ok&#34;
+       </span>
+       <span class="p">
+        }
+       </span>
+      </code>
+     </pre>
+    </div>
+    <p>
+     It’s pretty straightforward. There are seven results (
+     <code>
+      total
+     </code>
+     ) and this is the first of two pages worth of results (
+     <code>
+      page
+     </code>
+     and
+     <code>
+      pages
+     </code>
+     , respectively). You might already be wondering about the
+     <code>
+      next_query
+     </code>
+     property but
+     <a href="#pagination-next-query">
+      we’ll get to that shortly
+     </a>
+     .
+    </p>
+    <p>
+     <a name="pagination-cursor">
+     </a>
+    </p>
+    <h3 id="cursor-based-pagination">
+     Cursor-based pagination
+    </h3>
+    <p>
+     Cursor-based pagination is necessary when a database can’t or won’t tell you how many results there are for a query. This means you will need to pass the same query to the database over and over again for as long as the database returns a
+     <code>
+      cursor
+     </code>
+     which is like a secret hint
+     <em>
+      that only the database understands
+     </em>
+     indicating where the next set of results live.
+    </p>
+    <p>
+     For example, let’s say you wanted to use the API to fetch all of the venues near the
+     <a href="https://whosonfirst.mapzen.com/spelunker/id/420571601/">
+      Smithsonian Cooper Hewitt Design Museum
+     </a>
+     in sets of ten. The API will respond with something like this:
+    </p>
+    <div class="highlight">
+     <pre>
+      <code class="language-JSON" data-lang="JSON">
+       <span class="p">
+        {
+       </span>
+       <span class="nt">
+        &#34;places&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="p">
+        [
+       </span>
+       <span class="err">
+        ...
+       </span>
+       <span class="p">
+        ],
+       </span>
+       <span class="nt">
+        &#34;next_query&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="s2">
+        &#34;method=whosonfirst.places.getNearby&amp;latitude=40.784165&amp;longitude=-73.958110&amp;placetype=venue&amp;per_page=10&amp;cursor={CURSOR}&#34;
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;per_page&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="mi">
+        10
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;cursor&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="p">
+        {
+       </span>
+       <span class="err">
+        CURSOR
+       </span>
+       <span class="p">
+        },
+       </span>
+       <span class="nt">
+        &#34;stat&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="s2">
+        &#34;ok&#34;
+       </span>
+       <span class="p">
+        }
+       </span>
+      </code>
+     </pre>
+    </div>
+    <p>
+     In order to fetch the next set of results you would include a
+     <code>
+      cursor={CURSOR}
+     </code>
+     parameter in your request, rather than a
+     <code>
+      page={PAGE_NUMBER}
+     </code>
+     parameter like you would with plain pagination. Some databases yield time-sensitive cursors that expire after a number of seconds or minutes so the easiest way to think about cursors is that they are
+     <em>
+      all
+     </em>
+     time sensitive.
+    </p>
+    <p>
+     <em>
+      Databases, amirite?
+     </em>
+    </p>
+    <p>
+     <a name="pagination-mixed">
+     </a>
+    </p>
+    <h3 id="mixed-pagination">
+     Mixed pagination
+    </h3>
+    <p>
+     This is where it gets fun. Sometimes an API method might use
+     <em>
+      both
+     </em>
+     plain and cursor-based pagination. That can happen when an underlying database is able to calculate the total number of results but only be able to fetch a fraction of them using plain pagination after which it needs to switch to cursor-based pagination. Which doesn’t really make any sense when you think about it because cursors are magic database pixie-dust so there’s no way to determine or calculate a corresponding cursor for a traditional page number. So in the end the API itself needs to perform an initial query just to see how many results there are and then adjust whether it is going to use plain or cursor-based pagination on the fly.
+    </p>
+    <p>
+     For example, let’s say you wanted to use the API to fetch all the
+     <code>
+      microhoods
+     </code>
+     in sets of five. The API will respond with something like this:
+    </p>
+    <div class="highlight">
+     <pre>
+      <code class="language-JSON" data-lang="JSON">
+       <span class="p">
+        {
+       </span>
+       <span class="nt">
+        &#34;places&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="p">
+        [
+       </span>
+       <span class="err">
+        ...
+       </span>
+       <span class="p">
+        ],
+       </span>
+       <span class="nt">
+        &#34;next_query&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="s2">
+        &#34;method=whosonfirst.places.search&amp;placetype=microhood&amp;page=2&amp;per_page=5&#34;
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;total&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="mi">
+        186
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;page&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="mi">
+        1
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;per_page&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="mi">
+        5
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;pages&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="mi">
+        38
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;cursor&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="kc">
+        null
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;stat&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="s2">
+        &#34;ok&#34;
+       </span>
+       <span class="p">
+        }
+       </span>
+      </code>
+     </pre>
+    </div>
+    <p>
+     But if you then asked the API to fetch all of the
+     <code>
+      neighbourhoods
+     </code>
+     , again in sets of five, the API will respond with something like this:
+    </p>
+    <div class="highlight">
+     <pre>
+      <code class="language-JSON" data-lang="JSON">
+       <span class="p">
+        {
+       </span>
+       <span class="nt">
+        &#34;places&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="p">
+        [
+       </span>
+       <span class="err">
+        ...
+       </span>
+       <span class="p">
+        ],
+       </span>
+       <span class="nt">
+        &#34;next_query&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="s2">
+        &#34;method=whosonfirst.places.search&amp;placetype=neighbourhood&amp;per_page=5&amp;cursor={CURSOR}&#34;
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;total&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="mi">
+        81065
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;page&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="kc">
+        null
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;pages&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="mi">
+        16213
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;per_page&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="mi">
+        5
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;cursor&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="s2">
+        &#34;{CURSOR}&#34;
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;stat&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="s2">
+        &#34;ok&#34;
+       </span>
+       <span class="p">
+        }
+       </span>
+      </code>
+     </pre>
+    </div>
+    <p>
+     In both examples we know how many results there will be. In the first example we are able to use plain pagination so we know that this is page one of thirty-eight and thus the value of the
+     <code>
+      cursor
+     </code>
+     property is null. In the second example the API has returned a cursor so even though we know the total number of results and can calculate the number of “pages” we set the value of the
+     <code>
+      page
+     </code>
+     property to be null since the requirement on cursor-based pagination makes it moot.
+    </p>
+    <p>
+     If you look carefully at the value of the
+     <code>
+      next_query
+     </code>
+     property in both examples you can probably figure out where this is going, next.
+    </p>
+    <p>
+     <a name="pagination-next-query">
+     </a>
+    </p>
+    <h3 id="next-query-based-pagination">
+     Next-query-based pagination
+    </h3>
+    <p>
+     Next-query based pagination is an attempt to hide most of the implentation details from API consumers and provide a simple “here-do-this-next” style pagination interface, instead.
+    </p>
+    <p>
+     For example, let’s say you wanted to use the API to fetch all the localities (there are over 200,000 of them) in sets of five. That will require more than 41,000 API requests but that’s your business. The API will respond with a
+     <code>
+      next_query
+     </code>
+     parameter, something like this:
+    </p>
+    <div class="highlight">
+     <pre>
+      <code class="language-JSON" data-lang="JSON">
+       <span class="p">
+        {
+       </span>
+       <span class="nt">
+        &#34;places&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="p">
+        [
+       </span>
+       <span class="err">
+        ...
+       </span>
+       <span class="p">
+        ],
+       </span>
+       <span class="nt">
+        &#34;next_query&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="s2">
+        &#34;method=whosonfirst.places.search&amp;placetype=locality&amp;per_page=5&amp;cursor={CURSOR}&#34;
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;total&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="mi">
+        208214
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;page&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="kc">
+        null
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;pages&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="mi">
+        41643
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;per_page&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="mi">
+        5
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;cursor&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="s2">
+        &#34;{CURSOR}&#34;
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nt">
+        &#34;stat&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="s2">
+        &#34;ok&#34;
+       </span>
+       <span class="p">
+        }
+       </span>
+      </code>
+     </pre>
+    </div>
+    <p>
+     There are a few things to note about the
+     <code>
+      next_query
+     </code>
+     property:
+    </p>
+    <ul>
+     <li>
+      It contains a URL-encoded query string with the parameters to pass to the API retrieve the
+      <em>
+       next
+      </em>
+      set of results for your query.
+     </li>
+     <li>
+      When it is empty (or
+      <code>
+       null
+      </code>
+      ) that means there are no more results.
+     </li>
+     <li>
+      It
+      <em>
+       does not
+      </em>
+      contain any user-specific access tokens or API keys — you will need to add those yourself.
+     </li>
+     <li>
+      It
+      <em>
+       does not
+      </em>
+      contain any host or endpoint specific information  — you will need to add that yourself.
+     </li>
+     <li>
+      You may want or need to decode the query string in order to append additional parameters (like authentication) and to handle how those parameters are sent along to the API. For example, whether the method is invoked using HTTP’s
+      <code>
+       GET
+      </code>
+      or
+      <code>
+       POST
+      </code>
+      method or whether parameters should be
+      <code>
+       multipart/mime
+      </code>
+      encoded or not. And so on.
+     </li>
+    </ul>
+    <p>
+     This type of pagination is not ideal but strives to be a reasonable middle-ground that is not too onerous to implement and easy to use.
+    </p>
+    <p>
+     <a name="pagination-headers">
+     </a>
+    </p>
+    <h3 id="pagination-and-http-headers">
+     Pagination and HTTP headers
+    </h3>
+    <p>
+     Pagination properties are also returned as HTTP response headers. This is useful for any output format and necessary for output formats like plain old
+     <a href="#formats-csv">
+      CSV
+     </a>
+     or Who’s On First’s
+     <a href="#formats-meta">
+      meta
+     </a>
+     format. All of the pagination properties you’ve come to know and love in the examples above are also returned as HTTP response header prefixed by
+     <code>
+      X-api-pagination-
+     </code>
+     .
+    </p>
+    <p>
+     For example:
+    </p>
+    <div class="highlight">
+     <pre>
+      <code class="language-bash" data-lang="bash">
+       <span class="nv">
+        $&gt;
+       </span>
+       curl -s -v -X GET
+       <span class="s1">
+        &#39;https://whosonfirst-api.mapzen.com/?method=whosonfirst.places.search&amp;api_key=API_KEY&amp;q=poutine&amp;extras=geom:bbox&amp;page=1&amp;format=csv&amp;per_page=1&#39;
+       </span>
+       &lt; HTTP/1.1
+       <span class="m">
+        200
+       </span>
+       OK
+&lt; Access-Control-Allow-Origin: *
+&lt; Content-Type: text/csv
+&lt; Date: Tue,
+       <span class="m">
+        28
+       </span>
+       Feb
+       <span class="m">
+        2017
+       </span>
+       21:13:37 GMT
+&lt; Status:
+       <span class="m">
+        200
+       </span>
+       OK
+&lt; X-api-pagination-cursor:
+&lt; X-api-pagination-next-query:
+       <span class="nv">
+        method
+       </span>
+       <span class="o">
+        =
+       </span>
+       whosonfirst.places.search
+       <span class="p">
+        &amp;
+       </span>
+       amp
+       <span class="p">
+        ;
+       </span>
+       <span class="nv">
+        q
+       </span>
+       <span class="o">
+        =
+       </span>
+       poutine
+       <span class="p">
+        &amp;
+       </span>
+       amp
+       <span class="p">
+        ;
+       </span>
+       <span class="nv">
+        extras
+       </span>
+       <span class="o">
+        =
+       </span>
+       geom%3Abbox
+       <span class="p">
+        &amp;
+       </span>
+       amp
+       <span class="p">
+        ;
+       </span>
+       <span class="nv">
+        per_page
+       </span>
+       <span class="o">
+        =
+       </span>
+       1
+       <span class="p">
+        &amp;
+       </span>
+       amp
+       <span class="p">
+        ;
+       </span>
+       <span class="nv">
+        page
+       </span>
+       <span class="o">
+        =
+       </span>
+       2
+       <span class="p">
+        &amp;
+       </span>
+       amp
+       <span class="p">
+        ;
+       </span>
+       <span class="nv">
+        format
+       </span>
+       <span class="o">
+        =
+       </span>
+       csv
+&lt; X-api-pagination-page: 1
+&lt; X-api-pagination-pages: 13
+&lt; X-api-pagination-per-page: 1
+&lt; X-api-pagination-total: 13
+&lt; X-whosonfirst-csv-header: geom_bbox,wof_country,wof_id,wof_name,wof_parent_id,wof_placetype,wof_repo
+&lt; Content-Length: 208
+&lt; Connection: keep-alive
+&lt;
+geom_bbox,wof_country,wof_id,wof_name,wof_parent_id,wof_placetype,wof_repo
+       <span class="s2">
+        &#34;-71.9399642944,46.0665283203,-71.9399642944,46.0665283203&#34;
+       </span>
+       ,CA,975139507,
+       <span class="s2">
+        &#34;Poutine Restau-Bar Enr&#34;
+       </span>
+       ,-1,venue,whosonfirst-data-venue-ca
+      </code>
+     </pre>
+    </div>
+    <h2 id="libraries">
+     Libraries
+    </h2>
+    <div style="width:451px; margin: 0 auto;">
+     <a href="https://collection.cooperhewitt.org/objects/18612725/">
+      <img width="451" height="600" src="https://s3.amazonaws.com/mapzen-assets/images/whosonfirst-api/kitten.jpg">
+     </a>
+    </div>
+    <p>
+     As of this writing there are two general-purpose software libraries for accessing the Who’s On First API, one written in
+     <a href="https://github.com/whosonfirst/py-mapzen-whosonfirst-api">
+      Python
+     </a>
+     and another in
+     <a href="https://github.com/whosonfirst/go-whosonfirst-api">
+      Go
+     </a>
+     . We also have PHP and Javascript libraries that we use internally but they are still full of Mapzen-isms which we’d like to clean up before releasing.
+    </p>
+    <p>
+     The Python and Go libraries don’t have feature parity and probably never will. They are each well-suited for different tasks and, as with databases, we use their respective strengths and weaknesses to test the decisions we make modeling the actual Who’s On First data. We use both of these libraries on a day-to-day basis.
+     <em>
+      Most
+     </em>
+     of the kinks should be worked out by now but the documentation could be improved in places, notably in the
+     <a href="https://github.com/whosonfirst/go-whosonfirst-api">
+      Go
+     </a>
+     package which we’re using
+     <a href="https://github.com/whosonfirst/go-whosonfirst-api#interfaces">
+      as a way to test
+     </a>
+     how a strictly typed language can work with less formal and semi-structured API responses.
+    </p>
+    <p>
+     If you write your own library for the Who’s On First API
+     <a href="https://twitter.com/alloftheplaces">
+      we’d love to hear about it
+     </a>
+     .
+    </p>
+    <h3 id="py-mapzen-whosonfirst-api">
+     py-mapzen-whosonfirst-api
+    </h3>
+    <p>
+     The Python library is available on GitHub:
+     <a href="https://github.com/whosonfirst/py-mapzen-whosonfirst-api">
+      https://github.com/whosonfirst/py-mapzen-whosonfirst-api
+     </a>
+     . Here’s a simple example of how you might use it:
+    </p>
+    <div class="highlight">
+     <pre>
+      <code class="language-python" data-lang="python">
+       <span class="kn">
+        import
+       </span>
+       <span class="nn">
+        mapzen.whosonfirst.api.client
+       </span>
+       <span class="n">
+        api
+       </span>
+       <span class="o">
+        =
+       </span>
+       <span class="n">
+        mapzen
+       </span>
+       <span class="o">
+        .
+       </span>
+       <span class="n">
+        whosonfirst
+       </span>
+       <span class="o">
+        .
+       </span>
+       <span class="n">
+        api
+       </span>
+       <span class="o">
+        .
+       </span>
+       <span class="n">
+        client
+       </span>
+       <span class="o">
+        .
+       </span>
+       <span class="n">
+        Mapzen
+       </span>
+       <span class="p">
+        (
+       </span>
+       <span class="s">
+        &#34;mapzen-xxxxxx&#34;
+       </span>
+       <span class="p">
+        )
+       </span>
+       <span class="k">
+        print
+       </span>
+       <span class="n">
+        api
+       </span>
+       <span class="o">
+        .
+       </span>
+       <span class="n">
+        execute_method
+       </span>
+       <span class="p">
+        (
+       </span>
+       <span class="s">
+        &#34;api.spec.formats&#34;
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="p">
+        {})
+       </span>
+       <span class="c">
+        # prints:
+       </span>
+       <span class="c">
+        # {u&#39;default_format&#39;: u&#39;json&#39;, u&#39;stat&#39;: u&#39;ok&#39;, u&#39;formats&#39;: [u&#39;json&#39;, u&#39;csv&#39;, u&#39;meta&#39;]}
+       </span>
+      </code>
+     </pre>
+    </div>
+    <h3 id="go-whosonfirst-api">
+     go-whosonfirst-api
+    </h3>
+    <p>
+     The Go library is available on GitHub:
+     <a href="https://github.com/whosonfirst/go-whosonfirst-api">
+      https://github.com/whosonfirst/go-whosonfirst-api
+     </a>
+     . Here’s a simple example of how you might use it:
+    </p>
+    <div class="highlight">
+     <pre>
+      <code class="language-Go" data-lang="Go">
+       <span class="kn">
+        import
+       </span>
+       <span class="p">
+        (
+       </span>
+       <span class="s">
+        &#34;github.com/whosonfirst/go-whosonfirst-api/client&#34;
+       </span>
+       <span class="s">
+        &#34;github.com/whosonfirst/go-whosonfirst-api/endpoint&#34;
+       </span>
+       <span class="s">
+        &#34;os&#34;
+       </span>
+       <span class="p">
+        )
+       </span>
+       <span class="kd">
+        func
+       </span>
+       <span class="nx">
+        main
+       </span>
+       <span class="p">
+        ()
+       </span>
+       <span class="p">
+        {
+       </span>
+       <span class="nx">
+        api_key
+       </span>
+       <span class="o">
+        :=
+       </span>
+       <span class="s">
+        &#34;mapzen-xxxxxx&#34;
+       </span>
+       <span class="nx">
+        api_endpoint
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nx">
+        _
+       </span>
+       <span class="o">
+        :=
+       </span>
+       <span class="nx">
+        endpoint
+       </span>
+       <span class="p">
+        .
+       </span>
+       <span class="nx">
+        NewMapzenAPIEndpoint
+       </span>
+       <span class="p">
+        (
+       </span>
+       <span class="nx">
+        api_key
+       </span>
+       <span class="p">
+        )
+       </span>
+       <span class="nx">
+        api_client
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nx">
+        _
+       </span>
+       <span class="o">
+        :=
+       </span>
+       <span class="nx">
+        client
+       </span>
+       <span class="p">
+        .
+       </span>
+       <span class="nx">
+        NewHTTPClient
+       </span>
+       <span class="p">
+        (
+       </span>
+       <span class="nx">
+        api_endpoint
+       </span>
+       <span class="p">
+        )
+       </span>
+       <span class="nx">
+        method
+       </span>
+       <span class="o">
+        :=
+       </span>
+       <span class="s">
+        &#34;whosonfirst.places.search&#34;
+       </span>
+       <span class="nx">
+        args
+       </span>
+       <span class="o">
+        :=
+       </span>
+       <span class="nx">
+        api_client
+       </span>
+       <span class="p">
+        .
+       </span>
+       <span class="nx">
+        DefaultArgs
+       </span>
+       <span class="p">
+        ()
+       </span>
+       <span class="nx">
+        args
+       </span>
+       <span class="p">
+        .
+       </span>
+       <span class="nx">
+        Set
+       </span>
+       <span class="p">
+        (
+       </span>
+       <span class="s">
+        &#34;query&#34;
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="s">
+        &#34;poutine&#34;
+       </span>
+       <span class="p">
+        )
+       </span>
+       <span class="nx">
+        args
+       </span>
+       <span class="p">
+        .
+       </span>
+       <span class="nx">
+        Set
+       </span>
+       <span class="p">
+        (
+       </span>
+       <span class="s">
+        &#34;placetype&#34;
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="s">
+        &#34;venue&#34;
+       </span>
+       <span class="p">
+        )
+       </span>
+       <span class="nx">
+        rsp
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nx">
+        _
+       </span>
+       <span class="o">
+        :=
+       </span>
+       <span class="nx">
+        api_client
+       </span>
+       <span class="p">
+        .
+       </span>
+       <span class="nx">
+        ExecuteMethod
+       </span>
+       <span class="p">
+        (
+       </span>
+       <span class="nx">
+        method
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="nx">
+        args
+       </span>
+       <span class="p">
+        )
+       </span>
+       <span class="nx">
+        os
+       </span>
+       <span class="p">
+        .
+       </span>
+       <span class="nx">
+        Stdout
+       </span>
+       <span class="p">
+        .
+       </span>
+       <span class="nx">
+        Write
+       </span>
+       <span class="p">
+        (
+       </span>
+       <span class="nx">
+        rsp
+       </span>
+       <span class="p">
+        .
+       </span>
+       <span class="nx">
+        Raw
+       </span>
+       <span class="p">
+        ())
+       </span>
+       <span class="err">
+        #
+       </span>
+       <span class="nx">
+        prints
+       </span>
+       <span class="p">
+        (
+       </span>
+       <span class="nx">
+        truncated
+       </span>
+       <span class="k">
+        for
+       </span>
+       <span class="nx">
+        brevity
+       </span>
+       <span class="p">
+        )
+       </span>
+       <span class="err">
+        #
+       </span>
+       <span class="p">
+        {
+       </span>
+       <span class="s">
+        &#34;places&#34;
+       </span>
+       <span class="p">
+        :[{
+       </span>
+       <span class="s">
+        &#34;wof:id&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="mi">
+        152777717
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="s">
+        &#34;wof:parent_id&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="s">
+        &#34;85874363&#34;
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="s">
+        &#34;wof:name&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="s">
+        &#34;Poutine LA Fleur&#34;
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="s">
+        &#34;wof:placetype&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="s">
+        &#34;venue&#34;
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="s">
+        &#34;wof:country&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="s">
+        &#34;CA&#34;
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="s">
+        &#34;wof:repo&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="s">
+        &#34;whosonfirst-data-venue-ca&#34;
+       </span>
+       <span class="p">
+        }
+       </span>
+       <span class="o">
+        ...
+       </span>
+       <span class="p">
+        ],
+       </span>
+       <span class="s">
+        &#34;next_query&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="nx">
+        null
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="s">
+        &#34;total&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="mi">
+        13
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="s">
+        &#34;page&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="mi">
+        1
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="s">
+        &#34;per_page&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="mi">
+        100
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="s">
+        &#34;pages&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="mi">
+        1
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="s">
+        &#34;cursor&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="nx">
+        null
+       </span>
+       <span class="p">
+        ,
+       </span>
+       <span class="s">
+        &#34;stat&#34;
+       </span>
+       <span class="p">
+        :
+       </span>
+       <span class="s">
+        &#34;ok&#34;
+       </span>
+       <span class="p">
+        }
+       </span>
+       <span class="p">
+        }
+       </span>
+      </code>
+     </pre>
+    </div>
+    <p>
+     There is also a command line tool called
+     <code>
+      wof-api
+     </code>
+     for performing simple and batch operations with the API. For example, using the tool it’s possible to
+     <a href="https://github.com/whosonfirst/go-whosonfirst-api#example">
+      fetch all 63,387 venues in San Francisco
+     </a>
+     as a single GeoJSON FeatureCollection. There are lots of ways to do this but the nice thing about the
+     <code>
+      wof-api
+     </code>
+     tool is that depending on your network connection this can be accomplished in as little as 5 minutes.
+    </p>
+    <p>
+     <img src="https://s3.amazonaws.com/mapzen-assets/images/whosonfirst-api/sf-venues.png" alt="">
+    </p>
+    <p>
+     All those dots in the image above were produced by typing
+     <code>
+      wof-api -param method=whosonfirst.places.search -param locality_id=85922583 -param api_key=mapzen-xxxxxx -param per_page=500 -param placetype=venue -paginated -geojson -output venues.geojson -timings -async
+     </code>
+    </p>
+    <p>
+     Note the use of the
+     <code>
+      -paginated
+     </code>
+     flag which will instruct the tool to handle all the pagination nonsense described above for you. It’s kind of like having your very own
+     <a href="https://mapzen.com/blog/bundler/">
+      Bundler
+     </a>
+     on the
+     <a href="https://en.wikipedia.org/wiki/In_the_Beginning..._Was_the_Command_Line">
+      command line
+     </a>
+     .
+    </p>
+    <h2 id="inspirational-conclusion">
+     Inspirational conclusion
+    </h2>
+    <p>
+     <a href="https://collection.cooperhewitt.org/objects/18402495/">
+      <img width="589" height="400" src="https://s3.amazonaws.com/mapzen-assets/images/whosonfirst-api/shadow.jpg">
+     </a>
+    </p>
+    <p>
+     We hope you make awesome things with the API. Enjoy!
+    </p>
+    <hr>
+    <p>
+     Image credits:
+    </p>
+    <ul>
+     <li>
+      <a href="https://collection.cooperhewitt.org/objects/18214745/">
+       Model Of A Walled Entrance With Gate (Italy), ca. 1710; carved and painted pine, wrought iron gate and window grill; Gift of Mrs. James O. Green and Eleanor and Sarah Hewitt; 1921-17-16-a/d
+      </a>
+     </li>
+     <li>
+      <a href="https://collection.cooperhewitt.org/objects/18805295/">
+       Label (USA), 1980–85; jacquard woven; 1985-39-60
+      </a>
+     </li>
+     <li>
+      <a href="https://collection.cooperhewitt.org/objects/18612725/">
+       Sheet Music, The Kitten with the Big Green Eyes; 1949-106-3
+      </a>
+     </li>
+     <li>
+      <a href="https://collection.cooperhewitt.org/objects/18402495/">
+       Panel (England), mid-19th century; cotton; Gift of Ruth Van Norman; 1955-119-1
+      </a>
+     </li>
+    </ul>
+   </div>
+   <div class="headroom-large footroom-large text-center hidden-print">
+    <div class="social-buttons hidden-print">
+     <ul>
+      <li class="social-button social-button-twitter">
+       <a href="http://twitter.com/home?status=The Who&#39;s On First API%20@mapzen%20https://mapzen.com/blog/whosonfirst-api" class="social-popup" title="Twitter">
+        <span class="icon">
+         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" space="preserve">
+          <path d="M24.253,8.756C24.689,17.08,18.297,24.182,9.97,24.62c-3.122,0.162-6.219-0.646-8.861-2.32
+            c2.703,0.179,5.376-0.648,7.508-2.321c-2.072-0.247-3.818-1.661-4.489-3.638c0.801,0.128,1.62,0.076,2.399-0.155
+            C4.045,15.72,2.215,13.6,2.115,11.077c0.688,0.275,1.426,0.407,2.168,0.386c-2.135-1.65-2.729-4.621-1.394-6.965
+            C5.575,7.816,9.54,9.84,13.803,10.071c-0.842-2.739,0.694-5.64,3.434-6.482c2.018-0.623,4.212,0.044,5.546,1.683
+            c1.186-0.213,2.318-0.662,3.329-1.317c-0.385,1.256-1.247,2.312-2.399,2.942c1.048-0.106,2.069-0.394,3.019-0.851
+            C26.275,7.229,25.39,8.196,24.253,8.756z">
+          </path>
+         </svg>
+        </span>
+        <span class="sr-only">
+         twitter
+        </span>
+       </a>
+      </li>
+      <li class="social-button social-button-facebook">
+       <a href="https://www.facebook.com/sharer/sharer.php?u=https://mapzen.com/blog/whosonfirst-api" class="social-popup" title="Facebook">
+        <span class="icon">
+         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" space="preserve">
+          <path d="M27.825,4.783c0-2.427-2.182-4.608-4.608-4.608H4.783c-2.422,0-4.608,2.182-4.608,4.608v18.434
+              c0,2.427,2.181,4.608,4.608,4.608H14V17.379h-3.379v-4.608H14v-1.795c0-3.089,2.335-5.885,5.192-5.885h3.718v4.608h-3.726
+              c-0.408,0-0.884,0.492-0.884,1.236v1.836h4.609v4.608h-4.609v10.446h4.916c2.422,0,4.608-2.188,4.608-4.608V4.783z">
+          </path>
+         </svg>
+        </span>
+        <span class="sr-only">
+         facebook
+        </span>
+       </a>
+      </li>
+      <li class="social-button social-button-pinterest">
+       <a href="http://pinterest.com/pin/create/button/?url=https://mapzen.com/blog/whosonfirst-api&amp;media=https://s3.amazonaws.com/mapzen-assets/images/whosonfirst-api/splash-sq.png&amp;description=The Who&#39;s On First API" class="social-popup" title="Pinterest">
+        <span class="icon">
+         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" space="preserve">
+          <path d="M14.021,1.57C6.96,1.57,1.236,7.293,1.236,14.355c0,7.062,5.724,12.785,12.785,12.785c7.061,0,12.785-5.725,12.785-12.785
+            C26.807,7.294,21.082,1.57,14.021,1.57z M15.261,18.655c-1.161-0.09-1.649-0.666-2.559-1.219c-0.501,2.626-1.113,5.145-2.925,6.458
+            c-0.559-3.971,0.822-6.951,1.462-10.116c-1.093-1.84,0.132-5.545,2.438-4.632c2.837,1.123-2.458,6.842,1.099,7.557
+            c3.711,0.744,5.227-6.439,2.925-8.775c-3.325-3.374-9.678-0.077-8.897,4.754c0.19,1.178,1.408,1.538,0.489,3.168
+            C7.165,15.378,6.53,13.7,6.611,11.462c0.131-3.662,3.291-6.227,6.46-6.582c4.007-0.448,7.771,1.474,8.29,5.239
+            c0.579,4.255-1.816,8.865-6.102,8.533L15.261,18.655z">
+          </path>
+         </svg>
+        </span>
+        <span class="sr-only">
+         pinterest
+        </span>
+       </a>
+      </li>
+      <li class="social-button social-button-email">
+       <a href="mailto:?subject=The Who&#39;s On First API&amp;body=https://mapzen.com/blog/whosonfirst-api" class="social-popup" title="E-mail">
+        <span class="icon">
+         <svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" space="preserve">
+          <g>
+           <path d="M20.111 26.147c-2.336 1.051-4.361 1.401-7.125 1.401c-6.462 0-12.146-4.633-12.146-12.265 c0-7.94 5.762-14.833 14.561-14.833c6.853 0 11.8 4.7 11.8 11.252c0 5.684-3.194 9.265-7.399 9.3 c-1.829 0-3.153-0.934-3.347-2.997h-0.077c-1.208 1.986-2.96 2.997-5.023 2.997c-2.532 0-4.361-1.868-4.361-5.062 c0-4.749 3.504-9.071 9.111-9.071c1.713 0 3.7 0.4 4.6 0.973l-1.169 7.203c-0.388 2.298-0.116 3.3 1 3.4 c1.673 0 3.773-2.102 3.773-6.58c0-5.061-3.27-8.994-9.303-8.994c-5.957 0-11.175 4.673-11.175 12.1 c0 6.5 4.2 10.2 10 10.201c1.986 0 4.089-0.43 5.646-1.245L20.111 26.147z M16.646 10.1 c-0.311-0.078-0.701-0.155-1.207-0.155c-2.571 0-4.595 2.53-4.595 5.529c0 1.5 0.7 2.4 1.9 2.4 c1.441 0 2.959-1.828 3.311-4.087L16.646 10.068z">
+           </path>
+          </g>
+         </svg>
+        </span>
+        <span class="sr-only">
+         email
+        </span>
+       </a>
+      </li>
+     </ul>
+    </div>
+   </div>
+   <div class="post-meta headroom text-center">
+    <div class="byline">
+     <span class="byline-date no-top-margin">
+      04 April 2017
+     </span>
+    </div>
+    <ul class="author-blurbs clearfix">
+     <li class="author-blurb author-blurb-full-width">
+      <div class="author-blurb-portrait">
+       <a href="https://twitter.com/thisisaaronland" class="no-print-link">
+        <img class="avatar" src=" https://avatars0.githubusercontent.com/u/12658759 ">
+       </a>
+      </div>
+      <div class="author-blurb-text">
+       <span class="byline-author">
+        <a href="https://twitter.com/thisisaaronland" class="no-print-link">
+         Aaron Straup Cope
+        </a>
+       </span>
+       <p>
+        Aaron is happiest in the presence of olive oil.
+       </p>
+      </div>
+     </li>
+    </ul>
+   </div>
+   <div class="pagination headroom hidden-print">
+    <a class="pagination-link pagination-previous" href="/blog/introducing-tangram-work">
+     <i class="fa fa-fw fa-angle-left">
+     </i>
+     <span class="pagination-link-text">
+      Introducing Tangram Work
+     </span>
+    </a>
+    <a class="pagination-link pagination-next" href="/blog/libpostal-1-0">
+     <i class="fa fa-fw fa-angle-right">
+     </i>
+     <span class="pagination-link-text">
+      Statistical NLP on OpenStreetMap, Part 2
+     </span>
+    </a>
+   </div>
+  </div>
+ </div>
+</div>

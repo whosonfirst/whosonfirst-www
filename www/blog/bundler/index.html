@@ -1,0 +1,610 @@
+<div class="container" id="content">
+ <div class="row text-center headroom-large hidden-print">
+  <div class="col-xs-12">
+   <a class="btn btn-default btn-transparent" href="/blog">
+    <i class="fa fa-angle-left">
+    </i>
+    blog
+   </a>
+  </div>
+ </div>
+ <div class="row headroom-large">
+  <div class="col-md-8 col-md-offset-2">
+   <h2 class="no-margin text-center">
+    Bundling up descendants into GeoJSON
+   </h2>
+   <ul class="tag-list headroom">
+    <a href="/tag/whosonfirst">
+     <li>
+      whosonfirst
+     </li>
+    </a>
+    <a href="/tag/data">
+     <li>
+      data
+     </li>
+    </a>
+   </ul>
+   <div class="">
+   </div>
+   <div class="static-content headroom-large blog-content">
+    <p>
+     Every record in
+     <a href="https://whosonfirst.mapzen.com/spelunker/">
+      Who’s On First
+     </a>
+     , our gazetteer of places around the world, has two powerful properties – geometry and hierarchy. Since the raw data of any WOF record is a blob of GeoJSON, you can take the URL and draw it in any modern mapping application with minimal effort. We thought it would be nice to let you grab GeoJSON for a bunch of records at once, so we added a tool called the Bundler for you using the soon-to-be-released Who’s On First API.
+    </p>
+    <h2 id="descending-into-mapness">
+     Descending into Mapness
+    </h2>
+    <p>
+     Say you want to highlight
+     <a href="https://whosonfirst.mapzen.com/spelunker/id/85682085/#4/54.87/-95.50">
+      WOF ID 85682085
+     </a>
+     on a map. This is the permanent ID of Manitoba, home of
+     <a href="https://www.youtube.com/watch?v=AJBEVgnND6k">
+      The Weakerthans
+     </a>
+     and a province with a
+     <a href="http://www.theglobeandmail.com/opinion/why-the-zigzag-between-sask-and-man/article4202831/">
+      cool step function for its border
+     </a>
+     with
+     <a href="https://whosonfirst.mapzen.com/spelunker/id/85682113/#4/54.87/-105.68">
+      Saskatchewan
+     </a>
+     .
+    </p>
+    <p>
+     You can add the URL for the raw data –
+     <a href="https://whosonfirst.mapzen.com/data/856/820/85/85682085.geojson">
+      https://whosonfirst.mapzen.com/data/856/820/85/85682085.geojson
+     </a>
+     – as a source
+     <a href="https://mapzen.com/tangram/play/?scene=https://s3.amazonaws.com/whosonfirst.mapzen.com/misc/_blogs/descender_one.yaml&amp;lines=11-13#5.000/55.292/-97.734">
+      in Tangram Play and have a map in seconds
+     </a>
+     :
+    </p>
+    <div class="demo-wrapper" id="manitoba">
+     <iframe src="https://mapzen.com/tangram/play/embed/?scene=https://s3.amazonaws.com/whosonfirst.mapzen.com/misc/_blogs/descender_one.yaml&amp;lines=11-13#5.000/55.292/-97.734">
+     </iframe>
+    </div>
+    <p>
+     But what if you wanted to download
+     <em>
+      all
+     </em>
+     the regions of a country? You could grab the URL for
+     <a href="https://whosonfirst.mapzen.com/spelunker/id/85682113/#4/54.87/-105.68">
+      Saskatchewan
+     </a>
+     and then
+     <a href="https://whosonfirst.mapzen.com/spelunker/id/85682091/#18/48.99668/-120.00138">
+      Alberta
+     </a>
+     and then
+     <a href="https://whosonfirst.mapzen.com/spelunker/id/85682117/#18/48.22455/-139.06111">
+      British Columbia
+     </a>
+     and then the
+     <a href="https://whosonfirst.mapzen.com/spelunker/id/85682095/#2/71.3/-96.8">
+      Yukon
+     </a>
+     … or you could leverage
+     <a href="https://whosonfirst.mapzen.com/placetypes/">
+      the hierarchy
+     </a>
+     that’s included in every Who’s On First record.
+    </p>
+    <p>
+     In the record for Manitoba, there’s a list of relations, both upward (Canada, North America) and downward (localities, postal codes, venues…) And if you look at
+     <a href="https://whosonfirst.mapzen.com/spelunker/id/85633041/descendants/?exclude=nullisland&amp;placetype=region#3/60.64/-114.45">
+      Canada’s record
+     </a>
+     , you see all the descendants that are regions, including Manitoba.
+    </p>
+    <p>
+     Since these relationships are all available via the Who’s On First API, we decided to implement a tool we’re calling the Bundler, based off an experiment called the
+     <a href="https://burritojustice.github.io/wof-descender/">
+      Descender
+     </a>
+     . It lets you collect all the geometries of specified levels of the descendants of a parent and bundles them into one handy blob of GeoJSON for you to download and use as you see fit.
+    </p>
+    <p>
+     <img src="https://s3.amazonaws.com/mapzen-assets/images/descender/wof_canada-descender.gif" alt="bundler screenshot">
+    </p>
+    <h2 id="life-before-bundles">
+     Life Before Bundles
+    </h2>
+    <p>
+     (Stephen here.)
+    </p>
+    <p>
+     Prior to creation of the Bundler and the
+     <a href="https://burritojustice.github.io/wof-descender/">
+      Descender
+     </a>
+     (discussed below), our workflow to gather feature collections was much more complicated, requiring fairly laborious and tedious steps:
+    </p>
+    <ul>
+     <li>
+      Clone the
+      <a href="https://github.com/whosonfirst-data/whosonfirst-data">
+       whosonfirst-data repository
+      </a>
+      (tens of GB of data)
+     </li>
+     <li>
+      Clone the
+      <a href="https://github.com/whosonfirst/py-mapzen-whosonfirst-utils">
+       py-mapzen-whosonfirst-utils repository
+      </a>
+     </li>
+     <li>
+      Gather a list of
+      <code>
+       wof:id
+      </code>
+      values in a single CSV file
+     </li>
+     <li>
+      Run the following command, invoking the
+      <a href="https://github.com/whosonfirst/py-mapzen-whosonfirst-utils/blob/master/scripts/wof-csv-to-feature-collection">
+       <code>
+        csv-to-feature-collection
+       </code>
+       script
+      </a>
+      in the py-mapzen-whosonfirst-utils repository:
+     </li>
+    </ul>
+    <div class="highlight">
+     <pre>
+      <code class="language-text" data-lang="text">
+       python wof-csv-to-feature-collection -p /usr/local/mapzen/whosonfirst-data/data
+-c ~/Desktop/list_of_wofids.csv -o ~/Desktop/featurecollection.geojson full -i
+      </code>
+     </pre>
+    </div>
+    <p>
+     Even after cloning the repo, the method of locally gathering a feature collection took a long time - a typical bundle of a few dozen descendants would take 2 to 3 minutes to get ready, and then another 3 minutes to generate, so we needed 5 to 6 minutes per bundle. This process was more time consuming than it needed to be and made us, well, sad; hence the birth of the Descender.
+    </p>
+    <h2 id="the-descender">
+     The Descender
+    </h2>
+    <p>
+     (John here.)
+    </p>
+    <p>
+     After talking to Aaron and Stephen about getting descendants out of WOF, I decided to build a proof of concept using the WOF API and wired together the
+     <a href="https://burritojustice.github.io/wof-descender/">
+      Descender
+     </a>
+     in Javascript. In order to gather and group a set of descendants from a parent, it…
+    </p>
+    <ul>
+     <li>
+      searches for a Who’s On First ID
+     </li>
+     <li>
+      lets you select an arbitrary level of descent, whether they are directly related (regions of a country, counties of a region) or skipping levels of hierarchy (counties of a country, regions of a continent)
+     </li>
+     <li>
+      calls up the list of the parents descendants for that level, and records their WOF IDs
+     </li>
+     <li>
+      constructs URLs for the GeoJSON files for each descendant
+     </li>
+     <li>
+      downloads a descendant, draws it on a map, and adds that GeoJSON into an array
+     </li>
+     <li>
+      converts that array into a GeoJSON feature collection and stores it as a blob
+     </li>
+     <li>
+      uses
+      <a href="https://github.com/eligrey/FileSaver.js/">
+       FileSaver.js
+      </a>
+      to save the blob to the desktop, complete with a descriptive name.
+     </li>
+    </ul>
+    <p>
+     While the search is clunky and it only gathers the first 500 descendants, it is fast, and actual GeoJSON appears on your desktop! We started using it right away in QGIS and Tangram.
+    </p>
+    <p>
+     That 5 to 6 minute process that we mentioned? It’s no exaggeration to say it can take just 5 to 6 seconds in the Descender. This made Stephen (and others) happy.
+    </p>
+    <h2 id="bringing-the-descender-into-the-spelunker-as-the-bundler">
+     Bringing the Descender into the Spelunker as the Bundler
+    </h2>
+    <p>
+     (Dan here.)
+    </p>
+    <p>
+     When I saw John’s Descender tool, I knew this should be integrated into the
+     <a href="https://burritojustice.github.io/wof-descender/">
+      Who’s On First Spelunker
+     </a>
+     , which is how most of us explore and discover records for places. Along with Stephen, we began by copying the code wholesale, without regard for the existing site templates. Then I started to dig into the JavaScript (all of the data bundling happens in-browser on the front-end).
+    </p>
+    <p>
+     The process of refactoring the Descender involved reorganizing &amp; tidying the code, breaking it into smaller self-contained functions, isolating variable namespaces, and separating the
+     <a href="https://github.com/whosonfirst/whosonfirst-www-spelunker/blob/master/www/static/javascript/mapzen.whosonfirst.spelunker.init.download.js">
+      visible UI parts
+     </a>
+     , which are inherently specific to a single web page, from
+     <a href="https://github.com/whosonfirst/whosonfirst-www-spelunker/blob/master/www/static/javascript/mapzen.whosonfirst.bundler.js">
+      the “business logic”
+     </a>
+     that controls the
+     <a href="https://github.com/whosonfirst/whosonfirst-www-spelunker/blob/14d8fd2d0f926c6e2679c8c0fac02d3c082202ae/www/static/javascript/mapzen.whosonfirst.bundler.js#L166">
+      querying
+     </a>
+     ,
+     <a href="https://github.com/whosonfirst/whosonfirst-www-spelunker/blob/14d8fd2d0f926c6e2679c8c0fac02d3c082202ae/www/static/javascript/mapzen.whosonfirst.bundler.js#L227">
+      downloading
+     </a>
+     and
+     <a href="https://github.com/whosonfirst/whosonfirst-www-spelunker/blob/14d8fd2d0f926c6e2679c8c0fac02d3c082202ae/www/static/javascript/mapzen.whosonfirst.bundler.js#L97">
+      bundling
+     </a>
+     mechanisms. This separation of concerns means that we have a general purpose WOF downloading tool that can be bolted onto a variety of other kinds of pages. It means you could potentially add a WOF bundler into your own specific mapping page.
+    </p>
+    <p>
+     On a very high level the code asks a REST API endpoint for a list of WOF IDs of a
+     <code>
+      placetype
+     </code>
+     that share a common ancestor record, then it just downloads them all into memory. When all the downloads finish the code assembles the accumulated blob of data into the flexible GeoJSON file format, and saves it to disk thanks to Eli Grey’s
+     <a href="https://github.com/eligrey/FileSaver.js/">
+      FileSaver.js library
+     </a>
+     .
+    </p>
+    <p>
+     Once we got the Descender working as-is, we started wiring in links from various pages in the Spelunker (for example, in the “Other Links” section of a record).
+    </p>
+    <p>
+     <img src="https://mapzen-assets.s3.amazonaws.com/images/descender/canada-bundler.png" alt="bundling canada">
+    </p>
+    <h2 id="what-can-you-do-with-the-bundler?">
+     What can you do with the Bundler?
+    </h2>
+    <p>
+     From the perspective of a user of data, the benefits of the Bundler are substantial; if a user would like to contribute to updating neighbourhood features in Who’s On First (outlined in a
+     <a href="https://mapzen.com/blog/sf-neighbourhood-updates/">
+      previous blogpost
+     </a>
+     ) or gather collections of new county features (outlined in another
+     <a href="https://mapzen.com/blog/mesoshapes/">
+      previous blogpost
+     </a>
+     ), a few simple clicks from the
+     <a href="https://whosonfirst.mapzen.com/spelunker/">
+      Spelunker
+     </a>
+     are all it takes to get started!
+    </p>
+    <p>
+     We also let you gather descendants for different placetypes at the same time – for example, you can get the counties and postal codes of North Dakota all bundled up in one handy blob of GeoJSON.
+    </p>
+    <p>
+     <img src="https://s3.amazonaws.com/mapzen-assets/images/descender/ND-counties-postal.gif" alt="wof nd county and postal bundle">
+    </p>
+    <p>
+     A few examples of what you can collect through the Bundler:
+    </p>
+    <h3 id="the-regions-of-south-america">
+     The regions of South America
+    </h3>
+    <div class="demo-wrapper" id="SouthAmerica">
+     <iframe src="https://mapzen.com/tangram/view/?noscroll&amp;maxbounds=-62.35,-135.53,32.10,8.44&amp;scene=https://s3.amazonaws.com/whosonfirst.mapzen.com/misc/_blogs/descender_two.yaml#3.18/-22.62/-63.29">
+     </iframe>
+    </div>
+    <p>
+     <a href="https://mapzen.com/tangram/play/?noscroll&amp;maxbounds=-62.35,-135.53,32.10,8.44&amp;scene=https://s3.amazonaws.com/whosonfirst.mapzen.com/misc/_blogs/descender_two.yaml#3.18/-22.62/-63.29">
+      Open in Tangram Play!
+     </a>
+    </p>
+    <h3 id="the-regions-of-ireland">
+     The regions of Ireland
+    </h3>
+    <div class="demo-wrapper" id="Ireland">
+     <iframe src="https://mapzen.com/tangram/view/?noscroll&amp;maxbounds=51.94,-14.60,54.99,-1.38&amp;scene=https://s3.amazonaws.com/whosonfirst.mapzen.com/misc/_blogs/descender_three.yaml#8.9835/53.3480/-7.7008">
+     </iframe>
+    </div>
+    <p>
+     <a href="https://mapzen.com/tangram/play/?noscroll&amp;maxbounds=51.94,-14.60,54.99,-1.38&amp;scene=https://s3.amazonaws.com/whosonfirst.mapzen.com/misc/_blogs/descender_three.yaml#8.9835/53.3480/-7.7008">
+      Open in Tangram Play!
+     </a>
+    </p>
+    <h3 id="9,000-venues-in-the-upper-west-side-of-new-york-city">
+     9,000 venues in the Upper West Side of New York City
+    </h3>
+    <script type="text/javascript">
+     function SwapDivsWithClick(div1,div2)
+{
+   d1 = document.getElementById(div1);
+   d2 = document.getElementById(div2);
+   if( d2.style.display == "none" )
+   {
+      d1.style.display = "none";
+      d2.style.display = "block";
+   }
+   else
+   {
+      d1.style.display = "block";
+      d2.style.display = "none";
+   }
+
+    var frame = document.getElementById('demoframe');
+    frame.src = frame.getAttribute("source");
+
+}
+    </script>
+    <p>
+     <a href="javascript:SwapDivsWithClick(&#39;UpperWestSideImage&#39;,&#39;UpperWestSideMap&#39;)">
+     </a>
+    </p>
+    <div class="demo-wrapper" id="UpperWestSideMap" style="display:none">
+     <a href="javascript:SwapDivsWithClick(&#39;UpperWestSideImage&#39;,&#39;UpperWestSideMap&#39;)">
+      <iframe id="demoframe" source="https://mapzen.com/tangram/view/?noscroll&amp;minz=13&amp;maxbounds=40.769,-74.031,40.803,-73.918&amp;scene=https://s3.amazonaws.com/whosonfirst.mapzen.com/misc/_blogs/descender_four.yaml#15.825/40.7866/-73.9737">
+      </iframe>
+     </a>
+    </div>
+    <a href="javascript:SwapDivsWithClick(&#39;UpperWestSideImage&#39;,&#39;UpperWestSideMap&#39;)">
+     <div id="UpperWestSideImage" style="display:block;">
+      <img src="https://mapzen-assets.s3.amazonaws.com/images/descender/UpperWestSideScreenshot.png">
+     </div>
+    </a>
+    <p>
+    </p>
+    <p style="text-align:center; font-weight:bold; font-style:italic;">
+     <a href="javascript:SwapDivsWithClick(&#39;UpperWestSideImage&#39;,&#39;UpperWestSideMap&#39;)">
+      (click map to load 9000 points, and zoom in@)
+     </a>
+    </p>
+    <p>
+     <a href="https://mapzen.com/tangram/play/?noscroll&amp;minz=13&amp;maxbounds=40.769,-74.031,40.803,-73.918&amp;scene=https://s3.amazonaws.com/whosonfirst.mapzen.com/misc/_blogs/descender_four.yaml#15.825/40.7866/-73.9737">
+      Open in Tangram Play!
+     </a>
+    </p>
+    <p>
+     You can also use it to update neighbourhood records for your locality,
+     <a href="https://github.com/whosonfirst/whosonfirst-cookbook/blob/master/issue_workflows/sf_neighbourhood_updates_pt_1.md">
+      as we discuss in our guide here
+     </a>
+     .
+    </p>
+    <p>
+     Because the GeoJSON contains the entire record, you can pull out and display on the map any data values you see in WOF, including alternative language place names and population as we did with the
+     <a href="https://mapzen.com/blog/languages-of-india/">
+      regions of India
+     </a>
+     .
+    </p>
+    <h2 id="things-you-should-know,-and-things-we-should-know">
+     Things you should know, and things we should know
+    </h2>
+    <p>
+     Take the Bundler for a spin! A few notes and caveats:
+    </p>
+    <ul>
+     <li>
+      <p>
+       You may notice slightly offset geometries across placetypes; if this occurs, please
+       <a href="https://github.com/whosonfirst-data/whosonfirst-data/issues/">
+        file an issue
+       </a>
+       so we can actively track these updates.
+      </p>
+     </li>
+     <li>
+      <p>
+       Beware that downloading very large bundles can be a memory-intensive process and can make your web browser… sad. We’ve successfully tested it on some fairly big descents, including the
+       <a href="https://mapzen.com/blog/administrivia-counties/">
+        counties of the United States
+       </a>
+       , which is 3100+ records and over 180MB of GeoJSON. (We also learned the hard way that we needed to turn off the preview map for bundles over 100MB or your browser would get… sad. We try do this for you automatically for big bundles, but you can toggle it yourself if things start to get slow.)
+      </p>
+     </li>
+     <li>
+      <p>
+       There’s a limit of 10,000 descendants in a bundle for the time being – we’re working on increasing that, and we’re also looking into building a command line tool, so stay tuned! If one of your bundles fails,
+       <a href="mailto:hello@mapzen.com?subject=bundler%20is%20sad">
+        let us know
+       </a>
+       .
+      </p>
+     </li>
+     <li>
+      <p>
+       In October 2016 we retired
+       <a href="https://mapzen.com/data/borders">
+        Borders
+       </a>
+       , a tool for downloading administrative boundary data from OpenStreetMap. You can readily access equivalent hierarchies and boundaries in Who’s On First by searching for a country and following its download descendants link.  Here’s a
+       <a href="https://whosonfirst.mapzen.com/spelunker/concordances/mapzenborders/#">
+        list of concordances between Borders and WOF
+       </a>
+       .
+      </p>
+     </li>
+     <li>
+      <p>
+       Another thing that might be useful are
+       <a href="https://whosonfirst.mapzen.com/bundles/">
+        placetype bundles
+       </a>
+       if you want to do a bulk download of WOF data by placetype.
+      </p>
+     </li>
+     <li>
+      <p>
+       The Who’s On First API is a thing but it’s not quite ready for general-public release (but will be soon).
+      </p>
+     </li>
+    </ul>
+    <p>
+     But most importantly,
+     <a href="mailto:hello@mapzen.com?subject=bundler%20is%20happy">
+      let us know
+     </a>
+     how you use the Bundler!
+    </p>
+   </div>
+   <div class="headroom-large footroom-large text-center hidden-print">
+    <div class="social-buttons hidden-print">
+     <ul>
+      <li class="social-button social-button-twitter">
+       <a href="http://twitter.com/home?status=Bundling up descendants into GeoJSON%20@mapzen%20https://mapzen.com/blog/bundler" class="social-popup" title="Twitter">
+        <span class="icon">
+         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" space="preserve">
+          <path d="M24.253,8.756C24.689,17.08,18.297,24.182,9.97,24.62c-3.122,0.162-6.219-0.646-8.861-2.32
+            c2.703,0.179,5.376-0.648,7.508-2.321c-2.072-0.247-3.818-1.661-4.489-3.638c0.801,0.128,1.62,0.076,2.399-0.155
+            C4.045,15.72,2.215,13.6,2.115,11.077c0.688,0.275,1.426,0.407,2.168,0.386c-2.135-1.65-2.729-4.621-1.394-6.965
+            C5.575,7.816,9.54,9.84,13.803,10.071c-0.842-2.739,0.694-5.64,3.434-6.482c2.018-0.623,4.212,0.044,5.546,1.683
+            c1.186-0.213,2.318-0.662,3.329-1.317c-0.385,1.256-1.247,2.312-2.399,2.942c1.048-0.106,2.069-0.394,3.019-0.851
+            C26.275,7.229,25.39,8.196,24.253,8.756z">
+          </path>
+         </svg>
+        </span>
+        <span class="sr-only">
+         twitter
+        </span>
+       </a>
+      </li>
+      <li class="social-button social-button-facebook">
+       <a href="https://www.facebook.com/sharer/sharer.php?u=https://mapzen.com/blog/bundler" class="social-popup" title="Facebook">
+        <span class="icon">
+         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" space="preserve">
+          <path d="M27.825,4.783c0-2.427-2.182-4.608-4.608-4.608H4.783c-2.422,0-4.608,2.182-4.608,4.608v18.434
+              c0,2.427,2.181,4.608,4.608,4.608H14V17.379h-3.379v-4.608H14v-1.795c0-3.089,2.335-5.885,5.192-5.885h3.718v4.608h-3.726
+              c-0.408,0-0.884,0.492-0.884,1.236v1.836h4.609v4.608h-4.609v10.446h4.916c2.422,0,4.608-2.188,4.608-4.608V4.783z">
+          </path>
+         </svg>
+        </span>
+        <span class="sr-only">
+         facebook
+        </span>
+       </a>
+      </li>
+      <li class="social-button social-button-pinterest">
+       <a href="http://pinterest.com/pin/create/button/?url=https://mapzen.com/blog/bundler&amp;media=https://s3.amazonaws.com/mapzen-assets/images/descender/wof_canada-descender.gif&amp;description=Bundling up descendants into GeoJSON" class="social-popup" title="Pinterest">
+        <span class="icon">
+         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" space="preserve">
+          <path d="M14.021,1.57C6.96,1.57,1.236,7.293,1.236,14.355c0,7.062,5.724,12.785,12.785,12.785c7.061,0,12.785-5.725,12.785-12.785
+            C26.807,7.294,21.082,1.57,14.021,1.57z M15.261,18.655c-1.161-0.09-1.649-0.666-2.559-1.219c-0.501,2.626-1.113,5.145-2.925,6.458
+            c-0.559-3.971,0.822-6.951,1.462-10.116c-1.093-1.84,0.132-5.545,2.438-4.632c2.837,1.123-2.458,6.842,1.099,7.557
+            c3.711,0.744,5.227-6.439,2.925-8.775c-3.325-3.374-9.678-0.077-8.897,4.754c0.19,1.178,1.408,1.538,0.489,3.168
+            C7.165,15.378,6.53,13.7,6.611,11.462c0.131-3.662,3.291-6.227,6.46-6.582c4.007-0.448,7.771,1.474,8.29,5.239
+            c0.579,4.255-1.816,8.865-6.102,8.533L15.261,18.655z">
+          </path>
+         </svg>
+        </span>
+        <span class="sr-only">
+         pinterest
+        </span>
+       </a>
+      </li>
+      <li class="social-button social-button-email">
+       <a href="mailto:?subject=Bundling up descendants into GeoJSON&amp;body=https://mapzen.com/blog/bundler" class="social-popup" title="E-mail">
+        <span class="icon">
+         <svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" space="preserve">
+          <g>
+           <path d="M20.111 26.147c-2.336 1.051-4.361 1.401-7.125 1.401c-6.462 0-12.146-4.633-12.146-12.265 c0-7.94 5.762-14.833 14.561-14.833c6.853 0 11.8 4.7 11.8 11.252c0 5.684-3.194 9.265-7.399 9.3 c-1.829 0-3.153-0.934-3.347-2.997h-0.077c-1.208 1.986-2.96 2.997-5.023 2.997c-2.532 0-4.361-1.868-4.361-5.062 c0-4.749 3.504-9.071 9.111-9.071c1.713 0 3.7 0.4 4.6 0.973l-1.169 7.203c-0.388 2.298-0.116 3.3 1 3.4 c1.673 0 3.773-2.102 3.773-6.58c0-5.061-3.27-8.994-9.303-8.994c-5.957 0-11.175 4.673-11.175 12.1 c0 6.5 4.2 10.2 10 10.201c1.986 0 4.089-0.43 5.646-1.245L20.111 26.147z M16.646 10.1 c-0.311-0.078-0.701-0.155-1.207-0.155c-2.571 0-4.595 2.53-4.595 5.529c0 1.5 0.7 2.4 1.9 2.4 c1.441 0 2.959-1.828 3.311-4.087L16.646 10.068z">
+           </path>
+          </g>
+         </svg>
+        </span>
+        <span class="sr-only">
+         email
+        </span>
+       </a>
+      </li>
+     </ul>
+    </div>
+   </div>
+   <div class="post-meta headroom text-center">
+    <div class="byline">
+     <span class="byline-date no-top-margin">
+      10 February 2017
+     </span>
+    </div>
+    <ul class="author-blurbs clearfix">
+     <li class="author-blurb author-blurb-half-width">
+      <div class="author-blurb-portrait">
+       <a href="https://twitter.com/burritojustice" class="no-print-link">
+        <img class="avatar" src=" https://www.gravatar.com/avatar/8ff0892416e7db37b24dc6fdaa8723c1 ">
+       </a>
+      </div>
+      <div class="author-blurb-text">
+       <span class="byline-author">
+        <a href="https://twitter.com/burritojustice" class="no-print-link">
+         John Oram
+        </a>
+       </span>
+       <p>
+        Product marketing, burrito quality assurance, 4D map tiler. One day John will make as many maps as he writes about.
+       </p>
+      </div>
+     </li>
+     <li class="author-blurb author-blurb-half-width">
+      <div class="author-blurb-portrait">
+       <a href="https://twitter.com/stepps00" class="no-print-link">
+        <img class="avatar" src=" https://s.gravatar.com/avatar/3098a927ec8789692ad53b15530aee78?s=80 ">
+       </a>
+      </div>
+      <div class="author-blurb-text">
+       <span class="byline-author">
+        <a href="https://twitter.com/stepps00" class="no-print-link">
+         Stephen Epps
+        </a>
+       </span>
+       <p>
+        Stephen is Mapzen&#39;s gardener and fixer-upper of geographic data.
+       </p>
+      </div>
+     </li>
+     <li class="author-blurb author-blurb-half-width">
+      <div class="author-blurb-portrait">
+       <a href="https://twitter.com/dphiffer" class="no-print-link">
+        <img class="avatar" src=" https://www.gravatar.com/avatar/67664b0311adf87957b7addb332f576e ">
+       </a>
+      </div>
+      <div class="author-blurb-text">
+       <span class="byline-author">
+        <a href="https://twitter.com/dphiffer" class="no-print-link">
+         Dan Phiffer
+        </a>
+       </span>
+       <p>
+        Dan is a data carpenter, which tbh is kind of a made up title. But he likes it all the same.
+       </p>
+      </div>
+     </li>
+    </ul>
+   </div>
+   <div class="pagination headroom hidden-print">
+    <a class="pagination-link pagination-previous" href="/blog/tangram-play-public-beta-launch">
+     <i class="fa fa-fw fa-angle-left">
+     </i>
+     <span class="pagination-link-text">
+      Tangram Play, now in public beta!
+     </span>
+    </a>
+    <a class="pagination-link pagination-next" href="/blog/customize-your-search">
+     <i class="fa fa-fw fa-angle-right">
+     </i>
+     <span class="pagination-link-text">
+      Customize Your Search
+     </span>
+    </a>
+   </div>
+  </div>
+ </div>
+</div>

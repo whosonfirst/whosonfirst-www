@@ -2,6 +2,9 @@ UNAME_S := $(shell uname -s)
 
 all: mapzen js css placetypes
 
+blog:
+	utils/clone-blog.sh
+
 css:
 	curl -s -o www/css/mapzen.whosonfirst.chrome.css https://raw.githubusercontent.com/whosonfirst/css-mapzen-whosonfirst/master/css/mapzen.whosonfirst.chrome.css
 	cat www/css/mapzen-styleguide.css www/css/mapzen.whosonfirst.chrome.css www/css/mapzen.whosonfirst.www.css > www/css/mapzen.whosonfirst.www.bundle.css
