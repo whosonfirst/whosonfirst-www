@@ -103,7 +103,7 @@
      Here is a screen capture I took while I was testing to give you a sense for the process.
     </p>
     <div class="multimedia-wrapper">
-     <video src="https://mapzen-assets.s3.amazonaws.com/images/simple-is-hard/transitland_import.mp4" controls="controls">
+     <video src="images/transitland_import.mp4" controls="controls">
      </video>
     </div>
     <p>
@@ -148,7 +148,7 @@
      Here’s what it looks like:
     </p>
     <p>
-     <img src="https://mapzen-assets.s3.amazonaws.com/images/simple-is-hard/dupe_city_hall.jpg" alt="Dupe UI: City Hall Station">
+     <img src="images/dupe_city_hall.jpg" alt="Dupe UI: City Hall Station">
     </p>
     <p>
      Sometimes it found
@@ -158,7 +158,7 @@
      dupe candidates:
     </p>
     <p>
-     <img src="https://mapzen-assets.s3.amazonaws.com/images/simple-is-hard/dupe_pizza_hut.jpg" alt="Dupe UI: Pizza Hut in New York City??">
+     <img src="images/dupe_pizza_hut.jpg" alt="Dupe UI: Pizza Hut in New York City??">
     </p>
     <p>
      And sometimes it surfaced incorrect (or at least
@@ -168,7 +168,7 @@
      ) WOF records:
     </p>
     <p>
-     <img src="https://mapzen-assets.s3.amazonaws.com/images/simple-is-hard/dupe_1_train.jpg" alt="Dupe UI: 1 train at Fulton St">
+     <img src="images/dupe_1_train.jpg" alt="Dupe UI: 1 train at Fulton St">
     </p>
     <p>
      Despite the mixed quality of the dupe candidates, it worked! I was able to discover and merge the new data with existing WOF records.
@@ -183,7 +183,7 @@
      I came to learn quickly that NYC’s subway stations are full of challenging edge cases. Lots of stations have the same name! Canal Street has five different subway stations, from which you can take the 1, A, C, E, J, N, Q, R, J, or Z trains.
     </p>
     <p>
-     <img src="https://mapzen-assets.s3.amazonaws.com/images/simple-is-hard/canal_st.jpg" alt="The &#34;Canal Street&#34; problem">
+     <img src="images/canal_st.jpg" alt="The &#34;Canal Street&#34; problem">
     </p>
     <p>
      As the data was coming in, I had to determine if the incoming record actually represented a
@@ -193,7 +193,7 @@
      or another dimension of an existing record. To make matters more confusing, Transitland accounts for each platform within a subway station complex.
     </p>
     <p>
-     <img src="https://mapzen-assets.s3.amazonaws.com/images/simple-is-hard/delancy_essex.jpg" alt="The &#34;Delancy - Essex&#34; problem">
+     <img src="images/delancy_essex.jpg" alt="The &#34;Delancy - Essex&#34; problem">
     </p>
     <p>
      I decided on a rule that I could follow: if there’s a
@@ -258,7 +258,7 @@
      I have since added a small indicator that shows what the direct parent of the place is, which should help clue in the person importing data when something goes wrong.
     </p>
     <p>
-     <img src="https://mapzen-assets.s3.amazonaws.com/images/simple-is-hard/union_square.jpg" alt="14 St - Union Square">
+     <img src="images/union_square.jpg" alt="14 St - Union Square">
     </p>
     <p>
      For a more in-depth description of the Who’s On First placetype hierarchy, see the
@@ -284,7 +284,7 @@
      .
     </p>
     <p>
-     <img src="https://mapzen-assets.s3.amazonaws.com/images/simple-is-hard/parent_id.png" alt="Parent ID bug">
+     <img src="images/parent_id.png" alt="Parent ID bug">
     </p>
     <p>
      So I went back to the drawing board. There turned out to be a flaw in how we were requesting
@@ -349,7 +349,7 @@
      It’s the same list of subway stations, but it includes some interesting summarized descriptions of what you can find at each station in terms of train lines and service frequency.
     </p>
     <p>
-     <img src="https://mapzen-assets.s3.amazonaws.com/images/simple-is-hard/lines_schedules.png" alt="Lines and schedules!">
+     <img src="images/lines_schedules.png" alt="Lines and schedules!">
     </p>
     <p>
      More importantly, it means we will have records with both the official object ID assigned from the NYC Open Data website
@@ -374,7 +374,7 @@
      we do have.
     </p>
     <p>
-     <img src="https://mapzen-assets.s3.amazonaws.com/images/simple-is-hard/concordances.png" alt="Transitland concordances">
+     <img src="images/concordances.png" alt="Transitland concordances">
     </p>
     <h2 id="it-just-looks-simple">
      It just
@@ -478,7 +478,7 @@
        </a>
       </li>
       <li class="social-button social-button-pinterest">
-       <a href="http://pinterest.com/pin/create/button/?url=https://mapzen.com/blog/simple-is-hard&amp;media=https://mapzen-assets.s3.amazonaws.com/images/simple-is-hard/delancy_essex.jpg&amp;description=Simple is hard" class="social-popup" title="Pinterest">
+       <a href="http://pinterest.com/pin/create/button/?url=https://mapzen.com/blog/simple-is-hard&amp;media=images/delancy_essex.jpg&amp;description=Simple is hard" class="social-popup" title="Pinterest">
         <span class="icon">
          <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" space="preserve">
           <path d="M14.021,1.57C6.96,1.57,1.236,7.293,1.236,14.355c0,7.062,5.724,12.785,12.785,12.785c7.061,0,12.785-5.725,12.785-12.785

@@ -59,6 +59,6 @@ do
 	
     done
 
-    echo perl -p -i -e "s/https\:\/\/mapzen-assets\.s3\.amazonaws\.com\/images\/${FNAME}\//images\//g" ${POST}/index.html
+    perl -p -i -e "s/https\:\/\/mapzen-assets\.s3\.amazonaws\.com\/images\/${FNAME}\//images\//g" ${POST}/index.html
         
 done

@@ -74,7 +74,7 @@
      result for each person? Further inspection made me realize I’d linked to a photo icon on the map, and that linking to photos isn’t well supported on the iOS version of Google Maps.
     </p>
     <p>
-     <img src="https://mapzen-assets.s3.amazonaws.com/images/all-of-the-places/google-maps.png" alt="Google Maps photo place">
+     <img src="images/google-maps.png" alt="Google Maps photo place">
     </p>
     <p>
      I’d also complicated the situation by modifying the URL before I shared it. Part of what I removed, the latitude and longitude coordinates, turn out to be an important fallback for settling search result ambiguities. But the link worked for me at the time, so I figured it was safe to share. Nobody is better at intuiting meaning from fuzzy text than Google’s search engine. But sometimes it’s better for an interactive map to fail rather than offer up a guess. And this appears to be the new behavior, so kudos to the Google Maps team for improving that.
@@ -159,7 +159,7 @@
      tiny Mapzen service that Aaron is working on called Maplibs.
     </p>
     <p>
-     <img src="https://mapzen-assets.s3.amazonaws.com/images/all-of-the-places/maplibs.png" alt="Maplibs">
+     <img src="images/maplibs.png" alt="Maplibs">
     </p>
     <p>
      Second issue: As a New Yorker, I have opinions about things like local vs. express trains. When I asked for a route, it only offered me a single choice, though the Mapzen Mobility team has alternate routes on their radar.
@@ -185,7 +185,7 @@
      In any case, here’s what I’m seeing on my phone as I leave the office:
     </p>
     <p>
-     <img src="https://mapzen-assets.s3.amazonaws.com/images/all-of-the-places/alloftheplaces1.png" alt="Directions part one">
+     <img src="images/alloftheplaces1.png" alt="Directions part one">
     </p>
     <p>
      Using this interface on such a tiny screen is still kind of a hot mess. To a large extent this is because I made a compromise to split up the vertical screen space between map and directions. Scrolling through that list of walking directions inside such a tiny box is painful, and offers too much detail.
@@ -219,7 +219,7 @@
      , who works on the mobile team here, is testing a version of the directions view in Erasermap that takes a similar approach, structuring the various modes of a multimodal trip (available soon!)
     </p>
     <p>
-     <img src="https://mapzen-assets.s3.amazonaws.com/images/all-of-the-places/erasermap.png" alt="Erasermap">
+     <img src="images/erasermap.png" alt="Erasermap">
     </p>
     <p>
      Now I’m on the train, and I’ve lost my bandwidth, but I’m using my phone to figure out which stop to get off at. This is another place where that overview view could be helpful—I really care about “where do I get off the train?” and to a lesser degree “where am I going to walk once I get there?“ Bonus points if I could pre-cache a high zoom level neighborhood map of my destination to look at while I’m en route. To the extent that it’s possible, anything I download on my phone should be cached for offline use, probably with something like
@@ -232,7 +232,7 @@
      Here’s how things look now on the train:
     </p>
     <p>
-     <img src="https://mapzen-assets.s3.amazonaws.com/images/all-of-the-places/alloftheplaces2.png" alt="Directions part two">
+     <img src="images/alloftheplaces2.png" alt="Directions part two">
     </p>
     <p>
      I make it to my destination and I’m done, but my map is still trying to geolocate me. Was it trying to do this the whole time I was underground? I need some way to tell the map “I’m done” and for the map to notice “we’re offline, stop trying to geolocate.” I wonder if most browsers/phones are smart enough to detect when you’ve lost connectivity and stop trying to geolocate you? Uncertain, but I can always just listen for an
@@ -256,7 +256,7 @@
      .
     </p>
     <p>
-     <img src="https://mapzen-assets.s3.amazonaws.com/images/all-of-the-places/subway-escalator.jpg" alt="Emerging from underground">
+     <img src="images/subway-escalator.jpg" alt="Emerging from underground">
     </p>
     <p>
      I made it to Grand Army Plaza. The test was a partial success, with lots of pointers toward things that should change. I don’t think my experimental web map is going to become anyone’s new default, but there’s a whole lot you can spin up quickly with various Mapzen APIs. The capacity to add new records to the Who’s On First dataset, and then
@@ -303,7 +303,7 @@
        </a>
       </li>
       <li class="social-button social-button-pinterest">
-       <a href="http://pinterest.com/pin/create/button/?url=https://mapzen.com/blog/all-of-the-places&amp;media=https://mapzen-assets.s3.amazonaws.com/images/all-of-the-places/alloftheplaces-head.png&amp;description=All of the Places" class="social-popup" title="Pinterest">
+       <a href="http://pinterest.com/pin/create/button/?url=https://mapzen.com/blog/all-of-the-places&amp;media=images/alloftheplaces-head.png&amp;description=All of the Places" class="social-popup" title="Pinterest">
         <span class="icon">
          <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" space="preserve">
           <path d="M14.021,1.57C6.96,1.57,1.236,7.293,1.236,14.355c0,7.062,5.724,12.785,12.785,12.785c7.061,0,12.785-5.725,12.785-12.785
