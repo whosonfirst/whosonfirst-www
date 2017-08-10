@@ -1,0 +1,10 @@
+<h1>Known Knowns</h1>
+<p>There are known knowns…</p>
+<ul>
+<li>TLS(Transport Layer Security) for whosonfirst.mapzen.com</li>
+<li>Yes! As in, it is enabled across the board and everything on a non-secure port is redirected to a secure one.
+<li>Some records have no geometry or a centroid of 0,0</li>
+<li>Which the exception of Null Island these are records that need to be researched and updated. We use a default centroid of 0,0 to ensure as a way of tracking records that are still in need of editorial love and so that there is at least something to keep the more conservative GeoJSON parsers out there happy.</li>
+<li>Some polygon records contain ‘buffered point’ geometry</li>
+<li>Some records represent point data as polygon data, such as: https://whosonfirst.mapzen.com/spelunker/id/101873779, these records can be distinguished from actual geometries using the tag qs:type="buffered point".</li>
+</ul>

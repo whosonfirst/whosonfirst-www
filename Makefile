@@ -596,3 +596,117 @@ v2-documents-processes-woflifecycle:
 v2-documents-processes: v2-documents-processes-significantevent v2-documents-processes-assigningcessation v2-documents-processes-s3requirements v2-documents-processes-wikipediaconcordances v2-documents-processes-seattleneighborhoodupdates v2-documents-processes-updatingsanfrancisconeighborhoods v2-documents-processes-woflifecycle
 
 v2-documents: v2-documents-processes v2-documents-keyterms v2-documents-licensing v2-documents-contributing v2-documents-tests v2-documents-sources v2-documents-categories v2-documents-dates v2-documents-geometries v2-documents-names v2-documents-hierachies v2-documents-placetypes v2-documents-concordances v2-documents-properties
+
+v2-data-pullrequest:
+	curl -s https://github.com/whosonfirst-data/whosonfirst-data/blob/master/PULL_REQUEST_TEMPLATE_NEIGHBOURHOOD.md | pup -i 0 'article.markdown-body h1:first-of-type' > www/v2/data/pullrequest/temp-content1.html
+	curl -s https://github.com/whosonfirst-data/whosonfirst-data/blob/master/PULL_REQUEST_TEMPLATE_NEIGHBOURHOOD.md | pup -i 0 'article.markdown-body :not(h1:first-of-type)' > www/v2/data/pullrequest/temp-content2.html
+	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/v2/data/pullrequest/temp-content1.html
+	cat www/v2/components/head/head.html www/v2/components/navbar/data-navbar.html www/v2/components/subnav/data/pullrequest/subnav-top.html www/v2/data/pullrequest/temp-content1.html www/v2/components/subnav/data/pullrequest/subnav-bottom.html  www/v2/data/pullrequest/temp-content2.html www/v2/components/footer/footer.html > www/v2/data/pullrequest/index.html
+	rm www/v2/data/pullrequest/temp-content1.html
+	rm www/v2/data/pullrequest/temp-content2.html
+	rm www/v2/data/pullrequest/temp-content1.html-e
+	
+v2-data-principles:
+	cat www/v2/content/data/principles/principles.html | pup -i 0 'body h1' > www/v2/data/principles/temp-content1.html
+	cat www/v2/content/data/principles/principles.html | pup -i 0 'body :not(h1)' > www/v2/data/principles/temp-content2.html
+	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/v2/data/principles/temp-content1.html
+	cat www/v2/components/head/head.html www/v2/components/navbar/data-navbar.html www/v2/components/subnav/data/principles/subnav-top.html www/v2/data/principles/temp-content1.html www/v2/components/subnav/data/principles/subnav-bottom.html  www/v2/data/principles/temp-content2.html www/v2/components/footer/footer.html > www/v2/data/principles/index.html
+	rm www/v2/data/principles/temp-content1.html
+	rm www/v2/data/principles/temp-content2.html
+	rm www/v2/data/principles/temp-content1.html-e
+	
+v2-data-home:
+	cat www/v2/content/data/data.html | pup -i 0 'body h1' > www/v2/data/temp-content1.html
+	cat www/v2/content/data/data.html | pup -i 0 'body :not(h1)' > www/v2/data/temp-content2.html
+	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/v2/data/temp-content1.html
+	cat www/v2/components/head/head-onelevelup.html www/v2/components/navbar/data-navbar-onelevelup.html www/v2/components/subnav/data/home/subnav-top.html www/v2/data/temp-content1.html www/v2/components/subnav/data/home/subnav-bottom.html  www/v2/data/temp-content2.html www/v2/components/footer/footer-onelevelup.html > www/v2/data/index.html
+	rm www/v2/data/temp-content1.html
+	rm www/v2/data/temp-content2.html
+	rm www/v2/data/temp-content1.html-e
+	
+v2-data-available-index:
+	cat www/v2/content/data/available/available.html | pup -i 0 'body h1' > www/v2/data/available/temp-content1.html
+	cat www/v2/content/data/available/available.html | pup -i 0 'body :not(h1)' > www/v2/data/available/temp-content2.html
+	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/v2/data/available/temp-content1.html
+	cat www/v2/components/head/head.html www/v2/components/navbar/data-navbar.html www/v2/components/subnav/data/available/subnav-top.html www/v2/data/available/temp-content1.html www/v2/components/subnav/data/available/subnav-bottom.html  www/v2/data/available/temp-content2.html www/v2/components/footer/footer.html > www/v2/data/available/index.html
+	rm www/v2/data/available/temp-content1.html
+	rm www/v2/data/available/temp-content2.html
+	rm www/v2/data/available/temp-content1.html-e
+	
+v2-data-available-administrative:
+	cat www/v2/content/data/available/administrative.html | pup -i 0 'body h1' > www/v2/data/available/temp-content1.html
+	cat www/v2/content/data/available/administrative.html | pup -i 0 'body :not(h1)' > www/v2/data/available/temp-content2.html
+	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/v2/data/available/temp-content1.html
+	cat www/v2/components/head/head.html www/v2/components/navbar/data-navbar.html www/v2/components/subnav/data/available/subnav-top.html www/v2/data/available/temp-content1.html www/v2/components/subnav/data/available/subnav-bottom.html  www/v2/data/available/temp-content2.html www/v2/components/footer/footer.html > www/v2/data/available/administrative.html
+	rm www/v2/data/available/temp-content1.html
+	rm www/v2/data/available/temp-content2.html
+	rm www/v2/data/available/temp-content1.html-e
+	
+v2-data-available-venue:
+	cat www/v2/content/data/available/venue.html | pup -i 0 'body h1' > www/v2/data/available/temp-content1.html
+	cat www/v2/content/data/available/venue.html | pup -i 0 'body :not(h1)' > www/v2/data/available/temp-content2.html
+	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/v2/data/available/temp-content1.html
+	cat www/v2/components/head/head.html www/v2/components/navbar/data-navbar.html www/v2/components/subnav/data/available/subnav-top.html www/v2/data/available/temp-content1.html www/v2/components/subnav/data/available/subnav-bottom.html  www/v2/data/available/temp-content2.html www/v2/components/footer/footer.html > www/v2/data/available/venue.html
+	rm www/v2/data/available/temp-content1.html
+	rm www/v2/data/available/temp-content2.html
+	rm www/v2/data/available/temp-content1.html-e
+	
+v2-data-available-other:
+	cat www/v2/content/data/available/other.html | pup -i 0 'body h1' > www/v2/data/available/temp-content1.html
+	cat www/v2/content/data/available/other.html | pup -i 0 'body :not(h1)' > www/v2/data/available/temp-content2.html
+	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/v2/data/available/temp-content1.html
+	cat www/v2/components/head/head.html www/v2/components/navbar/data-navbar.html www/v2/components/subnav/data/available/subnav-top.html www/v2/data/available/temp-content1.html www/v2/components/subnav/data/available/subnav-bottom.html  www/v2/data/available/temp-content2.html www/v2/components/footer/footer.html > www/v2/data/available/other.html
+	rm www/v2/data/available/temp-content1.html
+	rm www/v2/data/available/temp-content2.html
+	rm www/v2/data/available/temp-content1.html-e
+	
+v2-data-available: v2-data-available-index v2-data-available-administrative v2-data-available-venue v2-data-available-other
+
+v2-data-amazon:
+	cat www/v2/content/data/amazon/amazon.html | pup -i 0 'body h1' > www/v2/data/amazon/temp-content1.html
+	cat www/v2/content/data/amazon/amazon.html | pup -i 0 'body :not(h1)' > www/v2/data/amazon/temp-content2.html
+	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/v2/data/amazon/temp-content1.html
+	cat www/v2/components/head/head.html www/v2/components/navbar/data-navbar.html www/v2/components/subnav/data/amazon/subnav-top.html www/v2/data/amazon/temp-content1.html www/v2/components/subnav/data/amazon/subnav-bottom.html  www/v2/data/amazon/temp-content2.html www/v2/components/footer/footer.html > www/v2/data/amazon/index.html
+	rm www/v2/data/amazon/temp-content1.html
+	rm www/v2/data/amazon/temp-content2.html
+	rm www/v2/data/amazon/temp-content1.html-e
+	
+v2-data-github-index:
+	cat www/v2/content/data/github/github.html | pup -i 0 'body h1' > www/v2/data/github/temp-content1.html
+	cat www/v2/content/data/github/github.html | pup -i 0 'body :not(h1)' > www/v2/data/github/temp-content2.html
+	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/v2/data/github/temp-content1.html
+	cat www/v2/components/head/head.html www/v2/components/navbar/data-navbar.html www/v2/components/subnav/data/github/subnav-top.html www/v2/data/github/temp-content1.html www/v2/components/subnav/data/github/subnav-bottom.html  www/v2/data/github/temp-content2.html www/v2/components/footer/footer.html > www/v2/data/github/index.html
+	rm www/v2/data/github/temp-content1.html
+	rm www/v2/data/github/temp-content2.html
+	rm www/v2/data/github/temp-content1.html-e
+	
+v2-data-github-largefiles:
+	cat www/v2/content/data/github/gitlargefiles.html | pup -i 0 'body h1' > www/v2/data/github/temp-content1.html
+	cat www/v2/content/data/github/gitlargefiles.html | pup -i 0 'body :not(h1)' > www/v2/data/github/temp-content2.html
+	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/v2/data/github/temp-content1.html
+	cat www/v2/components/head/head.html www/v2/components/navbar/data-navbar.html www/v2/components/subnav/data/github/subnav-top.html www/v2/data/github/temp-content1.html www/v2/components/subnav/data/github/subnav-bottom.html  www/v2/data/github/temp-content2.html www/v2/components/footer/footer.html > www/v2/data/github/gitlargefiles.html
+	rm www/v2/data/github/temp-content1.html
+	rm www/v2/data/github/temp-content2.html
+	rm www/v2/data/github/temp-content1.html-e
+	
+v2-data-github-reponaming:
+	cat www/v2/content/data/github/reponaming.html | pup -i 0 'body h1' > www/v2/data/github/temp-content1.html
+	cat www/v2/content/data/github/reponaming.html | pup -i 0 'body :not(h1)' > www/v2/data/github/temp-content2.html
+	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/v2/data/github/temp-content1.html
+	cat www/v2/components/head/head.html www/v2/components/navbar/data-navbar.html www/v2/components/subnav/data/github/subnav-top.html www/v2/data/github/temp-content1.html www/v2/components/subnav/data/github/subnav-bottom.html  www/v2/data/github/temp-content2.html www/v2/components/footer/footer.html > www/v2/data/github/reponaming.html
+	rm www/v2/data/github/temp-content1.html
+	rm www/v2/data/github/temp-content2.html
+	rm www/v2/data/github/temp-content1.html-e
+	
+v2-data-github: v2-data-github-index v2-data-github-largefiles v2-data-github-reponaming
+
+v2-data-knownknowns:
+	cat www/v2/content/data/knownknowns/knownknowns.html | pup -i 0 'body h1' > www/v2/data/knownknowns/temp-content1.html
+	cat www/v2/content/data/knownknowns/knownknowns.html | pup -i 0 'body :not(h1)' > www/v2/data/knownknowns/temp-content2.html
+	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/v2/data/knownknowns/temp-content1.html
+	cat www/v2/components/head/head.html www/v2/components/navbar/data-navbar.html www/v2/components/subnav/data/knownknowns/subnav-top.html www/v2/data/knownknowns/temp-content1.html www/v2/components/subnav/data/knownknowns/subnav-bottom.html  www/v2/data/knownknowns/temp-content2.html www/v2/components/footer/footer.html > www/v2/data/knownknowns/index.html
+	rm www/v2/data/knownknowns/temp-content1.html
+	rm www/v2/data/knownknowns/temp-content2.html
+	rm www/v2/data/knownknowns/temp-content1.html-e
+	
+v2-data: v2-data-pullrequest v2-data-principles v2-data-available v2-data-amazon v2-data-github v2-data-knownknowns v2-data-home
