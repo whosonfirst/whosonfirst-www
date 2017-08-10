@@ -253,7 +253,8 @@ h1 {
 }
 
 h6 {
-	font-size: 36px;
+	font-size: 42px;
+	padding-top: 12px;
 }
 
 h2, h3, h4, h5, .h2, .h3, .h4, .h5 {
@@ -292,6 +293,22 @@ h5 {
 
 .whosonfirst-deemphasized-header {
 	font-weight: 300;
+}
+
+.whosonfirst-sole-link {
+	font-size: 21px;
+	font-weight: 400;
+	border-bottom-width: 2px !important;
+}
+
+.whosonfirst-deemphasized-subpageheader {
+	color: #D6D6D6;
+}
+
+.whosonfirst-link-caption {
+	font-size: 16px;
+	margin-top: 6px;
+	margin-bottom: 12px;
 }
 
 /* Card Heading Styling */
@@ -1070,6 +1087,18 @@ blockquote {
 	
 	p {
 		font-size: 15px;
+	}
+	
+	.whosonfirst-sole-link {
+		font-size: 19px;
+		font-weight: 400;
+		border-bottom-width: 2px !important;
+	}
+
+	.whosonfirst-link-caption {
+		font-size: 14px;
+		margin-top: 6px;
+		margin-bottom: 12px;
 	}
 	
 	.whosonfirst-content-list-item {

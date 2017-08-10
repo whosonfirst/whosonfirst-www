@@ -710,3 +710,12 @@ v2-data-knownknowns:
 	rm www/v2/data/knownknowns/temp-content1.html-e
 	
 v2-data: v2-data-pullrequest v2-data-principles v2-data-available v2-data-amazon v2-data-github v2-data-knownknowns v2-data-home
+
+v2-blog:
+	cat www/v2/content/blog/blog.html | pup -i 0 'body h1' > www/v2/blog/temp-content1.html
+	cat www/v2/content/blog/blog.html | pup -i 0 'body :not(h1)' > www/v2/blog/temp-content2.html
+	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/v2/blog/temp-content1.html
+	cat www/v2/components/head/head-onelevelup.html www/v2/components/navbar/blog-navbar-onelevelup.html www/v2/components/subnav/blog/home/subnav-top.html www/v2/blog/temp-content1.html www/v2/components/subnav/blog/home/subnav-bottom.html  www/v2/blog/temp-content2.html www/v2/components/footer/footer-onelevelup.html > www/v2/blog/index.html
+	rm www/v2/blog/temp-content1.html
+	rm www/v2/blog/temp-content2.html
+	rm www/v2/blog/temp-content1.html-e
