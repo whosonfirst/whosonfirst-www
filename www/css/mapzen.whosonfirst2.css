@@ -6,7 +6,7 @@
 	top: 0;
 	position: absolute;
 	z-index: -1;
-	opacity: .5;
+	opacity: .3;
 	clip-path: polygon(100% 0%, 100% 92%, 85% 82%, 53% 82%, 30% 65%, 18% 32%, 0% 13%, 0% 0%);;
 }
 
@@ -33,6 +33,25 @@
 	margin-left: -10px;
 }
 
+.whosonfirst-card-container {
+	padding-top: 444px;
+	padding-bottom: 96px;
+}
+
+/* This Is New */
+.whosonfirst-main-headline {
+	font-family: "Poppins", Helvetica, Arial, sans-serif;
+	font-size: 36px;
+	width: 70%;
+	box-sizing: border-box;
+	margin: 14% 0px 6%;
+}
+
+div.whosonfirst-card-container h6.whosonfirst-main-headline {
+	display: none;
+}
+
+
 /* HTML High Level Tag And Additions Styling */
 html {
 	height: 100%;
@@ -44,11 +63,6 @@ body {
 
 .whosonfirst-wrapper {
 	min-height: 100%;
-}
-
-.whosonfirst-card-container {
-	padding-top: 444px;
-	padding-bottom: 96px;
 }
 
 .whosonfirst-subpage-container {
@@ -318,15 +332,6 @@ h4 {
 
 h5 {
 	font-size: 22px;
-}
-
-/* This Is New */
-.whosonfirst-main-headline {
-	font-family: "Poppins", Helvetica, Arial, sans-serif;
-	font-size: 36px;
-	width: 70%;
-	box-sizing: border-box;
-	margin: 14% 0px 6%;
 }
 
 .whosonfirst-deemphasized-header {
@@ -1013,6 +1018,15 @@ blockquote {
 		z-index: 1030;
 		background-color: #FFFFFF;
 	}
+	
+	.whosonfirst-header-background-image {
+		clip-path: polygon(100% 0%, 100% 92%, 85% 82%, 53% 82%, 30% 65%, 18% 45%, 0% 22%, 0% 0%);;
+	}
+
+	.whosonfirst-header-image-container .whosonfirst-main-headline {
+		margin-top: 228px;
+		width: 65%;
+	}
 }
 
 @media (max-width: 992px) {
@@ -1295,6 +1309,23 @@ blockquote {
 	
 	.whosonfirst-content-link {
 		border-bottom: 1.1px solid #1F1F1F;
+	}
+	
+	.whosonfirst-header-background-image {
+		clip-path: polygon(100% 0%, 100% 92%, 85% 82%, 53% 82%, 33% 70%, 15% 33%, 0% 20%, 0% 0%);;
+	}
+
+	.whosonfirst-header-image-container .whosonfirst-main-headline {
+		margin-top: 168px;
+		font-size: 27px;
+		width: 63%;
+		padding-top: 12px;
+		padding-bottom: 12px;
+	}
+
+	.whosonfirst-card-container {
+		padding-top: 300px;
+		padding-bottom: 96px;
 	}
 }
 
@@ -1671,5 +1702,13 @@ blockquote {
 	.whosonfirst-smallnav-link-twoliner-container {
 		padding-bottom: 6px;
 		margin-top: -3px 1important;
+	}
+
+	.whosonfirst-header-image-container {
+		display: none;
+	}
+	
+	div.whosonfirst-card-container h6.whosonfirst-main-headline {
+		display: block;
 	}
 }
