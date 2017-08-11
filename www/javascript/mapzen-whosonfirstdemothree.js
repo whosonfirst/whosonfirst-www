@@ -7,7 +7,7 @@ var sflocation = [37.795492,-122.406569,85810881,17,"San Francisco's Chinatown n
 var berlinlocation = [52.513351,13.388243,85899637,14,"Berlin's Moabit neighborhood"]
 var mumbailocation = [19.10074,72.888075,102030609,15,"Mumbai"]
 var melbournelocation = [-37.813963,144.965188,85775095,16,"Melbourne's Museum neighborhood"]
-var uslocation = [39.715956,-96.999668,85633793,5,"US"]
+var uslocation = [32.921921,-89.687118,85688579,8,"US"]
 var locationOptions = [nyclocation,sflocation,berlinlocation,mumbailocation,melbournelocation,uslocation]
 var randomLocation = locationOptions[5];
 
@@ -17,8 +17,9 @@ var map = L.Mapzen.map('map', {
     tangramOptions: {
         scene: {
             import: [
-                'https://mapzen.com/carto/refill-style/7.1/refill-style.zip',
-                'https://mapzen.com/carto/refill-style/7.1/themes/gray.zip'],
+                'https://mapzen.com/carto/refill-style/8/refill-style.zip', 'https://mapzen.com/carto/refill-style/8/themes/color-gray.zip',
+				'https://mapzen.com/carto/refill-style/8/themes/detail-4.zip'
+			],
             global: {
                 sdk_mapzen_api_key: api_key,
                 sdk_building_extrude: 'false'
@@ -47,18 +48,14 @@ var markerStyle2 = {
 
 // How we should handle each API result
 var show_venue = function(place) {
-    var marker = L.circleMarker({
-        lat: place['geom:latitude'],
-        lng: place['geom:longitude']
-    }, markerStyle);
-    marker.bindTooltip(place['wof:name']);
-	var popupLocation = new L.LatLng(place['geom:latitude'],place['geom:longitude']);
-	var popupContent = place['wof:name'];
-	popup = new L.popup({minWidth: 0});
-	popup.setContent(popupContent);
-	popup.setLatLng(popupLocation);
-	map.addLayer(popup);
-};
+	$.get(place['mz:uri'], function(result) {
+		L.geoJSON(result, {style: function (feature) {
+			randomNumber1 = 86+Math.ceil(Math.random()*100);
+			color = "rgb("+randomNumber1+","+randomNumber1+","+randomNumber1+")"
+			return {color: '#888888', weight: 1, opacity: '.6', fillColor: color, fillOpacity: .3};
+		}}).addTo(map);
+	});
+}
 
 // NOOP (we are using onprogress instead)
 var onsuccess = function() { return; };
@@ -71,11 +68,11 @@ var onerror = function(rsp) {
 // Take all the API results and show them on the map
 var onprogress = function(rsp) {
     //console.log(rsp);
-	/*for (var i = 0; i < rsp.places.length; i++) {
+	for (var i = 0; i < rsp.places.length; i++) {
         var place = rsp.places[i];
-		console.log(place);
+		console.log(place['mz:uri']);
         show_venue(place);
-	}*/
+	}
 };
 
 function runWhosOnFirstAPI() {
@@ -90,8 +87,8 @@ function runWhosOnFirstAPI() {
     var data = {
         id: parent_id,
         per_page: 500,
-        extras: 'geom:', // this gets us lat/lng coords
-		placetype: 'region'
+        extras: 'mz:uri,geom:latitude,geom:longitude', // this gets us lat/lng coords
+		placetype: 'county'
     };
     // Ok now we actually call the API
     mapzen.whosonfirst.api.execute_method_paginated(method, data, onsuccess, onerror, onprogress);
