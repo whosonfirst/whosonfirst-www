@@ -1,0 +1,18 @@
+<svg width="2199px" height="1096px" viewBox="0 0 2199 1096" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <polygon id="path-1" points="0 0 2199 0 2199 1095.3125 1753.94704 960.888212 1001.73743 960.888212 495.616259 712.302293 187.580292 404.633604 0 314.644531"></polygon>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="testmapartboard">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="backgroundshape" fill="#BB2B2B" xlink:href="#path-1"></use>
+        </g>
+    </g>
+</svg>
+
+
+<clipPath id="clipping">
+	<polygon points="0 0 2199 0 2199 1095.3125 1753.94704 960.888212 1001.73743 960.888212 495.616259 712.302293 187.580292 404.633604 0 314.644531"/>
+</clipPath>
