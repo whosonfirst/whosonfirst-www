@@ -520,8 +520,17 @@ h2 + .whosonfirst-sole-links-container {
 }
 
 .whosonfirst-sidenav-link-twoliner {
-	line-height: 25px;
+	line-height: 27px;
 	display: inline;
+}
+
+.whosonfirst-sidenav-link-twoliner-container {
+	margin-top: 0px;
+	margin-bottom: 5px;
+}
+
+li:not(.whosonfirst-sidenav-link-twoliner-container) + li.whosonfirst-sidenav-link-twoliner-container {
+	margin-top: -3px;
 }
 
 .whosonfirst-sidenav-link-twoliner:hover {
@@ -1260,7 +1269,7 @@ b, strong {
 	}
 	
 	.whosonfirst-sidenav-link-twoliner {
-		line-height: 22px !important;
+		line-height: 24px !important;
 	}
 	
 	/* Subpage Basic Styling */
@@ -1291,6 +1300,10 @@ b, strong {
 	.whosonfirst-content-link {
 		border-bottom: 1.1px solid #1F1F1F;
 	}
+	
+	li:not(.whosonfirst-sidenav-link-twoliner-container) + li.whosonfirst-sidenav-link-twoliner-container {
+	margin-top: 0px;
+}
 }
 
 @media (max-width: 768px) {
@@ -1657,15 +1670,19 @@ b, strong {
 	}
 	
 	.whosonfirst-smallnav-link-twoliner {
-		line-height: 1.9 !important;
+		line-height: 33px !important;
 		display: inline !important;
 		float: initial;
 		word-break: keep-all;
+		margin-left: 0px !important;
+		position: relative;
+		left: 24px !important;
+		padding-bottom: 0px !important;
 	}
 	
 	.whosonfirst-smallnav-link-twoliner-container {
 		padding-bottom: 6px;
-		margin-top: -3px 1important;
+		margin-top: -6px !important;
 	}
 }
 
