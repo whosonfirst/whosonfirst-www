@@ -95,7 +95,7 @@ body {
 
 .whosonfirst-thirds-card, .whosonfirst-half-card, .whosonfirst-doubleheight-card, .whosonfirst-doublewidth-card, .whosonfirst-doublewidth-doubleheight-card {
 	border-radius: 4px;
-	display: inline-block;
+	display: block;
 }
 
 .whosonfirst-card-content-thirds, .whosonfirst-card-content-doublewidth, .whosonfirst-card-content-half {
@@ -298,12 +298,13 @@ h5 {
 
 .whosonfirst-deemphasized-header {
 	font-weight: 300;
+	margin-bottom: 0px;
 }
 
 .whosonfirst-sole-link {
-	font-size: 21px;
+	font-size: 20px;
 	font-weight: 400;
-	border-bottom-width: 2px !important;
+	border-bottom-width: 1.5px !important;
 }
 
 .whosonfirst-deemphasized-subpageheader {
@@ -483,6 +484,14 @@ p {
 
 p + ul, p + ol {
 	margin-top: -6px;
+}
+
+.whosonfirst-sole-links-container {
+	margin-top: 6px;
+}
+
+h2 + .whosonfirst-sole-links-container {
+	margin-top: 12px;
 }
 
 /* Side Navigation Bar Styling */
@@ -1120,9 +1129,9 @@ b, strong {
 	}
 	
 	.whosonfirst-sole-link {
-		font-size: 19px;
+		font-size: 18px;
 		font-weight: 400;
-		border-bottom-width: 2px !important;
+		border-bottom-width: 1.5px !important;
 	}
 	
 	.whosonfirst-link-caption {
@@ -1657,5 +1666,62 @@ b, strong {
 	.whosonfirst-smallnav-link-twoliner-container {
 		padding-bottom: 6px;
 		margin-top: -3px 1important;
+	}
+}
+
+/* Side Nav Height and Scrolling */
+
+@media (max-height: 935px) {
+	.whosonfirst-sidenav-list {
+		max-height: 700px;
+		overflow-y: scroll;
+	}
+}
+
+@media (max-height: 871px) {
+	.whosonfirst-sidenav-list {
+		max-height: 640px;
+	}
+}
+
+@media (max-height: 807px) {
+	.whosonfirst-sidenav-list {
+		max-height: 580px;
+	}
+}
+
+@media (max-height: 743px) {
+	.whosonfirst-sidenav-list {
+		max-height: 520px;
+	}
+}
+
+@media (max-height: 679px) {
+	.whosonfirst-sidenav-list {
+		max-height: 460px;
+	}
+}
+
+@media (max-height: 615px) {
+	.whosonfirst-sidenav-list {
+		max-height: 400px;
+	}
+}
+
+@media (max-height: 551px) {
+	.whosonfirst-sidenav-list {
+		max-height: 340px;
+	}
+}
+
+@media (max-height: 487px) {
+	.whosonfirst-sidenav-list {
+		max-height: 280px;
+	}
+}
+
+@media (max-height: 423px) {
+	.whosonfirst-sidenav-list {
+		max-height: 220px;
 	}
 }
