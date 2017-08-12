@@ -117,26 +117,24 @@ Known Knowns
 	<div class="whosonfirst-tabs-content"><p>
 There are known knowns…
 </p>
-<ul>
-<li>
+<h3>
 TLS(Transport Layer Security) for whosonfirst.mapzen.com
-</li>
-<li>
+</h3>
+<p>
 Yes! As in, it is enabled across the board and everything on a non-secure port is redirected to a secure one.
-</li>
-<li>
+</p>
+<h3>
 Some records have no geometry or a centroid of 0,0
-</li>
-<li>
+</h3>
+<p>
 Which the exception of Null Island these are records that need to be researched and updated. We use a default centroid of 0,0 to ensure as a way of tracking records that are still in need of editorial love and so that there is at least something to keep the more conservative GeoJSON parsers out there happy.
-</li>
-<li>
+</p>
+<h3>
 Some polygon records contain ‘buffered point’ geometry
-</li>
-<li>
+</h3>
+<p>
 Some records represent point data as polygon data, such as: https://whosonfirst.mapzen.com/spelunker/id/101873779, these records can be distinguished from actual geometries using the tag qs:type=&#34;buffered point&#34;.
-</li>
-</ul>
+</p>
 								</div>
 							</div>
 						</article>
@@ -150,7 +148,6 @@ Some records represent point data as polygon data, such as: https://whosonfirst.
 				<div class="container">
 					<!-- Collect the nav links, forms, and other content for toggling -->
 					<ul class="nav navbar-nav navbar-right whosonfirst-footer">
-						<li class="whosonfirst-nav-link-nounderline whoosonfooter-gig">who's on first is a <a href="https://mapzen.com/" class="whosonfirst-nav-link whosonfirst-nav-link-innounderline">mapzen</a> gig</li>
 						<li class="whosonfirst-nav-link-nounderline whoosonfooter-gig">who's on first is a <a href="https://mapzen.com/" class="whosonfirst-nav-link whosonfirst-nav-link-innounderline">mapzen</a> gig</li>
 						<li><a href="../../docs/contributing/index.html" class="whosonfirst-nav-link whosonfirst-footer-nav-link">contributing</a></li>
 						<li><a href="../../docs/licensing/index.html" class="whosonfirst-nav-link whosonfirst-footer-nav-link">licensing</a></li>

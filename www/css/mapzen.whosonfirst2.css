@@ -7,7 +7,7 @@
 	position: absolute;
 	z-index: -1;
 	opacity: .3;
-	clip-path: polygon(100% 0%, 100% 92%, 85% 82%, 53% 82%, 30% 65%, 18% 32%, 0% 13%, 0% 0%);;
+	clip-path: polygon(100% 0%, 100% 92%, 85% 82%, 53% 82%, 30% 65%, 12% 38%, 0% 27%, 0% 0%);;
 }
 
 .whosonfirst-header-image-container {
@@ -16,7 +16,6 @@
 	z-index: -1;
 	width: 100%
 }
-
 .whosonfirst-header-image-container .whosonfirst-main-headline {
 	margin-top: 276px;
 	margin-bottom: 0%;
@@ -24,7 +23,8 @@
 	width: 70%;
     box-sizing: border-box;
 	word-break: keep-all;
-	background-color: #FFFFFF;
+	background-color: rgba(255,255,255,.5);
+	back
 	padding-top: 18px;
 	padding-bottom: 18px;
 	padding-left: 12px;
@@ -1020,7 +1020,7 @@ blockquote {
 	}
 	
 	.whosonfirst-header-background-image {
-		clip-path: polygon(100% 0%, 100% 92%, 85% 82%, 53% 82%, 30% 65%, 18% 45%, 0% 22%, 0% 0%);;
+		clip-path: polygon(100% 0%, 100% 92%, 85% 82%, 53% 82%, 30% 65%, 18% 43%, 0% 32%, 0% 0%);;
 	}
 
 	.whosonfirst-header-image-container .whosonfirst-main-headline {
@@ -1312,7 +1312,7 @@ blockquote {
 	}
 	
 	.whosonfirst-header-background-image {
-		clip-path: polygon(100% 0%, 100% 92%, 85% 82%, 53% 82%, 33% 70%, 15% 33%, 0% 20%, 0% 0%);;
+		clip-path: polygon(100% 0%, 100% 92%, 85% 82%, 53% 82%, 33% 70%, 15% 42%, 0% 33%, 0% 0%);;
 	}
 
 	.whosonfirst-header-image-container .whosonfirst-main-headline {

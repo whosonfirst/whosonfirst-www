@@ -271,20 +271,21 @@ h2, h3, h4, h5, .h2, .h3, .h4, .h5 {
 }
 
 h2 {
-	font-size: 22px;
+	font-size: 24px;
 	margin-top: 24px;
+	margin-bottom: 12px;
 }
 
 h3 {
-	font-size: 18px;
+	font-size: 20px;
 }
 
 h4 {
-	font-size: 16px;
+	font-size: 17px;
 }
 
 h5 {
-	font-size: 22px;
+	font-size: 24px;
 }
 
 .whosonfirst-main-headline {
@@ -480,6 +481,10 @@ p {
 	word-break: normal;
 }
 
+p + ul, p + ol {
+	margin-top: -6px;
+}
+
 /* Side Navigation Bar Styling */
 
 .whosonfirst-sidenav-container {
@@ -487,6 +492,7 @@ p {
 	margin-right: 12px;
 	position: fixed;
 	width: 250.5px;
+	padding-right: 6px;
 }
 
 .whosonfirst-sidenav-list {
@@ -649,6 +655,7 @@ code {
 	padding: 0px 0px 1px 8px;
 	margin: 0px 4px 0px 0px;
 	border-radius: 2px;
+	word-break: inherit;
 }
 
 pre {
@@ -664,6 +671,10 @@ pre {
     margin: 12px 0px;
 	white-space:pre-wrap;
 	line-height: 1.4;
+}
+
+code:only-child {
+	padding: 0px 8px 1px 8px;
 }
 
 /* List Styling */
@@ -711,7 +722,6 @@ ol, .whosonfirst-content-list {
 ol, ul {
 	margin-bottom: 12px;
 }
-
 
 /* Links Styling */
 
@@ -794,6 +804,19 @@ blockquote {
 .whosonfirst-image-box {
 	border-radius: 4px;
 	margin: 12px 0px;
+}
+
+b, strong {
+	font-weight: 400;
+}
+
+.whosonfirst-fixed-subpage-navbar {
+	top: 0;
+	position: fixed;
+	right: 0;
+	left: 0;
+	z-index: 1030;
+	background-color: #FFFFFF;
 }
 
 @media (max-width: 1200px) {	
@@ -893,21 +916,7 @@ blockquote {
 	}
 		
 	h1 {
-		font-size: 72px;
-		line-height: 72px;
 		padding-top: 19px;
-	}
-
-	h2 {
-		font-size: 20px;
-	}
-
-	h3 {
-		font-size: 18px;
-	}
-
-	h4 {
-		font-size: 16px;
 	}
 
 	.whosonfirst-card-subheader {
@@ -971,6 +980,7 @@ blockquote {
 		width: 240px;
 	}
 	
+	/* Don't Need This Anymore, On Biggest Screen Size */
 	.whosonfirst-fixed-subpage-navbar {
 		top: 0;
 		position: fixed;
@@ -1079,7 +1089,7 @@ blockquote {
 	h1 {
 		font-size: 60px;
 		line-height: 60px;
-		padding-top: 18px;
+		padding-top: 17px;
 	}
 	
 	.whosonfirst-card-headers {
@@ -1088,15 +1098,21 @@ blockquote {
 	}
 
 	h2 {
-		font-size: 20px;
+		font-size: 21px;
+		margin-top: 18px;
+		margin-bottom: 9px;
 	}
 
 	h3 {
-		font-size: 17px;
+		font-size: 18px;
+		margin-top: 12px;
+		margin-bottom: 6px;
 	}
 
 	h4 {
 		font-size: 15px;
+		margin-top: 12px;
+		margin-bottom: 6px;
 	}
 	
 	p {
@@ -1216,6 +1232,10 @@ blockquote {
 	code {
 		font-size: 13px;
 		padding: 0px 0px 0px 8px;
+	}
+	
+	code:only-child {
+		padding: 0px 8px 0px 8px;
 	}
 	
 	.whosonfirst-fulltabs-container ul li, .whosonfirst-fulltabs-container ol li {
