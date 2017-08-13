@@ -620,11 +620,12 @@ article div.whosonfirst-fulltabs-container ul li a {
 
 .whosonfirst-extrasmall-tab-selection {
 	font-family: "Poppins", Helvetica, Arial, sans-serif;
-	font-size: 17px;
+	font-size: 24px;
 	font-weight: 300;
 	line-height: 1.2;
 	display: inline;
 	padding: 0px 4px;
+	word-break: inherit;
 }
 
 .whosonfirst-extrasmall-tab-selection:hover {
@@ -650,10 +651,12 @@ article div.whosonfirst-fulltabs-container ul li a {
 .whosonfirst-extrasmall-menu-chevron-down {
 	margin: 0;
 	padding: 0;
+	line-height: initial;
 }
 
 .whosonfirst-extrasmall-menu-actual-chevron-down {
 	font-size: 16px;
+	vertical-align: middle;
 }
 
 .whosonfirst-extrasmall-tabs-menu {
@@ -1410,8 +1413,10 @@ b, strong {
 		font-size: 15px;
 	}
 	
+	/* Maybe change this back, turn display back on */
 	.whosonfirst-subpage-header {
 		padding-left: 0px;
+		display: none;
 	}
 	
 	.whosonfirst-main-headline {
@@ -1628,6 +1633,7 @@ b, strong {
 	.whosonfirst-fulltabs-container {
 		border: 2px solid #F5F5F5;
 		border-radius: 6px;
+		margin-top: 18px;
 	}
 	
 	.whosonfirst-emphasis, .whosonfirst-nonbullet-list-item {
