@@ -270,9 +270,12 @@ v2-documents-properties-addr:
 	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/addr.md | pup -i 0 'article.markdown-body :not(h1)' > www/v2/docs/properties/temp-content2.html
 	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/v2/docs/properties/temp-content1.html
 	cat www/v2/components/head/head.html www/v2/components/navbar/docs-navbar.html www/v2/components/subnav/docs/properties/subnav-top.html www/v2/docs/properties/temp-content1.html www/v2/components/subnav/docs/properties/subnav-bottom.html  www/v2/docs/properties/temp-content2.html www/v2/components/footer/footer.html > www/v2/docs/properties/addr.html
+	sed -i -e 's/whosonfirst\-sidenav\-link\"\>addr/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>addr/' www/v2/docs/properties/addr.html
+	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>addr/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>addr/' www/v2/docs/properties/addr.html
 	rm www/v2/docs/properties/temp-content1.html
 	rm www/v2/docs/properties/temp-content2.html
 	rm www/v2/docs/properties/temp-content1.html-e
+	rm www/v2/docs/properties/addr.html-e
 	
 v2-documents-properties-edtf:
 	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/edtf.md | pup -i 0 'article.markdown-body h1' > www/v2/docs/properties/temp-content1.html
@@ -282,6 +285,9 @@ v2-documents-properties-edtf:
 	rm www/v2/docs/properties/temp-content1.html
 	rm www/v2/docs/properties/temp-content2.html
 	rm www/v2/docs/properties/temp-content1.html-e
+	sed -i -e 's/whosonfirst\-sidenav\-link\"\>edtf/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>edtf/' www/v2/docs/properties/edtf.html
+	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>edtf/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>edtf/' www/v2/docs/properties/edtf.html
+	rm www/v2/docs/properties/edtf.html-e
 
 v2-documents-properties-geom:
 	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/geom.md | pup -i 0 'article.markdown-body h1' > www/v2/docs/properties/temp-content1.html
@@ -291,6 +297,9 @@ v2-documents-properties-geom:
 	rm www/v2/docs/properties/temp-content1.html
 	rm www/v2/docs/properties/temp-content2.html
 	rm www/v2/docs/properties/temp-content1.html-e
+	sed -i -e 's/whosonfirst\-sidenav\-link\"\>geom/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>geom/' www/v2/docs/properties/geom.html
+	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>geom/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>geom/' www/v2/docs/properties/geom.html
+	rm www/v2/docs/properties/geom.html-e
 	
 v2-documents-properties-lbl:
 	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/lbl.md | pup -i 0 'article.markdown-body h1' > www/v2/docs/properties/temp-content1.html
@@ -300,6 +309,9 @@ v2-documents-properties-lbl:
 	rm www/v2/docs/properties/temp-content1.html
 	rm www/v2/docs/properties/temp-content2.html
 	rm www/v2/docs/properties/temp-content1.html-e
+	sed -i -e 's/whosonfirst\-sidenav\-link\"\>lb/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>lbl/' www/v2/docs/properties/lbl.html
+	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>lbl/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>lbl/' www/v2/docs/properties/lbl.html
+	rm www/v2/docs/properties/lbl.html-e
 	
 v2-documents-properties-mz:
 	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/mz.md | pup -i 0 'article.markdown-body h1' > www/v2/docs/properties/temp-content1.html
@@ -309,6 +321,9 @@ v2-documents-properties-mz:
 	rm www/v2/docs/properties/temp-content1.html
 	rm www/v2/docs/properties/temp-content2.html
 	rm www/v2/docs/properties/temp-content1.html-e
+	sed -i -e 's/whosonfirst\-sidenav\-link\"\>mz/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>mz/' www/v2/docs/properties/mz.html
+	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>mz/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>mz/' www/v2/docs/properties/mz.html
+	rm www/v2/docs/properties/mz.html-e
 	
 v2-documents-properties-name:
 	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/name.md | pup -i 0 'article.markdown-body h1' > www/v2/docs/properties/temp-content1.html
@@ -318,6 +333,9 @@ v2-documents-properties-name:
 	rm www/v2/docs/properties/temp-content1.html
 	rm www/v2/docs/properties/temp-content2.html
 	rm www/v2/docs/properties/temp-content1.html-e
+	sed -i -e 's/whosonfirst\-sidenav\-link\"\>name\</whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>name\</' www/v2/docs/properties/name.html
+	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>name/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>name/' www/v2/docs/properties/name.html
+	rm www/v2/docs/properties/name.html-e
 	
 v2-documents-properties-resto:
 	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/resto.md | pup -i 0 'article.markdown-body h1' > www/v2/docs/properties/temp-content1.html
@@ -327,6 +345,9 @@ v2-documents-properties-resto:
 	rm www/v2/docs/properties/temp-content1.html
 	rm www/v2/docs/properties/temp-content2.html
 	rm www/v2/docs/properties/temp-content1.html-e
+	sed -i -e 's/whosonfirst\-sidenav\-link\"\>resto/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>resto/' www/v2/docs/properties/resto.html
+	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>resto/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>resto/' www/v2/docs/properties/resto.html
+	rm www/v2/docs/properties/resto.html-e
 	
 v2-documents-properties-reversegeo:
 	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/reversegeo.md | pup -i 0 'article.markdown-body h1' > www/v2/docs/properties/temp-content1.html
@@ -336,6 +357,9 @@ v2-documents-properties-reversegeo:
 	rm www/v2/docs/properties/temp-content1.html
 	rm www/v2/docs/properties/temp-content2.html
 	rm www/v2/docs/properties/temp-content1.html-e
+	sed -i -e 's/whosonfirst\-sidenav\-link\"\>reversegeo/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>reversegeo/' www/v2/docs/properties/reversegeo.html
+	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>reversegeo/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>reversegeo/' www/v2/docs/properties/reversegeo.html
+	rm www/v2/docs/properties/reversegeo.html-e
 	
 v2-documents-properties-src:
 	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/src.md | pup -i 0 'article.markdown-body h1' > www/v2/docs/properties/temp-content1.html
@@ -345,6 +369,10 @@ v2-documents-properties-src:
 	rm www/v2/docs/properties/temp-content1.html
 	rm www/v2/docs/properties/temp-content2.html
 	rm www/v2/docs/properties/temp-content1.html-e
+	sed -i -e 's/whosonfirst\-sidenav\-link\"\>src/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>src/' www/v2/docs/properties/src.html
+	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>src/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>src/' www/v2/docs/properties/src.html
+	rm www/v2/docs/properties/src.html-e
+	
 	
 v2-documents-properties-wof:
 	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/wof.md | pup -i 0 'article.markdown-body h1' > www/v2/docs/properties/temp-content1.html
@@ -354,6 +382,9 @@ v2-documents-properties-wof:
 	rm www/v2/docs/properties/temp-content1.html
 	rm www/v2/docs/properties/temp-content2.html
 	rm www/v2/docs/properties/temp-content1.html-e
+	sed -i -e 's/whosonfirst\-sidenav\-link\"\>wof/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>wof/' www/v2/docs/properties/wof.html
+	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>wof/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>wof/' www/v2/docs/properties/wof.html
+	rm www/v2/docs/properties/wof.html-e
 	
 v2-documents-properties-brooklynintegers:
 	curl -s https://github.com/whosonfirst/whosonfirst-cookbook/blob/master/definition/brooklyn_integers.md| pup -i 0 'article.markdown-body h1' > www/v2/docs/properties/temp-content1.html
@@ -363,6 +394,9 @@ v2-documents-properties-brooklynintegers:
 	rm www/v2/docs/properties/temp-content1.html
 	rm www/v2/docs/properties/temp-content2.html
 	rm www/v2/docs/properties/temp-content1.html-e
+	sed -i -e 's/whosonfirst\-sidenav\-link\"\>brooklynintegers/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>brooklynintegers/' www/v2/docs/properties/brooklynintegers.html
+	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>brooklynintegers/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>src/' www/v2/docs/properties/brooklynintegers.html
+	rm www/v2/docs/properties/brooklynintegers.html-e
 	
 v2-documents-properties: v2-documents-properties-addr v2-documents-properties-edtf v2-documents-properties-geom v2-documents-properties-lbl v2-documents-properties-mz v2-documents-properties-name v2-documents-properties-resto v2-documents-properties-reversegeo v2-documents-properties-src v2-documents-properties-wof v2-documents-properties-brooklynintegers
 
@@ -376,13 +410,17 @@ v2-documents-concordances:
 	rm www/v2/docs/concordances/temp-content1.html-e
 	
 v2-documents-placetypes:
+	curl -s -o www/v2/images/placetypes-latest.png https://raw.githubusercontent.com/whosonfirst/whosonfirst-placetypes/master/images/placetypes-latest.png
 	curl -s https://github.com/whosonfirst/whosonfirst-placetypes/blob/master/README.md | pup -i 0 'article.markdown-body h1' > www/v2/docs/placetypes/temp-content1.html
 	curl -s https://github.com/whosonfirst/whosonfirst-placetypes/blob/master/README.md | pup -i 0 'article.markdown-body :not(h1)' > www/v2/docs/placetypes/temp-content2.html
 	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/v2/docs/placetypes/temp-content1.html
+	sed -i -e 's/\/whosonfirst\/whosonfirst-placetypes\/raw\/master\/images/..\/..\/..\/v2\/images/' 	www/v2/docs/placetypes/temp-content2.html
+	sed -i -e 's/\/whosonfirst\/whosonfirst\-placetypes\/blob\/master\/images/..\/..\/..\/v2\/images/' 	www/v2/docs/placetypes/temp-content2.html 
 	cat www/v2/components/head/head.html www/v2/components/navbar/docs-navbar.html www/v2/components/subnav/docs/placetypes/subnav-top.html www/v2/docs/placetypes/temp-content1.html www/v2/components/subnav/docs/placetypes/subnav-bottom.html  www/v2/docs/placetypes/temp-content2.html www/v2/components/footer/footer.html > www/v2/docs/placetypes/index.html
 	rm www/v2/docs/placetypes/temp-content1.html
 	rm www/v2/docs/placetypes/temp-content2.html
 	rm www/v2/docs/placetypes/temp-content1.html-e
+	rm www/v2/docs/placetypes/temp-content2.html-e
 	
 v2-documents-hierachies-index:
 	cat www/v2/content/docs/hierachies/hierachies.html | pup -i 0 'body h1' > www/v2/docs/hierachies/temp-content1.html
@@ -392,6 +430,9 @@ v2-documents-hierachies-index:
 	rm www/v2/docs/hierachies/temp-content1.html
 	rm www/v2/docs/hierachies/temp-content2.html
 	rm www/v2/docs/hierachies/temp-content1.html-e
+	sed -i -e 's/whosonfirst\-sidenav\-link\"\>hierachies\</whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>hierachies\</' www/v2/docs/hierachies/index.html
+	sed -i -e 's/whosonfirst\-extrasmall\-nav\-link\-collapsed\"\>hierachies/whosonfirst\-extrasmall\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>hierachies/' www/v2/docs/hierachies/index.html
+	rm www/v2/docs/hierachies/index.html-e
 
 v2-documents-hierachies-disputedareas:
 	cat www/v2/content/docs/hierachies/disputedareas.html | pup -i 0 'body h1' > www/v2/docs/hierachies/temp-content1.html
@@ -401,6 +442,9 @@ v2-documents-hierachies-disputedareas:
 	rm www/v2/docs/hierachies/temp-content1.html
 	rm www/v2/docs/hierachies/temp-content2.html
 	rm www/v2/docs/hierachies/temp-content1.html-e
+	sed -i -e 's/whosonfirst\-sidenav\-link\"\>disputed areas\</whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>disputed areas\</' www/v2/docs/hierachies/disputedareas.html
+	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>disputed areas/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>disputed areas/' www/v2/docs/hierachies/disputedareas.html
+	rm www/v2/docs/hierachies/disputedareas.html-e
 
 v2-documents-hierachies-superseded:
 	cat www/v2/content/docs/hierachies/superseded.html | pup -i 0 'body h1' > www/v2/docs/hierachies/temp-content1.html
@@ -410,6 +454,9 @@ v2-documents-hierachies-superseded:
 	rm www/v2/docs/hierachies/temp-content1.html
 	rm www/v2/docs/hierachies/temp-content2.html
 	rm www/v2/docs/hierachies/temp-content1.html-e
+	sed -i -e 's/whosonfirst\-sidenav\-link\-twoliner\"\>supersedes/\whosonfirst\-sidenav\-link\-twoliner whosonfirst\-nav\-active\"\>supersedes/' www/v2/docs/hierachies/superseded.html
+	sed -i -e 's/whosonfirst\-smallnav\-link\-twoliner\"\>supersedes/whosonfirst\-smallnav\-link\-twoliner whosonfirst-nav-active\"\>supersedes/' www/v2/docs/hierachies/superseded.html
+	rm www/v2/docs/hierachies/superseded.html-e
 	
 v2-documents-hierachies: v2-documents-hierachies-index v2-documents-hierachies-disputedareas v2-documents-hierachies-superseded
 
@@ -430,6 +477,9 @@ v2-documents-geometries-index:
 	rm www/v2/docs/geometries/temp-content1.html
 	rm www/v2/docs/geometries/temp-content2.html
 	rm www/v2/docs/geometries/temp-content1.html-e
+	sed -i -e 's/whosonfirst\-sidenav\-link\"\>geometries\</whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>geometries\</' www/v2/docs/geometries/index.html
+	sed -i -e 's/whosonfirst\-extrasmall\-nav\-link\-collapsed\"\>geometries/whosonfirst\-extrasmall\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>geometries/' www/v2/docs/geometries/index.html
+	rm www/v2/docs/geometries/index.html-e
 	
 v2-documents-geometries-altgeometries:
 	curl -s https://github.com/whosonfirst/whosonfirst-cookbook/blob/master/how_to/creating_alt_geometries.md | pup -i 0 'article.markdown-body h1' > www/v2/docs/geometries/temp-content1.html
@@ -439,6 +489,9 @@ v2-documents-geometries-altgeometries:
 	rm www/v2/docs/geometries/temp-content1.html
 	rm www/v2/docs/geometries/temp-content2.html
 	rm www/v2/docs/geometries/temp-content1.html-e
+	sed -i -e 's/whosonfirst\-sidenav\-link\"\>creating/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>creating/' www/v2/docs/geometries/altgeometries.html
+	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>creating/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>creating/' www/v2/docs/geometries/altgeometries.html
+	rm www/v2/docs/geometries/altgeometries.html-e
 	
 v2-documents-geometries: v2-documents-geometries-index v2-documents-geometries-altgeometries
 
@@ -452,13 +505,17 @@ v2-documents-dates:
 	rm www/v2/docs/dates/temp-content1.html-e
 	
 v2-documents-categories:
+	curl -s -o www/v2/images/chicken.jpg https://raw.githubusercontent.com/whosonfirst/whosonfirst-categories/master/chicken.jpg
 	curl -s https://github.com/whosonfirst/whosonfirst-categories/blob/master/README.md | pup -i 0 'article.markdown-body h1' > www/v2/docs/categories/temp-content1.html
 	curl -s https://github.com/whosonfirst/whosonfirst-categories/blob/master/README.md | pup -i 0 'article.markdown-body :not(h1)' > www/v2/docs/categories/temp-content2.html
 	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/v2/docs/categories/temp-content1.html
+	sed -i -e 's/\/whosonfirst\/whosonfirst\-categories\/blob\/master/..\/..\/..\/v2\/images/' 	www/v2/docs/categories/temp-content2.html 
+	sed -i -e 's/\/whosonfirst\/whosonfirst\-categories\/raw\/master/..\/..\/..\/v2\/images/' 	www/v2/docs/categories/temp-content2.html 
 	cat www/v2/components/head/head.html www/v2/components/navbar/docs-navbar.html www/v2/components/subnav/docs/categories/subnav-top.html www/v2/docs/categories/temp-content1.html www/v2/components/subnav/docs/categories/subnav-bottom.html  www/v2/docs/categories/temp-content2.html www/v2/components/footer/footer.html > www/v2/docs/categories/index.html
 	rm www/v2/docs/categories/temp-content1.html
 	rm www/v2/docs/categories/temp-content2.html
 	rm www/v2/docs/categories/temp-content1.html-e
+	rm www/v2/docs/categories/temp-content2.html-e
 	
 v2-documents-sources-index:
 	curl -s https://github.com/whosonfirst/whosonfirst-sources | pup -i 0 'article.markdown-body h1' > www/v2/docs/sources/temp-content1.html
@@ -468,6 +525,10 @@ v2-documents-sources-index:
 	rm www/v2/docs/sources/temp-content1.html
 	rm www/v2/docs/sources/temp-content2.html
 	rm www/v2/docs/sources/temp-content1.html-e
+	sed -i -e 's/whosonfirst\-sidenav\-link\"\>sources\</whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>sources\</' www/v2/docs/sources/index.html
+	sed -i -e 's/whosonfirst\-extrasmall\-nav\-link\-collapsed\"\>sources/whosonfirst\-extrasmall\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>sources/' www/v2/docs/sources/index.html
+	rm www/v2/docs/sources/index.html-e
+	
 	
 v2-documents-sources-source-list:
 	curl -s https://github.com/whosonfirst/whosonfirst-sources/blob/master/sources/README.md | pup -i 0 'article.markdown-body h1' > www/v2/docs/sources/temp-content1.html
@@ -477,6 +538,9 @@ v2-documents-sources-source-list:
 	rm www/v2/docs/sources/temp-content1.html
 	rm www/v2/docs/sources/temp-content2.html
 	rm www/v2/docs/sources/temp-content1.html-e
+	sed -i -e 's/whosonfirst\-sidenav\-link\"\>list/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>list/' www/v2/docs/sources/listofsources.html
+	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>list/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>list/' www/v2/docs/sources/listofsources.html
+	rm www/v2/docs/sources/listofsources.html-e
 	
 v2-documents-sources: v2-documents-sources-index v2-documents-sources-source-list
 
@@ -506,6 +570,9 @@ v2-documents-licensing-datalicenses:
 	rm www/v2/docs/licensing/temp-content1.html
 	rm www/v2/docs/licensing/temp-content2.html
 	rm www/v2/docs/licensing/temp-content1.html-e
+	sed -i -e 's/whosonfirst\-sidenav\-link\-twoliner\"\>acceptable/whosonfirst\-sidenav\-link\-twoliner whosonfirst\-nav\-active\"\>acceptable/' www/v2/docs/licensing/datalicenses.html
+	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>acceptable/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>acceptable/' www/v2/docs/licensing/datalicenses.html
+	rm www/v2/docs/licensing/datalicenses.html-e
 	
 v2-documents-licensing-index:
 	curl -s https://github.com/whosonfirst-data/whosonfirst-data/blob/master/LICENSE.md | pup -i 0 'article.markdown-body h1:first-of-type' > www/v2/docs/licensing/temp-content1.html
@@ -515,6 +582,9 @@ v2-documents-licensing-index:
 	rm www/v2/docs/licensing/temp-content1.html
 	rm www/v2/docs/licensing/temp-content2.html
 	rm www/v2/docs/licensing/temp-content1.html-e
+	sed -i -e 's/whosonfirst\-sidenav\-link\"\>licensing\</whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>licensing\</' www/v2/docs/licensing/index.html
+	sed -i -e 's/whosonfirst\-extrasmall\-nav\-link\-collapsed\"\>licensing/whosonfirst\-extrasmall\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>licensing/' www/v2/docs/licensing/index.html
+	rm www/v2/docs/licensing/index.html-e
 
 v2-documents-licensing: v2-documents-licensing-index v2-documents-licensing-datalicenses
 	
@@ -535,6 +605,9 @@ v2-documents-processes-significantevent:
 	rm www/v2/docs/processes/temp-content1.html
 	rm www/v2/docs/processes/temp-content2.html
 	rm www/v2/docs/processes/temp-content1.html-e
+	sed -i -e 's/whosonfirst\-sidenav\-link\-twoliner\"\>what is a/whosonfirst\-sidenav\-link\-twoliner whosonfirst\-nav\-active\"\>what is a/' www/v2/docs/processes/significantevent.html
+	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>what is a/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>what is a/' www/v2/docs/processes/significantevent.html
+	rm www/v2/docs/processes/significantevent.html-e
 	
 v2-documents-processes-assigningcessation:
 	curl -s https://github.com/whosonfirst/whosonfirst-cookbook/blob/master/definition/deprecated_vs_cessation.md | pup -i 0 'article.markdown-body h1:first-of-type' > www/v2/docs/processes/temp-content1.html
@@ -544,6 +617,9 @@ v2-documents-processes-assigningcessation:
 	rm www/v2/docs/processes/temp-content1.html
 	rm www/v2/docs/processes/temp-content2.html
 	rm www/v2/docs/processes/temp-content1.html-e
+	sed -i -e 's/whosonfirst\-sidenav\-link\-twoliner\"\>assigning/whosonfirst\-sidenav\-link\-twoliner whosonfirst\-nav\-active\"\>assigning/' www/v2/docs/processes/assigningcessation.html
+	sed -i -e 's/whosonfirst\-smallnav\-link\-twoliner\"\>assigning/whosonfirst\-smallnav\-link\-twoliner whosonfirst\-nav\-active\"\>assigning/' www/v2/docs/processes/assigningcessation.html
+	rm www/v2/docs/processes/assigningcessation.html-e
 	
 v2-documents-processes-s3requirements:
 	curl -s https://github.com/whosonfirst/whosonfirst-cookbook/blob/master/how_to/requirements_for_s3.md | pup -i 0 'article.markdown-body h1:first-of-type' > www/v2/docs/processes/temp-content1.html
@@ -553,7 +629,9 @@ v2-documents-processes-s3requirements:
 	rm www/v2/docs/processes/temp-content1.html
 	rm www/v2/docs/processes/temp-content2.html
 	rm www/v2/docs/processes/temp-content1.html-e
-	
+	sed -i -e 's/whosonfirst\-sidenav\-link\-twoliner\"\>what is required/whosonfirst\-sidenav\-link\-twoliner whosonfirst\-nav\-active\"\>what is required/' www/v2/docs/processes/s3requirements.html
+	sed -i -e 's/whosonfirst\-smallnav\-link\-twoliner"\>what is required/whosonfirst\-smallnav\-link\-twoliner whosonfirst\-nav\-active\"\>what is required/' www/v2/docs/processes/s3requirements.html
+	rm www/v2/docs/processes/s3requirements.html-e
 		
 v2-documents-processes-wikipediaconcordances:
 	curl -s https://github.com/whosonfirst/whosonfirst-cookbook/blob/master/issue_workflows/wikipedia_concordances.md | pup -i 0 'article.markdown-body h1:first-of-type' > www/v2/docs/processes/temp-content1.html
@@ -563,6 +641,9 @@ v2-documents-processes-wikipediaconcordances:
 	rm www/v2/docs/processes/temp-content1.html
 	rm www/v2/docs/processes/temp-content2.html
 	rm www/v2/docs/processes/temp-content1.html-e
+	sed -i -e 's/whosonfirst\-sidenav\-link\-twoliner\"\>wikipedia/whosonfirst\-sidenav\-link\-twoliner whosonfirst\-nav\-active\"\>wikipedia/' www/v2/docs/processes/wikipediaconcordances.html
+	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>wikipedia/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>wikipedia/' www/v2/docs/processes/wikipediaconcordances.html
+	rm www/v2/docs/processes/wikipediaconcordances.html-e
 	
 v2-documents-processes-seattleneighborhoodupdates:
 	curl -s https://github.com/whosonfirst/whosonfirst-cookbook/blob/master/issue_workflows/seattle_neighbourhood_updates.md | pup -i 0 'article.markdown-body h1:first-of-type' > www/v2/docs/processes/temp-content1.html
@@ -572,6 +653,9 @@ v2-documents-processes-seattleneighborhoodupdates:
 	rm www/v2/docs/processes/temp-content1.html
 	rm www/v2/docs/processes/temp-content2.html
 	rm www/v2/docs/processes/temp-content1.html-e
+	sed -i -e 's/whosonfirst\-sidenav\-link\-twoliner\"\>seattle/whosonfirst\-sidenav\-link\-twoliner whosonfirst\-nav\-active\"\>seattle/' www/v2/docs/processes/seattleneighborhoodupdates.html
+	sed -i -e 's/whosonfirst\-smallnav\-link\-twoliner\"\>seattle/whosonfirst\-smallnav\-link\-twoliner whosonfirst\-nav\-active\"\>seattle/' www/v2/docs/processes/seattleneighborhoodupdates.html
+	rm www/v2/docs/processes/seattleneighborhoodupdates.html-e
 	
 v2-documents-processes-updatingsanfrancisconeighborhoods:
 	curl -s https://github.com/whosonfirst/whosonfirst-cookbook/blob/master/issue_workflows/sf_neighbourhood_updates_pt_1.md | pup -i 0 'article.markdown-body h1:first-of-type' > www/v2/docs/processes/temp-content1.html
@@ -583,6 +667,10 @@ v2-documents-processes-updatingsanfrancisconeighborhoods:
 	rm www/v2/docs/processes/temp-content2.html
 	rm www/v2/docs/processes/temp-content3.html
 	rm www/v2/docs/processes/temp-content1.html-e
+	sed -i -e 's/whosonfirst\-sidenav\-link\-twoliner\"\>san/whosonfirst\-sidenav\-link\-twoliner whosonfirst\-nav\-active\"\>san/' www/v2/docs/processes/updatingsanfrancisconeighborhoods.html
+	sed -i -e 's/whosonfirst\-smallnav\-link\-twoliner\"\>san/whosonfirst\-smallnav\-link\-twoliner whosonfirst\-nav\-active\"\>san/' www/v2/docs/processes/updatingsanfrancisconeighborhoods.html
+	rm www/v2/docs/processes/updatingsanfrancisconeighborhoods.html-e
+
 	
 v2-documents-processes-woflifecycle:
 	curl -s https://github.com/whosonfirst/whosonfirst-cookbook/blob/master/definition/wof:id_lifecycle.md | pup -i 0 'article.markdown-body h1:first-of-type' > www/v2/docs/processes/temp-content1.html
@@ -592,6 +680,9 @@ v2-documents-processes-woflifecycle:
 	rm www/v2/docs/processes/temp-content1.html
 	rm www/v2/docs/processes/temp-content2.html
 	rm www/v2/docs/processes/temp-content1.html-e
+	sed -i -e 's/whosonfirst\-sidenav\-link\"\>wof/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>wof/' www/v2/docs/processes/woflifecycle.html
+	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>wof/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>wof/' www/v2/docs/processes/woflifecycle.html
+	rm www/v2/docs/processes/woflifecycle.html-e
 	
 v2-documents-processes: v2-documents-processes-significantevent v2-documents-processes-assigningcessation v2-documents-processes-s3requirements v2-documents-processes-wikipediaconcordances v2-documents-processes-seattleneighborhoodupdates v2-documents-processes-updatingsanfrancisconeighborhoods v2-documents-processes-woflifecycle
 
@@ -632,6 +723,9 @@ v2-data-available-index:
 	rm www/v2/data/available/temp-content1.html
 	rm www/v2/data/available/temp-content2.html
 	rm www/v2/data/available/temp-content1.html-e
+	sed -i -e 's/whosonfirst\-sidenav\-link\"\>available/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>available/' www/v2/data/available/index.html
+	sed -i -e 's/whosonfirst\-extrasmall\-nav\-link\-collapsed\"\>available/whosonfirst\-extrasmall\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>available/' www/v2/data/available/index.html
+	rm www/v2/data/available/index.html-e
 	
 v2-data-available-administrative:
 	cat www/v2/content/data/available/administrative.html | pup -i 0 'body h1' > www/v2/data/available/temp-content1.html
@@ -641,6 +735,9 @@ v2-data-available-administrative:
 	rm www/v2/data/available/temp-content1.html
 	rm www/v2/data/available/temp-content2.html
 	rm www/v2/data/available/temp-content1.html-e
+	sed -i -e 's/whosonfirst\-sidenav\-link\"\>administrative/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>administrative/' www/v2/data/available/administrative.html
+	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>administrative/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>administrative/' www/v2/data/available/administrative.html
+	rm www/v2/data/available/administrative.html-e
 	
 v2-data-available-venue:
 	cat www/v2/content/data/available/venue.html | pup -i 0 'body h1' > www/v2/data/available/temp-content1.html
@@ -650,6 +747,9 @@ v2-data-available-venue:
 	rm www/v2/data/available/temp-content1.html
 	rm www/v2/data/available/temp-content2.html
 	rm www/v2/data/available/temp-content1.html-e
+	sed -i -e 's/whosonfirst\-sidenav\-link\"\>venue/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>venue/' www/v2/data/available/venue.html
+	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>venue/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>venue/' www/v2/data/available/venue.html
+	rm www/v2/data/available/venue.html-e
 	
 v2-data-available-other:
 	cat www/v2/content/data/available/other.html | pup -i 0 'body h1' > www/v2/data/available/temp-content1.html
@@ -659,6 +759,9 @@ v2-data-available-other:
 	rm www/v2/data/available/temp-content1.html
 	rm www/v2/data/available/temp-content2.html
 	rm www/v2/data/available/temp-content1.html-e
+	sed -i -e 's/whosonfirst\-sidenav\-link\"\>other/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>other/' www/v2/data/available/other.html
+	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>other/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>other/' www/v2/data/available/other.html
+	rm www/v2/data/available/other.html-e
 	
 v2-data-available: v2-data-available-index v2-data-available-administrative v2-data-available-venue v2-data-available-other
 
@@ -679,6 +782,9 @@ v2-data-github-index:
 	rm www/v2/data/github/temp-content1.html
 	rm www/v2/data/github/temp-content2.html
 	rm www/v2/data/github/temp-content1.html-e
+	sed -i -e 's/whosonfirst\-sidenav\-link\"\>github\</whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>github\</' www/v2/data/github/index.html
+	sed -i -e 's/whosonfirst\-extrasmall\-nav\-link\-collapsed\"\>github/whosonfirst\-extrasmall\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>github/' www/v2/data/github/index.html
+	rm www/v2/data/github/index.html-e
 	
 v2-data-github-largefiles:
 	cat www/v2/content/data/github/gitlargefiles.html | pup -i 0 'body h1' > www/v2/data/github/temp-content1.html
@@ -688,6 +794,9 @@ v2-data-github-largefiles:
 	rm www/v2/data/github/temp-content1.html
 	rm www/v2/data/github/temp-content2.html
 	rm www/v2/data/github/temp-content1.html-e
+	sed -i -e 's/whosonfirst\-sidenav\-link\"\>git and/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>git and/' www/v2/data/github/gitlargefiles.html
+	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>git and/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>git and/' www/v2/data/github/gitlargefiles.html
+	rm www/v2/data/github/gitlargefiles.html-e
 	
 v2-data-github-reponaming:
 	cat www/v2/content/data/github/reponaming.html | pup -i 0 'body h1' > www/v2/data/github/temp-content1.html
@@ -697,6 +806,9 @@ v2-data-github-reponaming:
 	rm www/v2/data/github/temp-content1.html
 	rm www/v2/data/github/temp-content2.html
 	rm www/v2/data/github/temp-content1.html-e
+	sed -i -e 's/whosonfirst\-sidenav\-link\-twoliner\"\>repo/whosonfirst\-sidenav\-link\-twoliner whosonfirst\-nav\-active\"\>repo/' www/v2/data/github/reponaming.html
+	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>repo/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>repo/' www/v2/data/github/reponaming.html
+	rm www/v2/data/github/reponaming.html-e
 	
 v2-data-github: v2-data-github-index v2-data-github-largefiles v2-data-github-reponaming
 
