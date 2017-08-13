@@ -12,54 +12,98 @@
         <link rel='manifest' href='https://mapzen.com/common/styleguide/images/favicons/manifest.json'>
         <link rel='mask-icon' href='https://mapzen.com/common/styleguide/images/favicons/safari-pinned-tab.svg' color='#2C1E3F'>
         
-        
         <link rel="stylesheet" href="https://mapzen.com/js/mapzen.css">
         <link rel="stylesheet" href="css/mapzen-whosonfirstindexrevised3.css">
         <script src="https://mapzen.com/js/mapzen.min.js"></script>
 		<link rel="stylesheet" href="css/bootstrap.min.css">
-		
-        
     </head>
     <body class="project" onload="runWhosOnFirstAPI()" style="margin-top: 0px">
         <div class='section-nav' id='project-nav' role='navigation' aria-label='project-name'>
         </div>
         <section class='demo-container js-section-navigable' id='demo' data-section-name='Demo' data-section-nav-collapse='false' style="height:100%">
             <div class='project-demo'>
-                <div id="map"></div>
+                <div id="map">
+				</div>
+				<div class="whosonfirst-tutorial-container">
+				</div>
 				<div class="row">
-					<div class="col-lg-6">
-					</div><!-- /.col-lg-6 -->
-					<div class="col-lg-3">
-						<div class="input-group">
-							<input type="text" class="form-control" placeholder="Search for...">
-							<span class="input-group-btn">
-								<button class="btn btn-default" type="button">Go!</button>
-							</span>
-						</div><!-- /input-group -->
-					</div><!-- /.col-lg-6 -->
-					<div class="col-lg-3">
-						<div class="whosonfirst-results-container">
-							<div class="whosonfirst-result">
-								This is some example text of what could appear
+					<div class="col-lg-3 col-md-3 col-sm-3">
+						<div class="whosonfirst-input-container">
+							<div class="whosonfirst-inputtop-box-container">
+								<div class="input-group">
+									<input type="text" class="form-control whosonfirst-form" placeholder="Search for...">
+									<span class="input-group-btn">
+										<button class="btn btn-default" type="button">Go!</button>
+									</span>
+								</div><!-- /input-group -->
+								<div class="circle-one">
+								</div>
+								<div class="circle-one">
+								</div>
+								<div class="circle-one">
+								</div>
+							</div>
+							<div class="whosonfirst-inputbottom-box-container">
+								<h2 class="whosonfirst-result-header zero-margin">Results</h2>
+								<div class="input-group">
+									<input type="text" class="form-control whosonfirst-form" placeholder="Search for...">
+									<span class="input-group-btn">
+										<button class="btn btn-default" type="button">Go!</button>
+									</span>
+								</div><!-- /input-group -->
+								<div class="input-group">
+									<input type="text" class="form-control whosonfirst-form" placeholder="Search for...">
+									<span class="input-group-btn">
+										<button class="btn btn-default" type="button">Go!</button>
+									</span>
+								</div><!-- /input-group -->
 							</div>
 						</div>
-					</div>
-				</div><!-- /.row -->
-				<div class="row">
-					<div class="col-lg-3">
-						<div class="circle-one">
-						</div>
 					</div><!-- /.col-lg-6 -->
-					<div class="col-lg-3">
+					<div class="col-lg-6 col-md-6 col-sm-6">
 					</div><!-- /.col-lg-6 -->
-					<div class="col-lg-3">
+					<div class="col-lg-3 col-md-3 col-sm-3">
 						<div class="whosonfirst-results-container">
-							<div class="whosonfirst-result">
-								This is some example text of what could appear
+							<div class="row whosonfirst-result-subrow">
+								<h2 class="whosonfirst-result-header">Results</h2>
+								<div class="whosonfirst-result-box-container">
+									<div class="whosonfirst-result">
+										<h3 class="whosonfirst-result-result-header">San Sebastian</h3>
+										<p class="whosonfirst-result-result-header">Example Text</p>
+										<p class="whosonfirst-result-result-header">Example Text</p>
+										<p class="whosonfirst-result-result-header">Example Text</p>
+									</div>
+									<div class="whosonfirst-result">
+									</div>
+									<div class="whosonfirst-result">
+									</div>
+									<div class="whosonfirst-result">
+									</div>
+									<div class="whosonfirst-result">
+									</div>
+									<div class="whosonfirst-result">
+									</div>
+									<div class="whosonfirst-result">
+									</div>
+									<div class="whosonfirst-result">
+									</div>
+									<div class="whosonfirst-result">
+									</div>
+									<div class="whosonfirst-result">
+									</div>
+									<div class="whosonfirst-result">
+									</div>
+									<div class="whosonfirst-result">
+									</div>
+								</div>
+							</div>
+							<div class="row whosonfirst-result-subrow">
+								<h2 class="whosonfirst-result-header">API Query</h2>
+								<div class="whosonfirst-result">
+									<p class="whosonfirst-result-result-header">Example Text Exmaple Test Test Test test test test.</p>
+								</div>
 							</div>
 						</div>
-					</div><!-- /.col-lg-6 -->
-					<div class="col-lg-3">
 					</div>
 				</div><!-- /.row -->
             </div>
