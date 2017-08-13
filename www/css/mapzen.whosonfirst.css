@@ -158,6 +158,11 @@ body {
 
 .whosonfirst-card-shadow {
 	box-shadow: 0px 0px 8px 0px rgba(0,0,12,.12), 0px 4px 8px 0px rgba(0,0,12,.12);
+	transition: box-shadow .7s ease-in-out;
+}
+
+.whosonfirst-card-shadow:hover {
+    box-shadow: 0px 0px 8px 0px rgba(0,0,12,.18), 0px 6px 8px 0px rgba(0,0,12,.18);
 }
 
 /* Nav Links */
