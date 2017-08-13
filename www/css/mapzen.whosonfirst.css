@@ -717,12 +717,22 @@ article div.whosonfirst-fulltabs-container ul li a {
 .whosonfirst-extrasmall-menu-chevron-down {
 	margin: 0;
 	padding: 0;
-	line-height: initial;
+	line-height: normal;
+	margin-top: -6px;
+}
+
+.whosonfirst-extrasmall-menu-chevron-col {
+	display: inline-flex;
+	padding: 0px 5px 0px 0px;
+}
+
+.whosonfirst-extrasmall-menu-row {
+	display: flex;
 }
 
 .whosonfirst-extrasmall-menu-actual-chevron-down {
-	font-size: 16px;
-	vertical-align: middle;
+	font-size: 20px;
+	vertical-align: -webkit-baseline-middle;
 }
 
 .whosonfirst-extrasmall-tabs-menu {
@@ -962,6 +972,17 @@ a.whosonfirst-dark-gradient:hover > div > .whosonfirst-card-highlight-theory {
 
 a.whosonfirst-dark-gradient:hover > div > .whosonfirst-card-highlight-state {
 	width: 200px;
+}
+
+.arrow-down {
+	border: solid black;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 6px;
+	transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+	float: right;
+	margin: 6px 6px 0px 0px;
 }
 
 @media (max-width: 1200px) {	

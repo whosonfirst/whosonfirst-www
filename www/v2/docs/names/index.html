@@ -112,11 +112,17 @@ whosonfirst-names
 <div class="whosonfirst-fulltabs-container">
 	<div class="whosonfirst-extrasmall-tabs-menu">
 		<div class="whosonfirst-extrasmall-tabs-menu-content">
-				<div class="whosonfirst-extrasmall-tabs-menu-content-header">
-				<a class="whosonfirst-extrasmall-tab-selection" href="">get started</a>
-				<button type="button" class="navbar-toggle collapsed whosonfirst-extrasmall-menu-chevron-down" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2" aria-expanded="false">
-					<span id="glyphicon-one" class="glyphicon glyphicon-chevron-down whosonfirst-extrasmall-menu-actual-chevron-down"></span>
-				</button>
+			<div class="whosonfirst-extrasmall-tabs-menu-content-header">
+				<div class="row whosonfirst-extrasmall-menu-row">
+					<div class="col-xs-11">
+						<div class="whosonfirst-extrasmall-tab-selection">Names</div>
+					</div>
+					<div class="col-xs-1 whosonfirst-extrasmall-menu-chevron-col">
+						<button type="button" class="navbar-toggle collapsed whosonfirst-extrasmall-menu-chevron-down" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2" aria-expanded="false">
+							<span id="glyphicon-one" class="glyphicon glyphicon-menu-down whosonfirst-extrasmall-menu-actual-chevron-down"></span>
+						</button>
+					</div>
+				</div>
 			</div>
 			<div class="collapse" id="bs-example-navbar-collapse-2">
 				<div class="whosonfirst-extrasmall-nav-collection">
@@ -588,12 +594,12 @@ https://github.com/whosonfirst/whosonfirst-docs
 				console.log(123123123);
 				$("#bs-example-navbar-collapse-2").on("show.bs.collapse", function(){
 					console.log("In here");
-					document.getElementById("glyphicon-one").classList.add("glyphicon-chevron-up");
-					document.getElementById("glyphicon-one").classList.remove("glyphicon-chevron-down");
+					document.getElementById("glyphicon-one").classList.add("glyphicon-menu-up");
+					document.getElementById("glyphicon-one").classList.remove("glyphicon-menu-down");
 				});
 				$("#bs-example-navbar-collapse-2").on("hide.bs.collapse", function(){
-					document.getElementById("glyphicon-one").classList.add("glyphicon-chevron-down");
-					document.getElementById("glyphicon-one").classList.remove("glyphicon-chevron-up");
+					document.getElementById("glyphicon-one").classList.add("glyphicon-menu-down");
+					document.getElementById("glyphicon-one").classList.remove("glyphicon-menu-up");
 				});
 			});
 		</script>
