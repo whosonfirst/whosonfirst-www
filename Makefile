@@ -275,6 +275,7 @@ v2-documents-properties-addr:
 	rm www/v2/docs/properties/temp-content1.html
 	rm www/v2/docs/properties/temp-content2.html
 	rm www/v2/docs/properties/temp-content1.html-e
+	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Properties\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Addr\<\/div\>/' www/v2/docs/properties/addr.html
 	rm www/v2/docs/properties/addr.html-e
 	
 v2-documents-properties-edtf:
@@ -287,6 +288,7 @@ v2-documents-properties-edtf:
 	rm www/v2/docs/properties/temp-content1.html-e
 	sed -i -e 's/whosonfirst\-sidenav\-link\"\>edtf/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>edtf/' www/v2/docs/properties/edtf.html
 	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>edtf/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>edtf/' www/v2/docs/properties/edtf.html
+	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Properties\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Edtf\<\/div\>/' www/v2/docs/properties/edtf.html
 	rm www/v2/docs/properties/edtf.html-e
 
 v2-documents-properties-geom:
@@ -299,6 +301,7 @@ v2-documents-properties-geom:
 	rm www/v2/docs/properties/temp-content1.html-e
 	sed -i -e 's/whosonfirst\-sidenav\-link\"\>geom/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>geom/' www/v2/docs/properties/geom.html
 	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>geom/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>geom/' www/v2/docs/properties/geom.html
+	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Properties\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Geom\<\/div\>/' www/v2/docs/properties/geom.html
 	rm www/v2/docs/properties/geom.html-e
 	
 v2-documents-properties-lbl:
@@ -311,6 +314,7 @@ v2-documents-properties-lbl:
 	rm www/v2/docs/properties/temp-content1.html-e
 	sed -i -e 's/whosonfirst\-sidenav\-link\"\>lb/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>lbl/' www/v2/docs/properties/lbl.html
 	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>lbl/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>lbl/' www/v2/docs/properties/lbl.html
+	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Properties\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Lbl\<\/div\>/' www/v2/docs/properties/lbl.html
 	rm www/v2/docs/properties/lbl.html-e
 	
 v2-documents-properties-mz:
@@ -323,6 +327,7 @@ v2-documents-properties-mz:
 	rm www/v2/docs/properties/temp-content1.html-e
 	sed -i -e 's/whosonfirst\-sidenav\-link\"\>mz/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>mz/' www/v2/docs/properties/mz.html
 	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>mz/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>mz/' www/v2/docs/properties/mz.html
+	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Properties\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Mz\<\/div\>/' www/v2/docs/properties/mz.html
 	rm www/v2/docs/properties/mz.html-e
 	
 v2-documents-properties-name:
@@ -335,6 +340,7 @@ v2-documents-properties-name:
 	rm www/v2/docs/properties/temp-content1.html-e
 	sed -i -e 's/whosonfirst\-sidenav\-link\"\>name\</whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>name\</' www/v2/docs/properties/name.html
 	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>name/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>name/' www/v2/docs/properties/name.html
+	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Properties\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Name\<\/div\>/' www/v2/docs/properties/name.html
 	rm www/v2/docs/properties/name.html-e
 	
 v2-documents-properties-resto:
@@ -347,6 +353,7 @@ v2-documents-properties-resto:
 	rm www/v2/docs/properties/temp-content1.html-e
 	sed -i -e 's/whosonfirst\-sidenav\-link\"\>resto/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>resto/' www/v2/docs/properties/resto.html
 	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>resto/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>resto/' www/v2/docs/properties/resto.html
+	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Properties\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Resto\<\/div\>/' www/v2/docs/properties/resto.html
 	rm www/v2/docs/properties/resto.html-e
 	
 v2-documents-properties-reversegeo:
@@ -359,6 +366,7 @@ v2-documents-properties-reversegeo:
 	rm www/v2/docs/properties/temp-content1.html-e
 	sed -i -e 's/whosonfirst\-sidenav\-link\"\>reversegeo/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>reversegeo/' www/v2/docs/properties/reversegeo.html
 	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>reversegeo/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>reversegeo/' www/v2/docs/properties/reversegeo.html
+	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Properties\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Reverse Geo\<\/div\>/' www/v2/docs/properties/reversegeo.html
 	rm www/v2/docs/properties/reversegeo.html-e
 	
 v2-documents-properties-src:
@@ -371,6 +379,7 @@ v2-documents-properties-src:
 	rm www/v2/docs/properties/temp-content1.html-e
 	sed -i -e 's/whosonfirst\-sidenav\-link\"\>src/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>src/' www/v2/docs/properties/src.html
 	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>src/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>src/' www/v2/docs/properties/src.html
+	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Properties\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Src\<\/div\>/' www/v2/docs/properties/src.html
 	rm www/v2/docs/properties/src.html-e
 	
 	
@@ -384,6 +393,7 @@ v2-documents-properties-wof:
 	rm www/v2/docs/properties/temp-content1.html-e
 	sed -i -e 's/whosonfirst\-sidenav\-link\"\>wof/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>wof/' www/v2/docs/properties/wof.html
 	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>wof/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>wof/' www/v2/docs/properties/wof.html
+	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Properties\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Wof\<\/div\>/' www/v2/docs/properties/wof.html
 	rm www/v2/docs/properties/wof.html-e
 	
 v2-documents-properties-brooklynintegers:
@@ -396,6 +406,7 @@ v2-documents-properties-brooklynintegers:
 	rm www/v2/docs/properties/temp-content1.html-e
 	sed -i -e 's/whosonfirst\-sidenav\-link\"\>brooklynintegers/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>brooklynintegers/' www/v2/docs/properties/brooklynintegers.html
 	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>brooklynintegers/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>src/' www/v2/docs/properties/brooklynintegers.html
+	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Properties\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Brooklyn Integers\<\/div\>/' www/v2/docs/properties/brooklynintegers.html
 	rm www/v2/docs/properties/brooklynintegers.html-e
 	
 v2-documents-properties: v2-documents-properties-addr v2-documents-properties-edtf v2-documents-properties-geom v2-documents-properties-lbl v2-documents-properties-mz v2-documents-properties-name v2-documents-properties-resto v2-documents-properties-reversegeo v2-documents-properties-src v2-documents-properties-wof v2-documents-properties-brooklynintegers
@@ -444,6 +455,7 @@ v2-documents-hierachies-disputedareas:
 	rm www/v2/docs/hierachies/temp-content1.html-e
 	sed -i -e 's/whosonfirst\-sidenav\-link\"\>disputed areas\</whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>disputed areas\</' www/v2/docs/hierachies/disputedareas.html
 	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>disputed areas/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>disputed areas/' www/v2/docs/hierachies/disputedareas.html
+	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Hierachies\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Disputed Areas\<\/div\>/' www/v2/docs/hierachies/disputedareas.html
 	rm www/v2/docs/hierachies/disputedareas.html-e
 
 v2-documents-hierachies-superseded:
@@ -456,6 +468,7 @@ v2-documents-hierachies-superseded:
 	rm www/v2/docs/hierachies/temp-content1.html-e
 	sed -i -e 's/whosonfirst\-sidenav\-link\-twoliner\"\>supersedes/\whosonfirst\-sidenav\-link\-twoliner whosonfirst\-nav\-active\"\>supersedes/' www/v2/docs/hierachies/superseded.html
 	sed -i -e 's/whosonfirst\-smallnav\-link\-twoliner\"\>supersedes/whosonfirst\-smallnav\-link\-twoliner whosonfirst-nav-active\"\>supersedes/' www/v2/docs/hierachies/superseded.html
+	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Hierachies\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Supersedes \/ Superseded By\<\/div\>/' www/v2/docs/hierachies/superseded.html
 	rm www/v2/docs/hierachies/superseded.html-e
 	
 v2-documents-hierachies: v2-documents-hierachies-index v2-documents-hierachies-disputedareas v2-documents-hierachies-superseded
@@ -491,6 +504,7 @@ v2-documents-geometries-altgeometries:
 	rm www/v2/docs/geometries/temp-content1.html-e
 	sed -i -e 's/whosonfirst\-sidenav\-link\"\>creating/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>creating/' www/v2/docs/geometries/altgeometries.html
 	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>creating/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>creating/' www/v2/docs/geometries/altgeometries.html
+	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Geometries\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Creating Alt Geometries\<\/div\>/' www/v2/docs/geometries/altgeometries.html
 	rm www/v2/docs/geometries/altgeometries.html-e
 	
 v2-documents-geometries: v2-documents-geometries-index v2-documents-geometries-altgeometries
@@ -540,6 +554,7 @@ v2-documents-sources-source-list:
 	rm www/v2/docs/sources/temp-content1.html-e
 	sed -i -e 's/whosonfirst\-sidenav\-link\"\>list/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>list/' www/v2/docs/sources/listofsources.html
 	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>list/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>list/' www/v2/docs/sources/listofsources.html
+	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Sources\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>List of Sources\<\/div\>/' www/v2/docs/sources/listofsources.html
 	rm www/v2/docs/sources/listofsources.html-e
 	
 v2-documents-sources: v2-documents-sources-index v2-documents-sources-source-list
@@ -572,6 +587,7 @@ v2-documents-licensing-datalicenses:
 	rm www/v2/docs/licensing/temp-content1.html-e
 	sed -i -e 's/whosonfirst\-sidenav\-link\-twoliner\"\>acceptable/whosonfirst\-sidenav\-link\-twoliner whosonfirst\-nav\-active\"\>acceptable/' www/v2/docs/licensing/datalicenses.html
 	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>acceptable/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>acceptable/' www/v2/docs/licensing/datalicenses.html
+	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Licensing\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Acceptable Data Licenses\<\/div\>/' www/v2/docs/licensing/datalicenses.html
 	rm www/v2/docs/licensing/datalicenses.html-e
 	
 v2-documents-licensing-index:
@@ -607,6 +623,7 @@ v2-documents-processes-significantevent:
 	rm www/v2/docs/processes/temp-content1.html-e
 	sed -i -e 's/whosonfirst\-sidenav\-link\-twoliner\"\>what is a/whosonfirst\-sidenav\-link\-twoliner whosonfirst\-nav\-active\"\>what is a/' www/v2/docs/processes/significantevent.html
 	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>what is a/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>what is a/' www/v2/docs/processes/significantevent.html
+	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Processes and Workflows\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>What is a Significant Event\<\/div\>/' www/v2/docs/processes/significantevent.html
 	rm www/v2/docs/processes/significantevent.html-e
 	
 v2-documents-processes-assigningcessation:
@@ -619,6 +636,7 @@ v2-documents-processes-assigningcessation:
 	rm www/v2/docs/processes/temp-content1.html-e
 	sed -i -e 's/whosonfirst\-sidenav\-link\-twoliner\"\>assigning/whosonfirst\-sidenav\-link\-twoliner whosonfirst\-nav\-active\"\>assigning/' www/v2/docs/processes/assigningcessation.html
 	sed -i -e 's/whosonfirst\-smallnav\-link\-twoliner\"\>assigning/whosonfirst\-smallnav\-link\-twoliner whosonfirst\-nav\-active\"\>assigning/' www/v2/docs/processes/assigningcessation.html
+	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Processes and Workflows\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Assigning Cessation and Deprecated Dates\<\/div\>/' www/v2/docs/processes/assigningcessation.html
 	rm www/v2/docs/processes/assigningcessation.html-e
 	
 v2-documents-processes-s3requirements:
@@ -631,6 +649,7 @@ v2-documents-processes-s3requirements:
 	rm www/v2/docs/processes/temp-content1.html-e
 	sed -i -e 's/whosonfirst\-sidenav\-link\-twoliner\"\>what is required/whosonfirst\-sidenav\-link\-twoliner whosonfirst\-nav\-active\"\>what is required/' www/v2/docs/processes/s3requirements.html
 	sed -i -e 's/whosonfirst\-smallnav\-link\-twoliner"\>what is required/whosonfirst\-smallnav\-link\-twoliner whosonfirst\-nav\-active\"\>what is required/' www/v2/docs/processes/s3requirements.html
+	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Processes and Workflows\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>What is Required for S3 Import Files\<\/div\>/' www/v2/docs/processes/s3requirements.html
 	rm www/v2/docs/processes/s3requirements.html-e
 		
 v2-documents-processes-wikipediaconcordances:
@@ -643,6 +662,7 @@ v2-documents-processes-wikipediaconcordances:
 	rm www/v2/docs/processes/temp-content1.html-e
 	sed -i -e 's/whosonfirst\-sidenav\-link\-twoliner\"\>wikipedia/whosonfirst\-sidenav\-link\-twoliner whosonfirst\-nav\-active\"\>wikipedia/' www/v2/docs/processes/wikipediaconcordances.html
 	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>wikipedia/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>wikipedia/' www/v2/docs/processes/wikipediaconcordances.html
+	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Processes and Workflows\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Wikipedia Concordances\<\/div\>/' www/v2/docs/processes/wikipediaconcordances.html
 	rm www/v2/docs/processes/wikipediaconcordances.html-e
 	
 v2-documents-processes-seattleneighborhoodupdates:
@@ -655,6 +675,7 @@ v2-documents-processes-seattleneighborhoodupdates:
 	rm www/v2/docs/processes/temp-content1.html-e
 	sed -i -e 's/whosonfirst\-sidenav\-link\-twoliner\"\>seattle/whosonfirst\-sidenav\-link\-twoliner whosonfirst\-nav\-active\"\>seattle/' www/v2/docs/processes/seattleneighborhoodupdates.html
 	sed -i -e 's/whosonfirst\-smallnav\-link\-twoliner\"\>seattle/whosonfirst\-smallnav\-link\-twoliner whosonfirst\-nav\-active\"\>seattle/' www/v2/docs/processes/seattleneighborhoodupdates.html
+	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Processes and Workflows\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Seattle Neighborhood Updates\<\/div\>/' www/v2/docs/processes/seattleneighborhoodupdates.html
 	rm www/v2/docs/processes/seattleneighborhoodupdates.html-e
 	
 v2-documents-processes-updatingsanfrancisconeighborhoods:
@@ -669,6 +690,7 @@ v2-documents-processes-updatingsanfrancisconeighborhoods:
 	rm www/v2/docs/processes/temp-content1.html-e
 	sed -i -e 's/whosonfirst\-sidenav\-link\-twoliner\"\>san/whosonfirst\-sidenav\-link\-twoliner whosonfirst\-nav\-active\"\>san/' www/v2/docs/processes/updatingsanfrancisconeighborhoods.html
 	sed -i -e 's/whosonfirst\-smallnav\-link\-twoliner\"\>san/whosonfirst\-smallnav\-link\-twoliner whosonfirst\-nav\-active\"\>san/' www/v2/docs/processes/updatingsanfrancisconeighborhoods.html
+	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Processes and Workflows\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>San Francisco Neighborhood Updates\<\/div\>/' www/v2/docs/processes/updatingsanfrancisconeighborhoods.html
 	rm www/v2/docs/processes/updatingsanfrancisconeighborhoods.html-e
 
 	
@@ -682,6 +704,7 @@ v2-documents-processes-woflifecycle:
 	rm www/v2/docs/processes/temp-content1.html-e
 	sed -i -e 's/whosonfirst\-sidenav\-link\"\>wof/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>wof/' www/v2/docs/processes/woflifecycle.html
 	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>wof/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>wof/' www/v2/docs/processes/woflifecycle.html
+	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Processes and Workflows\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>WOF Lifecycle\<\/div\>/' www/v2/docs/processes/woflifecycle.html
 	rm www/v2/docs/processes/woflifecycle.html-e
 	
 v2-documents-processes: v2-documents-processes-significantevent v2-documents-processes-assigningcessation v2-documents-processes-s3requirements v2-documents-processes-wikipediaconcordances v2-documents-processes-seattleneighborhoodupdates v2-documents-processes-updatingsanfrancisconeighborhoods v2-documents-processes-woflifecycle
@@ -737,6 +760,7 @@ v2-data-available-administrative:
 	rm www/v2/data/available/temp-content1.html-e
 	sed -i -e 's/whosonfirst\-sidenav\-link\"\>administrative/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>administrative/' www/v2/data/available/administrative.html
 	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>administrative/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>administrative/' www/v2/data/available/administrative.html
+	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Available Data\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Administrative Data\<\/div\>/' www/v2/data/available/administrative.html
 	rm www/v2/data/available/administrative.html-e
 	
 v2-data-available-venue:
@@ -749,6 +773,7 @@ v2-data-available-venue:
 	rm www/v2/data/available/temp-content1.html-e
 	sed -i -e 's/whosonfirst\-sidenav\-link\"\>venue/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>venue/' www/v2/data/available/venue.html
 	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>venue/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>venue/' www/v2/data/available/venue.html
+	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Available Data\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Venue Data\<\/div\>/' www/v2/data/available/venue.html
 	rm www/v2/data/available/venue.html-e
 	
 v2-data-available-other:
@@ -761,6 +786,7 @@ v2-data-available-other:
 	rm www/v2/data/available/temp-content1.html-e
 	sed -i -e 's/whosonfirst\-sidenav\-link\"\>other/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>other/' www/v2/data/available/other.html
 	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>other/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>other/' www/v2/data/available/other.html
+	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Available Data\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Other Data\<\/div\>/' www/v2/data/available/other.html
 	rm www/v2/data/available/other.html-e
 	
 v2-data-available: v2-data-available-index v2-data-available-administrative v2-data-available-venue v2-data-available-other
@@ -796,6 +822,7 @@ v2-data-github-largefiles:
 	rm www/v2/data/github/temp-content1.html-e
 	sed -i -e 's/whosonfirst\-sidenav\-link\"\>git and/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>git and/' www/v2/data/github/gitlargefiles.html
 	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>git and/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>git and/' www/v2/data/github/gitlargefiles.html
+	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Github\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Git and Large Files\<\/div\>/' www/v2/data/github/gitlargefiles.html
 	rm www/v2/data/github/gitlargefiles.html-e
 	
 v2-data-github-reponaming:
@@ -808,6 +835,7 @@ v2-data-github-reponaming:
 	rm www/v2/data/github/temp-content1.html-e
 	sed -i -e 's/whosonfirst\-sidenav\-link\-twoliner\"\>repo/whosonfirst\-sidenav\-link\-twoliner whosonfirst\-nav\-active\"\>repo/' www/v2/data/github/reponaming.html
 	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>repo/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>repo/' www/v2/data/github/reponaming.html
+	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Github\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Repo Naming Conventions\<\/div\>/' www/v2/data/github/reponaming.html
 	rm www/v2/data/github/reponaming.html-e
 	
 v2-data-github: v2-data-github-index v2-data-github-largefiles v2-data-github-reponaming
