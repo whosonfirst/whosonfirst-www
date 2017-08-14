@@ -497,7 +497,6 @@ fields automatically updated to reflect newly merged geometry
 		
 		<script>
 			$(document).ready(function(){
-				console.log(123123123);
 				$("#bs-example-navbar-collapse-2").on("show.bs.collapse", function(){
 					console.log("In here");
 					document.getElementById("glyphicon-one").classList.add("glyphicon-menu-up");
@@ -506,6 +505,12 @@ fields automatically updated to reflect newly merged geometry
 				$("#bs-example-navbar-collapse-2").on("hide.bs.collapse", function(){
 					document.getElementById("glyphicon-one").classList.add("glyphicon-menu-down");
 					document.getElementById("glyphicon-one").classList.remove("glyphicon-menu-up");
+				});
+				$(".whosonfirst-sidenav-list").mouseover(function(){
+					$("body").css("overflow","hidden");
+				});
+				$(".whosonfirst-sidenav-list").mouseout(function(){
+					$("body").css("overflow","auto");
 				});
 			});
 		</script>
