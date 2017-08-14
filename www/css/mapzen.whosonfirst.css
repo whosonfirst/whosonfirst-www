@@ -784,6 +784,12 @@ code {
 	word-break: inherit;
 }
 
+/*[SUPER HACKY] Incredibly hacky, don't know if I should leave it or not */
+p:after {
+	content: '.';
+	visibility: hidden;
+}
+
 pre {
 	background-color: #F5F5F5;
 	color: #7A7A7A;
@@ -799,9 +805,12 @@ pre {
 	line-height: 1.4;
 }
 
+/*Not Sure What the best way to get even margins on code snippets is*/
+/*
 code:only-child {
 	padding: 0px 8px 1px 8px;
 }
+*/
 
 /* List Styling */
 
