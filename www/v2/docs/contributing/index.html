@@ -90,7 +90,7 @@
 							<a href="../licensing/index.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">licensing</a>
 						</li>
 						<li class="whosonfirst-sidenav-list-element">
-							<a href="../processes/assigningcessation.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">processes and workflows</a>
+							<a href="../processes/index.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">processes and workflows</a>
 						</li>
 						<li class="whosonfirst-sidenav-list-element">
 							<a href="../keyterms/index.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">key terms</a>
@@ -164,7 +164,7 @@ How to contribute
 							<a href="../licensing/index.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">licensing</a>
 						</li>
 						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
-							<a href="../processes/assigningcessation.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">processes and workflows</a>
+							<a href="../processes/index.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">processes and workflows</a>
 						</li>
 						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element  whosonfirst-extrasmall-nav-link-collapsed-last">
 							<a href="../keyterms/index.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed whosonfirst-extrasmall-nav-link-collapsed-last">key terms</a>
@@ -497,7 +497,6 @@ git-whosonfirst-data
 		
 		<script>
 			$(document).ready(function(){
-				console.log(123123123);
 				$("#bs-example-navbar-collapse-2").on("show.bs.collapse", function(){
 					console.log("In here");
 					document.getElementById("glyphicon-one").classList.add("glyphicon-menu-up");
@@ -506,6 +505,12 @@ git-whosonfirst-data
 				$("#bs-example-navbar-collapse-2").on("hide.bs.collapse", function(){
 					document.getElementById("glyphicon-one").classList.add("glyphicon-menu-down");
 					document.getElementById("glyphicon-one").classList.remove("glyphicon-menu-up");
+				});
+				$(".whosonfirst-sidenav-list").mouseover(function(){
+					$("body").css("overflow","hidden");
+				});
+				$(".whosonfirst-sidenav-list").mouseout(function(){
+					$("body").css("overflow","auto");
 				});
 			});
 		</script>
