@@ -36,7 +36,7 @@
 					<a href="../../data/index.html" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed  whosonfirst-nav-active">data</a>
 				</li>
 				<li class="whosonfirst-navbar-element-collapsed">
-					<a href="../../docs/categories/index.html" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">docs</a>
+					<a href="../../docs/index.html" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">docs</a>
 				</li>
 				<li class="whosonfirst-navbar-element-collapsed">
 					<a href="../../tools/index.html" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">tools</a>
@@ -189,7 +189,6 @@ There are some very real problems working with Who&#39;s On First data in Git re
 		
 		<script>
 			$(document).ready(function(){
-				console.log(123123123);
 				$("#bs-example-navbar-collapse-2").on("show.bs.collapse", function(){
 					console.log("In here");
 					document.getElementById("glyphicon-one").classList.add("glyphicon-menu-up");
@@ -198,6 +197,12 @@ There are some very real problems working with Who&#39;s On First data in Git re
 				$("#bs-example-navbar-collapse-2").on("hide.bs.collapse", function(){
 					document.getElementById("glyphicon-one").classList.add("glyphicon-menu-down");
 					document.getElementById("glyphicon-one").classList.remove("glyphicon-menu-up");
+				});
+				$(".whosonfirst-sidenav-list").mouseover(function(){
+					$("body").css("overflow","hidden");
+				});
+				$(".whosonfirst-sidenav-list").mouseout(function(){
+					$("body").css("overflow","auto");
 				});
 			});
 		</script>

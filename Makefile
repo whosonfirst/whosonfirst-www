@@ -409,7 +409,19 @@ v2-documents-properties-brooklynintegers:
 	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Properties\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Brooklyn Integers\<\/div\>/' www/v2/docs/properties/brooklynintegers.html
 	rm www/v2/docs/properties/brooklynintegers.html-e
 	
-v2-documents-properties: v2-documents-properties-addr v2-documents-properties-edtf v2-documents-properties-geom v2-documents-properties-lbl v2-documents-properties-mz v2-documents-properties-name v2-documents-properties-resto v2-documents-properties-reversegeo v2-documents-properties-src v2-documents-properties-wof v2-documents-properties-brooklynintegers
+v2-documents-properties-index:
+	cat www/v2/content/docs/properties/properties.html | pup -i 0 'body h1'  > www/v2/docs/properties/temp-content1.html
+	cat www/v2/content/docs/properties/properties.html | pup -i 0 'body :not(h1)'  > www/v2/docs/properties/temp-content2.html
+	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/v2/docs/properties/temp-content1.html
+	cat www/v2/components/head/head.html www/v2/components/navbar/docs-navbar.html www/v2/components/subnav/docs/properties/subnav-top.html www/v2/docs/properties/temp-content1.html www/v2/components/subnav/docs/properties/subnav-bottom.html  www/v2/docs/properties/temp-content2.html www/v2/components/footer/footer.html > www/v2/docs/properties/index.html
+	rm www/v2/docs/properties/temp-content1.html
+	rm www/v2/docs/properties/temp-content2.html
+	rm www/v2/docs/properties/temp-content1.html-e
+	sed -i -e 's/whosonfirst\-sidenav\-link\"\>properties/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>properties/' www/v2/docs/properties/index.html
+	sed -i -e 's/whosonfirst\-extrasmall\-nav\-link\-collapsed\"\>properties/whosonfirst\-extrasmall\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>properties/' www/v2/docs/properties/index.html
+	rm www/v2/docs/properties/index.html-e
+	
+v2-documents-properties: v2-documents-properties-addr v2-documents-properties-edtf v2-documents-properties-geom v2-documents-properties-lbl v2-documents-properties-mz v2-documents-properties-name v2-documents-properties-resto v2-documents-properties-reversegeo v2-documents-properties-src v2-documents-properties-wof v2-documents-properties-brooklynintegers v2-documents-properties-index
 
 v2-documents-concordances:
 	cat www/v2/content/docs/concordances/concordances.html | pup -i 0 'body h1' > www/v2/docs/concordances/temp-content1.html
@@ -613,6 +625,18 @@ v2-documents-keyterms:
 	rm www/v2/docs/keyterms/temp-content2.html
 	rm www/v2/docs/keyterms/temp-content1.html-e
 	
+v2-documents-processes-index:
+	cat www/v2/content/docs/processes/processes.html | pup -i 0 'body h1'  > www/v2/docs/processes/temp-content1.html
+	cat www/v2/content/docs/processes/processes.html | pup -i 0 'body :not(h1)'  > www/v2/docs/processes/temp-content2.html
+	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/v2/docs/processes/temp-content1.html
+	cat www/v2/components/head/head.html www/v2/components/navbar/docs-navbar.html www/v2/components/subnav/docs/processes/subnav-top.html www/v2/docs/processes/temp-content1.html www/v2/components/subnav/docs/processes/subnav-bottom.html  www/v2/docs/processes/temp-content2.html www/v2/components/footer/footer.html > www/v2/docs/processes/index.html
+	rm www/v2/docs/processes/temp-content1.html
+	rm www/v2/docs/processes/temp-content2.html
+	rm www/v2/docs/processes/temp-content1.html-e
+	sed -i -e 's/whosonfirst\-sidenav\-link\"\>processes/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>processes/' www/v2/docs/processes/index.html
+	sed -i -e 's/whosonfirst\-extrasmall\-nav\-link\-collapsed\"\>processes/whosonfirst\-extrasmall\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>processes/' www/v2/docs/processes/index.html
+	rm www/v2/docs/processes/index.html-e
+	
 v2-documents-processes-significantevent:
 	curl -s https://github.com/whosonfirst/whosonfirst-cookbook/blob/master/definition/significant_event.md | pup -i 0 'article.markdown-body h1:first-of-type' > www/v2/docs/processes/temp-content1.html
 	curl -s https://github.com/whosonfirst/whosonfirst-cookbook/blob/master/definition/significant_event.md | pup -i 0 'article.markdown-body :not(h1:first-of-type)' > www/v2/docs/processes/temp-content2.html
@@ -707,9 +731,18 @@ v2-documents-processes-woflifecycle:
 	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Processes and Workflows\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>WOF Lifecycle\<\/div\>/' www/v2/docs/processes/woflifecycle.html
 	rm www/v2/docs/processes/woflifecycle.html-e
 	
-v2-documents-processes: v2-documents-processes-significantevent v2-documents-processes-assigningcessation v2-documents-processes-s3requirements v2-documents-processes-wikipediaconcordances v2-documents-processes-seattleneighborhoodupdates v2-documents-processes-updatingsanfrancisconeighborhoods v2-documents-processes-woflifecycle
+v2-documents-processes: v2-documents-processes-significantevent v2-documents-processes-assigningcessation v2-documents-processes-s3requirements v2-documents-processes-wikipediaconcordances v2-documents-processes-seattleneighborhoodupdates v2-documents-processes-updatingsanfrancisconeighborhoods v2-documents-processes-woflifecycle v2-documents-processes-index
 
-v2-documents: v2-documents-processes v2-documents-keyterms v2-documents-licensing v2-documents-contributing v2-documents-tests v2-documents-sources v2-documents-categories v2-documents-dates v2-documents-geometries v2-documents-names v2-documents-hierachies v2-documents-placetypes v2-documents-concordances v2-documents-properties
+v2-documents-index:
+	cat www/v2/content/docs/docs.html | pup -i 0 'body h1'  > www/v2/docs/temp-content1.html
+	cat www/v2/content/docs/docs.html | pup -i 0 'body :not(h1)'  > www/v2/docs/temp-content2.html
+	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/v2/docs/temp-content1.html
+	cat www/v2/components/head/head-onelevelup.html www/v2/components/navbar/docs-navbar-onelevelup.html www/v2/components/subnav/docs/home/subnav-top.html www/v2/docs/temp-content1.html www/v2/components/subnav/docs/home/subnav-bottom.html  www/v2/docs/temp-content2.html www/v2/components/footer/footer-onelevelup.html > www/v2/docs/index.html
+	rm www/v2/docs/temp-content1.html
+	rm www/v2/docs/temp-content2.html
+	rm www/v2/docs/temp-content1.html-e
+
+v2-documents: v2-documents-processes v2-documents-keyterms v2-documents-licensing v2-documents-contributing v2-documents-tests v2-documents-sources v2-documents-categories v2-documents-dates v2-documents-geometries v2-documents-names v2-documents-hierachies v2-documents-placetypes v2-documents-concordances v2-documents-properties v2-documents-index
 
 v2-data-pullrequest:
 	curl -s https://github.com/whosonfirst-data/whosonfirst-data/blob/master/PULL_REQUEST_TEMPLATE_NEIGHBOURHOOD.md | pup -i 0 'article.markdown-body h1:first-of-type' > www/v2/data/pullrequest/temp-content1.html

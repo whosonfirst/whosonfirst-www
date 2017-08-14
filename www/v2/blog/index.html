@@ -36,7 +36,7 @@
 					<a href="../data/index.html" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">data</a>
 				</li>
 				<li class="whosonfirst-navbar-element-collapsed">
-					<a href="../docs/categories/index.html" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">docs</a>
+					<a href="../docs/index.html" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">docs</a>
 				</li>
 				<li class="whosonfirst-navbar-element-collapsed">
 					<a href="../tools/index.html" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">tools</a>
@@ -316,15 +316,20 @@ https://mapzen.com/blog/geotagging-wof-venues | 2017-08-01 (2392 words or 0.44 A
 		
 		<script>
 			$(document).ready(function(){
-				console.log(123123123);
 				$("#bs-example-navbar-collapse-2").on("show.bs.collapse", function(){
 					console.log("In here");
-					document.getElementById("glyphicon-one").classList.add("glyphicon-chevron-up");
-					document.getElementById("glyphicon-one").classList.remove("glyphicon-chevron-down");
+					document.getElementById("glyphicon-one").classList.add("glyphicon-menu-up");
+					document.getElementById("glyphicon-one").classList.remove("glyphicon-menu-down");
 				});
 				$("#bs-example-navbar-collapse-2").on("hide.bs.collapse", function(){
-					document.getElementById("glyphicon-one").classList.add("glyphicon-chevron-down");
-					document.getElementById("glyphicon-one").classList.remove("glyphicon-chevron-up");
+					document.getElementById("glyphicon-one").classList.add("glyphicon-menu-down");
+					document.getElementById("glyphicon-one").classList.remove("glyphicon-menu-up");
+				});
+				$(".whosonfirst-sidenav-list").mouseover(function(){
+					$("body").css("overflow","hidden");
+				});
+				$(".whosonfirst-sidenav-list").mouseout(function(){
+					$("body").css("overflow","auto");
 				});
 			});
 		</script>

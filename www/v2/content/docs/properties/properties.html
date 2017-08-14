@@ -1,0 +1,60 @@
+<h1>Properties</h1>
+
+<p>What things mean in Who’s On First documents.</p>
+<p>Explore the WOF properties below.</p>
+<ul class="whosonfirst-nonbullet-list">
+	<li class="whosonfirst-nonbullet-list-item">
+		<a href="addr.html" class="whosonfirst-sole-link">Addr</a>
+	</li>
+	<li class="whosonfirst-nonbullet-list-item">
+		<a href="edtf.html" class="whosonfirst-sole-link">EDTF</a>
+	</li>
+	<li class="whosonfirst-nonbullet-list-item">
+		<a href="geom.html" class="whosonfirst-sole-link">Geom</a>
+	</li>
+	<li class="whosonfirst-nonbullet-list-item">
+		<a href="lbl.html" class="whosonfirst-sole-link">Lbl</a>
+	</li>
+	<li class="whosonfirst-nonbullet-list-item">
+		<a href="mz.html" class="whosonfirst-sole-link">Mz</a>
+	</li>
+	<li class="whosonfirst-nonbullet-list-item">
+		<a href="name.html" class="whosonfirst-sole-link">Name</a>
+	</li>
+	<li class="whosonfirst-nonbullet-list-item">
+		<a href="resto.html" class="whosonfirst-sole-link">Resto</a>
+	</li>
+	<li class="whosonfirst-nonbullet-list-item">
+		<a href="reversegeo.html" class="whosonfirst-sole-link">ReverseGeo</a>
+	</li>
+	<li class="whosonfirst-nonbullet-list-item">
+		<a href="src.html" class="whosonfirst-sole-link">Src</a>
+	</li>
+	<li class="whosonfirst-nonbullet-list-item">
+		<a href="wof.html" class="whosonfirst-sole-link">Wof</a>
+	</li>
+	<li class="whosonfirst-nonbullet-list-item">
+		<a href="brooklynintegers.html" class="whosonfirst-sole-link">Brooklyn Integers</a>
+	</li>
+</ul>
+<h2>Minimum Viable Properties</h2>
+<p>The design model for the Flickr API was: What is the one thing you should always be able to do with any photo-related API response?</p>
+<p>For Flickr the answer was the “standard photo response” or: You should always be able to load/build the URL for a photo with a link back to its page on Flickr’s website.</p>
+<p>In Mapzen’s case the answer to a similar-minded question might be: You should always be able to view API responses on a map.</p>
+<p>For example it should be possible to take anything that comes back from Pelias (or any other API) and simply hand it off to Leaflet as a GeoJSON layer and see something on a map.</p>
+<p>With that in mind a “minimal viable properties” dictionary might look like this:
+<pre>{
+    "wof:id": 85922583,
+    "wof:name": "San Francisco",
+    "wof:fullname": "San Francisco, California US",
+    "wof:placetype": "locality",
+    "wof:parent_id": 85688637,
+    "wof:quality": 9,
+    "wof:score": 100
+}
+</pre>
+<p>A couple things to note about this example:
+<ul>
+<li>When we say “properties” we’re talking about the metadata associated with that place rather than its geometry.</li>
+<li>The wof:score property and its semantics should be considered a place-holder for some equivalent search ranking to be determined by the Pelias team. Likewise, the wof:quality property and its semantics should also be considered a place-holder for some equivalent quality/confidence ranking to be determined by the Data team.</li>
+</ul>
