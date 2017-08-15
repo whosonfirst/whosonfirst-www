@@ -2592,3 +2592,10 @@ a.whosonfirst-dark-gradient:hover > div > .whosonfirst-card-highlight-state-test
 		max-height: 220px;
 	}
 }
+
+@media (min-width: 768px) {
+	.navbar-collapse {
+		padding-left: 0;
+		padding-right: 0;
+	}
+}
