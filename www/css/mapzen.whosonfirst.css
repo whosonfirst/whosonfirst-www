@@ -318,6 +318,7 @@ h5 {
 	font-size: 20px;
 	font-weight: 400;
 	border-bottom-width: 1.5px !important;
+	word-break: keep-all;
 }
 
 .whosonfirst-deemphasized-subpageheader {
@@ -653,7 +654,7 @@ li:not(.whosonfirst-sidenav-link-twoliner-container) + li.whosonfirst-sidenav-li
 	border-radius: 6px;
 }
 
-.whosonfirst-fulltabs-container ul li, .whosonfirst-fulltabs-container ol li {
+.whosonfirst-fulltabs-container ul li, .whosonfirst-fulltabs-container ol li, .whosonfirst-tabs-container ul li, .whosonfirst-tabs-container ol li {
 	font-family: "Roboto", Helvetica, Arial, sans-serif;
 	font-size: 17px;
 	font-weight: 300;
@@ -1764,7 +1765,7 @@ a.whosonfirst-dark-gradient:hover > div > .whosonfirst-card-highlight-state-test
 		padding: 0px 8px 0px 8px;
 	}
 	
-	.whosonfirst-fulltabs-container ul li, .whosonfirst-fulltabs-container ol li {
+	.whosonfirst-fulltabs-container ul li, .whosonfirst-fulltabs-container ol li, .whosonfirst-tabs-container ul li, .whosonfirst-tabs-container ol li {
 		font-size: 15px;
 	}
 	
@@ -2056,6 +2057,7 @@ a.whosonfirst-dark-gradient:hover > div > .whosonfirst-card-highlight-state-test
 	}
 
 	.whosonfirst-card-headers {
+		font-size: 42px;
 		letter-spacing: -2px;
 	}
 
@@ -2073,7 +2075,7 @@ a.whosonfirst-dark-gradient:hover > div > .whosonfirst-card-highlight-state-test
 	}
 	
 	.nav>li {
-		display: inline;
+		display: inline-block;
 	}
 	
 	.whosonfirst-navbar-element-collapsed {
@@ -2157,7 +2159,7 @@ a.whosonfirst-dark-gradient:hover > div > .whosonfirst-card-highlight-state-test
 	
 	.whosonfirst-card-explore-code-test {
 		margin-top: 45px;
-		height: 53px;
+		height: 61px;
 	}
 	
 	a.whosonfirst-dark-gradient:hover > .whosonfirst-card-explore-code-test {
@@ -2166,7 +2168,7 @@ a.whosonfirst-dark-gradient:hover > div > .whosonfirst-card-highlight-state-test
 	
 	.whosonfirst-card-explore-lines {
 		padding-top: 6px;
-		height: 48px;
+		height: 60px;
 	}
 	
 	.whosonfirst-card-explore-individual-line {
@@ -2175,8 +2177,8 @@ a.whosonfirst-dark-gradient:hover > div > .whosonfirst-card-highlight-state-test
 	}
 	
 	.whosonfirst-card-explore-content-box {
-		height: 51px;
-		width: 83%;
+		height: 60px;
+		width: 72%;
 	}
 
 	.whosonfirst-card-explore-content {
@@ -2414,87 +2416,123 @@ a.whosonfirst-dark-gradient:hover > div > .whosonfirst-card-highlight-state-test
 	}
 	
 	a.whosonfirst-dark-gradient > div > .whosonfirst-card-highlight-docs-test {
-		top: 88px;
+		top: 80px;
 	}
 
 	a.whosonfirst-dark-gradient > div > .whosonfirst-card-highlight-explore-test {
-		top: 570px;
+		top: 562px;
 	}
 	
 	a.whosonfirst-dark-gradient > div > .whosonfirst-card-highlight-data-test{
-		top: 330px;
+		top: 322px;
 	}
 
 	a.whosonfirst-dark-gradient > div > .whosonfirst-card-highlight-started-test, a.whosonfirst-dark-gradient > div > .whosonfirst-card-highlight-tools-test {
-		top: 90px;
+		top: 82px;
 	}
 	
 	a.whosonfirst-dark-gradient > div > .whosonfirst-card-highlight-blog-test, a.whosonfirst-dark-gradient > div > .whosonfirst-card-highlight-theory-test, a.whosonfirst-dark-gradient > div > .whosonfirst-card-highlight-state-test {
-		top: 70px;
+		top: 62px;
 	}
 
 	a.whosonfirst-dark-gradient:hover > div > .whosonfirst-card-highlight-docs {
-		width: 132px;
+		width: 112px;
+	}
+	
+	a.whosonfirst-dark-gradient > div > .whosonfirst-card-highlight-docs-test {
+		width: 114px;
 	}
 	
 	a.whosonfirst-dark-gradient:hover > div > .whosonfirst-card-highlight-docs-test {
-		top: 102px;
+		top: 94px;
 	}
 
 	a.whosonfirst-dark-gradient:hover > div > .whosonfirst-card-highlight-explore{
 		width: 188px;
 	}
 	
+	a.whosonfirst-dark-gradient > div > .whosonfirst-card-highlight-explore-test{
+		width: 164px;
+	}
+	
 	a.whosonfirst-dark-gradient:hover > div > .whosonfirst-card-highlight-explore-test {
-		top: 584px;
+		top: 576px;
 	}
 
 	a.whosonfirst-dark-gradient:hover > div > .whosonfirst-card-highlight-started {
 		width: 286px;
 	}
 	
+	a.whosonfirst-dark-gradient > div > .whosonfirst-card-highlight-started-test {
+		width: 252px;
+	}
+	
 	a.whosonfirst-dark-gradient:hover > div > .whosonfirst-card-highlight-started-test {
-		top: 104px;
+		top: 96px;
 	}
 
 	a.whosonfirst-dark-gradient:hover > div > .whosonfirst-card-highlight-data {
 		width: 124px;
 	}
 	
+	a.whosonfirst-dark-gradient > div > .whosonfirst-card-highlight-data-test {
+		width: 108px;
+	}
+	
 	a.whosonfirst-dark-gradient:hover > div > .whosonfirst-card-highlight-data-test {
-		top: 344px;
+		top: 336px;
 	}
 
 	a.whosonfirst-dark-gradient:hover > div > .whosonfirst-card-highlight-tools {
 		width: 146px;
 	}
 	
+	a.whosonfirst-dark-gradient > div > .whosonfirst-card-highlight-tools-test {
+		width: 126px;
+	}
+	
 	a.whosonfirst-dark-gradient:hover > div > .whosonfirst-card-highlight-tools-test {
-		top: 104px;
+		top: 96px;
 	}
 
 	a.whosonfirst-dark-gradient:hover > div > .whosonfirst-card-highlight-blog {
 		width: 120px;
 	}
 	
+	a.whosonfirst-dark-gradient > div > .whosonfirst-card-highlight-blog-test {
+		width: 106px;
+	}
+	
 	a.whosonfirst-dark-gradient:hover > div > .whosonfirst-card-highlight-blog-test {
-		top: 84px;
+		top: 76px;
 	}
 
 	a.whosonfirst-dark-gradient:hover > div > .whosonfirst-card-highlight-theory {
 		width: 170px;
 	}
 	
+	a.whosonfirst-dark-gradient > div > .whosonfirst-card-highlight-theory-test {
+		width: 152px;
+	}
+	
 	a.whosonfirst-dark-gradient:hover > div > .whosonfirst-card-highlight-theory-test {
-		top: 84px;
+		top: 76px;
 	}
 
 	a.whosonfirst-dark-gradient:hover > div > .whosonfirst-card-highlight-state {
 		width: 136px;
 	}
 	
+	a.whosonfirst-dark-gradient > div > .whosonfirst-card-highlight-state-test {
+		width: 116px;
+	}
+	
 	a.whosonfirst-dark-gradient:hover > div > .whosonfirst-card-highlight-state-test {
-		top: 84px;
+		top: 76px;
+	}
+	
+	.whosonfirst-extrasmall-menu-chevron-col {
+		margin-right: 6px;
 	}
 }
 
