@@ -926,7 +926,7 @@ v2-getstarted-index:
 	cat www/v2/content/getstarted/getstarted.html | pup -i 0 'body h1' > www/v2/getstarted/temp-content1.html
 	cat www/v2/content/getstarted/getstarted.html | pup -i 0 'body :not(h1)' > www/v2/getstarted/temp-content2.html
 	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/v2/getstarted/temp-content1.html
-	cat www/v2/components/head/head-onelevelup.html www/v2/components/navbar/state-navbar-onelevelup.html www/v2/components/subnav/getstarted/home/subnav-top.html www/v2/getstarted/temp-content1.html www/v2/components/subnav/getstarted/home/subnav-bottom.html  www/v2/getstarted/temp-content2.html www/v2/components/footer/footer-onelevelup.html > www/v2/getstarted/index.html
+	cat www/v2/components/head/head-onelevelup.html www/v2/components/navbar/getstarted-navbar-onelevelup.html www/v2/components/subnav/getstarted/home/subnav-top.html www/v2/getstarted/temp-content1.html www/v2/components/subnav/getstarted/home/subnav-bottom.html  www/v2/getstarted/temp-content2.html www/v2/components/footer/footer-onelevelup.html > www/v2/getstarted/index.html
 	rm www/v2/getstarted/temp-content1.html
 	rm www/v2/getstarted/temp-content2.html
 	rm www/v2/getstarted/temp-content1.html-e
@@ -935,7 +935,7 @@ v2-getstarted-getstarted:
 	cat www/v2/content/getstarted/retrievevenues.html | pup -i 0 'body h1' > www/v2/getstarted/temp-content1.html
 	cat www/v2/content/getstarted/retrievevenues.html | pup -i 0 'body :not(h1)' > www/v2/getstarted/temp-content2.html
 	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/v2/getstarted/temp-content1.html
-	cat www/v2/components/head/head-onelevelup.html www/v2/components/navbar/state-navbar-onelevelup.html www/v2/components/subnav/getstarted/retrievevenues/subnav-top.html www/v2/getstarted/temp-content1.html www/v2/components/subnav/getstarted/retrievevenues/subnav-bottom-special.html  www/v2/getstarted/temp-content2.html www/v2/components/footer/footer-onelevelup.html > www/v2/getstarted/retrievevenues.html
+	cat www/v2/components/head/head-onelevelup.html www/v2/components/navbar/getstarted-navbar-onelevelup.html www/v2/components/subnav/getstarted/retrievevenues/subnav-top.html www/v2/getstarted/temp-content1.html www/v2/components/subnav/getstarted/retrievevenues/subnav-bottom-special.html  www/v2/getstarted/temp-content2.html www/v2/components/footer/footer-onelevelup.html > www/v2/getstarted/retrievevenues.html
 	rm www/v2/getstarted/temp-content1.html
 	rm www/v2/getstarted/temp-content2.html
 	rm www/v2/getstarted/temp-content1.html-e
