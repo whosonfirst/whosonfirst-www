@@ -258,6 +258,71 @@
 	margin: 12px;
 }
 
+.whosonfirst-tutorial-image {
+	height: 200px;
+}
+
+.whosonfirst-tutorial-header {
+	color: rgba(255,255,255,.8);
+	font-family: "Roboto", Helvetica, Arial, sans-serif;
+	font-weight: 300;
+	font-size: 26px;
+}
+
+.whosonfirst-tutorial-subheader {
+	color: rgba(255,255,255,.8);
+	font-family: "Roboto", Helvetica, Arial, sans-serif;
+	font-weight: 100;
+	font-size: 16px;
+	padding: 6px 20px 0;
+}
+
+.whosonfirst-tutorial-bottom-row {
+	position: absolute;
+	bottom: 12px;
+	width: inherit;
+}
+
+.whosonfirst-tutorial-back {
+	color: rgba(255,255,255,.8);
+	font-family: "Roboto", Helvetica, Arial, sans-serif;
+	font-weight: 100;
+	font-size: 16px;
+	border-bottom: 1px solid rgba(255,255,255,.8);
+	padding: 0;
+	display: inline-block;
+	float: left;
+}
+
+.whosonfirst-tutorial-next {
+	color: rgba(255,255,255,.8);
+	font-family: "Roboto", Helvetica, Arial, sans-serif;
+	font-weight: 100;
+	font-size: 16px;
+	border-bottom: 1px solid rgba(255,255,255,.8);
+	padding: 0;
+	display: inline-block;
+	float: right;
+}
+
+.whosonfirst-tutorial-progess-circle {
+	border-radius: 50%;
+	width: 14px;
+	height: 14px;
+	border: 1px solid rgba(255,255,255,.8);
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.whosonfirst-tutorial-close {
+	color: rgba(255,255,255,.8) !important;
+	text-shadow: none !important;
+	opacity: 1 !important;
+	font-weight: 100 !important;
+	font-size: 36px !important;
+	float: left !important;
+}
+
 .input-group {
 	width: inherit;
 }
@@ -348,6 +413,14 @@
 	padding: 0px !important;;
 }
 
+.whoonsfirst-interactive-no-pointer {
+	pointer-events: none;
+}
+
+.whoonsfirst-interactive-auto-pointer {
+	pointer-events: auto;
+}
+
 .whosonfirst-input-go-button {
 	font-family: "Roboto", Helvetica, Arial, sans-serif;
 	font-weight: 100 !important;
@@ -355,11 +428,12 @@
 }
 
 .leaflet-right {
-	margin-right: 23.4%;
+	margin-right: 25%;
 }
 
 .whosonfirst-middle-column {
 	height: 100vh;
+	position: inherit !important;
 }
 
 .zero-margin {
