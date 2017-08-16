@@ -1,0 +1,3240 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Who’s On First</title>
+        <meta name='description' content="Who's on First is a gazetteer of places.">
+        <link rel='apple-touch-icon' href='https://mapzen.com/common/styleguide/images/favicons/apple-touch-icon.png' sizes='180x180'>
+        <link rel='icon' type='image/png' href='https://mapzen.com/common/styleguide/images/favicons/favicon-16x16.png' sizes='16x16'>
+        <link rel='icon' type='image/png' href='https://mapzen.com/common/styleguide/images/favicons/favicon-32x32.png' sizes='32x32'>
+        <link rel='manifest' href='https://mapzen.com/common/styleguide/images/favicons/manifest.json'>
+        <link rel='mask-icon' href='https://mapzen.com/common/styleguide/images/favicons/safari-pinned-tab.svg' color='#2C1E3F'>
+		
+		<link rel="stylesheet" href="../../css/bootstrap.min.css">
+		<link rel="stylesheet" href="../../css/mapzen.whosonfirst.css">
+    </head>
+	<body>
+		<div class="whosonfirst-wrapper"><nav class="navbar navbar-default navbar-fixed-top whosonfirst-fixed-subpage-navbar">
+	<div class="container">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="../../index.html">Who's On First</a>
+		</div>
+
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav navbar-right">
+				<li class="whosonfirst-navbar-element-collapsed">
+					<a href="../../data/index.html" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">data</a>
+				</li>
+				<li class="whosonfirst-navbar-element-collapsed">
+					<a href="../../docs/index.html" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed whosonfirst-nav-active">docs</a>
+				</li>
+				<li class="whosonfirst-navbar-element-collapsed">
+					<a href="../../tools/index.html" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">tools</a>
+				</li>
+				<li class="whosonfirst-navbar-element-collapsed">
+					<a href="../../blog/index.html" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">blog</a>
+				</li>
+				<li class="whosonfirst-navbar-element-collapsed">
+					<a href="../../getstarted/index.html" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">get started</a>
+				</li>
+			</ul>
+		</div><!-- /.navbar-collapse -->
+	</div><!-- /.container-fluid -->
+</nav><div class="container whosonfirst-subpage-container">
+	<div class="row">
+		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-0">
+			<aside>
+				<div class="whosonfirst-sidenav-container">
+					<ul class="whosonfirst-sidenav-list">
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="../properties/index.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">properties</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="../concordances/index.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">concordances</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="../placetypes/index.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">placetypes</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="../hierachies/index.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">hierachies</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="../names/index.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">names</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="../geometries/index.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">geometries</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="../dates/index.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">dates</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="../categories/index.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">categories</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="../sources/index.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">sources</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="../tests/index.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">tests</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="../contributing/index.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">contributing</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="../licensing/index.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">licensing</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="../processes/index.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">processes and workflows</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element whosonfirst-sidenav-list-element-secondlevel whosonfirst-sidenav-link-twoliner-container">
+							<a href="../processes/assigningcessation.html" class="whosonfirst-nav-link whosonfirst-sidenav-link whosonfirst-sidenav-link-twoliner">assigning cessation and deprecated dates</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element whosonfirst-sidenav-list-element-secondlevel whosonfirst-sidenav-link-twoliner-container">
+							<a href="../processes/significantevent.html" class="whosonfirst-nav-link whosonfirst-sidenav-link whosonfirst-sidenav-link-twoliner">what is a significant event</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element whosonfirst-sidenav-list-element-secondlevel">
+							<a href="../processes/woflifecycle.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">wof life cycle</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element whosonfirst-sidenav-list-element-secondlevel whosonfirst-sidenav-link-twoliner-container">
+							<a href="../processes/s3requirements.html" class="whosonfirst-nav-link whosonfirst-sidenav-link whosonfirst-sidenav-link-twoliner">what is required for s3 import files</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element whosonfirst-sidenav-list-element-secondlevel whosonfirst-sidenav-link-twoliner-container">
+							<a href="../processes/seattleneighborhoodupdates.html" class="whosonfirst-nav-link whosonfirst-sidenav-link whosonfirst-sidenav-link-twoliner">seattle neighbourhood updates</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element whosonfirst-sidenav-list-element-secondlevel whosonfirst-sidenav-link-twoliner-container">
+							<a href="../processes/updatingsanfrancisconeighborhoods.html" class="whosonfirst-nav-link whosonfirst-sidenav-link whosonfirst-sidenav-link-twoliner whosonfirst-nav-active">san francisco neighbourhood updates</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element whosonfirst-sidenav-list-element-secondlevel whosonfirst-sidenav-link-twoliner-container">
+							<a href="../processes/wikipediaconcordances.html" class="whosonfirst-nav-link whosonfirst-sidenav-link whosonfirst-sidenav-link-twoliner">wikipedia concordances</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="../keyterms/index.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">key terms</a>
+						</li>
+					</ul>
+				</div>
+			</aside>
+		</div>
+		<div class="col-lg-7 col-md-9 col-sm-9 col-xs-12">
+			<article><h1 class="whosonfirst-subpage-header">
+<a id="user-content-updating-whos-on-first-neighbourhood-records-part-one" class="anchor" href="#updating-whos-on-first-neighbourhood-records-part-one" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+Updating Who&#39;s On First Neighbourhood Records (part one)
+</h1>
+<div class="whosonfirst-fulltabs-container">
+	<div class="whosonfirst-extrasmall-tabs-menu">
+		<div class="whosonfirst-extrasmall-tabs-menu-content">
+			<div class="whosonfirst-extrasmall-tabs-menu-content-header">
+				<div class="row whosonfirst-extrasmall-menu-row">
+					<div class="col-xs-11">
+						<div class="whosonfirst-extrasmall-tab-selection">San Francisco Neighborhood Updates</div>
+					</div>
+					<div class="col-xs-1 whosonfirst-extrasmall-menu-chevron-col">
+						<button type="button" class="navbar-toggle collapsed whosonfirst-extrasmall-menu-chevron-down" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2" aria-expanded="false">
+							<span id="glyphicon-one" class="glyphicon glyphicon-menu-down whosonfirst-extrasmall-menu-actual-chevron-down"></span>
+						</button>
+					</div>
+				</div>
+			</div>
+			<div class="collapse" id="bs-example-navbar-collapse-2">
+				<div class="whosonfirst-extrasmall-nav-collection">
+					<ul class="nav navbar-nav navbar-right whosonfirst-extrasmall-nav">
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="../properties/index.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">properties</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="../concordances/index.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">concordances</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="../placetypes/index.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">placetypes</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="../hierachies/index.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">hierachies</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="../names/index.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">names</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="../geometries/index.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">geometries</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="../dates/index.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">dates</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="../categories/index.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">categories</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="../sources/index.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">sources</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="../tests/index.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">tests</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="../contributing/index.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">contributing</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="../licensing/index.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">licensing</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="../processes/assigningcessation.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">processes and workflows</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element whosonfirst-smallnav-link-twoliner-container">
+							<a href="../processes/assigningcessation.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed whosonfirst-subnav-secondlevel whosonfirst-smallnav-link-twoliner">assigning cessation and deprecated dates</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="../processes/significantevent.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed whosonfirst-subnav-secondlevel">what is a significant event</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="../processes/woflifecycle.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed whosonfirst-subnav-secondlevel">wof life cycle</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element whosonfirst-smallnav-link-twoliner-container">
+							<a href="../processes/s3requirements.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed whosonfirst-subnav-secondlevel whosonfirst-smallnav-link-twoliner">what is required for s3 import files</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element whosonfirst-smallnav-link-twoliner-container">
+							<a href="../processes/seattleneighborhoodupdates.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed whosonfirst-subnav-secondlevel whosonfirst-smallnav-link-twoliner">seattle neighbourhood updates</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element whosonfirst-smallnav-link-twoliner-container">
+							<a href="../processes/updatingsanfrancisconeighborhoods.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed whosonfirst-subnav-secondlevel whosonfirst-smallnav-link-twoliner whosonfirst-nav-active">san francisco neighbourhood updates</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="../processes/wikipediaconcordances.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed whosonfirst-subnav-secondlevel">wikipedia concordances</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element  whosonfirst-extrasmall-nav-link-collapsed-last">
+							<a href="../keyterms/index.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed whosonfirst-extrasmall-nav-link-collapsed-last">key terms</a>
+						</li>
+					</ul>
+				</div>
+			</div><!-- /.navbar-collapse -->
+		</div>
+	</div>
+	<div class="whosonfirst-tabs-content"><a id="user-content-updating-whos-on-first-neighbourhood-records-part-one" class="anchor" href="#updating-whos-on-first-neighbourhood-records-part-one" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+<p>
+The
+<a href="https://whosonfirst.mapzen.com/">
+Who&#39;s On First
+</a>
+(WOF) project is not pretending to be the authority of truth, but rather a home for data from various sources and a project that we hope generates discussion. The WOF gazetteer houses data for many geographies, including counties (which parent cities) and cities (which parent microhoods, neighbourhoods, and macrohoods). Neighbourhoods are the places where we live and work in cities;
+<em>
+the more neighbourhood data, the better.
+</em>
+</p>
+<p>
+<a href="https://camo.githubusercontent.com/a64c3504cd94e619873f2c487faf57c9446f4ec4/68747470733a2f2f6d61707a656e2d6173736574732e73332e616d617a6f6e6177732e636f6d2f696d616765732f73662d6e65696768626f7572686f6f642d757064617465732f312e6a7067" target="_blank">
+<img src="https://camo.githubusercontent.com/a64c3504cd94e619873f2c487faf57c9446f4ec4/68747470733a2f2f6d61707a656e2d6173736574732e73332e616d617a6f6e6177732e636f6d2f696d616765732f73662d6e65696768626f7572686f6f642d757064617465732f312e6a7067" alt="San Francisco, CA" data-canonical-src="https://mapzen-assets.s3.amazonaws.com/images/sf-neighbourhood-updates/1.jpg" style="max-width:100%;">
+</a>
+<em>
+Photo Credit:
+<a href="https://www.flickr.com/photos/photographingtravis/15876578760/in/photolist-qbXBJy-wS7pFF-2XzRnL-HbtCbX-rbmAJj-7dPz43-9Py6me-hEkAuS-8gihrC-8BCzsr-uVZPsT-92LBPi-Ecaiho-HDBW9C-7dPw9s-exakrT-dNzgiu-aJaiTz-nK4F3y-FtbMW-bywi7N-hzeCpW-8HXuPC-jeVkWQ-uiA2S7-pzMxbL-bjH5AC-bsyv8U-keLDPc-gWDhS-xadSek-nQz7At-brj2fe-wuPTK4-4856y6-pdYCPT-wSCsAz-FtesM-7j84Hs-dqBe97-5RT97n-fzhNSx-4heGvv-fKii4T-nqgSDG-xpnL1d-dHcAn7-pQYC72-9wduZD-wuF3bm_">
+Travis Wise, Flickr
+</a>
+</em>
+</p>
+<p>
+<strong>
+Our Audience:
+</strong>
+Those who care about neighbourhoods and have a few hours to a few days to spend diving into QGIS.
+</p>
+<p>
+<strong>
+Your Skills/Experience:
+</strong>
+This tutorial was written with the intermediate to advanced GIS user. While this tutorial tries to explain the editing process in detail, some information may not be immediately clear to a beginning user.
+</p>
+<p>
+<strong>
+Why are neighbourhoods important to mapping?
+</strong>
+</p>
+<ul>
+<li>
+<strong>
+Labelling.
+</strong>
+When we use a mapping application, we want neighbourhoods to be labeled on the map (in the right place and at the right zoom).
+</li>
+<li>
+<strong>
+Ability to search.
+</strong>
+Neighbourhoods should be searchable (with the ability to know how large the feature is and fit it into view).
+</li>
+<li>
+<strong>
+Browsing venues.
+</strong>
+We should be able to browse venues by neighbourhood.
+</li>
+</ul>
+<p>
+It is important to understand where
+<a href="https://github.com/whosonfirst/whosonfirst-placetypes">
+placetypes
+</a>
+fall within the WOF hierarchy. Neighbourhoods, macrohoods, and microhoods are described below:
+</p>
+<ul>
+<li>
+<strong>
+Neighbourhoods:
+</strong>
+A centralized community within a larger city, town, or borough.
+</li>
+<li>
+<strong>
+Macrohoods:
+</strong>
+A grouping of neighbourhoods within a larger city, town, or borough.
+</li>
+<li>
+<strong>
+Microhoods:
+</strong>
+A geographically localized sub-section of a neighbourhood.
+</li>
+</ul>
+<p>
+This tutorial addresses the issues we found with San Francisco&#39;s neighbourhoods and describes the workflow we took in fixing them. In the end, we hope you can follow along and edit neighbourhoods for your own city!
+</p>
+<p>
+<strong>
+What are your options when updating neighbourhoods?
+</strong>
+</p>
+<ul>
+<li>
+Notice just one neighbourhood that needs cleaning up? File a
+<a href="https://github.com/whosonfirst/whosonfirst-data/issues/new">
+Github issue
+</a>
+, or
+<a href="mailto:stephen.epps@mapzen.com">
+email us
+</a>
+.
+<em>
+[See something, say something.]
+</em>
+</li>
+<li>
+Notice an open dataset of administrative data? Open an
+<a href="https://github.com/whosonfirst/whosonfirst-data/issues/new">
+issue
+</a>
+in our WOF repository.
+</li>
+<li>
+Still interested but confused about all this Github and WOF-isms? We can send you a &#34;starter kit&#34; that includes your requested neighbourhoods.
+<a href="mailto:stephen.epps@mapzen.com">
+Email us
+</a>
+.
+</li>
+<li>
+Follow the instructions below and send us a
+<a href="https://github.com/whosonfirst/whosonfirst-data/pulls">
+pull request
+</a>
+.
+</li>
+</ul>
+<p>
+<strong>
+Key terms:
+</strong>
+</p>
+<p>
+Check out
+<a href="https://github.com/whosonfirst/whosonfirst-cookbook/blob/master/definition/key_terms.md">
+these key terms
+</a>
+if you have any questions about the vocabulary used in this guide.
+</p>
+<h2>
+<a id="user-content-the-issue" class="anchor" href="#the-issue" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+The Issue
+</h2>
+<p>
+We received a
+<a href="https://github.com/whosonfirst/whosonfirst-data/issues/125">
+report
+</a>
+in the
+<a href="https://github.com/whosonfirst/whosonfirst-data">
+whosonfirst-data repository
+</a>
+that the shape of San Francisco’s Golden Gate Park neighbourhood was both too small and extended into adjacent neighbourhoods. While researching online sources for a better shape, we noticed that most adjacent neighbourhood shapes in WOF could also be improved to align better with the road network and local expectations. After researching neighbourhood shapes online, we downloaded neighbourhood shapes for San Francisco from
+<a href="https://data.sfgov.org/">
+SF OpenData
+</a>
+, a city data website, to compare with the neighbourhood records in our WOF repository. We then filed a
+<a href="https://github.com/whosonfirst/whosonfirst-data/issues/316">
+new issue
+</a>
+to handle all neighbourhood updates for San Francisco.
+</p>
+<p>
+Typically, Who’s On First sources
+<a href="http://www.quattroshapes.com">
+Quattroshapes
+</a>
+geometries for most neighbourhoods around the globe. However, many neighbourhoods in the United States, including San Francisco, source their default geometry from
+<a href="http://www.zetashapes.com">
+Zetashapes
+</a>
+. The Zetashapes project follows the same basic principles as Quattroshapes, but builds shapes up from Census 2010 features and can draw shapes that are too big, small, or
+<em>
+just plain weird
+</em>
+. We’ve seen problems with shapes extending in the water and far out into neighboring rural areas. This technique is responsible for the issues that we are correcting in San Francisco.
+</p>
+<p>
+Drawing neighbourhood shapes is a tricky business. Strangers generally agree on what a neighbourhood is named and its rough shape, but even good friends can argue vehemently about where one neighbourhood ends and another begins - even if there are hard edges between neighbourhoods or they should overlap. Recognizing this, Who’s On First allows multiple alternate geometries for a place, but for practical reasons we need to set just one shape as the default geometry.
+</p>
+<p>
+<strong>
+To clean up our neighbourhood geometries, we needed to take five steps:
+</strong>
+</p>
+<ul>
+<li>
+<strong>
+#1
+</strong>
+<em>
+Review WOF records for your locality. Get a sense of where they could be improved and where they are acceptable, focusing on names and shapes.
+</em>
+</li>
+<li>
+<strong>
+#2
+</strong>
+<em>
+Research other neighbourhood sources on the internet.
+</em>
+</li>
+<li>
+<strong>
+#3
+</strong>
+<em>
+Download authoritative neighbourhood geometries from a reliable, open license data source for your locality.
+</em>
+</li>
+<li>
+<strong>
+#4
+</strong>
+<em>
+Reconciling our data sources. Things to think about: Is the number of neighbourhood records similar? Are the shapes similar or better? Could you draw your own shapes?
+</em>
+</li>
+<li>
+<strong>
+#5
+</strong>
+<em>
+Update records, either though a clean import or creating a new hybrid using the best of both (and your local knowledge).
+</em>
+</li>
+</ul>
+<p>
+While specifics listed in this tutorial may reference San Francisco, our hope is that you will be able to follow along with these steps to update the neighbourhood records in your locality.
+</p>
+<h2>
+<a id="user-content-1-review-whos-on-first-records-for-your-locality" class="anchor" href="#1-review-whos-on-first-records-for-your-locality" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+1: Review Who&#39;s On First records for your locality
+</h2>
+<p>
+In this section, you will either:
+</p>
+<ul>
+<li>
+Use the handy
+<a href="https://whosonfirst.mapzen.com/spelunker/download/85688637/?exclude=nullisland#5/37.419/-119.307">
+Bundler Tool
+</a>
+(this example link points to descendants of California) to gather a collection of neighbourhood features in your given locality
+</li>
+</ul>
+<p>
+<strong>
+OR
+</strong>
+</p>
+<ul>
+<li>
+Use the
+<code>
+git checkout
+</code>
+command in your terminal to
+<strong>
+clone necessary repositories
+</strong>
+</li>
+<li>
+<strong>
+Collect
+</strong>
+a .geojson file for all neighbourhoods in your locality (city)
+</li>
+<li>
+Add your .geojson file to a QGIS document for
+<strong>
+review
+</strong>
+</li>
+</ul>
+<p>
+The Bundler Tool quickly gathers a collection of descendant records in GeoJSON format given your the parent record&#39;s ID. Simply click the &#34;Download Descendants&#34; link on any record&#39;s page in the Spelunker.
+</p>
+<p>
+This is the &#34;quick and easy&#34; method to gathering neighbourhood records, however, this tool only gathers up to 500 WOF records. For larger queries or markets, you will need to clone necessary repositories and collect a .geojson file. Instructions below:
+</p>
+<ul>
+<li>
+Ensure that you have the most recent software packages. Windows users should have Powershell 3.0 before beginning any GitHub work from the terminal. A Powershell 3.0 download can be found
+<a href="https://www.microsoft.com/en-us/download/details.aspx?id=34595">
+here
+</a>
+. Additionally, all users should ensure they have
+<code>
+setuptools
+</code>
+for Python by
+<a href="https://pypi.python.org/pypi/setuptools">
+downloading
+</a>
+Python 2.7 (or a more current version) and
+<code>
+GDAL 2.1
+</code>
+by
+<a href="http://www.qgis.org/en/site/">
+downloading
+</a>
+QGIS 2.14 (or a more current version).
+</li>
+<li>
+Run
+<code>
+git checkout
+</code>
+on the
+<a href="https://github.com/whosonfirst/whosonfirst-data">
+WOF Data repository
+</a>
+,
+<a href="https://github.com/whosonfirst/whosonfirst-properties">
+WOF Properties repository
+</a>
+, and
+<a href="https://github.com/whosonfirst/py-mapzen-whosonfirst-utils">
+WOF Utils repository
+</a>
+.
+</li>
+<li>
+Run the
+<code>
+install
+</code>
+script in whosonfirst-utils repository.
+</li>
+<li>
+Open the
+<code>
+WOF-csv-to-feature-collection.py
+</code>
+script in your
+<code>
+Utils
+</code>
+repo. Update line 63 with your local filepath.
+</li>
+</ul>
+<p>
+Once complete, entering the following string in the terminal from the whosonfirst-utils repository&#39;s
+<code>
+scripts
+</code>
+folder allows us to collect San Francisco&#39;s neighbourhoods as a single .geojson file (updating filepaths of your local machine accordingly):
+</p>
+<blockquote>
+<p>
+<em>
+python WOF-csv-to-feature-collection -p /usr/local/mapzen/whosonfirst-data/data -c /usr/local/mapzen/whosonfirst-data/meta/WOF-neighbourhood-latest.csv --aliases /usr/local/mapzen/whosonfirst-properties/aliases/property_aliases.json -o ~/Desktop/SF_Neighbourhoods.geojson --slim --slim-template external_editor -f 85922583
+</em>
+</p>
+</blockquote>
+<p>
+<a href="https://camo.githubusercontent.com/7ab32c9ad12b117b82ca4139be9ea4802c8034e5/68747470733a2f2f6d61707a656e2d6173736574732e73332e616d617a6f6e6177732e636f6d2f696d616765732f73662d6e65696768626f7572686f6f642d757064617465732f7465726d696e616c5f636f6d6d616e642e706e67" target="_blank">
+<img width="600" alt="San Francisco neighbourhood records in WOF" src="https://camo.githubusercontent.com/7ab32c9ad12b117b82ca4139be9ea4802c8034e5/68747470733a2f2f6d61707a656e2d6173736574732e73332e616d617a6f6e6177732e636f6d2f696d616765732f73662d6e65696768626f7572686f6f642d757064617465732f7465726d696e616c5f636f6d6d616e642e706e67" data-canonical-src="https://mapzen-assets.s3.amazonaws.com/images/sf-neighbourhood-updates/terminal_command.png" style="max-width:100%;">
+</a>
+</p>
+<p>
+<em>
+Image: Data collection script in the terminal.
+</em>
+</p>
+<p>
+<em>
+Note: The trailing number
+<code>
+85922583
+</code>
+at the end of this script is the WOF ID for
+<a href="https://whosonfirst.mapzen.com/spelunker/id/85922583/#10/37.7850/-122.7278">
+San Francisco
+</a>
+. When running this script, make sure to update that ID with whatever record you need neighbourhood geometries for. An ID is a unique identifier for records in WOF. Each record in WOF has an ID. To find the ID for your city, search the
+<a href="https://whosonfirst.mapzen.com/spelunker">
+Spelunker
+</a>
+and copy the ID.
+</em>
+</p>
+<p>
+<strong>
+Voilà!
+</strong>
+We have a .geojson of WOF neighbourhood records in San Francisco! By changing the trailing ID (explained below), you can collect neighbourhood records for your own locality (city).
+</p>
+<p>
+To better understand what we&#39;re requesting of our command, here is a breakdown of exactly what is included:
+</p>
+<ul>
+<li>
+<strong>
+<code>
+python
+</code>
+</strong>
+Used to invoke python
+</li>
+<li>
+<strong>
+<code>
+WOF-csv-to-feature-collection
+</code>
+</strong>
+The python script that collects WOF records.
+</li>
+<li>
+<strong>
+<code>
+-p /PATH/whosonfirst-data/data
+</code>
+</strong>
+sets the path to the local copy of all the WOF data. You will need to update this PATH depending on where you checked the file out.
+</li>
+<li>
+<strong>
+<code>
+-c /PATH/whosonfirst-data/meta/WOF-neighbourhood-latest.csv
+</code>
+</strong>
+The metafile for the placetype you are interested in - neighbourhood. You will need to update this PATH depending on where you checked the file out.
+</li>
+<li>
+<strong>
+<code>
+--aliases /usr/local/mapzen/whosonfirst-properties/aliases/property_aliases.json
+</code>
+</strong>
+Pulling in various aliases for attribute fields for your output file.
+</li>
+<li>
+<strong>
+<code>
+-o ~/Desktop/SFNeighbourhoods.geojson
+</code>
+</strong>
+Your output file.
+</li>
+<li>
+<strong>
+<code>
+--slim
+</code>
+</strong>
+Option parser to limit property export to subset (roughly those in the CSV file) and reduce file size.
+</li>
+<li>
+<strong>
+<code>
+--slim-template
+</code>
+</strong>
+Option parser to trim key names to fit Esri Shapefile format (10 charachter length limit).
+</li>
+<li>
+<strong>
+<code>
+external_editor
+</code>
+</strong>
+Return only necessary attribute fields for neighbourhood edits.
+</li>
+<li>
+<strong>
+<code>
+-f 85922583
+</code>
+</strong>
+ID of the locality you need neighbourhood records for, found by searching our
+<a href="https://whosonfirst.mapzen.com/spelunker">
+Spelunker
+</a>
+.
+</li>
+</ul>
+<p>
+<strong>
+About the
+<code>
+external_editor
+</code>
+option:
+</strong>
+</p>
+<ul>
+<li>
+<p>
+This option was created for our neighbourhood editors and exports only relevant and required record attributes for WOF neighbourhood records. All required attributes (and applicable optional attributes) should be included when filing your PR of updated neighbourhood records. The
+<code>
+external_editor
+</code>
+attribute fields include:
+</p>
+</li>
+<li>
+<p>
+<strong>
+&#39;name&#39;
+</strong>
+The attribute that will be used for the
+<code>
+wof:name
+</code>
+field. Required for all files.
+</p>
+</li>
+<li>
+<p>
+<strong>
+&#39;id&#39;
+</strong>
+The attribute that will be used for the
+<code>
+wof:id
+</code>
+field. Required for all files.
+</p>
+</li>
+<li>
+<p>
+<strong>
+&#39;placetype&#39;
+</strong>
+The attribute that will be used for the
+<code>
+wof:placetype
+</code>
+field. Required for all files.
+</p>
+</li>
+<li>
+<p>
+<strong>
+&#39;parent_id&#39;
+</strong>
+The attribute that will be used for the
+<code>
+wof:parent_id
+</code>
+field. Should equal the
+<code>
+wof:id
+</code>
+of the next placetype up in the feature&#39;s hierarchy. Required for all files.
+</p>
+</li>
+<li>
+<p>
+<strong>
+&#39;is_landuse_aoi&#39;
+</strong>
+Used to signify an &#34;area of interest&#34; land use, different than the
+<code>
+wof:placetype
+</code>
+would suggest.
+</p>
+</li>
+<li>
+<p>
+<strong>
+&#39;supersedes&#39;
+</strong>
+The attribute that will be used for the
+<code>
+wof:supersedes
+</code>
+field. Required for all files that supersede another WOF record.
+</p>
+</li>
+<li>
+<p>
+<strong>
+&#39;superseded_by&#39;
+</strong>
+The attribute that will be used for the
+<code>
+wof:superseded_by
+</code>
+field. Required for all files that are superseded by another WOF record.
+</p>
+</li>
+<li>
+<p>
+<strong>
+&#39;deprecated&#39;
+</strong>
+The attribute that will be used for the
+<code>
+edtf:deprecated
+</code>
+field. A date field
+<em>
+(YYYY-MM-DD)
+</em>
+used to signify when we determined this record was &#34;junk&#34; and incorrect since inclusion in Who&#39;s On First. Required for all files that are deprecated. (see:
+<a href="https://github.com/whosonfirst/whosonfirst-cookbook/blob/master/definition/deprecated_vs_cessation.md">
+cessation vs. deprecated documentation
+</a>
+)
+</p>
+</li>
+<li>
+<p>
+<strong>
+&#39;cessation&#39;
+</strong>
+The attribute that will be used for the
+<code>
+edtf:cessation
+</code>
+field. A date field
+<em>
+(YYYY-MM-DD)
+</em>
+used to signify when we determined this record was no longer valid in Who&#39;s On First (usually when it has been replaced by another record). Also requires a new field called
+<code>
+mz:is_current
+</code>
+to be created. The
+<code>
+mz:is_current
+</code>
+field value is &#39;0&#39; if the record has a
+<code>
+edtf:cessation
+</code>
+date. (see:
+<a href="https://github.com/whosonfirst/whosonfirst-cookbook/blob/master/definition/deprecated_vs_cessation.md">
+cessation vs. deprecated documentation
+</a>
+)
+</p>
+</li>
+<li>
+<p>
+<strong>
+&#39;eng_preferred_name&#39;
+</strong>
+Preferred alternative names for a feature.
+</p>
+</li>
+<li>
+<p>
+<strong>
+&#39;eng_variant_name&#39;
+</strong>
+Variant alternative names for a feature.
+</p>
+</li>
+<li>
+<p>
+<strong>
+&#39;max_zoom&#39;
+</strong>
+Maximum zoom level at which feature labels appear on a map. Required for all new features to Who&#39;s On First.
+</p>
+</li>
+<li>
+<p>
+<strong>
+&#39;min_zoom&#39;
+</strong>
+Minimum zoom level at which feature labels appear on a map. Required for all new features to Who&#39;s On First.
+</p>
+</li>
+<li>
+<p>
+<strong>
+&#39;lbl_latitude&#39;
+</strong>
+A decimal value of a feature&#39;s Y coordinate. Value should be derived from
+<a href="https://github.com/mbloch/mapshaper">
+MapShaper
+</a>
+and included on any new shape imported to Who&#39;s On First. New X/Y coordinates attributes will be created when running a geojson or shapefile through the MapShaper tool. These new fields will be used for
+<code>
+lbl:latitude
+</code>
+and
+<code>
+lbl:longitude
+</code>
+. The MapShaper tool is also available via
+<a href="http://mapshaper.org/">
+http://mapshaper.org/
+</a>
+.
+</p>
+</li>
+<li>
+<p>
+<strong>
+&#39;lbl_longitude&#39;
+</strong>
+A decimal value of a feature&#39;s X coordinate. Value should be derived from
+<a href="https://github.com/mbloch/mapshaper">
+MapShaper
+</a>
+and included on any new shape imported to Who&#39;s On First. New X/Y coordinates attributes will be created when running a geojson or shapefile through the MapShaper tool. These new fields will be used for
+<code>
+lbl:latitude
+</code>
+and
+<code>
+lbl:longitude
+</code>
+. The MapShaper tool is also available via
+<a href="http://mapshaper.org/">
+http://mapshaper.org/
+</a>
+.
+</p>
+</li>
+<li>
+<p>
+<strong>
+&#39;rev_lat&#39;
+</strong>
+Equal to the
+<code>
+lbl_latitude
+</code>
+value. This field will be used to rebuild the feature&#39;s hierarchy.
+</p>
+</li>
+<li>
+<p>
+<strong>
+&#39;rev_long&#39;
+</strong>
+Equal to the
+<code>
+lbl_longitude
+</code>
+value. This field will be used to rebuild the feature&#39;s hierarchy.
+</p>
+</li>
+<li>
+<p>
+<strong>
+&#39;is_funky&#39;
+</strong>
+Optional.
+</p>
+</li>
+<li>
+<p>
+<strong>
+&#39;is_hard_boundary&#39;
+</strong>
+Optional.
+</p>
+</li>
+<li>
+<p>
+<strong>
+&#39;is_official&#39;
+</strong>
+Optional.
+</p>
+</li>
+<li>
+<p>
+<strong>
+&#39;tier_locality&#39;
+</strong>
+Optional.
+</p>
+</li>
+<li>
+<p>
+<strong>
+&#39;country_id&#39;
+</strong>
+The
+<code>
+wof:id
+</code>
+of the feature&#39;s parent country.
+</p>
+</li>
+<li>
+<p>
+<strong>
+&#39;region_id&#39;
+</strong>
+The
+<code>
+wof:id
+</code>
+of the feature&#39;s parent region.
+</p>
+</li>
+<li>
+<p>
+<strong>
+&#39;locality_id&#39;
+</strong>
+The
+<code>
+wof:id
+</code>
+of the feature&#39;s parent locality.
+</p>
+</li>
+<li>
+<p>
+<strong>
+&#39;WOF_country&#39;
+</strong>
+Usually equal to the ISO code, this is a two-digit key representing the country your features are in. Required for all features.
+</p>
+</li>
+<li>
+<p>
+<strong>
+&#39;iso_country&#39;
+</strong>
+Set by the
+<a href="http://www.iso.org/iso/home.html">
+Internation Organization for Standardization
+</a>
+, This is a two-digit key (listed
+<a href="https://en.wikipedia.org/wiki/ISO_3166-1">
+here
+</a>
+) representing the country your features are in. Required for all features.
+</p>
+</li>
+<li>
+<p>
+<strong>
+&#39;src_geom&#39;
+</strong>
+Optional. Contains the source name of the feature&#39;s geometry. Given for research purposes.
+</p>
+</li>
+<li>
+<p>
+<strong>
+&#39;mz_note&#39;
+</strong>
+Optional. Contains information about that given feature, if available.
+</p>
+</li>
+</ul>
+<p>
+From the WOF repository for San Francisco, a total of
+<strong>
+165
+</strong>
+(157 polygon geometries, 8 point geometries) records for neighbourhoods were collected using our
+<code>
+external_editor
+</code>
+option. QGIS was used to preview Who’s On First neighbourhood shapes (below).
+</p>
+<p>
+<a href="https://camo.githubusercontent.com/49d5dd4e6e75c5f4bea63c1a897f811d352008a1/68747470733a2f2f6d61707a656e2d6173736574732e73332e616d617a6f6e6177732e636f6d2f696d616765732f73662d6e65696768626f7572686f6f642d757064617465732f6261795f6f76657276696577312e706e67" target="_blank">
+<img width="600" alt="San Francisco neighbourhood records in WOF" src="https://camo.githubusercontent.com/49d5dd4e6e75c5f4bea63c1a897f811d352008a1/68747470733a2f2f6d61707a656e2d6173736574732e73332e616d617a6f6e6177732e636f6d2f696d616765732f73662d6e65696768626f7572686f6f642d757064617465732f6261795f6f76657276696577312e706e67" data-canonical-src="https://mapzen-assets.s3.amazonaws.com/images/sf-neighbourhood-updates/bay_overview1.png" style="max-width:100%;">
+</a>
+</p>
+<p>
+<em>
+Image: San Francisco neighbourhood records (light purple) in comparison to the San Francisco Bay Area and the WOF shapes of San Francisco (blue).
+</em>
+</p>
+<p>
+You might notice the general shape of San Francisco present in the photo below, but it&#39;s tough to make out. Many of these WOF neighbourhood shapes cross into what most people would consider a different neighbourhood, and, in two cases, include areas in different counties. The good news? The majority of these neighbourhood records contain usable information in their WOF attribute fields. Also, be mindful of the differences between single-part and multi-part polygon edits in QGIS. If your neighbourhood shapes are single-part polygons to begin with, you are unable to add a multi-part polygon into your feature collection.
+</p>
+<p>
+<a href="https://camo.githubusercontent.com/fabff0217b29c685a58add090fe182e51bffa5f8/68747470733a2f2f6d61707a656e2d6173736574732e73332e616d617a6f6e6177732e636f6d2f696d616765732f73662d6e65696768626f7572686f6f642d757064617465732f6e65775f636f6e7469672e706e67" target="_blank">
+<img width="600" alt="San Francisco neighbourhood records in WOF" src="https://camo.githubusercontent.com/fabff0217b29c685a58add090fe182e51bffa5f8/68747470733a2f2f6d61707a656e2d6173736574732e73332e616d617a6f6e6177732e636f6d2f696d616765732f73662d6e65696768626f7572686f6f642d757064617465732f6e65775f636f6e7469672e706e67" data-canonical-src="https://mapzen-assets.s3.amazonaws.com/images/sf-neighbourhood-updates/new_contig.png" style="max-width:100%;">
+</a>
+</p>
+<p>
+<em>
+Image: San Francisco neighbourhood records from Who&#39;s On First projected in QGIS.
+</em>
+</p>
+<p>
+In some cities, we have detailed polygon shapes for most, but not all neighbourhoods. Occassionally, we only know the name and the approximate point representing the label centroid. We need to establish a concordance between all WOF records, points and polygons. We&#39;ll need to add a polygon shape to replace these points; this is covered below in step four.
+</p>
+<h2>
+<a id="user-content-2-research-other-neighbourhood-sources" class="anchor" href="#2-research-other-neighbourhood-sources" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+2: Research other neighbourhood sources
+</h2>
+<p>
+In this section, you will:
+</p>
+<ul>
+<li>
+<strong>
+Find
+</strong>
+new data to import
+</li>
+<li>
+<strong>
+Verify
+</strong>
+open license
+</li>
+</ul>
+<p>
+Because Who’s On First is liberally licensed open data, we must be selective about adding new data. We either need to find a new source that is open data with a CC-BY or CC-0 license that allows commercial and derivative works or create new shapes based on local knowledge and by cross-referencing multiple sources. Ideally, this new source should be an improvement over what Who’s On First already knows about the place.
+</p>
+<p>
+In our example, the City and County of San Francisco hosts various
+<a href="https://data.sfgov.org/browse?q=neighborhoods">
+neighbourhood-related shapefiles
+</a>
+through it&#39;s OpenData portal, so we had a few options to choose from.
+</p>
+<p>
+Just because your locality hosts a neighbourhood dataset, does not mean the neighbourhood geometries are useable. For example, city planning departments often group neighbourhoods together for planning purposes; you can start with these geometries, but they should be double-checked before import. For instance, if a shape is named
+<em>
+Name 1
+</em>
+-
+<em>
+Name 2
+</em>
+-
+<em>
+Name 3
+</em>
+(e.g. Mission-Potrero-SoMa), it should
+<em>
+probably
+</em>
+be split into three polygons before import, one for each neighbourhood.
+</p>
+<p>
+Don&#39;t blindly trust an authoritative set of neighbourhood shapes. Review a few other neighbourhood sources to compare names, attributes, shape detail, and coverage. Ensuring that you have an accurate set of neighbourhood shapes and adequate attributes will save time when reconciling the data with existing Who&#39;s On First records.
+</p>
+<p>
+In San Francisco, we did not choose the planning department shapes, as those were too coarse and used more for statistical groupings (there weren’t as many neighbourhoods as we had already, and their shapes were way too big, more like macrohoods). After research, it was found that the Mayor&#39;s Office created a set of geometries that were built to match local expectations and there was a similar number of places to what was in Who’s On First. Their colloquial shapes matched up with what we thought they should like as San Francisco locals.
+</p>
+<p>
+Once we verified the data was provided through an
+<a href="https://data.sfgov.org/terms-of-use">
+open license
+</a>
+, we created a
+<a href="https://github.com/whosonfirst/whosonfirst-sources/blob/master/sources/sfgov.json">
+new source
+</a>
+,
+<code>
+sfgov
+</code>
+, in our
+<a href="https://github.com/whosonfirst/whosonfirst-sources/tree/master/sources">
+sources repository
+</a>
+to give credit to the original author. This dataset was then downloaded to our desktop and added to a new QGIS document to compare with the existing shapes in WOF. Lucky for us, the SF OpenData is already in the WGS84 projection and does not need to be reprojected.
+</p>
+<p>
+Lastly, we need to add any properties that are retained from the source data file to our
+<a href="https://github.com/whosonfirst/whosonfirst-properties/blob/master/aliases/property_aliases.json">
+properties_alias.json file
+</a>
+. In San Francisco, for example, we have a
+<code>
+sfgov:name
+</code>
+field. In order to bring this property in, we will need to add it to the property_alias.json file (see file for formatting examples).
+</p>
+<h2>
+<a id="user-content-3-download-authoritative-neighbourhood-geometries" class="anchor" href="#3-download-authoritative-neighbourhood-geometries" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+3: Download authoritative neighbourhood geometries
+</h2>
+<p>
+In this section, you will:
+</p>
+<ul>
+<li>
+<strong>
+Download
+</strong>
+data
+</li>
+<li>
+<strong>
+Open
+</strong>
+your data
+</li>
+<li>
+<strong>
+Begin comparison
+</strong>
+with existing Who&#39;s On First records
+</li>
+</ul>
+<p>
+<a href="https://camo.githubusercontent.com/6162a43208bc84d9a8a8df079030559b1fc0b2bb/68747470733a2f2f6d61707a656e2d6173736574732e73332e616d617a6f6e6177732e636f6d2f696d616765732f73662d6e65696768626f7572686f6f642d757064617465732f73665f6f70656e646174612e706e67" target="_blank">
+<img width="600" alt="SF OpenData neighbourhood data projected in QGIS" src="https://camo.githubusercontent.com/6162a43208bc84d9a8a8df079030559b1fc0b2bb/68747470733a2f2f6d61707a656e2d6173736574732e73332e616d617a6f6e6177732e636f6d2f696d616765732f73662d6e65696768626f7572686f6f642d757064617465732f73665f6f70656e646174612e706e67" data-canonical-src="https://mapzen-assets.s3.amazonaws.com/images/sf-neighbourhood-updates/sf_opendata.png" style="max-width:100%;">
+</a>
+</p>
+<p>
+<em>
+Image: SF OpenData neighbourhood data projected in QGIS.
+</em>
+</p>
+<p>
+Once the data source was added to our source repository, the data was downloaded and placed into a new QGIS document (above) to compare to the geometries of WOF records. You can see the clean, non-overlapping geometries in the SF OpenData, unlike our existing WOF geometries (below).
+</p>
+<p>
+<a href="https://camo.githubusercontent.com/5ea8c0b725090235b700fe26a0d98a01ba54e78c/68747470733a2f2f6d61707a656e2d6173736574732e73332e616d617a6f6e6177732e636f6d2f696d616765732f73662d6e65696768626f7572686f6f642d757064617465732f322e676966" target="_blank">
+<img width="600" alt="SF OpenData neighbourhood data projected in QGIS" src="https://camo.githubusercontent.com/5ea8c0b725090235b700fe26a0d98a01ba54e78c/68747470733a2f2f6d61707a656e2d6173736574732e73332e616d617a6f6e6177732e636f6d2f696d616765732f73662d6e65696768626f7572686f6f642d757064617465732f322e676966" data-canonical-src="https://mapzen-assets.s3.amazonaws.com/images/sf-neighbourhood-updates/2.gif" style="max-width:100%;">
+</a>
+</p>
+<p>
+<em>
+Image: WOF records projected in QGIS.
+</em>
+</p>
+<p>
+Now that we have WOF records and data provided by the City of San Francisco, we can begin reconciling the two datasets. We will join the two datasets based on a common attribute; in this case the
+<code>
+wof:name
+</code>
+field from the WOF data was joined to the SF OpenData&#39;s
+<code>
+name
+</code>
+field. The join tool in QGIS can be found by navigating to the properties of the WOF .geojson layer and clicking the &#34;Join&#34; option (below).
+</p>
+<p>
+<a href="https://camo.githubusercontent.com/c7552a1fbede388b8544957180aa576f82b793b8/68747470733a2f2f6d61707a656e2d6173736574732e73332e616d617a6f6e6177732e636f6d2f696d616765732f73662d6e65696768626f7572686f6f642d757064617465732f352e706e67" target="_blank">
+<img width="600" alt="Join Properties tab in QGIS" src="https://camo.githubusercontent.com/c7552a1fbede388b8544957180aa576f82b793b8/68747470733a2f2f6d61707a656e2d6173736574732e73332e616d617a6f6e6177732e636f6d2f696d616765732f73662d6e65696768626f7572686f6f642d757064617465732f352e706e67" data-canonical-src="https://mapzen-assets.s3.amazonaws.com/images/sf-neighbourhood-updates/5.png" style="max-width:100%;">
+</a>
+</p>
+<p>
+<em>
+Image: Join Properties tool in QGIS.
+</em>
+</p>
+<p>
+In an ideal world, all WOF records would join cleanly to SF OpenData records, but that is typically not the case. This join method worked for the most part, but because the spellings are not identical between each of the attribute tables, this join needs to be verified and improved by hand. For example, QGIS&#39;s join tool did not join a value of
+<code>
+Haight Ashbury
+</code>
+to a value of
+<code>
+Haight-Ashbury
+</code>
+or a value of
+<code>
+Mission District
+</code>
+to a value of
+<code>
+Mission
+</code>
+. As described below, it&#39;s not a matter of which name field is &#34;more correct&#34;, but a matter of importing additional names from your authoritative source while preserving the existing
+<code>
+wof:name
+</code>
+in a
+<code>
+eng_x_variant
+</code>
+name field.
+</p>
+<p>
+Alternately, we could perform this join based on location, instead of an attribute field. QGIS has functionality to perform a spatial join (
+<a href="http://www.qgistutorials.com/en/docs/performing_spatial_joins.html">
+some documentation here
+</a>
+), which would be helpful if our WOF geometries were geographically similar to our administrative data. However, because our geometries in San Francisco overlap substantially with the SF OpenData geometries, an attribute join is more likely to give us matching records between the two datasets (generally, neighbourhood names are unique in city). If you are unsure of which join is best for your locality, give them both a try and compare the results.
+</p>
+<p>
+Occasionally, Who&#39;s On First has duplicate records. Duplicate records
+<em>
+should
+</em>
+be noted in the
+<code>
+mz:note
+</code>
+property (with a &#34;duplicate&#34;, &#34;dupe&#34; or &#34;dup&#34; value) or with a
+<code>
+1
+</code>
+value in the
+<code>
+mz:is_funky
+</code>
+or
+<code>
+mz:is_current
+</code>
+property. If you come across duplicate features when comparing and joining records, prefer the current record over the record with a
+<code>
+mz:note
+</code>
+of &#34;duplicate&#34;, &#34;dupe&#34; or &#34;dup&#34; or a
+<code>
+1
+</code>
+value in the
+<code>
+mz:is_funky
+</code>
+or
+<code>
+mz:is_current
+</code>
+property.
+</p>
+<table>
+<thead>
+<tr>
+<th>
+Who&#39;s On First
+</th>
+<th>
+SF OpenData
+</th>
+<th>
+Note
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+Alamo Square
+</td>
+<td>
+Alamo Square
+</td>
+<td>
+<em>
+in both, great! Let&#39;s import the new geometry!
+</em>
+</td>
+</tr>
+<tr>
+<td>
+Anza Vista
+</td>
+<td>
+Anza Vista
+</td>
+<td>
+<em>
+in both, great! Let&#39;s import the new geometry!
+</em>
+</td>
+</tr>
+<tr>
+<td>
+Baja Noe
+</td>
+<td>
+</td>
+<td>
+<em>
+no match, no alternate name spelling, WOF only
+</em>
+</td>
+</tr>
+<tr>
+<td>
+Bret Harte
+</td>
+<td>
+<em>
+no WOF record, let&#39;s research.
+</em>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+Haight Ashbury
+</td>
+<td>
+</td>
+<td>
+<em>
+no name match, but does have alternate name:
+<code>
+Haight-Ashbury
+</code>
+</em>
+</td>
+</tr>
+<tr>
+<td>
+Cathedral Hill
+</td>
+<td>
+Cathedral Hill
+</td>
+<td>
+<em>
+in both, great!
+</em>
+</td>
+</tr>
+</tbody>
+</table>
+<p>
+<em>
+Image: Comparison of WOF and SF OpenData name attributes.
+</em>
+</p>
+<p>
+This method assigned
+<code>
+wof:id
+</code>
+values to each SF OpenData record that joined to a WOF record. After comparing,
+<strong>
+96
+</strong>
+of
+<strong>
+117
+</strong>
+SF OpenData records were assigned a
+<code>
+wof:id
+</code>
+. With the records that did not join based on the
+<code>
+name
+</code>
+field join, we will have to reconcile, adding the
+<code>
+wof:id
+</code>
+manually whenever possible. This is done easiest by reviewing each name in your WOF attributes table with  each name of your source data.
+</p>
+<p>
+<a href="https://camo.githubusercontent.com/cf947b912a8adc9619141179960ad39ecd6a89be/68747470733a2f2f6d61707a656e2d6173736574732e73332e616d617a6f6e6177732e636f6d2f696d616765732f73662d6e65696768626f7572686f6f642d757064617465732f6a6f696e65645f617474726962757465732e706e67" target="_blank">
+<img width="300" alt="Attributes table after joining datasets" src="https://camo.githubusercontent.com/cf947b912a8adc9619141179960ad39ecd6a89be/68747470733a2f2f6d61707a656e2d6173736574732e73332e616d617a6f6e6177732e636f6d2f696d616765732f73662d6e65696768626f7572686f6f642d757064617465732f6a6f696e65645f617474726962757465732e706e67" data-canonical-src="https://mapzen-assets.s3.amazonaws.com/images/sf-neighbourhood-updates/joined_attributes.png" style="max-width:100%;">
+</a>
+</p>
+<p>
+<em>
+Image: SF OpenData attribute table after joining datasets. Records with NULL values need to be imported by hand.
+</em>
+</p>
+<p>
+Examples of neighbourhoods that WOF did not have at the time of import are
+<code>
+Appearel City
+</code>
+and
+<code>
+Buena Vista
+</code>
+(meaning these records will need a new WOF ID). Since these neighbourhoods were not in the WOF database, we should consider importing them as new neighbourhood records.
+</p>
+<h2>
+<a id="user-content-4-reconciling-our-data-sources" class="anchor" href="#4-reconciling-our-data-sources" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+4: Reconciling our data sources
+</h2>
+<p>
+In this section, you will:
+</p>
+<ul>
+<li>
+<strong>
+Develop
+</strong>
+an action plan to modify data
+</li>
+<li>
+Note possible
+<strong>
+data modifications
+</strong>
+needed in our datasets
+</li>
+</ul>
+<p>
+<strong>
+Remember
+</strong>
+- not all of the existing neighbourhood records matched to an SF OpenData geometry (96 new records were given existing IDs, but there were 165 existing neighbourhood records). This begs the question:
+<em>
+What should happen to the 69 leftover neighbourhood records?
+</em>
+</p>
+<p>
+There are three options for the 69 leftover records:
+</p>
+<ul>
+<li>
+<strong>
+Deprecate
+</strong>
+the record, as it was never a valid neighbourhood to begin with. Research can&#39;t verify this name or shape. Sometimes a neighbourhood falls out of common usage, or the error was an error.
+</li>
+<li>
+<strong>
+Downgrade
+</strong>
+the record as a microhood and give it a
+<code>
+parented_by
+</code>
+value for the neighbourhood it falls within. People still use this name, but only the residents of those few city blocks.
+</li>
+<li>
+<strong>
+Upgrade
+</strong>
+the neighbourhood records to a macrohood (see:
+<em>
+Sunset, Richmond, Downtown
+</em>
+).
+</li>
+</ul>
+<h3>
+<a id="user-content-modifying-sf-opendata" class="anchor" href="#modifying-sf-opendata" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+Modifying SF OpenData
+</h3>
+<p>
+Before importing the city-provided geometries, it is important to ensure the new neighbourhood boundaries will work in Who’s On First. While we can easily import the new neighbourhood geometries raw from our source (SF OpenData), we should &#34;trust but verify&#34; our data before the  import.
+</p>
+<p>
+The majority of geometries in the SF OpenData source were imported as-is, though four neighbourhood records in our San Francisco example were edited prior to import. Using our local knowledge and opinions, we adjusted these neighbourhood boundaries slightly.
+</p>
+<h3>
+<a id="user-content-modifying-wof-data" class="anchor" href="#modifying-wof-data" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+Modifying WOF Data
+</h3>
+<p>
+After our WOF shapes were added to a QGIS document (below), they were given a new integer attribute field titled &#34;status&#34; based on concordance with our administrative source data. The status values were color-coded to display the following options for each of WOF neighbourhood records:
+</p>
+<ul>
+<li>
+<strong>
+1 - Neighbourhood.
+</strong>
+<em>
+Valid neighbourhood record. Both datasets agree this is a neighbourhood, probably needs a new shape and name.
+</em>
+</li>
+<li>
+<strong>
+2 - Reclassify up to macrohood.
+</strong>
+<em>
+Neighbourhood records that will become macrohood records.
+</em>
+</li>
+<li>
+<strong>
+3 - Reclassify down to microhoods.
+</strong>
+<em>
+Neighbourhood records that will be reclassified as microhood records. WOF records not in SF OpenData that are smaller than the surrounding neighbourhood should change placetypes to microhood.
+</em>
+</li>
+<li>
+<strong>
+4 - Reclassify down to microhoods... maybe.
+</strong>
+<em>
+Needs more investigation. Probably change placetype to a microhood.
+</em>
+</li>
+<li>
+<strong>
+5 - Deprecate neighbourhood.
+</strong>
+<em>
+Invalid record, should be &#34;deprecated&#34; and &#34;superseded&#34; in WOF. Everyone agrees this neighbourhood is an error.
+</em>
+</li>
+</ul>
+<p>
+<a href="https://camo.githubusercontent.com/52c02a452678e439dc309363c92f728e0941ddc2/68747470733a2f2f6d61707a656e2d6173736574732e73332e616d617a6f6e6177732e636f6d2f696d616765732f73662d6e65696768626f7572686f6f642d757064617465732f7265636f72645f7374617475732e706e67" target="_blank">
+<img width="600" alt="Assigning records&#39; status in QGIS" src="https://camo.githubusercontent.com/52c02a452678e439dc309363c92f728e0941ddc2/68747470733a2f2f6d61707a656e2d6173736574732e73332e616d617a6f6e6177732e636f6d2f696d616765732f73662d6e65696768626f7572686f6f642d757064617465732f7265636f72645f7374617475732e706e67" data-canonical-src="https://mapzen-assets.s3.amazonaws.com/images/sf-neighbourhood-updates/record_status.png" style="max-width:100%;">
+</a>
+</p>
+<p>
+<em>
+Image: Developing an action plan in QGIS by assigning records&#39; status in QGIS, reviewing WOF record matches with new SF OpenData source. Colors represent status value.
+</em>
+</p>
+<p>
+<strong>
+Congratulations!
+</strong>
+You have finished collecting and evaluating new neighbourhood shapes for WOF! In the next part of this tutorial, we&#39;ll prepare the data for import. But first, a well-deserved break.
+</p>
+<p>
+To finalize your work and prepare data for import, check out
+<a href="https://github.com/whosonfirst/whosonfirst-cookbook/blob/master/issue_workflows/sf_neighbourhood_updates_pt_2.md">
+part two
+</a>
+!
+</p>
+<a id="user-content-updating-whos-on-first-neighbourhood-records-part-two" class="anchor" href="#updating-whos-on-first-neighbourhood-records-part-two" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+<p>
+<em>
+Before you jump into part two of editing Who&#39;s on First neighbourhood records, make sure to check out
+<a href="https://github.com/whosonfirst/whosonfirst-cookbook/blob/master/issue_workflows/sf_neighbourhood_updates_pt_1.md">
+part one
+</a>
+(covers the first four steps)!
+</em>
+</p>
+<h2>
+<a id="user-content-5-update-records" class="anchor" href="#5-update-records" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+5. Update Records
+</h2>
+<p>
+In the first part of the tutorial, we found open data, modified it, and reconciled it to work with Who&#39;s On First. Now for the fun part - preparing our data for import!
+</p>
+<p>
+Who&#39;s on First treats each placetype slightly different, so we&#39;ve broken this section down by placetype to detail what work needs to take place for each.
+</p>
+<p>
+In this section, you will:
+</p>
+<ul>
+<li>
+Update and create new
+<strong>
+neighbourhoods
+</strong>
+</li>
+<li>
+Reclassify neighbourhoods, creating new
+<strong>
+macrohoods
+</strong>
+(upgrading)
+</li>
+<li>
+Reclassify neighbourhoods, creating new
+<strong>
+microhoods
+</strong>
+(downgrading)
+</li>
+<li>
+Update the
+<strong>
+locality
+</strong>
+record
+</li>
+<li>
+Take care of any
+<strong>
+deprecated
+</strong>
+records and
+<strong>
+outliers
+</strong>
+</li>
+<li>
+File the
+<strong>
+Pull Request
+</strong>
+</li>
+</ul>
+<h3>
+<a id="user-content-update-and-create-neighbourhoods" class="anchor" href="#update-and-create-neighbourhoods" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+Update and create neighbourhoods
+</h3>
+<p>
+There were two outcomes with the new SF OpenData neighbourhood records. These outcomes were either:
+</p>
+<ul>
+<li>
+<p>
+<strong>
+A
+</strong>
+- The modified SF OpenData record was joined to an existing Who&#39;s On First record, the existing WOF geometry was archived as an alt-geometry, and the SF OpenData was added to the record&#39;s default geometry. Names were also updated, with new attributes given to the existing records.
+</p>
+</li>
+<li>
+<p>
+<strong>
+B
+</strong>
+- The modified SF OpenData record did not join to an existing record. A new ID and record for the neighbourhood feature was created. This option requires a completely new
+<code>
+wof:id
+</code>
+(minted by Brooklyn Integers).
+</p>
+</li>
+</ul>
+<p>
+<a href="https://camo.githubusercontent.com/710bb11fa35f7b3e981c8c9ba1c8b6d107daac36/68747470733a2f2f6d61707a656e2d6173736574732e73332e616d617a6f6e6177732e636f6d2f696d616765732f73662d6e65696768626f7572686f6f642d757064617465732f616c6c5f686f6f64732e706e67" target="_blank">
+<img width="600" alt="SF OpenData updated and new neighbourhood data projected in QGIS" src="https://camo.githubusercontent.com/710bb11fa35f7b3e981c8c9ba1c8b6d107daac36/68747470733a2f2f6d61707a656e2d6173736574732e73332e616d617a6f6e6177732e636f6d2f696d616765732f73662d6e65696768626f7572686f6f642d757064617465732f616c6c5f686f6f64732e706e67" data-canonical-src="https://mapzen-assets.s3.amazonaws.com/images/sf-neighbourhood-updates/all_hoods.png" style="max-width:100%;">
+</a>
+</p>
+<p>
+<em>
+Image: SF OpenData neighbourhoods projected in QGIS, purple representing new records and orange representing updated records.
+</em>
+</p>
+<p>
+<em>
+Note: Our data source for San Francisco included large parks as separate neighbourhood shapes (see: Golden Gate Park, McLaren Park), but some authoritative data sources do not include large parks and open spaces as individual neighbourhoods. If this is the case in your locality, you&#39;ll need to split large parks from their current neighbourhood shape, creating new neighbourhood shapes for them. As a general rule, parks over one million square meters (roughly 250 acres) should have their own neighbourhood record. Because the authoritative shapes will be modified when creating new park shapes, we set the
+<code>
+src:geom
+</code>
+field to
+<a href="https://github.com/whosonfirst/whosonfirst-sources/blob/master/sources/mapzen.json">
+<code>
+mz
+</code>
+</a>
+(you can choose another source name that is different from the authoritative source, if you modify the source shape).
+</em>
+</p>
+<p>
+The SF OpenData source contained 117 neighbourhood records, four of which were combination names.
+</p>
+<ul>
+<li>
+<code>
+Aquatic Park / Ft. Mason
+</code>
+</li>
+<li>
+<code>
+Downtown / Union Square
+</code>
+</li>
+<li>
+<code>
+Laurel Heights / Jordan Park
+</code>
+</li>
+<li>
+<code>
+Lincoln Park / Ft. Miley
+</code>
+</li>
+</ul>
+<p>
+These neighbourhoods need to be split into separate parts because WOF records should reflect a single area - not a combined place. In this case, we removed one name from each record and created a microhood record with that removed name.
+</p>
+<p>
+<strong>
+List of Neighbourhoods from SF OpenData
+</strong>
+</p>
+<p>
+<code>
+Alamo Square
+</code>
+,
+<code>
+Anza Vista
+</code>
+,
+<code>
+Apparel City
+</code>
+,
+<code>
+Aquatic Park / Ft. Mason
+</code>
+,
+<code>
+Ashbury Heights
+</code>
+,
+<code>
+Balboa Terrace
+</code>
+,
+<code>
+Bayview
+</code>
+,
+<code>
+Bernal Heights
+</code>
+,
+<code>
+Bret Harte
+</code>
+,
+<code>
+Buena Vista
+</code>
+,
+<code>
+Candlestick Point SRA
+</code>
+,
+<code>
+Castro
+</code>
+,
+<code>
+Cathedral Hill
+</code>
+,
+<code>
+Cayuga
+</code>
+,
+<code>
+Central Waterfront
+</code>
+,
+<code>
+Chinatown
+</code>
+,
+<code>
+Civic Center
+</code>
+,
+<code>
+Clarendon Heights
+</code>
+,
+<code>
+Cole Valley
+</code>
+,
+<code>
+Corona Heights
+</code>
+,
+<code>
+Cow Hollow
+</code>
+,
+<code>
+Crocker Amazon
+</code>
+,
+<code>
+Diamond Heights
+</code>
+,
+<code>
+Dogpatch
+</code>
+,
+<code>
+Dolores Heights
+</code>
+,
+<code>
+Downtown / Union Square
+</code>
+,
+<code>
+Duboce Triangle
+</code>
+,
+<code>
+Eureka Valley
+</code>
+,
+<code>
+Excelsior
+</code>
+,
+<code>
+Fairmount
+</code>
+,
+<code>
+Financial District
+</code>
+,
+<code>
+Fishermans Wharf
+</code>
+,
+<code>
+Forest Hill
+</code>
+,
+<code>
+Forest Knolls
+</code>
+,
+<code>
+Glen Park
+</code>
+,
+<code>
+Golden Gate Heights
+</code>
+,
+<code>
+Golden Gate Park
+</code>
+,
+<code>
+Haight Ashbury
+</code>
+,
+<code>
+Hayes Valley
+</code>
+,
+<code>
+Holly Park
+</code>
+,
+<code>
+Hunters Point
+</code>
+,
+<code>
+India Basin
+</code>
+,
+<code>
+Ingleside
+</code>
+,
+<code>
+Ingleside Terraces
+</code>
+,
+<code>
+Inner Richmond
+</code>
+,
+<code>
+Inner Sunset
+</code>
+,
+<code>
+Japantown
+</code>
+,
+<code>
+Laguna Honda
+</code>
+,
+<code>
+Lake Street
+</code>
+,
+<code>
+Lakeshore
+</code>
+,
+<code>
+Laurel Heights / Jordan Park
+</code>
+,
+<code>
+Lincoln Park / Ft. Miley
+</code>
+,
+<code>
+Little Hollywood
+</code>
+,
+<code>
+Lone Mountain
+</code>
+,
+<code>
+Lower Haight
+</code>
+,
+<code>
+Lower Nob Hill
+</code>
+,
+<code>
+Lower Pacific Heights
+</code>
+,
+<code>
+Marina
+</code>
+,
+<code>
+McLaren Park
+</code>
+,
+<code>
+Merced Heights
+</code>
+,
+<code>
+Merced Manor
+</code>
+,
+<code>
+Midtown Terrace
+</code>
+,
+<code>
+Mint Hill
+</code>
+,
+<code>
+Miraloma Park
+</code>
+,
+<code>
+Mission
+</code>
+,
+<code>
+Mission Bay
+</code>
+,
+<code>
+Mission Dolores
+</code>
+,
+<code>
+Mission Terrace
+</code>
+,
+<code>
+Monterey Heights
+</code>
+,
+<code>
+Mt. Davidson Manor
+</code>
+,
+<code>
+Nob Hill
+</code>
+,
+<code>
+Noe Valley
+</code>
+,
+<code>
+North Beach
+</code>
+,
+<code>
+Northern Waterfront
+</code>
+,
+<code>
+Oceanview
+</code>
+,
+<code>
+Outer Mission
+</code>
+,
+<code>
+Outer Richmond
+</code>
+,
+<code>
+Outer Sunset
+</code>
+,
+<code>
+Pacific Heights
+</code>
+,
+<code>
+Panhandle
+</code>
+,
+<code>
+Parkmerced
+</code>
+,
+<code>
+Parkside
+</code>
+,
+<code>
+Parnassus Heights
+</code>
+,
+<code>
+Peralta Heights
+</code>
+,
+<code>
+Polk Gulch
+</code>
+,
+<code>
+Portola
+</code>
+,
+<code>
+Potrero Hill
+</code>
+,
+<code>
+Presidio Heights
+</code>
+,
+<code>
+Presidio National Park
+</code>
+,
+<code>
+Presidio Terrace
+</code>
+,
+<code>
+Produce Market
+</code>
+,
+<code>
+Rincon Hill
+</code>
+,
+<code>
+Russian Hill
+</code>
+,
+<code>
+Seacliff
+</code>
+,
+<code>
+Sherwood Forest
+</code>
+,
+<code>
+Showplace Square
+</code>
+,
+<code>
+Silver Terrace
+</code>
+,
+<code>
+South Beach
+</code>
+,
+<code>
+South of Market
+</code>
+,
+<code>
+St. Francis Wood
+</code>
+,
+<code>
+St. Marys Park
+</code>
+,
+<code>
+Stonestown
+</code>
+,
+<code>
+Sunnydale
+</code>
+,
+<code>
+Sunnyside
+</code>
+,
+<code>
+Sutro Heights
+</code>
+,
+<code>
+Telegraph Hill
+</code>
+,
+<code>
+Tenderloin
+</code>
+,
+<code>
+Treasure Island
+</code>
+,
+<code>
+Union Street
+</code>
+,
+<code>
+University Mound
+</code>
+,
+<code>
+Upper Market
+</code>
+,
+<code>
+Visitacion Valley
+</code>
+,
+<code>
+West Portal
+</code>
+,
+<code>
+Western Addition
+</code>
+,
+<code>
+Westwood Highlands
+</code>
+,
+<code>
+Westwood Park
+</code>
+, and
+<code>
+Yerba Buena Island
+</code>
+</p>
+<h4>
+<a id="user-content-update-existing-neighbourhoods-with-new-shapes-and-names" class="anchor" href="#update-existing-neighbourhoods-with-new-shapes-and-names" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+Update existing neighbourhoods with new shapes and names
+</h4>
+<p>
+For cases where neighbourhood names were not an exact match between SF OpenData and Who&#39;s On First (remember
+<code>
+Haight Ashbury
+</code>
+vs.
+<code>
+Haight-Ashbury
+</code>
+), make sure we preserve the old WOF name name as a
+<code>
+variant
+</code>
+name (below) and set the SF OpenData name as the feature&#39;s
+<code>
+wof:name
+</code>
+.
+</p>
+<p>
+<em>
+&#34;name:eng_x_variant&#34;:[
+</em>
+<br>
+<em>
+&#34;Haight-Ashbury&#34;
+</em>
+<br>
+<em>
+],
+</em>
+</p>
+<p>
+<a href="https://camo.githubusercontent.com/49be21b07131ed9cae52b68ad0b5439c31c492a7/68747470733a2f2f6d61707a656e2d6173736574732e73332e616d617a6f6e6177732e636f6d2f696d616765732f73662d6e65696768626f7572686f6f642d757064617465732f757064617465645f686f6f64732e706e67" target="_blank">
+<img width="600" alt="SF OpenData updated and new neighbourhood data projected in QGIS" src="https://camo.githubusercontent.com/49be21b07131ed9cae52b68ad0b5439c31c492a7/68747470733a2f2f6d61707a656e2d6173736574732e73332e616d617a6f6e6177732e636f6d2f696d616765732f73662d6e65696768626f7572686f6f642d757064617465732f757064617465645f686f6f64732e706e67" data-canonical-src="https://mapzen-assets.s3.amazonaws.com/images/sf-neighbourhood-updates/updated_hoods.png" style="max-width:100%;">
+</a>
+</p>
+<p>
+<em>
+Image: SF OpenData neighbourhoods projected in QGIS that mapped cleanly to an existing WOF ID.
+</em>
+</p>
+<p>
+Once we&#39;ve completed this step, we need to fill out other necessary attribute fields. These include all attribute fields in our .geojson file retrieved using our
+<code>
+external_editor
+</code>
+command option in part one of the tutorial.
+</p>
+<h4>
+<a id="user-content-create-new-wof-neighbourhood-records" class="anchor" href="#create-new-wof-neighbourhood-records" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+Create new WOF neighbourhood records
+</h4>
+<p>
+Since these new features do not have an existing WOF record to update, this step is fairly simple. We need to assign each new neighbourhood record a new
+<a href="http://www.brooklyninteger.com">
+Brooklyn Integer
+</a>
+, which become the
+<code>
+wof:id
+</code>
+for each record. Then, just like our last step, we need to fill out necessary attribute fields in our .geojson file.
+</p>
+<p>
+<a href="https://camo.githubusercontent.com/ded8403de7bb0dd7ca13223a3774a20d8651b32d/68747470733a2f2f6d61707a656e2d6173736574732e73332e616d617a6f6e6177732e636f6d2f696d616765732f73662d6e65696768626f7572686f6f642d757064617465732f6e65775f6e65696768626f7572686f6f64735f776c6162656c2e706e67" target="_blank">
+<img width="600" alt="SF OpenData updated and new neighbourhood data projected in QGIS" src="https://camo.githubusercontent.com/ded8403de7bb0dd7ca13223a3774a20d8651b32d/68747470733a2f2f6d61707a656e2d6173736574732e73332e616d617a6f6e6177732e636f6d2f696d616765732f73662d6e65696768626f7572686f6f642d757064617465732f6e65775f6e65696768626f7572686f6f64735f776c6162656c2e706e67" data-canonical-src="https://mapzen-assets.s3.amazonaws.com/images/sf-neighbourhood-updates/new_neighbourhoods_wlabel.png" style="max-width:100%;">
+</a>
+</p>
+<p>
+<em>
+Image: Neighbourhoods in SF OpenData that should be added to WOF.
+</em>
+</p>
+<p>
+After our attributes field values are filled out, the following will occur upon import to our .geojson files:
+</p>
+<ul>
+<li>
+All &#34;contained by&#34; records will be found and the hierarchy will be rebuilt (in order of placetype).
+</li>
+<li>
+To automate this reverse geocoding, the Point-In-Polygon (PIP) server will be reindexed. This will allow us to regenerate hierarchy values and assign new parent IDs for any record that falls within a new neightbourhood geometry.
+</li>
+</ul>
+<h3>
+<a id="user-content-reclassify-neighbourhoods-creating-new-macrohoods-upgrading" class="anchor" href="#reclassify-neighbourhoods-creating-new-macrohoods-upgrading" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+Reclassify neighbourhoods, creating new
+<strong>
+macrohoods
+</strong>
+(upgrading)
+</h3>
+<p>
+While we recognied four valid macrohoods in San Francisco, only two of these records were in Who&#39;s on First as existing neighbourhoods. The other two were not existing neighbourhood records that were not in Who&#39;s on First were imported as new features that did not supersede an existing record.
+</p>
+<p>
+Since our source data only included neighbourhood shapes, we&#39;ll have to create our own macrohood shapes. We created new shapes by combining geometries from the SF OpenData neighbourhoods. To combine geometries, the Dissolve tool in QGIS was used. For example, the shape for the Sunset District macrohood record was created by selecting neighbourhood records that fall completely within the area we&#39;re designating as the Sunset District macrohood: Outer Sunset, Parkside, Golden Gate Heights, and Inner Sunset. With those features selected, the Dissolve tool was used to export the merged geometry of these four neighbourhood geometries by clicking the &#34;Vector&#34; dropdown menu and selecting
+<code>
+Geoprocessing Tools
+</code>
+&gt;
+<code>
+Dissolve
+</code>
+.
+</p>
+<p>
+These four records (below) were imported as new macrohoods. The
+<code>
+wof:id
+</code>
+of these macrohood records will become the
+<code>
+wof:parent_id
+</code>
+of any neighbourhood within the given macrohood shape. Again, these
+<code>
+wof:id
+</code>
+values will be minted from Brooklyn Integers (just as we&#39;ve done in previous steps) and the macrohood attributes will need to be updated accordingly. Since a change to the
+<code>
+wof:placetype
+</code>
+value qualifies as a &#34;
+<a href="https://github.com/whosonfirst/whosonfirst-cookbook/blob/master/definition/significant_event.md">
+Significant Event
+</a>
+,&#34; new macrohood records&#39;
+<code>
+wof:id
+</code>
+will become the
+<code>
+wof:superseded_by
+</code>
+value in the the original neighbourhood record and the original neighbourhood records&#39;
+<code>
+wof:id
+</code>
+will become the
+<code>
+wof:supersedes
+</code>
+value in these new macrohood records.
+</p>
+<p>
+<a href="https://camo.githubusercontent.com/c4b875352051afdee08cdac42866fb3dfd96fc40/68747470733a2f2f6d61707a656e2d6173736574732e73332e616d617a6f6e6177732e636f6d2f696d616765732f73662d6e65696768626f7572686f6f642d757064617465732f6d6163726f5f776c6162656c2e706e67" target="_blank">
+<img width="600" alt="SF OpenData neighbourhood data and new macrohoods projected in QGIS" src="https://camo.githubusercontent.com/c4b875352051afdee08cdac42866fb3dfd96fc40/68747470733a2f2f6d61707a656e2d6173736574732e73332e616d617a6f6e6177732e636f6d2f696d616765732f73662d6e65696768626f7572686f6f642d757064617465732f6d6163726f5f776c6162656c2e706e67" data-canonical-src="https://mapzen-assets.s3.amazonaws.com/images/sf-neighbourhood-updates/macro_wlabel.png" style="max-width:100%;">
+</a>
+</p>
+<p>
+<em>
+Image: SF OpenData neighbourhood-based data and new macrohoods projected in QGIS.
+</em>
+</p>
+<h3>
+<a id="user-content-reclassify-neighbourhoods-creating-new-microhoods-downgrading" class="anchor" href="#reclassify-neighbourhoods-creating-new-microhoods-downgrading" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+Reclassify neighbourhoods, creating new
+<strong>
+microhoods
+</strong>
+(downgrading)
+</h3>
+<p>
+There were 51 leftover WOF records after figuring out concordances between data sources and reclassifying macrohoods. These records were generally smaller than sections of larger neighbourhoods and were determined to be more appropriate as microhoods.
+</p>
+<p>
+These leftover WOF neighbourhood records need to be adjusted to align with the SF OpenData geometries so they can be imported to WOF as new microhoods. This is important because microhoods should
+<em>
+generally
+</em>
+not overlap neighbourhoods. There is no rule about yes-or-no overlap between neighbourhoods and microhoods (or even between neighbourhoods and neighbourhoods, or microhoods to microhoods), but we are looking for cleaner geometry that&#39;s less overlapping for the
+<strong>
+default
+</strong>
+- overlapping geometries can always become alt-geometry records.
+</p>
+<p>
+<strong>
+Optional:
+</strong>
+note that the new microhood shapes can be generalized slightly (shown below). The Zetashapes occasionally cut through neighbourhoods at odd angles, so adding a missing block or two into your new microhood geometry is acceptable.
+</p>
+<p>
+<a href="https://camo.githubusercontent.com/1114b77b42af0267d092bb56a6169ea10da45eaa/68747470733a2f2f6d61707a656e2d6173736574732e73332e616d617a6f6e6177732e636f6d2f696d616765732f73662d6e65696768626f7572686f6f642d757064617465732f312e676966" target="_blank">
+<img width="600" alt="Neighbourhood geometries being cut to become new microhood geometries" src="https://camo.githubusercontent.com/1114b77b42af0267d092bb56a6169ea10da45eaa/68747470733a2f2f6d61707a656e2d6173736574732e73332e616d617a6f6e6177732e636f6d2f696d616765732f73662d6e65696768626f7572686f6f642d757064617465732f312e676966" data-canonical-src="https://mapzen-assets.s3.amazonaws.com/images/sf-neighbourhood-updates/1.gif" style="max-width:100%;">
+</a>
+</p>
+<p>
+<em>
+GIF: Neighbourhood geometries being cut to become new microhood geometries.
+</em>
+</p>
+<p>
+Shapes were modified using the Split Features tool in the Advanced Digitizing Toolbar in QGIS. This toolbar does not automatically appear in QGIS; to access the Advanced Editor Toolbar (below), we&#39;ll need to enable it under QGIS&#39;s View tab. Navigate to the View tab in QGIS and select
+<code>
+Toolbars
+</code>
+&gt;
+<code>
+Advanced Digitizing Toolbar
+</code>
+.
+</p>
+<p>
+<a href="https://camo.githubusercontent.com/c7a2600b9233f5bd0370d9fbb0bc212834f61062/68747470733a2f2f6d61707a656e2d6173736574732e73332e616d617a6f6e6177732e636f6d2f696d616765732f73662d6e65696768626f7572686f6f642d757064617465732f31322e706e67" target="_blank">
+<img width="600" alt="Advanced Digitizing Toolbar in QGIS" src="https://camo.githubusercontent.com/c7a2600b9233f5bd0370d9fbb0bc212834f61062/68747470733a2f2f6d61707a656e2d6173736574732e73332e616d617a6f6e6177732e636f6d2f696d616765732f73662d6e65696768626f7572686f6f642d757064617465732f31322e706e67" data-canonical-src="https://mapzen-assets.s3.amazonaws.com/images/sf-neighbourhood-updates/12.png" style="max-width:100%;">
+</a>
+</p>
+<p>
+<em>
+Image: Advanced Digitizing Toolbar in QGIS, with the Split Feature tool highlighted.
+</em>
+</p>
+<p>
+Alternatively, the Clip with Polygon from Another Layer tool in the Digitizing Toolbar can be used to automatically cut neighbourhood polygons into microhood polygons.
+</p>
+<p>
+Since we are creating new microhood records, we&#39;ll need to use Brooklyn Integers to get new
+<code>
+wof:id
+</code>
+values, similar to what we did with new neighbourhood records. Lastly, since a change to the
+<code>
+wof:placetype
+</code>
+value qualifies as a &#34;
+<a href="https://github.com/whosonfirst/whosonfirst-cookbook/blob/master/definition/significant_event.md">
+Significant Event
+</a>
+,&#34; new microhood records&#39;
+<code>
+wof:id
+</code>
+will become the
+<code>
+wof:superseded_by
+</code>
+value in the the original neighbourhood record and the original neighbourhood records&#39;
+<code>
+wof:id
+</code>
+will become the
+<code>
+wof:supersedes
+</code>
+value in these new microhood records.
+</p>
+<p>
+<a href="https://camo.githubusercontent.com/b8d007b6f9368f400e4dc651ebbc177bbcaf7b18/68747470733a2f2f6d61707a656e2d6173736574732e73332e616d617a6f6e6177732e636f6d2f696d616765732f73662d6e65696768626f7572686f6f642d757064617465732f6d6963726f686f6f64732e706e67" target="_blank">
+<img width="600" alt="SF OpenData neighbourhood data and updated WOF microhoods projected in QGIS" src="https://camo.githubusercontent.com/b8d007b6f9368f400e4dc651ebbc177bbcaf7b18/68747470733a2f2f6d61707a656e2d6173736574732e73332e616d617a6f6e6177732e636f6d2f696d616765732f73662d6e65696768626f7572686f6f642d757064617465732f6d6963726f686f6f64732e706e67" data-canonical-src="https://mapzen-assets.s3.amazonaws.com/images/sf-neighbourhood-updates/microhoods.png" style="max-width:100%;">
+</a>
+</p>
+<p>
+<em>
+Image: SF OpenData neighbourhood data and updated WOF microhoods projected in QGIS.
+</em>
+</p>
+<h3>
+<a id="user-content-update-the-locality-record" class="anchor" href="#update-the-locality-record" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+Update the locality record
+</h3>
+<p>
+Now that we&#39;ve fixed our neighbourhood shapes... what about the locality (city) shape?
+</p>
+<p>
+The existing Who&#39;s On First shape for San Francisco was technically correct, showing all land, water, and offshore islands administered by the city. But, its not the city&#39;s seven mile by seven mile iconic shape that many residents and visitors recognize as the shape of San Francisco.
+<a href="https://github.com/whosonfirst/whosonfirst-data/blob/master/data/859/225/83/85922583-alt-mapzen.geojson">
+A new geometry of San Francisco
+</a>
+without the outlying areas (Treasure Island and Farallon Islands) was produced as a new alt-geometry of just the contiguous San Francisco (comparison below).
+</p>
+<p>
+<a href="https://camo.githubusercontent.com/e062f0cee1d636d08e3ed6ec2cec1eab16705614/68747470733a2f2f6d61707a656e2d6173736574732e73332e616d617a6f6e6177732e636f6d2f696d616765732f73662d6e65696768626f7572686f6f642d757064617465732f6f766572766965772e706e67" target="_blank">
+<img width="600" alt="Comparison of San Francisco&#39;s WOF geometry and alt-geometry" src="https://camo.githubusercontent.com/e062f0cee1d636d08e3ed6ec2cec1eab16705614/68747470733a2f2f6d61707a656e2d6173736574732e73332e616d617a6f6e6177732e636f6d2f696d616765732f73662d6e65696768626f7572686f6f642d757064617465732f6f766572766965772e706e67" data-canonical-src="https://mapzen-assets.s3.amazonaws.com/images/sf-neighbourhood-updates/overview.png" style="max-width:100%;">
+</a>
+</p>
+<p>
+<em>
+Image: Comparison of San Francisco&#39;s new WOF geometry and its original geometry, now preserved as an alt-geometry.
+</em>
+</p>
+<p>
+This new geometry was created using the Dissolve tool in QGIS with the nieghbourhood shapes from SF OpenData. This alt-geometry was more detailed than the
+<a href="https://github.com/whosonfirst/whosonfirst-data/blob/master/data/859/225/83/85922583.geojson">
+current outline for San Francisco
+</a>
+and is debatably the general outline that most consider the San Francisco locality.
+</p>
+<p>
+When we update WOF neighbourhoods to default to a new geometry, we also need to preserve the earlier Zetashapes geometry as an alt-geometry in WOF. An alt-geometry is a dedicated WOF record that only contains source information and a geometry - check out an example of an alt-geometry
+<a href="https://github.com/whosonfirst/whosonfirst-data/blob/master/data/859/225/83/85922583-alt-mapzen.geojson">
+here
+</a>
+. Alt-geometries use the same
+<code>
+wof:id
+</code>
+as the record&#39;s main geometry, but append
+<code>
+-alt-&#34;source&#34;
+</code>
+.
+</p>
+<p>
+Because we&#39;re mixing data from different sources, we should also modify the shapes so they are more consistent with eachother regardless of the source. We&#39;ll revisit this in part 5.
+</p>
+<h3>
+<a id="user-content-take-care-of-any-deprecated-records-and-outliers" class="anchor" href="#take-care-of-any-deprecated-records-and-outliers" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+Take care of any deprecated records and outliers
+</h3>
+<p>
+While the above steps took care of the majority of our issues, there were a few remaining edits to be made in San Francisco:
+</p>
+<ul>
+<li>
+<p>
+The
+<strong>
+Westlake
+</strong>
+neighbourhood in Daly City was incorrectly parented to San Francisco. This record needed to have its
+<code>
+wof:hierarchy
+</code>
+and
+<code>
+wof:parent
+</code>
+fields updated to replace the ID for Daly City with the ID for San Francisco. This hierarchy change qualifies as a
+<strong>
+Significant Event
+</strong>
+, so the record was deprecated and superseded to a new record for this neighbourhood. This requires us to duplicate the old file, update the
+<code>
+wof:id
+</code>
+property and filename to the new ID, linking up the
+<code>
+wof:supersedes
+</code>
+and
+<code>
+wof:supersedes_by
+</code>
+properties in both records.
+</p>
+</li>
+<li>
+<p>
+The
+<strong>
+Transmission
+</strong>
+neighbourhood in San Francisco need to be deprecated and given an
+<code>
+mz:is_funky
+</code>
+value of
+<code>
+1
+</code>
+. Using local knowledge, it was determined that this neighbourhood would be deprecated and superseded to the nearby record of &#34;La Lengua&#34;, rather than a new microhood.
+</p>
+</li>
+<li>
+<p>
+The Who&#39;s On First record for the
+<strong>
+Ft. Winfield Scott
+</strong>
+neighbourhood in Marin County needed to be updated with a new geometry and correct parenting; it was also given a new name,
+<code>
+Fort Baker
+</code>
+. This qualifies as a
+<strong>
+Significant Event
+</strong>
+, so the record was deprecated and superseded to a new record for this neighbourhood.
+</p>
+</li>
+</ul>
+<h3>
+<a id="user-content-setting-min_zoom-and-max_zoom" class="anchor" href="#setting-min_zoom-and-max_zoom" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+Setting min_zoom and max_zoom
+</h3>
+<p>
+We also have to ensure that all microhood, neighbourhood, and macrohood records are given appropriate
+<code>
+mz:min_zoom
+</code>
+and
+<code>
+mz:max_zoom
+</code>
+values.  These values should be consistent across place types, as they are used to determine at what zoom level the name label will appear (and when it will disappear).
+</p>
+<p>
+For existing features, probably don&#39;t modify the existing
+<code>
+min_zoom
+</code>
+and
+<code>
+max_zoom
+</code>
+values. But for new features, do the following:
+</p>
+<ul>
+<li>
+<code>
+borough
+</code>
+:
+<ul>
+<li>
+Default:
+<code>
+min_zoom
+</code>
+:
+<code>
+10
+</code>
+, optionally modify up to
+<code>
+9
+</code>
+for important places.
+</li>
+<li>
+Default:
+<code>
+max_zoom
+</code>
+:
+<code>
+13
+</code>
+, rarely modify.
+</li>
+</ul>
+</li>
+<li>
+<code>
+neighbourhood
+</code>
+:
+<ul>
+<li>
+Default:
+<code>
+min_zoom
+</code>
+:
+<code>
+15
+</code>
+, optionally modify up to
+<code>
+13
+</code>
+for important places.
+</li>
+<li>
+Default:
+<code>
+max_zoom
+</code>
+:
+<code>
+18
+</code>
+, rarely modify.
+</li>
+</ul>
+</li>
+<li>
+<code>
+macrohood
+</code>
+:
+<ul>
+<li>
+Default:
+<code>
+min_zoom
+</code>
+:
+<code>
+13
+</code>
+, optionally modify up to
+<code>
+11
+</code>
+for important places.
+</li>
+<li>
+Default:
+<code>
+max_zoom
+</code>
+:
+<code>
+15
+</code>
+, rarely modify.
+</li>
+</ul>
+</li>
+<li>
+<code>
+microhood
+</code>
+:
+<ul>
+<li>
+Default:
+<code>
+min_zoom
+</code>
+:
+<code>
+16
+</code>
+, rarely modify.
+</li>
+<li>
+Default:
+<code>
+max_zoom
+</code>
+:
+<code>
+18
+</code>
+, rarely modify.
+</li>
+</ul>
+</li>
+</ul>
+<p>
+Now we need to create (or update) the
+<code>
+lbl:latitude
+</code>
+and
+<code>
+lbl:longitude
+</code>
+attribute properties for all updated or new geometries in your geojson files: visit
+<a href="http://www.mapshaper.org">
+MapShaper
+</a>
+and do the following, one file at a time:
+</p>
+<ul>
+<li>
+Click the box next to snap verticles
+</li>
+<li>
+Paste
+<code>
+each &#39;lbl_longitude=$.innerX , lbl_latitude=$.innerY&#39;
+</code>
+into command line option
+</li>
+<li>
+Export the file as a geojson
+</li>
+<li>
+Repeat this process for each file
+</li>
+</ul>
+<h2>
+<a id="user-content-lets-recap" class="anchor" href="#lets-recap" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+Let&#39;s Recap
+</h2>
+<p>
+A big
+<strong>
+thank you
+</strong>
+to those who have made it to this point in the tutorial! Before we finalize our PR, let&#39;s recap the work we&#39;ve completed so far and make sure we have all records in order.
+</p>
+<p>
+We&#39;ve found a new administrative source, compared it to our Who&#39;s on First record and made one of the following updates (depending on that feature&#39;s unique situation):
+</p>
+<ul>
+<li>
+<strong>
+A.
+</strong>
+Updated the WOF neighbourhood feature&#39;s geometry with a new administrative geometry and imported new source attributes.
+</li>
+<li>
+<strong>
+B.
+</strong>
+Minted a new Brooklyn Integer for new administrative neighbourhood shapes that are new to Who&#39;s on First.
+</li>
+<li>
+<strong>
+C.
+</strong>
+&#34;Downgraded&#34; the neighbourhood feature to a microhood. This required minting a new Brooklyn Integer for our microhood record, updating the
+<code>
+edtf:deprecated
+</code>
+,
+<code>
+mz:is_current
+</code>
+,
+<code>
+mz:min_zoom
+</code>
+,
+<code>
+mz:max_zoom
+</code>
+,
+<code>
+lbl:latitude
+</code>
+,
+<code>
+lbl:longitude
+</code>
+attribute fields accordingly, and superseding our old neighbourhood record to our new microhood record.
+</li>
+<li>
+<strong>
+D.
+</strong>
+&#34;Upgraded&#34; the neighbourhood feature to a microhood. This required minting a new Brooklyn Integer for our microhood record, updating the
+<code>
+edtf:deprecated
+</code>
+,
+<code>
+mz:is_current
+</code>
+,
+<code>
+mz:min_zoom
+</code>
+,
+<code>
+mz:max_zoom
+</code>
+,
+<code>
+lbl:latitude
+</code>
+,
+<code>
+lbl:longitude
+</code>
+attribute fields accordingly, and superseding our old neighbourhood record to our new macrohood record.
+</li>
+<li>
+<strong>
+E.
+</strong>
+Deprecated our neighbourhood record, as it was never valid to begin with.
+</li>
+</ul>
+<p>
+Now, we should have a collection of .geojson files that we have use to create a pull request (if this step is too difficult or not possible for some reason,
+<a href="mailto:stephen.epps@mapzen.com">
+email us
+</a>
+, as we may be able to import your .geojson files independently of a pull request). While you may have updated several other attribute fields(
+<code>
+lbl
+</code>
+fields,
+<code>
+zoom
+</code>
+fields, etc.), the following required attributes should
+<em>
+always
+</em>
+be in your .geojson files:
+</p>
+<ul>
+<li>
+<code>
+wof:name
+</code>
+</li>
+<li>
+<code>
+wof:id
+</code>
+</li>
+<li>
+<code>
+wof:placetype
+</code>
+</li>
+<li>
+<code>
+wof:country
+</code>
+</li>
+<li>
+<code>
+wof:parent_id
+</code>
+</li>
+</ul>
+<p>
+Last thing - Remember the single-part versus multi-part editing issues that can arise in QGIS? Click on the
+<code>
+Vector
+</code>
+tab and navigate to
+<code>
+Geometry Tools &gt; Check Geometry Validity
+</code>
+to ensure that you have not added multi-part features to a single-part geojson file or vice versa.
+</p>
+<h2>
+<a id="user-content-now-that-we-have-files-server-magic" class="anchor" href="#now-that-we-have-files-server-magic" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+Now that we have files... server magic!
+</h2>
+<p>
+We&#39;ve developed in-house tools to automate much of the import process for Who&#39;s on First. The following tasks will be auto-completed for records that we&#39;ve edited:
+</p>
+<ul>
+<li>
+Updates to the
+<strong>
+supersedes
+</strong>
+and
+<strong>
+supersedes_by
+</strong>
+fields.
+</li>
+<li>
+All hierarchy values of &#34;contained by&#34; records need to be updated to include the new
+<code>
+wof:id
+</code>
+. To automate this reverse geocoding, we&#39;ll use the Point-In-Polygon (PIP) server which will rebuild a record&#39;s hierarchy.
+</li>
+</ul>
+<p>
+The Point-In-Polygon server is a tool that update parent IDs for descendent records. Records are assigned a hierarchy based on their
+<code>
+wof:parent
+</code>
+, and, since we&#39;ve updated many records in San Francisco, twe&#39;ll need to ensure these are all correct before import. This automated Point-In-Polygon server does an excellent job in automating this process compared to doing this work by hand.
+</p>
+<h2>
+<a id="user-content-conclusion" class="anchor" href="#conclusion" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+Conclusion
+</h2>
+<p>
+Now that you&#39;ve completed all the necessary steps, file a
+<a href="https://github.com/whosonfirst/whosonfirst-data/pulls">
+pull request in our whosonfirst-data repository
+</a>
+! We&#39;ll review the pull request and let you know if we have any questions.
+</p>
+<p>
+This was an exercise in data curation and data management that will undoubtedly be replicated in other cities around the world. Taking a look at cities like
+<a href="https://whosonfirst.mapzen.com/spelunker/id/85977539/descendants/?&amp;placetype=neighbourhood#9/40.6805/-74.0656">
+New York City
+</a>
+,
+<a href="https://whosonfirst.mapzen.com/spelunker/id/85668081/descendants/?&amp;placetype=neighbourhood#11/-34.5939/-58.4518">
+Buenos Aires
+</a>
+,
+<a href="https://whosonfirst.mapzen.com/spelunker/id/101748417/descendants/?&amp;placetype=neighbourhood#11/60.2107/24.9411">
+Helsinki
+</a>
+, and
+<a href="https://whosonfirst.mapzen.com/spelunker/id/101928027/descendants/?&amp;placetype=neighbourhood#10/-34.0028/18.4627">
+Cape Town
+</a>
+, for example, you&#39;ll notice that we still have work to do to improve our neighbourhood records. A few take-aways:
+</p>
+<ul>
+<li>
+Anyone has the ability to contribute to neighbourhood updates for their locality.
+</li>
+<li>
+There will always be an argument for and against a change to a neighbourhood boundary.
+</li>
+<li>
+When it comes to neighbourhood boundaries, there is no right answer, but we care about your opinion. Please share!
+</li>
+<li>
+Neighbourhoods, macrohoods, and microhoods are ever-changing. Make the shapes better today!
+</li>
+</ul>
+<p>
+Please remember - some of this work is automated and some of this work is not. Please contact us via an
+<a href="https://github.com/whosonfirst/whosonfirst-data/issues/new">
+issue
+</a>
+or an
+<a href="mailto:stephen.epps@mapzen.com">
+email
+</a>
+to work through the best approach for your city.
+</p>
+<p>
+<strong>
+Thanks for reading and happy mapping!
+</strong>
+</p>
+								</div>
+							</div>
+						</article>
+					</div>
+					<div class="col-lg-2 col-md-0 col-sm-0 col-xs-0"></div>
+				</div>
+			</div>
+		</div>
+		<footer>
+			<nav class="navbar navbar-default navbar-bottom">
+				<div class="container">
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<ul class="nav navbar-nav navbar-right whosonfirst-footer">
+						<li class="whosonfirst-nav-link-nounderline whoosonfooter-gig">who's on first is a <a href="https://mapzen.com/" class="whosonfirst-nav-link whosonfirst-nav-link-innounderline">mapzen</a> gig</li>
+						<li><a href="../../docs/contributing/index.html" class="whosonfirst-nav-link whosonfirst-footer-nav-link">contributing</a></li>
+						<li><a href="../../docs/licensing/index.html" class="whosonfirst-nav-link whosonfirst-footer-nav-link">licensing</a></li>
+						<li><a href="https://github.com/whosonfirst" class="whosonfirst-nav-link whosonfirst-footer-nav-link">code github</a></li>
+						<li><a href="https://github.com/whosonfirst-data" class="whosonfirst-nav-link whosonfirst-footer-nav-link">data github</a></li>
+						<li><a href="https://twitter.com/alloftheplaces/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">twitter</a></li>
+					</ul>
+				</div>
+			</nav>
+		</footer>
+		
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<!-- Include all compiled plugins (below), or include individual files as needed -->
+		<script src="../../javascript/bootstrap.min.js"></script>
+		
+		<script>
+			$(document).ready(function(){
+				$("#bs-example-navbar-collapse-2").on("show.bs.collapse", function(){
+					console.log("In here");
+					document.getElementById("glyphicon-one").classList.add("glyphicon-menu-up");
+					document.getElementById("glyphicon-one").classList.remove("glyphicon-menu-down");
+				});
+				$("#bs-example-navbar-collapse-2").on("hide.bs.collapse", function(){
+					document.getElementById("glyphicon-one").classList.add("glyphicon-menu-down");
+					document.getElementById("glyphicon-one").classList.remove("glyphicon-menu-up");
+				});
+				$(".whosonfirst-sidenav-list").mouseover(function(){
+					$("body").css("overflow","hidden");
+				});
+				$(".whosonfirst-sidenav-list").mouseout(function(){
+					$("body").css("overflow","auto");
+				});
+			});
+		</script>
+	</body>
+</html>

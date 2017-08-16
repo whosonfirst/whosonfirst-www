@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Who’s On First</title>
+        <meta name='description' content="Who's on First is a gazetteer of places.">
+        <link rel='apple-touch-icon' href='https://mapzen.com/common/styleguide/images/favicons/apple-touch-icon.png' sizes='180x180'>
+        <link rel='icon' type='image/png' href='https://mapzen.com/common/styleguide/images/favicons/favicon-16x16.png' sizes='16x16'>
+        <link rel='icon' type='image/png' href='https://mapzen.com/common/styleguide/images/favicons/favicon-32x32.png' sizes='32x32'>
+        <link rel='manifest' href='https://mapzen.com/common/styleguide/images/favicons/manifest.json'>
+        <link rel='mask-icon' href='https://mapzen.com/common/styleguide/images/favicons/safari-pinned-tab.svg' color='#2C1E3F'>
+		
+		<link rel="stylesheet" href="../../css/bootstrap.min.css">
+		<link rel="stylesheet" href="../../css/mapzen.whosonfirst.css">
+    </head>
+	<body>
+		<div class="whosonfirst-wrapper"><nav class="navbar navbar-default navbar-fixed-top whosonfirst-fixed-subpage-navbar">
+	<div class="container">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="../../index.html">Who's On First</a>
+		</div>
+
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav navbar-right">
+				<li class="whosonfirst-navbar-element-collapsed">
+					<a href="../../data/index.html" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">data</a>
+				</li>
+				<li class="whosonfirst-navbar-element-collapsed">
+					<a href="../../docs/index.html" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed whosonfirst-nav-active">docs</a>
+				</li>
+				<li class="whosonfirst-navbar-element-collapsed">
+					<a href="../../tools/index.html" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">tools</a>
+				</li>
+				<li class="whosonfirst-navbar-element-collapsed">
+					<a href="../../blog/index.html" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">blog</a>
+				</li>
+				<li class="whosonfirst-navbar-element-collapsed">
+					<a href="../../getstarted/index.html" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">get started</a>
+				</li>
+			</ul>
+		</div><!-- /.navbar-collapse -->
+	</div><!-- /.container-fluid -->
+</nav><div class="container whosonfirst-subpage-container">
+	<div class="row">
+		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-0">
+			<aside>
+				<div class="whosonfirst-sidenav-container">
+					<ul class="whosonfirst-sidenav-list">
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="../properties/index.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">properties</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="../concordances/index.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">concordances</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="../placetypes/index.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">placetypes</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="../hierachies/index.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">hierachies</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="../names/index.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">names</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="../geometries/index.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">geometries</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="../dates/index.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">dates</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="../categories/index.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">categories</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="../sources/index.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">sources</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="../tests/index.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">tests</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="../contributing/index.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">contributing</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="../licensing/index.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">licensing</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="../processes/index.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">processes and workflows</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element whosonfirst-sidenav-list-element-secondlevel whosonfirst-sidenav-link-twoliner-container">
+							<a href="../processes/assigningcessation.html" class="whosonfirst-nav-link whosonfirst-sidenav-link whosonfirst-sidenav-link-twoliner">assigning cessation and deprecated dates</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element whosonfirst-sidenav-list-element-secondlevel whosonfirst-sidenav-link-twoliner-container">
+							<a href="../processes/significantevent.html" class="whosonfirst-nav-link whosonfirst-sidenav-link whosonfirst-sidenav-link-twoliner">what is a significant event</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element whosonfirst-sidenav-list-element-secondlevel">
+							<a href="../processes/woflifecycle.html" class="whosonfirst-nav-link whosonfirst-sidenav-link whosonfirst-nav-active">wof life cycle</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element whosonfirst-sidenav-list-element-secondlevel whosonfirst-sidenav-link-twoliner-container">
+							<a href="../processes/s3requirements.html" class="whosonfirst-nav-link whosonfirst-sidenav-link whosonfirst-sidenav-link-twoliner">what is required for s3 import files</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element whosonfirst-sidenav-list-element-secondlevel whosonfirst-sidenav-link-twoliner-container">
+							<a href="../processes/seattleneighborhoodupdates.html" class="whosonfirst-nav-link whosonfirst-sidenav-link whosonfirst-sidenav-link-twoliner">seattle neighbourhood updates</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element whosonfirst-sidenav-list-element-secondlevel whosonfirst-sidenav-link-twoliner-container">
+							<a href="../processes/updatingsanfrancisconeighborhoods.html" class="whosonfirst-nav-link whosonfirst-sidenav-link whosonfirst-sidenav-link-twoliner">san francisco neighbourhood updates</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element whosonfirst-sidenav-list-element-secondlevel whosonfirst-sidenav-link-twoliner-container">
+							<a href="../processes/wikipediaconcordances.html" class="whosonfirst-nav-link whosonfirst-sidenav-link whosonfirst-sidenav-link-twoliner">wikipedia concordances</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="../keyterms/index.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">key terms</a>
+						</li>
+					</ul>
+				</div>
+			</aside>
+		</div>
+		<div class="col-lg-7 col-md-9 col-sm-9 col-xs-12">
+			<article><h1 class="whosonfirst-subpage-header">
+<a id="user-content-whos-on-first-id-life-cycle-documentation" class="anchor" href="#whos-on-first-id-life-cycle-documentation" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+Who&#39;s On First ID Life Cycle Documentation
+</h1>
+<div class="whosonfirst-fulltabs-container">
+	<div class="whosonfirst-extrasmall-tabs-menu">
+		<div class="whosonfirst-extrasmall-tabs-menu-content">
+			<div class="whosonfirst-extrasmall-tabs-menu-content-header">
+				<div class="row whosonfirst-extrasmall-menu-row">
+					<div class="col-xs-11">
+						<div class="whosonfirst-extrasmall-tab-selection">WOF Lifecycle</div>
+					</div>
+					<div class="col-xs-1 whosonfirst-extrasmall-menu-chevron-col">
+						<button type="button" class="navbar-toggle collapsed whosonfirst-extrasmall-menu-chevron-down" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2" aria-expanded="false">
+							<span id="glyphicon-one" class="glyphicon glyphicon-menu-down whosonfirst-extrasmall-menu-actual-chevron-down"></span>
+						</button>
+					</div>
+				</div>
+			</div>
+			<div class="collapse" id="bs-example-navbar-collapse-2">
+				<div class="whosonfirst-extrasmall-nav-collection">
+					<ul class="nav navbar-nav navbar-right whosonfirst-extrasmall-nav">
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="../properties/index.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">properties</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="../concordances/index.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">concordances</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="../placetypes/index.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">placetypes</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="../hierachies/index.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">hierachies</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="../names/index.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">names</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="../geometries/index.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">geometries</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="../dates/index.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">dates</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="../categories/index.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">categories</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="../sources/index.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">sources</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="../tests/index.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">tests</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="../contributing/index.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">contributing</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="../licensing/index.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">licensing</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="../processes/assigningcessation.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">processes and workflows</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element whosonfirst-smallnav-link-twoliner-container">
+							<a href="../processes/assigningcessation.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed whosonfirst-subnav-secondlevel whosonfirst-smallnav-link-twoliner">assigning cessation and deprecated dates</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="../processes/significantevent.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed whosonfirst-subnav-secondlevel">what is a significant event</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="../processes/woflifecycle.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed whosonfirst-subnav-secondlevel whosonfirst-nav-active">wof life cycle</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element whosonfirst-smallnav-link-twoliner-container">
+							<a href="../processes/s3requirements.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed whosonfirst-subnav-secondlevel whosonfirst-smallnav-link-twoliner">what is required for s3 import files</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element whosonfirst-smallnav-link-twoliner-container">
+							<a href="../processes/seattleneighborhoodupdates.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed whosonfirst-subnav-secondlevel whosonfirst-smallnav-link-twoliner">seattle neighbourhood updates</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element whosonfirst-smallnav-link-twoliner-container">
+							<a href="../processes/updatingsanfrancisconeighborhoods.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed whosonfirst-subnav-secondlevel whosonfirst-smallnav-link-twoliner">san francisco neighbourhood updates</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="../processes/wikipediaconcordances.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed whosonfirst-subnav-secondlevel">wikipedia concordances</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element  whosonfirst-extrasmall-nav-link-collapsed-last">
+							<a href="../keyterms/index.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed whosonfirst-extrasmall-nav-link-collapsed-last">key terms</a>
+						</li>
+					</ul>
+				</div>
+			</div><!-- /.navbar-collapse -->
+		</div>
+	</div>
+	<div class="whosonfirst-tabs-content"><a id="user-content-whos-on-first-id-life-cycle-documentation" class="anchor" href="#whos-on-first-id-life-cycle-documentation" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+<h2>
+<a id="user-content-feature-life-cycle-rules" class="anchor" href="#feature-life-cycle-rules" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+Feature Life Cycle Rules
+</h2>
+<p>
+This document sets to establish guidelines and rules around the Who&#39;s On First ID (
+<code>
+wof:id
+</code>
+); a unique ID used to track features in
+<a href="https://whosonfirst.mapzen.com/">
+Who&#39;s On First
+</a>
+. These rules are meant to help downstream data consumers understand changes to a
+<code>
+wof:id
+</code>
+, what constitutes a change, and how Who&#39;s On First tracks new, existing, and outdated features through the use of a
+<code>
+wof:id
+</code>
+. The steps below establish a convention to ensure that all users and mapping services are able to track the  history and life cycle of a given feature.
+</p>
+<p>
+Documenting these rules is important, as Who&#39;s On First&#39;s rules may differ from the assumptions of a data consumer or application. While these life cycle rules are subject to change, it is essential for Who&#39;s On First to outline the rules and guidelines around features; this allows users and mapping services to optimize data usage and understand the assumptions in the data structure.
+</p>
+<p>
+It is also important to note that while we strive to provide the most accurate and up-to-date
+<code>
+wof:id
+</code>
+life cycle rules, this document, as written today, is a working document. We expect churn in the Who&#39;s On First database, which means we will not be able to capture every possible scenario or rule at the moment, but we are working towards being able to do just that. While we do expect churn in the early days of Who&#39;s On First as we clean things up, we do expect things to normalize going forward.
+</p>
+<h3>
+<a id="user-content-what-is-a-wofid" class="anchor" href="#what-is-a-wofid" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+What is a
+<code>
+wof:id
+</code>
+?
+</h3>
+<p>
+A
+<code>
+wof:id
+</code>
+is a unique 64-bit identifier that represents a single point or polygon feature in the Who&#39;s On First database. This identifier is commonly produced by the
+<a href="https://www.brooklynintegers.com">
+Brooklyn Integers
+</a>
+service, though, technically any
+<em>
+unique
+</em>
+64-bit identifier can be used if Who&#39;s On First has not already issued that ID for a known record. Unlike other databases that track features, for example the
+<a href="https://www.europa.uk.com/resources/os/os-mastermap-topography-layer-user-guide.pdf">
+United Kingdom&#39;s Local Ordnance Survey
+</a>
+(OS), a
+<code>
+wof:id
+</code>
+is stable to an individual record and will not update when minor updates to a feature occur.
+</p>
+<p>
+Once a record is given a
+<code>
+wof:id
+</code>
+, that record will maintain that
+<code>
+wof:id
+</code>
+forever. If the place represented by the record experiences a &#34;significant event&#34; then the record in question will be superseded by a new record (and a new
+<code>
+wof:id
+</code>
+) representing that place. The details of what constitutes a significant event are discussed in detail below but a good example of this dynamic is the way that St. Petersburg became Leningrad and then, a few years later, became St. Petersburg again. The details behind those changes are outside the scope of this document but it is important to understand that each one of those &#34;places&#34; is as real as any of the others, and to preserve their historical context. Similarly, only one of those records should be &#34;current&#34; at any given time (namely, the present).
+</p>
+<h3>
+<a id="user-content-what-is-significant-event" class="anchor" href="#what-is-significant-event" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+What is Significant Event?
+</h3>
+<p>
+While minor edits (we&#39;ll call these Minor Events) allow for a feature to be edited in place and maintain the same
+<code>
+wof:id
+</code>
+it had prior to the edit, major edits to a feature are designated as
+<strong>
+Significant Events
+</strong>
+and have specific rules attached to them.
+</p>
+<p>
+Updates and edits that qualify as Significant Events* :
+</p>
+<ul>
+<li>
+Changing a point feature&#39;s location more than
+<strong>
+10km
+</strong>
+</li>
+<li>
+Changing a polygon feature&#39;s area more than
+<strong>
+50%
+</strong>
+</li>
+<li>
+Changing a feature&#39;s
+<code>
+wof:name
+</code>
+<strong>
+without
+</strong>
+storing the original
+<code>
+wof:name
+</code>
+as an
+<strong>
+alternative name
+</strong>
+(see:
+<a href="https://github.com/whosonfirst/whosonfirst-names/">
+<code>
+whosonfirst-names
+</code>
+</a>
+)
+</li>
+<li>
+Changing a feature&#39;s
+<code>
+wof:name
+</code>
+due to the original
+<code>
+wof:name
+</code>
+being
+<strong>
+wrong to begin with
+</strong>
+</li>
+<li>
+Giving a feature a
+<strong>
+new
+</strong>
+<code>
+wof:parent_id
+</code>
+</li>
+<li>
+Giving a feature a
+<strong>
+new
+</strong>
+<code>
+wof:placetype
+</code>
+</li>
+<li>
+Updating a feature&#39;s
+<code>
+wof:hierarchy
+</code>
+to include an
+<strong>
+updated
+</strong>
+<code>
+wof:id
+</code>
+</li>
+<li>
+Replacing or superseding a record (
+<strong>
+end of life event
+</strong>
+; see below)
+</li>
+</ul>
+<p>
+<em>
+* This list, as written today, may be incomplete or unable to capture the subtleties and demands of real-life.
+</em>
+</p>
+<h3>
+<a id="user-content-what-does-a-significant-event-entail" class="anchor" href="#what-does-a-significant-event-entail" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+What does a Significant Event entail?
+</h3>
+<p>
+When a Significant Event occurs, a new
+<code>
+wof:id
+</code>
+is minted for a new feature and superseding work needs to occur. If an existing feature experiences a Significant Event, the following needs to occur:
+</p>
+<ul>
+<li>
+The feature&#39;s raw data (GeoJSON) should be duplicated into a new feature with a new
+<code>
+wof:id
+</code>
+.
+</li>
+<li>
+The newly duplicated feature receives a
+<code>
+wof:supersedes
+</code>
+value equal to that of the existing feature&#39;s
+<code>
+wof:id
+</code>
+.
+</li>
+<li>
+The existing feature receives a
+<code>
+wof:superseded_by
+</code>
+value equal to that of the new feature&#39;s
+<code>
+wof:id
+</code>
+.
+</li>
+<li>
+The existing feature receives a
+<code>
+mz:is_current
+</code>
+value equal to
+<code>
+0
+</code>
+.
+</li>
+<li>
+If the existing feature was never correct to begin with, it will receive a new date
+<em>
+(YYYY-MM-DD)
+</em>
+in the
+<code>
+edtf:deprecated
+</code>
+property. Otherwise, the
+<code>
+edtf:cessation
+</code>
+property will be given a date
+<em>
+(YYYY-MM-DD)
+</em>
+. This
+<code>
+edtf
+</code>
+date should equal the date when the feature was edited.
+</li>
+</ul>
+<p>
+The EDTF (Extended Date/Time Format) fields, the rules of which are outline
+<a href="https://www.loc.gov/standards/datetime/pre-submission.html">
+here
+</a>
+, are used to call out the date of cessation or deprecating a record in Who&#39;s On First. An important tradeoff with EDTF is that there are no adequate tools for querying these complex date strings, though there is also nothing as good at encoding these &#34;fuzzy&#34; dates. For now, Who&#39;s On First uses the syntax; we are betting on a future where such tools are available.
+</p>
+<p>
+In the flowchart below, we&#39;ll refer to these steps a the &#34;renewal&#34; of a feature.
+</p>
+<h3>
+<a id="user-content-tracking-change-history-with-supersedes-and-superseded_by-properties" class="anchor" href="#tracking-change-history-with-supersedes-and-superseded_by-properties" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+Tracking change history with supersedes and superseded_by properties
+</h3>
+<p>
+We&#39;ll refer to the existing feature as the
+<strong>
+superseded
+</strong>
+version and the newly duplicated feature as the
+<strong>
+superseding
+</strong>
+version.
+</p>
+<p>
+Keeping up with
+<code>
+wof:id
+</code>
+changes and new features taking the place of old, outdated features can be tricky. Who&#39;s On First has a built-in series of properties that can be used to track the changes and updates to a feature, even if a Significant Event has taken place and replaced a
+<code>
+wof:id
+</code>
+. The updating of the
+<code>
+wof:supersedes
+</code>
+and
+<code>
+wof:superseded_by
+</code>
+values in the respective records are what allows a data consumer or application to track the history of a given feature by linking together the history of any given feature at any given time. This superseding work also tracks which features are no longer current in the real-world (and which features
+<em>
+are
+</em>
+current). This history is not inherent to the chain of superseded features, but rather the chain of superseded features
+<em>
+and
+</em>
+the Git history for said feature.
+</p>
+<p>
+While Who&#39;s On First does not currently have an audit trail for each feature that lists the linked history of a given feature, the Git history for each feature is the closest approximation to such a trail; this idealized audit trail is a future goal for Who&#39;s On First, but for now, the use of Git and the supersede properties allow a user to track the history of a given feature.
+</p>
+<p>
+Who&#39;s On First is not in the business of removing features from history, but rather looks to take a snapshot in time and preserve features based on what
+<strong>
+<em>
+was
+</em>
+</strong>
+and what
+<strong>
+<em>
+is
+</em>
+</strong>
+. The
+<code>
+wof:id
+</code>
+field allows Who&#39;s On First to provide an accurate description of the present, while also retaining historical records of a place.
+</p>
+<h2>
+<a id="user-content-life-cycle-flowchart" class="anchor" href="#life-cycle-flowchart" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+Life Cycle Flowchart
+</h2>
+<p>
+<a href="https://raw.githubusercontent.com/whosonfirst/whosonfirst-cookbook/master/_images/lifecycle_flowchart.png" target="_blank">
+<img src="https://raw.githubusercontent.com/whosonfirst/whosonfirst-cookbook/master/_images/lifecycle_flowchart.png" alt="flowchart" style="max-width:100%;">
+</a>
+<em>
+The above flowchart outlines potential updates to a new or existing Who&#39;s On First feature.
+</em>
+</p>
+<h3>
+<a id="user-content-create" class="anchor" href="#create" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+Create
+</h3>
+<p>
+If a feature unknown to Who&#39;s On First is added to the database, a new unique 64-bit identifier is minted (typically through
+<a href="https://www.brooklynintegers.com">
+Brooklyn Integers
+</a>
+) and used for that feature&#39;s
+<code>
+wof:id
+</code>
+.
+</p>
+<p>
+If the new feature does not have any descendants, the feature can be imported directly into Who&#39;s On First without modifications to existing features. However, if the new feature parents any existing Who&#39;s On First records, this feature will need to be placed in the hierarchy of all of its descendants.
+</p>
+<p>
+If the new feature has descendants
+<em>
+and
+</em>
+the new feature&#39;s descendant records already have a record with a
+<code>
+wof:placetype
+</code>
+equal to that of the new feature, all descendants will be superseded into new records. If not, the new features can be imported directly without any superseding work done to the descendant records.
+</p>
+<p>
+We know Who&#39;s On First has gaps in administrative and venue coverage; this rule is in place to lessen the burden of superseding when importing features that Who&#39;s On First does not already have records for. As of this writing, we
+<em>
+may
+</em>
+choose to exempt certain records from being superseded when importing new features, as a matter of expediency. This should be considered an exception to the rule while Who&#39;s On First is still more &#34;pre 1.0&#34; than not. Once things settle down the rules for triggering supersedes events should be interpretted as written.
+</p>
+<h3>
+<a id="user-content-alter" class="anchor" href="#alter" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+Alter
+</h3>
+<p>
+These rules pertain to features that are already known to Who&#39;s On First. A wide-variety of changes can occur to such features, which fall into one of two categories: Minor Events or
+<a href="https://github.com/whosonfirst/whosonfirst-cookbook/blob/master/definition/significant_event.md">
+Significant Events
+</a>
+. Minor Events require edits to be made to the features and
+<em>
+do not
+</em>
+require additional work (like superseding, deprecating, etc.). Significant Events, however,
+<em>
+do
+</em>
+require additional work to be completed, as outlined in the &#34;Significant Events&#34; section above. Significant Events fall into one of two categories:
+<strong>
+real-world changes
+</strong>
+or
+<strong>
+error corrections
+</strong>
+, which can either be
+<strong>
+geometry edits
+</strong>
+or
+<strong>
+property edits
+</strong>
+.
+</p>
+<p>
+See the &#34;Examples&#34; section below for more in-depth descriptions of update possibilities for existing features.
+</p>
+<h3>
+<a id="user-content-end-of-life" class="anchor" href="#end-of-life" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+End of Life
+</h3>
+<p>
+When an existing feature in Who&#39;s On First ceases to exist in the real-world or is removed due to an error-correction, inception events occur and it may be replaced with a new feature that takes it&#39;s place.
+</p>
+<p>
+If the feature actually existed in the real-world at one point in time, but is no longer current, it&#39;s record will recieve an
+<code>
+edtf:cessation
+</code>
+date
+<em>
+(YYY-MMM-DD)
+</em>
+, equal to the date it was edited and an
+<code>
+mz:is_current
+</code>
+property equal to
+<code>
+0
+</code>
+. If that feature was replaced with another feature, work to supersede the old feature with the new feature is also required. Example of updated properties for a replaced WOF feature, below:
+</p>
+<pre>
+<code>
+&#34;edtf:cessation&#34;: 2016-10-01,
+...
+&#34;mz:is_current&#34;:0,
+...
+&#34;wof:superseded_by&#34;:9964566319,
+</code>
+</pre>
+<p>
+If the feature was
+<em>
+never
+</em>
+an actual feature in the real-world (typically due to an error in Who&#39;s On First), the record will recieve an
+<code>
+edtf:deprecated
+</code>
+date
+<em>
+(YYY-MMM-DD)
+</em>
+, equal to the date it was edited and an
+<code>
+mz:is_current
+</code>
+property equal to
+<code>
+0
+</code>
+. Example of updated properties for a deprecated WOF feature below:
+</p>
+<pre>
+<code>
+&#34;edtf:deprecated&#34;: 2016-10-01,
+...
+&#34;mz:is_current&#34;:0,
+</code>
+</pre>
+<h2>
+<a id="user-content-examples" class="anchor" href="#examples" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+Examples
+</h2>
+<h3>
+<a id="user-content-creating-features" class="anchor" href="#creating-features" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+Creating Features
+</h3>
+<h4>
+<a id="user-content-adding-a-feature-that-does-not-have-descendants" class="anchor" href="#adding-a-feature-that-does-not-have-descendants" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+Adding a feature that does not have descendants
+</h4>
+<p>
+If adding a new
+<code>
+venue
+</code>
+record to Who&#39;s On First, for example, a new
+<code>
+wof:id
+</code>
+should be minted and the feature (with appropriate venue properties) should be added to the database.
+</p>
+<p>
+An example of a new feature without descendants to Who&#39;s On First: A venue record for a new restaurant that recently opened in New York City. Who&#39;s On First would not know about this feature prior to it&#39;s opening, which means a
+<strong>
+new
+</strong>
+<code>
+wof:id
+</code>
+would be created and attached to a venue record in the New York venues repository for inclusion into Who&#39;s On First. Note that since this feature was never in Who&#39;s On First prior to the creation of this new venue record, a new
+<code>
+wof:id
+</code>
+would be minted from Brooklyn Integers.
+</p>
+<p>
+Another example could be a new military facility on a Pacific Island. Similar to the new venue record described above, this facility would receive a new
+<code>
+wof:id
+</code>
+, geometry, and properties. This feature is an example of a completely new feature to Who&#39;s On First.
+</p>
+<h4>
+<a id="user-content-adding-a-feature-that-has-descendants" class="anchor" href="#adding-a-feature-that-has-descendants" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+Adding a feature that has descendants
+</h4>
+<p>
+If adding a previously unknown
+<code>
+county
+</code>
+record to Who&#39;s On First that has descendant records, a new
+<code>
+wof:id
+</code>
+should be minted and the feature (with appropriate properties) should be added to the database. These descendant records can be found by searching the feature&#39;s parent country in our
+<a href="https://whosonfirst.mapzen.com/spelunker">
+Spelunker
+</a>
+and searching through it&#39;s descendant records to see if any fall within your new county&#39;s geometry. Occasionally, this type of feature addition to Who&#39;s On First occurs. In the example below, let&#39;s envision a feature that
+<em>
+should
+</em>
+have had a county record in it&#39;s hierarchy, but for some unknown reason, Who&#39;s On First never had that data to begin with.
+</p>
+<p>
+With this example, the
+<code>
+wof:hierarchy
+</code>
+and
+<code>
+wof:belongsto
+</code>
+properties of all descendants needs to be updated to include the new
+<code>
+wof:id
+</code>
+of the new county. An example of the
+<code>
+wof:hierarchy
+</code>
+property update is shown below.
+</p>
+<p>
+Descendant&#39;s
+<code>
+wof:hierarchy
+</code>
+before import of parent; notice the
+<code>
+wof:hierarchy
+</code>
+does not contain a &#34;county_id&#34;:
+</p>
+<pre>
+<code>
+&#34;wof:hierarchy&#34;:[
+        {
+            &#34;continent_id&#34;:102191575,
+            &#34;country_id&#34;:85633793,
+            &#34;region_id&#34;:85688637,
+            &#34;locality_id&#34;:85922583
+        }
+    ],
+</code>
+</pre>
+<p>
+Descendant&#39;s
+<code>
+wof:hierarchy
+</code>
+after import of parent; the hierarchy now contains a
+<code>
+&#34;county_id&#34;
+</code>
+:
+</p>
+<pre>
+<code>
+&#34;wof:hierarchy&#34;:[
+        {
+            &#34;continent_id&#34;:102191575,
+            &#34;country_id&#34;:85633793,
+            &#34;region_id&#34;:85688637,	    
+            &#34;county_id&#34;:102087579,
+            &#34;locality_id&#34;:85922583
+        }
+    ],
+</code>
+</pre>
+<h3>
+<a id="user-content-altering-features" class="anchor" href="#altering-features" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+Altering Features
+</h3>
+<h4>
+<a id="user-content-moving-a-features-location-more-than-ten-kilometers-from-its-original-location" class="anchor" href="#moving-a-features-location-more-than-ten-kilometers-from-its-original-location" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+Moving a feature&#39;s location more than ten kilometers from it&#39;s original location
+</h4>
+<p>
+Who&#39;s On First uses ten kilometers as a measure of significance for feature updates. Though a user or service may consider a smaller or larger distance to be significant, Who&#39;s On First considers one-tenth of a decimal degree (roughly ten kilometers) to be significant enough to warrant a new
+<code>
+wof:id
+</code>
+and feature. This value was decided on because at the equator, one degree is equal to 69 kilometers; one tenth of 69 kilometers is 6.9 kilometers, which we used to round up to 10 kilometers.
+</p>
+<p>
+If an error correction needed to occur to move Iceland, for example, fifty kilometers to the east (let&#39;s pretend the feature for Iceland was imported incorrectly), the record for Iceland would receive a date (the date of it&#39;s error correction) in the
+<code>
+edtf:deprecated
+</code>
+property, an updated
+<code>
+mz:is_current
+</code>
+property, and the
+<code>
+wof:id
+</code>
+of the newly created Iceland record in it&#39;s
+<code>
+wof:superseded_by
+</code>
+property.
+</p>
+<p>
+The new Iceland record would receive a new
+<code>
+wof:id
+</code>
+, and would have it&#39;s
+<code>
+wof:supersedes
+</code>
+property updated to include the
+<code>
+wof:id
+</code>
+of the original Iceland record. This new record would be our superseding features.
+</p>
+<h4>
+<a id="user-content-changing-a-polygon-features-area-more-than-50" class="anchor" href="#changing-a-polygon-features-area-more-than-50" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+Changing a polygon feature&#39;s area more than
+<strong>
+50%
+</strong>
+</h4>
+<p>
+Who&#39;s On First uses 50% as a measure of whether or not a change in a feature&#39;s geometry is a &#34;Significant Event&#34;. Simply put, a change of over half of a feature&#39;s geometry means the majority of that feature has changed; Who&#39;s On First uses this 50% as a trigger to supersede features and qualify an edit as significant.
+</p>
+<p>
+The case of Yugoslavia is a perfect example of a real-world geometry change causing a new
+<code>
+wof:id
+</code>
+to be minted. In this case, Yugoslavia was dissolved and split into several different countries (and a disputed area). The record for Yugoslavia would receive a date (the date of it&#39;s dissolution) in the
+<code>
+edtf:cessation
+</code>
+property, an updated
+<code>
+mz:is_current
+</code>
+property, and the
+<code>
+wof:id
+</code>
+values of the newly created countries in it&#39;s
+<code>
+wof:superseded_by
+</code>
+property.
+</p>
+<p>
+The new countries,
+<a href="https://whosonfirst.mapzen.com/spelunker/id/85633779/#8/46.154/14.993">
+Slovenia
+</a>
+,
+<a href="https://whosonfirst.mapzen.com/spelunker/id/85633229/#6/44.518/16.455">
+Croatia
+</a>
+,
+<a href="https://whosonfirst.mapzen.com/spelunker/id/85632609/#7/43.941/17.661">
+Bosnia and Herzegovina
+</a>
+, the
+<a href="https://whosonfirst.mapzen.com/spelunker/id/85632373/#8/41.622/21.739">
+Republic of Macedonia
+</a>
+,
+<a href="https://whosonfirst.mapzen.com/spelunker/id/85632667/#7/42.711/19.385">
+Montenegro
+</a>
+and
+<a href="https://whosonfirst.mapzen.com/spelunker/id/85633755/#6/44.244/20.927">
+Serbia
+</a>
+which included (
+<a href="https://whosonfirst.mapzen.com/spelunker/id/404227537/#7/45.418/20.198">
+Vojvodina
+</a>
+and
+<a href="https://whosonfirst.mapzen.com/spelunker/id/85633259/#8/42.567/20.899">
+Kosovo
+</a>
+), would each receive a new
+<code>
+wof:id
+</code>
+, and would have their
+<code>
+wof:supersedes
+</code>
+property updated to include the
+<code>
+wof:id
+</code>
+of Yugoslavia. These would be our superseding features.
+</p>
+<p>
+This superseding work would allow someone looking at, say, Montenegro, to see when it was created and what superseded feature it came from.
+</p>
+<h4>
+<a id="user-content-changing-a-features-wofplacetype" class="anchor" href="#changing-a-features-wofplacetype" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+Changing a feature&#39;s
+<strong>
+<code>
+wof:placetype
+</code>
+</strong>
+</h4>
+<p>
+If Who&#39;s on First incorrectly classified a set of localities as regions, the region records would become the
+<strong>
+superseded
+</strong>
+records and the locality records would be the
+<strong>
+superseding
+</strong>
+records. The
+<code>
+mz:is_current
+</code>
+property,
+<code>
+wof:superseded_by
+</code>
+, and
+<code>
+edtf:cessation
+</code>
+date property would be updated for each of the superseded region records. Completely new features with new
+<code>
+wof:id
+</code>
+values, a corrected
+<code>
+wof:placetype
+</code>
+property, and updated
+<code>
+wof:supersedes
+</code>
+property would be created for the superseding locality records.
+</p>
+<p>
+In this case, since the correction was made on the
+<code>
+wof:placetype
+</code>
+property and other property values were correct, all other correct properties would be transferred to the
+<strong>
+superseding
+</strong>
+feature (zoom levels, geometries, concordances, hierarchies, etc).
+</p>
+<h3>
+<a id="user-content-ending-the-life-of-a-feature" class="anchor" href="#ending-the-life-of-a-feature" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+Ending the Life of a Feature
+</h3>
+<h4>
+<a id="user-content-adding-a-edtfdeprecated-date-to-a-feature" class="anchor" href="#adding-a-edtfdeprecated-date-to-a-feature" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+Adding a
+<code>
+edtf:deprecated
+</code>
+date to a feature
+</h4>
+<p>
+If the feature being updated was
+<em>
+never
+</em>
+correct to begin with, the following work needs to occur:
+</p>
+<ul>
+<li>
+<code>
+edtf:deprecated
+</code>
+- This
+<strong>
+string
+</strong>
+property field will be added to the feature. It is equal to the date
+<em>
+(YYY-MM-DD)
+</em>
+that the feature was edited as no longer current. Example below:
+</li>
+</ul>
+<pre>
+<code>
+&#34;edtf:deprecated&#34;:&#34;2016-10-01&#34;,
+</code>
+</pre>
+<ul>
+<li>
+<code>
+mz:is_current
+</code>
+- This
+<strong>
+boolean
+</strong>
+property field will be added to the feature. It is equal to
+<code>
+0
+</code>
+(represented as an
+<strong>
+integer
+</strong>
+) to indicate that the feature is deprecated. Example below:
+</li>
+</ul>
+<pre>
+<code>
+&#34;mz:is_current&#34;:0,
+</code>
+</pre>
+<h4>
+<a id="user-content-adding-a-edtfcessation-date-to-a-feature" class="anchor" href="#adding-a-edtfcessation-date-to-a-feature" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+Adding a
+<code>
+edtf:cessation
+</code>
+date to a feature
+</h4>
+<p>
+If an existing Who&#39;s On First feature
+<em>
+was
+</em>
+correct at one point in time but no longer exists in the real-world, the following work needs to occur if it
+<em>
+was not
+</em>
+replaced by another feature*:
+</p>
+<ul>
+<li>
+<code>
+edtf:cessation
+</code>
+- This
+<strong>
+string
+</strong>
+property field will be updated to the feature. It is equal to the date
+<em>
+(YYY-MM-DD)
+</em>
+that the feature was edited as no longer current. Example below:
+</li>
+</ul>
+<pre>
+<code>
+&#34;edtf:cessation&#34;:&#34;2016-10-01&#34;,
+</code>
+</pre>
+<ul>
+<li>
+<code>
+mz:is_current
+</code>
+- This
+<strong>
+boolean
+</strong>
+property field will be added to the feature. It is equal to
+<code>
+0
+</code>
+(represented as an
+<strong>
+integer
+</strong>
+) to indicate that the feature is deprecated. Example below:
+</li>
+</ul>
+<pre>
+<code>
+&#34;mz:is_current&#34;:0,
+</code>
+</pre>
+<p>
+<em>
+If the feature was replaced by another feature, a new
+<code>
+wof:id
+</code>
+should also be minted and superseding work should take place, as outlined above
+</em>
+</p>
+								</div>
+							</div>
+						</article>
+					</div>
+					<div class="col-lg-2 col-md-0 col-sm-0 col-xs-0"></div>
+				</div>
+			</div>
+		</div>
+		<footer>
+			<nav class="navbar navbar-default navbar-bottom">
+				<div class="container">
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<ul class="nav navbar-nav navbar-right whosonfirst-footer">
+						<li class="whosonfirst-nav-link-nounderline whoosonfooter-gig">who's on first is a <a href="https://mapzen.com/" class="whosonfirst-nav-link whosonfirst-nav-link-innounderline">mapzen</a> gig</li>
+						<li><a href="../../docs/contributing/index.html" class="whosonfirst-nav-link whosonfirst-footer-nav-link">contributing</a></li>
+						<li><a href="../../docs/licensing/index.html" class="whosonfirst-nav-link whosonfirst-footer-nav-link">licensing</a></li>
+						<li><a href="https://github.com/whosonfirst" class="whosonfirst-nav-link whosonfirst-footer-nav-link">code github</a></li>
+						<li><a href="https://github.com/whosonfirst-data" class="whosonfirst-nav-link whosonfirst-footer-nav-link">data github</a></li>
+						<li><a href="https://twitter.com/alloftheplaces/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">twitter</a></li>
+					</ul>
+				</div>
+			</nav>
+		</footer>
+		
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<!-- Include all compiled plugins (below), or include individual files as needed -->
+		<script src="../../javascript/bootstrap.min.js"></script>
+		
+		<script>
+			$(document).ready(function(){
+				$("#bs-example-navbar-collapse-2").on("show.bs.collapse", function(){
+					console.log("In here");
+					document.getElementById("glyphicon-one").classList.add("glyphicon-menu-up");
+					document.getElementById("glyphicon-one").classList.remove("glyphicon-menu-down");
+				});
+				$("#bs-example-navbar-collapse-2").on("hide.bs.collapse", function(){
+					document.getElementById("glyphicon-one").classList.add("glyphicon-menu-down");
+					document.getElementById("glyphicon-one").classList.remove("glyphicon-menu-up");
+				});
+				$(".whosonfirst-sidenav-list").mouseover(function(){
+					$("body").css("overflow","hidden");
+				});
+				$(".whosonfirst-sidenav-list").mouseout(function(){
+					$("body").css("overflow","auto");
+				});
+			});
+		</script>
+	</body>
+</html>

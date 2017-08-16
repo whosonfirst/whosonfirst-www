@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Who’s On First</title>
+        <meta name='description' content="Who's on First is a gazetteer of places.">
+        <link rel='apple-touch-icon' href='https://mapzen.com/common/styleguide/images/favicons/apple-touch-icon.png' sizes='180x180'>
+        <link rel='icon' type='image/png' href='https://mapzen.com/common/styleguide/images/favicons/favicon-16x16.png' sizes='16x16'>
+        <link rel='icon' type='image/png' href='https://mapzen.com/common/styleguide/images/favicons/favicon-32x32.png' sizes='32x32'>
+        <link rel='manifest' href='https://mapzen.com/common/styleguide/images/favicons/manifest.json'>
+        <link rel='mask-icon' href='https://mapzen.com/common/styleguide/images/favicons/safari-pinned-tab.svg' color='#2C1E3F'>
+		
+		<link rel="stylesheet" href="../../css/bootstrap.min.css">
+		<link rel="stylesheet" href="../../css/mapzen.whosonfirst.css">
+    </head>
+	<body>
+		<div class="whosonfirst-wrapper"><nav class="navbar navbar-default navbar-fixed-top whosonfirst-fixed-subpage-navbar">
+	<div class="container">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="../../index.html">Who's On First</a>
+		</div>
+
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav navbar-right">
+				<li class="whosonfirst-navbar-element-collapsed">
+					<a href="../../data/index.html" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">data</a>
+				</li>
+				<li class="whosonfirst-navbar-element-collapsed">
+					<a href="../../docs/index.html" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed whosonfirst-nav-active">docs</a>
+				</li>
+				<li class="whosonfirst-navbar-element-collapsed">
+					<a href="../../tools/index.html" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">tools</a>
+				</li>
+				<li class="whosonfirst-navbar-element-collapsed">
+					<a href="../../blog/index.html" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">blog</a>
+				</li>
+				<li class="whosonfirst-navbar-element-collapsed">
+					<a href="../../getstarted/index.html" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">get started</a>
+				</li>
+			</ul>
+		</div><!-- /.navbar-collapse -->
+	</div><!-- /.container-fluid -->
+</nav><div class="container whosonfirst-subpage-container">
+	<div class="row">
+		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-0">
+			<aside>
+				<div class="whosonfirst-sidenav-container">
+					<ul class="whosonfirst-sidenav-list">
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="../properties/index.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">properties</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="../concordances/index.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">concordances</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="../placetypes/index.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">placetypes</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="../hierachies/index.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">hierachies</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="../names/index.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">names</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="../geometries/index.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">geometries</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="../dates/index.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">dates</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="../categories/index.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">categories</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="../sources/index.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">sources</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="../tests/index.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">tests</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="../contributing/index.html" class="whosonfirst-nav-link whosonfirst-sidenav-link whosonfirst-nav-active">contributing</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="../licensing/index.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">licensing</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="../processes/index.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">processes and workflows</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="../keyterms/index.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">key terms</a>
+						</li>
+					</ul>
+				</div>
+			</aside>
+		</div>
+		<div class="col-lg-7 col-md-9 col-sm-9 col-xs-12">
+			<article><h1 class="whosonfirst-subpage-header">
+<a id="user-content-how-to-contribute" class="anchor" href="#how-to-contribute" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+How to contribute
+</h1>
+<div class="whosonfirst-fulltabs-container">
+	<div class="whosonfirst-extrasmall-tabs-menu">
+		<div class="whosonfirst-extrasmall-tabs-menu-content">
+			<div class="whosonfirst-extrasmall-tabs-menu-content-header">
+				<div class="row whosonfirst-extrasmall-menu-row">
+					<div class="col-xs-11">
+						<div class="whosonfirst-extrasmall-tab-selection">Contributing</div>
+					</div>
+					<div class="col-xs-1 whosonfirst-extrasmall-menu-chevron-col">
+						<button type="button" class="navbar-toggle collapsed whosonfirst-extrasmall-menu-chevron-down" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2" aria-expanded="false">
+							<span id="glyphicon-one" class="glyphicon glyphicon-menu-down whosonfirst-extrasmall-menu-actual-chevron-down"></span>
+						</button>
+					</div>
+				</div>
+			</div>
+			<div class="collapse" id="bs-example-navbar-collapse-2">
+				<div class="whosonfirst-extrasmall-nav-collection">
+					<ul class="nav navbar-nav navbar-right whosonfirst-extrasmall-nav">
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="../properties/index.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">properties</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="../concordances/index.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">concordances</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="../placetypes/index.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">placetypes</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="../hierachies/index.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">hierachies</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="../names/index.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">names</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="../geometries/index.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">geometries</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="../dates/index.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">dates</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="../categories/index.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">categories</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="../sources/index.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">sources</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="../tests/index.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">tests</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="../contributing/index.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed whosonfirst-nav-active">contributing</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="../licensing/index.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">licensing</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="../processes/index.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">processes and workflows</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element  whosonfirst-extrasmall-nav-link-collapsed-last">
+							<a href="../keyterms/index.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed whosonfirst-extrasmall-nav-link-collapsed-last">key terms</a>
+						</li>
+					</ul>
+				</div>
+			</div><!-- /.navbar-collapse -->
+		</div>
+	</div>
+	<div class="whosonfirst-tabs-content"><a id="user-content-how-to-contribute" class="anchor" href="#how-to-contribute" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+<p>
+Diverse contributions are essential for keeping Who&#39;s On First great. The world is a very big place, and it keeps changing. We want to keep it as easy as possible to contribute open data about your part of the world (or your favorite part of the world). There are a few guidelines that we need contributors to follow so that we can have a chance of keeping on top of things.
+</p>
+<p>
+At this stage, we encourage you to
+<a href="https://github.com/whosonfirst/whosonfirst-data/issues/new">
+submit issues
+</a>
+you find with the data rather than getting your Octocat on. If you don&#39;t know what that means: really - just submit a GitHub Issue.
+</p>
+<h2>
+<a id="user-content-getting-started" class="anchor" href="#getting-started" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+Getting started
+</h2>
+<ul>
+<li>
+Make sure you have a
+<a href="https://github.com/signup/free">
+GitHub account
+</a>
+</li>
+<li>
+Optional: Get a
+<a href="https://mapzen.com/developers/sign_in">
+Mapzen developer account
+</a>
+</li>
+<li>
+Submit a ticket for your issue, assuming one does not already exist.
+<ul>
+<li>
+Clearly describe the issue including steps to reproduce when it is a bug.
+</li>
+<li>
+If you are recommending a solution, please include as many references as possible.
+</li>
+<li>
+If you propose importing or adding concordance with open data, say where the data comes from with a download link and license link.
+</li>
+</ul>
+</li>
+</ul>
+<h2>
+<a id="user-content-making-changes" class="anchor" href="#making-changes" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+Making changes
+</h2>
+<ul>
+<li>
+Fork the
+<a href="https://github.com/whosonfirst/whosonfirst-data">
+whosonfirst-data
+</a>
+repository on GitHub. We&#39;re using GitHub and git today, maybe that will change in the future. More about that
+<a href="https://github.com/whosonfirst/whosonfirst-data/blob/master/README.md#git-and-github">
+over there
+</a>
+.
+</li>
+<li>
+Create a topic branch from where you want to base your work.
+<ul>
+<li>
+This is usually the master branch.
+</li>
+<li>
+Only target release branches if you are certain your fix must be on that
+branch.
+</li>
+<li>
+To quickly create a topic branch based on master;
+<code>
+git checkout -b fix/master/my_contribution master
+</code>
+. Please avoid working directly on the
+<code>
+master
+</code>
+branch.
+</li>
+</ul>
+</li>
+<li>
+Documentation about names, placetypes, dates, and more is in the
+<a href="https://github.com/whosonfirst/whosonfirst-data/blob/master/CONTRIBUTING.md#see-also-er">
+See also-er
+</a>
+section below.
+</li>
+<li>
+Make commits of logical units.
+</li>
+<li>
+Check for unnecessary whitespace with
+<code>
+git diff --check
+</code>
+before committing.
+</li>
+<li>
+Make sure your commit messages are in the proper format.
+</li>
+</ul>
+<pre>
+<code>
+(Issue Number) Make the example in CONTRIBUTING imperative and concrete
+
+    Description of the existing behavior without the patch, why this is
+    a problem, and how the patch fixes the problem when applied.
+</code>
+</pre>
+<p>
+The first line is a real-life imperative statement with a ticket number from the issue tracker.  The body is your place to provide more detail.
+</p>
+<p>
+Tests aren&#39;t included, yet. Someday:
+</p>
+<ul>
+<li>
+Make sure you have added the necessary tests for your changes.
+</li>
+<li>
+Run
+<em>
+all
+</em>
+the tests to assure nothing else was accidentally broken.
+</li>
+</ul>
+<h2>
+<a id="user-content-making-trivial-changes" class="anchor" href="#making-trivial-changes" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+Making Trivial Changes
+</h2>
+<h3>
+<a id="user-content-documentation" class="anchor" href="#documentation" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+Documentation
+</h3>
+<p>
+For changes of a trivial nature to comments and documentation, it is not
+always necessary to create a new issue in GitHub. In this case, it is
+appropriate to start the first line of a commit with &#39;(doc)&#39; instead of
+a ticket number.
+</p>
+<pre>
+<code>
+(doc) Add documentation commit example to CONTRIBUTING
+
+    There is no example for contributing a documentation commit
+    to the Who&#39;s On First repository. This is a problem because the
+    contributor is left to assume how a commit of this nature may appear.
+</code>
+</pre>
+<p>
+The first line is a real-life imperative statement with &#39;(doc)&#39; in place of what would have been the ticket number in a non-documentation related commit. The body describes the nature of the new documentation or comments added.
+</p>
+<h2>
+<a id="user-content-submitting-changes" class="anchor" href="#submitting-changes" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+Submitting Changes
+</h2>
+<ul>
+<li>
+Push your changes to a topic branch in your fork of the repository.
+</li>
+<li>
+Submit a pull request to the repository in the whosonfirst organization.
+</li>
+<li>
+Update your GitHub issue to mark that you have submitted code and are ready for it to be reviewed (Status: Ready for Merge).
+<ul>
+<li>
+Include a link to the pull request in the issue.
+</li>
+</ul>
+</li>
+<li>
+The core team looks at Pull Requests on a regular basis in a weekly triage
+meeting.
+</li>
+<li>
+After feedback has been given we expect responses within two weeks. After two
+weeks we may close the pull request if it isn&#39;t showing any activity.
+</li>
+</ul>
+<h1>
+<a id="user-content-see-also" class="anchor" href="#see-also" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+See also
+</h1>
+<ul>
+<li>
+<a href="https://github.com/whosonfirst/whosonfirst-data/issues">
+Issue tracker
+</a>
+</li>
+<li>
+<a href="http://help.github.com/">
+General GitHub documentation
+</a>
+</li>
+<li>
+<a href="http://help.github.com/send-pull-requests/">
+GitHub pull request documentation
+</a>
+</li>
+<li>
+<a href="https://mapzen.com/blog/who-s-on-first/">
+Long read about Who&#39;s On First
+</a>
+- The introductory blog post, with pictures
+</li>
+<li>
+<a href="https://en.wikipedia.org/wiki/Who&#39;s_on_First%3F">
+Who&#39;s On First Comedy Skit
+</a>
+- Background on the project name from Wikipedia
+</li>
+</ul>
+<h2>
+<a id="user-content-see-also-er" class="anchor" href="#see-also-er" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+See also-er
+</h2>
+<ul>
+<li>
+<a href="https://github.com/whosonfirst/whosonfirst-names">
+whosonfirst-names
+</a>
+</li>
+<li>
+<a href="https://github.com/whosonfirst/whosonfirst-dates">
+whosonfirst-dates
+</a>
+</li>
+<li>
+<a href="https://github.com/whosonfirst/whosonfirst-placetypes">
+whosonfirst-placetypes
+</a>
+</li>
+<li>
+<a href="https://github.com/whosonfirst/whosonfirst-sources">
+whosonfirst-sources
+</a>
+</li>
+<li>
+<a href="https://github.com/whosonfirst/whosonfirst-tools">
+whosonfirst-tools
+</a>
+</li>
+<li>
+<a href="https://github.com/whosonfirst/git-whosonfirst-data">
+git-whosonfirst-data
+</a>
+</li>
+</ul>
+								</div>
+							</div>
+						</article>
+					</div>
+					<div class="col-lg-2 col-md-0 col-sm-0 col-xs-0"></div>
+				</div>
+			</div>
+		</div>
+		<footer>
+			<nav class="navbar navbar-default navbar-bottom">
+				<div class="container">
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<ul class="nav navbar-nav navbar-right whosonfirst-footer">
+						<li class="whosonfirst-nav-link-nounderline whoosonfooter-gig">who's on first is a <a href="https://mapzen.com/" class="whosonfirst-nav-link whosonfirst-nav-link-innounderline">mapzen</a> gig</li>
+						<li><a href="../../docs/contributing/index.html" class="whosonfirst-nav-link whosonfirst-footer-nav-link">contributing</a></li>
+						<li><a href="../../docs/licensing/index.html" class="whosonfirst-nav-link whosonfirst-footer-nav-link">licensing</a></li>
+						<li><a href="https://github.com/whosonfirst" class="whosonfirst-nav-link whosonfirst-footer-nav-link">code github</a></li>
+						<li><a href="https://github.com/whosonfirst-data" class="whosonfirst-nav-link whosonfirst-footer-nav-link">data github</a></li>
+						<li><a href="https://twitter.com/alloftheplaces/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">twitter</a></li>
+					</ul>
+				</div>
+			</nav>
+		</footer>
+		
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<!-- Include all compiled plugins (below), or include individual files as needed -->
+		<script src="../../javascript/bootstrap.min.js"></script>
+		
+		<script>
+			$(document).ready(function(){
+				$("#bs-example-navbar-collapse-2").on("show.bs.collapse", function(){
+					console.log("In here");
+					document.getElementById("glyphicon-one").classList.add("glyphicon-menu-up");
+					document.getElementById("glyphicon-one").classList.remove("glyphicon-menu-down");
+				});
+				$("#bs-example-navbar-collapse-2").on("hide.bs.collapse", function(){
+					document.getElementById("glyphicon-one").classList.add("glyphicon-menu-down");
+					document.getElementById("glyphicon-one").classList.remove("glyphicon-menu-up");
+				});
+				$(".whosonfirst-sidenav-list").mouseover(function(){
+					$("body").css("overflow","hidden");
+				});
+				$(".whosonfirst-sidenav-list").mouseout(function(){
+					$("body").css("overflow","auto");
+				});
+			});
+		</script>
+	</body>
+</html>

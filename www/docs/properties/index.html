@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Who’s On First</title>
+        <meta name='description' content="Who's on First is a gazetteer of places.">
+        <link rel='apple-touch-icon' href='https://mapzen.com/common/styleguide/images/favicons/apple-touch-icon.png' sizes='180x180'>
+        <link rel='icon' type='image/png' href='https://mapzen.com/common/styleguide/images/favicons/favicon-16x16.png' sizes='16x16'>
+        <link rel='icon' type='image/png' href='https://mapzen.com/common/styleguide/images/favicons/favicon-32x32.png' sizes='32x32'>
+        <link rel='manifest' href='https://mapzen.com/common/styleguide/images/favicons/manifest.json'>
+        <link rel='mask-icon' href='https://mapzen.com/common/styleguide/images/favicons/safari-pinned-tab.svg' color='#2C1E3F'>
+		
+		<link rel="stylesheet" href="../../css/bootstrap.min.css">
+		<link rel="stylesheet" href="../../css/mapzen.whosonfirst.css">
+    </head>
+	<body>
+		<div class="whosonfirst-wrapper"><nav class="navbar navbar-default navbar-fixed-top whosonfirst-fixed-subpage-navbar">
+	<div class="container">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="../../index.html">Who's On First</a>
+		</div>
+
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav navbar-right">
+				<li class="whosonfirst-navbar-element-collapsed">
+					<a href="../../data/index.html" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">data</a>
+				</li>
+				<li class="whosonfirst-navbar-element-collapsed">
+					<a href="../../docs/index.html" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed whosonfirst-nav-active">docs</a>
+				</li>
+				<li class="whosonfirst-navbar-element-collapsed">
+					<a href="../../tools/index.html" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">tools</a>
+				</li>
+				<li class="whosonfirst-navbar-element-collapsed">
+					<a href="../../blog/index.html" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">blog</a>
+				</li>
+				<li class="whosonfirst-navbar-element-collapsed">
+					<a href="../../getstarted/index.html" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">get started</a>
+				</li>
+			</ul>
+		</div><!-- /.navbar-collapse -->
+	</div><!-- /.container-fluid -->
+</nav><div class="container whosonfirst-subpage-container">
+	<div class="row">
+		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-0">
+			<aside>
+				<div class="whosonfirst-sidenav-container">
+					<ul class="whosonfirst-sidenav-list">
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="../properties/index.html" class="whosonfirst-nav-link whosonfirst-sidenav-link whosonfirst-nav-active">properties</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element whosonfirst-sidenav-list-element-secondlevel">
+							<a href="../properties/addr.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">addr</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element whosonfirst-sidenav-list-element-secondlevel">
+							<a href="../properties/edtf.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">edtf</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element whosonfirst-sidenav-list-element-secondlevel">
+							<a href="../properties/geom.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">geom</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element whosonfirst-sidenav-list-element-secondlevel">
+							<a href="../properties/lbl.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">lbl</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element whosonfirst-sidenav-list-element-secondlevel">
+							<a href="../properties/mz.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">mz</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element whosonfirst-sidenav-list-element-secondlevel">
+							<a href="../properties/name.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">name</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element whosonfirst-sidenav-list-element-secondlevel">
+							<a href="../properties/resto.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">resto</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element whosonfirst-sidenav-list-element-secondlevel">
+							<a href="../properties/reversegeo.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">reversegeo</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element whosonfirst-sidenav-list-element-secondlevel">
+							<a href="../properties/src.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">src</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element whosonfirst-sidenav-list-element-secondlevel">
+							<a href="../properties/wof.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">wof</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element whosonfirst-sidenav-list-element-secondlevel">
+							<a href="" class="whosonfirst-nav-link whosonfirst-sidenav-link">brooklyn integers</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="../concordances/index.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">concordances</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="../placetypes/index.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">placetypes</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="../hierachies/index.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">hierachies</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="../names/index.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">names</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="../geometries/index.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">geometries</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="../dates/index.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">dates</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="../categories/index.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">categories</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="../sources/index.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">sources</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="../tests/index.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">tests</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="../contributing/index.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">contributing</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="../licensing/index.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">licensing</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="../processes/index.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">processes and workflows</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="../keyterms/index.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">key terms</a>
+						</li>
+					</ul>
+				</div>
+			</aside>
+		</div>
+		<div class="col-lg-7 col-md-9 col-sm-9 col-xs-12">
+			<article><h1 class="whosonfirst-subpage-header">
+Properties
+</h1>
+<div class="whosonfirst-fulltabs-container">
+	<div class="whosonfirst-extrasmall-tabs-menu">
+		<div class="whosonfirst-extrasmall-tabs-menu-content">
+			<div class="whosonfirst-extrasmall-tabs-menu-content-header">
+				<div class="row whosonfirst-extrasmall-menu-row">
+					<div class="col-xs-11">
+						<div class="whosonfirst-extrasmall-tab-selection">Properties</div>
+					</div>
+					<div class="col-xs-1 whosonfirst-extrasmall-menu-chevron-col">
+						<button type="button" class="navbar-toggle collapsed whosonfirst-extrasmall-menu-chevron-down" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2" aria-expanded="false">
+							<span id="glyphicon-one" class="glyphicon glyphicon-menu-down whosonfirst-extrasmall-menu-actual-chevron-down"></span>
+						</button>
+					</div>
+				</div>
+			</div>
+			<div class="collapse" id="bs-example-navbar-collapse-2">
+				<div class="whosonfirst-extrasmall-nav-collection">
+					<ul class="nav navbar-nav navbar-right whosonfirst-extrasmall-nav">
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="../properties/index.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed whosonfirst-nav-active">properties</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="../properties/addr.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed whosonfirst-subnav-secondlevel">addr</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="../properties/edtf.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed whosonfirst-subnav-secondlevel">edtf</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="../properties/geom.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed whosonfirst-subnav-secondlevel">geom</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="../properties/lbl.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed whosonfirst-subnav-secondlevel">lbl</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="../properties/mz.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed whosonfirst-subnav-secondlevel">mz</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="../properties/name.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed whosonfirst-subnav-secondlevel">name</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="../properties/resto.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed whosonfirst-subnav-secondlevel">resto</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="../properties/reversegeo.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed whosonfirst-subnav-secondlevel">reversegeo</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="../properties/src.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed whosonfirst-subnav-secondlevel">src</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="../properties/wof.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed whosonfirst-subnav-secondlevel">wof</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="../properties/brooklynintegers.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed whosonfirst-subnav-secondlevel">brooklyn integers</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="../concordances/index.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">concordances</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="../placetypes/index.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">placetypes</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="../hierachies/index.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">hierachies</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="../names/index.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">names</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="../geometries/index.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">geometries</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="../dates/index.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">dates</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="../categories/index.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">categories</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="../sources/index.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">sources</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="../tests/index.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">tests</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="../contributing/index.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">contributing</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="../licensing/index.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">licensing</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="../processes/index.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">processes and workflows</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element  whosonfirst-extrasmall-nav-link-collapsed-last">
+							<a href="../keyterms/index.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed whosonfirst-extrasmall-nav-link-collapsed-last">key terms</a>
+						</li>
+					</ul>
+				</div>
+			</div><!-- /.navbar-collapse -->
+		</div>
+	</div>
+	<div class="whosonfirst-tabs-content"><p>
+What things mean in Who’s On First documents.
+</p>
+<p>
+Explore the WOF properties below.
+</p>
+<ul class="whosonfirst-nonbullet-list">
+<li class="whosonfirst-nonbullet-list-item">
+<a href="addr.html" class="whosonfirst-sole-link">
+Addr
+</a>
+</li>
+<li class="whosonfirst-nonbullet-list-item">
+<a href="edtf.html" class="whosonfirst-sole-link">
+EDTF
+</a>
+</li>
+<li class="whosonfirst-nonbullet-list-item">
+<a href="geom.html" class="whosonfirst-sole-link">
+Geom
+</a>
+</li>
+<li class="whosonfirst-nonbullet-list-item">
+<a href="lbl.html" class="whosonfirst-sole-link">
+Lbl
+</a>
+</li>
+<li class="whosonfirst-nonbullet-list-item">
+<a href="mz.html" class="whosonfirst-sole-link">
+Mz
+</a>
+</li>
+<li class="whosonfirst-nonbullet-list-item">
+<a href="name.html" class="whosonfirst-sole-link">
+Name
+</a>
+</li>
+<li class="whosonfirst-nonbullet-list-item">
+<a href="resto.html" class="whosonfirst-sole-link">
+Resto
+</a>
+</li>
+<li class="whosonfirst-nonbullet-list-item">
+<a href="reversegeo.html" class="whosonfirst-sole-link">
+ReverseGeo
+</a>
+</li>
+<li class="whosonfirst-nonbullet-list-item">
+<a href="src.html" class="whosonfirst-sole-link">
+Src
+</a>
+</li>
+<li class="whosonfirst-nonbullet-list-item">
+<a href="wof.html" class="whosonfirst-sole-link">
+Wof
+</a>
+</li>
+<li class="whosonfirst-nonbullet-list-item">
+<a href="brooklynintegers.html" class="whosonfirst-sole-link">
+Brooklyn Integers
+</a>
+</li>
+</ul>
+<h2>
+Minimum Viable Properties
+</h2>
+<p>
+The design model for the Flickr API was: What is the one thing you should always be able to do with any photo-related API response?
+</p>
+<p>
+For Flickr the answer was the “standard photo response” or: You should always be able to load/build the URL for a photo with a link back to its page on Flickr’s website.
+</p>
+<p>
+In Mapzen’s case the answer to a similar-minded question might be: You should always be able to view API responses on a map.
+</p>
+<p>
+For example it should be possible to take anything that comes back from Pelias (or any other API) and simply hand it off to Leaflet as a GeoJSON layer and see something on a map.
+</p>
+<p>
+With that in mind a “minimal viable properties” dictionary might look like this:
+</p>
+<pre>
+{
+    &#34;wof:id&#34;: 85922583,
+    &#34;wof:name&#34;: &#34;San Francisco&#34;,
+    &#34;wof:fullname&#34;: &#34;San Francisco, California US&#34;,
+    &#34;wof:placetype&#34;: &#34;locality&#34;,
+    &#34;wof:parent_id&#34;: 85688637,
+    &#34;wof:quality&#34;: 9,
+    &#34;wof:score&#34;: 100
+}
+</pre>
+<p>
+A couple things to note about this example:
+</p>
+<ul>
+<li>
+When we say “properties” we’re talking about the metadata associated with that place rather than its geometry.
+</li>
+<li>
+The wof:score property and its semantics should be considered a place-holder for some equivalent search ranking to be determined by the Pelias team. Likewise, the wof:quality property and its semantics should also be considered a place-holder for some equivalent quality/confidence ranking to be determined by the Data team.
+</li>
+</ul>
+								</div>
+							</div>
+						</article>
+					</div>
+					<div class="col-lg-2 col-md-0 col-sm-0 col-xs-0"></div>
+				</div>
+			</div>
+		</div>
+		<footer>
+			<nav class="navbar navbar-default navbar-bottom">
+				<div class="container">
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<ul class="nav navbar-nav navbar-right whosonfirst-footer">
+						<li class="whosonfirst-nav-link-nounderline whoosonfooter-gig">who's on first is a <a href="https://mapzen.com/" class="whosonfirst-nav-link whosonfirst-nav-link-innounderline">mapzen</a> gig</li>
+						<li><a href="../../docs/contributing/index.html" class="whosonfirst-nav-link whosonfirst-footer-nav-link">contributing</a></li>
+						<li><a href="../../docs/licensing/index.html" class="whosonfirst-nav-link whosonfirst-footer-nav-link">licensing</a></li>
+						<li><a href="https://github.com/whosonfirst" class="whosonfirst-nav-link whosonfirst-footer-nav-link">code github</a></li>
+						<li><a href="https://github.com/whosonfirst-data" class="whosonfirst-nav-link whosonfirst-footer-nav-link">data github</a></li>
+						<li><a href="https://twitter.com/alloftheplaces/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">twitter</a></li>
+					</ul>
+				</div>
+			</nav>
+		</footer>
+		
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<!-- Include all compiled plugins (below), or include individual files as needed -->
+		<script src="../../javascript/bootstrap.min.js"></script>
+		
+		<script>
+			$(document).ready(function(){
+				$("#bs-example-navbar-collapse-2").on("show.bs.collapse", function(){
+					console.log("In here");
+					document.getElementById("glyphicon-one").classList.add("glyphicon-menu-up");
+					document.getElementById("glyphicon-one").classList.remove("glyphicon-menu-down");
+				});
+				$("#bs-example-navbar-collapse-2").on("hide.bs.collapse", function(){
+					document.getElementById("glyphicon-one").classList.add("glyphicon-menu-down");
+					document.getElementById("glyphicon-one").classList.remove("glyphicon-menu-up");
+				});
+				$(".whosonfirst-sidenav-list").mouseover(function(){
+					$("body").css("overflow","hidden");
+				});
+				$(".whosonfirst-sidenav-list").mouseout(function(){
+					$("body").css("overflow","auto");
+				});
+			});
+		</script>
+	</body>
+</html>
