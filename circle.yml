@@ -1,7 +1,0 @@
-test:
-  override:
-    - touch /tmp/the-sky
-
-general:
-  artifacts:
-    - "www"
