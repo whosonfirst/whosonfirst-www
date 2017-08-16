@@ -662,7 +662,7 @@ data-available-administrative:
 	sed -i -e 's/whosonfirst\-sidenav\-link\"\>administrative/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>administrative/' www/data/available/administrative.html
 	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>administrative/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>administrative/' www/data/available/administrative.html
 	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Available Data\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Administrative Data\<\/div\>/' www/data/available/administrative.html
-	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>data\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>data\<\/a\>/' www/data/available/index.html
+	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>data\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>data\<\/a\>/' www/data/available/administrative.html
 	rm www/data/available/administrative.html-e
 	
 data-available-venue:
@@ -676,7 +676,7 @@ data-available-venue:
 	sed -i -e 's/whosonfirst\-sidenav\-link\"\>venue/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>venue/' www/data/available/venue.html
 	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>venue/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>venue/' www/data/available/venue.html
 	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Available Data\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Venue Data\<\/div\>/' www/data/available/venue.html
-	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>data\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>data\<\/a\>/' www/data/available/index.html
+	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>data\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>data\<\/a\>/' www/data/available/venue.html
 	rm www/data/available/venue.html-e
 	
 data-available-other:
@@ -690,7 +690,7 @@ data-available-other:
 	sed -i -e 's/whosonfirst\-sidenav\-link\"\>other/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>other/' www/data/available/other.html
 	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>other/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>other/' www/data/available/other.html
 	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Available Data\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Other Data\<\/div\>/' www/data/available/other.html
-	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>data\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>data\<\/a\>/' www/data/available/index.html
+	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>data\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>data\<\/a\>/' www/data/available/other.html
 	rm www/data/available/other.html-e
 	
 data-available: data-available-index data-available-administrative data-available-venue data-available-other
@@ -732,7 +732,7 @@ data-github-largefiles:
 	sed -i -e 's/whosonfirst\-sidenav\-link\"\>git and/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>git and/' www/data/github/gitlargefiles.html
 	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>git and/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>git and/' www/data/github/gitlargefiles.html
 	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Github\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Git and Large Files\<\/div\>/' www/data/github/gitlargefiles.html
-	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>data\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>data\<\/a\>/' www/data/github/index.html
+	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>data\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>data\<\/a\>/' www/data/github/gitlargefiles.html
 	rm www/data/github/gitlargefiles.html-e
 	
 data-github-reponaming:
@@ -746,7 +746,7 @@ data-github-reponaming:
 	sed -i -e 's/whosonfirst\-sidenav\-link\-twoliner\"\>repo/whosonfirst\-sidenav\-link\-twoliner whosonfirst\-nav\-active\"\>repo/' www/data/github/reponaming.html
 	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>repo/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>repo/' www/data/github/reponaming.html
 	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Github\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Repo Naming Conventions\<\/div\>/' www/data/github/reponaming.html
-	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>data\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>data\<\/a\>/' www/data/github/index.html
+	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>data\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>data\<\/a\>/' www/data/github/reponaming.html
 	rm www/data/github/reponaming.html-e
 	
 data-github: data-github-index data-github-largefiles data-github-reponaming
