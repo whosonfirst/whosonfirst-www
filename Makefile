@@ -47,6 +47,13 @@ endif
 
 mk-tools:
 	./utils/mk-utils.sh go-whosonfirst-www wof-clone-website 
+	
+javascript:
+	curl -s -o www/javascript/jquery.min.js https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js
+	curl -s -o www/javascript/mapzen.min.js https://mapzen.com/js/mapzen.min.js
+	
+cssofficial:
+	curl -s -o www/css/mapzen.css https://mapzen.com/js/mapzen.css
 
 docs-properties-addr:
 	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/addr.md | pup -i 0 'article.markdown-body h1' > www/docs/properties/temp-content1.html
