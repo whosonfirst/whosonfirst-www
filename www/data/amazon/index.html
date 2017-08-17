@@ -42,7 +42,7 @@
 					<a href="../../tools/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">tools</a>
 				</li>
 				<li class="whosonfirst-navbar-element-collapsed">
-					<a href="../../blog/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">blog</a>
+					<a href="../../blogposts/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">blog</a>
 				</li>
 				<li class="whosonfirst-navbar-element-collapsed">
 					<a href="../../getstarted/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">get started</a>
@@ -79,7 +79,7 @@
 			</aside>
 		</div>
 		<div class="col-lg-7 col-md-9 col-sm-9 col-xs-12">
-			<article><h1 class="whosonfirst-subpage-header">
+			<article><h1 id="amazon-s3">
 Amazon S3
 </h1>
 <div class="whosonfirst-fulltabs-container">
@@ -196,6 +196,7 @@ So, yeah. We probably should never have published this URL as-is. It&#39;s trick
 				$(".whosonfirst-sidenav-list").mouseout(function(){
 					$("body").css("overflow","auto");
 				});
+				window.addEventListener("hashchange", function() { scrollBy(0, -60) })
 			});
 		</script>
 	</body>

@@ -42,7 +42,7 @@
 					<a href="../tools/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">tools</a>
 				</li>
 				<li class="whosonfirst-navbar-element-collapsed">
-					<a href="../blog/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed whosonfirst-nav-active">blog</a>
+					<a href="../blogposts/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed whosonfirst-nav-active">blog</a>
 				</li>
 				<li class="whosonfirst-navbar-element-collapsed">
 					<a href="../getstarted/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">get started</a>
@@ -59,7 +59,7 @@
 			</aside>
 		</div>
 		<div class="col-lg-7 col-md-9 col-sm-9 col-xs-12">
-			<article><h1 class="whosonfirst-subpage-header">
+			<article><h1 id="blog">
 Blog
 </h1>
 <div class="whosonfirst-fulltabs-container">
@@ -73,7 +73,7 @@ Blog
 	<div class="whosonfirst-tabs-content"><p>
 If you&#39;re feeling like getting in to the details there is a very thorough and very long introductory blog post about Who&#39;s On First followed by another thirty-or-so thousand words (and counting) of thinking about the project, as it evolves:
 </p>
-<h6 class="whosonfirst-deemphasized-subpageheader">
+<h6 id="2015" class="whosonfirst-deemphasized-subpageheader">
 2015
 </h6>
 <ul class="whosonfirst-nonbullet-list whosonfirst-sole-links-container">
@@ -94,7 +94,7 @@ https://mapzen.com/blog/spelunker-jumping-into-who-s-on-first | 2015-09-28 (3818
 </p>
 </li>
 </ul>
-<h6 class="whosonfirst-deemphasized-subpageheader">
+<h6 id="2016" class="whosonfirst-deemphasized-subpageheader">
 2016
 </h6>
 <ul class="whosonfirst-nonbullet-list whosonfirst-sole-links-container">
@@ -203,7 +203,7 @@ https://mapzen.com/blog/mesoshapes | 2016-12-08 (1145 words or 0.21 AU)
 </p>
 </li>
 </ul>
-<h6 class="whosonfirst-deemphasized-subpageheader">
+<h6 id="2017" class="whosonfirst-deemphasized-subpageheader">
 2017
 </h6>
 <ul class="whosonfirst-nonbullet-list whosonfirst-sole-links-container">
@@ -334,6 +334,7 @@ https://mapzen.com/blog/geotagging-wof-venues | 2017-08-01 (2392 words or 0.44 A
 				$(".whosonfirst-sidenav-list").mouseout(function(){
 					$("body").css("overflow","auto");
 				});
+				window.addEventListener("hashchange", function() { scrollBy(0, -60) })
 			});
 		</script>
 	</body>

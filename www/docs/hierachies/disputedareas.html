@@ -26,7 +26,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="../../">Who's On First</a>
+			<a class="navbar-brand" href="../">Who's On First</a>
 		</div>
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
@@ -42,7 +42,7 @@
 					<a href="../../tools/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">tools</a>
 				</li>
 				<li class="whosonfirst-navbar-element-collapsed">
-					<a href="../../blog/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">blog</a>
+					<a href="../../blogposts/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">blog</a>
 				</li>
 				<li class="whosonfirst-navbar-element-collapsed">
 					<a href="../../getstarted/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">get started</a>
@@ -109,7 +109,7 @@
 			</aside>
 		</div>
 		<div class="col-lg-7 col-md-9 col-sm-9 col-xs-12">
-			<article><h1 class="whosonfirst-subpage-header">
+			<article><h1 id="disputed-areas">
 Disputed Areas
 </h1>
 <div class="whosonfirst-fulltabs-container">
@@ -189,7 +189,7 @@ Although it is true that all neighbourhoods and many localities are “disputed�
 <p>
 For the time being we have explicitly assigned places we know to be disputed a place type of disputed. As of this writing disputed places are parented, in their hierarchies, by two or more countries. This approach does not reflect the subtleties of the facts on the ground in any, of these disputed places. On the other hand it does allow to “block out” areas that are contested and, as we’ve said above, to leave the decisions about how to reflect the dispute to individual applications.
 </p>
-<h2>
+<h2 id="parent-ids-and-custody">
 Parent ids and “custody”
 </h2>
 <p>
@@ -264,6 +264,7 @@ Occasionally we will assign a value of -2. This should be interpreted as “:shr
 				$(".whosonfirst-sidenav-list").mouseout(function(){
 					$("body").css("overflow","auto");
 				});
+				window.addEventListener("hashchange", function() { scrollBy(0, -60) })
 			});
 		</script>
 	</body>

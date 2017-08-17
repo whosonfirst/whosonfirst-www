@@ -42,7 +42,7 @@
 					<a href="../tools/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">tools</a>
 				</li>
 				<li class="whosonfirst-navbar-element-collapsed">
-					<a href="../blog/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">blog</a>
+					<a href="../blogposts/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">blog</a>
 				</li>
 				<li class="whosonfirst-navbar-element-collapsed">
 					<a href="../getstarted/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">get started</a>
@@ -103,7 +103,7 @@
 			</aside>
 		</div>
 		<div class="col-lg-7 col-md-9 col-sm-9 col-xs-12">
-			<article><h1 class="whosonfirst-subpage-header">
+			<article><h1 id="docs">
 Docs
 </h1>
 <div class="whosonfirst-fulltabs-container">
@@ -177,7 +177,7 @@ Who’s On First is a gazetteer or a big list of places, each with a stable iden
 <p>
 Who’s On First starts from a series of first principles:
 </p>
-<h2>
+<h2 id="mapzen-has-an-opinion">
 Mapzen has an opinion
 </h2>
 <p>
@@ -189,7 +189,7 @@ Leave as many decisions as possible to the “edges”
 <p>
 The world is a complicated place and we would like the gazetteer to be a project that can support, or act as a scaffolding for, the sometimes contradictory opinions that people have about it. We aim to leave as much meaning or inference, as we can, about a place to individual users and applications. How this will manifest itself in concrete terms remains to be seen but this is a goal we have set for ourselves.
 </p>
-<h2>
+<h2 id="portability">
 Portability
 </h2>
 <p>
@@ -204,7 +204,7 @@ Google’s Protocol Buffers for example are awesome but require that you install
 <p>
 That does not mean that plain text or static files are necessarily the optimal choice for delivery or distribution. We will account for that on a case-by-case basis. If we need to pre-process all the data into a smaller and nimbler format for a specific use-case then we will, but you will always be able to access the data as simple text files.
 </p>
-<h2>
+<h2 id="geojson">
 GeoJSON
 </h2>
 <p>
@@ -261,6 +261,7 @@ Explore the links to the left to learn more about Who&#39;s On First.
 				$(".whosonfirst-sidenav-list").mouseout(function(){
 					$("body").css("overflow","auto");
 				});
+				window.addEventListener("hashchange", function() { scrollBy(0, -60) })
 			});
 		</script>
 	</body>

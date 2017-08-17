@@ -60,6 +60,7 @@ docs-properties-addr:
 	rm www/docs/properties/temp-content1.html-e
 	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Properties\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Addr\<\/div\>/' www/docs/properties/addr.html
 	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>docs\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>docs\<\/a\>/' www/docs/properties/addr.html
+	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/docs/properties/addr.html
 	rm www/docs/properties/addr.html-e
 	
 docs-properties-edtf:
@@ -74,6 +75,7 @@ docs-properties-edtf:
 	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>edtf/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>edtf/' www/docs/properties/edtf.html
 	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Properties\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Edtf\<\/div\>/' www/docs/properties/edtf.html
 	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>docs\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>docs\<\/a\>/' www/docs/properties/edtf.html
+	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/docs/properties/edtf.html
 	rm www/docs/properties/edtf.html-e
 
 docs-properties-geom:
@@ -88,6 +90,7 @@ docs-properties-geom:
 	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>geom/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>geom/' www/docs/properties/geom.html
 	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Properties\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Geom\<\/div\>/' www/docs/properties/geom.html
 	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>docs\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>docs\<\/a\>/' www/docs/properties/geom.html
+	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/docs/properties/geom.html
 	rm www/docs/properties/geom.html-e
 	
 docs-properties-lbl:
@@ -102,6 +105,7 @@ docs-properties-lbl:
 	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>lbl/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>lbl/' www/docs/properties/lbl.html
 	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Properties\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Lbl\<\/div\>/' www/docs/properties/lbl.html
 	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>docs\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>docs\<\/a\>/' www/docs/properties/lbl.html
+	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/docs/properties/lbl.html
 	rm www/docs/properties/lbl.html-e
 	
 docs-properties-mz:
@@ -116,6 +120,7 @@ docs-properties-mz:
 	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>mz/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>mz/' www/docs/properties/mz.html
 	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Properties\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Mz\<\/div\>/' www/docs/properties/mz.html
 	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>docs\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>docs\<\/a\>/' www/docs/properties/mz.html
+	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/docs/properties/mz.html
 	rm www/docs/properties/mz.html-e
 	
 docs-properties-name:
@@ -130,6 +135,7 @@ docs-properties-name:
 	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>name/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>name/' www/docs/properties/name.html
 	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Properties\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Name\<\/div\>/' www/docs/properties/name.html
 	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>docs\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>docs\<\/a\>/' www/docs/properties/name.html
+	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/docs/properties/name.html
 	rm www/docs/properties/name.html-e
 	
 docs-properties-resto:
@@ -144,6 +150,7 @@ docs-properties-resto:
 	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>resto/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>resto/' www/docs/properties/resto.html
 	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Properties\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Resto\<\/div\>/' www/docs/properties/resto.html
 	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>docs\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>docs\<\/a\>/' www/docs/properties/resto.html
+	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/docs/properties/resto.html
 	rm www/docs/properties/resto.html-e
 	
 docs-properties-reversegeo:
@@ -158,6 +165,7 @@ docs-properties-reversegeo:
 	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>reversegeo/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>reversegeo/' www/docs/properties/reversegeo.html
 	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Properties\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Reverse Geo\<\/div\>/' www/docs/properties/reversegeo.html
 	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>docs\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>docs\<\/a\>/' www/docs/properties/reversegeo.html
+	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/docs/properties/reversegeo.html
 	rm www/docs/properties/reversegeo.html-e
 	
 docs-properties-src:
@@ -172,6 +180,7 @@ docs-properties-src:
 	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>src/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>src/' www/docs/properties/src.html
 	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Properties\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Src\<\/div\>/' www/docs/properties/src.html
 	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>docs\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>docs\<\/a\>/' www/docs/properties/src.html
+	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/docs/properties/src.html
 	rm www/docs/properties/src.html-e
 	
 	
@@ -187,6 +196,7 @@ docs-properties-wof:
 	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>wof/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>wof/' www/docs/properties/wof.html
 	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Properties\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Wof\<\/div\>/' www/docs/properties/wof.html
 	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>docs\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>docs\<\/a\>/' www/docs/properties/wof.html
+	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/docs/properties/wof.html
 	rm www/docs/properties/wof.html-e
 	
 docs-properties-brooklynintegers:
@@ -201,6 +211,7 @@ docs-properties-brooklynintegers:
 	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>brooklynintegers/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>src/' www/docs/properties/brooklynintegers.html
 	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Properties\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Brooklyn Integers\<\/div\>/' www/docs/properties/brooklynintegers.html
 	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>docs\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>docs\<\/a\>/' www/docs/properties/brooklynintegers.html
+	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/docs/properties/brooklynintegers.html
 	rm www/docs/properties/brooklynintegers.html-e
 	
 docs-properties-index:
@@ -230,6 +241,7 @@ docs-concordances:
 	sed -i -e 's/whosonfirst\-sidenav\-link\"\>concordances/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>concordances/' www/docs/concordances/index.html
 	sed -i -e 's/whosonfirst\-extrasmall\-nav\-link\-collapsed\"\>concordances/whosonfirst\-extrasmall\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>concordances/' www/docs/concordances/index.html
 	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Docs\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Concordances\<\/div\>/' www/docs/concordances/index.html
+	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/docs/concordances/index.html
 	rm www/docs/concordances/index.html-e
 	
 docs-placetypes:
@@ -248,6 +260,8 @@ docs-placetypes:
 	sed -i -e 's/whosonfirst\-sidenav\-link\"\>placetypes/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>placetypes/' www/docs/placetypes/index.html
 	sed -i -e 's/whosonfirst\-extrasmall\-nav\-link\-collapsed\"\>placetypes/whosonfirst\-extrasmall\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>placetypes/' www/docs/placetypes/index.html
 	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Docs\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Placetypes\<\/div\>/' www/docs/placetypes/index.html
+	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/docs/placetypes/index.html
+	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/docs/placetypes/index.html
 	rm www/docs/placetypes/index.html-e
 	
 docs-hierachies-index:
@@ -305,6 +319,7 @@ docs-names:
 	sed -i -e 's/whosonfirst\-sidenav\-link\"\>names/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>names/' www/docs/names/index.html
 	sed -i -e 's/whosonfirst\-extrasmall\-nav\-link\-collapsed\"\>names/whosonfirst\-extrasmall\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>names/' www/docs/names/index.html
 	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Docs\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Names\<\/div\>/' www/docs/names/index.html
+	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/docs/names/index.html
 	rm www/docs/names/index.html-e
 	
 docs-geometries-index:
@@ -318,6 +333,7 @@ docs-geometries-index:
 	sed -i -e 's/whosonfirst\-sidenav\-link\"\>geometries\</whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>geometries\</' www/docs/geometries/index.html
 	sed -i -e 's/whosonfirst\-extrasmall\-nav\-link\-collapsed\"\>geometries/whosonfirst\-extrasmall\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>geometries/' www/docs/geometries/index.html
 	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>docs\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>docs\<\/a\>/' www/docs/geometries/index.html
+	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/docs/geometries/index.html
 	rm www/docs/geometries/index.html-e
 	
 docs-geometries-altgeometries:
@@ -332,6 +348,7 @@ docs-geometries-altgeometries:
 	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>creating/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>creating/' www/docs/geometries/altgeometries.html
 	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Geometries\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Creating Alt Geometries\<\/div\>/' www/docs/geometries/altgeometries.html
 	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>docs\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>docs\<\/a\>/' www/docs/geometries/altgeometries.html
+	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/docs/geometries/altgeometries.html
 	rm www/docs/geometries/altgeometries.html-e
 	
 docs-geometries: docs-geometries-index docs-geometries-altgeometries
@@ -348,6 +365,7 @@ docs-dates:
 	sed -i -e 's/whosonfirst\-sidenav\-link\"\>dates/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>dates/' www/docs/dates/index.html
 	sed -i -e 's/whosonfirst\-extrasmall\-nav\-link\-collapsed\"\>dates/whosonfirst\-extrasmall\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>dates/' www/docs/dates/index.html
 	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Docs\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Dates\<\/div\>/' www/docs/dates/index.html
+	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/docs/dates/index.html
 	rm www/docs/dates/index.html-e
 	
 docs-categories:
@@ -366,6 +384,7 @@ docs-categories:
 	sed -i -e 's/whosonfirst\-sidenav\-link\"\>categories/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>categories/' www/docs/categories/index.html
 	sed -i -e 's/whosonfirst\-extrasmall\-nav\-link\-collapsed\"\>categories/whosonfirst\-extrasmall\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>categories/' www/docs/categories/index.html
 	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Docs\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Categories\<\/div\>/' www/docs/categories/index.html
+	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/docs/categories/index.html
 	rm www/docs/categories/index.html-e
 	
 docs-sources-index:
@@ -379,6 +398,7 @@ docs-sources-index:
 	sed -i -e 's/whosonfirst\-sidenav\-link\"\>sources\</whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>sources\</' www/docs/sources/index.html
 	sed -i -e 's/whosonfirst\-extrasmall\-nav\-link\-collapsed\"\>sources/whosonfirst\-extrasmall\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>sources/' www/docs/sources/index.html
 	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>docs\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>docs\<\/a\>/' www/docs/sources/index.html
+	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/docs/sources/index.html
 	rm www/docs/sources/index.html-e
 	
 	
@@ -394,6 +414,7 @@ docs-sources-source-list:
 	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>list/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>list/' www/docs/sources/listofsources.html
 	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Sources\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>List of Sources\<\/div\>/' www/docs/sources/listofsources.html
 	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>docs\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>docs\<\/a\>/' www/docs/sources/listofsources.html
+	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/docs/sources/listofsources.html
 	rm www/docs/sources/listofsources.html-e
 	
 docs-sources: docs-sources-index docs-sources-source-list
@@ -410,6 +431,7 @@ docs-tests:
 	sed -i -e 's/whosonfirst\-sidenav\-link\"\>tests/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>tests/' www/docs/tests/index.html
 	sed -i -e 's/whosonfirst\-extrasmall\-nav\-link\-collapsed\"\>tests/whosonfirst\-extrasmall\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>tests/' www/docs/tests/index.html
 	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Docs\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Tests\<\/div\>/' www/docs/tests/index.html
+	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/docs/tests/index.html
 	rm www/docs/tests/index.html-e
 	
 docs-contributing:
@@ -424,6 +446,7 @@ docs-contributing:
 	sed -i -e 's/whosonfirst\-sidenav\-link\"\>contributing/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>contributing/' www/docs/contributing/index.html
 	sed -i -e 's/whosonfirst\-extrasmall\-nav\-link\-collapsed\"\>contributing/whosonfirst\-extrasmall\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>contributing/' www/docs/contributing/index.html
 	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Docs\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Contributing\<\/div\>/' www/docs/contributing/index.html
+	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/docs/contributing/index.html
 	rm www/docs/contributing/index.html-e
 	
 docs-licensing-datalicenses:
@@ -438,6 +461,7 @@ docs-licensing-datalicenses:
 	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>acceptable/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>acceptable/' www/docs/licensing/datalicenses.html
 	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Licensing\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Acceptable Data Licenses\<\/div\>/' www/docs/licensing/datalicenses.html
 	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>docs\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>docs\<\/a\>/' www/docs/licensing/datalicenses.html
+	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/docs/licensing/datalicenses.html
 	rm www/docs/licensing/datalicenses.html-e
 	
 docs-licensing-index:
@@ -451,6 +475,7 @@ docs-licensing-index:
 	sed -i -e 's/whosonfirst\-sidenav\-link\"\>licensing\</whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>licensing\</' www/docs/licensing/index.html
 	sed -i -e 's/whosonfirst\-extrasmall\-nav\-link\-collapsed\"\>licensing/whosonfirst\-extrasmall\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>licensing/' www/docs/licensing/index.html
 	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>docs\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>docs\<\/a\>/' www/docs/licensing/index.html
+	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/docs/licensing/index.html
 	rm www/docs/licensing/index.html-e
 
 docs-licensing: docs-licensing-index docs-licensing-datalicenses
@@ -467,6 +492,7 @@ docs-keyterms:
 	sed -i -e 's/whosonfirst\-sidenav\-link\"\>key/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>key/' www/docs/keyterms/index.html
 	sed -i -e 's/whosonfirst\-extrasmall\-nav\-link\-collapsed\-last\"\>key/whosonfirst\-extrasmall\-nav\-link\-collapsed\-last whosonfirst\-nav\-active\"\>key/' www/docs/keyterms/index.html
 	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Docs\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Key Terms\<\/div\>/' www/docs/keyterms/index.html
+	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/docs/keyterms/index.html
 	rm www/docs/keyterms/index.html-e
 	
 docs-processes-index:
@@ -480,6 +506,7 @@ docs-processes-index:
 	sed -i -e 's/whosonfirst\-sidenav\-link\"\>processes/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>processes/' www/docs/processes/index.html
 	sed -i -e 's/whosonfirst\-extrasmall\-nav\-link\-collapsed\"\>processes/whosonfirst\-extrasmall\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>processes/' www/docs/processes/index.html
 	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>docs\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>docs\<\/a\>/' www/docs/processes/index.html
+	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/docs/processes/index.html
 	rm www/docs/processes/index.html-e
 	
 docs-processes-significantevent:
@@ -494,6 +521,7 @@ docs-processes-significantevent:
 	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>what is a/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>what is a/' www/docs/processes/significantevent.html
 	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Processes and Workflows\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>What is a Significant Event\<\/div\>/' www/docs/processes/significantevent.html
 	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>docs\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>docs\<\/a\>/' www/docs/processes/significantevent.html
+	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/docs/processes/significantevent.html
 	rm www/docs/processes/significantevent.html-e
 	
 docs-processes-assigningcessation:
@@ -508,6 +536,7 @@ docs-processes-assigningcessation:
 	sed -i -e 's/whosonfirst\-smallnav\-link\-twoliner\"\>assigning/whosonfirst\-smallnav\-link\-twoliner whosonfirst\-nav\-active\"\>assigning/' www/docs/processes/assigningcessation.html
 	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Processes and Workflows\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Assigning Cessation and Deprecated Dates\<\/div\>/' www/docs/processes/assigningcessation.html
 	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>docs\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>docs\<\/a\>/' www/docs/processes/assigningcessation.html
+	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/docs/processes/assigningcessation.html
 	rm www/docs/processes/assigningcessation.html-e
 	
 docs-processes-s3requirements:
@@ -522,6 +551,7 @@ docs-processes-s3requirements:
 	sed -i -e 's/whosonfirst\-smallnav\-link\-twoliner"\>what is required/whosonfirst\-smallnav\-link\-twoliner whosonfirst\-nav\-active\"\>what is required/' www/docs/processes/s3requirements.html
 	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Processes and Workflows\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>What is Required for S3 Import Files\<\/div\>/' www/docs/processes/s3requirements.html
 	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>docs\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>docs\<\/a\>/' www/docs/processes/s3requirements.html
+	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/docs/processes/s3requirements.html
 	rm www/docs/processes/s3requirements.html-e
 		
 docs-processes-wikipediaconcordances:
@@ -536,6 +566,7 @@ docs-processes-wikipediaconcordances:
 	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>wikipedia/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>wikipedia/' www/docs/processes/wikipediaconcordances.html
 	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Processes and Workflows\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Wikipedia Concordances\<\/div\>/' www/docs/processes/wikipediaconcordances.html
 	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>docs\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>docs\<\/a\>/' www/docs/processes/wikipediaconcordances.html
+	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/docs/processes/wikipediaconcordances.html
 	rm www/docs/processes/wikipediaconcordances.html-e
 	
 docs-processes-seattleneighborhoodupdates:
@@ -550,6 +581,7 @@ docs-processes-seattleneighborhoodupdates:
 	sed -i -e 's/whosonfirst\-smallnav\-link\-twoliner\"\>seattle/whosonfirst\-smallnav\-link\-twoliner whosonfirst\-nav\-active\"\>seattle/' www/docs/processes/seattleneighborhoodupdates.html
 	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Processes and Workflows\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Seattle Neighborhood Updates\<\/div\>/' www/docs/processes/seattleneighborhoodupdates.html
 	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>docs\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>docs\<\/a\>/' www/docs/processes/seattleneighborhoodupdates.html
+	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/docs/processes/updatingsanfrancisconeighborhoods.html
 	rm www/docs/processes/seattleneighborhoodupdates.html-e
 	
 docs-processes-updatingsanfrancisconeighborhoods:
@@ -566,6 +598,7 @@ docs-processes-updatingsanfrancisconeighborhoods:
 	sed -i -e 's/whosonfirst\-smallnav\-link\-twoliner\"\>san/whosonfirst\-smallnav\-link\-twoliner whosonfirst\-nav\-active\"\>san/' www/docs/processes/updatingsanfrancisconeighborhoods.html
 	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Processes and Workflows\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>San Francisco Neighborhood Updates\<\/div\>/' www/docs/processes/updatingsanfrancisconeighborhoods.html
 	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>docs\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>docs\<\/a\>/' www/docs/processes/updatingsanfrancisconeighborhoods.html
+	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/docs/processes/updatingsanfrancisconeighborhoods.html
 	rm www/docs/processes/updatingsanfrancisconeighborhoods.html-e
 
 	
@@ -581,6 +614,7 @@ docs-processes-woflifecycle:
 	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>wof/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>wof/' www/docs/processes/woflifecycle.html
 	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Processes and Workflows\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>WOF Lifecycle\<\/div\>/' www/docs/processes/woflifecycle.html
 	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>docs\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>docs\<\/a\>/' www/docs/processes/woflifecycle.html
+	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/docs/processes/woflifecycle.html
 	rm www/docs/processes/woflifecycle.html-e
 	
 docs-processes: docs-processes-significantevent docs-processes-assigningcessation docs-processes-s3requirements docs-processes-wikipediaconcordances docs-processes-seattleneighborhoodupdates docs-processes-updatingsanfrancisconeighborhoods docs-processes-woflifecycle docs-processes-index
@@ -610,6 +644,7 @@ data-pullrequest:
 	sed -i -e 's/whosonfirst\-sidenav\-link\"\>pull/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>pull/' www/data/pullrequest/index.html
 	sed -i -e 's/whosonfirst\-extrasmall\-nav\-link\-collapsed\-last\"\>pull/whosonfirst\-extrasmall\-nav\-link\-collapsed\-last whosonfirst\-nav\-active\"\>pull/' www/data/pullrequest/index.html
 	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Data\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Pull Request Template\<\/div\>/' www/data/pullrequest/index.html
+	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/data/pullrequest/index.html
 	rm www/data/pullrequest/index.html-e
 	
 data-principles:

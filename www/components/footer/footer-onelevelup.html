@@ -44,6 +44,7 @@
 				$(".whosonfirst-sidenav-list").mouseout(function(){
 					$("body").css("overflow","auto");
 				});
+				window.addEventListener("hashchange", function() { scrollBy(0, -60) })
 			});
 		</script>
 	</body>

@@ -42,7 +42,7 @@
 					<a href="../tools/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed whosonfirst-nav-active">tools</a>
 				</li>
 				<li class="whosonfirst-navbar-element-collapsed">
-					<a href="../blog/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">blog</a>
+					<a href="../blogposts/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">blog</a>
 				</li>
 				<li class="whosonfirst-navbar-element-collapsed">
 					<a href="../getstarted/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">get started</a>
@@ -64,7 +64,7 @@
 			</aside>
 		</div>
 		<div class="col-lg-7 col-md-9 col-sm-9 col-xs-12">
-			<article><h1 class="whosonfirst-subpage-header">
+			<article><h1 id="tools">
 Tools
 </h1>
 <div class="whosonfirst-fulltabs-container">
@@ -104,7 +104,7 @@ list of those tools
 </a>
 .
 </p>
-<h2>
+<h2 id="highlighted-tools">
 Highlighted Tools
 </h2>
 <ul class="whosonfirst-nonbullet-list whosonfirst-sole-links-container">
@@ -178,6 +178,7 @@ I Am Here blog post
 				$(".whosonfirst-sidenav-list").mouseout(function(){
 					$("body").css("overflow","auto");
 				});
+				window.addEventListener("hashchange", function() { scrollBy(0, -60) })
 			});
 		</script>
 	</body>

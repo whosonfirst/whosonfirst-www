@@ -1,4 +1,4 @@
-<h1>Get Started</h1>
+<h1 id="get-started">Get Started</h1>
 <p>Who’s On First allows you to access and utilize place/geo data in a variety of ways. We created a number of tutorials, so you can learn how to do all this yourself.</p>
 <ul class="whosonfirst-nonbullet-list">
 	<li class="whosonfirst-nonbullet-list-item"><a class="whosonfirst-emphasis whosonfirst-emphasis-link" href="">retrieve venues</a> - retrieve venues in New York City’s Flatiron District</li>
@@ -24,13 +24,13 @@
 	</div>
 </div>
 <p>We have at most three available options to access the data. These options are:</p>
-<h2>Option 1: API Query</h2>
+<h2 id="option-1-api-query">Option 1: API Query</h2>
 <p>The Who’s On First API allows developers (and robots) programmatic access to query and retrieve Who’s On First data via a rest-ish interface.</p>
 <p>API methods are dispatched over HTTP with one or more query parameters and data is returned in response as JSON by default but you may also specify CSV or Who’s On First’s own meta formatted responses for certain API methods.</p>
 <p>The endpoint for the Who’s On First API is: https://whosonfirst-api.mapzen.com/</p>
 <p>All errors are returned using HTTP status codes in the 400-599 range.</p>
 <p>400 class errors mean the problem was on your end and 500 class errors mean the problem was our fault.</p>
-<h2>Option 2: HTTP Call</h2>
+<h2 id="option-2-http-call">Option 2: HTTP Call</h2>
 <p>You can also access individual WOF place data by making a http call. For example you can call https://whosonfirst.mapzen.com/data/{PATH}/{ID}.geojson if you know that place’s PATH and ID.</p>
-<h2>Option 3: Personal Copy</h2>
+<h2 id="option-3-personal-copy">Option 3: Personal Copy</h2>
 <p>Anyone can host their own copy of WOF data. Our copy of the Who's On First data is stored in big-honking <a class="whosonfirst-content-link" href="">Amazon Web Services (AWS)</a> S3 bucket called whosonfirst.mapzen.com in a sub-directory, or prefix in AWS-speak, called data. If you so desire, you can fetch the entirety of all the contents of this S3 bucket. You could also take bits and pieces by downloading individual GitHub repos.</p>

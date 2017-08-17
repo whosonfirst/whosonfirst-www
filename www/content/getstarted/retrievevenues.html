@@ -1,4 +1,4 @@
-<h1>Retrieve Venues</h1>
+<h1 id="retrieve-venues">Retrieve Venues</h1>
 <p>The Who’s On First API allows you to query and retrieve Who’s On First data including venue data via a REST-ish interface.</p>
 <p>You can use the API to retrieve venues. Say you want to retrieve venues in New York City’s Flatiron District. In this tutorial you will:</p>
 <ol class="whosonfirst-content-list">
@@ -8,7 +8,7 @@
 	<li class="whosonfirst-content-list-item"><a href="" class="whosonfirst-content-list-item-link">Manipulate data</a></li>
 	<li class="whosonfirst-content-list-item"><a href="" class="whosonfirst-content-list-item-link">Display results</a></li>
 </ol>
-<h2 class="whosonfirst-subpage-subheader">Step 1: Create a Map</h2>
+<h2 id="step-1-create-a-map" class="whosonfirst-subpage-subheader">Step 1: Create a Map</h2>
 <p>Utilize <a href="">mapzen.js</a> to make a map centered around New York City’s Flatiron District.</p>
 <pre>&lt;title&gt;My Web Map&lt;/title&gt;&lt;/p&gt;
 &lt;!DOCTYPE html&gt;
@@ -39,17 +39,17 @@
 </pre>
 <p>You will see a map that resembles the one below:</p>
 <img class="img-responsive whosonfirst-image-box" src="images/maptestimage.png"/>
-<h2 class=>Step 2: Utilize Spelunker to find necessary information</h2>
+<h2 id="step-2-utilize-spelunker-to-find-necessary-information" class="whosonfirst-subpage-subheader">Step 2: Utilize Spelunker to find necessary information</h2>
 <p>Utilize the <a href="">WOF Spelunker</a> to look around the WOF database. The API’s methods are dispatched over HTTP with one or more query parameters, we can use the spelunker to find the parameters required to retrieve venues in the Flatiron District.</p>
 <p>Use the Spelunker’s search and find the record corresponding to New York City. You will find this record.</p>
 <img class="img-responsive whosonfirst-image-box" src="images/maptestimage.png"/>
 <p>Find the 8 digit number followed by .geojson, for the Flatiron District that number is 85869245. 85869245 is the Flatiron District’s ID. You will use this when making the API call.</p>
-<h2 class="whosonfirst-subpage-subheader">Step 3: Retrieve data using the API</h2>
+<h2 id="step-3-retrieve-data-using-the-api" class="whosonfirst-subpage-subheader">Step 3: Retrieve data using the API</h2>
 <p>One of the available API methods is whosonfirst.places.getDescendants. The getDescendants method returns all the descendants for a Who’s On First ID. We have the Flatiron’s ID, so we can use this method.</p>
 <p>We can also specify the specific placetype we want records to have. For this example, we can call</p>
 <pre>curl -X GET 'https://whosonfirst-api.mapzen.com/?method=whosonfirst.places.getDescendants&api_key=your-mapzen-api-key&id=85869245&placetype=venue&per_page=500’</pre>
 <p>This will retireve 500 venue descendants of the Flatiron District.</p>
-<h2 class="whosonfirst-subpage-subheader">Step 4: Manipulate Data</h2>
+<h2 id="step-4-manipulate-data" class="whosonfirst-subpage-subheader">Step 4: Manipulate Data</h2>
 <p>Manipulate the data in whatever manner you would like. If you want to display it on a map, you could implement this code.</p>
 <pre>function runWhosOnFirstAPI() {
 &emsp;// Setup the API key<br />
@@ -70,7 +70,7 @@
 <br />&emsp;document.getElementById("whosFirstDescendantKey").innerHTML = randomLocation[2];
 <br />&emsp;document.getElementById("whosFirstDescendantLocation").innerHTML = randomLocation[4];};
 </pre>
-<h2 class="whosonfirst-subpage-subheader">Step 5: Display Results</h2>
+<h2 id="step-5-display-results" class="whosonfirst-subpage-subheader">Step 5: Display Results</h2>
 <p>Utilize the results whatever way you see fit, here we want to display the results on a map we do this with this function. </p>
 <pre>var onprogress = function(rsp) {
 &emsp;//console.log(rsp);

@@ -1,16 +1,16 @@
-<h1>Docs</h1>
+<h1 id="docs">Docs</h1>
 <p>Who’s On First is a gazetteer or a big list of places, each with a stable identifier and some number of descriptive properties about that location. An interesting way to think about a gazetteer is to consider it as the space where debate about a place is managed but not decided.</p>
 <p>Who’s On First starts from a series of first principles:</p>
-<h2>Mapzen has an opinion</h2>
+<h2 id="mapzen-has-an-opinion">Mapzen has an opinion</h2>
 <p>It is important that Mapzen have an opinion not about any one place but rather about the nature of place itself. It is important for us to know and understand the boundaries of our project in order to know what the project is for and, critically, what the project is not.</p>
 <h2>Leave as many decisions as possible to the “edges”</h2>
 <p>The world is a complicated place and we would like the gazetteer to be a project that can support, or act as a scaffolding for, the sometimes contradictory opinions that people have about it. We aim to leave as much meaning or inference, as we can, about a place to individual users and applications. How this will manifest itself in concrete terms remains to be seen but this is a goal we have set for ourselves.</p>
-<h2>Portability</h2>
+<h2 id="portability">Portability</h2>
 <p>The canonical source for a place is a text file, specifically GeoJSON with a unique 64-bit numeric ID. This is because all computers speak “text files” and “numbers”. Text files can be inspected or updated in any old text editor. Text files can be printed. Numbers are fast and cheap for databases to index.</p>
 <p>We use text files because our primary concern for the data is: Ease of use, robustness and portability over time. On measure, the benefits of plain old text files outweigh both the costs and in many cases the benefits of other formats.</p>
 <p>Google’s Protocol Buffers for example are awesome but require that you install a whole lot of Google on your computer in order to use them. ESRI’s Shapefilesare equally awesome and their ubiquity and longevity is a testament to their utility but they too require bespoke applications for even the most trivial of updates.</p>
 <p>That does not mean that plain text or static files are necessarily the optimal choice for delivery or distribution. We will account for that on a case-by-case basis. If we need to pre-process all the data into a smaller and nimbler format for a specific use-case then we will, but you will always be able to access the data as simple text files.</p>
-<h2>GeoJSON</h2>
+<h2 id="geojson">GeoJSON</h2>
 <p>We use GeoJSON as the primary exchange format for the gazetteer for two interconnected and complementary reasons:
 It is structured data with the least amount of markup today. If someone creates another markup language with even less scaffolding we might use that instead but for now GeoJSON is a good happy medium.
 There are lots of tools for working with GeoJSON and, importantly, for converting it into all the other formats that different people use.</p>
