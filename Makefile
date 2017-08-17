@@ -779,6 +779,17 @@ data-knownknowns:
 data: data-pullrequest data-principles data-available data-amazon data-github data-knownknowns data-home data-home-two
 
 blog:
+	cat www/content/blog/blog.html | pup -i 0 'body h1' > www/blogposts/temp-content1.html
+	cat www/content/blog/blog.html | pup -i 0 'body :not(h1)' > www/blogposts/temp-content2.html
+	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/blogposts/temp-content1.html
+	cat www/components/head/head-onelevelup.html www/components/navbar/navbar-onelevelup.html www/components/subnav/blog/subnav-top.html www/blogposts/temp-content1.html www/components/subnav/blog/subnav-bottom.html  www/blogposts/temp-content2.html www/components/footer/footer-onelevelup.html > www/blogposts/index.html
+	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>blog\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>blog\<\/a\>/' www/blogposts/index.html
+	rm www/blogposts/temp-content1.html
+	rm www/blogposts/temp-content2.html
+	rm www/blogposts/temp-content1.html-e
+	rm www/blogposts/index.html-e
+	
+blog-withblogfolder:
 	cat www/content/blog/blog.html | pup -i 0 'body h1' > www/blog/temp-content1.html
 	cat www/content/blog/blog.html | pup -i 0 'body :not(h1)' > www/blog/temp-content2.html
 	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/blog/temp-content1.html
