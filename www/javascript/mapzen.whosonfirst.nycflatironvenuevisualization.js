@@ -2,7 +2,7 @@
 // To generate your key, go to https://mapzen.com/developers/
 var api_key = 'mapzen-aetZmeQ';
 // Add a map to the 'map' div
-var chosenlocation = [40.741331,-73.989332,85869245,20,"New York's Flatiron District neighborhood"]
+var chosenlocation = [40.741331,-73.989332,85869245,19,"New York's Flatiron District neighborhood"]
 
 var map = L.Mapzen.map('map', {
     maxZoom: chosenlocation[3],
@@ -26,14 +26,24 @@ map.setView([lat, lon], chosenlocation[3]);
 
 // Venues are shown as a green circle
 var markerStyle = {
-    "color": "#666",
-    "weight": 1,
-    "opacity": 1,
-    "radius": 5,
-    "fillColor": "#666",
-    "fillOpacity": 0.7
+    "weight": 2,
+    "opacity": .6,
+	"fillOpacity": .2,
+    "radius": 9,
+    "fillColor": "#888888",
+	color: "#888888"
 };
 
+// How we should handle each API result
+var show_venue = function(place) {
+    var marker = L.circleMarker({
+        lat: place['geom:latitude'],
+        lng: place['geom:longitude']
+    }, markerStyle);
+	map.addLayer(marker);
+};
+
+/*
 // How we should handle each API result
 var show_venue = function(place) {
     var marker = L.circleMarker({
@@ -48,6 +58,7 @@ var show_venue = function(place) {
 	popup.setLatLng(popupLocation);
 	map.addLayer(popup);
 };
+*/
 
 // NOOP (we are using onprogress instead)
 var onsuccess = function() { return; };

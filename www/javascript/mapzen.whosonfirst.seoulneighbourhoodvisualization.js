@@ -49,7 +49,6 @@ var onprogress = function(rsp) {
     //console.log(rsp);
 	for (var i = 0; i < rsp.places.length; i++) {
         var place = rsp.places[i];
-		console.log(place['mz:uri']);
         show_plane(place);
 	}
 };

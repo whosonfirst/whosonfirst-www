@@ -2,16 +2,10 @@
 // To generate your key, go to https://mapzen.com/developers/
 var api_key = 'mapzen-aetZmeQ';
 // Add a map to the 'map' div
-var nyclocation = [40.74145,-73.988481,421205771,14,"New York's Flatiron District neighborhood"]
-var sflocation = [37.795492,-122.406569,85810881,17,"San Francisco's Chinatown neighborhood"]
-var berlinlocation = [52.513351,13.388243,85899637,14,"Berlin's Moabit neighborhood"]
-var mumbailocation = [19.10074,72.888075,102030609,15,"Mumbai"]
-var melbournelocation = [-37.813963,144.965188,85775095,16,"Melbourne's Museum neighborhood"]
-var locationOptions = [nyclocation,sflocation,berlinlocation,mumbailocation,melbournelocation]
-var randomLocation = locationOptions[3];
+var chosenlocation = [52.513351,13.388243,85899637,15,"Berlin's Moabit neighborhood"]
 
 var map = L.Mapzen.map('map', {
-    maxZoom: randomLocation[3],
+    maxZoom: chosenlocation[3],
     scrollWheelZoom: false,
     tangramOptions: {
         scene: {
@@ -26,24 +20,30 @@ var map = L.Mapzen.map('map', {
     }
 });
 
-var lat = randomLocation[0];
-var lon = randomLocation[1];
-map.setView([lat, lon], randomLocation[3]);
+var lat = chosenlocation[0];
+var lon = chosenlocation[1];
+map.setView([lat, lon], chosenlocation[3]);
 
 // Venues are shown as a green circle
 var markerStyle = {
-    "color": "#666",
-    "weight": 1,
-    "opacity": 1,
-    "radius": 5,
-    "fillColor": "#666",
-    "fillOpacity": 0.7
+    "weight": 2,
+    "opacity": .6,
+	"fillOpacity": .2,
+    "radius": 9,
+    "fillColor": "#888888",
+	color: "#888888"
 };
 
-var markerStyle2 = {
-	iconUrl: '../images/wof-sq-pink.jpg'
-}
+// How we should handle each API result
+var show_venue = function(place) {
+    var marker = L.circleMarker({
+        lat: place['geom:latitude'],
+        lng: place['geom:longitude']
+    }, markerStyle);
+	map.addLayer(marker);
+};
 
+/*
 // How we should handle each API result
 var show_venue = function(place) {
     var marker = L.circleMarker({
@@ -58,6 +58,7 @@ var show_venue = function(place) {
 	popup.setLatLng(popupLocation);
 	map.addLayer(popup);
 };
+*/
 
 // NOOP (we are using onprogress instead)
 var onsuccess = function() { return; };
@@ -74,7 +75,6 @@ var onprogress = function(rsp) {
         var place = rsp.places[i];
         show_venue(place);
     }
-	
 };
 
 function runWhosOnFirstAPI() {
@@ -84,7 +84,7 @@ function runWhosOnFirstAPI() {
     });
     // Get all the venues in the Flatiron District
     // See: https://mapzen.com/documentation/wof/methods/#whosonfirst.places.getDescendants
-    var parent_id = randomLocation[2];
+    var parent_id = chosenlocation[2];
     var method = 'whosonfirst.places.getDescendants';
     var data = {
         id: parent_id,
@@ -93,7 +93,4 @@ function runWhosOnFirstAPI() {
     };
     // Ok now we actually call the API
     mapzen.whosonfirst.api.execute_method_paginated(method, data, onsuccess, onerror, onprogress);
-    
-    document.getElementById("whosFirstDescendantKey").innerHTML=randomLocation[2];
-    document.getElementById("whosFirstDescendantLocation").innerHTML=randomLocation[4];
 };
