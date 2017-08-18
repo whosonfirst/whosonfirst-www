@@ -61,7 +61,7 @@
 <pre>&emsp;&emsp;&lt;script src="jquery.min.js"&gt;&lt;/script&gt;</pre>
 <pre>&emsp;&emsp;&lt;script src="mapzen.whosonfirst.api.js"&gt;&lt;/script&gt;</pre>
 <p>This script will allow you to make the queries available through the <a href="https://mapzen.com/documentation/wof/">WOF API</a>.</p>
-<p>Add the following helper function to make those calls from your html file. Note that we are using the <a href="https://mapzen.com/documentation/wof/methods/#whosonfirst.places.getDescendants">whosonfirst.places.getDescendants API method</a>. We include mz: so we are able to obtain information about the venue.</p>
+<p>Add the following helper function to make those calls from your html file. Note that we are using the <a href="https://mapzen.com/documentation/wof/methods/#whosonfirst.places.getDescendants">whosonfirst.places.getDescendants API method</a>. We include geom: so we are able to obtain information about the venue.</p>
 <pre>function runWhosOnFirstAPI() {
 // Setup the API key
 mapzen.whosonfirst.api.set_handler('authentication', function() {
@@ -75,7 +75,7 @@ var method = 'whosonfirst.places.getDescendants';
 var data = {
 &emsp;id: '85869245',
 &emsp;per_page: 500,
-&emsp;extras: 'mz:', // this gets us lat/lng coords
+&emsp;extras: 'geom:', // this gets us lat/lng coords
 };
 
 // Ok now we actually call the API
@@ -198,7 +198,7 @@ var show_venue = function(place) {
 &emsp;&emsp;&emsp;var data = {
 &emsp;&emsp;&emsp;&emsp;id: parent_id,
 &emsp;&emsp;&emsp;&emsp;per_page: 500,
-&emsp;&emsp;&emsp;&emsp;extras: 'mz:', // this gets us lat/lng coords
+&emsp;&emsp;&emsp;&emsp;extras: 'geom:', // this gets us lat/lng coords
 &emsp;&emsp;&emsp;};
 
 &emsp;&emsp;&emsp;// Ok now we actually call the API

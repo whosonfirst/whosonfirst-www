@@ -33,8 +33,8 @@
 										<button class="btn btn-default whosonfirst-tutorial-input-top-box-right-button whosonfirst-input-go-button" type="button">go</button>
 									</span>
 								</div><!-- /input-group -->
-								<div class="whosonfirst-tutorial-top-side-button whoonsfirst-tutorial-auto-pointer">
-									<div class="whosonfirst-tutorial-top-side-point-button">
+								<div id="whosonfirst-tutorial-top-side-button" class="whosonfirst-tutorial-top-side-button whoonsfirst-tutorial-auto-pointer">
+									<div id="whosonfirst-tutorial-top-side-point-button" class="whosonfirst-tutorial-top-side-point-button">
 									</div>
 								</div>
 								<div class="whosonfirst-tutorial-top-side-button whoonsfirst-tutorial-auto-pointer">
@@ -58,18 +58,18 @@
 									<div class="input-group">
 										<div class="whosonfirst-tutorial-individual-input">
 											<div class="whosonfirst-tutorial-form-clue">Longitude</div>
-											<input type="text" class="form-control whosonfirst-form whosonfirst-tutorial-input-box" placeholder="11.1243">
+											<input id="whosonfirst-tutorial-form-longitude" type="text" class="form-control whosonfirst-form whosonfirst-tutorial-input-box" placeholder="11.1243">
 										</div>
 										<div class="whosonfirst-tutorial-individual-input">
 											<div class="whosonfirst-tutorial-form-clue">Latitude</div>
-											<input type="text" class="form-control whosonfirst-form whosonfirst-tutorial-input-box" placeholder="67.1233">
+											<input id="whosonfirst-tutorial-form-latitude" type="text" class="form-control whosonfirst-form whosonfirst-tutorial-input-box" placeholder="67.1233">
 										</div>
 										<div class="whosonfirst-tutorial-individual-input">
 											<div class="whosonfirst-tutorial-form-clue">Radius</div>
-											<input type="text" class="form-control whosonfirst-form whosonfirst-tutorial-input-box" placeholder="25">
+											<input id="whosonfirst-tutorial-form-radius" type="text" class="form-control whosonfirst-form whosonfirst-tutorial-input-box" placeholder="25">
 										</div>
 									</div>
-									<button type="button" class="btn btn-default btn-lg btn-block whosonfirst-tutorial-submit-button">submit</button>
+									<button type="button" class="btn btn-default btn-lg btn-block whosonfirst-tutorial-submit-button" onclick="retrieveInputCoordinates()">submit</button>
 								</div>
 							</div>
 						</div>
@@ -128,7 +128,7 @@
 							<div class="row whosonfirst-tutorial-result-subrow">
 								<div class="whosonfirst-tutorial-result-container">
 									<h2 class="whosonfirst-tutorial-result-header">Results</h2>
-									<div class="whosonfirst-tutorial-result-box-container">
+									<div id="whosonfirst-tutorial-result-box-container" class="whosonfirst-tutorial-result-box-container">
 										<div class="whosonfirst-tutorial-result">
 											<div class="col-lg-4 col-md-4 col-sm-4 whosonfirst-tutorial-result-col">
 												<div class="whosonfirst-tutorial-interaction-id">
@@ -372,7 +372,7 @@
 								<h2 class="whosonfirst-tutorial-api-header whosonfirst-tutorial-container-text">API Query</h2>
 								<div class="whosonfirst-tutorial-individual-code-container">
 									<div class="whosonfirst-tutorial-individual-code-box">
-										<p class="whosonfirst-tutorial-individual-result-code">curl -X GET 'https://whosonfirst-api.mapzen.com/?method=whosonfirst.places.getByLatLon&api_key=your-mapzen-api-key&latitude=37.766633&longitude=-122.417693&placetype=neighbourhood' curl -X GET 'https://whosonfirst-api.mapzen.com/?method=whosonfirst.places.getByLatLon&api_key=your-mapzen-api-key&latitude=37.766633&longitude=-122.417693&placetype=neighbourhood'</p>
+										<p id="tutorial-api-method" class="whosonfirst-tutorial-individual-result-code">curl -X GET 'https://whosonfirst-api.mapzen.com/?method=whosonfirst.places.getByLatLon&api_key=your-mapzen-api-key&latitude=37.766633&longitude=-122.417693&placetype=neighbourhood' curl -X GET 'https://whosonfirst-api.mapzen.com/?method=whosonfirst.places.getByLatLon&api_key=your-mapzen-api-key&latitude=37.766633&longitude=-122.417693&placetype=neighbourhood'</p>
 									</div>
 								</div>
 							</div>
@@ -383,6 +383,8 @@
         </section>
         
 		<script src="../javascript/mapzen.min.js"></script>
+		<script src="../javascript/mapzen.whosonfirst.api.js"></script>
+		<script src='../javascript/jquery.min.js'></script>
         <script src="../javascript/mapzen-whosonfirstdemofour.js"></script>
     </body>
 </html>

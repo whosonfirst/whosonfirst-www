@@ -33,7 +33,7 @@
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
 				<li class="whosonfirst-navbar-element-collapsed">
-					<a href="../../data/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">data</a>
+					<a href="../../allthedata/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">data</a>
 				</li>
 				<li class="whosonfirst-navbar-element-collapsed">
 					<a href="../../docs/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed whosonfirst-nav-active">docs</a>
@@ -42,7 +42,7 @@
 					<a href="../../tools/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">tools</a>
 				</li>
 				<li class="whosonfirst-navbar-element-collapsed">
-					<a href="../../blogposts/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">blog</a>
+					<a href="../../alltheblog/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">blog</a>
 				</li>
 				<li class="whosonfirst-navbar-element-collapsed">
 					<a href="../../getstarted/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">get started</a>
@@ -594,29 +594,9 @@ pair. Yeah, that&#39;s a thing...
 		</footer>
 		
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script src="../../javascript/jquery.min.js"></script>
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
 		<script src="../../javascript/bootstrap.min.js"></script>
-		
-		<script>
-			$(document).ready(function(){
-				$("#bs-example-navbar-collapse-2").on("show.bs.collapse", function(){
-					console.log("In here");
-					document.getElementById("glyphicon-one").classList.add("glyphicon-menu-up");
-					document.getElementById("glyphicon-one").classList.remove("glyphicon-menu-down");
-				});
-				$("#bs-example-navbar-collapse-2").on("hide.bs.collapse", function(){
-					document.getElementById("glyphicon-one").classList.add("glyphicon-menu-down");
-					document.getElementById("glyphicon-one").classList.remove("glyphicon-menu-up");
-				});
-				$(".whosonfirst-sidenav-list").mouseover(function(){
-					$("body").css("overflow","hidden");
-				});
-				$(".whosonfirst-sidenav-list").mouseout(function(){
-					$("body").css("overflow","auto");
-				});
-				window.addEventListener("hashchange", function() { scrollBy(0, -60) })
-			});
-		</script>
+		<script src="../../javascript/mapzen.whosonfirst.subpage.js"></script>
 	</body>
 </html>
