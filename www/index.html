@@ -213,16 +213,6 @@
 		<script src="javascript/jquery.min.js"></script>
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
 		<script src="javascript/bootstrap.min.js"></script>
-		<script>
-			window.onload = choosePic;
-
-			var myPix = new Array("images/berlinvenuevisualization.png","images/nycvenuevisualization.png","images/seoulneighborhoodvisualization.png","images/sfneighborhoodvisualization.png");
-
-			function choosePic() {
-				console.log("In Here");
-				var randomNum = Math.floor(Math.random() * myPix.length);
-				document.getElementById("chosen-background-image").src = myPix[randomNum];
-			}
-		</script>
+		<script src='javascript/mapzen.whosonfirst.homerandombackground.js'></script>
 	</body>
 </html>

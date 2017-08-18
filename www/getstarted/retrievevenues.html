@@ -33,7 +33,7 @@
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
 				<li class="whosonfirst-navbar-element-collapsed">
-					<a href="../data/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">data</a>
+					<a href="../allthedata/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">data</a>
 				</li>
 				<li class="whosonfirst-navbar-element-collapsed">
 					<a href="../docs/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">docs</a>
@@ -42,7 +42,7 @@
 					<a href="../tools/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">tools</a>
 				</li>
 				<li class="whosonfirst-navbar-element-collapsed">
-					<a href="../blogposts/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">blog</a>
+					<a href="../alltheblog/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">blog</a>
 				</li>
 				<li class="whosonfirst-navbar-element-collapsed">
 					<a href="../getstarted/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed whosonfirst-nav-active">get started</a>
@@ -145,7 +145,7 @@ Display results
 </a>
 </li>
 </ol>
-<h2 id="step-1:-create-a-map" class="whosonfirst-subpage-subheader">
+<h2 id="step-1-create-a-map" class="whosonfirst-subpage-subheader">
 Step 1: Create a Map
 </h2>
 <p>
@@ -187,7 +187,7 @@ to make a map centered around New York City’s Flatiron District.
 You will see a map that resembles the one below:
 </p>
 <img class="img-responsive whosonfirst-image-box" src="images/maptestimage.png">
-<h2 id="step-2:-utilize-spelunker-to-find-necessary-information" class="whosonfirst-subpage-subheader">
+<h2 id="step-2-utilize-spelunker-to-find-necessary-information" class="whosonfirst-subpage-subheader">
 Step 2: Utilize Spelunker to find necessary information
 </h2>
 <p>
@@ -204,7 +204,7 @@ Use the Spelunker’s search and find the record corresponding to New York City.
 <p>
 Find the 8 digit number followed by .geojson, for the Flatiron District that number is 85869245. 85869245 is the Flatiron District’s ID. You will use this when making the API call.
 </p>
-<h2 id="step-3:-retrieve-data-using-the-api" class="whosonfirst-subpage-subheader">
+<h2 id="step-3-retrieve-data-using-the-api" class="whosonfirst-subpage-subheader">
 Step 3: Retrieve data using the API
 </h2>
 <p>
@@ -219,7 +219,7 @@ curl -X GET &#39;https://whosonfirst-api.mapzen.com/?method=whosonfirst.places.g
 <p>
 This will retireve 500 venue descendants of the Flatiron District.
 </p>
-<h2 id="step-4:-manipulate-data" class="whosonfirst-subpage-subheader">
+<h2 id="step-4-manipulate-data" class="whosonfirst-subpage-subheader">
 Step 4: Manipulate Data
 </h2>
 <p>
@@ -249,7 +249,7 @@ document.getElementById(&#34;whosFirstDescendantKey&#34;).innerHTML = randomLoca
 <br>
 document.getElementById(&#34;whosFirstDescendantLocation&#34;).innerHTML = randomLocation[4];};
 </pre>
-<h2 id="step-5:-display-results" class="whosonfirst-subpage-subheader">
+<h2 id="step-5-display-results" class="whosonfirst-subpage-subheader">
 Step 5: Display Results
 </h2>
 <p>
@@ -304,29 +304,9 @@ to discover other possible methods.
 		</footer>
 		
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script src="../javascript/jquery.min.js"></script>
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
 		<script src="../javascript/bootstrap.min.js"></script>
-		
-		<script>
-			$(document).ready(function(){
-				$("#bs-example-navbar-collapse-2").on("show.bs.collapse", function(){
-					console.log("In here");
-					document.getElementById("glyphicon-one").classList.add("glyphicon-menu-up");
-					document.getElementById("glyphicon-one").classList.remove("glyphicon-menu-down");
-				});
-				$("#bs-example-navbar-collapse-2").on("hide.bs.collapse", function(){
-					document.getElementById("glyphicon-one").classList.add("glyphicon-menu-down");
-					document.getElementById("glyphicon-one").classList.remove("glyphicon-menu-up");
-				});
-				$(".whosonfirst-sidenav-list").mouseover(function(){
-					$("body").css("overflow","hidden");
-				});
-				$(".whosonfirst-sidenav-list").mouseout(function(){
-					$("body").css("overflow","auto");
-				});
-				window.addEventListener("hashchange", function() { scrollBy(0, -60) })
-			});
-		</script>
+		<script src="../javascript/mapzen.whosonfirst.subpage.js"></script>
 	</body>
 </html>
