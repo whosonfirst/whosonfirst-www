@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>My Web Map</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="https://mapzen.com/js/mapzen.css">
+		<script src="https://mapzen.com/js/mapzen.min.js"></script>
+		<style>
+			#map {
+				height: 100%;
+				width: 100%;
+				position: absolute;
+			}
+			html,body{margin: 0; padding: 0;}
+		</style>
+	</head>
+	<body onload="runWhosOnFirstAPI()">
+		<div id="map"></div>
+		<script src="../javascript/mapzen.whosonfirst.api.js"></script>
+		<script src="../javascript/jquery.min.js"></script>
+		<script>
+			L.Mapzen.apiKey = 'mapzen-aetZmeQ';
+			var map = L.Mapzen.map('map', {
+				tangramOptions: {
+					scene: {
+						import: [
+							'https://mapzen.com/carto/refill-style/8/refill-style.zip', 'https://mapzen.com/carto/refill-style/8/themes/color-gray.zip'
+					] } }
+			});
+			map.setView([40.741331,-73.989332], 19);
+			
+			// Venues are shown as a green circle
+			var markerStyle = {
+				"weight": 2,
+				"opacity": .6,
+				"fillOpacity": .2,
+				"radius": 9,
+				"fillColor": "#888888",
+				"color": "#888888"
+			};
+
+			// How we should handle each API result
+			var show_venue = function(place) {
+				var marker = L.circleMarker({
+					lat: place['geom:latitude'],
+					lng: place['geom:longitude']
+				}, markerStyle);
+				map.addLayer(marker);
+			};
+
+			// NOOP (we are using onprogress instead)
+			var onsuccess = function() { return; };
+
+			// Just log errors to the JS console
+			var onerror = function(rsp) {
+				console.error(rsp);
+			};
+
+			// Take all the API results and show them on the map
+			var onprogress = function(rsp) {
+				//console.log(rsp);
+				for (var i = 0; i < rsp.places.length; i++) {
+					var place = rsp.places[i];
+					show_venue(place);
+				}
+			};
+
+			function runWhosOnFirstAPI() {
+				// Setup the API key
+				mapzen.whosonfirst.api.set_handler('authentication', function() {
+					return 'mapzen-aetZmeQ';
+				});
+				// Get all the venues in the Flatiron District
+				// See: https://mapzen.com/documentation/wof/methods/#whosonfirst.places.getDescendants
+				var parent_id = '85869245';
+				var method = 'whosonfirst.places.getDescendants';
+				var data = {
+					id: parent_id,
+					per_page: 500,
+					extras: 'geom:', // this gets us lat/lng coords
+				};
+				// Ok now we actually call the API
+				mapzen.whosonfirst.api.execute_method_paginated(method, data, onsuccess, onerror, onprogress);
+			};
+		</script>
+	</body>
+</html>

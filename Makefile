@@ -893,13 +893,28 @@ getstarted-retrievevenues:
 	cat www/content/getstarted/retrievevenues.html | pup -i 0 'body h1' > www/getstarted/temp-content1.html
 	cat www/content/getstarted/retrievevenues.html | pup -i 0 'body :not(h1)' > www/getstarted/temp-content2.html
 	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/getstarted/temp-content1.html
-	cat www/components/head/head-onelevelup.html www/components/navbar/navbar-onelevelup.html www/components/subnav/getstarted/subnav-top.html www/getstarted/temp-content1.html www/components/subnav/getstarted/subnav-bottom-special.html  www/getstarted/temp-content2.html www/components/footer/footer-onelevelup.html > www/getstarted/retrievevenues.html
+	cat www/components/head/head-onelevelup.html www/components/navbar/navbar-onelevelup.html www/components/subnav/getstarted/subnav-top.html www/getstarted/temp-content1.html www/components/subnav/getstarted/subnav-bottom.html  www/getstarted/temp-content2.html www/components/footer/footer-onelevelup.html > www/getstarted/retrievevenues.html
 	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>get started\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>get started\<\/a\>/' www/getstarted/retrievevenues.html
 	rm www/getstarted/temp-content1.html
 	rm www/getstarted/temp-content2.html
 	rm www/getstarted/temp-content1.html-e
-	sed -i -e 's/whosonfirst\-sidenav\-link\"\>retrieve/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>retrieve/' www/getstarted/retrievevenues.html
-	sed -i -e 's/whosonfirst\-extrasmall\-nav\-link\-collapsed\"\>retrieve/whosonfirst\-extrasmall\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>retrieve/' www/getstarted/retrievevenues.html
+	sed -i -e 's/whosonfirst\-sidenav\-link\"\>retrieve v/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>retrieve v/' www/getstarted/retrievevenues.html
+	sed -i -e 's/whosonfirst\-extrasmall\-nav\-link\-collapsed\"\>retrieve v/whosonfirst\-extrasmall\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>retrieve v/' www/getstarted/retrievevenues.html
+	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Get Started\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Retrieve Venues\<\/div\>/' www/getstarted/retrievevenues.html
 	rm www/getstarted/retrievevenues.html-e
 	
-getstarted: getstarted-index getstarted-retrievevenues
+getstarted-retrieveneighbourhoods:
+	cat www/content/getstarted/retrieveneighbourhoods.html | pup -i 0 'body h1' > www/getstarted/temp-content1.html
+	cat www/content/getstarted/retrieveneighbourhoods.html | pup -i 0 'body :not(h1)' > www/getstarted/temp-content2.html
+	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/getstarted/temp-content1.html
+	cat www/components/head/head-onelevelup.html www/components/navbar/navbar-onelevelup.html www/components/subnav/getstarted/subnav-top.html www/getstarted/temp-content1.html www/components/subnav/getstarted/subnav-bottom.html  www/getstarted/temp-content2.html www/components/footer/footer-onelevelup.html > www/getstarted/retrieveneighbourhoods.html
+	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>get started\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>get started\<\/a\>/' www/getstarted/retrieveneighbourhoods.html
+	rm www/getstarted/temp-content1.html
+	rm www/getstarted/temp-content2.html
+	rm www/getstarted/temp-content1.html-e
+	sed -i -e 's/whosonfirst\-sidenav\-link\"\>retrieve n/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>retrieve n/' www/getstarted/retrieveneighbourhoods.html
+	sed -i -e 's/whosonfirst\-extrasmall\-nav\-link\-collapsed-last\"\>retrieve n/whosonfirst\-extrasmall\-nav\-link\-collapsed-last whosonfirst\-nav\-active\"\>retrieve n/' www/getstarted/retrieveneighbourhoods.html
+	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Get Started\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Retrieve Neighbourhoods\<\/div\>/' www/getstarted/retrieveneighbourhoods.html
+	rm www/getstarted/retrieveneighbourhoods.html-e
+	
+getstarted: getstarted-index getstarted-retrievevenues getstarted-retrieveneighbourhoods

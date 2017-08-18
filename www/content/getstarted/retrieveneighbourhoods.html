@@ -1,6 +1,6 @@
-<h1 id="retrieve-venues">Retrieve Venues</h1>
-<p>The <a href="https://mapzen.com/documentation/wof/">Who’s On First API</a> allows you to query and retrieve Who’s On First data including venue data via a REST-ish interface.</p>
-<p>In this tutorial, you will use the API to retrieve venues in New York City's Flatiron District and display them on a map. To do this, you will:</p>
+<h1 id="retrieve-venues">Retrieve Neighbourhoods</h1>
+<p>The <a href="https://mapzen.com/documentation/wof/">Who’s On First API</a> allows you to query and retrieve Who’s On First data including neighbourhood data via a REST-ish interface.</p>
+<p>In this tutorial, you will use the API to retrieve San Francisco's neighbourhood and display them on a map. To do this, you will:</p>
 <ol class="whosonfirst-content-list">
 	<li class="whosonfirst-content-list-item"><a href="#step-1-create-a-map" class="whosonfirst-content-list-item-link">Create a Map</a></li>
 	<li class="whosonfirst-content-list-item"><a href="#step-2-find-info-with-spelunker" class="whosonfirst-content-list-item-link">Find Info With Spelunker</a></li>
@@ -34,24 +34,24 @@
 &emsp;&emsp;&emsp;&emsp;tangramOptions: {
 &emsp;&emsp;&emsp;&emsp;&emsp;scene: {
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;import: [
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;'https://mapzen.com/carto/refill-style/8/refill-style.zip', 'https://mapzen.com/carto/refill-style/8/themes/color-gray.zip'
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;'https://mapzen.com/carto/refill-style/8/refill-style.zip', 'https://mapzen.com/carto/refill-style/8/themes/color-gray.zip', 'https://mapzen.com/carto/refill-style/8/themes/detail-1.zip'
 &emsp;&emsp;&emsp;&emsp;&emsp;] } }
 &emsp;&emsp;&emsp;});
-&emsp;&emsp;&emsp;map.setView([40.741331,-73.989332], 19);
+&emsp;&emsp;&emsp;map.setView([37.77493, -122.41942], 12);
 &emsp;&emsp;&lt;/script&gt;
 &emsp;&lt;/body&gt;
 &lt;/html&gt;</pre>
 <p>To learn more about mapzen.js, check out it's <a href="https://mapzen.com/documentation/mapzen-js/get-started/">Get Started tutorial</a>.</p>
 <h2 id="step-2-find-info-with-spelunker" class="whosonfirst-subpage-subheader">Step 2: Find Info With Spelunker</h2>
 <p>Now, we need some background info (WOF ID, latitude, longitude, etc...) to best utilize the API. To do this, we are going to take a look at the <a href="https://whosonfirst.mapzen.com/spelunker/">Spelunker</a>.</p>
-<p>Search for Flatiron District New York in the Spelunker. Find the one that is the locality in the United States. You should find the page below.</p>
-<img class="img-responsive" src="../images/wofspelunkerny.png"/>
+<p>Search for San Francisco in the Spelunker. Find the one that is the locality in the United States. You should find the page below.</p>
+<img class="img-responsive" src="../images/wofspelunkersf.png"/>
 <p>Note the wof id. You can find it if you scroll down, it also the 8 digit number located near the top of the page followed by .geojson.</p>
-<p>Also, verify that you map is centered on the the right coordinates and the level is set correctly. For our purposes, we are going to level 19.</p>
+<p>Also, verify that you map is centered on the the right coordinates and the level is set correctly. For our purposes, we are going to level 14.</p>
 <pre>&lt;script&gt;
 &emsp;L.Mapzen.apiKey = 'your-mapzen-api-key';
 &emsp;var map = L.Mapzen.map('map');
-&emsp;map.setView([40.741331,-73.989332], 19);
+&emsp;map.setView([37.77493, -122.41942], 14);
 &lt;/script&gt;</pre>
 <h2 id="step-3-retrieve-data-using-the-api" class="whosonfirst-subpage-subheader">Step 3: Retrieve Data using the API</h2>
 <p>To retrieve data using the API, we are going to utilize the <a href="https://raw.githubusercontent.com/whosonfirst/electron-whosonfirst-bookmarks/master/javascript/mapzen.whosonfirst.api.js">mapzen.whosonfirst.api.js</a> file.</p>
@@ -61,7 +61,7 @@
 <pre>&emsp;&emsp;&lt;script src="jquery.min.js"&gt;&lt;/script&gt;</pre>
 <pre>&emsp;&emsp;&lt;script src="mapzen.whosonfirst.api.js"&gt;&lt;/script&gt;</pre>
 <p>This script will allow you to make the queries available through the <a href="https://mapzen.com/documentation/wof/">WOF API</a>.</p>
-<p>Add the following helper function to make those calls from your html file. Note that we are using the <a href="https://mapzen.com/documentation/wof/methods/#whosonfirst.places.getDescendants">whosonfirst.places.getDescendants API method</a>. We include mz: so we are able to obtain information about the venue.</p>
+<p>Add the following helper function to make those calls from your html file. Note that we are using the <a href="https://mapzen.com/documentation/wof/methods/#whosonfirst.places.getDescendants">whosonfirst.places.getDescendants API method</a>. We include mz:uri as an extra so we are able to retrieve a neighbourhood's geometry. We also note that we only want neighbourhood descendants.</p>
 <pre>function runWhosOnFirstAPI() {
 // Setup the API key
 mapzen.whosonfirst.api.set_handler('authentication', function() {
@@ -70,18 +70,19 @@ mapzen.whosonfirst.api.set_handler('authentication', function() {
 
 // See: https://mapzen.com/documentation/wof/methods/#whosonfirst.places.getDescendants
 // San Francisco's WOF ID
-var parent_id = '85869245';
+var parent_id = '85922583';
 var method = 'whosonfirst.places.getDescendants';
 var data = {
-&emsp;id: '85869245',
+&emsp;id: '85922583',
 &emsp;per_page: 500,
-&emsp;extras: 'mz:', // this gets us lat/lng coords
+&emsp;extras: 'mz:uri,geom:latitude,geom:longitude', // this gets us lat/lng coords
+&emsp;placetype: 'neighbourhood'
 };
 
 // Ok now we actually call the API
 mapzen.whosonfirst.api.execute_method_paginated(method, data, onsuccess, onerror, onprogress);
 };</pre>
-<p>Add the following helper functions. Not that the show_venue function has not yet been created.</p>
+<p>Add the following helper functions. Not that the show_plane function has not yet been created.</p>
 <pre>// NOOP (we are using onprogress instead)
 var onsuccess = function() { return; };
 
@@ -95,29 +96,20 @@ var onprogress = function(rsp) {
 &emsp;//console.log(rsp);
 &emsp;for (var i = 0; i < rsp.places.length; i++) {
 &emsp;&emsp;var place = rsp.places[i];
-&emsp;&emsp;show_venue(place);
+&emsp;&emsp;show_plane(place);
 &emsp;}
 };</pre>
 <h2 id="step-4-display-the-data" class="whosonfirst-subpage-subheader">Step 4: Display the Data</h2>
-<p>Now we are going to display the data. To do this, we are going to write the show_venue function. The show_venue function takes a place's latitude and longitude and stylizes it as a circle with a fill and stroke using the marker style. For our purposes, we have selected a shade of grey.</p>
-<pre>// Venues are shown as a green circle
-var markerStyle = {
-&emsp;"weight": 2,
-&emsp;"opacity": .6,
-&emsp;"fillOpacity": .2,
-&emsp;"radius": 9,
-&emsp;"fillColor": "#888888",
-&emsp;"color": "#888888"
-};
-
-// How we should handle each API result
-var show_venue = function(place) {
-&emsp;var marker = L.circleMarker({
-&emsp;&emsp;lat: place['geom:latitude'],
-&emsp;&emsp;lng: place['geom:longitude']
-&emsp;}, markerStyle);
-&emsp;map.addLayer(marker);
-};</pre>
+<p>Now we are going to display the data. To do this, we are going to write the show_plane function. The show_plane function takes a place's geometry and stylizes it with a fill and stroke. For our purposes, we are selecting random shades of gray.</p>
+<pre>var show_plane = function(place) {
+&emsp;$.get(place['mz:uri'], function(result) {
+&emsp;&emsp;L.geoJSON(result, {style: function (feature) {
+&emsp;&emsp;&emsp;randomNumber1 = 86+Math.ceil(Math.random()*100);
+&emsp;&emsp;&emsp;color = "rgb("+randomNumber1+","+randomNumber1+","+randomNumber1+")"
+&emsp;&emsp;&emsp;return {color: '#888888', weight: 1, opacity: '.7', fillColor: color, fillOpacity: .5};
+&emsp;&emsp;}}).addTo(map);
+&emsp;});
+}</pre>
 <p>Your code should now resemble:</p>
 <pre>&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
@@ -148,25 +140,18 @@ var show_venue = function(place) {
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;'https://mapzen.com/carto/refill-style/8/refill-style.zip', 'https://mapzen.com/carto/refill-style/8/themes/color-gray.zip', 'https://mapzen.com/carto/refill-style/8/themes/detail-1.zip'
 &emsp;&emsp;&emsp;&emsp;] } }
 &emsp;&emsp;});
-&emsp;&emsp;map.setView([40.741331, -73.989332], 19);
+&emsp;&emsp;map.setView([37.77493, -122.41942], 14);
 			
-&emsp;&emsp;var markerStyle = {
-&emsp;&emsp;&emsp;"weight": 2,
-&emsp;&emsp;&emsp;"opacity": .6,
-&emsp;&emsp;&emsp;"fillOpacity": .2,
-&emsp;&emsp;&emsp;"radius": 9,
-&emsp;&emsp;&emsp;"fillColor": "#888888",
-&emsp;&emsp;&emsp;"color": "#888888"
-&emsp;&emsp;};
-
 &emsp;&emsp;// How we should handle each API result
-&emsp;&emsp;var show_venue = function(place) {
-&emsp;&emsp;&emsp;var marker = L.circleMarker({
-&emsp;&emsp;&emsp;&emsp;lat: place['geom:latitude'],
-&emsp;&emsp;&emsp;&emsp;lng: place['geom:longitude']
-&emsp;&emsp;&emsp;}, markerStyle);
-&emsp;&emsp;&emsp;map.addLayer(marker);
-&emsp;&emsp;};
+&emsp;&emsp;var show_plane = function(place) {
+&emsp;&emsp;&emsp;$.get(place['mz:uri'], function(result) {
+&emsp;&emsp;&emsp;&emsp;L.geoJSON(result, {style: function (feature) {
+&emsp;&emsp;&emsp;&emsp;&emsp;randomNumber1 = 86+Math.ceil(Math.random()*100);
+&emsp;&emsp;&emsp;&emsp;&emsp;color = "rgb("+randomNumber1+","+randomNumber1+","+randomNumber1+")"
+&emsp;&emsp;&emsp;&emsp;&emsp;return {color: '#888888', weight: 1, opacity: '.7', fillColor: color, fillOpacity: .5};
+&emsp;&emsp;&emsp;&emsp;}}).addTo(map);
+&emsp;&emsp;&emsp;});
+&emsp;&emsp;}
 
 &emsp;&emsp;// NOOP (we are using onprogress instead)
 &emsp;&emsp;var onsuccess = function() { return; };
@@ -193,12 +178,13 @@ var show_venue = function(place) {
 
 &emsp;&emsp;&emsp;// Get all the venues in the Flatiron District
 &emsp;&emsp;&emsp;// See: https://mapzen.com/documentation/wof/methods/#whosonfirst.places.getDescendants
-&emsp;&emsp;&emsp;var parent_id = '85869245';
+&emsp;&emsp;&emsp;var parent_id = '85922583';
 &emsp;&emsp;&emsp;var method = 'whosonfirst.places.getDescendants';
 &emsp;&emsp;&emsp;var data = {
 &emsp;&emsp;&emsp;&emsp;id: parent_id,
 &emsp;&emsp;&emsp;&emsp;per_page: 500,
-&emsp;&emsp;&emsp;&emsp;extras: 'mz:', // this gets us lat/lng coords
+&emsp;&emsp;&emsp;&emsp;extras: 'mz:uri,geom:latitude,geom:longitude', // this gets us lat/lng coords
+&emsp;&emsp;&emsp;&emsp;placetype: 'neighbourhood'
 &emsp;&emsp;&emsp;};
 
 &emsp;&emsp;&emsp;// Ok now we actually call the API
@@ -209,5 +195,5 @@ var show_venue = function(place) {
 &lt;/html&gt;
 </pre>
 <p>When you refresh your html page, you should see this.</p>
-<img class="img-responsive" src="../images/tutorialmapny.png"/>
-<p>Congrats, you just made a map of venues in New York City's Flatiron District using the WOF API.</p>
+<img class="img-responsive" src="../images/tutorialmapsf.png"/>
+<p>Congrats, you just made a map of San Francisco's neighbourhoods using the WOF API.</p>

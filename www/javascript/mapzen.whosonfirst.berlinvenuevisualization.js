@@ -31,7 +31,7 @@ var markerStyle = {
 	"fillOpacity": .2,
     "radius": 9,
     "fillColor": "#888888",
-	color: "#888888"
+	"color": "#888888"
 };
 
 // How we should handle each API result
