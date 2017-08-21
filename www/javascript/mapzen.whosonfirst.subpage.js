@@ -8,11 +8,13 @@ $(document).ready(function(){
 		document.getElementById("glyphicon-one").classList.add("glyphicon-menu-down");
 		document.getElementById("glyphicon-one").classList.remove("glyphicon-menu-up");
 	});
+	/*
 	$(".whosonfirst-sidenav-list").mouseover(function(){
 		$("body").css("overflow","hidden");
 	});
 	$(".whosonfirst-sidenav-list").mouseout(function(){
 		$("body").css("overflow","auto");
 	});
+	*/
 	window.addEventListener("hashchange", function() { scrollBy(0, -60) })
 });

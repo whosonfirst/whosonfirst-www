@@ -256,7 +256,7 @@ div.whosonfirst-card-container h6.whosonfirst-main-headline {
 	transition: box-shadow .7s ease-in-out;
 }
 
-.whosonfirst-card-shadow:hover {
+.whosonfirst-dark-gradient.whosonfirst-card-shadow:hover {
     box-shadow: 0px 0px 8px 0px rgba(0,0,12,.18), 0px 6px 8px 0px rgba(0,0,12,.18);
 }
 
@@ -456,6 +456,7 @@ h5 {
 	line-height: 1.3;
 	color: #1F1F1F;
 	text-align: right;
+	padding-top: 3px;
 }
 
 .whosonfirst-light-card-headers-smaller {
@@ -688,9 +689,9 @@ h2 + .whosonfirst-sole-links-container {
 /* Side Navigation Bar Styling */
 
 .whosonfirst-sidenav-container {
-	margin-top: 24px;
+	margin-top: 34px;
 	margin-right: 12px;
-	position: fixed;
+	position: inherit;
 	width: 250.5px;
 	padding-right: 6px;
 }
@@ -1213,6 +1214,10 @@ a.whosonfirst-dark-gradient:hover > div > .whosonfirst-card-highlight-state-test
 	margin: 6px 6px 0px 0px;
 }
 
+#whosonfirst-custom-card-map-explanation-content {
+	display: inline;
+}
+
 @media (max-width: 1200px) {	
 	
 	/* Home Page Card Styling */
@@ -1333,6 +1338,7 @@ a.whosonfirst-dark-gradient:hover > div > .whosonfirst-card-highlight-state-test
 
 	.whosonfirst-light-card-subheader {
 		font-size: 32px;
+		padding-top: 4px;
 	}
 	
 	.whosonfirst-light-card-headers-smaller {
@@ -1421,7 +1427,7 @@ a.whosonfirst-dark-gradient:hover > div > .whosonfirst-card-highlight-state-test
 	}
 	
 	.whosonfirst-sidenav-container {
-		margin-top: 18px;
+		margin-top: 31px;
 		width: 240px;
 	}
 	
@@ -1801,6 +1807,7 @@ a.whosonfirst-dark-gradient:hover > div > .whosonfirst-card-highlight-state-test
 
 	.whosonfirst-light-card-subheader {
 		font-size: 24px;
+		padding-top: 2px;
 	}
 	
 	.whosonfirst-light-card-headers-smaller {
@@ -1844,6 +1851,7 @@ a.whosonfirst-dark-gradient:hover > div > .whosonfirst-card-highlight-state-test
 	
 	.whosonfirst-sidenav-container {
 		width: 180px;
+		margin-top: 26px;
 	}
 	
 	.whosonfirst-tab-selection {
@@ -2397,7 +2405,7 @@ a.whosonfirst-dark-gradient:hover > div > .whosonfirst-card-highlight-state-test
 	}
 	
 	.whosonfirst-extrasmall-nav-collection {
-		padding-top: 15px;
+		padding-top: 9px;
 		padding-bottom: 15px;
 		background-color: #F5F5F5;
 	}
@@ -2677,6 +2685,7 @@ a.whosonfirst-dark-gradient:hover > div > .whosonfirst-card-highlight-state-test
 
 /* Side Nav Height and Scrolling */
 
+/*
 @media (max-height: 935px) {
 	.whosonfirst-sidenav-list {
 		max-height: 700px;
@@ -2738,3 +2747,4 @@ a.whosonfirst-dark-gradient:hover > div > .whosonfirst-card-highlight-state-test
 		padding-right: 0;
 	}
 }
+*/

@@ -93,7 +93,7 @@ docs-properties-geom:
 	rm www/docs/properties/temp-content1.html
 	rm www/docs/properties/temp-content2.html
 	rm www/docs/properties/temp-content1.html-e
-	sed -i -e 's/whosonfirst\-sidenav\-link\"\>geom/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>geom/' www/docs/properties/geom.html
+	sed -i -e 's/whosonfirst\-sidenav\-link\"\>geom\</whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>geom\</' www/docs/properties/geom.html
 	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>geom/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>geom/' www/docs/properties/geom.html
 	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Properties\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Geom\<\/div\>/' www/docs/properties/geom.html
 	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>docs\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>docs\<\/a\>/' www/docs/properties/geom.html
