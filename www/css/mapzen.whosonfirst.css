@@ -231,18 +231,20 @@ div.whosonfirst-card-container h6.whosonfirst-main-headline {
 
 .whosonfirst-dark-gradient {
 	background: #1F1F1F; /* For browsers that do not support gradients */
-	background: -webkit-linear-gradient(left top, #1F1F1F, #242424); /* For Safari 5.1 to 6.0 */
-	background: -o-linear-gradient(bottom right, #1F1F1F, #242424); /* For Opera 11.1 to 12.0 */
-	background: -moz-linear-gradient(bottom right, #1F1F1F, #242424); /* For Firefox 3.6 to 15 */
-	background: linear-gradient(to bottom right, #1F1F1F, #242424); /* Standard syntax */
+	/*background: -webkit-linear-gradient(left top, #1F1F1F, #242424); /* For Safari 5.1 to 6.0 */
+	/*background: -o-linear-gradient(bottom right, #1F1F1F, #242424); /* For Opera 11.1 to 12.0 */
+	/*background: -moz-linear-gradient(bottom right, #1F1F1F, #242424); /* For Firefox 3.6 to 15 */
+	/*background: linear-gradient(to bottom right, #1F1F1F, #242424); /* Standard syntax */
+	background-color: #1F1F1F;
 }
 
 .whosonfirst-light-gradient {
 	background: #FAFAFA; /* For browsers that do not support gradients */
-	background: -webkit-linear-gradient(left top, #FAFAFA, #F0F0F0); /* For Safari 5.1 to 6.0 */
-	background: -o-linear-gradient(bottom right, #FAFAFA, #F0F0F0); /* For Opera 11.1 to 12.0 */
-	background: -moz-linear-gradient(bottom right, #FAFAFA, #F0F0F0); /* For Firefox 3.6 to 15 */
-	background: linear-gradient(to bottom right, #FAFAFA, #F0F0F0); /* Standard syntax */
+	/*background: -webkit-linear-gradient(left top, #FAFAFA, #F0F0F0); /* For Safari 5.1 to 6.0 */
+	/*background: -o-linear-gradient(bottom right, #FAFAFA, #F0F0F0); /* For Opera 11.1 to 12.0 */
+	/*background: -moz-linear-gradient(bottom right, #FAFAFA, #F0F0F0); /* For Firefox 3.6 to 15 */
+	/*background: linear-gradient(to bottom right, #FAFAFA, #F0F0F0); /* Standard syntax */
+	background-color: #FAFAFA;
 }
 
 .whosonfirst-dark-gradient:hover, .whosonfirst-light-gradient:hover {
