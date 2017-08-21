@@ -16,7 +16,7 @@
         <link rel="stylesheet" href="../css/mapzen-whosonfirstindexrevised3.css">
 		<link rel="stylesheet" href="../css/bootstrap.min.css">
     </head>
-    <body class="project" onload="runWhosOnFirstAPI()" style="margin-top: 0px">
+    <body class="project" style="margin-top: 0px">
         <div class='section-nav' id='project-nav' role='navigation' aria-label='project-name'>
         </div>
         <section class='demo-container js-section-navigable' id='demo' data-section-name='Demo' data-section-nav-collapse='false' style="height:100%">
@@ -41,7 +41,7 @@
 									<div class="whosonfirst-tutorial-top-side-plane-button">
 									</div>
 								</button>
-								<div class="whosonfirst-tutorial-top-side-button whoonsfirst-tutorial-auto-pointer">
+								<button class="whosonfirst-tutorial-top-side-button whoonsfirst-tutorial-auto-pointer" onclick="openTutorialInfoFromSide()">
 									<div class="whosonfirst-tutorial-top-side-pointpoint-container">
 										<div class="whosonfirst-tutorial-top-side-pointpoint-button">
 										</div>
@@ -50,7 +50,7 @@
 										<div class="whosonfirst-tutorial-top-side-pointpoint-button">
 										</div>
 									</div>
-								</div>
+								</button>
 							</div>
 							<div id="whosonfirst-tutorial-input-point-container" class="whosonfirst-tutorial-input-bottom-container whoonsfirst-tutorial-auto-pointer">
 								<div class="col-lg-12">
@@ -99,49 +99,86 @@
 						</div>
 					</div><!-- /.col-lg-6 -->
 					<div class="col-lg-6 col-md-6 col-sm-6 whosonfirst-tutorial-middle-column">
-						<div id="whosonfirst-tutorial-info-1" class="whosonfirst-tutorial-info-container">
+						<div id="whosonfirst-tutorial-info" class="whosonfirst-tutorial-info-container">
 							<div class="row whosonfirst-tutorial-no-margin">
 								<div class="col-lg-12">
-									<button type="button" class="close whosonfirst-tutorial-info-close" aria-label="Close">
+									<button id="whosonfirst-tutorial-info-1-exit" type="button" class="close whosonfirst-tutorial-info-close" aria-label="Close" onclick="deactivateTutorialInfo1()">
 										<span aria-hidden="true">&times;</span>
 									</button>
 								</div>
 							</div>
 							<div class="row whosonfirst-tutorial-no-margin">
 								<div class="col-lg-12">
-									<div class="whosonfirst-tutorial-info-image">
+									<div id="whosonfirst-tutorial-info-image-1" class="whosonfirst-tutorial-info-image">
+									</div>
+									<div id="whosonfirst-tutorial-info-image-2" class="whosonfirst-tutorial-info-image">
+									</div>
+									<div id="whosonfirst-tutorial-info-image-3" class="whosonfirst-tutorial-info-image">
+									</div>
+									<div id="whosonfirst-tutorial-info-image-4" class="whosonfirst-tutorial-info-image">
 									</div>
 								</div>
 							</div>
 							<div class="row whosonfirst-tutorial-no-margin">
 								<div class="col-lg-12">
-									<div class="whosonfirst-tutorial-info-header">
+									<div id="whosonfirst-tutorial-info-header-1" class="whosonfirst-tutorial-info-header whosonfirst-tutorial-info-header-one">
+										Who’s on First allows developers (and robots) programmatic access to query and retrieve data about the places in our gazetter. This explorer is designed to provide you with an idea of the data you can access and the possibilities of WOF. Click next to learn more.
+									</div>
+									<div id="whosonfirst-tutorial-info-header-2" class="whosonfirst-tutorial-info-header whosonfirst-tutorial-info-container-deactivated whosonfirst-tutorial-info-container-deactivated-nodisplay">
+										Search for places by keyword.
+									</div>
+									<div id="whosonfirst-tutorial-info-header-3" class="whosonfirst-tutorial-info-header whosonfirst-tutorial-info-container-deactivated whosonfirst-tutorial-info-container-deactivated-nodisplay">
 										See the places at or nearby a point.
 									</div>
+									<div id="whosonfirst-tutorial-info-header-4" class="whosonfirst-tutorial-info-header whosonfirst-tutorial-info-container-deactivated whosonfirst-tutorial-info-container-deactivated-nodisplay">
+										See the places intersecting a bounding box.
+									</div>
 								</div>
 							</div>
 							<div class="row whosonfirst-tutorial-no-margin">
 								<div class="col-lg-12">
-									<div class="whosonfirst-tutorial-info-subheader">
+									<div id="whosonfirst-tutorial-info-subheader-1" class="whosonfirst-tutorial-info-subheader">
+									</div>
+									<div id="whosonfirst-tutorial-info-subheader-2" class="whosonfirst-tutorial-info-subheader whosonfirst-tutorial-info-container-deactivated whosonfirst-tutorial-info-container-deactivated-nodisplay">
+									</div>
+									<div id="whosonfirst-tutorial-info-subheader-3" class="whosonfirst-tutorial-info-subheader whosonfirst-tutorial-info-container-deactivated whosonfirst-tutorial-info-container-deactivated-nodisplay">
 										Click on the point icon, then make a point by clicking on the map or entering a latitude and longtitude. Specify a radius to search for places near that point.
+									</div>
+									<div id="whosonfirst-tutorial-info-subheader-4" class="whosonfirst-tutorial-info-subheader whosonfirst-tutorial-info-container-deactivated whosonfirst-tutorial-info-container-deactivated-nodisplay">
+										Click on the box icon, then make a box by dragging on the map or entering a minimum and maximum latitude and a minimum and maximum longitude. 
 									</div>
 								</div>
 							</div>
 							<div class="row whosonfirst-tutorial-no-margin whosonfirst-tutorial-info-bottom-row">
 								<div class="col-lg-2 col-md-2 col-sm-2">
-									<div class="whosonfirst-tutorial-info-back">
+									<button id="whosonfirst-tutorial-info-2-back" class="whosonfirst-tutorial-info-back whosonfirst-tutorial-info-container-deactivated whosonfirst-tutorial-info-container-deactivated-nodisplay" onclick="backTutorialInfo2()">
 										back
-									</div>
+									</button>
+									<button id="whosonfirst-tutorial-info-3-back" class="whosonfirst-tutorial-info-back whosonfirst-tutorial-info-container-deactivated whosonfirst-tutorial-info-container-deactivated-nodisplay" onclick="backTutorialInfo3()">
+										back
+									</button>
+									<button id="whosonfirst-tutorial-info-4-back" class="whosonfirst-tutorial-info-back whosonfirst-tutorial-info-container-deactivated whosonfirst-tutorial-info-container-deactivated-nodisplay" onclick=backTutorialInfo4()>
+										back
+									</button>
 								</div>
 								<div class="col-lg-8 col-md-8 col-sm-8">
-									<div class="whosonfirst-tutorial-info-progess-circle"></div>
-									<div class="whosonfirst-tutorial-info-progess-circle"></div>
-									<div class="whosonfirst-tutorial-info-progess-circle"></div>
-									<div class="whosonfirst-tutorial-info-progess-circle"></div>
+									<div id="whosonfirst-tutorial-info-progess-circle-1" class="whosonfirst-tutorial-info-progess-circle whosonfirst-tutorial-info-progess-circle-activated"></div>
+									<div id="whosonfirst-tutorial-info-progess-circle-2" class="whosonfirst-tutorial-info-progess-circle"></div>
+									<div id="whosonfirst-tutorial-info-progess-circle-3" class="whosonfirst-tutorial-info-progess-circle"></div>
+									<div id="whosonfirst-tutorial-info-progess-circle-4" class="whosonfirst-tutorial-info-progess-circle"></div>
 								</div>
 								<div class="col-lg-2 col-md-2 col-sm-2">
-									<button id="whosonfirst-tutorial-info-1" class="whosonfirst-tutorial-info-next" onclick="deactivateTutorialInfo()">
+									<button id="whosonfirst-tutorial-info-1-next" class="whosonfirst-tutorial-info-next" onclick="nextTutorialInfo1()">
 										next
+									</button>
+									<button id="whosonfirst-tutorial-info-2-next" class="whosonfirst-tutorial-info-next whosonfirst-tutorial-info-container-deactivated whosonfirst-tutorial-info-container-deactivated-nodisplay" onclick="nextTutorialInfo2()">
+										next
+									</button>
+									<button id="whosonfirst-tutorial-info-3-next" class="whosonfirst-tutorial-info-next whosonfirst-tutorial-info-container-deactivated whosonfirst-tutorial-info-container-deactivated-nodisplay" onclick="nextTutorialInfo3()">
+										next
+									</button>
+									<button id="whosonfirst-tutorial-info-4-next" class="whosonfirst-tutorial-info-next whosonfirst-tutorial-info-container-deactivated whosonfirst-tutorial-info-container-deactivated-nodisplay" onclick="nextTutorialInfo4()">
+										done
 									</button>
 								</div>
 							</div>
@@ -159,8 +196,8 @@
 							<div class="row whosonfirst-tutorial-api-code-subrow">
 								<h2 class="whosonfirst-tutorial-api-header whosonfirst-tutorial-container-text">API Query</h2>
 								<div class="whosonfirst-tutorial-individual-code-container">
-									<div class="whosonfirst-tutorial-individual-code-box">
-										<p id="tutorial-api-method" class="whosonfirst-tutorial-individual-result-code">curl -X GET 'https://whosonfirst-api.mapzen.com/?method=whosonfirst.places.getByLatLon&api_key=your-mapzen-api-key&latitude=37.766633&longitude=-122.417693&placetype=neighbourhood' curl -X GET 'https://whosonfirst-api.mapzen.com/?method=whosonfirst.places.getByLatLon&api_key=your-mapzen-api-key&latitude=37.766633&longitude=-122.417693&placetype=neighbourhood'</p>
+									<div class="whosonfirst-tutorial-individual-code-box whosonfirst-api-initial-no-show">
+										<p id="tutorial-api-method" class="whosonfirst-tutorial-individual-result-code"></p>
 									</div>
 								</div>
 							</div>

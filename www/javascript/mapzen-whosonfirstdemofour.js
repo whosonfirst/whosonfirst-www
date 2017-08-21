@@ -2,11 +2,10 @@
 // To generate your key, go to https://mapzen.com/developers/
 var api_key = 'mapzen-aetZmeQ';
 // Add a map to the 'map' div
-var melbournelocation = [-37.813963,144.965188,85775095,16,"Melbourne's Museum neighborhood"]
-var chosenLocation = melbournelocation;
+var startingLocation = [40.74456010000001, -73.99019279999999,16]
 
 var map = L.Mapzen.map('map', {
-    maxZoom: chosenLocation[3],
+    maxZoom: startingLocation[2],
     scrollWheelZoom: false,
     tangramOptions: {
         scene: {
@@ -22,9 +21,9 @@ var map = L.Mapzen.map('map', {
     }
 });
 
-var lat = chosenLocation[0];
-var lon = chosenLocation[1];
-map.setView([lat, lon], chosenLocation[3]);
+var lat = startingLocation[0];
+var lon = startingLocation[1];
+map.setView([lat, lon], startingLocation[2]);
 var locator = L.Mapzen.locator();
 locator.setPosition('bottomright');
 locator.addTo(map);
@@ -52,10 +51,20 @@ var create_venue_card = function(place) {
 	var id = place['wof:id'];
 	var latitude = place['geom:latitude'];
 	var longitude = place['geom:longitude'];
+	var type_of_place = place['wof:placetype'];
+	var parent_id = place['wof:parent_id'];
+	var repo = place['wof:repo'];
 	var newdiv = document.createElement("DIV");
 	newdiv.classList.add("whosonfirst-tutorial-result");
-	newdiv.innerHTML = '<div class="col-lg-4 col-md-4 col-sm-4 whosonfirst-tutorial-result-col"><div class="whosonfirst-tutorial-interaction-id">34248723</div></div><div class="col-lg-8 col-md-8 col-sm-8 whosonfirst-tutorial-result-col"><div class="whosonfirst-tutorial-individual-result-header">San Sebastian</div><div class="whosonfirst-tutorial-individual-result-subheader">this is a county in El Salvador</div></div><div class="row whosonfirst-tutorial-result-subresults-container"><div class="whosonfirst-tutorial-subresult-row"><div class="col-lg-4 col-md-4 col-sm-4 whosonfirst-tutorial-result-col"><div class="whosonfirst-tutorial-individual-result-key">belongs to</div></div><div class="col-lg-8 col-md-8 col-sm-8 whosonfirst-tutorial-result-col"><div><div class="whosonfirst-tutorial-individual-result-answer whosonfirst-tutorial-underline-interactive-answer">San Sebastian</div><div class="whosonfirst-tutorial-individual-result-answer-clue">(county)</div></div><div><div class="whosonfirst-tutorial-individual-result-answer whosonfirst-tutorial-underline-interactive-answer">San Sebastian</div><div class="whosonfirst-tutorial-individual-result-answer-clue">(county)</div></div><div><div class="whosonfirst-tutorial-individual-result-answer whosonfirst-tutorial-underline-interactive-answer">San Sebastian</div><div class="whosonfirst-tutorial-individual-result-answer-clue">(county)</div></div></div></div><div class="whosonfirst-tutorial-subresult-row"><div class="col-lg-4 col-md-4 col-sm-4 whosonfirst-tutorial-result-col"><div class="whosonfirst-tutorial-individual-result-key">country</div></div><div class="col-lg-8 col-md-8 col-sm-8 whosonfirst-tutorial-result-col "><div class="whosonfirst-tutorial-individual-result-answer">US</div></div></div><div class="whosonfirst-tutorial-subresult-row"><div class="col-lg-4 col-md-4 col-sm-4 whosonfirst-tutorial-result-col"><div class="whosonfirst-tutorial-individual-result-key">geomhash</div></div><div class="col-lg-8 col-md-8 col-sm-8 whosonfirst-tutorial-result-col "><div class="whosonfirst-tutorial-individual-result-answer">213123761238</div></div></div><div class="whosonfirst-tutorial-subresult-row"><div class="col-lg-4 col-md-4 col-sm-4 whosonfirst-tutorial-result-col"><div class="whosonfirst-tutorial-individual-result-key">repo</div></div><div class="col-lg-8 col-md-8 col-sm-8 whosonfirst-tutorial-result-col "><div class="whosonfirst-tutorial-individual-result-answer">whosonfirst-data</div></div></div></div><button type="button" class="btn btn-default btn-lg btn-block whosonfirst-tutorial-button">view descendants</button>';
+	newdiv.innerHTML = '<div class="col-lg-4 col-md-4 col-sm-4 whosonfirst-tutorial-result-col"><div class="whosonfirst-tutorial-interaction-id">34248723</div></div><div class="col-lg-8 col-md-8 col-sm-8 whosonfirst-tutorial-result-col"><a class="whosonfirst-tutorial-individual-result-header whosonfirst-tutorial-individual-result-url"></a><div class="whosonfirst-tutorial-individual-result-subheader">this is a <span class="whosonfirst-tutorial-individual-result-subheader-focus"></span></div></div><div class="row whosonfirst-tutorial-result-subresults-container"><div class="whosonfirst-tutorial-subresult-row"><div class="col-lg-4 col-md-4 col-sm-4 whosonfirst-tutorial-result-col"><div class="whosonfirst-tutorial-individual-result-key">latitude</div></div><div class="col-lg-8 col-md-8 col-sm-8 whosonfirst-tutorial-result-col"><div class="whosonfirst-tutorial-individual-result-answer whosonfirst-tutorial-individual-result-latitude"></div></div></div><div class="whosonfirst-tutorial-subresult-row"><div class="col-lg-4 col-md-4 col-sm-4 whosonfirst-tutorial-result-col"><div class="whosonfirst-tutorial-individual-result-key">longitude</div></div><div class="col-lg-8 col-md-8 col-sm-8 whosonfirst-tutorial-result-col"><div class="whosonfirst-tutorial-individual-result-answer whosonfirst-tutorial-individual-result-longitude"></div></div></div><div class="whosonfirst-tutorial-subresult-row"><div class="col-lg-4 col-md-4 col-sm-4 whosonfirst-tutorial-result-col"><div class="whosonfirst-tutorial-individual-result-key">parent id</div></div><div class="col-lg-8 col-md-8 col-sm-8 whosonfirst-tutorial-result-col"><div class="whosonfirst-tutorial-individual-result-answer whosonfirst-tutorial-individual-result-parent-id"></div></div></div><div class="whosonfirst-tutorial-subresult-row"><div class="col-lg-4 col-md-4 col-sm-4 whosonfirst-tutorial-result-col"><div class="whosonfirst-tutorial-individual-result-key">repo</div></div><div class="col-lg-8 col-md-8 col-sm-8 whosonfirst-tutorial-result-col"><div class="whosonfirst-tutorial-individual-result-answer whosonfirst-tutorial-individual-result-repo"></div></div></div></div>';
 	newdiv.getElementsByClassName("whosonfirst-tutorial-interaction-id")[0].innerHTML = id;
+	newdiv.getElementsByClassName("whosonfirst-tutorial-individual-result-subheader-focus")[0].innerHTML = type_of_place;
+	newdiv.getElementsByClassName("whosonfirst-tutorial-individual-result-latitude")[0].innerHTML = latitude;
+	newdiv.getElementsByClassName("whosonfirst-tutorial-individual-result-longitude")[0].innerHTML = longitude;
+	newdiv.getElementsByClassName("whosonfirst-tutorial-individual-result-parent-id")[0].innerHTML = parent_id;
+	newdiv.getElementsByClassName("whosonfirst-tutorial-individual-result-repo")[0].innerHTML = repo;
+	newdiv.getElementsByClassName("whosonfirst-tutorial-individual-result-header")[0].innerHTML = name;
+	newdiv.getElementsByClassName("whosonfirst-tutorial-individual-result-url")[0].href = "https://whosonfirst.mapzen.com/spelunker/id/" + id + "/"
 	document.getElementById("whosonfirst-tutorial-result-box-container").append(newdiv);
 }
 
@@ -80,37 +89,7 @@ var onprogress = function(rsp) {
         var place = rsp.places[i];
         show_venue(place);
 		create_venue_card(place);
-		console.log("Place Instance")
     }
-};
-
-function runWhosOnFirstAPI() {
-    // Setup the API key
-    mapzen.whosonfirst.api.set_handler('authentication', function() {
-        return api_key;
-    });
-    // Get all the venues in the Flatiron District
-    // See: https://mapzen.com/documentation/wof/methods/#whosonfirst.places.getDescendants
-	console.log(chosenLocation);
-    var parent_id = chosenLocation[2];
-    var method = 'whosonfirst.places.getDescendants';
-    var data = {
-        id: parent_id,
-        per_page: 50,
-        extras: 'geom:' // this gets us lat/lng coords
-    };
-    // Ok now we actually call the API
-    mapzen.whosonfirst.api.execute_method(method, data, onprogress, onerror);
-	
-	//Tutorial Method Posted in Lower Box
-	document.getElementById("tutorial-api-method").innerHTML = method;
-	document.getElementById("whosonfirst-tutorial-form-longitude").value = chosenLocation[1];
-	document.getElementById("whosonfirst-tutorial-form-latitude").value = chosenLocation[0];
-	document.getElementById("whosonfirst-tutorial-form-radius").value = 21;
-	document.getElementById("whosonfirst-tutorial-form-max-longitude").value = chosenLocation[1];
-	document.getElementById("whosonfirst-tutorial-form-max-latitude").value = chosenLocation[0];
-	document.getElementById("whosonfirst-tutorial-form-min-longitude").value = chosenLocation[1];
-	document.getElementById("whosonfirst-tutorial-form-min-latitude").value = chosenLocation[0];
 };
 
 function retrieveInputCoordinates() {
@@ -176,21 +155,152 @@ function clickPlaneButton() {
 	}
 }
 
-function deactivateTutorialInfo() {
-	document.getElementById("whosonfirst-tutorial-info-1").classList.toggle("whosonfirst-tutorial-info-container-deactivated");
-	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-1").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay")},1600);
+function deactivateTutorialInfo1() {
+	document.getElementById("whosonfirst-tutorial-info").classList.toggle("whosonfirst-tutorial-info-container-deactivated");
+	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay")},1600);
 	document.getElementById("whosonfirst-tutorial-results-container").classList.toggle("whosonfirst-tutorial-results-container-activated");
 	document.getElementsByClassName("leaflet-right")[1].classList.toggle("leaflet-right-activated");
+}
+
+function nextTutorialInfo1() {
+	document.getElementById("whosonfirst-tutorial-info-header-1").classList.toggle("whosonfirst-tutorial-info-container-deactivated");
+	document.getElementById("whosonfirst-tutorial-info-subheader-1").classList.toggle("whosonfirst-tutorial-info-container-deactivated");
+	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-header-1").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay")},800);
+	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-subheader-1").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay")},800);
+	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-image-2").classList.toggle("whosonfirst-tutorial-info-image-display")},800);
+	document.getElementById("whosonfirst-tutorial-info-1-next").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay");
+	document.getElementById("whosonfirst-tutorial-info-2-next").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay");
+	document.getElementById("whosonfirst-tutorial-info-2-back").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay");
+	document.getElementById("whosonfirst-tutorial-info-2-back").classList.toggle("whosonfirst-tutorial-info-container-deactivated");
+	document.getElementById("whosonfirst-tutorial-info-2-next").classList.toggle("whosonfirst-tutorial-info-container-deactivated");
+	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-header-2").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay")},800);
+	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-header-2").classList.toggle("whosonfirst-tutorial-info-container-deactivated")},1000);
+	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-subheader-2").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay")},800);
+	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-subheader-2").classList.toggle("whosonfirst-tutorial-info-container-deactivated")},1000);
+	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-progess-circle-2").classList.toggle("whosonfirst-tutorial-info-progess-circle-activated")},1000);
+}
+
+function nextTutorialInfo2() {
+	document.getElementById("whosonfirst-tutorial-info-header-2").classList.toggle("whosonfirst-tutorial-info-container-deactivated");
+	document.getElementById("whosonfirst-tutorial-info-subheader-2").classList.toggle("whosonfirst-tutorial-info-container-deactivated");
+	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-header-2").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay")},800);
+	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-subheader-2").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay")},800);
+	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-image-2").classList.toggle("whosonfirst-tutorial-info-image-display")},800);
+	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-image-3").classList.toggle("whosonfirst-tutorial-info-image-display")},800);
+	document.getElementById("whosonfirst-tutorial-info-2-back").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay");
+	document.getElementById("whosonfirst-tutorial-info-2-next").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay");
+	document.getElementById("whosonfirst-tutorial-info-3-next").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay");
+	document.getElementById("whosonfirst-tutorial-info-3-back").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay");
+	document.getElementById("whosonfirst-tutorial-info-3-back").classList.toggle("whosonfirst-tutorial-info-container-deactivated");
+	document.getElementById("whosonfirst-tutorial-info-3-next").classList.toggle("whosonfirst-tutorial-info-container-deactivated");
+	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-header-3").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay")},800);
+	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-subheader-3").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay")},800);
+	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-header-3").classList.toggle("whosonfirst-tutorial-info-container-deactivated")},1000);
+	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-subheader-3").classList.toggle("whosonfirst-tutorial-info-container-deactivated")},1000);
+	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-progess-circle-3").classList.toggle("whosonfirst-tutorial-info-progess-circle-activated")},1000);
+}
+
+function backTutorialInfo2() {
+	document.getElementById("whosonfirst-tutorial-info-header-2").classList.toggle("whosonfirst-tutorial-info-container-deactivated");
+	document.getElementById("whosonfirst-tutorial-info-subheader-2").classList.toggle("whosonfirst-tutorial-info-container-deactivated");
+	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-header-2").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay")},800);
+	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-subheader-2").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay")},800);
+	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-image-2").classList.toggle("whosonfirst-tutorial-info-image-display")},800);
+	document.getElementById("whosonfirst-tutorial-info-2-back").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay");
+	document.getElementById("whosonfirst-tutorial-info-2-next").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay");
+	document.getElementById("whosonfirst-tutorial-info-1-next").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay");
+	document.getElementById("whosonfirst-tutorial-info-2-back").classList.toggle("whosonfirst-tutorial-info-container-deactivated");
+	document.getElementById("whosonfirst-tutorial-info-2-next").classList.toggle("whosonfirst-tutorial-info-container-deactivated");
+	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-header-1").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay")},800);
+	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-subheader-1").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay")},800);
+	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-header-1").classList.toggle("whosonfirst-tutorial-info-container-deactivated")},1000);
+	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-subheader-1").classList.toggle("whosonfirst-tutorial-info-container-deactivated")},1000);
+	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-progess-circle-2").classList.toggle("whosonfirst-tutorial-info-progess-circle-activated")},1000);
+}
+
+function nextTutorialInfo3() {
+	document.getElementById("whosonfirst-tutorial-info-header-3").classList.toggle("whosonfirst-tutorial-info-container-deactivated");
+	document.getElementById("whosonfirst-tutorial-info-subheader-3").classList.toggle("whosonfirst-tutorial-info-container-deactivated");
+	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-header-3").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay")},800);
+	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-subheader-3").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay")},800);
+	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-image-4").classList.toggle("whosonfirst-tutorial-info-image-display")},800);
+	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-image-3").classList.toggle("whosonfirst-tutorial-info-image-display")},800);
+	document.getElementById("whosonfirst-tutorial-info-3-back").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay");
+	document.getElementById("whosonfirst-tutorial-info-3-next").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay");
+	document.getElementById("whosonfirst-tutorial-info-4-next").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay");
+	document.getElementById("whosonfirst-tutorial-info-4-back").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay");
+	document.getElementById("whosonfirst-tutorial-info-4-back").classList.toggle("whosonfirst-tutorial-info-container-deactivated");
+	document.getElementById("whosonfirst-tutorial-info-4-next").classList.toggle("whosonfirst-tutorial-info-container-deactivated");
+	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-header-4").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay")},800);
+	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-subheader-4").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay")},800);
+	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-header-4").classList.toggle("whosonfirst-tutorial-info-container-deactivated")},1000);
+	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-subheader-4").classList.toggle("whosonfirst-tutorial-info-container-deactivated")},1000);
+	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-progess-circle-4").classList.toggle("whosonfirst-tutorial-info-progess-circle-activated")},1000);
+}
+
+function backTutorialInfo3() {
+	document.getElementById("whosonfirst-tutorial-info-header-3").classList.toggle("whosonfirst-tutorial-info-container-deactivated");
+	document.getElementById("whosonfirst-tutorial-info-subheader-3").classList.toggle("whosonfirst-tutorial-info-container-deactivated");
+	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-header-3").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay")},800);
+	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-subheader-3").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay")},800);
+	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-image-2").classList.toggle("whosonfirst-tutorial-info-image-display")},800);
+	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-image-3").classList.toggle("whosonfirst-tutorial-info-image-display")},800);
+	document.getElementById("whosonfirst-tutorial-info-3-back").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay");
+	document.getElementById("whosonfirst-tutorial-info-3-next").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay");
+	document.getElementById("whosonfirst-tutorial-info-2-next").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay");
+	document.getElementById("whosonfirst-tutorial-info-2-back").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay");
+	document.getElementById("whosonfirst-tutorial-info-3-back").classList.toggle("whosonfirst-tutorial-info-container-deactivated");
+	document.getElementById("whosonfirst-tutorial-info-3-next").classList.toggle("whosonfirst-tutorial-info-container-deactivated");
+	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-header-2").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay")},800);
+	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-subheader-2").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay")},800);
+	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-header-2").classList.toggle("whosonfirst-tutorial-info-container-deactivated")},1000);
+	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-subheader-2").classList.toggle("whosonfirst-tutorial-info-container-deactivated")},1000);
+	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-progess-circle-3").classList.toggle("whosonfirst-tutorial-info-progess-circle-activated")},1000);
+}
+
+function nextTutorialInfo4() {
+	document.getElementById("whosonfirst-tutorial-info").classList.toggle("whosonfirst-tutorial-info-container-deactivated");
+	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay")},1600);
+	document.getElementById("whosonfirst-tutorial-results-container").classList.toggle("whosonfirst-tutorial-results-container-activated");
+	document.getElementsByClassName("leaflet-right")[1].classList.toggle("leaflet-right-activated");
+}
+
+function backTutorialInfo4() {
+	document.getElementById("whosonfirst-tutorial-info-header-4").classList.toggle("whosonfirst-tutorial-info-container-deactivated");
+	document.getElementById("whosonfirst-tutorial-info-subheader-4").classList.toggle("whosonfirst-tutorial-info-container-deactivated");
+	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-header-4").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay")},800);
+	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-subheader-4").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay")},800);
+	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-image-3").classList.toggle("whosonfirst-tutorial-info-image-display")},800);
+	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-image-4").classList.toggle("whosonfirst-tutorial-info-image-display")},800);
+	document.getElementById("whosonfirst-tutorial-info-4-back").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay");
+	document.getElementById("whosonfirst-tutorial-info-4-next").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay");
+	document.getElementById("whosonfirst-tutorial-info-3-next").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay");
+	document.getElementById("whosonfirst-tutorial-info-3-back").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay");
+	document.getElementById("whosonfirst-tutorial-info-4-back").classList.toggle("whosonfirst-tutorial-info-container-deactivated");
+	document.getElementById("whosonfirst-tutorial-info-4-next").classList.toggle("whosonfirst-tutorial-info-container-deactivated");
+	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-header-3").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay")},800);
+	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-subheader-3").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay")},800);
+	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-header-3").classList.toggle("whosonfirst-tutorial-info-container-deactivated")},1000);
+	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-subheader-3").classList.toggle("whosonfirst-tutorial-info-container-deactivated")},1000);
+	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-progess-circle-4").classList.toggle("whosonfirst-tutorial-info-progess-circle-activated")},1000);
+}
+
+function openTutorialInfoFromSide() {
+	document.getElementsByClassName("leaflet-right")[1].classList.toggle("leaflet-right-activated");
+	document.getElementById("whosonfirst-tutorial-results-container").classList.toggle("whosonfirst-tutorial-results-container-activated");
+	if (document.getElementById("whosonfirst-tutorial-info").classList.contains("whosonfirst-tutorial-info-container-deactivated-nodisplay")){
+		document.getElementById("whosonfirst-tutorial-info").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay");
+		setTimeout(function() {document.getElementById("whosonfirst-tutorial-info").classList.toggle("whosonfirst-tutorial-info-container-deactivated")},100);
+	} else {
+		document.getElementById("whosonfirst-tutorial-info").classList.toggle("whosonfirst-tutorial-info-container-deactivated");
+		setTimeout(function() {document.getElementById("whosonfirst-tutorial-info").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay")},800);
+	}
 }
 
 function customSearch() {
 	console.log(document.getElementById("search-text-go").value);
 	
 	document.getElementById("whosonfirst-tutorial-result-box-container").innerHTML = "";
-	
-	while (document.getElementById("whosonfirst-tutorial-result-box-container").firstChild) {
-		document.getElementById("whosonfirst-tutorial-result-box-container").removeChild();
-	};
 	
 	console.log("Cleared all children")
 	// Setup the API key
@@ -204,21 +314,22 @@ function customSearch() {
     var method = 'whosonfirst.places.search';
     var data = {
         q: search_terms,
-		locality_id: 101933229,
+		locality_id: 0,
         per_page: 50,
-        extras: 'geom:' // this gets us lat/lng coords
+        extras: 'geom:,mz:' // this gets us lat/lng coords
     };
 	console.log(data);
+	map.setView([0, 0], 2);
 	
     // Ok now we actually call the API
     mapzen.whosonfirst.api.execute_method(method, data, onprogress, onerror);
 	
-	//Tutorial Method Posted in Lower Box
-	document.getElementById("whosonfirst-tutorial-form-longitude").value = search_terms;
-	document.getElementById("whosonfirst-tutorial-form-latitude").value = search_terms;
-	document.getElementById("whosonfirst-tutorial-form-radius").value = search_terms;
-	
 	console.log("Updated Input Selections");
+	var customQuery = "curl -X GET 'https://whosonfirst-api.mapzen.com/?method=whosonfirst.places.search&api_key=your-mapzen-api-key&q="+search_terms+"&locality_id:0&extras=geom:,mz:&per_page=50'"
+	if (document.getElementsByClassName("whosonfirst-tutorial-individual-code-box")[0].classList.contains("whosonfirst-api-initial-no-show")) {
+		document.getElementsByClassName("whosonfirst-tutorial-individual-code-box")[0].classList.remove("whosonfirst-api-initial-no-show");
+	}
+	document.getElementById("tutorial-api-method").innerHTML = customQuery;
 	
 	/*Using Filderstatt where Stuttgart has an airport, id is 101761809*/
 }
@@ -253,9 +364,10 @@ function getByLatLonRadius() {
 		longitude: search_longtitude,
 		radius: search_radius,
         per_page: 50,
-        extras: 'geom:' // this gets us lat/lng coords
+        extras: 'geom:,mz:' // this gets us lat/lng coords
     };
 	console.log(data);
+	map.setView([search_latitude, search_longtitude], 14);
 	
     // Ok now we actually call the API
     mapzen.whosonfirst.api.execute_method(method, data, onprogress, onerror);
@@ -264,6 +376,12 @@ function getByLatLonRadius() {
 	console.log("Updated Input Selections");
 	
 	/*Using Filderstatt where Stuttgart has an airport, id is 101761809*/
+	
+	var customQuery = "curl -X GET 'https://whosonfirst-api.mapzen.com/?method=whosonfirst.places.getNearby&api_key=your-mapzen-api-key&latitude="+search_latitude +"&longitude="+search_longtitude+"&search_radius="+search_radius+"&extras=geom:,mz:&per_page=50'"
+	if (document.getElementsByClassName("whosonfirst-tutorial-individual-code-box")[0].classList.contains("whosonfirst-api-initial-no-show")) {
+		document.getElementsByClassName("whosonfirst-tutorial-individual-code-box")[0].classList.remove("whosonfirst-api-initial-no-show");
+	}
+	document.getElementById("tutorial-api-method").innerHTML = customQuery;
 }
 
 function getByMaxAndMinLatLonRadius() {
@@ -295,9 +413,15 @@ function getByMaxAndMinLatLonRadius() {
 		max_longitude: search_max_longtitude,
 		min_longitude: search_min_longtitude,
         per_page: 50,
-        extras: 'geom:' // this gets us lat/lng coords
+        extras: 'geom:,mz:' // this gets us lat/lng coords
     };
+	var new_latitude = ((search_max_latitude-search_min_latitude)/2);
+	var new_longitude = ((search_max_longtitude-search_min_longtitude)/2);
+	var new_latitudetwo = Number(search_min_latitude)+Number(new_latitude);
+	var new_longitudetwo = Number(search_min_longtitude)+Number(new_longitude);
+	
 	console.log(data);
+	map.setView([new_latitudetwo,new_longitudetwo], 12);
 	
     // Ok now we actually call the API
     mapzen.whosonfirst.api.execute_method(method, data, onprogress, onerror);
@@ -306,4 +430,10 @@ function getByMaxAndMinLatLonRadius() {
 	console.log("Updated Input Selections");
 	
 	/*Using Filderstatt where Stuttgart has an airport, id is 101761809*/
+	
+	var customQuery = "curl -X GET 'https://whosonfirst-api.mapzen.com/?method=whosonfirst.places.getIntersects&api_key=your-mapzen-api-key&min_latitude="+search_min_latitude +"&max_latitude="+search_max_latitude+"&min_longitude="+search_min_longtitude+"&max_longitude="+search_max_longtitude+"&extras=geom:,mz:&per_page=50'"
+	if (document.getElementsByClassName("whosonfirst-tutorial-individual-code-box")[0].classList.contains("whosonfirst-api-initial-no-show")) {
+		document.getElementsByClassName("whosonfirst-tutorial-individual-code-box")[0].classList.remove("whosonfirst-api-initial-no-show");
+	}
+	document.getElementById("tutorial-api-method").innerHTML = customQuery;
 }
