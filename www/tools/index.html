@@ -33,7 +33,7 @@
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
 				<li class="whosonfirst-navbar-element-collapsed">
-					<a href="../data/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">data</a>
+					<a href="../allthedata/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">data</a>
 				</li>
 				<li class="whosonfirst-navbar-element-collapsed">
 					<a href="../docs/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">docs</a>
@@ -42,7 +42,7 @@
 					<a href="../tools/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed whosonfirst-nav-active">tools</a>
 				</li>
 				<li class="whosonfirst-navbar-element-collapsed">
-					<a href="../blogposts/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">blog</a>
+					<a href="../alltheblog/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">blog</a>
 				</li>
 				<li class="whosonfirst-navbar-element-collapsed">
 					<a href="../getstarted/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">get started</a>
@@ -94,19 +94,19 @@ Tools
 		</div>
 	</div>
 	<div class="whosonfirst-tabs-content"><p>
-Tools for Who&#39;s On First are available from our
+Tools for Who&#39;s On First (WOF) are available from our
 <a href="https://github.com/whosonfirst">
 whos-on-first
 </a>
 Github organization. Here is a
 <a href="availabletools.html">
-list of those tools
+list of some of those tools
 </a>
 .
 </p>
-<h2 id="highlighted-tools">
-Highlighted Tools
-</h2>
+<p>
+You can also check our Spelunker and I Am Here, tools built to explore WOF data.
+</p>
 <ul class="whosonfirst-nonbullet-list whosonfirst-sole-links-container">
 <li class="whosonfirst-nonbullet-list-item-no-caption">
 <a href="https://whosonfirst.mapzen.com/spelunker/" class="whosonfirst-sole-link">
@@ -121,7 +121,7 @@ Spelunker blog post.
 </li>
 <li class="whosonfirst-nonbullet-list-item-no-caption">
 <a href="https://whosonfirst.mapzen.com/iamhere/" class="whosonfirst-sole-link">
-I Am Here(Get Lat Long Application)
+I Am Here (Get Lat Long Application)
 </a>
 <p class="whosonfirst-link-caption">
 A get lat lon style application for investigating specific points on the big planet-ball we all live on. Check out our
@@ -157,29 +157,9 @@ I Am Here blog post
 		</footer>
 		
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script src="../javascript/jquery.min.js"></script>
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
 		<script src="../javascript/bootstrap.min.js"></script>
-		
-		<script>
-			$(document).ready(function(){
-				$("#bs-example-navbar-collapse-2").on("show.bs.collapse", function(){
-					console.log("In here");
-					document.getElementById("glyphicon-one").classList.add("glyphicon-menu-up");
-					document.getElementById("glyphicon-one").classList.remove("glyphicon-menu-down");
-				});
-				$("#bs-example-navbar-collapse-2").on("hide.bs.collapse", function(){
-					document.getElementById("glyphicon-one").classList.add("glyphicon-menu-down");
-					document.getElementById("glyphicon-one").classList.remove("glyphicon-menu-up");
-				});
-				$(".whosonfirst-sidenav-list").mouseover(function(){
-					$("body").css("overflow","hidden");
-				});
-				$(".whosonfirst-sidenav-list").mouseout(function(){
-					$("body").css("overflow","auto");
-				});
-				window.addEventListener("hashchange", function() { scrollBy(0, -60) })
-			});
-		</script>
+		<script src="../javascript/mapzen.whosonfirst.subpage.js"></script>
 	</body>
 </html>

@@ -9,7 +9,7 @@
 </ol>
 <h2 id="step-1-create-a-map" class="whosonfirst-subpage-subheader">Step 1: Create a Map</h2>
 <p>We are going to utilize <a href="https://mapzen.com/documentation/mapzen-js/">mapzen.js</a> to make our initial map.</p>
-<p>To do this, we create a new html page. Within that page, we use the code below to create the map.</p>
+<p>To do this, we need to create a html page. Within that page, we use the code below to create the map.</p>
 <pre>&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 &emsp;&lt;head&gt;
@@ -46,7 +46,7 @@
 <p>Now, we need some background info (WOF ID, latitude, longitude, etc...) to best utilize the API. To do this, we are going to take a look at the <a href="https://whosonfirst.mapzen.com/spelunker/">Spelunker</a>.</p>
 <p>Search for Flatiron District New York in the Spelunker. Find the one that is the locality in the United States. You should find the page below.</p>
 <img class="img-responsive" src="../images/wofspelunkerny.png"/>
-<p>Note the wof id. You can find it if you scroll down, it also the 8 digit number located near the top of the page followed by .geojson.</p>
+<p>Note the wof id. You can find it if you scroll down, it also the number located near the top of the page preceded by / and followed by .geojson. For the Flatiron District, this is 85869245.</p>
 <p>Also, verify that you map is centered on the the right coordinates and the level is set correctly. For our purposes, we are going to level 19.</p>
 <pre>&lt;script&gt;
 &emsp;L.Mapzen.apiKey = 'your-mapzen-api-key';
@@ -56,10 +56,9 @@
 <h2 id="step-3-retrieve-data-using-the-api" class="whosonfirst-subpage-subheader">Step 3: Retrieve Data using the API</h2>
 <p>To retrieve data using the API, we are going to utilize the <a href="https://raw.githubusercontent.com/whosonfirst/electron-whosonfirst-bookmarks/master/javascript/mapzen.whosonfirst.api.js">mapzen.whosonfirst.api.js</a> file.</p>
 <p>Add the script to your html file.</p>
-<pre>&emsp;&emsp;&lt;script src="mapzen.whosonfirst.api.js"&gt;&lt;/script&gt;</pre>
+<pre>&lt;script src="mapzen.whosonfirst.api.js"&gt;&lt;/script&gt;</pre>
 <p>Also add jquery we are going to use that later.</p>
-<pre>&emsp;&emsp;&lt;script src="jquery.min.js"&gt;&lt;/script&gt;</pre>
-<pre>&emsp;&emsp;&lt;script src="mapzen.whosonfirst.api.js"&gt;&lt;/script&gt;</pre>
+<pre>&lt;script src="jquery.min.js"&gt;&lt;/script&gt;</pre>
 <p>This script will allow you to make the queries available through the <a href="https://mapzen.com/documentation/wof/">WOF API</a>.</p>
 <p>Add the following helper function to make those calls from your html file. Note that we are using the <a href="https://mapzen.com/documentation/wof/methods/#whosonfirst.places.getDescendants">whosonfirst.places.getDescendants API method</a>. We include geom: so we are able to obtain information about the venue.</p>
 <pre>function runWhosOnFirstAPI() {
@@ -99,7 +98,7 @@ var onprogress = function(rsp) {
 &emsp;}
 };</pre>
 <h2 id="step-4-display-the-data" class="whosonfirst-subpage-subheader">Step 4: Display the Data</h2>
-<p>Now we are going to display the data. To do this, we are going to write the show_venue function. The show_venue function takes a place's latitude and longitude and stylizes it as a circle with a fill and stroke using the marker style. For our purposes, we have selected a shade of grey.</p>
+<p>Now we are going to display the data. To do this, we are going to write a show_venue function. The show_venue function takes a place's latitude and longitude and stylizes it as a circle with a fill and stroke using the marker style. For our purposes, we have selected a shade of grey.</p>
 <pre>// Venues are shown as a green circle
 var markerStyle = {
 &emsp;"weight": 2,
