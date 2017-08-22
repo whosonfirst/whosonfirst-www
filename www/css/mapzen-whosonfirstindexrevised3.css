@@ -528,8 +528,10 @@ a:hover {
 	font-weight: 300;
 	color: rgba(255,255,255,.8);
 	border-bottom: 1px solid rgba(255,255,255,.8);
-	display: inline-block;
+	display: inline;
 	margin-top: -2px !important;
+	padding-bottom: 2px;
+	line-height: 1.5;
 }
 
 .whosonfirst-tutorial-individual-result-subheader {
@@ -654,6 +656,10 @@ svg {
     top:50%;
     bottom:50%;
     transform:translate(-50%, -50%);
+}
+
+.whosonfirst-active-answer {
+	border: 1px solid #FE189B;
 }
 
 @media (max-width: 1199px) {

@@ -43,6 +43,9 @@ var show_venue = function(place) {
         lat: place['geom:latitude'],
         lng: place['geom:longitude']
     }, markerStyle);
+	marker.on('click', function(ev) {
+		scrollTo(place['wof:id']);
+	});
 	map.addLayer(marker);
 };
 
@@ -56,6 +59,7 @@ var create_venue_card = function(place) {
 	var repo = place['wof:repo'];
 	var newdiv = document.createElement("DIV");
 	newdiv.classList.add("whosonfirst-tutorial-result");
+	newdiv.id = id;
 	newdiv.innerHTML = '<div class="col-lg-4 col-md-4 col-sm-4 whosonfirst-tutorial-result-col"><div class="whosonfirst-tutorial-interaction-id">34248723</div></div><div class="col-lg-8 col-md-8 col-sm-8 whosonfirst-tutorial-result-col"><a class="whosonfirst-tutorial-individual-result-header whosonfirst-tutorial-individual-result-url"></a><div class="whosonfirst-tutorial-individual-result-subheader">this is a <span class="whosonfirst-tutorial-individual-result-subheader-focus"></span></div></div><div class="row whosonfirst-tutorial-result-subresults-container"><div class="whosonfirst-tutorial-subresult-row"><div class="col-lg-4 col-md-4 col-sm-4 whosonfirst-tutorial-result-col"><div class="whosonfirst-tutorial-individual-result-key">latitude</div></div><div class="col-lg-8 col-md-8 col-sm-8 whosonfirst-tutorial-result-col"><div class="whosonfirst-tutorial-individual-result-answer whosonfirst-tutorial-individual-result-latitude"></div></div></div><div class="whosonfirst-tutorial-subresult-row"><div class="col-lg-4 col-md-4 col-sm-4 whosonfirst-tutorial-result-col"><div class="whosonfirst-tutorial-individual-result-key">longitude</div></div><div class="col-lg-8 col-md-8 col-sm-8 whosonfirst-tutorial-result-col"><div class="whosonfirst-tutorial-individual-result-answer whosonfirst-tutorial-individual-result-longitude"></div></div></div><div class="whosonfirst-tutorial-subresult-row"><div class="col-lg-4 col-md-4 col-sm-4 whosonfirst-tutorial-result-col"><div class="whosonfirst-tutorial-individual-result-key">parent id</div></div><div class="col-lg-8 col-md-8 col-sm-8 whosonfirst-tutorial-result-col"><div class="whosonfirst-tutorial-individual-result-answer whosonfirst-tutorial-individual-result-parent-id"></div></div></div><div class="whosonfirst-tutorial-subresult-row"><div class="col-lg-4 col-md-4 col-sm-4 whosonfirst-tutorial-result-col"><div class="whosonfirst-tutorial-individual-result-key">repo</div></div><div class="col-lg-8 col-md-8 col-sm-8 whosonfirst-tutorial-result-col"><div class="whosonfirst-tutorial-individual-result-answer whosonfirst-tutorial-individual-result-repo"></div></div></div></div>';
 	newdiv.getElementsByClassName("whosonfirst-tutorial-interaction-id")[0].innerHTML = id;
 	newdiv.getElementsByClassName("whosonfirst-tutorial-individual-result-subheader-focus")[0].innerHTML = type_of_place;
@@ -446,4 +450,13 @@ function getByMaxAndMinLatLonRadius() {
 		document.getElementsByClassName("whosonfirst-tutorial-individual-code-box")[0].classList.remove("whosonfirst-api-initial-no-show");
 	}
 	document.getElementById("tutorial-api-method").innerHTML = customQuery;
+}
+
+function scrollTo(where_to_go) {
+	var result_box_container = $('#whosonfirst-tutorial-result-box-container');
+	if (result_box_container.length) {
+		result_box_container.animate({ scrollTop: $("#"+where_to_go).offset().top - 80}, 'slow');
+	}
+	document.getElementById(where_to_go).classList.toggle("whosonfirst-active-answer");
+	return false;
 }
