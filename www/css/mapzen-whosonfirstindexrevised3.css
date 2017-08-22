@@ -229,6 +229,14 @@ a:hover {
 .whosonfirst-tutorial-info-image {
 	height: 200px;
 	display: none;
+	-webkit-transition: opacity .8s ease-in-out;
+	-moz-transition: opacity .8s ease-in-out;
+	-o-transition: opacity .8s ease-in-out;
+	transition: opacity .8s ease-in-out;
+}
+
+.whosonfirst-tutorial-info-image-deactivated {
+	opacity: 0;
 }
 
 .whosonfirst-api-initial-no-show {
@@ -237,6 +245,7 @@ a:hover {
 
 .whosonfirst-tutorial-info-image-display {
 	display: block;
+	position: relative;
 }
 
 .btn:focus, .form-control:focus {
@@ -639,6 +648,13 @@ a:hover {
 }
 
 button:focus {outline:0;}
+
+svg {
+	position:absolute;
+    top:50%;
+    bottom:50%;
+    transform:translate(-50%, -50%);
+}
 
 @media (max-width: 1199px) {
 	.whosonfirst-tutorial-individual-result-header {

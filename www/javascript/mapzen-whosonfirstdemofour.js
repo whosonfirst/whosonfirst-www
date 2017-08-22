@@ -168,6 +168,7 @@ function nextTutorialInfo1() {
 	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-header-1").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay")},800);
 	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-subheader-1").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay")},800);
 	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-image-2").classList.toggle("whosonfirst-tutorial-info-image-display")},800);
+	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-image-2").classList.toggle("whosonfirst-tutorial-info-image-deactivated")},1000);
 	document.getElementById("whosonfirst-tutorial-info-1-next").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay");
 	document.getElementById("whosonfirst-tutorial-info-2-next").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay");
 	document.getElementById("whosonfirst-tutorial-info-2-back").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay");
@@ -183,10 +184,12 @@ function nextTutorialInfo1() {
 function nextTutorialInfo2() {
 	document.getElementById("whosonfirst-tutorial-info-header-2").classList.toggle("whosonfirst-tutorial-info-container-deactivated");
 	document.getElementById("whosonfirst-tutorial-info-subheader-2").classList.toggle("whosonfirst-tutorial-info-container-deactivated");
+	document.getElementById("whosonfirst-tutorial-info-image-2").classList.toggle("whosonfirst-tutorial-info-image-deactivated");
 	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-header-2").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay")},800);
 	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-subheader-2").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay")},800);
 	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-image-2").classList.toggle("whosonfirst-tutorial-info-image-display")},800);
 	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-image-3").classList.toggle("whosonfirst-tutorial-info-image-display")},800);
+	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-image-3").classList.toggle("whosonfirst-tutorial-info-image-deactivated")},1000);
 	document.getElementById("whosonfirst-tutorial-info-2-back").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay");
 	document.getElementById("whosonfirst-tutorial-info-2-next").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay");
 	document.getElementById("whosonfirst-tutorial-info-3-next").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay");
@@ -203,6 +206,7 @@ function nextTutorialInfo2() {
 function backTutorialInfo2() {
 	document.getElementById("whosonfirst-tutorial-info-header-2").classList.toggle("whosonfirst-tutorial-info-container-deactivated");
 	document.getElementById("whosonfirst-tutorial-info-subheader-2").classList.toggle("whosonfirst-tutorial-info-container-deactivated");
+	document.getElementById("whosonfirst-tutorial-info-image-2").classList.toggle("whosonfirst-tutorial-info-image-deactivated");
 	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-header-2").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay")},800);
 	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-subheader-2").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay")},800);
 	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-image-2").classList.toggle("whosonfirst-tutorial-info-image-display")},800);
@@ -221,10 +225,12 @@ function backTutorialInfo2() {
 function nextTutorialInfo3() {
 	document.getElementById("whosonfirst-tutorial-info-header-3").classList.toggle("whosonfirst-tutorial-info-container-deactivated");
 	document.getElementById("whosonfirst-tutorial-info-subheader-3").classList.toggle("whosonfirst-tutorial-info-container-deactivated");
+	document.getElementById("whosonfirst-tutorial-info-image-3").classList.toggle("whosonfirst-tutorial-info-image-deactivated");
 	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-header-3").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay")},800);
 	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-subheader-3").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay")},800);
 	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-image-4").classList.toggle("whosonfirst-tutorial-info-image-display")},800);
 	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-image-3").classList.toggle("whosonfirst-tutorial-info-image-display")},800);
+	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-image-4").classList.toggle("whosonfirst-tutorial-info-image-deactivated")},1000);
 	document.getElementById("whosonfirst-tutorial-info-3-back").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay");
 	document.getElementById("whosonfirst-tutorial-info-3-next").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay");
 	document.getElementById("whosonfirst-tutorial-info-4-next").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay");
@@ -241,10 +247,12 @@ function nextTutorialInfo3() {
 function backTutorialInfo3() {
 	document.getElementById("whosonfirst-tutorial-info-header-3").classList.toggle("whosonfirst-tutorial-info-container-deactivated");
 	document.getElementById("whosonfirst-tutorial-info-subheader-3").classList.toggle("whosonfirst-tutorial-info-container-deactivated");
+	document.getElementById("whosonfirst-tutorial-info-image-3").classList.toggle("whosonfirst-tutorial-info-image-deactivated");
 	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-header-3").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay")},800);
 	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-subheader-3").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay")},800);
 	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-image-2").classList.toggle("whosonfirst-tutorial-info-image-display")},800);
 	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-image-3").classList.toggle("whosonfirst-tutorial-info-image-display")},800);
+	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-image-2").classList.toggle("whosonfirst-tutorial-info-image-deactivated")},1000);
 	document.getElementById("whosonfirst-tutorial-info-3-back").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay");
 	document.getElementById("whosonfirst-tutorial-info-3-next").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay");
 	document.getElementById("whosonfirst-tutorial-info-2-next").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay");
@@ -268,10 +276,12 @@ function nextTutorialInfo4() {
 function backTutorialInfo4() {
 	document.getElementById("whosonfirst-tutorial-info-header-4").classList.toggle("whosonfirst-tutorial-info-container-deactivated");
 	document.getElementById("whosonfirst-tutorial-info-subheader-4").classList.toggle("whosonfirst-tutorial-info-container-deactivated");
+	document.getElementById("whosonfirst-tutorial-info-image-4").classList.toggle("whosonfirst-tutorial-info-image-deactivated");
 	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-header-4").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay")},800);
 	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-subheader-4").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay")},800);
 	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-image-3").classList.toggle("whosonfirst-tutorial-info-image-display")},800);
 	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-image-4").classList.toggle("whosonfirst-tutorial-info-image-display")},800);
+	setTimeout(function() {document.getElementById("whosonfirst-tutorial-info-image-3").classList.toggle("whosonfirst-tutorial-info-image-deactivated")},1000);
 	document.getElementById("whosonfirst-tutorial-info-4-back").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay");
 	document.getElementById("whosonfirst-tutorial-info-4-next").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay");
 	document.getElementById("whosonfirst-tutorial-info-3-next").classList.toggle("whosonfirst-tutorial-info-container-deactivated-nodisplay");
