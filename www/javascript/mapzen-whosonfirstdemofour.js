@@ -457,6 +457,10 @@ function scrollTo(where_to_go) {
 	if (result_box_container.length) {
 		result_box_container.animate({ scrollTop: $("#"+where_to_go).offset().top - 80}, 'slow');
 	}
-	document.getElementById(where_to_go).classList.toggle("whosonfirst-active-answer");
+	if (document.getElementById(where_to_go).classList.contains("whosonfirst-active-answer")) {
+		document.getElementById(where_to_go).classList.remove("whosonfirst-active-answer");
+	} else {
+		document.getElementById(where_to_go).classList.add("whosonfirst-active-answer");
+	}
 	return false;
 }
