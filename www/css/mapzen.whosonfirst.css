@@ -2110,7 +2110,9 @@ a.whosonfirst-dark-gradient:hover > div > .whosonfirst-card-highlight-state-test
 	}
 	
 	.whosonfirst-doubleheight-triple-col {
-		height: 720px;
+		/*Disable explore tool*/
+		/*height: 720px;*/
+		height: 480px;
 	}
 	
 	.whosonfirst-thirds-col, .whosonfirst-half-col, .whosonfirst-doubleheight-col, .whosonfirst-doublewidth-col, .whosonfirst-tripleheight-col, .whosonfirst-doublewidth-doubleheight-col, .whosonfirst-doublewidth-tripleheight-col, .whosonfirst-doubleheight-triple-col {
@@ -2681,6 +2683,10 @@ a.whosonfirst-dark-gradient:hover > div > .whosonfirst-card-highlight-state-test
 	
 	div.whosonfirst-card-container h6.whosonfirst-main-headline {
 		display: block;
+	}
+	
+	#homepage-explore-card {
+		display: none;
 	}
 }
 

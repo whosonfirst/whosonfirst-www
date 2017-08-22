@@ -27,6 +27,8 @@ map.setView([lat, lon], startingLocation[2]);
 var locator = L.Mapzen.locator();
 locator.setPosition('bottomright');
 locator.addTo(map);
+var current_markers = [];
+var last_active_marker;
 
 var markerStyle = {
     "weight": 2,
@@ -47,6 +49,7 @@ var show_venue = function(place) {
 		scrollTo(place['wof:id']);
 	});
 	map.addLayer(marker);
+	current_markers.push(marker);
 };
 
 var create_venue_card = function(place) {
@@ -86,6 +89,9 @@ var onerror = function(rsp) {
 // Take all the API results and show them on the map
 var onprogress = function(rsp) {
     console.log(rsp);
+	for (var j = 0; j < current_markers.length; j++) {
+		map.removeLayer(current_markers[j]);
+	}
 	if (rsp.places.length == 0) {
 		console.log("Empty Response");
 	}
@@ -453,14 +459,25 @@ function getByMaxAndMinLatLonRadius() {
 }
 
 function scrollTo(where_to_go) {
+	console.log("last active marker" + last_active_marker);
+	if (last_active_marker != null) {
+		console.log(document.getElementById(last_active_marker).classList);
+		document.getElementById(last_active_marker).classList.remove("whosonfirst-active-answer");
+		console.log(document.getElementById(last_active_marker).classList);
+	}
 	var result_box_container = $('#whosonfirst-tutorial-result-box-container');
 	if (result_box_container.length) {
-		result_box_container.animate({ scrollTop: $("#"+where_to_go).offset().top - 80}, 'slow');
+		console.log("Before" + $('#whosonfirst-tutorial-result-box-container').scrollTop());
+		result_box_container.scrollTop = 0;
+		console.log("After" + $('#whosonfirst-tutorial-result-box-container').scrollTop());
+		result_box_container.animate({ scrollTop: $('#whosonfirst-tutorial-result-box-container').scrollTop() + $("#"+where_to_go).offset().top - 80}, 'slow');
 	}
 	if (document.getElementById(where_to_go).classList.contains("whosonfirst-active-answer")) {
 		document.getElementById(where_to_go).classList.remove("whosonfirst-active-answer");
 	} else {
 		document.getElementById(where_to_go).classList.add("whosonfirst-active-answer");
 	}
+	last_active_marker = where_to_go;
+	console.log("last active marker" + last_active_marker);
 	return false;
 }
