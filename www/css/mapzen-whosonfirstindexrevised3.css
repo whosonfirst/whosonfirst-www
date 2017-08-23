@@ -563,6 +563,10 @@ a:hover {
 	padding: 4px 0px 0px 0px;
 }
 
+a.whosonfirst-tutorial-individual-result-answer {
+	border-bottom: 1px solid #FFFFFF;
+}
+
 .whosonfirst-tutorial-individual-result-code {
 	font-family: "Roboto Mono", Helvetica, Arial, sans-serif;
 	font-size: 14px;
