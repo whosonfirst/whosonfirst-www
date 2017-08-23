@@ -29,6 +29,29 @@ locator.setPosition('bottomright');
 locator.addTo(map);
 var current_markers = [];
 var last_active_marker;
+var last_active_point_click;
+var marker_click_active = false;
+
+/*Get Point Coordinates When Point Button Activated*/
+map.on('click', function(e) {
+	setTimeout(function() {
+		if (!marker_click_active) {
+			if (last_active_point_click) {
+			map.removeLayer(last_active_point_click);
+			}
+			if (document.getElementById("whosonfirst-tutorial-top-side-point-button").classList.contains("whosonfirst-tutorial-top-side-button-activate")) {
+				document.getElementById("whosonfirst-tutorial-form-latitude").value = e.latlng.lat;
+				document.getElementById("whosonfirst-tutorial-form-longitude").value = e.latlng.lng;
+				if (!document.getElementById("whosonfirst-tutorial-form-radius").value) {
+					document.getElementById("whosonfirst-tutorial-form-radius").value = 0;	
+				}
+				last_active_point_click = new L.marker(e.latlng,{icon: myIcon}).addTo(map);
+				console.log(marker_click_active);
+				marker_click_active = false;
+			}
+		}
+	},100);
+});
 
 var markerStyle = {
     "weight": 2,
@@ -39,6 +62,11 @@ var markerStyle = {
 	"color": "#888888"
 };
 
+var myIcon = L.icon({
+    iconUrl: '../css/images/marker-icon.png',
+    iconAnchor: [14, 38]
+});
+
 // How we should handle each API result
 var show_venue = function(place) {
     var marker = L.circleMarker({
@@ -47,9 +75,11 @@ var show_venue = function(place) {
     }, markerStyle);
 	marker.on('click', function(ev) {
 		scrollTo(place['wof:id']);
+		marker_click_active = true;
 	});
 	map.addLayer(marker);
 	current_markers.push(marker);
+	console.log(marker_click_active)
 };
 
 var create_venue_card = function(place) {
@@ -459,25 +489,24 @@ function getByMaxAndMinLatLonRadius() {
 }
 
 function scrollTo(where_to_go) {
-	console.log("last active marker" + last_active_marker);
-	if (last_active_marker != null) {
-		console.log(document.getElementById(last_active_marker).classList);
+	if (last_active_marker) {
 		document.getElementById(last_active_marker).classList.remove("whosonfirst-active-answer");
-		console.log(document.getElementById(last_active_marker).classList);
 	}
 	var result_box_container = $('#whosonfirst-tutorial-result-box-container');
-	if (result_box_container.length) {
-		console.log("Before" + $('#whosonfirst-tutorial-result-box-container').scrollTop());
-		result_box_container.scrollTop = 0;
-		console.log("After" + $('#whosonfirst-tutorial-result-box-container').scrollTop());
-		result_box_container.animate({ scrollTop: $('#whosonfirst-tutorial-result-box-container').scrollTop() + $("#"+where_to_go).offset().top - 80}, 'slow');
+	
+	result_box_container.scrollTop = 0;
+	var scrollLocation = $("#"+where_to_go)
+	var scrollDiv = $(scrollLocation);
+	if (!scrollDiv.length) {
+		return;
 	}
+	result_box_container.animate({ scrollTop: $('#whosonfirst-tutorial-result-box-container').scrollTop() + scrollLocation.offset().top - 80}, 'slow');
+	
 	if (document.getElementById(where_to_go).classList.contains("whosonfirst-active-answer")) {
 		document.getElementById(where_to_go).classList.remove("whosonfirst-active-answer");
 	} else {
 		document.getElementById(where_to_go).classList.add("whosonfirst-active-answer");
 	}
 	last_active_marker = where_to_go;
-	console.log("last active marker" + last_active_marker);
 	return false;
 }
