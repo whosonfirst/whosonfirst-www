@@ -31,26 +31,71 @@ var current_markers = [];
 var last_active_marker;
 var last_active_point_click;
 var marker_click_active = false;
+var plane_click_active = false;
+var active_plane_clicks = [];
+var active_plane_click_number = 0;
+var planePolygon;
 
 /*Get Point Coordinates When Point Button Activated*/
+
 map.on('click', function(e) {
-	setTimeout(function() {
-		if (!marker_click_active) {
-			if (last_active_point_click) {
-			map.removeLayer(last_active_point_click);
-			}
-			if (document.getElementById("whosonfirst-tutorial-top-side-point-button").classList.contains("whosonfirst-tutorial-top-side-button-activate")) {
-				document.getElementById("whosonfirst-tutorial-form-latitude").value = e.latlng.lat;
-				document.getElementById("whosonfirst-tutorial-form-longitude").value = e.latlng.lng;
-				if (!document.getElementById("whosonfirst-tutorial-form-radius").value) {
-					document.getElementById("whosonfirst-tutorial-form-radius").value = 0;	
+	if (document.getElementById("whosonfirst-tutorial-top-side-point-button").classList.contains("whosonfirst-tutorial-top-side-button-activate")) {
+		setTimeout(function() {
+			if (!marker_click_active) {
+				if (last_active_point_click) {
+					map.removeLayer(last_active_point_click);
 				}
-				last_active_point_click = new L.marker(e.latlng,{icon: myIcon}).addTo(map);
-				console.log(marker_click_active);
+				if (document.getElementById("whosonfirst-tutorial-top-side-point-button").classList.contains("whosonfirst-tutorial-top-side-button-activate")) {
+					document.getElementById("whosonfirst-tutorial-form-latitude").value = e.latlng.lat;
+					document.getElementById("whosonfirst-tutorial-form-longitude").value = e.latlng.lng;
+					if (!document.getElementById("whosonfirst-tutorial-form-radius").value) {
+						document.getElementById("whosonfirst-tutorial-form-radius").value = 0;	
+					}
+					last_active_point_click = new L.marker(e.latlng,{icon: myIcon}).addTo(map);
+					console.log(marker_click_active);
+					marker_click_active = false;
+				}
+			}
+		},100);
+	} else if (document.getElementById("whosonfirst-tutorial-top-side-plane-button").classList.contains("whosonfirst-tutorial-top-side-button-activate")) {
+		setTimeout(function() {
+			console.log(marker_click_active);
+			if (!marker_click_active) {
+				if (active_plane_clicks.length == 4) {
+					console.log("Were in here");
+					map.removeLayer(active_plane_clicks[0]);
+					map.removeLayer(active_plane_clicks[1]);
+					map.removeLayer(active_plane_clicks[2]);
+					map.removeLayer(active_plane_clicks[3]);
+					map.removeLayer(planePolygon);
+					document.getElementById("whosonfirst-tutorial-form-max-latitude").value = null;
+					document.getElementById("whosonfirst-tutorial-form-min-latitude").value = null;
+					document.getElementById("whosonfirst-tutorial-form-max-longitude").value = null;
+					document.getElementById("whosonfirst-tutorial-form-min-longitude").value = null;
+					console.log(active_plane_clicks);
+					active_plane_clicks.splice(0);
+					active_plane_click_number = 0;
+					console.log(active_plane_clicks);
+				}
+				if (active_plane_clicks.length < 4) {
+					var click_number = "active_click_number_" + active_plane_click_number;
+					active_plane_clicks[active_plane_click_number] = new L.marker(e.latlng,{icon: myIcon}).addTo(map);
+					active_plane_click_number++;
+					console.log(active_plane_clicks);
+				}
+				if (active_plane_clicks.length == 4) {
+					document.getElementById("whosonfirst-tutorial-form-max-latitude").value = Math.max(active_plane_clicks[0]._latlng.lat,active_plane_clicks[1]._latlng.lat,active_plane_clicks[2]._latlng.lat,active_plane_clicks[3]._latlng.lat);
+					document.getElementById("whosonfirst-tutorial-form-min-latitude").value = Math.min(active_plane_clicks[0]._latlng.lat,active_plane_clicks[1]._latlng.lat,active_plane_clicks[2]._latlng.lat,active_plane_clicks[3]._latlng.lat);
+					document.getElementById("whosonfirst-tutorial-form-max-longitude").value = Math.max(active_plane_clicks[0]._latlng.lng,active_plane_clicks[1]._latlng.lng,active_plane_clicks[2]._latlng.lng,active_plane_clicks[3]._latlng.lng);
+					document.getElementById("whosonfirst-tutorial-form-min-longitude").value = Math.min(active_plane_clicks[0]._latlng.lng,active_plane_clicks[1]._latlng.lng,active_plane_clicks[2]._latlng.lng,active_plane_clicks[3]._latlng.lng);
+					var polygonlatlngs = [active_plane_clicks[0]._latlng,active_plane_clicks[1]._latlng,active_plane_clicks[2]._latlng,active_plane_clicks[3]._latlng];
+					planePolygon = new L.polygon(polygonlatlngs, {color: '#FE189B', opacity: '0', fillColor: '#FE189B', fillOpacity: '.2'}).addTo(map);
+					console.log(polygonlatlngs);
+				}	
 				marker_click_active = false;
 			}
-		}
-	},100);
+		},100);
+	};
 });
 
 var markerStyle = {
@@ -76,6 +121,9 @@ var show_venue = function(place) {
 	marker.on('click', function(ev) {
 		scrollTo(place['wof:id']);
 		marker_click_active = true;
+		setTimeout(function() {
+			marker_click_active = false;
+		},500);
 	});
 	map.addLayer(marker);
 	current_markers.push(marker);
@@ -177,21 +225,56 @@ function clickPointButton() {
 		document.getElementById("whosonfirst-tutorial-input-plane-container").classList.toggle("whosonfirst-tutorial-input-bottom-container-activated");
 		document.getElementById("whosonfirst-tutorial-top-side-point-button").classList.toggle("whosonfirst-tutorial-top-side-button-activate");
 		setTimeout(function() {document.getElementById("whosonfirst-tutorial-input-point-container").classList.toggle("whosonfirst-tutorial-input-bottom-container-activated")},1600);
+		for (var x = 0; x < active_plane_click_number; x++) {
+			map.removeLayer(active_plane_clicks[x]);
+		}
+		if (planePolygon) {
+			map.removeLayer(planePolygon);
+		}
+		document.getElementById("whosonfirst-tutorial-form-max-latitude").value = null;
+		document.getElementById("whosonfirst-tutorial-form-min-latitude").value = null;
+		document.getElementById("whosonfirst-tutorial-form-max-longitude").value = null;
+		document.getElementById("whosonfirst-tutorial-form-min-longitude").value = null;
+		active_plane_clicks.splice(0);
+		active_plane_click_number = 0;
+		last_active_marker = null;
 	} else {
 		document.getElementById("whosonfirst-tutorial-top-side-point-button").classList.toggle("whosonfirst-tutorial-top-side-button-activate");
 		document.getElementById("whosonfirst-tutorial-input-point-container").classList.toggle("whosonfirst-tutorial-input-bottom-container-activated");
+		if (last_active_point_click) {
+			map.removeLayer(last_active_point_click);
+		}
+		last_active_marker = null;
 	}
 }
+
 
 function clickPlaneButton() {
 	if (document.getElementById("whosonfirst-tutorial-top-side-point-button").classList.contains("whosonfirst-tutorial-top-side-button-activate")) {
 		document.getElementById("whosonfirst-tutorial-top-side-point-button").classList.toggle("whosonfirst-tutorial-top-side-button-activate");
 		document.getElementById("whosonfirst-tutorial-input-point-container").classList.toggle("whosonfirst-tutorial-input-bottom-container-activated");
+		if (last_active_point_click) {
+			map.removeLayer(last_active_point_click);
+		}
 		document.getElementById("whosonfirst-tutorial-top-side-plane-button").classList.toggle("whosonfirst-tutorial-top-side-button-activate");
 		setTimeout(function() {document.getElementById("whosonfirst-tutorial-input-plane-container").classList.toggle("whosonfirst-tutorial-input-bottom-container-activated")},1600);
+		last_active_marker = null;
 	} else {
 		document.getElementById("whosonfirst-tutorial-top-side-plane-button").classList.toggle("whosonfirst-tutorial-top-side-button-activate");
 		document.getElementById("whosonfirst-tutorial-input-plane-container").classList.toggle("whosonfirst-tutorial-input-bottom-container-activated");
+		for (var x = 0; x < active_plane_click_number; x++) {
+			map.removeLayer(active_plane_clicks[x]);
+		}
+		if (planePolygon) {
+			map.removeLayer(planePolygon);
+		}
+		document.getElementById("whosonfirst-tutorial-form-max-latitude").value = null;
+		document.getElementById("whosonfirst-tutorial-form-min-latitude").value = null;
+		document.getElementById("whosonfirst-tutorial-form-max-longitude").value = null;
+		document.getElementById("whosonfirst-tutorial-form-min-longitude").value = null;
+		active_plane_clicks.splice(0);
+		active_plane_click_number = 0;
+		last_active_marker = null;
 	}
 }
 
