@@ -448,7 +448,7 @@ function customSearch() {
     var data = {
         q: search_terms,
 		locality_id: 0,
-        per_page: 50,
+        per_page: 100,
         extras: 'geom:,mz:' // this gets us lat/lng coords
     };
 	console.log(data);
@@ -488,6 +488,42 @@ function getByLatLonRadius() {
 	if (search_radius == null || search_radius == "") {
 		search_radius = 1;
 	}
+	if (search_latitude < -90 || search_latitude > 90) {
+		console.log("Something went wrong");
+		document.getElementById("whosonfirst-tutorial-form-latitude").value = null;
+		document.getElementById("whosonfirst-tutorial-form-latitude").placeholder = "Invalid latitude";
+		document.getElementById("whosonfirst-tutorial-form-latitude").classList.add("whosonfirst-error-messaging-tutorial");
+		console.log(document.getElementById("whosonfirst-tutorial-form-latitude"));
+		return;
+	} else if (search_longtitude < -180 || search_longtitude > 180) {
+		console.log("Something went wrong");
+		document.getElementById("whosonfirst-tutorial-form-longitude").value = null;
+		document.getElementById("whosonfirst-tutorial-form-longitude").placeholder = "Invalid latitude";
+		document.getElementById("whosonfirst-tutorial-form-longitude").classList.add("whosonfirst-error-messaging-tutorial");
+		return;
+	} else if (!search_latitude) {
+		console.log("Something went wrong");
+		document.getElementById("whosonfirst-tutorial-form-latitude").value = null;
+		document.getElementById("whosonfirst-tutorial-form-latitude").placeholder = "Missising latitude";
+		document.getElementById("whosonfirst-tutorial-form-latitude").classList.add("whosonfirst-error-messaging-tutorial");
+		console.log(document.getElementById("whosonfirst-tutorial-form-latitude"));
+		return;
+	} else if (!search_longtitude) {
+		console.log("Something went wrong");
+		document.getElementById("whosonfirst-tutorial-form-longitude").value = null;
+		document.getElementById("whosonfirst-tutorial-form-longitude").placeholder = "Missing longitude";
+		document.getElementById("whosonfirst-tutorial-form-longitude").classList.add("whosonfirst-error-messaging-tutorial");
+		return;
+	}
+	
+	document.getElementById("whosonfirst-tutorial-form-latitude").placeholder = "11.1243";
+	document.getElementById("whosonfirst-tutorial-form-longitude").placeholder = "11.1243";
+	if (document.getElementById("whosonfirst-tutorial-form-latitude").classList.contains("whosonfirst-error-messaging-tutorial")) {
+		document.getElementById("whosonfirst-tutorial-form-latitude").classList.remove("whosonfirst-error-messaging-tutorial");
+	};
+	if (document.getElementById("whosonfirst-tutorial-form-longitude").classList.contains("whosonfirst-error-messaging-tutorial")) {
+		document.getElementById("whosonfirst-tutorial-form-longitude").classList.remove("whosonfirst-error-messaging-tutorial");
+	};
 	
 	console.log("Search Terms: " + search_radius + search_latitude + search_longtitude);
 	
@@ -496,7 +532,7 @@ function getByLatLonRadius() {
         latitude: search_latitude,
 		longitude: search_longtitude,
 		radius: search_radius,
-        per_page: 50,
+        per_page: 100,
         extras: 'geom:,mz:' // this gets us lat/lng coords
     };
 	console.log(data);
@@ -536,6 +572,74 @@ function getByMaxAndMinLatLonRadius() {
 	var search_min_latitude = document.getElementById("whosonfirst-tutorial-form-min-latitude").value;
 	var search_max_longtitude = document.getElementById("whosonfirst-tutorial-form-max-longitude").value;
 	var search_min_longtitude = document.getElementById("whosonfirst-tutorial-form-min-longitude").value;
+	if (search_max_latitude < -90 || search_max_latitude > 90) {
+		console.log("Something went wrong");
+		document.getElementById("whosonfirst-tutorial-form-max-latitude").value = null;
+		document.getElementById("whosonfirst-tutorial-form-max-latitude").placeholder = "Invalid latitude";
+		document.getElementById("whosonfirst-tutorial-form-max-latitude").classList.add("whosonfirst-error-messaging-tutorial");
+		console.log(document.getElementById("whosonfirst-tutorial-form-max-latitude"));
+		return;
+	} else if (search_max_longtitude < -180 || search_max_longtitude > 180) {
+		console.log("Something went wrong");
+		document.getElementById("whosonfirst-tutorial-form-max-longitude").value = null;
+		document.getElementById("whosonfirst-tutorial-form-max-longitude").placeholder = "Invalid latitude";
+		document.getElementById("whosonfirst-tutorial-form-max-longitude").classList.add("whosonfirst-error-messaging-tutorial");
+		return;
+	} else if (search_min_latitude < -90 || search_min_latitude > 90) {
+		console.log("Something went wrong");
+		document.getElementById("whosonfirst-tutorial-form-min-latitude").value = null;
+		document.getElementById("whosonfirst-tutorial-form-min-latitude").placeholder = "Invalid latitude";
+		document.getElementById("whosonfirst-tutorial-form-min-latitude").classList.add("whosonfirst-error-messaging-tutorial");
+		console.log(document.getElementById("whosonfirst-tutorial-form-min-latitude"));
+		return;
+	} else if (search_min_longtitude < -180 || search_min_longtitude > 180) {
+		console.log("Something went wrong");
+		document.getElementById("whosonfirst-tutorial-form-min-longitude").value = null;
+		document.getElementById("whosonfirst-tutorial-form-min-longitude").placeholder = "Invalid latitude";
+		document.getElementById("whosonfirst-tutorial-form-min-longitude").classList.add("whosonfirst-error-messaging-tutorial");
+		return;
+	} else if (!search_max_longtitude) {
+		console.log("Something went wrong");
+		document.getElementById("whosonfirst-tutorial-form-max-longitude").value = null;
+		document.getElementById("whosonfirst-tutorial-form-max-longitude").placeholder = "Missing maximum longitude";
+		document.getElementById("whosonfirst-tutorial-form-max-longitude").classList.add("whosonfirst-error-messaging-tutorial");
+		return;
+	} else if (!search_min_longtitude) {
+		console.log("Something went wrong");
+		document.getElementById("whosonfirst-tutorial-form-min-longitude").value = null;
+		document.getElementById("whosonfirst-tutorial-form-min-longitude").placeholder = "Missing minimum longitude";
+		document.getElementById("whosonfirst-tutorial-form-min-longitude").classList.add("whosonfirst-error-messaging-tutorial");
+		return;
+	} else if (!search_max_latitude) {
+		console.log("Something went wrong");
+		document.getElementById("whosonfirst-tutorial-form-max-latitude").value = null;
+		document.getElementById("whosonfirst-tutorial-form-max-latitude").placeholder = "Missing maximum latitude";
+		document.getElementById("whosonfirst-tutorial-form-max-latitude").classList.add("whosonfirst-error-messaging-tutorial");
+		return;
+	} else if (!search_min_latitude) {
+		console.log("Something went wrong");
+		document.getElementById("whosonfirst-tutorial-form-min-latitude").value = null;
+		document.getElementById("whosonfirst-tutorial-form-min-latitude").placeholder = "Missing minimum latitude";
+		document.getElementById("whosonfirst-tutorial-form-min-latitude").classList.add("whosonfirst-error-messaging-tutorial");
+		return;
+	}
+	
+	document.getElementById("whosonfirst-tutorial-form-max-latitude").placeholder = "11.1243";
+	document.getElementById("whosonfirst-tutorial-form-max-longitude").placeholder = "11.1243";
+	document.getElementById("whosonfirst-tutorial-form-min-latitude").placeholder = "11.1243";
+	document.getElementById("whosonfirst-tutorial-form-min-longitude").placeholder = "11.1243";
+	if (document.getElementById("whosonfirst-tutorial-form-max-latitude").classList.contains("whosonfirst-error-messaging-tutorial")) {
+		document.getElementById("whosonfirst-tutorial-form-max-latitude").classList.remove("whosonfirst-error-messaging-tutorial");
+	};
+	if (document.getElementById("whosonfirst-tutorial-form-max-longitude").classList.contains("whosonfirst-error-messaging-tutorial")) {
+		document.getElementById("whosonfirst-tutorial-form-max-longitude").classList.remove("whosonfirst-error-messaging-tutorial");
+	};
+	if (document.getElementById("whosonfirst-tutorial-form-min-latitude").classList.contains("whosonfirst-error-messaging-tutorial")) {
+		document.getElementById("whosonfirst-tutorial-form-min-latitude").classList.remove("whosonfirst-error-messaging-tutorial");
+	};
+	if (document.getElementById("whosonfirst-tutorial-form-min-longitude").classList.contains("whosonfirst-error-messaging-tutorial")) {
+		document.getElementById("whosonfirst-tutorial-form-min-longitude").classList.remove("whosonfirst-error-messaging-tutorial");
+	};
 
 	console.log("Search Terms: max" + search_max_latitude + "min" + search_min_latitude + "max" + search_max_longtitude + "min" + search_min_longtitude);
 	
@@ -545,7 +649,7 @@ function getByMaxAndMinLatLonRadius() {
 		min_latitude: search_min_latitude,
 		max_longitude: search_max_longtitude,
 		min_longitude: search_min_longtitude,
-        per_page: 50,
+        per_page: 100,
         extras: 'geom:,mz:' // this gets us lat/lng coords
     };
 	var new_latitude = ((search_max_latitude-search_min_latitude)/2);

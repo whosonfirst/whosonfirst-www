@@ -662,6 +662,11 @@ svg {
 	border: 1px solid #FE189B;
 }
 
+.whosonfirst-error-messaging-tutorial::-webkit-input-placeholder {
+    color: #FE189B !important;
+	font-weight: 400 !important;
+}
+
 @media (max-width: 1199px) {
 	.whosonfirst-tutorial-individual-result-header {
 		font-size: 16px;
