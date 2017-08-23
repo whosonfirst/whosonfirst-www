@@ -820,7 +820,7 @@ data-knownknowns:
 	
 data: data-pullrequest data-principles data-available data-amazon data-github data-knownknowns data-home data-home-two
 
-blog:
+blog-withalltheblogfolder:
 	cat www/content/blog/blog.html | pup -i 0 'body h1' > www/alltheblog/temp-content1.html
 	cat www/content/blog/blog.html | pup -i 0 'body :not(h1)' > www/alltheblog/temp-content2.html
 	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/alltheblog/temp-content1.html
@@ -831,7 +831,7 @@ blog:
 	rm www/alltheblog/temp-content1.html-e
 	rm www/alltheblog/index.html-e
 	
-blog-withblogfolder:
+blog:
 	cat www/content/blog/blog.html | pup -i 0 'body h1' > www/blog/temp-content1.html
 	cat www/content/blog/blog.html | pup -i 0 'body :not(h1)' > www/blog/temp-content2.html
 	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/blog/temp-content1.html
@@ -924,8 +924,6 @@ interns:
 	cat www/content/interns/interns.html | pup -i 0 'body :not(h1)' > www/interns/temp-content2.html
 	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/interns/temp-content1.html
 	cat www/components/head/head-onelevelup.html www/components/navbar/navbar-onelevelup.html www/components/subnav/interns/subnav-top.html www/interns/temp-content1.html www/components/subnav/interns/subnav-bottom.html  www/interns/temp-content2.html www/components/footer/footer-onelevelup.html > www/interns/index.html
-	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>blog\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>blog\<\/a\>/' www/interns/index.html
 	rm www/interns/temp-content1.html
 	rm www/interns/temp-content2.html
 	rm www/interns/temp-content1.html-e
-	rm www/interns/index.html-e	
