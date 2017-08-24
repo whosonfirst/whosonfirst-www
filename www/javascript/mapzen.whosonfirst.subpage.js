@@ -17,4 +17,10 @@ $(document).ready(function(){
 	});
 	*/
 	window.addEventListener("hashchange", function() { scrollBy(0, -60) })
+	
+	$('h1,h2,h3,h4,h5,h6').each(function() {
+		if ($(this).find('a.anchor').length !== 0) {
+			$(this).attr('id',$(this).children().attr('id'));
+		}
+	});
 });

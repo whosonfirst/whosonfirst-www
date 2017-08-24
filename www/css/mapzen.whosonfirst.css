@@ -1323,6 +1323,15 @@ a:hover .whosonfirst-subpage-container-doublewidth-col-card-h1, a:hover .whosonf
 	border-color: #FE189B;
 }
 
+h1:hover::after, h2:hover::after, h3:hover::after, h4:hover::after, h5:hover::after, h6:hover::after {
+	content: "#" attr(id);
+	font-weight: 200;
+	font-size: 12px;
+	line-height: 12px;
+	font-family: "Roboto", Helvetica, Arial, sans-serif;
+	letter-spacing: 0;
+}
+
 @media (max-width: 1200px) {	
 	
 	/* Home Page Card Styling */
