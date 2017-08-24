@@ -572,8 +572,8 @@ docs-processes-s3requirements:
 	rm www/docs/processes/s3requirements.html-e
 		
 docs-processes-wikipediaconcordances:
-	curl -s https://github.com/whosonfirst/whosonfirst-cookbook/blob/master/issue_workflows/wikipedia_concordances.md | pup -i 0 'article.markdown-body h1:first-of-type' > www/docs/processes/temp-content1.html
-	curl -s https://github.com/whosonfirst/whosonfirst-cookbook/blob/master/issue_workflows/wikipedia_concordances.md | pup -i 0 'article.markdown-body :not(h1:first-of-type)' > www/docs/processes/temp-content2.html
+	cat www/content/docs/processes/wikipediaconcordances.html | pup -i 0 'article.markdown-body h1:first-of-type' > www/docs/processes/temp-content1.html
+	cat www/content/docs/processes/wikipediaconcordances.html | pup -i 0 'article.markdown-body :not(h1:first-of-type)' > www/docs/processes/temp-content2.html
 	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/docs/processes/temp-content1.html
 	cat www/components/head/head.html www/components/navbar/navbar.html www/components/subnav/docs/processes/subnav-top.html www/docs/processes/temp-content1.html www/components/subnav/docs/processes/subnav-bottom.html  www/docs/processes/temp-content2.html www/components/footer/footer.html > www/docs/processes/wikipediaconcordances.html
 	rm www/docs/processes/temp-content1.html

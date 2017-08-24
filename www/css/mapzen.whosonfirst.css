@@ -214,7 +214,7 @@ div.whosonfirst-card-container h6.whosonfirst-main-headline {
 /* Dealing with multiple cards side by side in same column */
 
 .whosonfirst-other-card-in-col {
-	display: inline-flex;
+	display: inline-block;
 	margin-top: 10px;
 }
 
@@ -256,7 +256,7 @@ div.whosonfirst-card-container h6.whosonfirst-main-headline {
 	transition: box-shadow .7s ease-in-out;
 }
 
-.whosonfirst-dark-gradient.whosonfirst-card-shadow:hover {
+.whosonfirst-dark-gradient.whosonfirst-card-shadow:hover, .whosonfirst-light-gradient.whosonfirst-card-shadow:hover {
     box-shadow: 0px 0px 8px 0px rgba(0,0,12,.18), 0px 6px 8px 0px rgba(0,0,12,.18);
 }
 
