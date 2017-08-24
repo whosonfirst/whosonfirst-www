@@ -16,29 +16,29 @@ To add a blog post, follow the instructions below:
 5. If you added a new unordered list, add a list item in that new list.
 ```html
 <ul class="whosonfirst-nonbullet-list whosonfirst-sole-links-container">
-       <li class="whosonfirst-nonbullet-list-item">
-       </li>
+    <li class="whosonfirst-nonbullet-list-item">
+    </li>
 </ul>
 ```
 If you did not add a new unordered list, add the list item after the last list item in the last existing unordered list.
 ```html
 <ul class="whosonfirst-nonbullet-list whosonfirst-sole-links-container">
-        <li class="whosonfirst-nonbullet-list-item">
-		        <a href="https://mapzen.com/blog/geotagging-wof-venues/" class="whosonfirst-sole-link whosonfirst-dynamically-generated-post" data-pubdate="2017-08-01" title="Geotagging WOF venues" data-au="0.44" data-word-count="2392">Geotagging WOF venues</a>
-	   </li>
-       <li class="whosonfirst-nonbullet-list-item">
-       </li>
+    <li class="whosonfirst-nonbullet-list-item">
+        <a href="https://mapzen.com/blog/geotagging-wof-venues/" class="whosonfirst-sole-link whosonfirst-dynamically-generated-post" data-pubdate="2017-08-01" title="Geotagging WOF venues" data-au="0.44" data-word-count="2392">Geotagging WOF venues</a>
+    </li>
+    <li class="whosonfirst-nonbullet-list-item">
+    </li>
 </ul>
 ```
 6. Add a link to the new list item, be sure sure to include the link url and whosonfirst-sole-link and whosonfirst-dynamically-generated-post as classes.
 ```html
 <ul class="whosonfirst-nonbullet-list whosonfirst-sole-links-container">
-        <li class="whosonfirst-nonbullet-list-item">
-		        <a href="https://mapzen.com/blog/geotagging-wof-venues/" class="whosonfirst-sole-link whosonfirst-dynamically-generated-post" data-pubdate="2017-08-01" title="Geotagging WOF venues" data-au="0.44" data-word-count="2392">Geotagging WOF venues</a>
-	   </li>
-       <li class="whosonfirst-nonbullet-list-item">
-	            <a href="https://mapzen.com/blog/wof-website-redesign/" class="whosonfirst-sole-link whosonfirst-dynamically-generated-post" data-pubdate="2017-07-28" title="Redesigning and Rebuilding the Who's On First website" data-au="0.40" data-word-count="2194">Redesigning and Rebuilding the Who's On First website</a>
-       </li>
+    <li class="whosonfirst-nonbullet-list-item">
+        <a href="https://mapzen.com/blog/geotagging-wof-venues/" class="whosonfirst-sole-link whosonfirst-dynamically-generated-post" data-pubdate="2017-08-01" title="Geotagging WOF venues" data-au="0.44" data-word-count="2392">Geotagging WOF venues</a>
+    </li>
+    <li class="whosonfirst-nonbullet-list-item">
+        <a href="https://mapzen.com/blog/wof-website-redesign/" class="whosonfirst-sole-link whosonfirst-dynamically-generated-post" data-pubdate="2017-07-28" title="Redesigning and Rebuilding the Who's On First website" data-au="0.40" data-word-count="2194">Redesigning and Rebuilding the Who's On First website</a>
+    </li>
 </ul>
 ```
-7. Navigate to the folder to the whosonfirst-www folder in your console. Run `make blog`. The blog post should now be updated with the new blog post.
+7. Navigate to the folder to the whosonfirst-www folder in your console. Run `make blog`. The blog page should now be updated with the new blog post.
