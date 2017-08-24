@@ -66,170 +66,170 @@ whosonfirst-favicons:
 	curl -s -o www/images/favicons/safari-pinned-tab.svg https://mapzen.com/common/styleguide/images/favicons/safari-pinned-tab.svg
 
 docs-properties-addr:
-	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/addr.md | pup -i 0 'article.markdown-body h1' > www/docs/properties/temp-content1.html
-	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/addr.md | pup -i 0 'article.markdown-body :not(h1)' > www/docs/properties/temp-content2.html
-	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/docs/properties/temp-content1.html
-	cat www/components/head/head.html www/components/navbar/navbar.html www/components/subnav/docs/properties/subnav-top.html www/docs/properties/temp-content1.html www/components/subnav/docs/properties/subnav-bottom.html  www/docs/properties/temp-content2.html www/components/footer/footer.html > www/docs/properties/addr.html
-	sed -i -e 's/whosonfirst\-sidenav\-link\"\>addr/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>addr/' www/docs/properties/addr.html
-	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>addr/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>addr/' www/docs/properties/addr.html
-	rm www/docs/properties/temp-content1.html
-	rm www/docs/properties/temp-content2.html
-	rm www/docs/properties/temp-content1.html-e
-	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Properties\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Addr\<\/div\>/' www/docs/properties/addr.html
-	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>docs\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>docs\<\/a\>/' www/docs/properties/addr.html
-	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/docs/properties/addr.html
-	rm www/docs/properties/addr.html-e
+	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/addr.md | pup -i 0 'article.markdown-body h1' > www/docs/properties/addr/temp-content1.html
+	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/addr.md | pup -i 0 'article.markdown-body :not(h1)' > www/docs/properties/addr/temp-content2.html
+	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/docs/properties/addr/temp-content1.html
+	cat www/components/head/head-oneleveldown.html www/components/navbar/navbar-oneleveldown.html www/components/subnav/docs/properties/subnav-top-oneleveldown.html www/docs/properties/addr/temp-content1.html www/components/subnav/docs/properties/subnav-bottom-oneleveldown.html  www/docs/properties/addr/temp-content2.html www/components/footer/footer-oneleveldown.html > www/docs/properties/addr/index.html
+	sed -i -e 's/whosonfirst\-sidenav\-link\"\>addr/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>addr/' www/docs/properties/addr/index.html
+	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>addr/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>addr/' www/docs/properties/addr/index.html
+	rm www/docs/properties/addr/temp-content1.html
+	rm www/docs/properties/addr/temp-content2.html
+	rm www/docs/properties/addr/temp-content1.html-e
+	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Properties\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Addr\<\/div\>/' www/docs/properties/addr/index.html
+	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>docs\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>docs\<\/a\>/' www/docs/properties/addr/index.html
+	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/docs/properties/addr/index.html
+	rm www/docs/properties/addr/index.html-e
 	
 docs-properties-edtf:
-	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/edtf.md | pup -i 0 'article.markdown-body h1' > www/docs/properties/temp-content1.html
-	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/edtf.md | pup -i 0 'article.markdown-body :not(h1)' > www/docs/properties/temp-content2.html
-	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/docs/properties/temp-content1.html
-	cat www/components/head/head.html www/components/navbar/navbar.html www/components/subnav/docs/properties/subnav-top.html www/docs/properties/temp-content1.html www/components/subnav/docs/properties/subnav-bottom.html  www/docs/properties/temp-content2.html www/components/footer/footer.html > www/docs/properties/edtf.html
-	rm www/docs/properties/temp-content1.html
-	rm www/docs/properties/temp-content2.html
-	rm www/docs/properties/temp-content1.html-e
-	sed -i -e 's/whosonfirst\-sidenav\-link\"\>edtf/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>edtf/' www/docs/properties/edtf.html
-	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>edtf/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>edtf/' www/docs/properties/edtf.html
-	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Properties\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Edtf\<\/div\>/' www/docs/properties/edtf.html
-	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>docs\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>docs\<\/a\>/' www/docs/properties/edtf.html
-	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/docs/properties/edtf.html
-	rm www/docs/properties/edtf.html-e
+	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/edtf.md | pup -i 0 'article.markdown-body h1' > www/docs/properties/edtf/temp-content1.html
+	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/edtf.md | pup -i 0 'article.markdown-body :not(h1)' > www/docs/properties/edtf/temp-content2.html
+	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/docs/properties/edtf/temp-content1.html
+	cat www/components/head/head-oneleveldown.html www/components/navbar/navbar-oneleveldown.html www/components/subnav/docs/properties/subnav-top-oneleveldown.html www/docs/properties/edtf/temp-content1.html www/components/subnav/docs/properties/subnav-bottom-oneleveldown.html  www/docs/properties/edtf/temp-content2.html www/components/footer/footer-oneleveldown.html > www/docs/properties/edtf/index.html
+	rm www/docs/properties/edtf/temp-content1.html
+	rm www/docs/properties/edtf/temp-content2.html
+	rm www/docs/properties/edtf/temp-content1.html-e
+	sed -i -e 's/whosonfirst\-sidenav\-link\"\>edtf/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>edtf/' www/docs/properties/edtf/index.html
+	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>edtf/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>edtf/' www/docs/properties/edtf/index.html
+	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Properties\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Edtf\<\/div\>/' www/docs/properties/edtf/index.html
+	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>docs\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>docs\<\/a\>/' www/docs/properties/edtf/index.html
+	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/docs/properties/edtf/index.html
+	rm www/docs/properties/edtf/index.html-e
 
 docs-properties-geom:
-	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/geom.md | pup -i 0 'article.markdown-body h1' > www/docs/properties/temp-content1.html
-	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/geom.md | pup -i 0 'article.markdown-body :not(h1)' > www/docs/properties/temp-content2.html
-	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/docs/properties/temp-content1.html
-	cat www/components/head/head.html www/components/navbar/navbar.html www/components/subnav/docs/properties/subnav-top.html www/docs/properties/temp-content1.html www/components/subnav/docs/properties/subnav-bottom.html  www/docs/properties/temp-content2.html www/components/footer/footer.html > www/docs/properties/geom.html
-	rm www/docs/properties/temp-content1.html
-	rm www/docs/properties/temp-content2.html
-	rm www/docs/properties/temp-content1.html-e
-	sed -i -e 's/whosonfirst\-sidenav\-link\"\>geom\</whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>geom\</' www/docs/properties/geom.html
-	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>geom/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>geom/' www/docs/properties/geom.html
-	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Properties\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Geom\<\/div\>/' www/docs/properties/geom.html
-	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>docs\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>docs\<\/a\>/' www/docs/properties/geom.html
-	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/docs/properties/geom.html
-	rm www/docs/properties/geom.html-e
+	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/geom.md | pup -i 0 'article.markdown-body h1' > www/docs/properties/geom/temp-content1.html
+	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/geom.md | pup -i 0 'article.markdown-body :not(h1)' > www/docs/properties/geom/temp-content2.html
+	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/docs/properties/geom/temp-content1.html
+	cat www/components/head/head-oneleveldown.html www/components/navbar/navbar-oneleveldown.html www/components/subnav/docs/properties/subnav-top-oneleveldown.html www/docs/properties/geom/temp-content1.html www/components/subnav/docs/properties/subnav-bottom-oneleveldown.html  www/docs/properties/geom/temp-content2.html www/components/footer/footer-oneleveldown.html > www/docs/properties/geom/index.html
+	rm www/docs/properties/geom/temp-content1.html
+	rm www/docs/properties/geom/temp-content2.html
+	rm www/docs/properties/geom/temp-content1.html-e
+	sed -i -e 's/whosonfirst\-sidenav\-link\"\>geom\</whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>geom\</' www/docs/properties/geom/index.html
+	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>geom/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>geom/' www/docs/properties/geom/index.html
+	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Properties\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Geom\<\/div\>/' www/docs/properties/geom/index.html
+	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>docs\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>docs\<\/a\>/' www/docs/properties/geom/index.html
+	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/docs/properties/geom/index.html
+	rm www/docs/properties/geom/index.html-e
 	
 docs-properties-lbl:
-	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/lbl.md | pup -i 0 'article.markdown-body h1' > www/docs/properties/temp-content1.html
-	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/lbl.md | pup -i 0 'article.markdown-body :not(h1)' > www/docs/properties/temp-content2.html
-	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/docs/properties/temp-content1.html
-	cat www/components/head/head.html www/components/navbar/navbar.html www/components/subnav/docs/properties/subnav-top.html www/docs/properties/temp-content1.html www/components/subnav/docs/properties/subnav-bottom.html  www/docs/properties/temp-content2.html www/components/footer/footer.html > www/docs/properties/lbl.html
-	rm www/docs/properties/temp-content1.html
-	rm www/docs/properties/temp-content2.html
-	rm www/docs/properties/temp-content1.html-e
-	sed -i -e 's/whosonfirst\-sidenav\-link\"\>lb/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>lbl/' www/docs/properties/lbl.html
-	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>lbl/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>lbl/' www/docs/properties/lbl.html
-	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Properties\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Lbl\<\/div\>/' www/docs/properties/lbl.html
-	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>docs\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>docs\<\/a\>/' www/docs/properties/lbl.html
-	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/docs/properties/lbl.html
-	rm www/docs/properties/lbl.html-e
+	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/lbl.md | pup -i 0 'article.markdown-body h1' > www/docs/properties/lbl/temp-content1.html
+	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/lbl.md | pup -i 0 'article.markdown-body :not(h1)' > www/docs/properties/lbl/temp-content2.html
+	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/docs/properties/lbl/temp-content1.html
+	cat www/components/head/head-oneleveldown.html www/components/navbar/navbar-oneleveldown.html www/components/subnav/docs/properties/subnav-top-oneleveldown.html www/docs/properties/lbl/temp-content1.html www/components/subnav/docs/properties/subnav-bottom-oneleveldown.html  www/docs/properties/lbl/temp-content2.html www/components/footer/footer-oneleveldown.html > www/docs/properties/lbl/index.html
+	rm www/docs/properties/lbl/temp-content1.html
+	rm www/docs/properties/lbl/temp-content2.html
+	rm www/docs/properties/lbl/temp-content1.html-e
+	sed -i -e 's/whosonfirst\-sidenav\-link\"\>lb/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>lbl/' www/docs/properties/lbl/index.html
+	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>lbl/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>lbl/' www/docs/properties/lbl/index.html
+	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Properties\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Lbl\<\/div\>/' www/docs/properties/lbl/index.html
+	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>docs\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>docs\<\/a\>/' www/docs/properties/lbl/index.html
+	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/docs/properties/lbl/index.html
+	rm www/docs/properties/lbl/index.html-e
 	
 docs-properties-mz:
-	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/mz.md | pup -i 0 'article.markdown-body h1' > www/docs/properties/temp-content1.html
-	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/mz.md | pup -i 0 'article.markdown-body :not(h1)' > www/docs/properties/temp-content2.html
-	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/docs/properties/temp-content1.html
-	cat www/components/head/head.html www/components/navbar/navbar.html www/components/subnav/docs/properties/subnav-top.html www/docs/properties/temp-content1.html www/components/subnav/docs/properties/subnav-bottom.html  www/docs/properties/temp-content2.html www/components/footer/footer.html > www/docs/properties/mz.html
-	rm www/docs/properties/temp-content1.html
-	rm www/docs/properties/temp-content2.html
-	rm www/docs/properties/temp-content1.html-e
-	sed -i -e 's/whosonfirst\-sidenav\-link\"\>mz/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>mz/' www/docs/properties/mz.html
-	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>mz/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>mz/' www/docs/properties/mz.html
-	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Properties\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Mz\<\/div\>/' www/docs/properties/mz.html
-	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>docs\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>docs\<\/a\>/' www/docs/properties/mz.html
-	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/docs/properties/mz.html
-	rm www/docs/properties/mz.html-e
+	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/mz.md | pup -i 0 'article.markdown-body h1' > www/docs/properties/mz/temp-content1.html
+	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/mz.md | pup -i 0 'article.markdown-body :not(h1)' > www/docs/properties/mz/temp-content2.html
+	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/docs/properties/mz/temp-content1.html
+	cat www/components/head/head-oneleveldown.html www/components/navbar/navbar-oneleveldown.html www/components/subnav/docs/properties/subnav-top-oneleveldown.html www/docs/properties/mz/temp-content1.html www/components/subnav/docs/properties/subnav-bottom-oneleveldown.html  www/docs/properties/mz/temp-content2.html www/components/footer/footer-oneleveldown.html > www/docs/properties/mz/index.html
+	rm www/docs/properties/mz/temp-content1.html
+	rm www/docs/properties/mz/temp-content2.html
+	rm www/docs/properties/mz/temp-content1.html-e
+	sed -i -e 's/whosonfirst\-sidenav\-link\"\>mz/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>mz/' www/docs/properties/mz/index.html
+	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>mz/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>mz/' www/docs/properties/mz/index.html
+	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Properties\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Mz\<\/div\>/' www/docs/properties/mz/index.html
+	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>docs\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>docs\<\/a\>/' www/docs/properties/mz/index.html
+	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/docs/properties/mz/index.html
+	rm www/docs/properties/mz/index.html-e
 	
 docs-properties-name:
-	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/name.md | pup -i 0 'article.markdown-body h1' > www/docs/properties/temp-content1.html
-	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/name.md | pup -i 0 'article.markdown-body :not(h1)' > www/docs/properties/temp-content2.html
-	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/docs/properties/temp-content1.html
-	cat www/components/head/head.html www/components/navbar/navbar.html www/components/subnav/docs/properties/subnav-top.html www/docs/properties/temp-content1.html www/components/subnav/docs/properties/subnav-bottom.html  www/docs/properties/temp-content2.html www/components/footer/footer.html > www/docs/properties/name.html
-	rm www/docs/properties/temp-content1.html
-	rm www/docs/properties/temp-content2.html
-	rm www/docs/properties/temp-content1.html-e
-	sed -i -e 's/whosonfirst\-sidenav\-link\"\>name\</whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>name\</' www/docs/properties/name.html
-	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>name/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>name/' www/docs/properties/name.html
-	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Properties\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Name\<\/div\>/' www/docs/properties/name.html
-	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>docs\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>docs\<\/a\>/' www/docs/properties/name.html
-	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/docs/properties/name.html
-	rm www/docs/properties/name.html-e
+	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/name.md | pup -i 0 'article.markdown-body h1' > www/docs/properties/name/temp-content1.html
+	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/name.md | pup -i 0 'article.markdown-body :not(h1)' > www/docs/properties/name/temp-content2.html
+	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/docs/properties/name/temp-content1.html
+	cat www/components/head/head-oneleveldown.html www/components/navbar/navbar-oneleveldown.html www/components/subnav/docs/properties/subnav-top-oneleveldown.html www/docs/properties/name/temp-content1.html www/components/subnav/docs/properties/subnav-bottom-oneleveldown.html  www/docs/properties/name/temp-content2.html www/components/footer/footer-oneleveldown.html > www/docs/properties/name/index.html
+	rm www/docs/properties/name/temp-content1.html
+	rm www/docs/properties/name/temp-content2.html
+	rm www/docs/properties/name/temp-content1.html-e
+	sed -i -e 's/whosonfirst\-sidenav\-link\"\>name\</whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>name\</' www/docs/properties/name/index.html
+	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>name/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>name/' www/docs/properties/name/index.html
+	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Properties\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Name\<\/div\>/' www/docs/properties/name/index.html
+	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>docs\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>docs\<\/a\>/' www/docs/properties/name/index.html
+	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/docs/properties/name/index.html
+	rm www/docs/properties/name/index.html-e
 	
 docs-properties-resto:
-	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/resto.md | pup -i 0 'article.markdown-body h1' > www/docs/properties/temp-content1.html
-	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/resto.md | pup -i 0 'article.markdown-body :not(h1)' > www/docs/properties/temp-content2.html
-	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/docs/properties/temp-content1.html
-	cat www/components/head/head.html www/components/navbar/navbar.html www/components/subnav/docs/properties/subnav-top.html www/docs/properties/temp-content1.html www/components/subnav/docs/properties/subnav-bottom.html  www/docs/properties/temp-content2.html www/components/footer/footer.html > www/docs/properties/resto.html
-	rm www/docs/properties/temp-content1.html
-	rm www/docs/properties/temp-content2.html
-	rm www/docs/properties/temp-content1.html-e
-	sed -i -e 's/whosonfirst\-sidenav\-link\"\>resto/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>resto/' www/docs/properties/resto.html
-	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>resto/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>resto/' www/docs/properties/resto.html
-	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Properties\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Resto\<\/div\>/' www/docs/properties/resto.html
-	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>docs\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>docs\<\/a\>/' www/docs/properties/resto.html
-	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/docs/properties/resto.html
-	rm www/docs/properties/resto.html-e
+	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/resto.md | pup -i 0 'article.markdown-body h1' > www/docs/properties/resto/temp-content1.html
+	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/resto.md | pup -i 0 'article.markdown-body :not(h1)' > www/docs/properties/resto/temp-content2.html
+	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/docs/properties/resto/temp-content1.html
+	cat www/components/head/head-oneleveldown.html www/components/navbar/navbar-oneleveldown.html www/components/subnav/docs/properties/subnav-top-oneleveldown.html www/docs/properties/resto/temp-content1.html www/components/subnav/docs/properties/subnav-bottom-oneleveldown.html  www/docs/properties/resto/temp-content2.html www/components/footer/footer-oneleveldown.html > www/docs/properties/resto/index.html
+	rm www/docs/properties/resto/temp-content1.html
+	rm www/docs/properties/resto/temp-content2.html
+	rm www/docs/properties/resto/temp-content1.html-e
+	sed -i -e 's/whosonfirst\-sidenav\-link\"\>resto/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>resto/' www/docs/properties/resto/index.html
+	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>resto/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>resto/' www/docs/properties/resto/index.html
+	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Properties\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Resto\<\/div\>/' www/docs/properties/resto/index.html
+	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>docs\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>docs\<\/a\>/' www/docs/properties/resto/index.html
+	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/docs/properties/resto/index.html
+	rm www/docs/properties/resto/index.html-e
 	
 docs-properties-reversegeo:
-	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/reversegeo.md | pup -i 0 'article.markdown-body h1' > www/docs/properties/temp-content1.html
-	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/reversegeo.md | pup -i 0 'article.markdown-body :not(h1)' > www/docs/properties/temp-content2.html
-	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/docs/properties/temp-content1.html
-	cat www/components/head/head.html www/components/navbar/navbar.html www/components/subnav/docs/properties/subnav-top.html www/docs/properties/temp-content1.html www/components/subnav/docs/properties/subnav-bottom.html  www/docs/properties/temp-content2.html www/components/footer/footer.html > www/docs/properties/reversegeo.html
-	rm www/docs/properties/temp-content1.html
-	rm www/docs/properties/temp-content2.html
-	rm www/docs/properties/temp-content1.html-e
-	sed -i -e 's/whosonfirst\-sidenav\-link\"\>reversegeo/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>reversegeo/' www/docs/properties/reversegeo.html
-	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>reversegeo/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>reversegeo/' www/docs/properties/reversegeo.html
-	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Properties\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Reverse Geo\<\/div\>/' www/docs/properties/reversegeo.html
-	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>docs\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>docs\<\/a\>/' www/docs/properties/reversegeo.html
-	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/docs/properties/reversegeo.html
-	rm www/docs/properties/reversegeo.html-e
+	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/reversegeo.md | pup -i 0 'article.markdown-body h1' > www/docs/properties/reversegeo/temp-content1.html
+	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/reversegeo.md | pup -i 0 'article.markdown-body :not(h1)' > www/docs/properties/reversegeo/temp-content2.html
+	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/docs/properties/reversegeo/temp-content1.html
+	cat www/components/head/head-oneleveldown.html www/components/navbar/navbar-oneleveldown.html www/components/subnav/docs/properties/subnav-top-oneleveldown.html www/docs/properties/reversegeo/temp-content1.html www/components/subnav/docs/properties/subnav-bottom-oneleveldown.html  www/docs/properties/reversegeo/temp-content2.html www/components/footer/footer-oneleveldown.html > www/docs/properties/reversegeo/index.html
+	rm www/docs/properties/reversegeo/temp-content1.html
+	rm www/docs/properties/reversegeo/temp-content2.html
+	rm www/docs/properties/reversegeo/temp-content1.html-e
+	sed -i -e 's/whosonfirst\-sidenav\-link\"\>reversegeo/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>reversegeo/' www/docs/properties/reversegeo/index.html
+	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>reversegeo/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>reversegeo/' www/docs/properties/reversegeo/index.html
+	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Properties\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Reverse Geo\<\/div\>/' www/docs/properties/reversegeo/index.html
+	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>docs\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>docs\<\/a\>/' www/docs/properties/reversegeo/index.html
+	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/docs/properties/reversegeo/index.html
+	rm www/docs/properties/reversegeo/index.html-e
 	
 docs-properties-src:
-	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/src.md | pup -i 0 'article.markdown-body h1' > www/docs/properties/temp-content1.html
-	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/src.md | pup -i 0 'article.markdown-body :not(h1)' > www/docs/properties/temp-content2.html
-	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/docs/properties/temp-content1.html
-	cat www/components/head/head.html www/components/navbar/navbar.html www/components/subnav/docs/properties/subnav-top.html www/docs/properties/temp-content1.html www/components/subnav/docs/properties/subnav-bottom.html  www/docs/properties/temp-content2.html www/components/footer/footer.html > www/docs/properties/src.html
-	rm www/docs/properties/temp-content1.html
-	rm www/docs/properties/temp-content2.html
-	rm www/docs/properties/temp-content1.html-e
-	sed -i -e 's/whosonfirst\-sidenav\-link\"\>src/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>src/' www/docs/properties/src.html
-	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>src/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>src/' www/docs/properties/src.html
-	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Properties\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Src\<\/div\>/' www/docs/properties/src.html
-	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>docs\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>docs\<\/a\>/' www/docs/properties/src.html
-	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/docs/properties/src.html
-	rm www/docs/properties/src.html-e
+	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/src.md | pup -i 0 'article.markdown-body h1' > www/docs/properties/src/temp-content1.html
+	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/src.md | pup -i 0 'article.markdown-body :not(h1)' > www/docs/properties/src/temp-content2.html
+	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/docs/properties/src/temp-content1.html
+	cat www/components/head/head-oneleveldown.html www/components/navbar/navbar-oneleveldown.html www/components/subnav/docs/properties/subnav-top-oneleveldown.html www/docs/properties/src/temp-content1.html www/components/subnav/docs/properties/subnav-bottom-oneleveldown.html  www/docs/properties/src/temp-content2.html www/components/footer/footer-oneleveldown.html > www/docs/properties/src/index.html
+	rm www/docs/properties/src/temp-content1.html
+	rm www/docs/properties/src/temp-content2.html
+	rm www/docs/properties/src/temp-content1.html-e
+	sed -i -e 's/whosonfirst\-sidenav\-link\"\>src/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>src/' www/docs/properties/src/index.html
+	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>src/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>src/' www/docs/properties/src/index.html
+	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Properties\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Src\<\/div\>/' www/docs/properties/src/index.html
+	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>docs\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>docs\<\/a\>/' www/docs/properties/src/index.html
+	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/docs/properties/src/index.html
+	rm www/docs/properties/src/index.html-e
 	
 	
 docs-properties-wof:
-	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/wof.md | pup -i 0 'article.markdown-body h1' > www/docs/properties/temp-content1.html
-	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/wof.md | pup -i 0 'article.markdown-body :not(h1)' > www/docs/properties/temp-content2.html
-	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/docs/properties/temp-content1.html
-	cat www/components/head/head.html www/components/navbar/navbar.html www/components/subnav/docs/properties/subnav-top.html www/docs/properties/temp-content1.html www/components/subnav/docs/properties/subnav-bottom.html  www/docs/properties/temp-content2.html www/components/footer/footer.html > www/docs/properties/wof.html
-	rm www/docs/properties/temp-content1.html
-	rm www/docs/properties/temp-content2.html
-	rm www/docs/properties/temp-content1.html-e
-	sed -i -e 's/whosonfirst\-sidenav\-link\"\>wof/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>wof/' www/docs/properties/wof.html
-	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>wof/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>wof/' www/docs/properties/wof.html
-	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Properties\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Wof\<\/div\>/' www/docs/properties/wof.html
-	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>docs\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>docs\<\/a\>/' www/docs/properties/wof.html
-	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/docs/properties/wof.html
-	rm www/docs/properties/wof.html-e
+	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/wof.md | pup -i 0 'article.markdown-body h1' > www/docs/properties/wof/temp-content1.html
+	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/wof.md | pup -i 0 'article.markdown-body :not(h1)' > www/docs/properties/wof/temp-content2.html
+	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/docs/properties/wof/temp-content1.html
+	cat www/components/head/head-oneleveldown.html www/components/navbar/navbar-oneleveldown.html www/components/subnav/docs/properties/subnav-top-oneleveldown.html www/docs/properties/wof/temp-content1.html www/components/subnav/docs/properties/subnav-bottom-oneleveldown.html  www/docs/properties/wof/temp-content2.html www/components/footer/footer-oneleveldown.html > www/docs/properties/wof/index.html
+	rm www/docs/properties/wof/temp-content1.html
+	rm www/docs/properties/wof/temp-content2.html
+	rm www/docs/properties/wof/temp-content1.html-e
+	sed -i -e 's/whosonfirst\-sidenav\-link\"\>wof/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>wof/' www/docs/properties/wof/index.html
+	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>wof/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>wof/' www/docs/properties/wof/index.html
+	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Properties\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Wof\<\/div\>/' www/docs/properties/wof/index.html
+	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>docs\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>docs\<\/a\>/' www/docs/properties/wof/index.html
+	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/docs/properties/wof/index.html
+	rm www/docs/properties/wof/index.html-e
 	
 docs-properties-brooklynintegers:
-	curl -s https://github.com/whosonfirst/whosonfirst-cookbook/blob/master/definition/brooklyn_integers.md| pup -i 0 'article.markdown-body h1' > www/docs/properties/temp-content1.html
-	curl -s https://github.com/whosonfirst/whosonfirst-cookbook/blob/master/definition/brooklyn_integers.md | pup -i 0 'article.markdown-body :not(h1)' > www/docs/properties/temp-content2.html
-	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/docs/properties/temp-content1.html
-	cat www/components/head/head.html www/components/navbar/navbar.html www/components/subnav/docs/properties/subnav-top.html www/docs/properties/temp-content1.html www/components/subnav/docs/properties/subnav-bottom.html  www/docs/properties/temp-content2.html www/components/footer/footer.html > www/docs/properties/brooklynintegers.html
-	rm www/docs/properties/temp-content1.html
-	rm www/docs/properties/temp-content2.html
-	rm www/docs/properties/temp-content1.html-e
-	sed -i -e 's/whosonfirst\-sidenav\-link\"\>brooklynintegers/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>brooklynintegers/' www/docs/properties/brooklynintegers.html
-	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>brooklynintegers/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>src/' www/docs/properties/brooklynintegers.html
-	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Properties\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Brooklyn Integers\<\/div\>/' www/docs/properties/brooklynintegers.html
-	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>docs\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>docs\<\/a\>/' www/docs/properties/brooklynintegers.html
-	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/docs/properties/brooklynintegers.html
-	rm www/docs/properties/brooklynintegers.html-e
+	curl -s https://github.com/whosonfirst/whosonfirst-cookbook/blob/master/definition/brooklyn_integers.md| pup -i 0 'article.markdown-body h1' > www/docs/properties/brooklynintegers/temp-content1.html
+	curl -s https://github.com/whosonfirst/whosonfirst-cookbook/blob/master/definition/brooklyn_integers.md | pup -i 0 'article.markdown-body :not(h1)' > www/docs/properties/brooklynintegers/temp-content2.html
+	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/docs/properties/brooklynintegers/temp-content1.html
+	cat www/components/head/head-oneleveldown.html www/components/navbar/navbar-oneleveldown.html www/components/subnav/docs/properties/subnav-top-oneleveldown.html www/docs/properties/brooklynintegers/temp-content1.html www/components/subnav/docs/properties/subnav-bottom-oneleveldown.html  www/docs/properties/brooklynintegers/temp-content2.html www/components/footer/footer-oneleveldown.html > www/docs/properties/brooklynintegers/index.html
+	rm www/docs/properties/brooklynintegers/temp-content1.html
+	rm www/docs/properties/brooklynintegers/temp-content2.html
+	rm www/docs/properties/brooklynintegers/temp-content1.html-e
+	sed -i -e 's/whosonfirst\-sidenav\-link\"\>brooklynintegers/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>brooklynintegers/' www/docs/properties/brooklynintegers/index.html
+	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>brooklynintegers/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>src/' www/docs/properties/brooklynintegers/index.html
+	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Properties\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Brooklyn Integers\<\/div\>/' www/docs/properties/brooklynintegers/index.html
+	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>docs\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>docs\<\/a\>/' www/docs/properties/brooklynintegers/index.html
+	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/docs/properties/brooklynintegers/index.html
+	rm www/docs/properties/brooklynintegers/index.html-e
 	
 docs-properties-index:
 	cat www/content/docs/properties/properties.html | pup -i 0 'body h1'  > www/docs/properties/temp-content1.html
