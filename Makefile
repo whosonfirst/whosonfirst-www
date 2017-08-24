@@ -851,6 +851,17 @@ blog:
 	rm www/blog/temp-content2.html
 	rm www/blog/temp-content1.html-e
 	rm www/blog/index.html-e
+
+blog-mesoshapes:
+	cat www/content/blog/mesoshapes/mesoshapes.html | pup -i 0 'body h1' > www/blog/mesoshapes/temp-content1.html
+	cat www/content/blog/mesoshapes/mesoshapes.html | pup -i 0 'body :not(h1)' > www/blog/mesoshapes/temp-content2.html
+	sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/blog/mesoshapes/temp-content1.html
+	cat www/components/head/head.html www/components/navbar/navbar.html www/components/subnav/blog/subnav-top.html www/blog/mesoshapes/temp-content1.html www/components/subnav/blog/subnav-bottom.html  www/blog/mesoshapes/temp-content2.html www/components/footer/footer.html > www/blog/mesoshapes/index.html
+	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>blog\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>blog\<\/a\>/' www/blog/mesoshapes/index.html
+	rm www/blog/mesoshapes/temp-content1.html
+	rm www/blog/mesoshapes/temp-content2.html
+	rm www/blog/mesoshapes/temp-content1.html-e
+	rm www/blog/mesoshapes/index.html-e
 	
 tools-index:
 	cat www/content/tools/tools.html | pup -i 0 'body h1' > www/tools/temp-content1.html
