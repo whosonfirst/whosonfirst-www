@@ -63,10 +63,6 @@ map.on('click', function(e) {
 			if (!marker_click_active) {
 				if (active_plane_clicks.length == 4) {
 					console.log("Were in here");
-					map.removeLayer(active_plane_clicks[0]);
-					map.removeLayer(active_plane_clicks[1]);
-					map.removeLayer(active_plane_clicks[2]);
-					map.removeLayer(active_plane_clicks[3]);
 					map.removeLayer(planePolygon);
 					document.getElementById("whosonfirst-tutorial-form-max-latitude").value = null;
 					document.getElementById("whosonfirst-tutorial-form-min-latitude").value = null;
@@ -89,8 +85,12 @@ map.on('click', function(e) {
 					document.getElementById("whosonfirst-tutorial-form-max-longitude").value = Math.max(active_plane_clicks[0]._latlng.lng,active_plane_clicks[1]._latlng.lng,active_plane_clicks[2]._latlng.lng,active_plane_clicks[3]._latlng.lng);
 					document.getElementById("whosonfirst-tutorial-form-min-longitude").value = Math.min(active_plane_clicks[0]._latlng.lng,active_plane_clicks[1]._latlng.lng,active_plane_clicks[2]._latlng.lng,active_plane_clicks[3]._latlng.lng);
 					var polygonlatlngs = [active_plane_clicks[0]._latlng,active_plane_clicks[1]._latlng,active_plane_clicks[2]._latlng,active_plane_clicks[3]._latlng];
-					planePolygon = new L.polygon(polygonlatlngs, {color: '#FE189B', opacity: '0', fillColor: '#FE189B', fillOpacity: '.2'}).addTo(map);
+					planePolygon = new L.polygon(polygonlatlngs, {color: '#FE189B', opacity: '.6', fillColor: '#FE189B', fillOpacity: '.4', weight: '2' }).addTo(map);
 					console.log(polygonlatlngs);
+					map.removeLayer(active_plane_clicks[0]);
+					map.removeLayer(active_plane_clicks[1]);
+					map.removeLayer(active_plane_clicks[2]);
+					map.removeLayer(active_plane_clicks[3]);
 				}	
 				marker_click_active = false;
 			}
@@ -127,7 +127,8 @@ var show_venue = function(place) {
 	});
 	map.addLayer(marker);
 	current_markers.push(marker);
-	console.log(marker_click_active)
+	console.log(marker_click_active);
+	marker.bindTooltip(place['wof:name'],{offset:[-8,0]});
 };
 
 var create_venue_card = function(place) {
