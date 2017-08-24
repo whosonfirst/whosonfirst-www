@@ -1205,7 +1205,7 @@ a.whosonfirst-dark-gradient:hover > div > .whosonfirst-card-highlight-state-test
 }
 
 .arrow-down {
-	border: solid black;
+	border: solid #1F1F1F;
     border-width: 0 2px 2px 0;
     display: inline-block;
     padding: 6px;
@@ -1217,6 +1217,25 @@ a.whosonfirst-dark-gradient:hover > div > .whosonfirst-card-highlight-state-test
 
 #whosonfirst-custom-card-map-explanation-content {
 	display: inline;
+}
+
+a.whosonfirst-dynamically-generated-post:after {
+	content: "\a" attr(href) " | " attr(data-pubdate) " (" attr(data-word-count) " words or " attr(data-au) " AU)";
+	white-space: pre;
+	font-size: 16px;
+	font-weight: 300;
+	display: table;
+	margin-top: -12px;
+	margin-bottom: 12px;
+	white-space: pre-wrap;       /* css-3 */
+	white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+	white-space: -pre-wrap;      /* Opera 4-6 */
+	white-space: -o-pre-wrap;    /* Opera 7 */
+	word-wrap: break-word;  
+}
+
+a.whosonfirst-dynamically-generated-post:hover:after {
+	color: #1F1F1F;
 }
 
 @media (max-width: 1200px) {	
@@ -1717,6 +1736,12 @@ a.whosonfirst-dark-gradient:hover > div > .whosonfirst-card-highlight-state-test
 	.whosonfirst-link-caption {
 		font-size: 14px;
 		margin-top: 6px !important;
+		margin-bottom: 12px !important;
+	}
+	
+	a.whosonfirst-dynamically-generated-post:after {
+		font-size: 14px;
+		margin-top: -12px !important;
 		margin-bottom: 12px !important;
 	}
 	
@@ -2508,7 +2533,7 @@ a.whosonfirst-dark-gradient:hover > div > .whosonfirst-card-highlight-state-test
 	}
 	
 	a {
-		word-break: break-all;
+		word-break: break-word;
 	}
 	
 	.whosonfirst-smallnav-link-twoliner {

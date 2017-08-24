@@ -19,6 +19,9 @@ mapzen:
 setup:
 	ubuntu/setup-nginx.sh
 
+
+#Not all new but version 2 specific, from here on below
+
 www: www-dev www-prod
 
 www-dev:
@@ -33,7 +36,7 @@ else
 	exit 1
 endif
 
-www-prod: css
+www-prod:
 ifeq ($(UNAME_S),Darwin)
 	utils/darwin/wof-clone-website -ignore \~ -ignore .DS_Store -ignore .gitignore -strict -source www/
 else ifeq ($(UNAME_S),Linux)
@@ -48,12 +51,19 @@ endif
 mk-tools:
 	./utils/mk-utils.sh go-whosonfirst-www wof-clone-website 
 	
-javascript:
+whosonfirst-javascript:
 	curl -s -o www/javascript/jquery.min.js https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js
 	curl -s -o www/javascript/mapzen.min.js https://mapzen.com/js/mapzen.min.js
 	
-cssofficial:
+whosonfirst-css:
 	curl -s -o www/css/mapzen.css https://mapzen.com/js/mapzen.css
+	
+whosonfirst-favicons:
+	curl -s -o www/images/favicons/apple-touch-icon.png https://mapzen.com/common/styleguide/images/favicons/apple-touch-icon.png
+	curl -s -o www/images/favicons/favicon-16x16.png https://mapzen.com/common/styleguide/images/favicons/favicon-16x16.png
+	curl -s -o www/images/favicons/favicon-32x32.png https://mapzen.com/common/styleguide/images/favicons/favicon-32x32.png
+	curl -s -o www/images/favicons/manifest.json https://mapzen.com/common/styleguide/images/favicons/manifest.json
+	curl -s -o www/images/favicons/safari-pinned-tab.svg https://mapzen.com/common/styleguide/images/favicons/safari-pinned-tab.svg
 
 docs-properties-addr:
 	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/addr.md | pup -i 0 'article.markdown-body h1' > www/docs/properties/temp-content1.html
