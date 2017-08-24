@@ -577,6 +577,11 @@ a.whosonfirst-dark-gradient:hover > div > .whosonfirst-card-subheader-test {
 	word-break: break-all;
 }
 
+.whosonfirst-card-map-code-content-response {
+	height: 129px;
+	overflow: hidden;
+}
+
 .whosonfirst-card-explore-code {
 	border: 1px solid #7A7A7A;
 	border-bottom: 0px;
@@ -1677,6 +1682,10 @@ a:hover .whosonfirst-subpage-container-doublewidth-col-card-h1, a:hover .whosonf
 	.whosonfirst-card-container {
 		padding-top: 396px;
 	}
+	
+	.whosonfirst-card-map-code-content-response {
+		height: 115px;
+	}
 }
 
 @media (max-width: 992px) {
@@ -2199,6 +2208,10 @@ a:hover .whosonfirst-subpage-container-doublewidth-col-card-h1, a:hover .whosonf
 
 	.whosonfirst-subpage-container-triplewidth-col {
 		height: 60px;
+	}
+	
+	.whosonfirst-card-map-code-content-response {
+		height: 74px;
 	}
 }
 
@@ -2828,6 +2841,11 @@ a:hover .whosonfirst-subpage-container-doublewidth-col-card-h1, a:hover .whosonf
 
 	.whosonfirst-subpage-container-triplewidth-col {
 		height: 48px;
+	}
+	
+	.whosonfirst-card-map-code-content-response {
+		height: 92px;
+		margin-bottom: 2px;
 	}
 }
 
