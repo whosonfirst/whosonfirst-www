@@ -2828,6 +2828,8 @@ h2:hover::after, h3:hover::after, h4:hover::after, h5:hover::after, h6:hover::af
 	
 	div.whosonfirst-card-container h6.whosonfirst-main-headline {
 		display: block;
+		font-size: 24px;
+    	margin: 42px 0 66px;
 	}
 	
 	#homepage-explore-card {
@@ -2853,7 +2855,7 @@ h2:hover::after, h3:hover::after, h4:hover::after, h5:hover::after, h6:hover::af
 	}
 	
 	.whosonfirst-card-map-code-content-response {
-		height: 92px;
+		height: 67px;
 		margin-bottom: 2px;
 	}
 }
