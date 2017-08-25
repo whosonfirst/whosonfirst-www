@@ -1253,6 +1253,8 @@ a.whosonfirst-dynamically-generated-post:hover:after {
     width: 50%;
 	padding: 0 3px;
 	margin: 3px 0;
+	position: relative;
+	float: left;
 }
 
 .whosonfirst-subpage-container-doublewidth-col:first-child, .whosonfirst-subpage-container-singlewidth-col:first-child, .whosonfirst-subpage-container-triplewidth-col:first-child {
@@ -1276,6 +1278,8 @@ a.whosonfirst-dynamically-generated-post:hover:after {
     width: 25%;
 	padding: 0 3px;
 	margin: 3px 0;
+	position: relative;
+	float: left;
 }
 
 .whosonfirst-subpage-container-singlewidth-col-card {
@@ -1300,6 +1304,8 @@ a.whosonfirst-dynamically-generated-post:hover:after {
 	border-bottom: 4px solid #FFFFFF;
 	display: inline-block;
 	vertical-align: middle;
+	transition: color .4s ease, border-color .4s ease;
+	
 }
 
 .whosonfirst-subpage-container-triplewidth-col {
@@ -1307,6 +1313,8 @@ a.whosonfirst-dynamically-generated-post:hover:after {
     width: 75%;
 	padding: 0 3px;
 	margin: 3px 0;
+	position: relative;
+	float: left;
 }
 
 .whosonfirst-subpage-container-triplewidth-col-card {

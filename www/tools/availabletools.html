@@ -6,14 +6,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Who’s On First</title>
         <meta name='description' content="Who's on First is a gazetteer of places.">
-        <link rel='apple-touch-icon' href='https://mapzen.com/common/styleguide/images/favicons/apple-touch-icon.png' sizes='180x180'>
-        <link rel='icon' type='image/png' href='https://mapzen.com/common/styleguide/images/favicons/favicon-16x16.png' sizes='16x16'>
-        <link rel='icon' type='image/png' href='https://mapzen.com/common/styleguide/images/favicons/favicon-32x32.png' sizes='32x32'>
-        <link rel='manifest' href='https://mapzen.com/common/styleguide/images/favicons/manifest.json'>
-        <link rel='mask-icon' href='https://mapzen.com/common/styleguide/images/favicons/safari-pinned-tab.svg' color='#2C1E3F'>
+        <link rel='apple-touch-icon' href='../images/favicons/apple-touch-icon.png' sizes='180x180'>
+        <link rel='icon' type='image/png' href='../images/favicons/favicon-16x16.png' sizes='16x16'>
+        <link rel='icon' type='image/png' href='../images/favicons/favicon-32x32.png' sizes='32x32'>
+        <link rel='manifest' href='../images/favicons/manifest.json'>
+        <link rel='mask-icon' href='../images/favicons/safari-pinned-tab.svg' color='#2C1E3F'>
 		
 		<link rel="stylesheet" href="../css/bootstrap.min.css">
 		<link rel="stylesheet" href="../css/mapzen.whosonfirst.css">
+        <!-- CSS for code styling from highlightpack.js -->
+		<link rel="stylesheet" href="../css/styles/grayscale.css">
     </head>
 	<body>
 		<div class="whosonfirst-wrapper"><nav class="navbar navbar-default navbar-fixed-top whosonfirst-fixed-subpage-navbar">
@@ -42,7 +44,7 @@
 					<a href="../tools/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed whosonfirst-nav-active">tools</a>
 				</li>
 				<li class="whosonfirst-navbar-element-collapsed">
-					<a href="../alltheblog/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">blog</a>
+					<a href="../blog/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">blog</a>
 				</li>
 				<li class="whosonfirst-navbar-element-collapsed">
 					<a href="../getstarted/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">get started</a>
@@ -64,7 +66,7 @@
 			</aside>
 		</div>
 		<div class="col-lg-7 col-md-9 col-sm-9 col-xs-12">
-			<article><h1 id="available-tools">
+			<article><h1 class="whosonfirst-subpage-header" id="available-tools">
 Available Tools
 </h1>
 <div class="whosonfirst-fulltabs-container">
@@ -227,5 +229,8 @@ A simple Flask-based spelunker for poking around Who&#39;s On First data
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
 		<script src="../javascript/bootstrap.min.js"></script>
 		<script src="../javascript/mapzen.whosonfirst.subpage.js"></script>
+        <!-- JavaScript for code styling from highlightpack.js -->
+		<script src="../javascript/highlightpack.js"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
 	</body>
 </html>
