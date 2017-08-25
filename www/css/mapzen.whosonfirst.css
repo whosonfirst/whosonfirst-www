@@ -2827,9 +2827,9 @@ h2:hover::after, h3:hover::after, h4:hover::after, h5:hover::after, h6:hover::af
 	}
 	
 	.whosonfirst-header-image-container {
-		width: 200%;
-		margin-left: -25%;
-		margin-right: -25%;
+		width: 400%;
+		margin-left: -37.5%;
+		margin-right: -37.5%;
 	}
 	
 	div.whosonfirst-card-container h6.whosonfirst-main-headline {
