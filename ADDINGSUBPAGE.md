@@ -38,12 +38,25 @@ cat www/content/[custom_html_location] | pup -i 0 'body :not(h1)'  > www/[desire
 ```
 sed -i -e 's/\<h1\>/\<h1 class\=\"whosonfirst\-subpage\-header\"\>/' www/docs/temp-content1.html
 ```
+7. Ensure that you have the correct subnav components. If not, go into the correct first levelfolder, you may have to create a whole new one if this is a new level entirely. If the component is a second or third level, go into the correct folder or create the folder. An example of third level is the mz folder which is located in the properties folder of the docs folder. Once in the correct folder, create subnav-bottom.html and subnav-top.html files. Copy the code from existing subnavs and make the necessary updates. For example, if you need to create a new third level, add the following code in a bottom subnav:
+```
+<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+    <a href="[second_level_name_url]" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed whosonfirst-subnav-secondlevel">[second_level_name]</a>
+</li>
+```
+You also need to add the following code in a top subnav:
+```
+<li class="whosonfirst-sidenav-list-element whosonfirst-sidenav-list-element-secondlevel">
+    <a href="[second_level_name_url]" class="whosonfirst-nav-link whosonfirst-sidenav-link">[second_level_name]</a>
+</li>
+```
+Be sure to update to update all the subnavs that share that page's first level, with the new page.
 7. Add the following cat command, with the appropriate components and the content from the cat or curl commands. 
 ```
 cat www/components/head/head-onelevelup.html www/components/navbar/navbar-onelevelup.html www/components/subnav/docs/subnav-top-onelevelup.html www/docs/temp-content1.html www/components/subnav/docs/subnav-bottom-onelevelup.html  www/docs/temp-content2.html www/components/footer/footer-onelevelup.html > www/[desired_final_url].html
 ```
-8. If you page belongs in a first level category in the navbar, include the following sed command with appropriate fields.
-```sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>[first_level_category]\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>[first_level_category]\<\/a\>/' www/[desired_final_url].html
+8. If you page belongs in a first level that is in the navbar, include the following sed command with appropriate fields.
+```sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>[first_level]\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>[first_level]\<\/a\>/' www/[desired_final_url].html
 ```
 9. Remove the following temporary files.
 ```
@@ -51,15 +64,15 @@ rm www/allthedata/pullrequest/temp-content1.html
 rm www/allthedata/pullrequest/temp-content2.html
 rm www/allthedata/pullrequest/temp-content1.html-e
 ```
-10. If you page is utilizing subnav-top component with second level categories, include the following sed command with appropriate fields.
+10. If you page is utilizing subnav-top component with second level pages, include the following sed command with appropriate fields.
 ```
 sed -i -e 's/whosonfirst\-sidenav\-link\"\>[new_page_name]/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>[new_page_name]/' www/[desired_final_url].html
 ```
-11. If you page is utilizing subnav-bottom component with second level categories, include the following sed command with appropriate fields.
+11. If you page is utilizing subnav-bottom component with second level pages, include the following sed command with appropriate fields.
 ```
 sed -i -e 's/whosonfirst\-extrasmall\-nav\-link\-collapsed\-last\"\>[new_page_name]/whosonfirst\-extrasmall\-nav\-link\-collapsed\-last whosonfirst\-nav\-active\"\>[new_page_name]/' www/[desired_final_url].html
 ```
-12. If you page is utilizing subnav-top component with second level categories, include the following sed command with appropriate fields.
+12. If you page is utilizing subnav-top component with second level pages, include the following sed command with appropriate fields.
 ```
 sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>[page_name_in_component]\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>[new_page_name]\<\/div\>/' www/[desired_final_url].html
 ```
