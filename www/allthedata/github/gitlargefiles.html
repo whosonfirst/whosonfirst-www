@@ -152,18 +152,22 @@ repository. For example, the record for New Zealand which contains a very very v
 A full discussion of how to use git-lfs is outside the scope of this document but you can see the current list of files being managed by invoking the git lfs ls-files command, like this:
 </p>
 <pre>
+<code>
 $&gt; cd /usr/local/mapzen/whosonfirst-data
 $&gt; git lfs ls-files
 65ccc4825e * data/856/333/45/85633345.geojson
+</code>
 </pre>
 <p>
 When you clone the whosonfirst-data repo the files (managed by git-lfs) only contain metadata, like this:
 </p>
 <pre>
+<code>
 $&gt; cat data/856/333/45/85633345.geojson
 version https://git-lfs.github.com/spec/v1
 oid sha256:65ccc4825e65c30f00fcebf1f3d57f4385f18a47e3c5e524114a67050186ae48
 size 71879893
+</code>
 </pre>
 <p>
 In order to retrieve the contents of the file itself you will need to run
@@ -173,6 +177,7 @@ git lfs pull
 , like this:
 </p>
 <pre>
+<code>
 $&gt; git lfs pull
 Fetching master
 (1 of 1 files) 68.54 MB / 68.55 MB
@@ -185,6 +190,7 @@ $&gt; cat data/856/333/45/85633345.geojson
 &#34;edtf:inception&#34;:&#34;u&#34;,
 &#34;geom:area&#34;:29.187792061074827,
 &#34;geom:bbox&#34;:&#34;166.426148,-47.289992,178.577244,-33
+</code>
 </pre>
 <p>
 Depending on when you read this we may have already pre-emptively moved
