@@ -1,15 +1,15 @@
 <h1 id="hierachies">Hierachies</h1>
 <p>Hierarchies in Who’s On First are represented as a list of dictionaries, where each item is a dictionary containing a full hierarchy. Like this:</p>
 <pre>
-"wof:hierarchy": [
-    {
-        "country_id": "85633147",
-        "region_id": "85683255",
-        "county_id": "102072387",
-        "locality_id": "101750223",
-        "neighbourhood_id": "85794581"
-    }
-]
+<code>"wof:hierarchy": [
+  {
+    "country_id": "85633147",
+    "region_id": "85683255",
+    "county_id": "102072387",
+    "locality_id": "101750223",
+    "neighbourhood_id": "85794581"
+  }
+]</code>
 </pre>
 <p>This is because a location in Who’s On First can have multiple divergent hierarchies. Consider place types like metropolitan areas (the “Bay Area” in and around San Francisco, “New York” inclusive of all five boroughs and even some parts of New Jersey and so on) which often contain multiple children of the same place type. Consider disputed territories. There is a whole separate document about the rationale for this decision and how we arrived at it but the short excerpted version is this:</p>
 <p>Reasons why this suggestion is good:</p>

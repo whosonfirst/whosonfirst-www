@@ -902,10 +902,10 @@ pre {
 	font-weight: 300;
 	word-break: break-all;
 	border-radius: 2px;
-    padding: 12px 4%;
+    padding: 12px 4% 8px;
     margin: 12px 0px;
 	white-space:pre-wrap;
-	line-height: 1.4;
+	line-height: 1.5;
 }
 
 /*Not Sure What the best way to get even margins on code snippets is*/
@@ -1330,6 +1330,13 @@ h2:hover::after, h3:hover::after, h4:hover::after, h5:hover::after, h6:hover::af
 	line-height: 12px;
 	font-family: "Roboto", Helvetica, Arial, sans-serif;
 	letter-spacing: 0;
+}
+
+.hljs {
+  background: transparent !important;
+  padding: 0 !important;
+  color: #1F1F1F !important;
+  margin-right: 0;
 }
 
 @media (max-width: 1200px) {	

@@ -14,6 +14,8 @@
 		
 		<link rel="stylesheet" href="../../css/bootstrap.min.css">
 		<link rel="stylesheet" href="../../css/mapzen.whosonfirst.css">
+        <!-- CSS for code styling from highlightpack.js -->
+		<link rel="stylesheet" href="../../css/styles/grayscale.css">
     </head>
 	<body>
 		<div class="whosonfirst-wrapper"><nav class="navbar navbar-default navbar-fixed-top whosonfirst-fixed-subpage-navbar">
@@ -349,15 +351,17 @@ For example it should be possible to take anything that comes back from Pelias (
 With that in mind a “minimal viable properties” dictionary might look like this:
 </p>
 <pre>
+<code>
 {
-    &#34;wof:id&#34;: 85922583,
-    &#34;wof:name&#34;: &#34;San Francisco&#34;,
-    &#34;wof:fullname&#34;: &#34;San Francisco, California US&#34;,
-    &#34;wof:placetype&#34;: &#34;locality&#34;,
-    &#34;wof:parent_id&#34;: 85688637,
-    &#34;wof:quality&#34;: 9,
-    &#34;wof:score&#34;: 100
+  &#34;wof:id&#34;: 85922583,
+  &#34;wof:name&#34;: &#34;San Francisco&#34;,
+  &#34;wof:fullname&#34;: &#34;San Francisco, California US&#34;,
+  &#34;wof:placetype&#34;: &#34;locality&#34;,
+  &#34;wof:parent_id&#34;: 85688637,
+  &#34;wof:quality&#34;: 9,
+  &#34;wof:score&#34;: 100
 }
+</code>
 </pre>
 <p>
 A couple things to note about this example:
@@ -399,5 +403,8 @@ The wof:score property and its semantics should be considered a place-holder for
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
 		<script src="../../javascript/bootstrap.min.js"></script>
 		<script src="../../javascript/mapzen.whosonfirst.subpage.js"></script>
+		<!-- JavaScript for code styling from highlightpack.js -->
+		<script src="../../javascript/highlightpack.js"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
 	</body>
 </html>

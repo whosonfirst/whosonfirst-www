@@ -6,14 +6,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Who’s On First</title>
         <meta name='description' content="Who's on First is a gazetteer of places.">
-        <link rel='apple-touch-icon' href='https://mapzen.com/common/styleguide/images/favicons/apple-touch-icon.png' sizes='180x180'>
-        <link rel='icon' type='image/png' href='https://mapzen.com/common/styleguide/images/favicons/favicon-16x16.png' sizes='16x16'>
-        <link rel='icon' type='image/png' href='https://mapzen.com/common/styleguide/images/favicons/favicon-32x32.png' sizes='32x32'>
-        <link rel='manifest' href='https://mapzen.com/common/styleguide/images/favicons/manifest.json'>
-        <link rel='mask-icon' href='https://mapzen.com/common/styleguide/images/favicons/safari-pinned-tab.svg' color='#2C1E3F'>
+        <link rel='apple-touch-icon' href='../images/favicons/apple-touch-icon.png' sizes='180x180'>
+        <link rel='icon' type='image/png' href='../images/favicons/favicon-16x16.png' sizes='16x16'>
+        <link rel='icon' type='image/png' href='../images/favicons/favicon-32x32.png' sizes='32x32'>
+        <link rel='manifest' href='../images/favicons/manifest.json'>
+        <link rel='mask-icon' href='../images/favicons/safari-pinned-tab.svg' color='#2C1E3F'>
 		
 		<link rel="stylesheet" href="../css/bootstrap.min.css">
 		<link rel="stylesheet" href="../css/mapzen.whosonfirst.css">
+        <!-- CSS for code styling from highlightpack.js -->
+		<link rel="stylesheet" href="../css/styles/grayscale.css">
     </head>
 	<body>
 		<div class="whosonfirst-wrapper"><nav class="navbar navbar-default navbar-fixed-top whosonfirst-fixed-subpage-navbar">
@@ -42,7 +44,7 @@
 					<a href="../tools/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">tools</a>
 				</li>
 				<li class="whosonfirst-navbar-element-collapsed">
-					<a href="../alltheblog/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">blog</a>
+					<a href="../blog/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">blog</a>
 				</li>
 				<li class="whosonfirst-navbar-element-collapsed">
 					<a href="../getstarted/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed whosonfirst-nav-active">get started</a>
@@ -145,37 +147,40 @@ to make our initial map.
 To do this, we need to create an html page. Use the code below to create the map.
 </p>
 <pre>
+<code>
 &lt;!DOCTYPE html&gt;
 &lt;html lang=&#34;en&#34;&gt;
- &lt;head&gt;
-  &lt;title&gt;My Web Map&lt;/title&gt;
-  &lt;meta charset=&#34;utf-8&#34;&gt;
-  &lt;link rel=&#34;stylesheet&#34; href=&#34;https://mapzen.com/js/mapzen.css&#34;&gt;
-  &lt;script src=&#34;https://mapzen.com/js/mapzen.min.js&#34;&gt;&lt;/script&gt;
-  &lt;style&gt;
-   #map {
-    height: 100%;
-    width: 100%;
-    position: absolute;
-   }
-   html,body{margin: 0; padding: 0;}
-  &lt;/style&gt;
- &lt;/head&gt;
- &lt;body&gt;
-  &lt;div id=&#34;map&#34;&gt;&lt;/div&gt;
-  &lt;script&gt;
-   L.Mapzen.apiKey = &#39;your-mapzen-api-key&#39;;
-   var map = L.Mapzen.map(&#39;map&#39;, {
-    tangramOptions: {
-     scene: {
-      import: [
-       &#39;https://mapzen.com/carto/refill-style/8/refill-style.zip&#39;, &#39;https://mapzen.com/carto/refill-style/8/themes/color-gray.zip&#39;, &#39;https://mapzen.com/carto/refill-style/8/themes/detail-1.zip&#39;
-     ] } }
-   });
-   map.setView([37.77493, -122.41942], 12);
-  &lt;/script&gt;
- &lt;/body&gt;
+  &lt;head&gt;
+  &lt;title&gt;My Web Map&lt;/title&gt;
+  &lt;meta charset=&#34;utf-8&#34;&gt;
+  &lt;link rel=&#34;stylesheet&#34; href=&#34;https://mapzen.com/js/mapzen.css&#34;&gt;
+  &lt;script src=&#34;https://mapzen.com/js/mapzen.min.js&#34;&gt;&lt;/script&gt;
+  style&gt;
+    #map {
+      height: 100%;
+      width: 100%;
+      position: absolute;
+    }
+    html,body{margin: 0; padding: 0;}
+  &lt;/style&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id=&#34;map&#34;&gt;&lt;/div&gt;
+    &lt;script&gt;
+      L.Mapzen.apiKey = &#39;your-mapzen-api-key&#39;;
+      var map = L.Mapzen.map(&#39;map&#39;, {
+        tangramOptions: {
+          scene: {
+          import: [
+            &#39;https://mapzen.com/carto/refill-style/8/refill-style.zip&#39;, &#39;https://mapzen.com/carto/refill-style/8/themes/color-gray.zip&#39;, &#39;https://mapzen.com/carto/refill-style/8/themes/detail-1.zip&#39;
+          ]} 
+        }
+      });
+      map.setView([37.77493, -122.41942], 12);
+    &lt;/script&gt;
+  &lt;/body&gt;
 &lt;/html&gt;
+</code>
 </pre>
 <p>
 To learn more about mapzen.js, check out it&#39;s
@@ -205,11 +210,13 @@ Note the wof id. You can find it if you scroll down, it also the number located 
 Also, verify that you map is centered on the the right coordinates and the level is set correctly. For our purposes, we are going to level 14.
 </p>
 <pre>
+<code>
 &lt;script&gt;
- L.Mapzen.apiKey = &#39;your-mapzen-api-key&#39;;
- var map = L.Mapzen.map(&#39;map&#39;);
- map.setView([37.77493, -122.41942], 14);
+  L.Mapzen.apiKey = &#39;your-mapzen-api-key&#39;;
+  var map = L.Mapzen.map(&#39;map&#39;);
+  map.setView([37.77493, -122.41942], 14);
 &lt;/script&gt;
+</code>
 </pre>
 <h2 id="step-3-retrieve-data-using-the-api" class="whosonfirst-subpage-subheader">
 Step 3: Retrieve Data using the API
@@ -225,13 +232,17 @@ file.
 Add the script to your html file.
 </p>
 <pre>
+<code>
 &lt;script src=&#34;mapzen.whosonfirst.api.js&#34;&gt;&lt;/script&gt;
+</code>
 </pre>
 <p>
 Also add jquery we are going to use that later.
 </p>
 <pre>
+<code>
 &lt;script src=&#34;jquery.min.js&#34;&gt;&lt;/script&gt;
+</code>
 </pre>
 <p>
 This script will allow you to make the queries available by the
@@ -248,10 +259,11 @@ whosonfirst.places.getDescendants API method
 . We include mz:uri as an extra so we are able to retrieve a neighbourhood&#39;s geometry. Also note that we only want neighbourhood descendants.
 </p>
 <pre>
+<code>
 function runWhosOnFirstAPI() {
 // Setup the API key
 mapzen.whosonfirst.api.set_handler(&#39;authentication&#39;, function() {
- return &#39;your-mapzen-key&#39;;
+  return &#39;your-mapzen-key&#39;;
 });
 
 // See: https://mapzen.com/documentation/wof/methods/#whosonfirst.places.getDescendants
@@ -259,36 +271,39 @@ mapzen.whosonfirst.api.set_handler(&#39;authentication&#39;, function() {
 var parent_id = &#39;85922583&#39;;
 var method = &#39;whosonfirst.places.getDescendants&#39;;
 var data = {
- id: &#39;85922583&#39;,
- per_page: 500,
- extras: &#39;mz:uri,geom:latitude,geom:longitude&#39;, // this gets us lat/lng coords
- placetype: &#39;neighbourhood&#39;
+  id: &#39;85922583&#39;,
+  per_page: 500,
+  extras: &#39;mz:uri,geom:latitude,geom:longitude&#39;, // this gets us lat/lng coords
+  placetype: &#39;neighbourhood&#39;
 };
 
 // Ok now we actually call the API
 mapzen.whosonfirst.api.execute_method_paginated(method, data, onsuccess, onerror, onprogress);
 };
+</code>
 </pre>
 <p>
 Add the following helper functions. Not that the show_plane function has not yet been created.
 </p>
 <pre>
+<code>
 // NOOP (we are using onprogress instead)
 var onsuccess = function() { return; };
 
 // Just log errors to the JS console
 var onerror = function(rsp) {
- console.error(rsp);
+  console.error(rsp);
 };
 
 // Take all the API results and show them on the map
 var onprogress = function(rsp) {
- //console.log(rsp);
- for (var i = 0; i &lt; rsp.places.length; i++) {
-  var place = rsp.places[i];
-  show_plane(place);
- }
+  //console.log(rsp);
+  for (var i = 0; i &lt; rsp.places.length; i++) {
+    var place = rsp.places[i];
+    show_plane(place);
+  }
 };
+</code>
 </pre>
 <h2 id="step-4-display-the-data" class="whosonfirst-subpage-subheader">
 Step 4: Display the Data
@@ -297,102 +312,107 @@ Step 4: Display the Data
 Now we are going to display the data. To do this, we are going to write a show_plane function. The show_plane function takes a place&#39;s geometry and stylizes it with a fill and stroke. For our purposes, we are selecting random shades of gray.
 </p>
 <pre>
+<code>
 var show_plane = function(place) {
- $.get(place[&#39;mz:uri&#39;], function(result) {
-  L.geoJSON(result, {style: function (feature) {
-   randomNumber1 = 86+Math.ceil(Math.random()*100);
-   color = &#34;rgb(&#34;+randomNumber1+&#34;,&#34;+randomNumber1+&#34;,&#34;+randomNumber1+&#34;)&#34;
-   return {color: &#39;#888888&#39;, weight: 1, opacity: &#39;.7&#39;, fillColor: color, fillOpacity: .5};
-  }}).addTo(map);
- });
+  $.get(place[&#39;mz:uri&#39;], function(result) {
+    L.geoJSON(result, {style: function (feature) {
+      randomNumber1 = 86+Math.ceil(Math.random()*100);
+      color = &#34;rgb(&#34;+randomNumber1+&#34;,&#34;+randomNumber1+&#34;,&#34;+randomNumber1+&#34;)&#34;
+      return {color: &#39;#888888&#39;, weight: 1, opacity: &#39;.7&#39;, fillColor: color, fillOpacity: .5};
+    }}).addTo(map);
+  });
 }
+</code>
 </pre>
 <p>
 Your code should now resemble:
 </p>
 <pre>
+<code>
 &lt;!DOCTYPE html&gt;
 &lt;html lang=&#34;en&#34;&gt;
- &lt;head&gt;
-  &lt;title&gt;My Web Map&lt;/title&gt;
-  &lt;meta charset=&#34;utf-8&#34;&gt;
-  &lt;link rel=&#34;stylesheet&#34; href=&#34;https://mapzen.com/js/mapzen.css&#34;&gt;
-  &lt;script src=&#34;https://mapzen.com/js/mapzen.min.js&#34;&gt;&lt;/script&gt;
-  &lt;style&gt;
-   #map {
-    height: 100%;
-    width: 100%;
-    position: absolute;
-   }
-   html,body{margin: 0; padding: 0;}
-  &lt;/style&gt;
- &lt;/head&gt;
- &lt;body onload=&#34;runWhosOnFirstAPI()&#34;&gt;
-  &lt;div id=&#34;map&#34;&gt;&lt;/div&gt;
-  &lt;script src=&#34;../javascript/mapzen.whosonfirst.api.js&#34;&gt;&lt;/script&gt;
-  &lt;script src=&#34;../javascript/jquery.min.js&#34;&gt;&lt;/script&gt;
-  &lt;script&gt;
-  L.Mapzen.apiKey = &#39;mapzen-aetZmeQ&#39;;
-  var map = L.Mapzen.map(&#39;map&#39;, {
-   tangramOptions: {
-    scene: {
-     import: [
-      &#39;https://mapzen.com/carto/refill-style/8/refill-style.zip&#39;, &#39;https://mapzen.com/carto/refill-style/8/themes/color-gray.zip&#39;, &#39;https://mapzen.com/carto/refill-style/8/themes/detail-1.zip&#39;
-    ] } }
-  });
-  map.setView([37.77493, -122.41942], 14);
+  &lt;head&gt;
+    &lt;title&gt;My Web Map&lt;/title&gt;
+    &lt;meta charset=&#34;utf-8&#34;&gt;
+    &lt;link rel=&#34;stylesheet&#34; href=&#34;https://mapzen.com/js/mapzen.css&#34;&gt;
+    &lt;script src=&#34;https://mapzen.com/js/mapzen.min.js&#34;&gt;&lt;/script&gt;
+    &lt;style&gt;
+      #map {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+      }
+      html,body{margin: 0; padding: 0;}
+    &lt;/style&gt;
+  &lt;/head&gt;
+  &lt;body onload=&#34;runWhosOnFirstAPI()&#34;&gt;
+    &lt;div id=&#34;map&#34;&gt;&lt;/div&gt;
+      &lt;script src=&#34;../javascript/mapzen.whosonfirst.api.js&#34;&gt;&lt;/script&gt;
+      &lt;script src=&#34;../javascript/jquery.min.js&#34;&gt;&lt;/script&gt;
+    &lt;script&gt;
+    L.Mapzen.apiKey = &#39;mapzen-aetZmeQ&#39;;
+    var map = L.Mapzen.map(&#39;map&#39;, {
+      tangramOptions: {
+        scene: {
+          import: [
+            &#39;https://mapzen.com/carto/refill-style/8/refill-style.zip&#39;, &#39;https://mapzen.com/carto/refill-style/8/themes/color-gray.zip&#39;, &#39;https://mapzen.com/carto/refill-style/8/themes/detail-1.zip&#39;
+        ]} 
+      }
+    });
+    map.setView([37.77493, -122.41942], 14);
 			
-  // How we should handle each API result
-  var show_plane = function(place) {
-   $.get(place[&#39;mz:uri&#39;], function(result) {
-    L.geoJSON(result, {style: function (feature) {
-     randomNumber1 = 86+Math.ceil(Math.random()*100);
-     color = &#34;rgb(&#34;+randomNumber1+&#34;,&#34;+randomNumber1+&#34;,&#34;+randomNumber1+&#34;)&#34;
-     return {color: &#39;#888888&#39;, weight: 1, opacity: &#39;.7&#39;, fillColor: color, fillOpacity: .5};
-    }}).addTo(map);
-   });
-  }
+    // How we should handle each API result
+    var show_plane = function(place) {
+      $.get(place[&#39;mz:uri&#39;], function(result) {
+        L.geoJSON(result, {style: function (feature) {
+          randomNumber1 = 86+Math.ceil(Math.random()*100);
+          color = &#34;rgb(&#34;+randomNumber1+&#34;,&#34;+randomNumber1+&#34;,&#34;+randomNumber1+&#34;)&#34;
+          return {color: &#39;#888888&#39;, weight: 1, opacity: &#39;.7&#39;, fillColor: color, fillOpacity: .5};
+        }}).addTo(map);
+      });
+    }
 
-  // NOOP (we are using onprogress instead)
-  var onsuccess = function() { return; };
+    // NOOP (we are using onprogress instead)
+    var onsuccess = function() { return; };
 
-  // Just log errors to the JS console
-  var onerror = function(rsp) {
-    console.error(rsp);
-  };
+    // Just log errors to the JS console
+    var onerror = function(rsp) {
+      console.error(rsp);
+    };
 
-  // Take all the API results and show them on the map
-  var onprogress = function(rsp) {
-   //console.log(rsp);
-   for (var i = 0; i &lt; rsp.places.length; i++) {
-    var place = rsp.places[i];
-    show_plane(place);
-   }
-  };
+    // Take all the API results and show them on the map
+    var onprogress = function(rsp) {
+      //console.log(rsp);
+      for (var i = 0; i &lt; rsp.places.length; i++) {
+        var place = rsp.places[i];
+        show_plane(place);
+      }
+    };
 
-  function runWhosOnFirstAPI() {
-   // Setup the API key
-   mapzen.whosonfirst.api.set_handler(&#39;authentication&#39;, function() {
-    return &#39;mapzen-aetZmeQ&#39;;
-   });
+    function runWhosOnFirstAPI() {
+      // Setup the API key
+      mapzen.whosonfirst.api.set_handler(&#39;authentication&#39;, function() {
+        return &#39;your-mapzen-key&#39;;
+      });
 
-   // Get all the venues in the Flatiron District
-   // See: https://mapzen.com/documentation/wof/methods/#whosonfirst.places.getDescendants
-   var parent_id = &#39;85922583&#39;;
-   var method = &#39;whosonfirst.places.getDescendants&#39;;
-   var data = {
-    id: parent_id,
-    per_page: 500,
-    extras: &#39;mz:uri,geom:latitude,geom:longitude&#39;, // this gets us lat/lng coords
-    placetype: &#39;neighbourhood&#39;
-   };
+      // Get all the venues in the Flatiron District
+      // See: https://mapzen.com/documentation/wof/methods/#whosonfirst.places.getDescendants
+      var parent_id = &#39;85922583&#39;;
+      var method = &#39;whosonfirst.places.getDescendants&#39;;
+      var data = {
+      id: parent_id,
+      per_page: 500,
+      extras: &#39;mz:uri,geom:latitude,geom:longitude&#39;, // this gets us lat/lng coords
+      placetype: &#39;neighbourhood&#39;
+    };
 
-   // Ok now we actually call the API
-   mapzen.whosonfirst.api.execute_method_paginated(method, data, onsuccess, onerror, onprogress);
-  };
-  &lt;/script&gt;
- &lt;/body&gt;
+    // Ok now we actually call the API
+    mapzen.whosonfirst.api.execute_method_paginated(method, data, onsuccess, onerror, onprogress);
+  };
+  &lt;/script&gt;
+  &lt;/body&gt;
 &lt;/html&gt;
+</code>
 </pre>
 <p>
 When you refresh your html page, you should see this.
@@ -430,5 +450,8 @@ Congrats, you just made a map of San Francisco&#39;s neighbourhoods using the WO
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
 		<script src="../javascript/bootstrap.min.js"></script>
 		<script src="../javascript/mapzen.whosonfirst.subpage.js"></script>
+        <!-- JavaScript for code styling from highlightpack.js -->
+		<script src="../javascript/highlightpack.js"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
 	</body>
 </html>

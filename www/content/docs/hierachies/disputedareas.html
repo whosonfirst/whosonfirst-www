@@ -4,21 +4,21 @@
 <h2 id="parent-ids-and-custody">Parent ids and “custody”</h2>
 <p>Even though a place can have multiple hierarchies we still assume that in most cases there is a single “authority” in place, on the ground. For example, the Golan Heights is disputed by both Syria and Israel, a fact reflected in the place hierarchy, but is still “parented” by Israel:</p>
 <pre>
-"wof:hierarchy": [
-    {
-        "continent_id": "102191569",
-        "country_id": "85632315",
-        "disputed_id": "85632221"
-        },
-    {
-        "continent_id": "102191569",
-        "country_id": "85632413",
-        "disputed_id": "85632221"
-    }
+<code>"wof:hierarchy": [
+  {
+    "continent_id": "102191569",
+    "country_id": "85632315",
+    "disputed_id": "85632221"
+    },
+  {
+    "continent_id": "102191569",
+    "country_id": "85632413",
+    "disputed_id": "85632221"
+  }
 ],
 "wof:id": "85632221",
 "wof:name": "Golan Heights",
-"wof:parent_id": "85632315",
+"wof:parent_id": "85632315",</code>
 </pre>
 <p>In a few isolated cases we really don’t have a good answer for who the parent is or if we’re just not sure because it’s early days and are still vetting the data we will assign a value of -1 for the parent record.</p>
 <p>Occasionally we will assign a value of -2. This should be interpreted as “:shrug: the world is a complicated place”. For example, the Baykonur Cosmodrome is a little donut hole of Russia surrounded by the nation of Kazakhstan.</p>

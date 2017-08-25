@@ -10,37 +10,39 @@
 <h2 id="step-1-create-a-map" class="whosonfirst-subpage-subheader">Step 1: Create a Map</h2>
 <p>We are going to utilize <a href="https://mapzen.com/documentation/mapzen-js/">mapzen.js</a> to make our initial map.</p>
 <p>To do this, we need to create a html page. Within that page, we use the code below to create the map.</p>
-<pre>&lt;!DOCTYPE html&gt;
+<pre>
+  <code>&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
-&emsp;&lt;head&gt;
-&emsp;&emsp;&lt;title>My Web Map&lt;/title&gt;
-&emsp;&emsp;&lt;meta charset="utf-8"&gt;
-&emsp;&emsp;&lt;link rel="stylesheet" href="https://mapzen.com/js/mapzen.css"&gt;
-&emsp;&emsp;&lt;script src="https://mapzen.com/js/mapzen.min.js"&gt;&lt;/script&gt;
-&emsp;&emsp;&lt;style&gt;
-&emsp;&emsp;&emsp;#map {
-&emsp;&emsp;&emsp;&emsp;height: 100%;
-&emsp;&emsp;&emsp;&emsp;width: 100%;
-&emsp;&emsp;&emsp;&emsp;position: absolute;
-&emsp;&emsp;&emsp;}
-&emsp;&emsp;&emsp;html,body{margin: 0; padding: 0;}
-&emsp;&emsp;&lt;/style&gt;
-&emsp;&lt;/head&gt;
-&emsp;&lt;body&gt;
-&emsp;&emsp;&lt;div id="map"&gt;&lt;/div&gt;
-&emsp;&emsp;&lt;script&gt;
-&emsp;&emsp;&emsp;L.Mapzen.apiKey = 'your-mapzen-api-key';
-&emsp;&emsp;&emsp;var map = L.Mapzen.map('map', {
-&emsp;&emsp;&emsp;&emsp;tangramOptions: {
-&emsp;&emsp;&emsp;&emsp;&emsp;scene: {
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;import: [
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;'https://mapzen.com/carto/refill-style/8/refill-style.zip', 'https://mapzen.com/carto/refill-style/8/themes/color-gray.zip'
-&emsp;&emsp;&emsp;&emsp;&emsp;] } }
-&emsp;&emsp;&emsp;});
-&emsp;&emsp;&emsp;map.setView([40.741331,-73.989332], 19);
-&emsp;&emsp;&lt;/script&gt;
-&emsp;&lt;/body&gt;
-&lt;/html&gt;</pre>
+  &lt;head&gt;
+    &lt;title>My Web Map&lt;/title&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;link rel="stylesheet" href="https://mapzen.com/js/mapzen.css"&gt;
+    &lt;script src="https://mapzen.com/js/mapzen.min.js"&gt;&lt;/script&gt;
+    &lt;style&gt;
+      #map {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+      }
+      html,body{margin: 0; padding: 0;}
+    &lt;/style&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id="map"&gt;&lt;/div&gt;
+    &lt;script&gt;
+      L.Mapzen.apiKey = 'your-mapzen-api-key';
+      var map = L.Mapzen.map('map', {
+        tangramOptions: {
+          scene: {
+            import: [
+              'https://mapzen.com/carto/refill-style/8/refill-style.zip', 'https://mapzen.com/carto/refill-style/8/themes/color-gray.zip'
+          ] } }
+      });
+      map.setView([40.741331,-73.989332], 19);
+    &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code>
+</pre>
 <p>To learn more about mapzen.js, check out it's <a href="https://mapzen.com/documentation/mapzen-js/get-started/">Get Started tutorial</a>.</p>
 <h2 id="step-2-find-info-with-spelunker" class="whosonfirst-subpage-subheader">Step 2: Find Info With Spelunker</h2>
 <p>Now, we need some background info (WOF ID, latitude, longitude, etc...) to best utilize the API. To do this, we are going to take a look at the <a href="https://whosonfirst.mapzen.com/spelunker/">Spelunker</a>.</p>
@@ -48,23 +50,26 @@
 <img class="img-responsive" src="../images/wofspelunkerny.png"/>
 <p>Note the wof id. You can find it if you scroll down, it also the number located near the top of the page preceded by / and followed by .geojson. For the Flatiron District, this is 85869245.</p>
 <p>Also, verify that you map is centered on the the right coordinates and the level is set correctly. For our purposes, we are going to level 19.</p>
-<pre>&lt;script&gt;
-&emsp;L.Mapzen.apiKey = 'your-mapzen-api-key';
-&emsp;var map = L.Mapzen.map('map');
-&emsp;map.setView([40.741331,-73.989332], 19);
-&lt;/script&gt;</pre>
+<pre>
+  <code>&lt;script&gt;
+  L.Mapzen.apiKey = 'your-mapzen-api-key';
+  var map = L.Mapzen.map('map');
+  map.setView([40.741331,-73.989332], 19);
+&lt;/script&gt;</code>
+</pre>
 <h2 id="step-3-retrieve-data-using-the-api" class="whosonfirst-subpage-subheader">Step 3: Retrieve Data using the API</h2>
 <p>To retrieve data using the API, we are going to utilize the <a href="https://raw.githubusercontent.com/whosonfirst/electron-whosonfirst-bookmarks/master/javascript/mapzen.whosonfirst.api.js">mapzen.whosonfirst.api.js</a> file.</p>
 <p>Add the script to your html file.</p>
-<pre>&lt;script src="mapzen.whosonfirst.api.js"&gt;&lt;/script&gt;</pre>
+<pre><code>&lt;script src="mapzen.whosonfirst.api.js"&gt;&lt;/script&gt;</code></pre>
 <p>Also add jquery we are going to use that later.</p>
-<pre>&lt;script src="jquery.min.js"&gt;&lt;/script&gt;</pre>
+<pre><code>&lt;script src="jquery.min.js"&gt;&lt;/script&gt;</code></pre>
 <p>This script will allow you to make the queries available through the <a href="https://mapzen.com/documentation/wof/">WOF API</a>.</p>
 <p>Add the following helper function to make those calls from your html file. Note that we are using the <a href="https://mapzen.com/documentation/wof/methods/#whosonfirst.places.getDescendants">whosonfirst.places.getDescendants API method</a>. We include geom: so we are able to obtain information about the venue.</p>
-<pre>function runWhosOnFirstAPI() {
+<pre>
+  <code>function runWhosOnFirstAPI() {
 // Setup the API key
 mapzen.whosonfirst.api.set_handler('authentication', function() {
-&emsp;return 'your-mapzen-key';
+  return 'your-mapzen-key';
 });
 
 // See: https://mapzen.com/documentation/wof/methods/#whosonfirst.places.getDescendants
@@ -72,140 +77,146 @@ mapzen.whosonfirst.api.set_handler('authentication', function() {
 var parent_id = '85869245';
 var method = 'whosonfirst.places.getDescendants';
 var data = {
-&emsp;id: '85869245',
-&emsp;per_page: 500,
-&emsp;extras: 'geom:', // this gets us lat/lng coords
+  id: '85869245',
+  per_page: 500,
+  extras: 'geom:', // this gets us lat/lng coords
 };
 
 // Ok now we actually call the API
 mapzen.whosonfirst.api.execute_method_paginated(method, data, onsuccess, onerror, onprogress);
-};</pre>
+};</code>
+</pre>
 <p>Add the following helper functions. Not that the show_venue function has not yet been created.</p>
-<pre>// NOOP (we are using onprogress instead)
+<pre>
+  <code>// NOOP (we are using onprogress instead)
 var onsuccess = function() { return; };
 
 // Just log errors to the JS console
 var onerror = function(rsp) {
-&emsp;console.error(rsp);
+  console.error(rsp);
 };
 
 // Take all the API results and show them on the map
 var onprogress = function(rsp) {
-&emsp;//console.log(rsp);
-&emsp;for (var i = 0; i < rsp.places.length; i++) {
-&emsp;&emsp;var place = rsp.places[i];
-&emsp;&emsp;show_venue(place);
-&emsp;}
-};</pre>
+  //console.log(rsp);
+  for (var i = 0; i < rsp.places.length; i++) {
+    var place = rsp.places[i];
+    show_venue(place);
+  }
+};</code>
+</pre>
 <h2 id="step-4-display-the-data" class="whosonfirst-subpage-subheader">Step 4: Display the Data</h2>
 <p>Now we are going to display the data. To do this, we are going to write a show_venue function. The show_venue function takes a place's latitude and longitude and stylizes it as a circle with a fill and stroke using the marker style. For our purposes, we have selected a shade of grey.</p>
-<pre>// Venues are shown as a green circle
+<pre>
+  <code>// Venues are shown as a green circle
 var markerStyle = {
-&emsp;"weight": 2,
-&emsp;"opacity": .6,
-&emsp;"fillOpacity": .2,
-&emsp;"radius": 9,
-&emsp;"fillColor": "#888888",
-&emsp;"color": "#888888"
+  "weight": 2,
+  "opacity": .6,
+  "fillOpacity": .2,
+  "radius": 9,
+  "fillColor": "#888888",
+  "color": "#888888"
 };
 
 // How we should handle each API result
 var show_venue = function(place) {
-&emsp;var marker = L.circleMarker({
-&emsp;&emsp;lat: place['geom:latitude'],
-&emsp;&emsp;lng: place['geom:longitude']
-&emsp;}, markerStyle);
-&emsp;map.addLayer(marker);
-};</pre>
+  var marker = L.circleMarker({
+    lat: place['geom:latitude'],
+    lng: place['geom:longitude']
+  }, markerStyle);
+  map.addLayer(marker);
+};</code>
+</pre>
 <p>Your code should now resemble:</p>
-<pre>&lt;!DOCTYPE html&gt;
+<pre>
+  <code>&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
-&emsp;&lt;head&gt;
-&emsp;&emsp;&lt;title>My Web Map&lt;/title&gt;
-&emsp;&emsp;&lt;meta charset="utf-8"&gt;
-&emsp;&emsp;&lt;link rel="stylesheet" href="https://mapzen.com/js/mapzen.css"&gt;
-&emsp;&emsp;&lt;script src="https://mapzen.com/js/mapzen.min.js"&gt;&lt;/script&gt;
-&emsp;&emsp;&lt;style&gt;
-&emsp;&emsp;&emsp;#map {
-&emsp;&emsp;&emsp;&emsp;height: 100%;
-&emsp;&emsp;&emsp;&emsp;width: 100%;
-&emsp;&emsp;&emsp;&emsp;position: absolute;
-&emsp;&emsp;&emsp;}
-&emsp;&emsp;&emsp;html,body{margin: 0; padding: 0;}
-&emsp;&emsp;&lt;/style&gt;
-&emsp;&lt;/head&gt;
-&emsp;&lt;body onload="runWhosOnFirstAPI()"&gt;
-&emsp;&emsp;&lt;div id="map"&gt;&lt;/div&gt;
-&emsp;&emsp;&lt;script src="../javascript/mapzen.whosonfirst.api.js"&gt;&lt;/script&gt;
-&emsp;&emsp;&lt;script src="../javascript/jquery.min.js"&gt;&lt;/script&gt;
-&emsp;&emsp;&lt;script&gt;
-&emsp;&emsp;L.Mapzen.apiKey = 'mapzen-aetZmeQ';
-&emsp;&emsp;var map = L.Mapzen.map('map', {
-&emsp;&emsp;&emsp;tangramOptions: {
-&emsp;&emsp;&emsp;&emsp;scene: {
-&emsp;&emsp;&emsp;&emsp;&emsp;import: [
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;'https://mapzen.com/carto/refill-style/8/refill-style.zip', 'https://mapzen.com/carto/refill-style/8/themes/color-gray.zip', 'https://mapzen.com/carto/refill-style/8/themes/detail-1.zip'
-&emsp;&emsp;&emsp;&emsp;] } }
-&emsp;&emsp;});
-&emsp;&emsp;map.setView([40.741331, -73.989332], 19);
+  &lt;head&gt;
+    &lt;title>My Web Map&lt;/title&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;link rel="stylesheet" href="https://mapzen.com/js/mapzen.css"&gt;
+    &lt;script src="https://mapzen.com/js/mapzen.min.js"&gt;&lt;/script&gt;
+    &lt;style&gt;
+      #map {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+      }
+      html,body{margin: 0; padding: 0;}
+    &lt;/style&gt;
+  &lt;/head&gt;
+  &lt;body onload="runWhosOnFirstAPI()"&gt;
+    &lt;div id="map"&gt;&lt;/div&gt;
+    &lt;script src="../javascript/mapzen.whosonfirst.api.js"&gt;&lt;/script&gt;
+    &lt;script src="../javascript/jquery.min.js"&gt;&lt;/script&gt;
+    &lt;script&gt;
+    L.Mapzen.apiKey = 'mapzen-aetZmeQ';
+    var map = L.Mapzen.map('map', {
+      tangramOptions: {
+        scene: {
+          import: [
+            'https://mapzen.com/carto/refill-style/8/refill-style.zip', 'https://mapzen.com/carto/refill-style/8/themes/color-gray.zip', 'https://mapzen.com/carto/refill-style/8/themes/detail-1.zip'
+        ] } }
+    });
+    map.setView([40.741331, -73.989332], 19);
 			
-&emsp;&emsp;var markerStyle = {
-&emsp;&emsp;&emsp;"weight": 2,
-&emsp;&emsp;&emsp;"opacity": .6,
-&emsp;&emsp;&emsp;"fillOpacity": .2,
-&emsp;&emsp;&emsp;"radius": 9,
-&emsp;&emsp;&emsp;"fillColor": "#888888",
-&emsp;&emsp;&emsp;"color": "#888888"
-&emsp;&emsp;};
+    var markerStyle = {
+      "weight": 2,
+      "opacity": .6,
+      "fillOpacity": .2,
+      "radius": 9,
+      "fillColor": "#888888",
+      "color": "#888888"
+    };
 
-&emsp;&emsp;// How we should handle each API result
-&emsp;&emsp;var show_venue = function(place) {
-&emsp;&emsp;&emsp;var marker = L.circleMarker({
-&emsp;&emsp;&emsp;&emsp;lat: place['geom:latitude'],
-&emsp;&emsp;&emsp;&emsp;lng: place['geom:longitude']
-&emsp;&emsp;&emsp;}, markerStyle);
-&emsp;&emsp;&emsp;map.addLayer(marker);
-&emsp;&emsp;};
+    // How we should handle each API result
+    var show_venue = function(place) {
+      var marker = L.circleMarker({
+        lat: place['geom:latitude'],
+        lng: place['geom:longitude']
+      }, markerStyle);
+      map.addLayer(marker);
+    };
 
-&emsp;&emsp;// NOOP (we are using onprogress instead)
-&emsp;&emsp;var onsuccess = function() { return; };
+    // NOOP (we are using onprogress instead)
+    var onsuccess = function() { return; };
 
-&emsp;&emsp;// Just log errors to the JS console
-&emsp;&emsp;var onerror = function(rsp) {
-&emsp;&emsp;&emsp;&emsp;console.error(rsp);
-&emsp;&emsp;};
+    // Just log errors to the JS console
+    var onerror = function(rsp) {
+        console.error(rsp);
+    };
 
-&emsp;&emsp;// Take all the API results and show them on the map
-&emsp;&emsp;var onprogress = function(rsp) {
-&emsp;&emsp;&emsp;//console.log(rsp);
-&emsp;&emsp;&emsp;for (var i = 0; i < rsp.places.length; i++) {
-&emsp;&emsp;&emsp;&emsp;var place = rsp.places[i];
-&emsp;&emsp;&emsp;&emsp;show_plane(place);
-&emsp;&emsp;&emsp;}
-&emsp;&emsp;};
+    // Take all the API results and show them on the map
+    var onprogress = function(rsp) {
+      //console.log(rsp);
+      for (var i = 0; i < rsp.places.length; i++) {
+        var place = rsp.places[i];
+        show_plane(place);
+      }
+    };
 
-&emsp;&emsp;function runWhosOnFirstAPI() {
-&emsp;&emsp;&emsp;// Setup the API key
-&emsp;&emsp;&emsp;mapzen.whosonfirst.api.set_handler('authentication', function() {
-&emsp;&emsp;&emsp;&emsp;return 'mapzen-aetZmeQ';
-&emsp;&emsp;&emsp;});
+    function runWhosOnFirstAPI() {
+      // Setup the API key
+      mapzen.whosonfirst.api.set_handler('authentication', function() {
+        return 'mapzen-aetZmeQ';
+      });
 
-&emsp;&emsp;&emsp;// Get all the venues in the Flatiron District
-&emsp;&emsp;&emsp;// See: https://mapzen.com/documentation/wof/methods/#whosonfirst.places.getDescendants
-&emsp;&emsp;&emsp;var parent_id = '85869245';
-&emsp;&emsp;&emsp;var method = 'whosonfirst.places.getDescendants';
-&emsp;&emsp;&emsp;var data = {
-&emsp;&emsp;&emsp;&emsp;id: parent_id,
-&emsp;&emsp;&emsp;&emsp;per_page: 500,
-&emsp;&emsp;&emsp;&emsp;extras: 'geom:', // this gets us lat/lng coords
-&emsp;&emsp;&emsp;};
+      // Get all the venues in the Flatiron District
+      // See: https://mapzen.com/documentation/wof/methods/#whosonfirst.places.getDescendants
+      var parent_id = '85869245';
+      var method = 'whosonfirst.places.getDescendants';
+      var data = {
+        id: parent_id,
+        per_page: 500,
+        extras: 'geom:', // this gets us lat/lng coords
+      };
 
-&emsp;&emsp;&emsp;// Ok now we actually call the API
-&emsp;&emsp;&emsp;mapzen.whosonfirst.api.execute_method_paginated(method, data, onsuccess, onerror, onprogress);
-&emsp;&emsp;};
-&emsp;&emsp;&lt;/script&gt;
-&emsp;&lt;/body&gt;
-&lt;/html&gt;
+      // Ok now we actually call the API
+      mapzen.whosonfirst.api.execute_method_paginated(method, data, onsuccess, onerror, onprogress);
+    };
+    &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code>
 </pre>
 <p>When you refresh your html page, you should see this.</p>
 <img class="img-responsive" src="../images/tutorialmapny.png"/>
