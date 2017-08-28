@@ -62,7 +62,7 @@ pages: home docs data blog tools state getstarted interns
 
 data: data-home data-home-two data-pullrequest data-principles data-available data-amazon data-github data-knownknowns
 docs: docs-home docs-processes docs-keyterms docs-licensing docs-contributing docs-tests docs-sources docs-categories docs-dates docs-geometries docs-names docs-hierachies docs-placetypes docs-concordances docs-properties
-tools: tools-index tools-availabletools
+tools: tools-home tools-availabletools
 getstarted: getstarted-index getstarted-retrievevenues getstarted-retrieveneighbourhoods
 
 home:
@@ -96,11 +96,27 @@ docs-home:
 	    www/docs/docs-content.html \
 	    www/components/subnav/subnav-bottom.html \
 	    www/components/footer.html > www/docs/index.html
-	rm www/docs/docs-title.html
-	rm www/docs/docs-content.html
 	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>docs\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>docs\<\/a\>/' www/docs/index.html
 	sed -i -e 's/<title>Who’s On First<\/title>/<title>Who’s On First | Docs<\/title>/' www/docs/index.html
+	rm www/docs/docs-title.html
+	rm www/docs/docs-content.html
 	rm www/docs/index.html-e
+
+tools-home:
+	cat www/content/tools/tools.html | pup -i 0 'body h1' > www/tools/tools-title.html
+	cat www/content/tools/tools.html | pup -i 0 'body :not(h1)' > www/tools/tools-content.html
+	cat www/components/head.html \
+	    www/components/subnav/tools/subnav-top.html \
+	    www/tools/tools-title.html \
+	    www/components/subnav/tools/subnav-middle.html \
+	    www/tools/tools-content.html \
+	    www/components/subnav/subnav-bottom.html \
+	    www/components/footer.html > www/tools/index.html
+	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>tools\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>tools\<\/a\>/' www/tools/index.html
+	sed -i -e 's/<title>Who’s On First<\/title>/<title>Who’s On First | Tools<\/title>/' www/tools/index.html
+	rm www/tools/tools-title.html
+	rm www/tools/tools-content.html
+	rm www/tools/index.html-e
 
 docs-properties-addr:
 	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/addr.md | pup -i 0 'article.markdown-body h1' > www/docs/properties/addr/temp-content1.html
@@ -861,17 +877,6 @@ blog-mesoshapes:
 	rm www/blog/mesoshapes/temp-content2.html
 	rm www/blog/mesoshapes/temp-content1.html-e
 	rm www/blog/mesoshapes/index.html-e
-
-tools-index:
-	cat www/content/tools/tools.html | pup -i 0 'body h1' > www/tools/temp-content1.html
-	cat www/content/tools/tools.html | pup -i 0 'body :not(h1)' > www/tools/temp-content2.html
-	sed -i -e 's/\<h1/\<h1 class\=\"whosonfirst\-subpage\-header\"/' www/tools/temp-content1.html
-	cat www/components/head/head-onelevelup.html www/components/navbar/navbar-onelevelup.html www/components/subnav/tools/subnav-top.html www/tools/temp-content1.html www/components/subnav/tools/subnav-bottom.html  www/tools/temp-content2.html www/components/footer/footer-onelevelup.html > www/tools/index.html
-	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>tools\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>tools\<\/a\>/' www/tools/index.html
-	rm www/tools/temp-content1.html
-	rm www/tools/temp-content2.html
-	rm www/tools/temp-content1.html-e
-	rm www/tools/index.html-e
 
 tools-availabletools:
 	cat www/content/tools/availabletools.html | pup -i 0 'body h1' > www/tools/temp-content1.html
