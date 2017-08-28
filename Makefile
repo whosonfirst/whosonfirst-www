@@ -30,8 +30,6 @@ css:
 	cat www/css/mapzen-styleguide.css www/css/mapzen.whosonfirst.chrome.css www/css/mapzen.whosonfirst.www.css > www/css/mapzen.whosonfirst.www.bundle.css
 	java -jar utils/yuicompressor-2.4.8.jar --type css www/css/mapzen.whosonfirst.www.bundle.css -o www/css/mapzen.whosonfirst.www.bundle.min.css
 
-pages: docs data blog tools state getstarted interns
-
 #Not all new but version 2 specific, from here on below
 
 www: www-dev www-prod
@@ -59,6 +57,27 @@ else
 	echo "this OS is not supported yet"
 	exit 1
 endif
+
+pages: home docs data blog tools state getstarted interns
+
+data: data-pullrequest data-principles data-available data-amazon data-github data-knownknowns data-home data-home-two
+docs: docs-home docs-processes docs-keyterms docs-licensing docs-contributing docs-tests docs-sources docs-categories docs-dates docs-geometries docs-names docs-hierachies docs-placetypes docs-concordances docs-properties
+tools: tools-index tools-availabletools
+getstarted: getstarted-index getstarted-retrievevenues getstarted-retrieveneighbourhoods
+
+home:
+	cat www/components/head.html www/components/navbar.html www/content/index.html www/components/footer.html > www/index.html
+
+docs-home:
+	cat www/content/docs/docs.html | pup -i 0 'body h1'  > www/docs/temp-content1.html
+	cat www/content/docs/docs.html | pup -i 0 'body :not(h1)'  > www/docs/temp-content2.html
+	sed -i -e 's/\<h1/\<h1 class\=\"whosonfirst\-subpage\-header\"/' www/docs/temp-content1.html
+	cat www/components/head/head-onelevelup.html www/components/navbar/navbar-onelevelup.html www/components/subnav/docs/subnav-top-onelevelup.html www/docs/temp-content1.html www/components/subnav/docs/subnav-bottom-onelevelup.html  www/docs/temp-content2.html www/components/footer/footer-onelevelup.html > www/docs/index.html
+	rm www/docs/temp-content1.html
+	rm www/docs/temp-content2.html
+	rm www/docs/temp-content1.html-e
+	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>docs\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>docs\<\/a\>/' www/docs/index.html
+	rm www/docs/index.html-e
 
 docs-properties-addr:
 	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/addr.md | pup -i 0 'article.markdown-body h1' > www/docs/properties/addr/temp-content1.html
@@ -631,19 +650,6 @@ docs-processes-woflifecycle:
 
 docs-processes: docs-processes-significantevent docs-processes-assigningcessation docs-processes-s3requirements docs-processes-wikipediaconcordances docs-processes-seattleneighborhoodupdates docs-processes-updatingsanfrancisconeighborhoods docs-processes-woflifecycle docs-processes-index
 
-docs-index:
-	cat www/content/docs/docs.html | pup -i 0 'body h1'  > www/docs/temp-content1.html
-	cat www/content/docs/docs.html | pup -i 0 'body :not(h1)'  > www/docs/temp-content2.html
-	sed -i -e 's/\<h1/\<h1 class\=\"whosonfirst\-subpage\-header\"/' www/docs/temp-content1.html
-	cat www/components/head/head-onelevelup.html www/components/navbar/navbar-onelevelup.html www/components/subnav/docs/subnav-top-onelevelup.html www/docs/temp-content1.html www/components/subnav/docs/subnav-bottom-onelevelup.html  www/docs/temp-content2.html www/components/footer/footer-onelevelup.html > www/docs/index.html
-	rm www/docs/temp-content1.html
-	rm www/docs/temp-content2.html
-	rm www/docs/temp-content1.html-e
-	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>docs\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>docs\<\/a\>/' www/docs/index.html
-	rm www/docs/index.html-e
-
-docs: docs-processes docs-keyterms docs-licensing docs-contributing docs-tests docs-sources docs-categories docs-dates docs-geometries docs-names docs-hierachies docs-placetypes docs-concordances docs-properties docs-index
-
 data-pullrequest:
 	curl -s https://github.com/whosonfirst-data/whosonfirst-data/blob/master/PULL_REQUEST_TEMPLATE_NEIGHBOURHOOD.md | pup -i 0 'article.markdown-body h1:first-of-type' > www/allthedata/pullrequest/temp-content1.html
 	curl -s https://github.com/whosonfirst-data/whosonfirst-data/blob/master/PULL_REQUEST_TEMPLATE_NEIGHBOURHOOD.md | pup -i 0 'article.markdown-body :not(h1:first-of-type)' > www/allthedata/pullrequest/temp-content2.html
@@ -822,8 +828,6 @@ data-knownknowns:
 	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Data\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Known Knowns\<\/div\>/' www/allthedata/knownknowns/index.html
 	rm www/allthedata/knownknowns/index.html-e
 
-data: data-pullrequest data-principles data-available data-amazon data-github data-knownknowns data-home data-home-two
-
 blog-withalltheblogfolder:
 	cat www/content/blog/blog.html | pup -i 0 'body h1' > www/alltheblog/temp-content1.html
 	cat www/content/blog/blog.html | pup -i 0 'body :not(h1)' > www/alltheblog/temp-content2.html
@@ -882,8 +886,6 @@ tools-availabletools:
 	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Tools\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Available Tools\<\/div\>/' www/tools/availabletools.html
 	rm www/tools/availabletools.html-e
 
-tools: tools-index tools-availabletools
-
 state:
 	cat www/content/state/state.html | pup -i 0 'body h1' > www/state/temp-content1.html
 	cat www/content/state/state.html | pup -i 0 'body :not(h1)' > www/state/temp-content2.html
@@ -931,8 +933,6 @@ getstarted-retrieveneighbourhoods:
 	sed -i -e 's/whosonfirst\-extrasmall\-nav\-link\-collapsed-last\"\>retrieve n/whosonfirst\-extrasmall\-nav\-link\-collapsed-last whosonfirst\-nav\-active\"\>retrieve n/' www/getstarted/retrieveneighbourhoods.html
 	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Get Started\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Retrieve Neighbourhoods\<\/div\>/' www/getstarted/retrieveneighbourhoods.html
 	rm www/getstarted/retrieveneighbourhoods.html-e
-
-getstarted: getstarted-index getstarted-retrievevenues getstarted-retrieveneighbourhoods
 
 interns:
 	cat www/content/interns/interns.html | pup -i 0 'body h1' > www/interns/temp-content1.html
