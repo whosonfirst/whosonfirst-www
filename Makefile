@@ -58,17 +58,17 @@ else
 	exit 1
 endif
 
-pages: home docs data blog tools state getstarted interns
+include pages/data.mk
 
-data: data-home data-principles data-pullrequest data-available data-amazon data-github data-knownknowns
+pages: home-page docs-pages data-pages blog-pages tools-pages state-pages getstarted-pages interns-pages
+
 docs: docs-home docs-processes docs-keyterms docs-licensing docs-contributing docs-tests docs-sources docs-categories docs-dates docs-geometries docs-names docs-hierachies docs-placetypes docs-concordances docs-properties
 tools: tools-home tools-availabletools
 getstarted: getstarted-index getstarted-retrievevenues getstarted-retrieveneighbourhoods
 
-home:
+home-page:
 	@make CONTENT=home.html OUT=index.html page-level0
 
-include pages/data.mk
 
 page-level0:
 	cat www/components/head.html \
@@ -76,38 +76,39 @@ page-level0:
 	    www/components/footer.html > www/$(OUT)
 
 page-level1:
-	@cat www/content/$(CONTENT) | pup -i 0 'body h1' > page-level1-title.html
-	@cat www/content/$(CONTENT) | pup -i 0 'body :not(h1)' > page-level1-content.html
+	@cat www/content/$(CONTENT) | pup -i 0 'body h1' > page-title.html
+	@cat www/content/$(CONTENT) | pup -i 0 'body :not(h1)' > page-content.html
 	cat www/components/head.html \
-	    www/components/subnav/$(SUBNAV)/subnav-top.html \
-	    page-level1-title.html \
-	    www/components/subnav/$(SUBNAV)/subnav-bottom.html \
-	    page-level1-content.html \
+	    www/components/subnav/$(SUBNAV_DIR)/subnav-top.html \
+	    page-title.html \
+	    www/components/subnav/$(SUBNAV_DIR)/subnav-bottom.html \
+	    page-content.html \
 	    www/components/subnav/subnav-footer.html \
 	    www/components/footer.html > www/$(OUT)
 	@sed -i -e "s/whosonfirst\-nav\-link\-collapsed\"\>$(NAV_LINK)\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>$(NAV_LINK)\<\/a\>/" www/$(OUT)
-	@sed -i -e "s/<title>Who’s On First<\/title>/<title>$(TITLE)<\/title>/" www/$(OUT)
-	@rm page-level1-title.html
-	@rm page-level1-content.html
-	@rm www/$(OUT)-e
+	@sed -i -e "s/<title>Who’s On First<\/title>/<title>Who’s On First | $(PAGE_TITLE)<\/title>/" www/$(OUT)
+	@make page-cleanup
 
 page-level2:
-	@cat www/content/$(CONTENT) | pup -i 0 'body h1' > page-level2-title.html
-	@cat www/content/$(CONTENT) | pup -i 0 'body :not(h1)' > page-level2-content.html
+	@cat www/content/$(CONTENT) | pup -i 0 'body h1' > page-title.html
+	@cat www/content/$(CONTENT) | pup -i 0 'body :not(h1)' > page-content.html
 	cat www/components/head.html \
-	    www/components/subnav/$(SUBNAV)/subnav-top.html \
-	    page-level2-title.html \
-	    www/components/subnav/$(SUBNAV)/subnav-bottom.html \
-	    page-level2-content.html \
+	    www/components/subnav/$(SUBNAV_DIR)/subnav-top.html \
+	    page-title.html \
+	    www/components/subnav/$(SUBNAV_DIR)/subnav-bottom.html \
+	    page-content.html \
 	    www/components/subnav/subnav-footer.html \
 	    www/components/footer.html > www/$(OUT)
 	@sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>$(NAV_LINK)\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>$(NAV_LINK)\<\/a\>/' www/$(OUT)
-	@sed -i -e 's/whosonfirst\-sidenav\-link\"\>$(NAV_LINK)/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>$(NAV_LINK)/' www/$(OUT)
-	@sed -i -e 's/whosonfirst\-extrasmall\-nav\-link\-collapsed\"\>data/whosonfirst\-extrasmall\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>data/' www/$(OUT)
-	@sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>$(TAB_SELECTION_SEARCH)\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>$(TAB_SELECTION_REPLACE)\<\/div\>/' www/$(OUT)
+	@sed -i -e 's/whosonfirst\-sidenav\-link\"\>$(SIDENAV_LINK)/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>$(SIDENAV_LINK)/' www/$(OUT)
+	@sed -i -e 's/whosonfirst\-extrasmall\-nav\-link\-collapsed\"\>$(SECTION_LINK)/whosonfirst\-extrasmall\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>data/' www/$(OUT)
+	@sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>$(SECTION_TITLE)\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>$(PAGE_TITLE)\<\/div\>/' www/$(OUT)
 	@sed -i -e 's/<title>Who’s On First<\/title>/<title>Who’s On First | Data | Principles<\/title>/' www/data/principles/index.html
-	@rm page-level2-title.html
-	@rm page-level2-content.html
+	@make page-cleanup
+
+page-cleanup:
+	@rm page-title.html
+	@rm page-content.html
 	@rm www/$(OUT)-e
 
 docs-home:
