@@ -73,12 +73,18 @@ home:
 data-home:
 	cat www/content/data/data.html | pup -i 0 'body h1' > www/data/data-title.html
 	cat www/content/data/data.html | pup -i 0 'body :not(h1)' > www/data/data-content.html
-	sed -i -e 's/\<h1/\<h1 class\=\"whosonfirst\-subpage\-header\"/' www/allthedata/temp-content1.html
-	cat www/components/head/head-onelevelup.html www/components/navbar/navbar-onelevelup.html www/components/subnav/data/subnav-top-onelevelup.html www/allthedata/temp-content1.html www/components/subnav/data/subnav-bottom-onelevelup.html  www/allthedata/temp-content2.html www/components/footer/footer-onelevelup.html > www/allthedata/index.html
-	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>data\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>data\<\/a\>/' www/allthedata/index.html
-	rm www/allthedata/data-title.html
-	rm www/allthedata/data-content.html
-	rm www/allthedata/index.html-e
+	cat www/components/head.html \
+	    www/components/subnav/data/subnav-top.html \
+	    www/data/data-title.html \
+	    www/components/subnav/data/subnav-middle.html \
+	    www/data/data-content.html \
+	    www/components/subnav/subnav-bottom.html \
+	    www/components/footer.html > www/data/index.html
+	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>data\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>data\<\/a\>/' www/data/index.html
+	sed -i -e 's/<title>Who’s On First<\/title>/<title>Who’s On First | Data<\/title>/' www/data/index.html
+	rm www/data/data-title.html
+	rm www/data/data-content.html
+	rm www/data/index.html-e
 
 docs-home:
 	cat www/content/docs/docs.html | pup -i 0 'body h1'  > www/docs/docs-title.html
