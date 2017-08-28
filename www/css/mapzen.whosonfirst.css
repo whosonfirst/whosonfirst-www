@@ -579,6 +579,7 @@ a.whosonfirst-dark-gradient:hover > div > .whosonfirst-card-subheader-test {
 .whosonfirst-card-map-code-content-response {
 	height: 129px;
 	overflow: hidden;
+	color: #7A7A7A;
 }
 
 .whosonfirst-card-explore-code {
