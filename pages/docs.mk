@@ -1,8 +1,14 @@
 WOF_PROPS_REPO := https://github.com/whosonfirst/whosonfirst-properties/blob/master/
 COOKBOOK_REPO := https://github.com/whosonfirst/whosonfirst-cookbook/blob/master/
+PLACETYPES_REPO := https://github.com/whosonfirst/whosonfirst-placetypes/blob/master/
 PROPERTY_LIST := addr edtf geom lbl mz name resto reversegeo src wof
 
 docs: docs-download-content docs-build-pages
+
+docs-download-content: docs-download-properties docs-download-placetypes
+	@make URL=$(COOKBOOK_REPO)definition/brooklyn_integers.md \
+	      OUT=docs/properties/brooklynintegers.html \
+	      download-content
 
 docs-download-properties:
 	@for prop in $(PROPERTY_LIST) ; do \
@@ -11,12 +17,14 @@ docs-download-properties:
 			 download-content ; \
 	done
 
-docs-download-content: docs-download-properties
-	@make URL=$(COOKBOOK_REPO)definition/brooklyn_integers.md \
-	      OUT=docs/properties/brooklynintegers.html \
-	      download-content
+docs-download-placetypes:
+	@echo "Download placetypes-latest.png"
+	@curl -s -o www/images/placetypes-latest.png https://raw.githubusercontent.com/whosonfirst/whosonfirst-placetypes/master/images/placetypes-latest.png
+	@make URL=$(PLACETYPES_REPO)README.md \
+		  OUT=docs/placetypes.html \
+		  download-content
 
-docs-build-pages: docs-home docs-properties
+docs-build-pages: docs-home docs-properties docs-concordances
 
 docs-build-page-level1:
 	@make NAV_LINK=docs SUBNAV_DIR=docs build-page-level1
@@ -62,3 +70,17 @@ docs-properties:
 	      SIDENAV_LINK='brooklyn integers' \
 	      SUBSUBNAV=properties \
 	      docs-build-page-level3
+
+docs-concordances:
+	@make CONTENT=docs/concordances.html \
+	      OUT=docs/concordances/index.html \
+	      PAGE_TITLE='Concordances' \
+	      SIDENAV_LINK=concordances \
+	      docs-build-page-level2
+
+docs-placetypes:
+	@make CONTENT=docs/placetypes.html \
+	      OUT=docs/placetypes/index.html \
+	      PAGE_TITLE='Placetypes' \
+	      SIDENAV_LINK=placetypes \
+	      docs-build-page-level2
