@@ -2,6 +2,7 @@ WOF_PROPS_REPO := https://github.com/whosonfirst/whosonfirst-properties/blob/mas
 COOKBOOK_REPO := https://github.com/whosonfirst/whosonfirst-cookbook/blob/master/
 PLACETYPES_REPO := https://github.com/whosonfirst/whosonfirst-placetypes/blob/master/
 NAMES_REPO := https://github.com/whosonfirst/whosonfirst-names/blob/master/
+GEOMETRIES_REPO := https://github.com/whosonfirst/whosonfirst-geometries/blob/master/
 PROPERTY_LIST := addr edtf geom lbl mz name resto reversegeo src wof
 
 docs: docs-download-content docs-build-pages
@@ -10,10 +11,16 @@ docs-download-content: docs-download-properties docs-download-placetypes
 	@make URL=$(COOKBOOK_REPO)definition/brooklyn_integers.md \
 	      OUT=docs/properties/brooklynintegers.html \
 	      download-content
-
-docs-download-names:
 	@make URL=$(NAMES_REPO)README.md \
 	      OUT=docs/names.html \
+	      download-content
+
+docs-download-geometries:
+	@make URL=$(GEOMETRIES_REPO)README.md \
+	      OUT=docs/geometries/geometries.html \
+	      download-content
+	@make URL=$(COOKBOOK_REPO)how_to/creating_alt_geometries.md \
+	      OUT=docs/geometries/alt_geometries.html \
 	      download-content
 
 docs-download-properties:
@@ -109,3 +116,17 @@ docs-names:
 	      PAGE_TITLE='Names' \
 	      SIDENAV_LINK=names \
 	      docs-build-page-level2
+
+docs-geometries:
+	@make CONTENT=docs/geometries/geometries.html \
+	      OUT=docs/geometries/index.html \
+	      PAGE_TITLE='Geometries' \
+	      SIDENAV_LINK=geometries \
+	      SUBSUBNAV=geometries \
+	      docs-build-page-level2
+	@make CONTENT=docs/geometries/alt_geometries.html \
+		  OUT=docs/geometries/alt/index.html \
+		  PAGE_TITLE='Alt Geometries' \
+		  SIDENAV_LINK='alt geometries' \
+		  SUBSUBNAV=geometries \
+		  docs-build-page-level3

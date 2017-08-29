@@ -207,37 +207,6 @@ docs-placetypes-orig:
 	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/docs/placetypes/index.html
 	rm www/docs/placetypes/index.html-e
 
-docs-geometries-index:
-	curl -s https://github.com/whosonfirst/whosonfirst-geometries | pup -i 0 'article.markdown-body h1' > www/docs/geometries/temp-content1.html
-	curl -s https://github.com/whosonfirst/whosonfirst-geometries | pup -i 0 'article.markdown-body :not(h1)' > www/docs/geometries/temp-content2.html
-	sed -i -e 's/\<h1/\<h1 class\=\"whosonfirst\-subpage\-header\"/' www/docs/geometries/temp-content1.html
-	cat components/head/head.html components/navbar/navbar.html components/subnav/docs/geometries/subnav-top.html www/docs/geometries/temp-content1.html components/subnav/docs/geometries/subnav-bottom.html  www/docs/geometries/temp-content2.html components/footer/footer.html > www/docs/geometries/index.html
-	rm www/docs/geometries/temp-content1.html
-	rm www/docs/geometries/temp-content2.html
-	rm www/docs/geometries/temp-content1.html-e
-	sed -i -e 's/whosonfirst\-sidenav\-link\"\>geometries\</whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>geometries\</' www/docs/geometries/index.html
-	sed -i -e 's/whosonfirst\-extrasmall\-nav\-link\-collapsed\"\>geometries/whosonfirst\-extrasmall\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>geometries/' www/docs/geometries/index.html
-	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>docs\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>docs\<\/a\>/' www/docs/geometries/index.html
-	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/docs/geometries/index.html
-	rm www/docs/geometries/index.html-e
-
-docs-geometries-altgeometries:
-	curl -s https://github.com/whosonfirst/whosonfirst-cookbook/blob/master/how_to/creating_alt_geometries.md | pup -i 0 'article.markdown-body h1' > www/docs/geometries/temp-content1.html
-	curl -s https://github.com/whosonfirst/whosonfirst-cookbook/blob/master/how_to/creating_alt_geometries.md | pup -i 0 'article.markdown-body :not(h1)' > www/docs/geometries/temp-content2.html
-	sed -i -e 's/\<h1/\<h1 class\=\"whosonfirst\-subpage\-header\"/' www/docs/geometries/temp-content1.html
-	cat components/head/head.html components/navbar/navbar.html components/subnav/docs/geometries/subnav-top.html www/docs/geometries/temp-content1.html components/subnav/docs/geometries/subnav-bottom.html  www/docs/geometries/temp-content2.html components/footer/footer.html > www/docs/geometries/altgeometries.html
-	rm www/docs/geometries/temp-content1.html
-	rm www/docs/geometries/temp-content2.html
-	rm www/docs/geometries/temp-content1.html-e
-	sed -i -e 's/whosonfirst\-sidenav\-link\"\>creating/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>creating/' www/docs/geometries/altgeometries.html
-	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>creating/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>creating/' www/docs/geometries/altgeometries.html
-	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Geometries\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Creating Alt Geometries\<\/div\>/' www/docs/geometries/altgeometries.html
-	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>docs\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>docs\<\/a\>/' www/docs/geometries/altgeometries.html
-	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/docs/geometries/altgeometries.html
-	rm www/docs/geometries/altgeometries.html-e
-
-docs-geometries: docs-geometries-index docs-geometries-altgeometries
-
 docs-dates:
 	curl -s https://github.com/whosonfirst/whosonfirst-dates | pup -i 0 'article.markdown-body h1' > www/docs/dates/temp-content1.html
 	curl -s https://github.com/whosonfirst/whosonfirst-dates | pup -i 0 'article.markdown-body :not(h1)' > www/docs/dates/temp-content2.html
