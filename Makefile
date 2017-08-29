@@ -1,6 +1,20 @@
 UNAME_S := $(shell uname -s)
 
-all: build-pages www
+include pages/data.mk
+include pages/docs.mk
+
+all: build-pages www-prod
+dev: build-pages www-dev
+download: \
+	data-download-content \
+	docs-download-content
+build-pages: \
+	home-build-page \
+	data-build-pages \
+	docs-build-pages
+
+home-build-page:
+	@make CONTENT=home.html OUT=index.html build-page-level0
 
 setup: mk-tools
 	ubuntu/setup-nginx.sh
@@ -58,24 +72,25 @@ else
 	exit 1
 endif
 
-include pages/data.mk
-include pages/docs.mk
-
-build-pages: home-build-page data-build-pages docs-build-pages
-tools: tools-home tools-availabletools
-getstarted: getstarted-index getstarted-retrievevenues getstarted-retrieveneighbourhoods
-
-home-build-page:
-	@make CONTENT=home.html OUT=index.html build-page-level0
+download-content:
+	@echo "Download content/$(OUT)"
+	@curl -s $(URL) > page.html
+	@echo '<h1 class="whosonfirst-subpage-header" data-url="$(URL)">' > content/$(OUT)
+	@cat page.html | pup -i 0 'article.markdown-body h1 text{}' >> content/$(OUT)
+	@echo '</h1>' >> content/$(OUT)
+	@cat page.html | pup -i 0 'article.markdown-body > :not(h1)' >> content/$(OUT)
+	@sed -i -e -E 's/".+\/master\/images\//"\/images\//' content/$(OUT)
+	@rm page.html
+	@rm content/$(OUT)-e
 
 build-page-level0:
-	@echo "Build $(CONTENT) => $(OUT)"
+	@echo "Build www/$(OUT)"
 	@cat components/head.html \
 	     content/$(CONTENT) \
 	     components/footer.html > www/$(OUT)
 
 build-page-level1:
-	@echo "Build $(CONTENT) => $(OUT)"
+	@echo "Build www/$(OUT)"
 	@cat content/$(CONTENT) | pup -i 0 'body h1' > page-title.html
 	@cat content/$(CONTENT) | pup -i 0 'body :not(h1)' > page-content.html
 	@cat components/head.html \
@@ -90,7 +105,7 @@ build-page-level1:
 	@make build-cleanup
 
 build-page-level2:
-	@echo "Build $(CONTENT) => $(OUT)"
+	@echo "Build www/$(OUT)"
 	@cat content/$(CONTENT) | pup -i 0 'body h1' > page-title.html
 	@cat content/$(CONTENT) | pup -i 0 'body :not(h1)' > page-content.html
 ifdef SUBSUBNAV
@@ -128,7 +143,7 @@ endif
 	@make build-cleanup
 
 build-page-level3:
-	@echo "Build $(CONTENT) => $(OUT)"
+	@echo "Build www/$(OUT)"
 	@cat content/$(CONTENT) | pup -i 0 'body h1' > page-title.html
 	@cat content/$(CONTENT) | pup -i 0 'body :not(h1)' > page-content.html
 	@split -p '<!-- $(SUBSUBNAV) -->' components/subnav/$(SUBNAV_DIR)/subnav-top.html subnav-top-
@@ -160,17 +175,6 @@ build-cleanup:
 	@rm page-content.html
 	@rm www/$(OUT)-e
 
-download-content:
-	@echo "Download $(OUT)"
-	@curl -s $(URL) > page.html
-	@echo '<h1 class="whosonfirst-subpage-header">' > content/$(OUT)
-	@cat page.html | pup -i 0 'article.markdown-body h1 text{}' >> content/$(OUT)
-	@echo '</h1>' >> content/$(OUT)
-	@cat page.html | pup -i 0 'article.markdown-body > :not(h1)' >> content/$(OUT)
-	@sed -i -e -E 's/".+\/master\/images\//"\/images\//' content/$(OUT)
-	@rm page.html
-	@rm content/$(OUT)-e
-
 tools-home:
 	cat content/tools/tools.html | pup -i 0 'body h1' > www/tools/tools-title.html
 	cat content/tools/tools.html | pup -i 0 'body :not(h1)' > www/tools/tools-content.html
@@ -186,21 +190,6 @@ tools-home:
 	rm www/tools/tools-title.html
 	rm www/tools/tools-content.html
 	rm www/tools/index.html-e
-
-docs-tests:
-	curl -s https://github.com/whosonfirst/whosonfirst-tests/blob/master/README.md | pup -i 0 'article.markdown-body h1' > www/docs/tests/temp-content1.html
-	curl -s https://github.com/whosonfirst/whosonfirst-tests/blob/master/README.md | pup -i 0 'article.markdown-body :not(h1)' > www/docs/tests/temp-content2.html
-	sed -i -e 's/\<h1/\<h1 class\=\"whosonfirst\-subpage\-header\"/' www/docs/tests/temp-content1.html
-	cat components/head/head.html components/navbar/navbar.html components/subnav/docs/subnav-top.html www/docs/tests/temp-content1.html components/subnav/docs/subnav-bottom.html  www/docs/tests/temp-content2.html components/footer/footer.html > www/docs/tests/index.html
-	rm www/docs/tests/temp-content1.html
-	rm www/docs/tests/temp-content2.html
-	rm www/docs/tests/temp-content1.html-e
-	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>docs\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>docs\<\/a\>/' www/docs/tests/index.html
-	sed -i -e 's/whosonfirst\-sidenav\-link\"\>tests/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>tests/' www/docs/tests/index.html
-	sed -i -e 's/whosonfirst\-extrasmall\-nav\-link\-collapsed\"\>tests/whosonfirst\-extrasmall\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>tests/' www/docs/tests/index.html
-	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Docs\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Tests\<\/div\>/' www/docs/tests/index.html
-	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/docs/tests/index.html
-	rm www/docs/tests/index.html-e
 
 docs-contributing:
 	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/CONTRIBUTING.md | pup -i 0 'article.markdown-body h1:first-of-type' > www/docs/contributing/temp-content1.html
