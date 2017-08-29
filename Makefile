@@ -161,13 +161,13 @@ build-cleanup:
 	@rm www/$(OUT)-e
 
 download-content:
-	@echo "Download $(URL) => $(OUT)"
+	@echo "Download $(OUT)"
 	@curl -s $(URL) > page.html
 	@echo '<h1 class="whosonfirst-subpage-header">' > content/$(OUT)
 	@cat page.html | pup -i 0 'article.markdown-body h1 text{}' >> content/$(OUT)
 	@echo '</h1>' >> content/$(OUT)
 	@cat page.html | pup -i 0 'article.markdown-body > :not(h1)' >> content/$(OUT)
-	@sed -i -e -E 's/".+\/raw\/master\/images\//"\/images\//' content/$(OUT)
+	@sed -i -e -E 's/".+\/master\/images\//"\/images\//' content/$(OUT)
 	@rm page.html
 	@rm content/$(OUT)-e
 
@@ -206,49 +206,6 @@ docs-placetypes-orig:
 	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/docs/placetypes/index.html
 	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/docs/placetypes/index.html
 	rm www/docs/placetypes/index.html-e
-
-docs-hierachies-index:
-	cat content/docs/hierachies/hierachies.html | pup -i 0 'body h1' > www/docs/hierachies/temp-content1.html
-	cat content/docs/hierachies/hierachies.html | pup -i 0 'body :not(h1)' > www/docs/hierachies/temp-content2.html
-	sed -i -e 's/\<h1/\<h1 class\=\"whosonfirst\-subpage\-header\"/' www/docs/hierachies/temp-content1.html
-	cat components/head/head.html components/navbar/navbar.html components/subnav/docs/hierachies/subnav-top.html www/docs/hierachies/temp-content1.html components/subnav/docs/hierachies/subnav-bottom.html  www/docs/hierachies/temp-content2.html components/footer/footer.html > www/docs/hierachies/index.html
-	rm www/docs/hierachies/temp-content1.html
-	rm www/docs/hierachies/temp-content2.html
-	rm www/docs/hierachies/temp-content1.html-e
-	sed -i -e 's/whosonfirst\-sidenav\-link\"\>hierachies\</whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>hierachies\</' www/docs/hierachies/index.html
-	sed -i -e 's/whosonfirst\-extrasmall\-nav\-link\-collapsed\"\>hierachies/whosonfirst\-extrasmall\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>hierachies/' www/docs/hierachies/index.html
-	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>docs\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>docs\<\/a\>/' www/docs/hierachies/index.html
-	rm www/docs/hierachies/index.html-e
-
-docs-hierachies-disputedareas:
-	cat content/docs/hierachies/disputedareas.html | pup -i 0 'body h1' > www/docs/hierachies/temp-content1.html
-	cat content/docs/hierachies/disputedareas.html | pup -i 0 'body :not(h1)' > www/docs/hierachies/temp-content2.html
-	sed -i -e 's/\<h1/\<h1 class\=\"whosonfirst\-subpage\-header\"/' www/docs/hierachies/temp-content1.html
-	cat components/head/head.html components/navbar/navbar.html components/subnav/docs/hierachies/subnav-top.html www/docs/hierachies/temp-content1.html components/subnav/docs/hierachies/subnav-bottom.html  www/docs/hierachies/temp-content2.html components/footer/footer.html > www/docs/hierachies/disputedareas.html
-	rm www/docs/hierachies/temp-content1.html
-	rm www/docs/hierachies/temp-content2.html
-	rm www/docs/hierachies/temp-content1.html-e
-	sed -i -e 's/whosonfirst\-sidenav\-link\"\>disputed areas\</whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>disputed areas\</' www/docs/hierachies/disputedareas.html
-	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>disputed areas/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>disputed areas/' www/docs/hierachies/disputedareas.html
-	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Hierachies\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Disputed Areas\<\/div\>/' www/docs/hierachies/disputedareas.html
-	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>docs\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>docs\<\/a\>/' www/docs/hierachies/disputedareas.html
-	rm www/docs/hierachies/disputedareas.html-e
-
-docs-hierachies-superseded:
-	cat content/docs/hierachies/superseded.html | pup -i 0 'body h1' > www/docs/hierachies/temp-content1.html
-	cat content/docs/hierachies/superseded.html | pup -i 0 'body :not(h1)' > www/docs/hierachies/temp-content2.html
-	sed -i -e 's/\<h1/\<h1 class\=\"whosonfirst\-subpage\-header\"/' www/docs/hierachies/temp-content1.html
-	cat components/head/head.html components/navbar/navbar.html components/subnav/docs/hierachies/subnav-top.html www/docs/hierachies/temp-content1.html components/subnav/docs/hierachies/subnav-bottom.html  www/docs/hierachies/temp-content2.html components/footer/footer.html > www/docs/hierachies/superseded.html
-	rm www/docs/hierachies/temp-content1.html
-	rm www/docs/hierachies/temp-content2.html
-	rm www/docs/hierachies/temp-content1.html-e
-	sed -i -e 's/whosonfirst\-sidenav\-link\-twoliner\"\>supersedes/\whosonfirst\-sidenav\-link\-twoliner whosonfirst\-nav\-active\"\>supersedes/' www/docs/hierachies/superseded.html
-	sed -i -e 's/whosonfirst\-smallnav\-link\-twoliner\"\>supersedes/whosonfirst\-smallnav\-link\-twoliner whosonfirst-nav-active\"\>supersedes/' www/docs/hierachies/superseded.html
-	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Hierachies\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Supersedes \/ Superseded By\<\/div\>/' www/docs/hierachies/superseded.html
-	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>docs\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>docs\<\/a\>/' www/docs/hierachies/superseded.html
-	rm www/docs/hierachies/superseded.html-e
-
-docs-hierachies: docs-hierachies-index docs-hierachies-disputedareas docs-hierachies-superseded
 
 docs-names:
 	curl -s https://github.com/whosonfirst/whosonfirst-names/blob/master/README.md | pup -i 0 'article.markdown-body h1' > www/docs/names/temp-content1.html

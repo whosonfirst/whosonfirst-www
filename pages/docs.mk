@@ -18,13 +18,18 @@ docs-download-properties:
 	done
 
 docs-download-placetypes:
-	@echo "Download placetypes-latest.png"
+	@echo "Download images/placetypes-latest.png"
 	@curl -s -o www/images/placetypes-latest.png https://raw.githubusercontent.com/whosonfirst/whosonfirst-placetypes/master/images/placetypes-latest.png
 	@make URL=$(PLACETYPES_REPO)README.md \
 		  OUT=docs/placetypes.html \
 		  download-content
 
-docs-build-pages: docs-home docs-properties docs-concordances
+docs-build-pages: \
+	docs-home \
+	docs-properties \
+	docs-concordances \
+	docs-placetypes \
+	docs-hierarchies
 
 docs-build-page-level1:
 	@make NAV_LINK=docs SUBNAV_DIR=docs build-page-level1
@@ -83,4 +88,11 @@ docs-placetypes:
 	      OUT=docs/placetypes/index.html \
 	      PAGE_TITLE='Placetypes' \
 	      SIDENAV_LINK=placetypes \
+	      docs-build-page-level2
+
+docs-hierarchies:
+	@make CONTENT=docs/hierarchies.html \
+	      OUT=docs/hierarchies/index.html \
+	      PAGE_TITLE='Hierarchies' \
+	      SIDENAV_LINK=hierarchies \
 	      docs-build-page-level2
