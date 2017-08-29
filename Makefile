@@ -207,21 +207,6 @@ docs-placetypes-orig:
 	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/docs/placetypes/index.html
 	rm www/docs/placetypes/index.html-e
 
-docs-names:
-	curl -s https://github.com/whosonfirst/whosonfirst-names/blob/master/README.md | pup -i 0 'article.markdown-body h1' > www/docs/names/temp-content1.html
-	curl -s https://github.com/whosonfirst/whosonfirst-names/blob/master/README.md | pup -i 0 'article.markdown-body :not(h1)' > www/docs/names/temp-content2.html
-	sed -i -e 's/\<h1/\<h1 class\=\"whosonfirst\-subpage\-header\"/' www/docs/names/temp-content1.html
-	cat components/head/head.html components/navbar/navbar.html components/subnav/docs/subnav-top.html www/docs/names/temp-content1.html components/subnav/docs/subnav-bottom.html  www/docs/names/temp-content2.html components/footer/footer.html > www/docs/names/index.html
-	rm www/docs/names/temp-content1.html
-	rm www/docs/names/temp-content2.html
-	rm www/docs/names/temp-content1.html-e
-	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>docs\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>docs\<\/a\>/' www/docs/names/index.html
-	sed -i -e 's/whosonfirst\-sidenav\-link\"\>names/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>names/' www/docs/names/index.html
-	sed -i -e 's/whosonfirst\-extrasmall\-nav\-link\-collapsed\"\>names/whosonfirst\-extrasmall\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>names/' www/docs/names/index.html
-	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Docs\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Names\<\/div\>/' www/docs/names/index.html
-	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/docs/names/index.html
-	rm www/docs/names/index.html-e
-
 docs-geometries-index:
 	curl -s https://github.com/whosonfirst/whosonfirst-geometries | pup -i 0 'article.markdown-body h1' > www/docs/geometries/temp-content1.html
 	curl -s https://github.com/whosonfirst/whosonfirst-geometries | pup -i 0 'article.markdown-body :not(h1)' > www/docs/geometries/temp-content2.html
