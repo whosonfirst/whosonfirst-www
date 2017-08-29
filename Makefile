@@ -1,7 +1,7 @@
 UNAME_S := $(shell uname -s)
 WOF_DATA_REPO := https://github.com/whosonfirst-data/whosonfirst-data/blob/master/
 
-all: mapzen js css pages www
+all: build-pages www
 
 setup: mk-tools
 	ubuntu/setup-nginx.sh
@@ -61,22 +61,22 @@ endif
 
 include pages/data.mk
 
-pages: home-page docs-pages data-pages blog-pages tools-pages state-pages getstarted-pages interns-pages
+build-pages: home-build-page data-build-pages docs-build-pages blog-pages tools-pages state-pages getstarted-pages interns-pages
 
 docs: docs-home docs-processes docs-keyterms docs-licensing docs-contributing docs-tests docs-sources docs-categories docs-dates docs-geometries docs-names docs-hierachies docs-placetypes docs-concordances docs-properties
 tools: tools-home tools-availabletools
 getstarted: getstarted-index getstarted-retrievevenues getstarted-retrieveneighbourhoods
 
-home-page:
-	@make CONTENT=home.html OUT=index.html page-level0
+home-build-page:
+	@make CONTENT=home.html OUT=index.html build-page-level0
 
-page-level0:
+build-page-level0:
 	@echo "Build $(CONTENT) => $(OUT)"
 	@cat www/components/head.html \
 	     content/$(CONTENT) \
 	     www/components/footer.html > www/$(OUT)
 
-page-level1:
+build-page-level1:
 	@echo "Build $(CONTENT) => $(OUT)"
 	@cat content/$(CONTENT) | pup -i 0 'body h1' > page-title.html
 	@cat content/$(CONTENT) | pup -i 0 'body :not(h1)' > page-content.html
@@ -89,9 +89,9 @@ page-level1:
 	     www/components/footer.html > www/$(OUT)
 	@sed -i -e "s/whosonfirst\-nav\-link\-collapsed\"\>$(NAV_LINK)\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>$(NAV_LINK)\<\/a\>/" www/$(OUT)
 	@sed -i -e "s/<title>Who’s On First<\/title>/<title>Who’s On First | $(PAGE_TITLE)<\/title>/" www/$(OUT)
-	@make page-cleanup
+	@make build-cleanup
 
-page-level2:
+build-page-level2:
 	@echo "Build $(CONTENT) => $(OUT)"
 	@cat content/$(CONTENT) | pup -i 0 'body h1' > page-title.html
 	@cat content/$(CONTENT) | pup -i 0 'body :not(h1)' > page-content.html
@@ -107,14 +107,14 @@ page-level2:
 	@sed -i -e 's/whosonfirst\-extrasmall\-nav\-link\-collapsed\"\>$(SECTION_LINK)/whosonfirst\-extrasmall\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>data/' www/$(OUT)
 	@sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>$(SECTION_TITLE)\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>$(PAGE_TITLE)\<\/div\>/' www/$(OUT)
 	@sed -i -e 's/<title>Who’s On First<\/title>/<title>Who’s On First | $(SECTION_TITLE) | $(PAGE_TITLE)<\/title>/' www/$(OUT)
-	@make page-cleanup
+	@make build-cleanup
 
-page-cleanup:
+build-cleanup:
 	@rm page-title.html
 	@rm page-content.html
 	@rm www/$(OUT)-e
 
-page-download:
+download-content:
 	@echo "Download $(URL) => $(OUT)"
 	@curl -s $(URL) > page.html
 	@echo '<h1 class="whosonfirst-subpage-header">' > content/$(OUT)
