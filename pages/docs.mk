@@ -16,7 +16,7 @@ docs-download-content: docs-download-properties
 	      OUT=docs/properties/brooklynintegers.html \
 	      download-content
 
-docs-build-pages: docs-home docs-processes docs-keyterms docs-licensing docs-contributing docs-tests docs-sources docs-categories docs-dates docs-geometries docs-names docs-hierachies docs-placetypes docs-concordances docs-properties
+docs-build-pages: docs-home docs-properties
 
 docs-build-page-level1:
 	@make NAV_LINK=docs SUBNAV_DIR=docs build-page-level1
