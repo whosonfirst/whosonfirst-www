@@ -5,6 +5,7 @@ NAMES_REPO := https://github.com/whosonfirst/whosonfirst-names/blob/master/
 GEOMETRIES_REPO := https://github.com/whosonfirst/whosonfirst-geometries/blob/master/
 DATES_REPO := https://github.com/whosonfirst/whosonfirst-dates/blob/master/
 CATEGORIES_REPO := https://github.com/whosonfirst/whosonfirst-categories/blob/master/
+SOURCES_REPO := https://github.com/whosonfirst/whosonfirst-sources/blob/master/
 
 PROPERTY_LIST := addr edtf geom lbl mz name resto reversegeo src wof
 
@@ -14,7 +15,8 @@ docs-download-content: \
 	docs-download-properties \
 	docs-download-placetypes \
 	docs-download-geometries \
-	docs-download-categories
+	docs-download-categories \
+	docs-download-sources
 	@make URL=$(COOKBOOK_REPO)definition/brooklyn_integers.md \
 	      OUT=docs/properties/brooklynintegers.html \
 	      download-content
@@ -56,6 +58,14 @@ docs-download-categories:
 		  OUT=docs/categories.html \
 		  download-content
 
+docs-download-sources:
+	@make URL=$(SOURCES_REPO)README.md \
+	      OUT=docs/sources/sources.html \
+	      download-content
+	@make URL=$(SOURCES_REPO)sources/README.md \
+	      OUT=docs/sources/source_list.html \
+	      download-content
+
 docs-build-pages: \
 	docs-home \
 	docs-properties \
@@ -65,7 +75,8 @@ docs-build-pages: \
 	docs-names \
 	docs-geometries \
 	docs-dates \
-	docs-categories
+	docs-categories \
+	docs-sources
 
 docs-build-page-level1:
 	@make NAV_LINK=docs SUBNAV_DIR=docs build-page-level1
@@ -167,3 +178,17 @@ docs-categories:
 	      PAGE_TITLE='Categories' \
 	      SIDENAV_LINK=categories \
 	      docs-build-page-level2
+
+docs-sources:
+	@make CONTENT=docs/sources/sources.html \
+	      OUT=docs/sources/index.html \
+	      PAGE_TITLE='Sources' \
+	      SIDENAV_LINK=sources \
+	      SUBSUBNAV=sources \
+	      docs-build-page-level2
+	@make CONTENT=docs/sources/source_list.html \
+	      OUT=docs/sources/list/index.html \
+	      PAGE_TITLE='List of Sources' \
+	      SIDENAV_LINK='list of sources' \
+	      SUBSUBNAV=sources \
+	      docs-build-page-level3
