@@ -1,10 +1,19 @@
 WOF_PROPS_REPO := https://github.com/whosonfirst/whosonfirst-properties/blob/master/
+COOKBOOK_REPO := https://github.com/whosonfirst/whosonfirst-cookbook/blob/master/
+PROPERTY_LIST := addr edtf geom lbl mz name resto reversegeo src wof
 
 docs: docs-download-content docs-build-pages
 
-docs-download-content:
-	@make URL=$(WOF_PROPS_REPO)properties/addr.md \
-	      OUT=docs/properties/addr.html \
+docs-download-properties:
+	@for prop in $(PROPERTY_LIST) ; do \
+		make URL=$(WOF_PROPS_REPO)properties/$$prop.md \
+			 OUT=docs/properties/$$prop.html \
+			 download-content ; \
+	done
+
+docs-download-content: docs-download-properties
+	@make URL=$(COOKBOOK_REPO)definition/brooklyn_integers.md \
+	      OUT=docs/properties/brooklynintegers.html \
 	      download-content
 
 docs-build-pages: docs-home docs-processes docs-keyterms docs-licensing docs-contributing docs-tests docs-sources docs-categories docs-dates docs-geometries docs-names docs-hierachies docs-placetypes docs-concordances docs-properties
@@ -30,21 +39,26 @@ docs-home:
 	      PAGE_TITLE='Docs' \
 	      docs-build-page-level1
 
-docs-properties-home:
+docs-properties:
 	@make CONTENT=docs/properties/properties.html \
 	      OUT=docs/properties/index.html \
 	      PAGE_TITLE='Properties' \
 	      SIDENAV_LINK=properties \
 	      SUBSUBNAV=properties \
 	      docs-build-page-level2
-
-docs-properties-addr:
-	@make CONTENT=docs/properties/addr.html \
-	      OUT=docs/properties/addr/index.html \
-	      PAGE_TITLE=addr \
+	@for prop in $(PROPERTY_LIST) ; do \
+		make CONTENT=docs/properties/$$prop.html \
+		     OUT=docs/properties/$$prop/index.html \
+		     PAGE_TITLE=$$prop \
+		     SUBSECTION_TITLE=Properties \
+		     SIDENAV_LINK=$$prop \
+		     SUBSUBNAV=properties \
+		     docs-build-page-level3 ; \
+	done
+	@make CONTENT=docs/properties/brooklynintegers.html \
+	      OUT=docs/properties/brooklynintegers/index.html \
+	      PAGE_TITLE='Brooklyn Integers' \
 	      SUBSECTION_TITLE=Properties \
-	      SIDENAV_LINK=addr \
+	      SIDENAV_LINK='brooklyn integers' \
 	      SUBSUBNAV=properties \
 	      docs-build-page-level3
-
-docs-properties: docs-properties-addr docs-properties-edtf docs-properties-geom docs-properties-lbl docs-properties-mz docs-properties-name docs-properties-resto docs-properties-reversegeo docs-properties-src docs-properties-wof docs-properties-brooklynintegers docs-properties-index
