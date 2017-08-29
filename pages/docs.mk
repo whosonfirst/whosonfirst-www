@@ -3,11 +3,18 @@ COOKBOOK_REPO := https://github.com/whosonfirst/whosonfirst-cookbook/blob/master
 PLACETYPES_REPO := https://github.com/whosonfirst/whosonfirst-placetypes/blob/master/
 NAMES_REPO := https://github.com/whosonfirst/whosonfirst-names/blob/master/
 GEOMETRIES_REPO := https://github.com/whosonfirst/whosonfirst-geometries/blob/master/
+DATES_REPO := https://github.com/whosonfirst/whosonfirst-dates/blob/master/
+CATEGORIES_REPO := https://github.com/whosonfirst/whosonfirst-categories/blob/master/
+
 PROPERTY_LIST := addr edtf geom lbl mz name resto reversegeo src wof
 
 docs: docs-download-content docs-build-pages
 
-docs-download-content: docs-download-properties docs-download-placetypes
+docs-download-content: \
+	docs-download-properties \
+	docs-download-placetypes \
+	docs-download-geometries \
+	docs-download-categories
 	@make URL=$(COOKBOOK_REPO)definition/brooklyn_integers.md \
 	      OUT=docs/properties/brooklynintegers.html \
 	      download-content
@@ -15,12 +22,9 @@ docs-download-content: docs-download-properties docs-download-placetypes
 	      OUT=docs/names.html \
 	      download-content
 
-docs-download-geometries:
-	@make URL=$(GEOMETRIES_REPO)README.md \
-	      OUT=docs/geometries/geometries.html \
-	      download-content
-	@make URL=$(COOKBOOK_REPO)how_to/creating_alt_geometries.md \
-	      OUT=docs/geometries/alt_geometries.html \
+docs-download-dates:
+	@make URL=$(DATES_REPO)README.md \
+	      OUT=docs/dates.html \
 	      download-content
 
 docs-download-properties:
@@ -37,12 +41,31 @@ docs-download-placetypes:
 		  OUT=docs/placetypes.html \
 		  download-content
 
+docs-download-geometries:
+	@make URL=$(GEOMETRIES_REPO)README.md \
+	      OUT=docs/geometries/geometries.html \
+	      download-content
+	@make URL=$(COOKBOOK_REPO)how_to/creating_alt_geometries.md \
+	      OUT=docs/geometries/alt_geometries.html \
+	      download-content
+
+docs-download-categories:
+	@echo "Download images/chicken.jpg"
+	@curl -s -o www/images/placetypes-latest.png https://raw.githubusercontent.com/whosonfirst/whosonfirst-placetypes/master/images/placetypes-latest.png
+	@make URL=$(CATEGORIES_REPO)README.md \
+		  OUT=docs/categories.html \
+		  download-content
+
 docs-build-pages: \
 	docs-home \
 	docs-properties \
 	docs-concordances \
 	docs-placetypes \
-	docs-hierarchies
+	docs-hierarchies \
+	docs-names \
+	docs-geometries \
+	docs-dates \
+	docs-categories
 
 docs-build-page-level1:
 	@make NAV_LINK=docs SUBNAV_DIR=docs build-page-level1
@@ -125,8 +148,22 @@ docs-geometries:
 	      SUBSUBNAV=geometries \
 	      docs-build-page-level2
 	@make CONTENT=docs/geometries/alt_geometries.html \
-		  OUT=docs/geometries/alt/index.html \
-		  PAGE_TITLE='Alt Geometries' \
-		  SIDENAV_LINK='alt geometries' \
-		  SUBSUBNAV=geometries \
-		  docs-build-page-level3
+	      OUT=docs/geometries/alt/index.html \
+	      PAGE_TITLE='Alt Geometries' \
+	      SIDENAV_LINK='alt geometries' \
+	      SUBSUBNAV=geometries \
+	      docs-build-page-level3
+
+docs-dates:
+	@make CONTENT=docs/dates.html \
+	      OUT=docs/dates/index.html \
+	      PAGE_TITLE='Dates' \
+	      SIDENAV_LINK=dates \
+	      docs-build-page-level2
+
+docs-categories:
+	@make CONTENT=docs/categories.html \
+	      OUT=docs/categories/index.html \
+	      PAGE_TITLE='Categories' \
+	      SIDENAV_LINK=categories \
+	      docs-build-page-level2

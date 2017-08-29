@@ -187,60 +187,6 @@ tools-home:
 	rm www/tools/tools-content.html
 	rm www/tools/index.html-e
 
-docs-placetypes-orig:
-	curl -s -o www/images/placetypes-latest.png https://raw.githubusercontent.com/whosonfirst/whosonfirst-placetypes/master/images/placetypes-latest.png
-	curl -s https://github.com/whosonfirst/whosonfirst-placetypes/blob/master/README.md | pup -i 0 'article.markdown-body h1' > www/docs/placetypes/temp-content1.html
-	curl -s https://github.com/whosonfirst/whosonfirst-placetypes/blob/master/README.md | pup -i 0 'article.markdown-body :not(h1)' > www/docs/placetypes/temp-content2.html
-	sed -i -e 's/\<h1/\<h1 class\=\"whosonfirst\-subpage\-header\"/' www/docs/placetypes/temp-content1.html
-	sed -i -e 's/\/whosonfirst\/whosonfirst-placetypes\/raw\/master\/images/..\/..\/images/' 	www/docs/placetypes/temp-content2.html
-	sed -i -e 's/\/whosonfirst\/whosonfirst\-placetypes\/blob\/master\/images/..\/..\/images/' 	www/docs/placetypes/temp-content2.html
-	cat components/head/head.html components/navbar/navbar.html components/subnav/docs/subnav-top.html www/docs/placetypes/temp-content1.html components/subnav/docs/subnav-bottom.html  www/docs/placetypes/temp-content2.html components/footer/footer.html > www/docs/placetypes/index.html
-	rm www/docs/placetypes/temp-content1.html
-	rm www/docs/placetypes/temp-content2.html
-	rm www/docs/placetypes/temp-content1.html-e
-	rm www/docs/placetypes/temp-content2.html-e
-	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>docs\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>docs\<\/a\>/' www/docs/placetypes/index.html
-	sed -i -e 's/whosonfirst\-sidenav\-link\"\>placetypes/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>placetypes/' www/docs/placetypes/index.html
-	sed -i -e 's/whosonfirst\-extrasmall\-nav\-link\-collapsed\"\>placetypes/whosonfirst\-extrasmall\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>placetypes/' www/docs/placetypes/index.html
-	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Docs\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Placetypes\<\/div\>/' www/docs/placetypes/index.html
-	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/docs/placetypes/index.html
-	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/docs/placetypes/index.html
-	rm www/docs/placetypes/index.html-e
-
-docs-dates:
-	curl -s https://github.com/whosonfirst/whosonfirst-dates | pup -i 0 'article.markdown-body h1' > www/docs/dates/temp-content1.html
-	curl -s https://github.com/whosonfirst/whosonfirst-dates | pup -i 0 'article.markdown-body :not(h1)' > www/docs/dates/temp-content2.html
-	sed -i -e 's/\<h1/\<h1 class\=\"whosonfirst\-subpage\-header\"/' www/docs/dates/temp-content1.html
-	cat components/head/head.html components/navbar/navbar.html components/subnav/docs/subnav-top.html www/docs/dates/temp-content1.html components/subnav/docs/subnav-bottom.html  www/docs/dates/temp-content2.html components/footer/footer.html > www/docs/dates/index.html
-	rm www/docs/dates/temp-content1.html
-	rm www/docs/dates/temp-content2.html
-	rm www/docs/dates/temp-content1.html-e
-	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>docs\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>docs\<\/a\>/' www/docs/dates/index.html
-	sed -i -e 's/whosonfirst\-sidenav\-link\"\>dates/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>dates/' www/docs/dates/index.html
-	sed -i -e 's/whosonfirst\-extrasmall\-nav\-link\-collapsed\"\>dates/whosonfirst\-extrasmall\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>dates/' www/docs/dates/index.html
-	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Docs\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Dates\<\/div\>/' www/docs/dates/index.html
-	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/docs/dates/index.html
-	rm www/docs/dates/index.html-e
-
-docs-categories:
-	curl -s -o www/images/chicken.jpg https://raw.githubusercontent.com/whosonfirst/whosonfirst-categories/master/chicken.jpg
-	curl -s https://github.com/whosonfirst/whosonfirst-categories/blob/master/README.md | pup -i 0 'article.markdown-body h1' > www/docs/categories/temp-content1.html
-	curl -s https://github.com/whosonfirst/whosonfirst-categories/blob/master/README.md | pup -i 0 'article.markdown-body :not(h1)' > www/docs/categories/temp-content2.html
-	sed -i -e 's/\<h1/\<h1 class\=\"whosonfirst\-subpage\-header\"/' www/docs/categories/temp-content1.html
-	sed -i -e 's/\/whosonfirst\/whosonfirst\-categories\/blob\/master/..\/..\/images/' 	www/docs/categories/temp-content2.html
-	sed -i -e 's/\/whosonfirst\/whosonfirst\-categories\/raw\/master/..\/..\/images/' 	www/docs/categories/temp-content2.html
-	cat components/head/head.html components/navbar/navbar.html components/subnav/docs/subnav-top.html www/docs/categories/temp-content1.html components/subnav/docs/subnav-bottom.html  www/docs/categories/temp-content2.html components/footer/footer.html > www/docs/categories/index.html
-	rm www/docs/categories/temp-content1.html
-	rm www/docs/categories/temp-content2.html
-	rm www/docs/categories/temp-content1.html-e
-	rm www/docs/categories/temp-content2.html-e
-	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>docs\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>docs\<\/a\>/' www/docs/categories/index.html
-	sed -i -e 's/whosonfirst\-sidenav\-link\"\>categories/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>categories/' www/docs/categories/index.html
-	sed -i -e 's/whosonfirst\-extrasmall\-nav\-link\-collapsed\"\>categories/whosonfirst\-extrasmall\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>categories/' www/docs/categories/index.html
-	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Docs\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Categories\<\/div\>/' www/docs/categories/index.html
-	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/docs/categories/index.html
-	rm www/docs/categories/index.html-e
-
 docs-sources-index:
 	curl -s https://github.com/whosonfirst/whosonfirst-sources | pup -i 0 'article.markdown-body h1' > www/docs/sources/temp-content1.html
 	curl -s https://github.com/whosonfirst/whosonfirst-sources | pup -i 0 'article.markdown-body :not(h1)' > www/docs/sources/temp-content2.html
