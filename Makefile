@@ -73,13 +73,13 @@ home-page:
 page-level0:
 	@echo "Build $(CONTENT) => $(OUT)"
 	@cat www/components/head.html \
-	     www/content/$(CONTENT) \
+	     content/$(CONTENT) \
 	     www/components/footer.html > www/$(OUT)
 
 page-level1:
 	@echo "Build $(CONTENT) => $(OUT)"
-	@cat www/content/$(CONTENT) | pup -i 0 'body h1' > page-title.html
-	@cat www/content/$(CONTENT) | pup -i 0 'body :not(h1)' > page-content.html
+	@cat content/$(CONTENT) | pup -i 0 'body h1' > page-title.html
+	@cat content/$(CONTENT) | pup -i 0 'body :not(h1)' > page-content.html
 	@cat www/components/head.html \
 	     www/components/subnav/$(SUBNAV_DIR)/subnav-top.html \
 	     page-title.html \
@@ -93,8 +93,8 @@ page-level1:
 
 page-level2:
 	@echo "Build $(CONTENT) => $(OUT)"
-	@cat www/content/$(CONTENT) | pup -i 0 'body h1' > page-title.html
-	@cat www/content/$(CONTENT) | pup -i 0 'body :not(h1)' > page-content.html
+	@cat content/$(CONTENT) | pup -i 0 'body h1' > page-title.html
+	@cat content/$(CONTENT) | pup -i 0 'body :not(h1)' > page-content.html
 	@cat www/components/head.html \
 	     www/components/subnav/$(SUBNAV_DIR)/subnav-top.html \
 	     page-title.html \
@@ -117,15 +117,15 @@ page-cleanup:
 page-download:
 	@echo "Download $(URL) => $(OUT)"
 	@curl -s $(URL) > page.html
-	@echo '<h1 class="whosonfirst-subpage-header">' > www/content/$(OUT)
-	@cat page.html | pup -i 0 'article.markdown-body h1 text{}' >> www/content/$(OUT)
-	@echo '</h1>' >> www/content/$(OUT)
-	@cat page.html | pup -i 0 'article.markdown-body > :not(h1)' >> www/content/$(OUT)
+	@echo '<h1 class="whosonfirst-subpage-header">' > content/$(OUT)
+	@cat page.html | pup -i 0 'article.markdown-body h1 text{}' >> content/$(OUT)
+	@echo '</h1>' >> content/$(OUT)
+	@cat page.html | pup -i 0 'article.markdown-body > :not(h1)' >> content/$(OUT)
 	@rm page.html
 
 docs-home:
-	cat www/content/docs/docs.html | pup -i 0 'body h1'  > www/docs/docs-title.html
-	cat www/content/docs/docs.html | pup -i 0 'body :not(h1)'  > www/docs/docs-content.html
+	cat content/docs/docs.html | pup -i 0 'body h1'  > www/docs/docs-title.html
+	cat content/docs/docs.html | pup -i 0 'body :not(h1)'  > www/docs/docs-content.html
 	cat www/components/head.html \
 	    www/components/subnav/docs/subnav-top.html \
 	    www/docs/docs-title.html \
@@ -140,8 +140,8 @@ docs-home:
 	rm www/docs/index.html-e
 
 tools-home:
-	cat www/content/tools/tools.html | pup -i 0 'body h1' > www/tools/tools-title.html
-	cat www/content/tools/tools.html | pup -i 0 'body :not(h1)' > www/tools/tools-content.html
+	cat content/tools/tools.html | pup -i 0 'body h1' > www/tools/tools-title.html
+	cat content/tools/tools.html | pup -i 0 'body :not(h1)' > www/tools/tools-content.html
 	cat www/components/head.html \
 	    www/components/subnav/tools/subnav-top.html \
 	    www/tools/tools-title.html \
@@ -322,8 +322,8 @@ docs-properties-brooklynintegers:
 	rm www/docs/properties/brooklynintegers/index.html-e
 
 docs-properties-index:
-	cat www/content/docs/properties/properties.html | pup -i 0 'body h1'  > www/docs/properties/temp-content1.html
-	cat www/content/docs/properties/properties.html | pup -i 0 'body :not(h1)'  > www/docs/properties/temp-content2.html
+	cat content/docs/properties/properties.html | pup -i 0 'body h1'  > www/docs/properties/temp-content1.html
+	cat content/docs/properties/properties.html | pup -i 0 'body :not(h1)'  > www/docs/properties/temp-content2.html
 	sed -i -e 's/\<h1/\<h1 class\=\"whosonfirst\-subpage\-header\"/' www/docs/properties/temp-content1.html
 	cat www/components/head/head.html www/components/navbar/navbar.html www/components/subnav/docs/properties/subnav-top.html www/docs/properties/temp-content1.html www/components/subnav/docs/properties/subnav-bottom.html  www/docs/properties/temp-content2.html www/components/footer/footer.html > www/docs/properties/index.html
 	rm www/docs/properties/temp-content1.html
@@ -337,8 +337,8 @@ docs-properties-index:
 docs-properties: docs-properties-addr docs-properties-edtf docs-properties-geom docs-properties-lbl docs-properties-mz docs-properties-name docs-properties-resto docs-properties-reversegeo docs-properties-src docs-properties-wof docs-properties-brooklynintegers docs-properties-index
 
 docs-concordances:
-	cat www/content/docs/concordances/concordances.html | pup -i 0 'body h1' > www/docs/concordances/temp-content1.html
-	cat www/content/docs/concordances/concordances.html | pup -i 0 'body :not(h1)' > www/docs/concordances/temp-content2.html
+	cat content/docs/concordances/concordances.html | pup -i 0 'body h1' > www/docs/concordances/temp-content1.html
+	cat content/docs/concordances/concordances.html | pup -i 0 'body :not(h1)' > www/docs/concordances/temp-content2.html
 	sed -i -e 's/\<h1/\<h1 class\=\"whosonfirst\-subpage\-header\"/' www/docs/concordances/temp-content1.html
 	cat www/components/head/head.html www/components/navbar/navbar.html www/components/subnav/docs/subnav-top.html www/docs/concordances/temp-content1.html www/components/subnav/docs/subnav-bottom.html  www/docs/concordances/temp-content2.html www/components/footer/footer.html > www/docs/concordances/index.html
 	rm www/docs/concordances/temp-content1.html
@@ -372,8 +372,8 @@ docs-placetypes:
 	rm www/docs/placetypes/index.html-e
 
 docs-hierachies-index:
-	cat www/content/docs/hierachies/hierachies.html | pup -i 0 'body h1' > www/docs/hierachies/temp-content1.html
-	cat www/content/docs/hierachies/hierachies.html | pup -i 0 'body :not(h1)' > www/docs/hierachies/temp-content2.html
+	cat content/docs/hierachies/hierachies.html | pup -i 0 'body h1' > www/docs/hierachies/temp-content1.html
+	cat content/docs/hierachies/hierachies.html | pup -i 0 'body :not(h1)' > www/docs/hierachies/temp-content2.html
 	sed -i -e 's/\<h1/\<h1 class\=\"whosonfirst\-subpage\-header\"/' www/docs/hierachies/temp-content1.html
 	cat www/components/head/head.html www/components/navbar/navbar.html www/components/subnav/docs/hierachies/subnav-top.html www/docs/hierachies/temp-content1.html www/components/subnav/docs/hierachies/subnav-bottom.html  www/docs/hierachies/temp-content2.html www/components/footer/footer.html > www/docs/hierachies/index.html
 	rm www/docs/hierachies/temp-content1.html
@@ -385,8 +385,8 @@ docs-hierachies-index:
 	rm www/docs/hierachies/index.html-e
 
 docs-hierachies-disputedareas:
-	cat www/content/docs/hierachies/disputedareas.html | pup -i 0 'body h1' > www/docs/hierachies/temp-content1.html
-	cat www/content/docs/hierachies/disputedareas.html | pup -i 0 'body :not(h1)' > www/docs/hierachies/temp-content2.html
+	cat content/docs/hierachies/disputedareas.html | pup -i 0 'body h1' > www/docs/hierachies/temp-content1.html
+	cat content/docs/hierachies/disputedareas.html | pup -i 0 'body :not(h1)' > www/docs/hierachies/temp-content2.html
 	sed -i -e 's/\<h1/\<h1 class\=\"whosonfirst\-subpage\-header\"/' www/docs/hierachies/temp-content1.html
 	cat www/components/head/head.html www/components/navbar/navbar.html www/components/subnav/docs/hierachies/subnav-top.html www/docs/hierachies/temp-content1.html www/components/subnav/docs/hierachies/subnav-bottom.html  www/docs/hierachies/temp-content2.html www/components/footer/footer.html > www/docs/hierachies/disputedareas.html
 	rm www/docs/hierachies/temp-content1.html
@@ -399,8 +399,8 @@ docs-hierachies-disputedareas:
 	rm www/docs/hierachies/disputedareas.html-e
 
 docs-hierachies-superseded:
-	cat www/content/docs/hierachies/superseded.html | pup -i 0 'body h1' > www/docs/hierachies/temp-content1.html
-	cat www/content/docs/hierachies/superseded.html | pup -i 0 'body :not(h1)' > www/docs/hierachies/temp-content2.html
+	cat content/docs/hierachies/superseded.html | pup -i 0 'body h1' > www/docs/hierachies/temp-content1.html
+	cat content/docs/hierachies/superseded.html | pup -i 0 'body :not(h1)' > www/docs/hierachies/temp-content2.html
 	sed -i -e 's/\<h1/\<h1 class\=\"whosonfirst\-subpage\-header\"/' www/docs/hierachies/temp-content1.html
 	cat www/components/head/head.html www/components/navbar/navbar.html www/components/subnav/docs/hierachies/subnav-top.html www/docs/hierachies/temp-content1.html www/components/subnav/docs/hierachies/subnav-bottom.html  www/docs/hierachies/temp-content2.html www/components/footer/footer.html > www/docs/hierachies/superseded.html
 	rm www/docs/hierachies/temp-content1.html
@@ -603,8 +603,8 @@ docs-keyterms:
 	rm www/docs/keyterms/index.html-e
 
 docs-processes-index:
-	cat www/content/docs/processes/processes.html | pup -i 0 'body h1'  > www/docs/processes/temp-content1.html
-	cat www/content/docs/processes/processes.html | pup -i 0 'body :not(h1)'  > www/docs/processes/temp-content2.html
+	cat content/docs/processes/processes.html | pup -i 0 'body h1'  > www/docs/processes/temp-content1.html
+	cat content/docs/processes/processes.html | pup -i 0 'body :not(h1)'  > www/docs/processes/temp-content2.html
 	sed -i -e 's/\<h1/\<h1 class\=\"whosonfirst\-subpage\-header\"/' www/docs/processes/temp-content1.html
 	cat www/components/head/head.html www/components/navbar/navbar.html www/components/subnav/docs/processes/subnav-top.html www/docs/processes/temp-content1.html www/components/subnav/docs/processes/subnav-bottom.html  www/docs/processes/temp-content2.html www/components/footer/footer.html > www/docs/processes/index.html
 	rm www/docs/processes/temp-content1.html
@@ -662,8 +662,8 @@ docs-processes-s3requirements:
 	rm www/docs/processes/s3requirements.html-e
 
 docs-processes-wikipediaconcordances:
-	cat www/content/docs/processes/wikipediaconcordances.html | pup -i 0 'article.markdown-body h1:first-of-type' > www/docs/processes/temp-content1.html
-	cat www/content/docs/processes/wikipediaconcordances.html | pup -i 0 'article.markdown-body :not(h1:first-of-type)' > www/docs/processes/temp-content2.html
+	cat content/docs/processes/wikipediaconcordances.html | pup -i 0 'article.markdown-body h1:first-of-type' > www/docs/processes/temp-content1.html
+	cat content/docs/processes/wikipediaconcordances.html | pup -i 0 'article.markdown-body :not(h1:first-of-type)' > www/docs/processes/temp-content2.html
 	sed -i -e 's/\<h1/\<h1 class\=\"whosonfirst\-subpage\-header\"/' www/docs/processes/temp-content1.html
 	cat www/components/head/head.html www/components/navbar/navbar.html www/components/subnav/docs/processes/subnav-top.html www/docs/processes/temp-content1.html www/components/subnav/docs/processes/subnav-bottom.html  www/docs/processes/temp-content2.html www/components/footer/footer.html > www/docs/processes/wikipediaconcordances.html
 	rm www/docs/processes/temp-content1.html
@@ -727,8 +727,8 @@ docs-processes-woflifecycle:
 docs-processes: docs-processes-significantevent docs-processes-assigningcessation docs-processes-s3requirements docs-processes-wikipediaconcordances docs-processes-seattleneighborhoodupdates docs-processes-updatingsanfrancisconeighborhoods docs-processes-woflifecycle docs-processes-index
 
 blog-withalltheblogfolder:
-	cat www/content/blog/blog.html | pup -i 0 'body h1' > www/alltheblog/temp-content1.html
-	cat www/content/blog/blog.html | pup -i 0 'body :not(h1)' > www/alltheblog/temp-content2.html
+	cat content/blog/blog.html | pup -i 0 'body h1' > www/alltheblog/temp-content1.html
+	cat content/blog/blog.html | pup -i 0 'body :not(h1)' > www/alltheblog/temp-content2.html
 	sed -i -e 's/\<h1/\<h1 class\=\"whosonfirst\-subpage\-header\"/' www/alltheblog/temp-content1.html
 	cat www/components/head/head-onelevelup.html www/components/navbar/navbar-onelevelup.html www/components/subnav/blog/subnav-top.html www/alltheblog/temp-content1.html www/components/subnav/blog/subnav-bottom.html  www/alltheblog/temp-content2.html www/components/footer/footer-onelevelup.html > www/alltheblog/index.html
 	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>blog\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>blog\<\/a\>/' www/alltheblog/index.html
@@ -738,8 +738,8 @@ blog-withalltheblogfolder:
 	rm www/alltheblog/index.html-e
 
 blog:
-	cat www/content/blog/blog.html | pup -i 0 'body h1' > www/blog/temp-content1.html
-	cat www/content/blog/blog.html | pup -i 0 'body :not(h1)' > www/blog/temp-content2.html
+	cat content/blog/blog.html | pup -i 0 'body h1' > www/blog/temp-content1.html
+	cat content/blog/blog.html | pup -i 0 'body :not(h1)' > www/blog/temp-content2.html
 	sed -i -e 's/\<h1/\<h1 class\=\"whosonfirst\-subpage\-header\"/' www/blog/temp-content1.html
 	cat www/components/head/head-onelevelup.html www/components/navbar/navbar-onelevelup.html www/components/subnav/blog/subnav-top.html www/blog/temp-content1.html www/components/subnav/blog/subnav-bottom.html  www/blog/temp-content2.html www/components/footer/footer-onelevelup.html > www/blog/index.html
 	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>blog\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>blog\<\/a\>/' www/blog/index.html
@@ -749,8 +749,8 @@ blog:
 	rm www/blog/index.html-e
 
 blog-mesoshapes:
-	cat www/content/blog/mesoshapes/mesoshapes.html | pup -i 0 'body h1' > www/blog/mesoshapes/temp-content1.html
-	cat www/content/blog/mesoshapes/mesoshapes.html | pup -i 0 'body :not(h1)' > www/blog/mesoshapes/temp-content2.html
+	cat content/blog/mesoshapes/mesoshapes.html | pup -i 0 'body h1' > www/blog/mesoshapes/temp-content1.html
+	cat content/blog/mesoshapes/mesoshapes.html | pup -i 0 'body :not(h1)' > www/blog/mesoshapes/temp-content2.html
 	sed -i -e 's/\<h1/\<h1 class\=\"whosonfirst\-subpage\-header\"/' www/blog/mesoshapes/temp-content1.html
 	cat www/components/head/head.html www/components/navbar/navbar.html www/components/subnav/blog/subnav-top.html www/blog/mesoshapes/temp-content1.html www/components/subnav/blog/subnav-bottom.html  www/blog/mesoshapes/temp-content2.html www/components/footer/footer.html > www/blog/mesoshapes/index.html
 	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>blog\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>blog\<\/a\>/' www/blog/mesoshapes/index.html
@@ -760,8 +760,8 @@ blog-mesoshapes:
 	rm www/blog/mesoshapes/index.html-e
 
 tools-availabletools:
-	cat www/content/tools/availabletools.html | pup -i 0 'body h1' > www/tools/temp-content1.html
-	cat www/content/tools/availabletools.html | pup -i 0 'body :not(h1)' > www/tools/temp-content2.html
+	cat content/tools/availabletools.html | pup -i 0 'body h1' > www/tools/temp-content1.html
+	cat content/tools/availabletools.html | pup -i 0 'body :not(h1)' > www/tools/temp-content2.html
 	sed -i -e 's/\<h1/\<h1 class\=\"whosonfirst\-subpage\-header\"/' www/tools/temp-content1.html
 	cat www/components/head/head-onelevelup.html www/components/navbar/navbar-onelevelup.html www/components/subnav/tools/subnav-top.html www/tools/temp-content1.html www/components/subnav/tools/subnav-bottom.html  www/tools/temp-content2.html www/components/footer/footer-onelevelup.html > www/tools/availabletools.html
 	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>tools\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>tools\<\/a\>/' www/tools/availabletools.html
@@ -774,8 +774,8 @@ tools-availabletools:
 	rm www/tools/availabletools.html-e
 
 state:
-	cat www/content/state/state.html | pup -i 0 'body h1' > www/state/temp-content1.html
-	cat www/content/state/state.html | pup -i 0 'body :not(h1)' > www/state/temp-content2.html
+	cat content/state/state.html | pup -i 0 'body h1' > www/state/temp-content1.html
+	cat content/state/state.html | pup -i 0 'body :not(h1)' > www/state/temp-content2.html
 	sed -i -e 's/\<h1/\<h1 class\=\"whosonfirst\-subpage\-header\"/' www/state/temp-content1.html
 	cat www/components/head/head-onelevelup.html www/components/navbar/navbar-onelevelup.html www/components/subnav/state/subnav-top.html www/state/temp-content1.html www/components/subnav/state/subnav-bottom.html  www/state/temp-content2.html www/components/footer/footer-onelevelup.html > www/state/index.html
 	rm www/state/temp-content1.html
@@ -783,8 +783,8 @@ state:
 	rm www/state/temp-content1.html-e
 
 getstarted-index:
-	cat www/content/getstarted/getstarted.html | pup -i 0 'body h1' > www/getstarted/temp-content1.html
-	cat www/content/getstarted/getstarted.html | pup -i 0 'body :not(h1)' > www/getstarted/temp-content2.html
+	cat content/getstarted/getstarted.html | pup -i 0 'body h1' > www/getstarted/temp-content1.html
+	cat content/getstarted/getstarted.html | pup -i 0 'body :not(h1)' > www/getstarted/temp-content2.html
 	sed -i -e 's/\<h1/\<h1 class\=\"whosonfirst\-subpage\-header\"/' www/getstarted/temp-content1.html
 	cat www/components/head/head-onelevelup.html www/components/navbar/navbar-onelevelup.html www/components/subnav/getstarted/subnav-top.html www/getstarted/temp-content1.html www/components/subnav/getstarted/subnav-bottom.html  www/getstarted/temp-content2.html www/components/footer/footer-onelevelup.html > www/getstarted/index.html
 	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>get started\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>get started\<\/a\>/' www/getstarted/index.html
@@ -794,8 +794,8 @@ getstarted-index:
 	rm www/getstarted/index.html-e
 
 getstarted-retrievevenues:
-	cat www/content/getstarted/retrievevenues.html | pup -i 0 'body h1' > www/getstarted/temp-content1.html
-	cat www/content/getstarted/retrievevenues.html | pup -i 0 'body :not(h1)' > www/getstarted/temp-content2.html
+	cat content/getstarted/retrievevenues.html | pup -i 0 'body h1' > www/getstarted/temp-content1.html
+	cat content/getstarted/retrievevenues.html | pup -i 0 'body :not(h1)' > www/getstarted/temp-content2.html
 	sed -i -e 's/\<h1/\<h1 class\=\"whosonfirst\-subpage\-header\"/' www/getstarted/temp-content1.html
 	cat www/components/head/head-onelevelup.html www/components/navbar/navbar-onelevelup.html www/components/subnav/getstarted/subnav-top.html www/getstarted/temp-content1.html www/components/subnav/getstarted/subnav-bottom.html  www/getstarted/temp-content2.html www/components/footer/footer-onelevelup.html > www/getstarted/retrievevenues.html
 	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>get started\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>get started\<\/a\>/' www/getstarted/retrievevenues.html
@@ -808,8 +808,8 @@ getstarted-retrievevenues:
 	rm www/getstarted/retrievevenues.html-e
 
 getstarted-retrieveneighbourhoods:
-	cat www/content/getstarted/retrieveneighbourhoods.html | pup -i 0 'body h1' > www/getstarted/temp-content1.html
-	cat www/content/getstarted/retrieveneighbourhoods.html | pup -i 0 'body :not(h1)' > www/getstarted/temp-content2.html
+	cat content/getstarted/retrieveneighbourhoods.html | pup -i 0 'body h1' > www/getstarted/temp-content1.html
+	cat content/getstarted/retrieveneighbourhoods.html | pup -i 0 'body :not(h1)' > www/getstarted/temp-content2.html
 	sed -i -e 's/\<h1/\<h1 class\=\"whosonfirst\-subpage\-header\"/' www/getstarted/temp-content1.html
 	cat www/components/head/head-onelevelup.html www/components/navbar/navbar-onelevelup.html www/components/subnav/getstarted/subnav-top.html www/getstarted/temp-content1.html www/components/subnav/getstarted/subnav-bottom.html  www/getstarted/temp-content2.html www/components/footer/footer-onelevelup.html > www/getstarted/retrieveneighbourhoods.html
 	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>get started\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>get started\<\/a\>/' www/getstarted/retrieveneighbourhoods.html
@@ -822,8 +822,8 @@ getstarted-retrieveneighbourhoods:
 	rm www/getstarted/retrieveneighbourhoods.html-e
 
 interns:
-	cat www/content/interns/interns.html | pup -i 0 'body h1' > www/interns/temp-content1.html
-	cat www/content/interns/interns.html | pup -i 0 'body :not(h1)' > www/interns/temp-content2.html
+	cat content/interns/interns.html | pup -i 0 'body h1' > www/interns/temp-content1.html
+	cat content/interns/interns.html | pup -i 0 'body :not(h1)' > www/interns/temp-content2.html
 	sed -i -e 's/\<h1/\<h1 class\=\"whosonfirst\-subpage\-header\"/' www/interns/temp-content1.html
 	cat www/components/head/head-onelevelup.html www/components/navbar/navbar-onelevelup.html www/components/subnav/interns/subnav-top.html www/interns/temp-content1.html www/components/subnav/interns/subnav-bottom.html  www/interns/temp-content2.html www/components/footer/footer-onelevelup.html > www/interns/index.html
 	rm www/interns/temp-content1.html
