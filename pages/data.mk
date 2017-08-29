@@ -10,7 +10,14 @@ data-download-content:
 	      OUT=data/pullrequest.html \
 	      download-content
 
-data-build-pages: data-home data-principles data-available data-amazon data-github data-knownknowns data-pullrequest
+data-build-pages: \
+	data-home \
+	data-principles \
+	data-available \
+	data-amazon \
+	data-github \
+	data-knownknowns \
+	data-pullrequest
 
 data-build-page-level1:
 	@make NAV_LINK=data SUBNAV_DIR=data build-page-level1
