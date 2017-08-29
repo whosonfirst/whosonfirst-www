@@ -1,3 +1,5 @@
+WOF_DATA_REPO := https://github.com/whosonfirst-data/whosonfirst-data/blob/master/
+
 data: data-download-content data-build-pages
 
 data-download-content:
