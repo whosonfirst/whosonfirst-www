@@ -1,86 +1,92 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Who’s On First</title>
-        <meta name='description' content="Who's on First is a gazetteer of places.">
-        <link rel='apple-touch-icon' href='https://mapzen.com/common/styleguide/images/favicons/apple-touch-icon.png' sizes='180x180'>
-        <link rel='icon' type='image/png' href='https://mapzen.com/common/styleguide/images/favicons/favicon-16x16.png' sizes='16x16'>
-        <link rel='icon' type='image/png' href='https://mapzen.com/common/styleguide/images/favicons/favicon-32x32.png' sizes='32x32'>
-        <link rel='manifest' href='https://mapzen.com/common/styleguide/images/favicons/manifest.json'>
-        <link rel='mask-icon' href='https://mapzen.com/common/styleguide/images/favicons/safari-pinned-tab.svg' color='#2C1E3F'>
-		
-		<link rel="stylesheet" href="../../css/bootstrap.min.css">
-		<link rel="stylesheet" href="../../css/mapzen.whosonfirst.css">
-    </head>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Who’s On First | Data | Known Knowns</title>
+		<meta name="description" content="Who’s on First is a gazetteer of places.">
+		<link rel="apple-touch-icon" href="/images/favicons/apple-touch-icon.png" sizes="180x180">
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-16x16.png" sizes="16x16">
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-32x32.png" sizes="32x32">
+		<link rel="manifest" href="/images/favicons/manifest.json">
+		<link rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg" color="#2C1E3F">
+		<link rel="stylesheet" href="/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/css/mapzen.whosonfirst.css">
+		<!-- CSS for code styling from highlightpack.js -->
+		<link rel="stylesheet" href="/css/styles/grayscale.css">
+	</head>
 	<body>
-		<div class="whosonfirst-wrapper"><nav class="navbar navbar-default navbar-fixed-top whosonfirst-fixed-subpage-navbar">
-	<div class="container">
-		<!-- Brand and toggle get grouped for better mobile display -->
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand" href="../">Who's On First</a>
-		</div>
+		<div class="whosonfirst-wrapper">
 
-		<!-- Collect the nav links, forms, and other content for toggling -->
-		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-			<ul class="nav navbar-nav navbar-right">
-				<li class="whosonfirst-navbar-element-collapsed">
-					<a href="../../data/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed whosonfirst-nav-active">data</a>
-				</li>
-				<li class="whosonfirst-navbar-element-collapsed">
-					<a href="../../docs/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">docs</a>
-				</li>
-				<li class="whosonfirst-navbar-element-collapsed">
-					<a href="../../tools/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">tools</a>
-				</li>
-				<li class="whosonfirst-navbar-element-collapsed">
-					<a href="../../blogposts/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">blog</a>
-				</li>
-				<li class="whosonfirst-navbar-element-collapsed">
-					<a href="../../getstarted/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">get started</a>
-				</li>
-			</ul>
-		</div><!-- /.navbar-collapse -->
-	</div><!-- /.container-fluid -->
-</nav><div class="container whosonfirst-subpage-container">
+			<nav class="navbar navbar-default navbar-fixed-top whosonfirst-fixed-subpage-navbar">
+				<div class="container">
+
+					<!-- Brand and toggle get grouped for better mobile display -->
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="/">Who’s On First</a>
+					</div>
+
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav navbar-right">
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/data/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed whosonfirst-nav-active">data</a>
+							</li>
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/docs/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">docs</a>
+							</li>
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/tools/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">tools</a>
+							</li>
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/blog/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">blog</a>
+							</li>
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/getstarted/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">get started</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+<div class="container whosonfirst-subpage-container">
 	<div class="row">
 		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-0">
 			<aside>
 				<div class="whosonfirst-sidenav-container">
 					<ul class="whosonfirst-sidenav-list">
 						<li class="whosonfirst-sidenav-list-element">
-							<a href="../principles/index.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">data principles</a>
+							<a href="/data/principles/" class="whosonfirst-nav-link whosonfirst-sidenav-link">data principles</a>
 						</li>
 						<li class="whosonfirst-sidenav-list-element">
-							<a href="../available/index.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">available data</a>
+							<a href="/data/available/" class="whosonfirst-nav-link whosonfirst-sidenav-link">available data</a>
 						</li>
 						<li class="whosonfirst-sidenav-list-element">
-							<a href="../amazon/index.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">amazon s3</a>
+							<a href="/data/amazon/" class="whosonfirst-nav-link whosonfirst-sidenav-link">amazon s3</a>
 						</li>
 						<li class="whosonfirst-sidenav-list-element">
-							<a href="../github/index.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">github</a>
+							<a href="/data/github/" class="whosonfirst-nav-link whosonfirst-sidenav-link">github</a>
 						</li>
 						<li class="whosonfirst-sidenav-list-element">
-							<a href="../knownknowns/index.html" class="whosonfirst-nav-link whosonfirst-sidenav-link whosonfirst-nav-active">known knowns</a>
+							<a href="/data/knownknowns/" class="whosonfirst-nav-link whosonfirst-sidenav-link whosonfirst-nav-active">known knowns</a>
 						</li>
 						<li class="whosonfirst-sidenav-list-element">
-							<a href="../pullrequest/index.html" class="whosonfirst-nav-link whosonfirst-sidenav-link">pull request template</a>
+							<a href="/data/pullrequest/" class="whosonfirst-nav-link whosonfirst-sidenav-link">pull request template</a>
 						</li>
 					</ul>
 				</div>
 			</aside>
 		</div>
 		<div class="col-lg-7 col-md-9 col-sm-9 col-xs-12">
-			<article><h1 id="known-knowns">
-Known Knowns
+			<article>
+<h1 class="whosonfirst-subpage-header">
+There are known knowns...
 </h1>
 <div class="whosonfirst-fulltabs-container">
 	<div class="whosonfirst-extrasmall-tabs-menu">
@@ -101,56 +107,94 @@ Known Knowns
 				<div class="whosonfirst-extrasmall-nav-collection">
 					<ul class="nav navbar-nav navbar-right whosonfirst-extrasmall-nav">
 						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
-							<a href="../principles/index.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">data principles</a>
+							<a href="/data/principles/" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed whosonfirst-nav-active">datadata principles</a>
 						</li>
 						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
-							<a href="../available/index.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">available data</a>
+							<a href="/data/available/" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed whosonfirst-nav-active">dataavailable data</a>
 						</li>
 						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
-							<a href="../amazon/index.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">amazon s3</a>
+							<a href="/data/amazon/" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed whosonfirst-nav-active">dataamazon s3</a>
 						</li>
 						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
-							<a href="../github/index.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">github</a>
+							<a href="/data/github/" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed whosonfirst-nav-active">datagithub</a>
 						</li>
 						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
-							<a href="../knownknowns/index.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed whosonfirst-nav-active">known knowns</a>
+							<a href="/data/knownknowns/" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed whosonfirst-nav-active">dataknown knowns</a>
 						</li>
 						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
-							<a href="../pullrequest/index.html" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed whosonfirst-extrasmall-nav-link-collapsed-last">pull request template</a>
+							<a href="/data/pullrequest/" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed whosonfirst-extrasmall-nav-link-collapsed-last">pull request template</a>
 						</li>
 					</ul>
 				</div>
 			</div><!-- /.navbar-collapse -->
 		</div>
 	</div>
-	<div class="whosonfirst-tabs-content"><p>
-There are known knowns…
-</p>
-<h3>
-TLS(Transport Layer Security) for whosonfirst.mapzen.com
-</h3>
-<p>
-Yes! As in, it is enabled across the board and everything on a non-secure port is redirected to a secure one.
-</p>
-<h3>
+	<div class="whosonfirst-tabs-content">
+<h2>
+<a id="user-content-some-records-have-no-geometry-or-a-centroid-of-00" class="anchor" href="#some-records-have-no-geometry-or-a-centroid-of-00" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
 Some records have no geometry or a centroid of 0,0
-</h3>
+</h2>
 <p>
-Which the exception of Null Island these are records that need to be researched and updated. We use a default centroid of 0,0 to ensure as a way of tracking records that are still in need of editorial love and so that there is at least something to keep the more conservative GeoJSON parsers out there happy.
+Which the exception of
+<a href="https://whosonfirst.mapzen.com/spelunker/id/1/">
+Null Island
+</a>
+these are records that need to be researched and updated. We use a default centroid of
+<code>
+0,0
+</code>
+to ensure as a way of tracking records that are still in need of editorial love and so that there is at least something to keep the more conversative GeoJSON parsers out there happy.
 </p>
-<h3>
-Some polygon records contain ‘buffered point’ geometry
-</h3>
+<h2>
+<a id="user-content-some-polygon-records-contain-buffered-point-geometry" class="anchor" href="#some-polygon-records-contain-buffered-point-geometry" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+Some polygon records contain &#39;buffered point&#39; geometry
+</h2>
 <p>
-Some records represent point data as polygon data, such as: https://whosonfirst.mapzen.com/spelunker/id/101873779, these records can be distinguished from actual geometries using the tag qs:type=&#34;buffered point&#34;.
+Some records represent point data as polygon data, such as:
+<a href="https://whosonfirst.mapzen.com/spelunker/id/101873779">
+https://whosonfirst.mapzen.com/spelunker/id/101873779
+</a>
+, these records can be distinguished from actual geometries using the tag
+<code>
+qs:type=&#34;buffered point&#34;
+</code>
+.
 </p>
-								</div>
-							</div>
-						</article>
+<h2>
+<a id="user-content-see-also" class="anchor" href="#see-also" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+See also
+</h2>
+<ul>
+<li>
+<a href="https://en.wikipedia.org/wiki/There_are_known_knowns">
+https://en.wikipedia.org/wiki/There_are_known_knowns
+</a>
+</li>
+</ul>
 					</div>
-					<div class="col-lg-2 col-md-0 col-sm-0 col-xs-0"></div>
 				</div>
-			</div>
+			</article>
+		</div>
+		<div class="col-lg-2 col-md-0 col-sm-0 col-xs-0"></div>
+	</div>
+</div>
+			<!-- START footer.html -->
+
 		</div>
 		<footer>
 			<nav class="navbar navbar-default navbar-bottom">
@@ -158,8 +202,8 @@ Some records represent point data as polygon data, such as: https://whosonfirst.
 					<!-- Collect the nav links, forms, and other content for toggling -->
 					<ul class="nav navbar-nav navbar-right whosonfirst-footer">
 						<li class="whosonfirst-nav-link-nounderline whoosonfooter-gig">who's on first is a <a href="https://mapzen.com/" class="whosonfirst-nav-link whosonfirst-nav-link-innounderline">mapzen</a> gig</li>
-						<li><a href="../../docs/contributing/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">contributing</a></li>
-						<li><a href="../../docs/licensing/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">licensing</a></li>
+						<li><a href="/docs/contributing/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">contributing</a></li>
+						<li><a href="/docs/licensing/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">licensing</a></li>
 						<li><a href="https://github.com/whosonfirst" class="whosonfirst-nav-link whosonfirst-footer-nav-link">code github</a></li>
 						<li><a href="https://github.com/whosonfirst-data" class="whosonfirst-nav-link whosonfirst-footer-nav-link">data github</a></li>
 						<li><a href="https://twitter.com/alloftheplaces/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">twitter</a></li>
@@ -167,31 +211,17 @@ Some records represent point data as polygon data, such as: https://whosonfirst.
 				</div>
 			</nav>
 		</footer>
-		
+
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script src="/javascript/jquery.min.js"></script>
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
-		<script src="../../javascript/bootstrap.min.js"></script>
-		
-		<script>
-			$(document).ready(function(){
-				$("#bs-example-navbar-collapse-2").on("show.bs.collapse", function(){
-					console.log("In here");
-					document.getElementById("glyphicon-one").classList.add("glyphicon-menu-up");
-					document.getElementById("glyphicon-one").classList.remove("glyphicon-menu-down");
-				});
-				$("#bs-example-navbar-collapse-2").on("hide.bs.collapse", function(){
-					document.getElementById("glyphicon-one").classList.add("glyphicon-menu-down");
-					document.getElementById("glyphicon-one").classList.remove("glyphicon-menu-up");
-				});
-				$(".whosonfirst-sidenav-list").mouseover(function(){
-					$("body").css("overflow","hidden");
-				});
-				$(".whosonfirst-sidenav-list").mouseout(function(){
-					$("body").css("overflow","auto");
-				});
-				window.addEventListener("hashchange", function() { scrollBy(0, -60) })
-			});
-		</script>
+		<script src="/javascript/bootstrap.min.js"></script>
+		<script src="/javascript/mapzen.whosonfirst.home.js"></script>
+		<script src="/javascript/mapzen.whosonfirst.subpage.js"></script>
+		<!-- JavaScript for code styling from highlightpack.js -->
+		<script src="/javascript/highlightpack.js"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
 	</body>
 </html>
+
+<!-- END footer.html -->

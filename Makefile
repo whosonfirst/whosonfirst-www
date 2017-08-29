@@ -1,4 +1,5 @@
 UNAME_S := $(shell uname -s)
+WOF_DATA_REPO := https://github.com/whosonfirst-data/whosonfirst-data/blob/master/
 
 all: mapzen js css pages www
 
@@ -69,47 +70,58 @@ getstarted: getstarted-index getstarted-retrievevenues getstarted-retrieveneighb
 home-page:
 	@make CONTENT=home.html OUT=index.html page-level0
 
-
 page-level0:
-	cat www/components/head.html \
-	    www/content/$(CONTENT) \
-	    www/components/footer.html > www/$(OUT)
+	@echo "Build $(CONTENT) => $(OUT)"
+	@cat www/components/head.html \
+	     www/content/$(CONTENT) \
+	     www/components/footer.html > www/$(OUT)
 
 page-level1:
+	@echo "Build $(CONTENT) => $(OUT)"
 	@cat www/content/$(CONTENT) | pup -i 0 'body h1' > page-title.html
 	@cat www/content/$(CONTENT) | pup -i 0 'body :not(h1)' > page-content.html
-	cat www/components/head.html \
-	    www/components/subnav/$(SUBNAV_DIR)/subnav-top.html \
-	    page-title.html \
-	    www/components/subnav/$(SUBNAV_DIR)/subnav-bottom.html \
-	    page-content.html \
-	    www/components/subnav/subnav-footer.html \
-	    www/components/footer.html > www/$(OUT)
+	@cat www/components/head.html \
+	     www/components/subnav/$(SUBNAV_DIR)/subnav-top.html \
+	     page-title.html \
+	     www/components/subnav/$(SUBNAV_DIR)/subnav-bottom.html \
+	     page-content.html \
+	     www/components/subnav/subnav-footer.html \
+	     www/components/footer.html > www/$(OUT)
 	@sed -i -e "s/whosonfirst\-nav\-link\-collapsed\"\>$(NAV_LINK)\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>$(NAV_LINK)\<\/a\>/" www/$(OUT)
 	@sed -i -e "s/<title>Who’s On First<\/title>/<title>Who’s On First | $(PAGE_TITLE)<\/title>/" www/$(OUT)
 	@make page-cleanup
 
 page-level2:
+	@echo "Build $(CONTENT) => $(OUT)"
 	@cat www/content/$(CONTENT) | pup -i 0 'body h1' > page-title.html
 	@cat www/content/$(CONTENT) | pup -i 0 'body :not(h1)' > page-content.html
-	cat www/components/head.html \
-	    www/components/subnav/$(SUBNAV_DIR)/subnav-top.html \
-	    page-title.html \
-	    www/components/subnav/$(SUBNAV_DIR)/subnav-bottom.html \
-	    page-content.html \
-	    www/components/subnav/subnav-footer.html \
-	    www/components/footer.html > www/$(OUT)
+	@cat www/components/head.html \
+	     www/components/subnav/$(SUBNAV_DIR)/subnav-top.html \
+	     page-title.html \
+	     www/components/subnav/$(SUBNAV_DIR)/subnav-bottom.html \
+	     page-content.html \
+	     www/components/subnav/subnav-footer.html \
+	     www/components/footer.html > www/$(OUT)
 	@sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>$(NAV_LINK)\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>$(NAV_LINK)\<\/a\>/' www/$(OUT)
 	@sed -i -e 's/whosonfirst\-sidenav\-link\"\>$(SIDENAV_LINK)/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>$(SIDENAV_LINK)/' www/$(OUT)
 	@sed -i -e 's/whosonfirst\-extrasmall\-nav\-link\-collapsed\"\>$(SECTION_LINK)/whosonfirst\-extrasmall\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>data/' www/$(OUT)
 	@sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>$(SECTION_TITLE)\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>$(PAGE_TITLE)\<\/div\>/' www/$(OUT)
-	@sed -i -e 's/<title>Who’s On First<\/title>/<title>Who’s On First | Data | Principles<\/title>/' www/data/principles/index.html
+	@sed -i -e 's/<title>Who’s On First<\/title>/<title>Who’s On First | $(SECTION_TITLE) | $(PAGE_TITLE)<\/title>/' www/$(OUT)
 	@make page-cleanup
 
 page-cleanup:
 	@rm page-title.html
 	@rm page-content.html
 	@rm www/$(OUT)-e
+
+page-download:
+	@echo "Download $(URL) => $(OUT)"
+	@curl -s $(URL) > page.html
+	@echo '<h1 class="whosonfirst-subpage-header">' > www/content/$(OUT)
+	@cat page.html | pup -i 0 'article.markdown-body h1 text{}' >> www/content/$(OUT)
+	@echo '</h1>' >> www/content/$(OUT)
+	@cat page.html | pup -i 0 'article.markdown-body > :not(h1)' >> www/content/$(OUT)
+	@rm page.html
 
 docs-home:
 	cat www/content/docs/docs.html | pup -i 0 'body h1'  > www/docs/docs-title.html
@@ -713,148 +725,6 @@ docs-processes-woflifecycle:
 	rm www/docs/processes/woflifecycle.html-e
 
 docs-processes: docs-processes-significantevent docs-processes-assigningcessation docs-processes-s3requirements docs-processes-wikipediaconcordances docs-processes-seattleneighborhoodupdates docs-processes-updatingsanfrancisconeighborhoods docs-processes-woflifecycle docs-processes-index
-
-data-pullrequest:
-	curl -s https://github.com/whosonfirst-data/whosonfirst-data/blob/master/PULL_REQUEST_TEMPLATE_NEIGHBOURHOOD.md | pup -i 0 'article.markdown-body h1:first-of-type' > www/data/pullrequest/temp-content1.html
-	curl -s https://github.com/whosonfirst-data/whosonfirst-data/blob/master/PULL_REQUEST_TEMPLATE_NEIGHBOURHOOD.md | pup -i 0 'article.markdown-body :not(h1:first-of-type)' > www/data/pullrequest/temp-content2.html
-	sed -i -e 's/\<h1/\<h1 class\=\"whosonfirst\-subpage\-header\"/' www/data/pullrequest/temp-content1.html
-	cat www/components/head/head.html www/components/navbar/navbar.html www/components/subnav/data/subnav-top.html www/data/pullrequest/temp-content1.html www/components/subnav/data/subnav-bottom.html  www/data/pullrequest/temp-content2.html www/components/footer/footer.html > www/data/pullrequest/index.html
-	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>data\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>data\<\/a\>/' www/data/pullrequest/index.html
-	rm www/data/pullrequest/temp-content1.html
-	rm www/data/pullrequest/temp-content2.html
-	rm www/data/pullrequest/temp-content1.html-e
-	sed -i -e 's/whosonfirst\-sidenav\-link\"\>pull/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>pull/' www/data/pullrequest/index.html
-	sed -i -e 's/whosonfirst\-extrasmall\-nav\-link\-collapsed\-last\"\>pull/whosonfirst\-extrasmall\-nav\-link\-collapsed\-last whosonfirst\-nav\-active\"\>pull/' www/data/pullrequest/index.html
-	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Data\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Pull Request Template\<\/div\>/' www/data/pullrequest/index.html
-	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/data/pullrequest/index.html
-	rm www/data/pullrequest/index.html-e
-
-data-available-index:
-	cat www/content/data/available/available.html | pup -i 0 'body h1' > www/data/available/temp-content1.html
-	cat www/content/data/available/available.html | pup -i 0 'body :not(h1)' > www/data/available/temp-content2.html
-	sed -i -e 's/\<h1/\<h1 class\=\"whosonfirst\-subpage\-header\"/' www/data/available/temp-content1.html
-	cat www/components/head/head.html www/components/navbar/navbar.html www/components/subnav/data/available/subnav-top.html www/data/available/temp-content1.html www/components/subnav/data/available/subnav-bottom.html  www/data/available/temp-content2.html www/components/footer/footer.html > www/data/available/index.html
-	rm www/data/available/temp-content1.html
-	rm www/data/available/temp-content2.html
-	rm www/data/available/temp-content1.html-e
-	sed -i -e 's/whosonfirst\-sidenav\-link\"\>available/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>available/' www/data/available/index.html
-	sed -i -e 's/whosonfirst\-extrasmall\-nav\-link\-collapsed\"\>available/whosonfirst\-extrasmall\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>available/' www/data/available/index.html
-	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>data\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>data\<\/a\>/' www/data/available/index.html
-	rm www/data/available/index.html-e
-
-data-available-administrative:
-	cat www/content/data/available/administrative.html | pup -i 0 'body h1' > www/data/available/temp-content1.html
-	cat www/content/data/available/administrative.html | pup -i 0 'body :not(h1)' > www/data/available/temp-content2.html
-	sed -i -e 's/\<h1/\<h1 class\=\"whosonfirst\-subpage\-header\"/' www/data/available/temp-content1.html
-	cat www/components/head/head.html www/components/navbar/navbar.html www/components/subnav/data/available/subnav-top.html www/data/available/temp-content1.html www/components/subnav/data/available/subnav-bottom.html  www/data/available/temp-content2.html www/components/footer/footer.html > www/data/available/administrative.html
-	rm www/data/available/temp-content1.html
-	rm www/data/available/temp-content2.html
-	rm www/data/available/temp-content1.html-e
-	sed -i -e 's/whosonfirst\-sidenav\-link\"\>administrative/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>administrative/' www/data/available/administrative.html
-	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>administrative/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>administrative/' www/data/available/administrative.html
-	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Available Data\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Administrative Data\<\/div\>/' www/data/available/administrative.html
-	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>data\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>data\<\/a\>/' www/data/available/administrative.html
-	rm www/data/available/administrative.html-e
-
-data-available-venue:
-	cat www/content/data/available/venue.html | pup -i 0 'body h1' > www/data/available/temp-content1.html
-	cat www/content/data/available/venue.html | pup -i 0 'body :not(h1)' > www/data/available/temp-content2.html
-	sed -i -e 's/\<h1/\<h1 class\=\"whosonfirst\-subpage\-header\"/' www/data/available/temp-content1.html
-	cat www/components/head/head.html www/components/navbar/navbar.html www/components/subnav/data/available/subnav-top.html www/data/available/temp-content1.html www/components/subnav/data/available/subnav-bottom.html  www/data/available/temp-content2.html www/components/footer/footer.html > www/data/available/venue.html
-	rm www/data/available/temp-content1.html
-	rm www/data/available/temp-content2.html
-	rm www/data/available/temp-content1.html-e
-	sed -i -e 's/whosonfirst\-sidenav\-link\"\>venue/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>venue/' www/data/available/venue.html
-	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>venue/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>venue/' www/data/available/venue.html
-	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Available Data\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Venue Data\<\/div\>/' www/data/available/venue.html
-	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>data\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>data\<\/a\>/' www/data/available/venue.html
-	rm www/data/available/venue.html-e
-
-data-available-other:
-	cat www/content/data/available/other.html | pup -i 0 'body h1' > www/data/available/temp-content1.html
-	cat www/content/data/available/other.html | pup -i 0 'body :not(h1)' > www/data/available/temp-content2.html
-	sed -i -e 's/\<h1/\<h1 class\=\"whosonfirst\-subpage\-header\"/' www/data/available/temp-content1.html
-	cat www/components/head/head.html www/components/navbar/navbar.html www/components/subnav/data/available/subnav-top.html www/data/available/temp-content1.html www/components/subnav/data/available/subnav-bottom.html  www/data/available/temp-content2.html www/components/footer/footer.html > www/data/available/other.html
-	rm www/data/available/temp-content1.html
-	rm www/data/available/temp-content2.html
-	rm www/data/available/temp-content1.html-e
-	sed -i -e 's/whosonfirst\-sidenav\-link\"\>other/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>other/' www/data/available/other.html
-	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>other/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>other/' www/data/available/other.html
-	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Available Data\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Other Data\<\/div\>/' www/data/available/other.html
-	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>data\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>data\<\/a\>/' www/data/available/other.html
-	rm www/data/available/other.html-e
-
-data-available: data-available-index data-available-administrative data-available-venue data-available-other
-
-data-amazon:
-	cat www/content/data/amazon/amazon.html | pup -i 0 'body h1' > www/data/amazon/temp-content1.html
-	cat www/content/data/amazon/amazon.html | pup -i 0 'body :not(h1)' > www/data/amazon/temp-content2.html
-	sed -i -e 's/\<h1/\<h1 class\=\"whosonfirst\-subpage\-header\"/' www/data/amazon/temp-content1.html
-	cat www/components/head/head.html www/components/navbar/navbar.html www/components/subnav/data/subnav-top.html www/data/amazon/temp-content1.html www/components/subnav/data/subnav-bottom.html  www/data/amazon/temp-content2.html www/components/footer/footer.html > www/data/amazon/index.html
-	rm www/data/amazon/temp-content1.html
-	rm www/data/amazon/temp-content2.html
-	rm www/data/amazon/temp-content1.html-e
-	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>data\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>data\<\/a\>/' www/data/amazon/index.html
-	sed -i -e 's/whosonfirst\-sidenav\-link\"\>amazon/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>amazon/' www/data/amazon/index.html
-	sed -i -e 's/whosonfirst\-extrasmall\-nav\-link\-collapsed\"\>amazon/whosonfirst\-extrasmall\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>amazon/' www/data/amazon/index.html
-	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Data\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Amazon S3\<\/div\>/' www/data/amazon/index.html
-	rm www/data/amazon/index.html-e
-
-data-github-index:
-	cat www/content/data/github/github.html | pup -i 0 'body h1' > www/data/github/temp-content1.html
-	cat www/content/data/github/github.html | pup -i 0 'body :not(h1)' > www/data/github/temp-content2.html
-	sed -i -e 's/\<h1/\<h1 class\=\"whosonfirst\-subpage\-header\"/' www/data/github/temp-content1.html
-	cat www/components/head/head.html www/components/navbar/navbar.html www/components/subnav/data/github/subnav-top.html www/data/github/temp-content1.html www/components/subnav/data/github/subnav-bottom.html  www/data/github/temp-content2.html www/components/footer/footer.html > www/data/github/index.html
-	rm www/data/github/temp-content1.html
-	rm www/data/github/temp-content2.html
-	rm www/data/github/temp-content1.html-e
-	sed -i -e 's/whosonfirst\-sidenav\-link\"\>github\</whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>github\</' www/data/github/index.html
-	sed -i -e 's/whosonfirst\-extrasmall\-nav\-link\-collapsed\"\>github/whosonfirst\-extrasmall\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>github/' www/data/github/index.html
-	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>data\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>data\<\/a\>/' www/data/github/index.html
-	rm www/data/github/index.html-e
-
-data-github-largefiles:
-	cat www/content/data/github/gitlargefiles.html | pup -i 0 'body h1' > www/data/github/temp-content1.html
-	cat www/content/data/github/gitlargefiles.html | pup -i 0 'body :not(h1)' > www/data/github/temp-content2.html
-	sed -i -e 's/\<h1/\<h1 class\=\"whosonfirst\-subpage\-header\"/' www/data/github/temp-content1.html
-	cat www/components/head/head.html www/components/navbar/navbar.html www/components/subnav/data/github/subnav-top.html www/data/github/temp-content1.html www/components/subnav/data/github/subnav-bottom.html  www/data/github/temp-content2.html www/components/footer/footer.html > www/data/github/gitlargefiles.html
-	rm www/data/github/temp-content2.html
-	rm www/data/github/temp-content1.html-e
-	sed -i -e 's/whosonfirst\-sidenav\-link\"\>git and/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>git and/' www/data/github/gitlargefiles.html
-	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>git and/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>git and/' www/data/github/gitlargefiles.html
-	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Github\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Git and Large Files\<\/div\>/' www/data/github/gitlargefiles.html
-	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>data\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>data\<\/a\>/' www/data/github/gitlargefiles.html
-	rm www/data/github/gitlargefiles.html-e
-
-data-github-reponaming:
-	cat www/content/data/github/reponaming.html | pup -i 0 'body h1' > www/data/github/temp-content1.html
-	cat www/content/data/github/reponaming.html | pup -i 0 'body :not(h1)' > www/data/github/temp-content2.html
-	sed -i -e 's/\<h1/\<h1 class\=\"whosonfirst\-subpage\-header\"/' www/data/github/temp-content1.html
-	cat www/components/head/head.html www/components/navbar/navbar.html www/components/subnav/data/github/subnav-top.html www/data/github/temp-content1.html www/components/subnav/data/github/subnav-bottom.html  www/data/github/temp-content2.html www/components/footer/footer.html > www/data/github/reponaming.html
-	rm www/data/github/temp-content1.html
-	rm www/data/github/temp-content2.html
-	rm www/data/github/temp-content1.html-e
-	sed -i -e 's/whosonfirst\-sidenav\-link\-twoliner\"\>repo/whosonfirst\-sidenav\-link\-twoliner whosonfirst\-nav\-active\"\>repo/' www/data/github/reponaming.html
-	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>repo/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>repo/' www/data/github/reponaming.html
-	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Github\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Repo Naming Conventions\<\/div\>/' www/data/github/reponaming.html
-	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>data\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>data\<\/a\>/' www/data/github/reponaming.html
-	rm www/data/github/reponaming.html-e
-
-data-github: data-github-index data-github-largefiles data-github-reponaming
-
-data-knownknowns:
-	cat www/content/data/knownknowns/knownknowns.html | pup -i 0 'body h1' > www/data/knownknowns/temp-content1.html
-	cat www/content/data/knownknowns/knownknowns.html | pup -i 0 'body :not(h1)' > www/data/knownknowns/temp-content2.html
-	sed -i -e 's/\<h1/\<h1 class\=\"whosonfirst\-subpage\-header\"/' www/data/knownknowns/temp-content1.html
-	cat www/components/head/head.html www/components/navbar/navbar.html www/components/subnav/data/subnav-top.html www/data/knownknowns/temp-content1.html www/components/subnav/data/subnav-bottom.html  www/data/knownknowns/temp-content2.html www/components/footer/footer.html > www/data/knownknowns/index.html
-	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>data\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>data\<\/a\>/' www/data/knownknowns/index.html
-	rm www/data/knownknowns/temp-content1.html
-	rm www/data/knownknowns/temp-content2.html
-	rm www/data/knownknowns/temp-content1.html-e
-	sed -i -e 's/whosonfirst\-sidenav\-link\"\>known/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>known/' www/data/knownknowns/index.html
-	sed -i -e 's/whosonfirst\-extrasmall\-nav\-link\-collapsed\"\>known/whosonfirst\-extrasmall\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>known/' www/data/knownknowns/index.html
-	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Data\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Known Knowns\<\/div\>/' www/data/knownknowns/index.html
-	rm www/data/knownknowns/index.html-e
 
 blog-withalltheblogfolder:
 	cat www/content/blog/blog.html | pup -i 0 'body h1' > www/alltheblog/temp-content1.html
