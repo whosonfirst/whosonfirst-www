@@ -23,7 +23,8 @@ docs-download-content: \
 	docs-download-sources \
 	docs-download-tests \
 	docs-download-contributing \
-	docs-download-licenses
+	docs-download-licenses \
+	docs-download-keyterms
 
 docs-build-pages: \
 	docs-home \
@@ -38,7 +39,8 @@ docs-build-pages: \
 	docs-sources \
 	docs-tests \
 	docs-contributing \
-	docs-licenses
+	docs-licenses \
+	docs-keyterms
 
 docs-download-properties:
 	@for prop in $(PROPERTY_LIST) ; do \
@@ -105,6 +107,11 @@ docs-download-contributing:
 docs-download-licenses:
 	@make URL=$(COOKBOOK_REPO)definition/data_licenses.md \
 	      OUT=docs/licenses.html \
+	      download-content
+
+docs-download-keyterms:
+	@make URL=$(COOKBOOK_REPO)definition/key_terms.md \
+	      OUT=docs/keyterms.html \
 	      download-content
 
 docs-build-page-level1:
@@ -241,4 +248,11 @@ docs-licenses:
 	      OUT=docs/licenses/index.html \
 	      PAGE_TITLE='Data Licenses' \
 	      SIDENAV_LINK='data licenses' \
+	      docs-build-page-level2
+
+docs-keyterms:
+	@make CONTENT=docs/keyterms.html \
+	      OUT=docs/keyterms/index.html \
+	      PAGE_TITLE='Key Terms' \
+	      SIDENAV_LINK='key terms' \
 	      docs-build-page-level2

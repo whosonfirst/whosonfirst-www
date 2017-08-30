@@ -191,21 +191,6 @@ tools-home:
 	rm www/tools/tools-content.html
 	rm www/tools/index.html-e
 
-docs-keyterms:
-	curl -s https://github.com/whosonfirst/whosonfirst-cookbook/blob/master/definition/key_terms.md | pup -i 0 'article.markdown-body h1:first-of-type' > www/docs/keyterms/temp-content1.html
-	curl -s https://github.com/whosonfirst/whosonfirst-cookbook/blob/master/definition/key_terms.md | pup -i 0 'article.markdown-body :not(h1:first-of-type)' > www/docs/keyterms/temp-content2.html
-	sed -i -e 's/\<h1/\<h1 class\=\"whosonfirst\-subpage\-header\"/' www/docs/keyterms/temp-content1.html
-	cat components/head/head.html components/navbar/navbar.html components/subnav/docs/subnav-top.html www/docs/keyterms/temp-content1.html components/subnav/docs/subnav-bottom.html  www/docs/keyterms/temp-content2.html components/footer/footer.html > www/docs/keyterms/index.html
-	rm www/docs/keyterms/temp-content1.html
-	rm www/docs/keyterms/temp-content2.html
-	rm www/docs/keyterms/temp-content1.html-e
-	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>docs\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>docs\<\/a\>/' www/docs/keyterms/index.html
-	sed -i -e 's/whosonfirst\-sidenav\-link\"\>key/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>key/' www/docs/keyterms/index.html
-	sed -i -e 's/whosonfirst\-extrasmall\-nav\-link\-collapsed\-last\"\>key/whosonfirst\-extrasmall\-nav\-link\-collapsed\-last whosonfirst\-nav\-active\"\>key/' www/docs/keyterms/index.html
-	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Docs\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Key Terms\<\/div\>/' www/docs/keyterms/index.html
-	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/docs/keyterms/index.html
-	rm www/docs/keyterms/index.html-e
-
 docs-processes-index:
 	cat content/docs/processes/processes.html | pup -i 0 'body h1'  > www/docs/processes/temp-content1.html
 	cat content/docs/processes/processes.html | pup -i 0 'body :not(h1)'  > www/docs/processes/temp-content2.html
