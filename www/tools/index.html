@@ -60,11 +60,6 @@
 		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-0">
 			<aside>
 				<div class="whosonfirst-sidenav-container">
-					<ul class="whosonfirst-sidenav-list">
-						<li class="whosonfirst-sidenav-list-element">
-							<a href="/tools/available/" class="whosonfirst-nav-link whosonfirst-sidenav-link">available tools</a>
-						</li>
-					</ul>
 				</div>
 			</aside>
 		</div>
@@ -77,43 +72,35 @@ Tools
 	<div class="whosonfirst-extrasmall-tabs-menu">
 		<div class="whosonfirst-extrasmall-tabs-menu-content">
 			<div class="whosonfirst-extrasmall-tabs-menu-content-header">
-				<div class="row whosonfirst-extrasmall-menu-row">
-					<div class="col-xs-11">
-						<div class="whosonfirst-extrasmall-tab-selection">Tools</div>
-					</div>
-					<div class="col-xs-1 whosonfirst-extrasmall-menu-chevron-col">
-						<button type="button" class="navbar-toggle collapsed whosonfirst-extrasmall-menu-chevron-down" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2" aria-expanded="false">
-							<span id="glyphicon-one" class="glyphicon glyphicon-menu-down whosonfirst-extrasmall-menu-actual-chevron-down"></span>
-						</button>
-					</div>
-				</div>
+				<div class="whosonfirst-extrasmall-tab-selection">Tools</div>
 			</div>
-			<div class="collapse" id="bs-example-navbar-collapse-2">
-				<div class="whosonfirst-extrasmall-nav-collection">
-					<ul class="nav navbar-nav navbar-right whosonfirst-extrasmall-nav">
-						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
-							<a href="/tools/available/" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed whosonfirst-extrasmall-nav-link-collapsed-last">available tools</a>
-						</li>
-					</ul>
-				</div>
-			</div><!-- /.navbar-collapse -->
 		</div>
 	</div>
 	<div class="whosonfirst-tabs-content">
 <p>
 Tools for Who&#39;s On First (WOF) are available from the
 <a href="https://github.com/whosonfirst">
-whosonfirst
-</a>
-Github organization. Here is a
-<a href="availabletools.html">
-list of some of those tools
+whosonfirst GitHub organization
 </a>
 .
 </p>
+<h2 id="api">
+Who’s On First API
+</h2>
 <p>
-You can also check our Spelunker and I Am Here, tools built to explore WOF data.
+You can access WOF data via a REST API. Read the
+<a href="https://mapzen.com/blog/whosonfirst-api/">
+blog post
+</a>
+or the
+<a href="https://mapzen.com/documentation/wof/">
+documentation
+</a>
+.
 </p>
+<h2 id="webapps">
+Web applications
+</h2>
 <ul class="whosonfirst-nonbullet-list whosonfirst-sole-links-container">
 <li class="whosonfirst-nonbullet-list-item-no-caption">
 <a href="https://whosonfirst.mapzen.com/spelunker/" class="whosonfirst-sole-link">
@@ -129,7 +116,7 @@ Spelunker blog post
 </li>
 <li class="whosonfirst-nonbullet-list-item-no-caption">
 <a href="https://whosonfirst.mapzen.com/iamhere/" class="whosonfirst-sole-link">
-I Am Here (Get Lat Long Application)
+I Am Here
 </a>
 <p class="whosonfirst-link-caption">
 A get lat lon style application for investigating specific points on the big planet-ball we all live on. Check out our
@@ -137,6 +124,76 @@ A get lat lon style application for investigating specific points on the big pla
 I Am Here blog post
 </a>
 .
+</p>
+</li>
+<li class="whosonfirst-nonbullet-list-item-no-caption">
+<a href="/tools/explore/" class="whosonfirst-sole-link">
+Explore
+</a>
+(work in progress)
+<p class="whosonfirst-link-caption">
+Discover what you can do with WOF records with this interactive tool.
+</p>
+</li>
+<li class="whosonfirst-nonbullet-list-item-no-caption">
+<a href="https://github.com/whosonfirst/whosonfirst-www-boundaryissues" class="whosonfirst-sole-link">
+Boundary Issues
+</a>
+(work in progress)
+<p class="whosonfirst-link-caption">
+A web application for editing Who’s On First data. Check out
+<a href="https://mapzen.com/tag/boundaryissues/">
+the blog posts
+</a>
+.
+</p>
+</li>
+</ul>
+<h2 id="desktopapps">
+Desktop apps
+</h2>
+<ul class="whosonfirst-nonbullet-list whosonfirst-sole-links-container">
+<li class="whosonfirst-nonbullet-list-item">
+<a href="https://github.com/whosonfirst/electron-whosonfirst-api-explorer" class="whosonfirst-sole-link">
+electron-whosonfirst-api-explorer
+</a>
+(work in progress)
+<p class="whosonfirst-link-caption">
+An Electron-based explorer for the Who’s On First API.
+</p>
+</li>
+<li class="whosonfirst-nonbullet-list-item">
+<a href="https://github.com/whosonfirst/electron-whosonfirst-bookmarks" class="whosonfirst-sole-link">
+electron-whosonfirst-bookmarks
+</a>
+(work in progress)
+<p class="whosonfirst-link-caption">
+Bookmarks for Who&#39;s On First places.
+</p>
+</li>
+</ul>
+<h2 id="libraries">
+Libraries
+</h2>
+<ul class="whosonfirst-nonbullet-list whosonfirst-sole-links-container">
+<li class="whosonfirst-nonbullet-list-item-no-caption">
+<a href="https://github.com/whosonfirst/py-mapzen-whosonfirst" class="whosonfirst-sole-link">
+py-mapzen-whosonfirst
+</a>
+<p class="whosonfirst-link-caption">
+A Python package to install the most common
+<a href="https://github.com/whosonfirst/?q=py">
+Who’s On First Python packages
+</a>
+.
+</p>
+</li>
+<li class="whosonfirst-nonbullet-list-item-no-caption">
+<a href="https://github.com/whosonfirst/js-mapzen-whosonfirst" class="whosonfirst-sole-link">
+js-mapzen-whosonfirst
+</a>
+<p class="whosonfirst-link-caption">
+JavaScript libraries for working with Who&#39;s On First data.
 </p>
 </li>
 </ul>

@@ -1,20 +1,29 @@
 UNAME_S := $(shell uname -s)
 
-include pages/data.mk
-include pages/docs.mk
+all: home data docs tools
 
-all: build-pages www-prod
-dev: build-pages www-dev
+include pages/docs.mk
+include pages/data.mk
+include pages/tools.mk
+
 download: \
 	data-download-content \
-	docs-download-content
-build-pages: \
-	home-build-page \
-	data-build-pages \
-	docs-build-pages
+	docs-download-content \
+	tools-download-content
 
-home-build-page:
+build-pages: \
+	home-build-pages \
+	data-build-pages \
+	docs-build-pages \
+	tools-build-pages
+
+home: home-build-pages
+
+home-build-pages:
 	@make CONTENT=home.html OUT=index.html build-page-level0
+	@make CONTENT=state.html \
+	      OUT=state/index.html \
+	      build-page-level0
 
 setup: mk-tools
 	ubuntu/setup-nginx.sh
@@ -175,22 +184,6 @@ build-cleanup:
 	@rm page-content.html
 	@rm www/$(OUT)-e
 
-tools-home:
-	cat content/tools/tools.html | pup -i 0 'body h1' > www/tools/tools-title.html
-	cat content/tools/tools.html | pup -i 0 'body :not(h1)' > www/tools/tools-content.html
-	cat components/head.html \
-	    components/subnav/tools/subnav-top.html \
-	    www/tools/tools-title.html \
-	    components/subnav/tools/subnav-middle.html \
-	    www/tools/tools-content.html \
-	    components/subnav/subnav-bottom.html \
-	    components/footer.html > www/tools/index.html
-	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>tools\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>tools\<\/a\>/' www/tools/index.html
-	sed -i -e 's/<title>Who’s On First<\/title>/<title>Who’s On First | Tools<\/title>/' www/tools/index.html
-	rm www/tools/tools-title.html
-	rm www/tools/tools-content.html
-	rm www/tools/index.html-e
-
 docs-processes-index:
 	cat content/docs/processes/processes.html | pup -i 0 'body h1'  > www/docs/processes/temp-content1.html
 	cat content/docs/processes/processes.html | pup -i 0 'body :not(h1)'  > www/docs/processes/temp-content2.html
@@ -347,20 +340,6 @@ blog-mesoshapes:
 	rm www/blog/mesoshapes/temp-content2.html
 	rm www/blog/mesoshapes/temp-content1.html-e
 	rm www/blog/mesoshapes/index.html-e
-
-tools-availabletools:
-	cat content/tools/availabletools.html | pup -i 0 'body h1' > www/tools/temp-content1.html
-	cat content/tools/availabletools.html | pup -i 0 'body :not(h1)' > www/tools/temp-content2.html
-	sed -i -e 's/\<h1/\<h1 class\=\"whosonfirst\-subpage\-header\"/' www/tools/temp-content1.html
-	cat components/head/head-onelevelup.html components/navbar/navbar-onelevelup.html components/subnav/tools/subnav-top.html www/tools/temp-content1.html components/subnav/tools/subnav-bottom.html  www/tools/temp-content2.html components/footer/footer-onelevelup.html > www/tools/availabletools.html
-	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>tools\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>tools\<\/a\>/' www/tools/availabletools.html
-	rm www/tools/temp-content1.html
-	rm www/tools/temp-content2.html
-	rm www/tools/temp-content1.html-e
-	sed -i -e 's/whosonfirst\-sidenav\-link\"\>available/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>available/' www/tools/availabletools.html
-	sed -i -e 's/whosonfirst\-extrasmall\-nav\-link\-collapsed\-last\"\>available/whosonfirst\-extrasmall\-nav\-link\-collapsed\-last whosonfirst\-nav\-active\"\>available/' www/tools/availabletools.html
-	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Tools\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Available Tools\<\/div\>/' www/tools/availabletools.html
-	rm www/tools/availabletools.html-e
 
 state:
 	cat content/state/state.html | pup -i 0 'body h1' > www/state/temp-content1.html
