@@ -1,0 +1,276 @@
+<h1 class="whosonfirst-subpage-header" data-url="https://github.com/whosonfirst/whosonfirst-tests/blob/master/README.md">
+whosonfirst-tests
+</h1>
+<p>
+Testing known-knowns and properties in Who&#39;s On First records.
+</p>
+<p>
+<em>
+2017-05-12: This document should be considered a work-in-progress
+</em>
+</p>
+<h2>
+<a id="user-content-types-of-tests" class="anchor" href="#types-of-tests" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+Types of tests
+</h2>
+<h3>
+<a id="user-content-validating-known-knowns-in-whos-on-first" class="anchor" href="#validating-known-knowns-in-whos-on-first" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+Validating known-knowns in Who&#39;s On First
+</h3>
+<ul>
+<li>
+<p>
+<strong>
+test_belongsto.js
+</strong>
+: A routine test to verify
+<code>
+wof:belongsto
+</code>
+properties.
+</p>
+<ul>
+<li>
+This test envokes a list of
+<code>
+wof:id
+</code>
+values and the known values in that record&#39;s
+<code>
+wof:belongsto
+</code>
+property. This test should be run locally when updating and rebuilding hierarchies to verify that no values are being stripped out of the
+<code>
+wof:belongsto
+</code>
+property.
+</li>
+</ul>
+</li>
+<li>
+<p>
+<strong>
+test_isparent.js
+</strong>
+: A routine test to verify
+<code>
+wof:parent_id
+</code>
+properties.
+</p>
+<ul>
+<li>
+This test envokes a list of
+<code>
+wof:id
+</code>
+values and the known values in that record&#39;s
+<code>
+wof:parent_id
+</code>
+property. This test should be run locally when updating records to verify that no records are incorrectly given a new
+<code>
+wof:parent_id
+</code>
+value.
+</li>
+</ul>
+</li>
+</ul>
+<h3>
+<a id="user-content-testing-whos-on-first-properties" class="anchor" href="#testing-whos-on-first-properties" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+Testing Who&#39;s On First properties
+</h3>
+<ul>
+<li>
+<p>
+<strong>
+test_lang_names.js
+</strong>
+: A test to ensure a record or set of records has a
+<code>
+name:eng_x_preferred
+</code>
+property.
+</p>
+<ul>
+<li>
+This test can be used as a one-off to verify a record has a specified property. As it stands, this test checks for the
+<code>
+name:eng_x_preferred
+</code>
+property, but can be configured to check of other properties.
+</li>
+</ul>
+</li>
+<li>
+<p>
+<strong>
+test_official_lang_names.js
+</strong>
+: A test to ensure a record or set of records has a
+<code>
+wof:lang
+</code>
+property, as well as a
+<code>
+name:[lang]_x_preferred
+</code>
+property for the
+<code>
+wof:lang
+</code>
+value.
+</p>
+<ul>
+<li>
+This test checks for two separate things in a Who&#39;s On First record:
+<ul>
+<li>
+Verifies that a
+<code>
+wof:lang
+</code>
+property exists and returns the value of that property.
+</li>
+<li>
+Verifies that a record also has a
+<code>
+name:[lang]_x_preferred
+</code>
+property, where
+<code>
+[lang]
+</code>
+is equal to the value of the
+<code>
+wof:lang
+</code>
+property.
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>
+<strong>
+test_superseded_by.js
+</strong>
+: A test to validate records&#39;
+<code>
+wof:superseded_by
+</code>
+and
+<code>
+wof:superseded
+</code>
+properties, by doing the following:
+</p>
+<ul>
+<li>
+Checks that a record&#39;s (record A)
+<code>
+wof:superseded_by
+</code>
+value matches the
+<code>
+wof:id
+</code>
+of an existing record (record B).
+</li>
+<li>
+If so, checks that record B&#39;s
+<code>
+wof:supersedes
+</code>
+property value matches record A&#39;s
+<code>
+wof:id
+</code>
+value.
+</li>
+</ul>
+</li>
+<li>
+<p>
+<strong>
+wk_mismatch
+</strong>
+:
+<em>
+(in folder)
+</em>
+A test to validate records&#39;
+<code>
+wk:*
+</code>
+properties, by doing the following:
+</p>
+<ul>
+<li>
+Checks that a record&#39;s
+<code>
+wk:latitude
+</code>
+and
+<code>
+wk:longitude
+</code>
+values fall within it&#39;s parent&#39;s geometry.
+</li>
+</ul>
+</li>
+</ul>
+<h2>
+<a id="user-content-see-also" class="anchor" href="#see-also" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+See also
+</h2>
+<p>
+<em>
+<a href="https://github.com/whosonfirst">
+https://github.com/whosonfirst
+</a>
+</em>
+</p>
+<p>
+<em>
+<a href="https://github.com/whosonfirst/whosonfirst-json-schema">
+https://github.com/whosonfirst/whosonfirst-json-schema
+</a>
+</em>
+</p>
+<p>
+<em>
+<a href="https://github.com/whosonfirst/py-mapzen-whosonfirst-validator">
+https://github.com/whosonfirst/py-mapzen-whosonfirst-validator
+</a>
+</em>
+</p>
+<p>
+<em>
+<a href="https://github.com/whosonfirst/whosonfirst-www-boundaryissues">
+https://github.com/whosonfirst/whosonfirst-www-boundaryissues
+</a>
+</em>
+</p>
