@@ -191,52 +191,6 @@ tools-home:
 	rm www/tools/tools-content.html
 	rm www/tools/index.html-e
 
-docs-contributing:
-	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/CONTRIBUTING.md | pup -i 0 'article.markdown-body h1:first-of-type' > www/docs/contributing/temp-content1.html
-	curl -s https://github.com/whosonfirst/whosonfirst-properties/blob/master/CONTRIBUTING.md | pup -i 0 'article.markdown-body :not(h1:first-of-type)' > www/docs/contributing/temp-content2.html
-	sed -i -e 's/\<h1/\<h1 class\=\"whosonfirst\-subpage\-header\"/' www/docs/contributing/temp-content1.html
-	cat components/head/head.html components/navbar/navbar.html components/subnav/docs/subnav-top.html www/docs/contributing/temp-content1.html components/subnav/docs/subnav-bottom.html  www/docs/contributing/temp-content2.html components/footer/footer.html > www/docs/contributing/index.html
-	rm www/docs/contributing/temp-content1.html
-	rm www/docs/contributing/temp-content2.html
-	rm www/docs/contributing/temp-content1.html-e
-	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>docs\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>docs\<\/a\>/' www/docs/contributing/index.html
-	sed -i -e 's/whosonfirst\-sidenav\-link\"\>contributing/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>contributing/' www/docs/contributing/index.html
-	sed -i -e 's/whosonfirst\-extrasmall\-nav\-link\-collapsed\"\>contributing/whosonfirst\-extrasmall\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>contributing/' www/docs/contributing/index.html
-	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Docs\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Contributing\<\/div\>/' www/docs/contributing/index.html
-	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/docs/contributing/index.html
-	rm www/docs/contributing/index.html-e
-
-docs-licensing-datalicenses:
-	curl -s https://github.com/whosonfirst/whosonfirst-cookbook/blob/master/definition/data_licenses.md | pup -i 0 'article.markdown-body h1:first-of-type' > www/docs/licensing/temp-content1.html
-	curl -s https://github.com/whosonfirst/whosonfirst-cookbook/blob/master/definition/data_licenses.md | pup -i 0 'article.markdown-body :not(h1:first-of-type)' > www/docs/licensing/temp-content2.html
-	sed -i -e 's/\<h1/\<h1 class\=\"whosonfirst\-subpage\-header\"/' www/docs/licensing/temp-content1.html
-	cat components/head/head.html components/navbar/navbar.html components/subnav/docs/licensing/subnav-top.html www/docs/licensing/temp-content1.html components/subnav/docs/licensing/subnav-bottom.html  www/docs/licensing/temp-content2.html components/footer/footer.html > www/docs/licensing/datalicenses.html
-	rm www/docs/licensing/temp-content1.html
-	rm www/docs/licensing/temp-content2.html
-	rm www/docs/licensing/temp-content1.html-e
-	sed -i -e 's/whosonfirst\-sidenav\-link\-twoliner\"\>acceptable/whosonfirst\-sidenav\-link\-twoliner whosonfirst\-nav\-active\"\>acceptable/' www/docs/licensing/datalicenses.html
-	sed -i -e 's/whosonfirst\-subnav\-secondlevel\"\>acceptable/whosonfirst\-subnav\-secondlevel whosonfirst\-nav\-active\"\>acceptable/' www/docs/licensing/datalicenses.html
-	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Licensing\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Acceptable Data Licenses\<\/div\>/' www/docs/licensing/datalicenses.html
-	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>docs\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>docs\<\/a\>/' www/docs/licensing/datalicenses.html
-	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/docs/licensing/datalicenses.html
-	rm www/docs/licensing/datalicenses.html-e
-
-docs-licensing-index:
-	curl -s https://github.com/whosonfirst-data/whosonfirst-data/blob/master/LICENSE.md | pup -i 0 'article.markdown-body h1:first-of-type' > www/docs/licensing/temp-content1.html
-	curl -s https://github.com/whosonfirst-data/whosonfirst-data/blob/master/LICENSE.md | pup -i 0 'article.markdown-body :not(h1:first-of-type)' > www/docs/licensing/temp-content2.html
-	sed -i -e 's/\<h1/\<h1 class\=\"whosonfirst\-subpage\-header\"/' www/docs/licensing/temp-content1.html
-	cat components/head/head.html components/navbar/navbar.html components/subnav/docs/licensing/subnav-top.html www/docs/licensing/temp-content1.html components/subnav/docs/licensing/subnav-bottom.html  www/docs/licensing/temp-content2.html components/footer/footer.html > www/docs/licensing/index.html
-	rm www/docs/licensing/temp-content1.html
-	rm www/docs/licensing/temp-content2.html
-	rm www/docs/licensing/temp-content1.html-e
-	sed -i -e 's/whosonfirst\-sidenav\-link\"\>licensing\</whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>licensing\</' www/docs/licensing/index.html
-	sed -i -e 's/whosonfirst\-extrasmall\-nav\-link\-collapsed\"\>licensing/whosonfirst\-extrasmall\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>licensing/' www/docs/licensing/index.html
-	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>docs\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>docs\<\/a\>/' www/docs/licensing/index.html
-	sed -i -e -E 's/id\=\"user-content\-([^\"]*)\" class\=\"anchor\"/id\=\"\1" class\=\"anchor\"/' www/docs/licensing/index.html
-	rm www/docs/licensing/index.html-e
-
-docs-licensing: docs-licensing-index docs-licensing-datalicenses
-
 docs-keyterms:
 	curl -s https://github.com/whosonfirst/whosonfirst-cookbook/blob/master/definition/key_terms.md | pup -i 0 'article.markdown-body h1:first-of-type' > www/docs/keyterms/temp-content1.html
 	curl -s https://github.com/whosonfirst/whosonfirst-cookbook/blob/master/definition/key_terms.md | pup -i 0 'article.markdown-body :not(h1:first-of-type)' > www/docs/keyterms/temp-content2.html

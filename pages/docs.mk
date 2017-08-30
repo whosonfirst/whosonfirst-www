@@ -18,10 +18,12 @@ docs-download-content: \
 	docs-download-placetypes \
 	docs-download-names \
 	docs-download-geometries \
+	docs-download-dates \
 	docs-download-categories \
 	docs-download-sources \
 	docs-download-tests \
-	docs-download-contributing
+	docs-download-contributing \
+	docs-download-licenses
 
 docs-build-pages: \
 	docs-home \
@@ -33,12 +35,10 @@ docs-build-pages: \
 	docs-geometries \
 	docs-dates \
 	docs-categories \
-	docs-sources
-
-docs-download-dates:
-	@make URL=$(DATES_REPO)README.md \
-	      OUT=docs/dates.html \
-	      download-content
+	docs-sources \
+	docs-tests \
+	docs-contributing \
+	docs-licenses
 
 docs-download-properties:
 	@for prop in $(PROPERTY_LIST) ; do \
@@ -72,6 +72,11 @@ docs-download-geometries:
 	      OUT=docs/geometries/alt_geometries.html \
 	      download-content
 
+docs-download-dates:
+	@make URL=$(DATES_REPO)README.md \
+		  OUT=docs/dates.html \
+		  download-content
+
 docs-download-categories:
 	@echo "Download www/images/chicken.jpg"
 	@curl -s -o www/images/chicken.jpg https://github.com/whosonfirst/whosonfirst-categories/raw/master/chicken.jpg
@@ -95,6 +100,11 @@ docs-download-tests:
 docs-download-contributing:
 	@make URL=$(PROPERTIES_REPO)CONTRIBUTING.md \
 	      OUT=docs/contributing.html \
+	      download-content
+
+docs-download-licenses:
+	@make URL=$(COOKBOOK_REPO)definition/data_licenses.md \
+	      OUT=docs/licenses.html \
 	      download-content
 
 docs-build-page-level1:
@@ -224,4 +234,11 @@ docs-contributing:
 	      OUT=docs/contributing/index.html \
 	      PAGE_TITLE='Contributing' \
 	      SIDENAV_LINK=contributing \
+	      docs-build-page-level2
+
+docs-licenses:
+	@make CONTENT=docs/licenses.html \
+	      OUT=docs/licenses/index.html \
+	      PAGE_TITLE='Data Licenses' \
+	      SIDENAV_LINK='data licenses' \
 	      docs-build-page-level2
