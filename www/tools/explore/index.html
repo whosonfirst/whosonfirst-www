@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Who’s On First</title>
+        <meta name='description' content="Who's on First is a gazetteer of places.">
+        <link rel='apple-touch-icon' href='../images/favicons/apple-touch-icon.png' sizes='180x180'>
+        <link rel='icon' type='image/png' href='../images/favicons/favicon-16x16.png' sizes='16x16'>
+        <link rel='icon' type='image/png' href='../images/favicons/favicon-32x32.png' sizes='32x32'>
+        <link rel='manifest' href='../images/favicons/manifest.json'>
+        <link rel='mask-icon' href='../images/favicons/safari-pinned-tab.svg' color='#2C1E3F'>
+        
+        <link rel="stylesheet" href="../css/mapzen.css">
+        <link rel="stylesheet" href="../css/mapzen.whosonfirst.interaction.css">
+		<link rel="stylesheet" href="../css/bootstrap.min.css">
+    </head>
+    <body class="project" style="margin-top: 0px">
+        <div class='section-nav' id='project-nav' role='navigation' aria-label='project-name'>
+        </div>
+        <section class='demo-container js-section-navigable' id='demo' data-section-name='Demo' data-section-nav-collapse='false' style="height:100%">
+            <div class='whosonfirst-tutorial-demo'>
+                <div id="map">
+				</div>
+				<div class="row whosonfirst-tutorial-no-margin">
+					<div class="col-lg-3 col-md-3 col-sm-3 whosonfirst-tutorial-no-padding whoonsfirst-tutorial-no-pointer">
+						<div class="whosonfirst-tutorial-input-container">
+							<div class="whosonfirst-tutorial-input-top-container">
+								<div class="input-group whosonfirst-tutorial-input-top-box whoonsfirst-tutorial-auto-pointer">
+									<input id="search-text-go" type="text" class="form-control whosonfirst-form whosonfirst-tutorial-input-top-box-left" placeholder="Search for...">
+									<span class="input-group-btn whosonfirst-tutorial-input-top-box-right">
+										<button class="btn btn-default whosonfirst-tutorial-input-top-box-right-button whosonfirst-input-go-button" type="button" onclick="customSearch()">go</button>
+									</span>
+								</div><!-- /input-group -->
+								<button id="whosonfirst-tutorial-top-side-point-button" class="whosonfirst-tutorial-top-side-button whoonsfirst-tutorial-auto-pointer" onclick="clickPointButton()">
+									<div id="whosonfirst-tutorial-top-side-point-button" class="whosonfirst-tutorial-top-side-point-button">
+									</div>
+								</button>
+								<button id="whosonfirst-tutorial-top-side-plane-button" class="whosonfirst-tutorial-top-side-button whoonsfirst-tutorial-auto-pointer" onclick="clickPlaneButton()">
+									<div class="whosonfirst-tutorial-top-side-plane-button">
+									</div>
+								</button>
+								<button class="whosonfirst-tutorial-top-side-button whoonsfirst-tutorial-auto-pointer" onclick="openTutorialInfoFromSide()">
+									<div class="whosonfirst-tutorial-top-side-pointpoint-container">
+										<div class="whosonfirst-tutorial-top-side-pointpoint-button">
+										</div>
+										<div class="whosonfirst-tutorial-top-side-pointpoint-button">
+										</div>
+										<div class="whosonfirst-tutorial-top-side-pointpoint-button">
+										</div>
+									</div>
+								</button>
+							</div>
+							<div id="whosonfirst-tutorial-input-point-container" class="whosonfirst-tutorial-input-bottom-container whoonsfirst-tutorial-auto-pointer">
+								<div class="col-lg-12">
+									<h2 class="whosonfirst-tutorial-input-header">Inputs</h2>
+									<div class="input-group">
+										<div class="whosonfirst-tutorial-individual-input">
+											<div class="whosonfirst-tutorial-form-clue">Latitude</div>
+											<input id="whosonfirst-tutorial-form-latitude" type="text" class="form-control whosonfirst-form whosonfirst-tutorial-input-box" placeholder="67.1233">
+										</div>
+										<div class="whosonfirst-tutorial-individual-input">
+											<div class="whosonfirst-tutorial-form-clue">Longitude</div>
+											<input id="whosonfirst-tutorial-form-longitude" type="text" class="form-control whosonfirst-form whosonfirst-tutorial-input-box" placeholder="11.1243">
+										</div>
+										<div class="whosonfirst-tutorial-individual-input">
+											<div class="whosonfirst-tutorial-form-clue">Radius (meters)</div>
+											<input id="whosonfirst-tutorial-form-radius" type="text" class="form-control whosonfirst-form whosonfirst-tutorial-input-box" placeholder="25">
+										</div>
+									</div>
+									<button type="button" class="btn btn-default btn-lg btn-block whosonfirst-tutorial-submit-button" onclick="getByLatLonRadius()">submit</button>
+								</div>
+							</div>
+							<div id="whosonfirst-tutorial-input-plane-container" class="whosonfirst-tutorial-input-bottom-container whoonsfirst-tutorial-auto-pointer">
+								<div class="col-lg-12">
+									<h2 class="whosonfirst-tutorial-input-header">Inputs</h2>
+									<div class="input-group">
+										<div class="whosonfirst-tutorial-individual-input">
+											<div class="whosonfirst-tutorial-form-clue">Maximum Latitude</div>
+											<input id="whosonfirst-tutorial-form-max-latitude" type="text" class="form-control whosonfirst-form whosonfirst-tutorial-input-box" placeholder="67.1233">
+										</div>
+										<div class="whosonfirst-tutorial-individual-input">
+											<div class="whosonfirst-tutorial-form-clue">Minimum Latitude</div>
+											<input id="whosonfirst-tutorial-form-min-latitude" type="text" class="form-control whosonfirst-form whosonfirst-tutorial-input-box" placeholder="67.1233">
+										</div>
+										<div class="whosonfirst-tutorial-individual-input">
+											<div class="whosonfirst-tutorial-form-clue">Maximum Longitude</div>
+											<input id="whosonfirst-tutorial-form-max-longitude" type="text" class="form-control whosonfirst-form whosonfirst-tutorial-input-box" placeholder="11.1243">
+										</div>
+										<div class="whosonfirst-tutorial-individual-input">
+											<div class="whosonfirst-tutorial-form-clue">Minimum Longitude</div>
+											<input id="whosonfirst-tutorial-form-min-longitude" type="text" class="form-control whosonfirst-form whosonfirst-tutorial-input-box" placeholder="11.1243">
+										</div>
+									</div>
+									<button type="button" class="btn btn-default btn-lg btn-block whosonfirst-tutorial-submit-button" onclick="getByMaxAndMinLatLonRadius()">submit</button>
+								</div>
+							</div>
+						</div>
+					</div><!-- /.col-lg-6 -->
+					<div class="col-lg-6 col-md-6 col-sm-6 whosonfirst-tutorial-middle-column">
+						<div id="whosonfirst-tutorial-info" class="whosonfirst-tutorial-info-container">
+							<div class="row whosonfirst-tutorial-no-margin">
+								<div class="col-lg-12">
+									<button id="whosonfirst-tutorial-info-1-exit" type="button" class="close whosonfirst-tutorial-info-close" aria-label="Close" onclick="deactivateTutorialInfo1()">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+							</div>
+							<div class="row whosonfirst-tutorial-no-margin">
+								<div class="col-lg-12">
+									<div id="whosonfirst-tutorial-info-image-1" class="whosonfirst-tutorial-info-image whosonfirst-tutorial-info-image-deactivated">
+									</div>
+									<div id="whosonfirst-tutorial-info-image-2" class="whosonfirst-tutorial-info-image whosonfirst-tutorial-info-image-deactivated">
+										<svg width="361px" height="49px" viewBox="0 0 361 49" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+											<g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+												<g id="ExploreToolThree" transform="translate(-370.000000, -310.000000)">
+													<g id="Group-2" transform="translate(370.000000, 310.000000)">
+														<rect id="Rectangle-3" stroke-opacity="0.75" stroke="#FFFFFF" stroke-width="0.7" x="0.36953125" y="0.875390625" width="359.3" height="47.3" rx="2"></rect>
+														<text id="chu" font-family="Roboto-Light, Roboto" font-size="24" font-weight="300" fill-opacity="0.75" fill="#FFFFFF">
+															<tspan x="19.6015625" y="34.0253906">chu</tspan>
+														</text>
+														<path d="M62.25,38.5352573 L62.25,10.0253906" id="Line" stroke-opacity="0.75" stroke="#FFFFFF" stroke-width="0.5" stroke-linecap="square"></path>
+													</g>
+												</g>
+											</g>
+										</svg>
+									</div>
+									<div id="whosonfirst-tutorial-info-image-3" class="whosonfirst-tutorial-info-image whosonfirst-tutorial-info-image-deactivated">
+										<svg width="297px" height="177px" viewBox="0 0 297 177" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+											<defs>
+												<path d="M0.342773438,0.930664062 L180.735574,0.930664062 L176.173828,66.2587891 C171.270558,66.8338189 167.189503,67.5330376 163.930664,68.3564453 C160.671825,69.179853 157.438101,71.0974962 154.229492,74.109375 L145.932617,94.5136719 L150.010742,110.943359 L0.342773438,110.943359 L0.342773438,0.930664062 Z" id="path-1"></path>
+												<path d="M2.46495076,0.405273438 L172.455078,0.405273438 L172.455078,0.405273438 C173.559648,0.405273438 174.455078,1.30070394 174.455078,2.40527344 L174.455078,84.5273438 L174.455078,84.5273438 C174.455078,85.6319132 173.559648,86.5273438 172.455078,86.5273438 L84.2578125,86.5273438 L3.74256453,86.5273438 L3.74256453,86.5273438 C2.65012573,86.5273438 1.75980008,85.6507616 1.74280652,84.558455 L0.465192754,2.43638466 L0.465192754,2.43638466 C0.448010498,1.33194881 1.32940368,0.422697685 2.43383954,0.405515429 C2.44420916,0.405354104 2.45457988,0.405273438 2.46495076,0.405273438 Z" id="path-3"></path>
+												<path d="M58.3355225,92.3344974 L73.296602,93.7202234 L42.8666852,51.2664139 L36.9497998,103.836141 L49.2812047,95.0280652 L53.5070763,111.409444 L62.6031777,108.877848 L58.3355225,92.3344974 Z" id="path-5"></path>
+												<path d="M31.4620256,94.6847946 C50.9497157,62.6640009 60.6935607,41.1941626 60.6935607,30.2752799 C60.6935607,13.6593653 47.2237006,0.189505124 30.607786,0.189505124 C13.9918714,0.189505124 0.522011265,13.6593653 0.522011265,30.2752799 C0.522011265,41.194162 10.2658552,62.6639985 29.7535431,94.6847892 L29.7535343,94.6847946 C30.0406613,95.1565814 30.6558826,95.3062778 31.1276694,95.0191507 C31.2642477,94.9360299 31.3789048,94.8213728 31.4620256,94.6847946 Z" id="path-6"></path>
+												<path d="M282.414315,159.04853 L297.689168,160.463318 L266.621056,117.119141 L260.580078,170.791393 L273.170105,161.798588 L277.484604,178.523528 L286.771475,175.938838 L282.414315,159.04853 Z" id="path-7"></path>
+											</defs>
+											<g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+												<g id="ExploreTool" transform="translate(-400.000000, -229.000000)">
+													<g id="Input-Section" transform="translate(283.019531, 205.000000)">
+														<g id="CardMessaging" transform="translate(116.405273, 21.578125)">
+															<g id="AllEntryGroups" transform="translate(79.580078, 0.554688)">
+																<mask id="mask-2" fill="white">
+																	<use xlink:href="#path-1"></use>
+																</mask>
+																<g id="Mask"></g>
+																<g mask="url(#mask-2)">
+																	<g transform="translate(2.000000, 2.000000)">
+																		<mask id="mask-4" fill="white">
+																			<use xlink:href="#path-3"></use>
+																		</mask>
+																		<path stroke-opacity="0.75" stroke="#FFFFFF" stroke-width="0.5" d="M2.46495076,0.655273438 C2.45133905,0.655308729 2.45133905,0.655308729 2.43772844,0.65548518 C1.47134707,0.670519654 0.700128031,1.46611439 0.715162505,2.43249576 L1.99277627,84.5545661 C2.00764563,85.5103344 2.78668058,86.2773438 3.74256453,86.2773438 L172.455078,86.2773438 C173.421576,86.2773438 174.205078,85.4938421 174.205078,84.5273438 L174.205078,2.40527344 C174.205078,1.43877513 173.421576,0.655273438 172.455078,0.655273438 L2.46495076,0.655273438 Z"></path>
+																		<g id="AllEntryGroups" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" mask="url(#mask-4)">
+																			<g transform="translate(11.000000, 5.000000)">
+																				<g id="Entry-Group1" transform="translate(0.019531, 0.500000)">
+																					<text id="Longitude" font-family="Roboto-Light, Roboto" font-size="9" font-weight="300" fill-opacity="0.75" fill="#FFFFFF">
+																						<tspan x="0.4609375" y="8.3671875">Longitude</tspan>
+																					</text>
+																					<rect id="Rectangle-3" stroke-opacity="0.75" stroke="#FFFFFF" stroke-width="0.5" x="0.7109375" y="12.6171875" width="149.5" height="17.5" rx="1"></rect>
+																					<text id="12.323487" font-family="Roboto-Light, Roboto" font-size="9" font-weight="300" fill-opacity="0.75" fill="#FFFFFF">
+																						<tspan x="3.98046875" y="24.3671875">12.323487</tspan>
+																					</text>
+																				</g>
+																				<g id="Entry-Group2" transform="translate(0.019531, 37.265625)">
+																					<text id="Latitude" font-family="Roboto-Light, Roboto" font-size="9" font-weight="300" fill-opacity="0.75" fill="#FFFFFF">
+																						<tspan x="0.4609375" y="8.3671875">Latitude</tspan>
+																					</text>
+																					<rect id="Rectangle-3" stroke-opacity="0.75" stroke="#FFFFFF" stroke-width="0.5" x="0.7109375" y="12.6171875" width="149.5" height="17.5" rx="1"></rect>
+																					<text id="12.323487" font-family="Roboto-Light, Roboto" font-size="9" font-weight="300" fill-opacity="0.75" fill="#FFFFFF">
+																						<tspan x="3.98046875" y="24.3671875">12.323487</tspan>
+																					</text>
+																				</g>
+																				<g id="Entry-Group4" transform="translate(0.444336, 111.718750)">
+																					<text id="Maximum-Latitude" font-family="Roboto-Light, Roboto" font-size="9" font-weight="300" fill-opacity="0.75" fill="#FFFFFF">
+																						<tspan x="0.4609375" y="8.3671875">Maximum Latitude</tspan>
+																					</text>
+																					<rect id="Rectangle-3" stroke-opacity="0.75" stroke="#FFFFFF" stroke-width="0.5" x="0.7109375" y="12.6171875" width="149.5" height="17.5" rx="1"></rect>
+																					<text id="12.323487" font-family="Roboto-Light, Roboto" font-size="9" font-weight="300" fill-opacity="0.75" fill="#FFFFFF">
+																						<tspan x="3.98046875" y="24.3671875">12.323487</tspan>
+																					</text>
+																				</g>
+																			</g>
+																		</g>
+																	</g>
+																</g>
+															</g>
+															<g id="Icon/Pointer" transform="translate(0.505069, 65.945312)">
+																<g id="Help-Icon" transform="translate(0.617797, 0.696471)" stroke="#FFFFFF" stroke-opacity="0.75" stroke-width="0.8">
+																	<circle id="Oval-5" cx="29.3749796" cy="29.3749796" r="28.9749796"></circle>
+																</g>
+																<circle id="Oval-4" stroke-opacity="0.75" stroke="#FFFFFF" stroke-width="0.8" cx="30.1177974" cy="30.1964706" r="12"></circle>
+																<g id="Combined-Shape">
+																	<use fill-opacity="0.5" fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-5"></use>
+																	<path stroke-opacity="0.75" stroke="#FFFFFF" stroke-width="0.7" d="M72.5654948,93.3010086 L43.1126523,52.2103487 L37.3854439,103.094854 L49.4927309,94.4468611 L53.756879,110.976617 L62.1784902,108.632743 L57.8723215,91.9400967 L72.5654948,93.3010086 Z"></path>
+																</g>
+															</g>
+															<g id="MapMarker3" transform="translate(224.655273, 65.945312)">
+																<g id="Oval-7">
+																	<use fill-opacity="0.2" fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-6"></use>
+																	<path stroke-opacity="0.75" stroke="#FFFFFF" stroke-width="1" d="M31.0349072,94.4248525 C50.4721061,62.4870224 60.1935607,41.0665198 60.1935607,30.2752799 C60.1935607,13.9355077 46.9475582,0.689505124 30.607786,0.689505124 C14.2680138,0.689505124 1.02201127,13.9355077 1.02201127,30.2752799 C1.02201127,41.0665161 10.7434593,62.487011 30.1806527,94.4248525 C30.3242177,94.6607484 30.6318315,94.7355973 30.8677274,94.5920323 C30.9360172,94.5504715 30.9933464,94.4931423 31.0349072,94.4248525 Z"></path>
+																</g>
+															</g>
+															<g id="Combined-Shape">
+																<use fill-opacity="0.5" fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-7"></use>
+																<path stroke-opacity="0.75" stroke="#FFFFFF" stroke-width="0.7" d="M296.958061,160.044103 L266.867023,118.063075 L261.015722,170.050106 L273.381631,161.217384 L277.734407,178.090701 L286.346787,175.693733 L281.951114,158.654129 L296.958061,160.044103 Z"></path>
+															</g>
+															<g id="PointInSpace" transform="translate(257.155273, 123.945312)"></g>
+														</g>
+													</g>
+												</g>
+											</g>
+										</svg>
+									</div>
+									<div id="whosonfirst-tutorial-info-image-4" class="whosonfirst-tutorial-info-image whosonfirst-tutorial-info-image-deactivated">
+										<svg width="391px" height="188px" viewBox="0 0 391 188" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+											<defs>
+												<polygon id="path-100" points="0.342773438 0.930664062 180.735574 0.930664062 180.735574 67.4121094 108.764946 67.4121094 108.764946 110.943359 0.342773438 110.943359"></polygon>
+												<path d="M2.45881891,0.405273438 L172.455078,0.405273438 L172.455078,0.405273438 C173.559648,0.405273438 174.455078,1.30070394 174.455078,2.40527344 L174.455078,105.301758 L174.455078,105.301758 C174.455078,106.406327 173.559648,107.301758 172.455078,107.301758 L84.2578125,107.301758 L3.74852654,107.301758 L3.74852654,107.301758 C2.65373355,107.301758 1.76240471,106.421531 1.74868362,105.326824 L0.458975989,2.43033953 L0.458975989,2.43033953 C0.445132369,1.32585678 1.32927007,0.419274141 2.43375281,0.405430521 C2.44210777,0.4053258 2.4504633,0.405273438 2.45881891,0.405273438 Z" id="path-300"></path>
+												<path d="M181.126897,113.425146 L188.57121,114.114653 L173.429936,92.9905481 L170.48582,119.148117 L176.621663,114.765407 L178.724366,122.91643 L183.250391,121.656762 L181.126897,113.425146 Z" id="path-5"></path>
+												<rect id="path-6" x="0.740159749" y="0.17754586" width="174.786656" height="97.0391612" rx="2"></rect>
+												<path d="M58.3355225,92.3344974 L73.296602,93.7202234 L42.8666852,51.2664139 L36.9497998,103.836141 L49.2812047,95.0280652 L53.5070763,111.409444 L62.6031777,108.877848 L58.3355225,92.3344974 Z" id="path-7"></path>
+											</defs>
+											<g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+												<g id="ExploreToolFour" transform="translate(-354.000000, -223.000000)">
+													<g id="CardMessaging2" transform="translate(353.019531, 221.000000)">
+														<g id="AllEntryGroups" transform="translate(95.000000, 0.000000)">
+															<mask id="mask-200" fill="white">
+																<use xlink:href="#path-100"></use>
+															</mask>
+															<g id="Mask"></g>
+															<g mask="url(#mask-200)">
+																<g transform="translate(2.000000, 2.000000)">
+																	<mask id="mask-4" fill="white">
+																		<use xlink:href="#path-300"></use>
+																	</mask>
+																	<path stroke-opacity="0.75" stroke="#FFFFFF" stroke-width="0.5" d="M2.45881891,0.655273438 C2.4478522,0.655296346 2.4478522,0.655296346 2.43688608,0.655410885 C1.47046367,0.667524053 0.696843186,1.46078387 0.708956354,2.42720627 L1.99866398,105.323691 C2.01066994,106.281559 2.79058268,107.051758 3.74852654,107.051758 L172.455078,107.051758 C173.421576,107.051758 174.205078,106.268256 174.205078,105.301758 L174.205078,2.40527344 C174.205078,1.43877513 173.421576,0.655273438 172.455078,0.655273438 L2.45881891,0.655273438 Z"></path>
+																	<g id="AllEntryGroups" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" mask="url(#mask-4)">
+																		<g transform="translate(11.000000, 5.000000)">
+																			<g id="Entry-Group1" transform="translate(0.019531, 0.500000)">
+																				<text id="Minimum-Longitude" font-family="Roboto-Light, Roboto" font-size="9" font-weight="300" fill-opacity="0.75" fill="#FFFFFF">
+																					<tspan x="0.4609375" y="8.3671875">Minimum Longitude</tspan>
+																				</text>
+																				<rect id="Rectangle-3" stroke-opacity="0.75" stroke="#FFFFFF" stroke-width="0.5" x="0.7109375" y="12.6171875" width="149.5" height="17.5" rx="1"></rect>
+																				<text id="12.323487" font-family="Roboto-Light, Roboto" font-size="9" font-weight="300" fill-opacity="0.75" fill="#FFFFFF">
+																					<tspan x="3.98046875" y="24.3671875">12.323487</tspan>
+																				</text>
+																			</g>
+																			<g id="Entry-Group2" transform="translate(0.019531, 37.265625)">
+																				<text id="Maximum-Longitude" font-family="Roboto-Light, Roboto" font-size="9" font-weight="300" fill-opacity="0.75" fill="#FFFFFF">
+																					<tspan x="0.4609375" y="8.3671875">Maximum Longitude</tspan>
+																				</text>
+																				<rect id="Rectangle-3" stroke-opacity="0.75" stroke="#FFFFFF" stroke-width="0.5" x="0.7109375" y="12.6171875" width="149.5" height="17.5" rx="1"></rect>
+																				<text id="12.323487" font-family="Roboto-Light, Roboto" font-size="9" font-weight="300" fill-opacity="0.75" fill="#FFFFFF">
+																					<tspan x="3.98046875" y="24.3671875">12.323487</tspan>
+																				</text>
+																			</g>
+																			<g id="Entry-Group3" transform="translate(0.444336, 74.953125)">
+																				<text id="Minimum-Latitude" font-family="Roboto-Light, Roboto" font-size="9" font-weight="300" fill-opacity="0.75" fill="#FFFFFF">
+																					<tspan x="0.4609375" y="8.3671875">Minimum Latitude</tspan>
+																				</text>
+																				<rect id="Rectangle-3" stroke-opacity="0.75" stroke="#FFFFFF" stroke-width="0.5" x="0.7109375" y="12.6171875" width="149.5" height="17.5" rx="1"></rect>
+																				<text id="12.323487" font-family="Roboto-Light, Roboto" font-size="9" font-weight="300" fill-opacity="0.75" fill="#FFFFFF">
+																					<tspan x="3.98046875" y="24.3671875">12.323487</tspan>
+																				</text>
+																			</g>
+																			<g id="Entry-Group4" transform="translate(0.444336, 111.718750)">
+																				<text id="Maximum-Latitude" font-family="Roboto-Light, Roboto" font-size="9" font-weight="300" fill-opacity="0.75" fill="#FFFFFF">
+																					<tspan x="0.4609375" y="8.3671875">Maximum Latitude</tspan>
+																				</text>
+																				<rect id="Rectangle-3" stroke-opacity="0.75" stroke="#FFFFFF" stroke-width="0.5" x="0.7109375" y="12.6171875" width="149.5" height="17.5" rx="1"></rect>
+																				<text id="12.323487" font-family="Roboto-Light, Roboto" font-size="9" font-weight="300" fill-opacity="0.75" fill="#FFFFFF">
+																					<tspan x="3.98046875" y="24.3671875">12.323487</tspan>
+																				</text>
+																			</g>
+																		</g>
+																	</g>
+																</g>
+															</g>
+														</g>
+														<g transform="translate(202.612305, 67.119141)">
+															<g>
+																<path fill-opacity="0.5" fill="#FFFFFF" fill-rule="evenodd" stroke-opacity="0.75" stroke="#FFFFFF" stroke-width="0.7" d="M187.840102,113.695438 L173.675903,93.9344829 L170.921464,118.40683 L176.833189,114.184203 L178.974169,122.483603 L182.825703,121.411657 L180.663696,113.030745 L187.840102,113.695438 Z"></path>
+															</g>
+															<g id="Rectangle-7">
+																<rect fill-opacity="0.1" fill="#FFFFFF" fill-rule="evenodd" stroke-opacity="0.75" stroke="#FFFFFF" stroke-width="0.7" x="1.09015975" y="0.52754586" width="174.086656" height="96.3391612" rx="2"></rect>
+															</g>
+														</g>
+														<g id="Icon/Pointer" transform="translate(0.432803, 67.119141)">
+															<g id="Help-Icon" transform="translate(0.617797, 0.696471)" stroke="#FFFFFF" stroke-opacity="0.75" stroke-width="0.8">
+																<circle id="Oval-5" cx="29.3749796" cy="29.3749796" r="28.9749796"></circle>
+															</g>
+															<rect id="Rectangle-20" stroke-opacity="0.75" stroke="#FFFFFF" stroke-width="0.8" x="18.5811205" y="18.6597936" width="23.6791497" height="23.6791497"></rect>
+															<g id="Combined-Shape">
+																<path fill-opacity="0.5" fill="#FFFFFF" fill-rule="evenodd" stroke-opacity="0.75" stroke="#FFFFFF" stroke-width="0.7" d="M72.5654948,93.3010086 L43.1126523,52.2103487 L37.3854439,103.094854 L49.4927309,94.4468611 L53.756879,110.976617 L62.1784902,108.632743 L57.8723215,91.9400967 L72.5654948,93.3010086 Z"></path>
+															</g>
+														</g>
+													</g>
+												</g>
+											</g>
+										</svg>
+									</div>
+								</div>
+							</div>
+							<div class="row whosonfirst-tutorial-no-margin">
+								<div class="col-lg-12">
+									<div id="whosonfirst-tutorial-info-header-1" class="whosonfirst-tutorial-info-header whosonfirst-tutorial-info-header-one">
+										Who’s on First allows developers (and robots) programmatic access to query and retrieve data about the places in our gazetter. This explorer is designed to provide you with an idea of the data you can access and the possibilities of WOF. Click next to learn more.
+									</div>
+									<div id="whosonfirst-tutorial-info-header-2" class="whosonfirst-tutorial-info-header whosonfirst-tutorial-info-container-deactivated whosonfirst-tutorial-info-container-deactivated-nodisplay">
+										Search for places by keyword.
+									</div>
+									<div id="whosonfirst-tutorial-info-header-3" class="whosonfirst-tutorial-info-header whosonfirst-tutorial-info-container-deactivated whosonfirst-tutorial-info-container-deactivated-nodisplay">
+										See the places at or nearby a point.
+									</div>
+									<div id="whosonfirst-tutorial-info-header-4" class="whosonfirst-tutorial-info-header whosonfirst-tutorial-info-container-deactivated whosonfirst-tutorial-info-container-deactivated-nodisplay">
+										See the places intersecting a bounding box.
+									</div>
+								</div>
+							</div>
+							<div class="row whosonfirst-tutorial-no-margin">
+								<div class="col-lg-12">
+									<div id="whosonfirst-tutorial-info-subheader-1" class="whosonfirst-tutorial-info-subheader">
+									</div>
+									<div id="whosonfirst-tutorial-info-subheader-2" class="whosonfirst-tutorial-info-subheader whosonfirst-tutorial-info-container-deactivated whosonfirst-tutorial-info-container-deactivated-nodisplay">
+									</div>
+									<div id="whosonfirst-tutorial-info-subheader-3" class="whosonfirst-tutorial-info-subheader whosonfirst-tutorial-info-container-deactivated whosonfirst-tutorial-info-container-deactivated-nodisplay">
+										Click on the point icon, then make a point by clicking on the map or entering a latitude and longtitude. Specify a radius to search for places near that point.
+									</div>
+									<div id="whosonfirst-tutorial-info-subheader-4" class="whosonfirst-tutorial-info-subheader whosonfirst-tutorial-info-container-deactivated whosonfirst-tutorial-info-container-deactivated-nodisplay">
+										Click on the box icon, then make a box by clicking on the map 4 times or entering a minimum and maximum latitude and a minimum and maximum longitude. 
+									</div>
+								</div>
+							</div>
+							<div class="row whosonfirst-tutorial-no-margin whosonfirst-tutorial-info-bottom-row">
+								<div class="col-lg-2 col-md-2 col-sm-2">
+									<button id="whosonfirst-tutorial-info-2-back" class="whosonfirst-tutorial-info-back whosonfirst-tutorial-info-container-deactivated whosonfirst-tutorial-info-container-deactivated-nodisplay" onclick="backTutorialInfo2()">
+										back
+									</button>
+									<button id="whosonfirst-tutorial-info-3-back" class="whosonfirst-tutorial-info-back whosonfirst-tutorial-info-container-deactivated whosonfirst-tutorial-info-container-deactivated-nodisplay" onclick="backTutorialInfo3()">
+										back
+									</button>
+									<button id="whosonfirst-tutorial-info-4-back" class="whosonfirst-tutorial-info-back whosonfirst-tutorial-info-container-deactivated whosonfirst-tutorial-info-container-deactivated-nodisplay" onclick=backTutorialInfo4()>
+										back
+									</button>
+								</div>
+								<div class="col-lg-8 col-md-8 col-sm-8">
+									<div id="whosonfirst-tutorial-info-progess-circle-1" class="whosonfirst-tutorial-info-progess-circle whosonfirst-tutorial-info-progess-circle-activated"></div>
+									<div id="whosonfirst-tutorial-info-progess-circle-2" class="whosonfirst-tutorial-info-progess-circle"></div>
+									<div id="whosonfirst-tutorial-info-progess-circle-3" class="whosonfirst-tutorial-info-progess-circle"></div>
+									<div id="whosonfirst-tutorial-info-progess-circle-4" class="whosonfirst-tutorial-info-progess-circle"></div>
+								</div>
+								<div class="col-lg-2 col-md-2 col-sm-2">
+									<button id="whosonfirst-tutorial-info-1-next" class="whosonfirst-tutorial-info-next" onclick="nextTutorialInfo1()">
+										next
+									</button>
+									<button id="whosonfirst-tutorial-info-2-next" class="whosonfirst-tutorial-info-next whosonfirst-tutorial-info-container-deactivated whosonfirst-tutorial-info-container-deactivated-nodisplay" onclick="nextTutorialInfo2()">
+										next
+									</button>
+									<button id="whosonfirst-tutorial-info-3-next" class="whosonfirst-tutorial-info-next whosonfirst-tutorial-info-container-deactivated whosonfirst-tutorial-info-container-deactivated-nodisplay" onclick="nextTutorialInfo3()">
+										next
+									</button>
+									<button id="whosonfirst-tutorial-info-4-next" class="whosonfirst-tutorial-info-next whosonfirst-tutorial-info-container-deactivated whosonfirst-tutorial-info-container-deactivated-nodisplay" onclick="nextTutorialInfo4()">
+										done
+									</button>
+								</div>
+							</div>
+						</div>
+					</div><!-- /.col-lg-6 -->
+					<div class="col-lg-3 col-md-3 col-sm-3 whosonfirst-tutorial-no-padding">
+						<div id="whosonfirst-tutorial-results-container" class="whosonfirst-tutorial-results-container">
+							<div class="row whosonfirst-tutorial-result-subrow">
+								<div class="whosonfirst-tutorial-result-container">
+									<h2 class="whosonfirst-tutorial-result-header">Results</h2>
+									<div id="whosonfirst-tutorial-result-box-container" class="whosonfirst-tutorial-result-box-container">
+									</div>
+								</div>
+							</div>
+							<div class="row whosonfirst-tutorial-api-code-subrow">
+								<h2 class="whosonfirst-tutorial-api-header whosonfirst-tutorial-container-text">API Query</h2>
+								<div class="whosonfirst-tutorial-individual-code-container">
+									<div class="whosonfirst-tutorial-individual-code-box whosonfirst-api-initial-no-show">
+										<p id="tutorial-api-method" class="whosonfirst-tutorial-individual-result-code"></p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div><!-- /.row -->
+            </div>
+        </section>
+        
+		<script src="../javascript/mapzen.min.js"></script>
+		<script src="../javascript/mapzen.whosonfirst.api.js"></script>
+		<script src='../javascript/jquery.min.js'></script>
+        <script src="../javascript/mapzen.whosonfirst.interaction.js"></script>
+    </body>
+</html>

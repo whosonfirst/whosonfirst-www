@@ -1,0 +1,90 @@
+<h1 id="properties" class="whosonfirst-subpage-header">Properties</h1>
+<p>What things mean in Who’s On First documents.</p>
+<p>Explore the WOF properties below.</p>
+<div class="row whosonfirst-subpage-container-row">
+	<div class="whosonfirst-subpage-container-singlewidth-col">
+		<a class="whosonfirst-subpage-container-singlewidth-col-card whosonfirst-dark-gradient whosonfirst-card-shadow" href="addr/">
+			<div class="whosonfirst-subpage-container-singlewidth-col-card-h1">Addr</div>
+		</a>
+	</div>
+	<div class="whosonfirst-subpage-container-singlewidth-col">
+		<a class="whosonfirst-subpage-container-singlewidth-col-card whosonfirst-dark-gradient whosonfirst-card-shadow" href="edtf/">
+			<div class="whosonfirst-subpage-container-singlewidth-col-card-h1">EDTF</div>
+		</a>
+	</div>
+	<div class="whosonfirst-subpage-container-doublewidth-col">
+		<a class="whosonfirst-subpage-container-doublewidth-col-card whosonfirst-dark-gradient whosonfirst-card-shadow" href="geom/">
+			<div class="whosonfirst-subpage-container-doublewidth-col-card-h1">Geom</div>
+		</a>
+	</div>
+</div>
+<div class="row whosonfirst-subpage-container-row">
+	<div class="whosonfirst-subpage-container-singlewidth-col">
+		<a class="whosonfirst-subpage-container-singlewidth-col-card whosonfirst-dark-gradient whosonfirst-card-shadow" href="lbl/">
+			<div class="whosonfirst-subpage-container-singlewidth-col-card-h1">Lbl</div>
+		</a>
+	</div>
+	<div class="whosonfirst-subpage-container-singlewidth-col">
+		<a class="whosonfirst-subpage-container-singlewidth-col-card whosonfirst-dark-gradient whosonfirst-card-shadow" href="mz/">
+			<div class="whosonfirst-subpage-container-singlewidth-col-card-h1">Mz</div>
+		</a>
+	</div>
+	<div class="whosonfirst-subpage-container-doublewidth-col">
+		<a class="whosonfirst-subpage-container-doublewidth-col-card whosonfirst-dark-gradient whosonfirst-card-shadow" href="name/">
+			<div class="whosonfirst-subpage-container-doublewidth-col-card-h1">Name</div>
+		</a>
+	</div>
+</div>
+<div class="row whosonfirst-subpage-container-row">
+	<div class="whosonfirst-subpage-container-doublewidth-col">
+		<a class="whosonfirst-subpage-container-doublewidth-col-card whosonfirst-dark-gradient whosonfirst-card-shadow" href="resto/">
+			<div class="whosonfirst-subpage-container-doublewidth-col-card-h1">Resto</div>
+		</a>
+	</div>
+	<div class="whosonfirst-subpage-container-doublewidth-col">
+		<a class="whosonfirst-subpage-container-doublewidth-col-card whosonfirst-dark-gradient whosonfirst-card-shadow" href="reversegeo/">
+			<div class="whosonfirst-subpage-container-doublewidth-col-card-h1">ReverseGeo</div>
+		</a>
+	</div>
+</div>
+<div class="row whosonfirst-subpage-container-row">
+	<div class="whosonfirst-subpage-container-singlewidth-col">
+		<a class="whosonfirst-subpage-container-singlewidth-col-card whosonfirst-dark-gradient whosonfirst-card-shadow" href="src/">
+			<div class="whosonfirst-subpage-container-singlewidth-col-card-h1">Src</div>
+		</a>
+	</div>
+	<div class="whosonfirst-subpage-container-singlewidth-col">
+		<a class="whosonfirst-subpage-container-singlewidth-col-card whosonfirst-dark-gradient whosonfirst-card-shadow" href="wof/">
+			<div class="whosonfirst-subpage-container-singlewidth-col-card-h1">Wof</div>
+		</a>
+	</div>
+</div>
+<div class="row whosonfirst-subpage-container-row">
+	<div class="whosonfirst-subpage-container-triplewidth-col">
+		<a class="whosonfirst-subpage-container-triplewidth-col-card whosonfirst-dark-gradient whosonfirst-card-shadow" href="brooklynintegers/">
+			<div class="whosonfirst-subpage-container-triplewidth-col-card-h1">Brooklyn Integers</div>
+		</a>
+	</div>
+</div>
+
+<h2 id="minimum-viable-properties">Minimum Viable Properties</h2>
+<p>The design model for the Flickr API was: What is the one thing you should always be able to do with any photo-related API response?</p>
+<p>For Flickr the answer was the “standard photo response” or: You should always be able to load/build the URL for a photo with a link back to its page on Flickr’s website.</p>
+<p>In Mapzen’s case the answer to a similar-minded question might be: You should always be able to view API responses on a map.</p>
+<p>For example it should be possible to take anything that comes back from Pelias (or any other API) and simply hand it off to Leaflet as a GeoJSON layer and see something on a map.</p>
+<p>With that in mind a “minimal viable properties” dictionary might look like this:
+<pre><code>{
+  "wof:id": 85922583,
+  "wof:name": "San Francisco",
+  "wof:fullname": "San Francisco, California US",
+  "wof:placetype": "locality",
+  "wof:parent_id": 85688637,
+  "wof:quality": 9,
+  "wof:score": 100
+}</code>
+</pre>
+<p>A couple things to note about this example:
+<ul>
+<li>When we say “properties” we’re talking about the metadata associated with that place rather than its geometry.</li>
+<li>The wof:score property and its semantics should be considered a place-holder for some equivalent search ranking to be determined by the Pelias team. Likewise, the wof:quality property and its semantics should also be considered a place-holder for some equivalent quality/confidence ranking to be determined by the Data team.</li>
+</ul>

@@ -7,6 +7,7 @@ whosonfirst.mapzen.com – it's a website.
 ### tl;dr
 
 ```
+make pages
 make www
 ```
 

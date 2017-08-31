@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Who’s On First | Docs |  | Alt Geometries</title>
+		<meta name="description" content="Who’s on First is a gazetteer of places.">
+		<link rel="apple-touch-icon" href="/images/favicons/apple-touch-icon.png" sizes="180x180">
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-16x16.png" sizes="16x16">
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-32x32.png" sizes="32x32">
+		<link rel="manifest" href="/images/favicons/manifest.json">
+		<link rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg" color="#2C1E3F">
+		<link rel="stylesheet" href="/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/css/mapzen.whosonfirst.css">
+		<!-- CSS for code styling from highlightpack.js -->
+		<link rel="stylesheet" href="/css/styles/grayscale.css">
+	</head>
+	<body>
+		<div class="whosonfirst-wrapper">
+
+			<nav class="navbar navbar-default navbar-fixed-top whosonfirst-fixed-subpage-navbar">
+				<div class="container">
+
+					<!-- Brand and toggle get grouped for better mobile display -->
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="/">Who’s On First</a>
+					</div>
+
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav navbar-right">
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/data/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">data</a>
+							</li>
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/docs/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed whosonfirst-nav-active">docs</a>
+							</li>
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/tools/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">tools</a>
+							</li>
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/blog/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">blog</a>
+							</li>
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/getstarted/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">get started</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+<div class="container whosonfirst-subpage-container">
+	<div class="row">
+		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-0">
+			<aside>
+				<div class="whosonfirst-sidenav-container">
+					<ul class="whosonfirst-sidenav-list">
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="/docs/properties/" class="whosonfirst-nav-link whosonfirst-sidenav-link">properties</a>
+						</li>
+						<!-- properties -->
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="/docs/concordances/" class="whosonfirst-nav-link whosonfirst-sidenav-link">concordances</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="/docs/placetypes/" class="whosonfirst-nav-link whosonfirst-sidenav-link">placetypes</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="/docs/hierarchies/" class="whosonfirst-nav-link whosonfirst-sidenav-link">hierarchies</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="/docs/names/" class="whosonfirst-nav-link whosonfirst-sidenav-link">names</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="/docs/geometries/" class="whosonfirst-nav-link whosonfirst-sidenav-link">geometries</a>
+						</li>
+<li class="whosonfirst-sidenav-list-element whosonfirst-sidenav-list-element-secondlevel">
+	<a href="/docs/geometries/alt/" class="whosonfirst-nav-link whosonfirst-sidenav-link whosonfirst-nav-active">alt geometries</a>
+</li>
+						<!-- geometries -->
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="/docs/dates/" class="whosonfirst-nav-link whosonfirst-sidenav-link">dates</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="/docs/categories/" class="whosonfirst-nav-link whosonfirst-sidenav-link">categories</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="/docs/sources/" class="whosonfirst-nav-link whosonfirst-sidenav-link">sources</a>
+						</li>
+						<!-- sources -->
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="/docs/tests/" class="whosonfirst-nav-link whosonfirst-sidenav-link">tests</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="/docs/contributing/" class="whosonfirst-nav-link whosonfirst-sidenav-link">contributing</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="/docs/licenses/" class="whosonfirst-nav-link whosonfirst-sidenav-link">data licenses</a>
+						</li>
+						<!-- <li class="whosonfirst-sidenav-list-element">
+							<a href="/docs/processes/" class="whosonfirst-nav-link whosonfirst-sidenav-link">processes and workflows</a>
+						</li> -->
+						<!-- processes -->
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="/docs/keyterms/" class="whosonfirst-nav-link whosonfirst-sidenav-link">key terms</a>
+						</li>
+					</ul>
+				</div>
+			</aside>
+		</div>
+		<div class="col-lg-7 col-md-9 col-sm-9 col-xs-12">
+			<article>
+<h1 class="whosonfirst-subpage-header" data-url="https://github.com/whosonfirst/whosonfirst-cookbook/blob/master/how_to/creating_alt_geometries.md">
+What is an alt-geometry and how are they defined and catalogued in Who&#39;s On First?
+</h1>
+<div class="whosonfirst-fulltabs-container">
+	<div class="whosonfirst-extrasmall-tabs-menu">
+		<div class="whosonfirst-extrasmall-tabs-menu-content">
+			<div class="whosonfirst-extrasmall-tabs-menu-content-header">
+				<div class="row whosonfirst-extrasmall-menu-row">
+					<div class="col-xs-11">
+						<div class="whosonfirst-extrasmall-tab-selection">Alt Geometries</div>
+					</div>
+					<div class="col-xs-1 whosonfirst-extrasmall-menu-chevron-col">
+						<button type="button" class="navbar-toggle collapsed whosonfirst-extrasmall-menu-chevron-down" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2" aria-expanded="false">
+							<span id="glyphicon-one" class="glyphicon glyphicon-menu-down whosonfirst-extrasmall-menu-actual-chevron-down"></span>
+						</button>
+					</div>
+				</div>
+			</div>
+			<div class="collapse" id="bs-example-navbar-collapse-2">
+				<div class="whosonfirst-extrasmall-nav-collection">
+					<ul class="nav navbar-nav navbar-right whosonfirst-extrasmall-nav">
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="/docs/properties/" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">properties</a>
+						</li>
+						<!-- properties -->
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="/docs/concordances/" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">concordances</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="/docs/placetypes/" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">placetypes</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="/docs/hierarchies/" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">hierarchies</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="/docs/names/" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">names</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="/docs/geometries/" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">geometries</a>
+						</li>
+<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+	<a href="/docs/geometries/alt/" class="whosonfirst-nav-link whosonfirst-subnav-secondlevel whosonfirst-extrasmall-nav-link-collapsed whosonfirst-nav-active">alt geometries</a>
+</li>
+						<!-- geometries -->
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="/docs/dates/" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">dates</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="/docs/categories/" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">categories</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="/docs/sources/" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">sources</a>
+						</li>
+						<!-- sources -->
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="/docs/tests/" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">tests</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="/docs/contributing/" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">contributing</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="/docs/licenses/" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">data licenses</a>
+						</li>
+						<!-- <li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="/docs/processes/" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">processes and workflows</a>
+						</li> -->
+						<!-- processes -->
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element  whosonfirst-extrasmall-nav-link-collapsed-last">
+							<a href="/docs/keyterms/" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed whosonfirst-extrasmall-nav-link-collapsed-last">key terms</a>
+						</li>
+					</ul>
+				</div>
+			</div><!-- /.navbar-collapse -->
+		</div>
+	</div>
+	<div class="whosonfirst-tabs-content">
+<p>
+Each record in Who&#39;s On First has a point and/or a polygon geometry. San Francisco, for example, has a polygon geometry, stored in the 85922583.geojson file (
+<a href="https://whosonfirst.mapzen.com/spelunker/id/85922583/">
+here
+</a>
+).
+This polygon geometry is the default geometry of San Francisco; a record&#39;s default geometry is in any geojson file that follows the following convention:
+</p>
+<p>
+<code>
+id.geojson
+</code>
+</p>
+<p>
+<em>
+Example: 85922583.geojson
+</em>
+</p>
+<p>
+However, Who&#39;s On First also stores alt-geometry (alternate geometry) records. This not only allows Who&#39;s On First to maintain flexibility in record keeping, but also allows Who&#39;s On First to house geometries from a wide variety of sources. It also allows users and services to specify which geometry to use.
+</p>
+<h2>
+<a id="user-content-what-rules-must-alt-geometries-follow" class="anchor" href="#what-rules-must-alt-geometries-follow" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+What rules must alt-geometries follow?
+</h2>
+<p>
+At a minimum, alt-geometry filenames must conform to the following convention:
+</p>
+<p>
+<code>
+id-alt-source.geojson
+</code>
+</p>
+<p>
+<em>
+Example: 85922583-alt-mapzen.geojson
+</em>
+</p>
+<p>
+The
+<code>
+source
+</code>
+must be listed in the
+<a href="https://github.com/whosonfirst/whosonfirst-sources">
+<code>
+whosonfirst-sources
+</code>
+</a>
+repository. This is required record-keeping that allows any user or application to trace the origin of that geometry.
+</p>
+<p>
+Alt-geometry records must include the following minimum set of properties:
+</p>
+<ul>
+<li>
+<strong>
+id
+</strong>
+- The unique
+<code>
+wof:id
+</code>
+of the feature that this alt-geometry represents
+</li>
+<li>
+<strong>
+type
+</strong>
+- Should always equal
+<code>
+&#34;feature&#34;
+</code>
+</li>
+<li>
+<strong>
+properties
+</strong>
+<ul>
+<li>
+<strong>
+src:geom
+</strong>
+- The source of this alt-geometry. This source must be listed in the
+<a href="https://github.com/whosonfirst/whosonfirst-sources">
+<code>
+whosonfirst-sources
+</code>
+</a>
+repo
+</li>
+<li>
+<strong>
+wof:geomhash
+</strong>
+- The alpha-numeric geomhash code (more info
+<a href="https://en.wikipedia.org/wiki/Geohash">
+here
+</a>
+)
+</li>
+<li>
+<strong>
+wof:id
+</strong>
+- The unique
+<code>
+wof:id
+</code>
+of the feature that this alt-geometry represents
+</li>
+</ul>
+</li>
+<li>
+<strong>
+bbox
+</strong>
+- The bounding box coordinates of the alt-geometry feature
+</li>
+<li>
+<strong>
+geometry
+</strong>
+- The geometric coordinates of the alt-geometry feature
+</li>
+</ul>
+<p>
+An alt-geometry filename should always include the associated feature&#39;s
+<code>
+wof:id
+</code>
+, &#34;alt&#34;, and the source name (with dashes in between each value).
+</p>
+<h2>
+<a id="user-content-what-optional-rules-apply-to-alt-geometries" class="anchor" href="#what-optional-rules-apply-to-alt-geometries" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+What optional rules apply to alt-geometries?
+</h2>
+<p>
+In addition to the above rules, an alt-geometry can also include &#34;use&#34;, &#34;scope&#34;, and &#34;detail&#34;. A filepath with such information would follow this convention:
+</p>
+<p>
+<code>
+id-alt-source-function-scope-detail.geojson
+</code>
+</p>
+<p>
+Where properties include:
+</p>
+<ul>
+<li>
+<strong>
+source
+</strong>
+(eg:
+<code>
+uscensus
+</code>
+) â€“ The source of this geometry, which should match a file in the
+<code>
+whosonfirst-sources
+</code>
+repository
+</li>
+<li>
+<strong>
+function
+</strong>
+that is intended (e.g.:
+<code>
+display
+</code>
+) â€“ This could include:
+<ul>
+<li>
+<strong>
+search
+</strong>
+- For place by text (free or structured, e.g. forward geocoding) and getting back a (label) latitude/longitude, (label) bounding box, full geometry, and hints about &#34;hierarchy label&#34; generation.
+</li>
+<li>
+<strong>
+reverse geocode
+</strong>
+- For use of latitude/longitude to a place (preferring the &#34;biggest&#34; shape inclusive of territorial waters)
+</li>
+<li>
+<strong>
+data visualization
+</strong>
+(map
+<strong>
+display
+</strong>
+) - Based on polygon features (e.g. choropleth, with some sophistication around water and land parts, preferring the land parts)
+</li>
+<li>
+<strong>
+label basemap
+</strong>
+&#34;points&#34; (e.g.:
+<code>
+locality
+</code>
+townspots + text) and &#34;polygons&#34; (e.g.:
+<code>
+region
+</code>
+area text) - It&#39;s important to know which &#34;locality&#34; features
+<code>
+do not usually represent a single compact populated place
+</code>
+so their
+<code>
+mz:min_zoom
+</code>
+can be properly set, and we can choose the correct &#34;point&#34; or &#34;polygon&#34; labeling (and possibly switch between them at different zooms)
+</li>
+<li>
+<strong>
+showing boundary lines on a basemap
+</strong>
+(e.g.
+<code>
+region
+</code>
+boundary,
+<code>
+disputed
+</code>
+area boundaries, with some sophistication around water and land parts â€“ e.g. option to not show territorial water parts, coastline parts, and/or inland water parts).
+</li>
+</ul>
+</li>
+<li>
+<strong>
+scope
+</strong>
+is level-of-scope (e.g.:
+<code>
+terrestrial
+</code>
+). This could include:
+<ul>
+<li>
+<code>
+territorial
+</code>
+- Default optimized for revGeo inclusive of all marine and territorial waters (no water clipping), understood that Mapzen may have modified the original, but it&#39;s still &#34;sourced&#34; to the source.
+</li>
+<li>
+<code>
+terrestrial
+</code>
+- Clipped to land + terrestrial waters (e.g. clipped to ocean coastline, but not punched thru for large inland water bodies), understood that Mapzen may have modified the original, but it&#39;s still &#34;sourced&#34; to the source. Used for most choropleth maps.
+</li>
+<li>
+<code>
+land
+</code>
+- No marine waters, no inland waters. Used in contexts where someone doesn&#39;t want to load separate &#34;earth&#34; base or &#34;water&#34; top layers.
+</li>
+<li>
+<code>
+marine
+</code>
+- Geometric opposite of terrestrial, useful for boundary lines.
+</li>
+</ul>
+</li>
+<li>
+<strong>
+detail
+</strong>
+is the level-of-detail (e.g.:
+<code>
+zoom-10
+</code>
+or
+<code>
+1024-px
+</code>
+)
+</li>
+</ul>
+<p>
+A filename with all of the above properties would look like the following example:
+</p>
+<ul>
+<li>
+<code>
+85668127-alt-uscensus-display-terrestrial-zoom-10.geojson
+</code>
+</li>
+</ul>
+<p>
+Permutations include:
+</p>
+<ul>
+<li>
+<code>
+85668127-alt-uscensus.geojson
+</code>
+<em>
+(common)
+</em>
+</li>
+<li>
+<code>
+85668127-alt-uscensus-display.geojson
+</code>
+<em>
+(common-optional)
+</em>
+</li>
+<li>
+<code>
+85668127-alt-uscensus-display-terrestrial.geojson
+</code>
+<em>
+(optional)
+</em>
+</li>
+<li>
+<code>
+85668127-alt-uscensus-display-zoom-10.geojson
+</code>
+<em>
+(optional)
+</em>
+</li>
+<li>
+<code>
+85668127-alt-uscensus-display-1024-px.geojson
+</code>
+<em>
+(optional)
+</em>
+</li>
+<li>
+<code>
+85668127-alt-uscensus-display-terrestrial-zoom-10.geojson
+</code>
+<em>
+(optional)
+</em>
+</li>
+<li>
+<code>
+85668127-alt-uscensus-display-terrestrial-1024-px.geojson
+</code>
+<em>
+(optional)
+</em>
+</li>
+</ul>
+<h2>
+<a id="user-content-affects-to-the-default-geometry" class="anchor" href="#affects-to-the-default-geometry" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+Affects to the default geometry
+</h2>
+<p>
+If a default record in Who&#39;s On First has an alt-geometry record associated to it, the default record will have properties that point to it&#39;s associated alt-geometries. A snippet of these properties for the San Francisco example are shown below:
+</p>
+<pre>
+<code>
+&#34;src:geom_alt&#34;:[
+        &#34;mapzen&#34;,
+        &#34;alt-uscensus-display-zoom-10-original&#34;,
+        &#34;alt-uscensus-display-terrestrial&#34;,
+        &#34;alt-uscensus-display-zoom-10&#34;,
+        &#34;alt-uscensus-display-1024-px&#34;,
+        &#34;alt-uscensus-display-terrestrial-zoom-10&#34;
+    ],
+</code>
+</pre>
+<h2>
+<a id="user-content-goals" class="anchor" href="#goals" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+Goals
+</h2>
+<p>
+Like most of Who&#39;s On First, this guideline is a work in progress and allows for future flexibility. We do not know every possible future use case for alt-geometries, but we can prepare for a variety of use cases by allowing flexibility and additions to the above rules.
+</p>
+<p>
+Ideally, every feature in Who&#39;s On First will have at least two geometries; a default geometry that is some combination of simplification and file size and an alt-geometry that is either a source or display geometry.
+</p>
+<h2>
+<a id="user-content-implementations" class="anchor" href="#implementations" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+Implementations
+</h2>
+<ul>
+<li>
+<a href="https://github.com/whosonfirst/go-whosonfirst-uri">
+Go
+</a>
+</li>
+<li>
+<a href="https://github.com/whosonfirst/js-mapzen-whosonfirst/blob/master/src/mapzen.whosonfirst.uri.js">
+Javascript
+</a>
+</li>
+<li>
+<a href="https://github.com/whosonfirst/flamework-whosonfirst/blob/master/www/include/lib_whosonfirst_uri.php">
+PHP
+</a>
+</li>
+<li>
+<a href="https://github.com/whosonfirst/py-mapzen-whosonfirst-uri">
+Python
+</a>
+</li>
+</ul>
+<h2>
+<a id="user-content-see-also" class="anchor" href="#see-also" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+See also:
+</h2>
+<p>
+<a href="https://github.com/whosonfirst/whosonfirst-geometries">
+https://github.com/whosonfirst/whosonfirst-geometries
+</a>
+</p>
+					</div>
+				</div>
+			</article>
+		</div>
+		<div class="col-lg-2 col-md-0 col-sm-0 col-xs-0"></div>
+	</div>
+</div>
+			<!-- START footer.html -->
+
+		</div>
+		<footer>
+			<nav class="navbar navbar-default navbar-bottom">
+				<div class="container">
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<ul class="nav navbar-nav navbar-right whosonfirst-footer">
+						<li class="whosonfirst-nav-link-nounderline whoosonfooter-gig">who's on first is a <a href="https://mapzen.com/" class="whosonfirst-nav-link whosonfirst-nav-link-innounderline">mapzen</a> gig</li>
+						<li><a href="/docs/contributing/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">contributing</a></li>
+						<li><a href="/docs/licensing/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">licensing</a></li>
+						<li><a href="https://github.com/whosonfirst" class="whosonfirst-nav-link whosonfirst-footer-nav-link">code github</a></li>
+						<li><a href="https://github.com/whosonfirst-data" class="whosonfirst-nav-link whosonfirst-footer-nav-link">data github</a></li>
+						<li><a href="https://twitter.com/alloftheplaces/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">twitter</a></li>
+					</ul>
+				</div>
+			</nav>
+		</footer>
+
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="/javascript/jquery.min.js"></script>
+		<!-- Include all compiled plugins (below), or include individual files as needed -->
+		<script src="/javascript/bootstrap.min.js"></script>
+		<script src="/javascript/mapzen.whosonfirst.home.js"></script>
+		<script src="/javascript/mapzen.whosonfirst.subpage.js"></script>
+		<!-- JavaScript for code styling from highlightpack.js -->
+		<script src="/javascript/highlightpack.js"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
+	</body>
+</html>
+
+<!-- END footer.html -->

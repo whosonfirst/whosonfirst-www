@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Who’s On First | Docs | Categories</title>
+		<meta name="description" content="Who’s on First is a gazetteer of places.">
+		<link rel="apple-touch-icon" href="/images/favicons/apple-touch-icon.png" sizes="180x180">
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-16x16.png" sizes="16x16">
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-32x32.png" sizes="32x32">
+		<link rel="manifest" href="/images/favicons/manifest.json">
+		<link rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg" color="#2C1E3F">
+		<link rel="stylesheet" href="/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/css/mapzen.whosonfirst.css">
+		<!-- CSS for code styling from highlightpack.js -->
+		<link rel="stylesheet" href="/css/styles/grayscale.css">
+	</head>
+	<body>
+		<div class="whosonfirst-wrapper">
+
+			<nav class="navbar navbar-default navbar-fixed-top whosonfirst-fixed-subpage-navbar">
+				<div class="container">
+
+					<!-- Brand and toggle get grouped for better mobile display -->
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="/">Who’s On First</a>
+					</div>
+
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav navbar-right">
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/data/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">data</a>
+							</li>
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/docs/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed whosonfirst-nav-active">docs</a>
+							</li>
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/tools/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">tools</a>
+							</li>
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/blog/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">blog</a>
+							</li>
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/getstarted/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">get started</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+<div class="container whosonfirst-subpage-container">
+	<div class="row">
+		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-0">
+			<aside>
+				<div class="whosonfirst-sidenav-container">
+					<ul class="whosonfirst-sidenav-list">
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="/docs/properties/" class="whosonfirst-nav-link whosonfirst-sidenav-link">properties</a>
+						</li>
+						<!-- properties -->
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="/docs/concordances/" class="whosonfirst-nav-link whosonfirst-sidenav-link">concordances</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="/docs/placetypes/" class="whosonfirst-nav-link whosonfirst-sidenav-link">placetypes</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="/docs/hierarchies/" class="whosonfirst-nav-link whosonfirst-sidenav-link">hierarchies</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="/docs/names/" class="whosonfirst-nav-link whosonfirst-sidenav-link">names</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="/docs/geometries/" class="whosonfirst-nav-link whosonfirst-sidenav-link">geometries</a>
+						</li>
+						<!-- geometries -->
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="/docs/dates/" class="whosonfirst-nav-link whosonfirst-sidenav-link">dates</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="/docs/categories/" class="whosonfirst-nav-link whosonfirst-sidenav-link whosonfirst-nav-active">categories</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="/docs/sources/" class="whosonfirst-nav-link whosonfirst-sidenav-link">sources</a>
+						</li>
+						<!-- sources -->
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="/docs/tests/" class="whosonfirst-nav-link whosonfirst-sidenav-link">tests</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="/docs/contributing/" class="whosonfirst-nav-link whosonfirst-sidenav-link">contributing</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="/docs/licenses/" class="whosonfirst-nav-link whosonfirst-sidenav-link">data licenses</a>
+						</li>
+						<!-- <li class="whosonfirst-sidenav-list-element">
+							<a href="/docs/processes/" class="whosonfirst-nav-link whosonfirst-sidenav-link">processes and workflows</a>
+						</li> -->
+						<!-- processes -->
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="/docs/keyterms/" class="whosonfirst-nav-link whosonfirst-sidenav-link">key terms</a>
+						</li>
+					</ul>
+				</div>
+			</aside>
+		</div>
+		<div class="col-lg-7 col-md-9 col-sm-9 col-xs-12">
+			<article>
+<h1 class="whosonfirst-subpage-header" data-url="https://github.com/whosonfirst/whosonfirst-categories/blob/master/README.md">
+whosonfirst-categories
+</h1>
+<div class="whosonfirst-fulltabs-container">
+	<div class="whosonfirst-extrasmall-tabs-menu">
+		<div class="whosonfirst-extrasmall-tabs-menu-content">
+			<div class="whosonfirst-extrasmall-tabs-menu-content-header">
+				<div class="row whosonfirst-extrasmall-menu-row">
+					<div class="col-xs-11">
+						<div class="whosonfirst-extrasmall-tab-selection">Categories</div>
+					</div>
+					<div class="col-xs-1 whosonfirst-extrasmall-menu-chevron-col">
+						<button type="button" class="navbar-toggle collapsed whosonfirst-extrasmall-menu-chevron-down" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2" aria-expanded="false">
+							<span id="glyphicon-one" class="glyphicon glyphicon-menu-down whosonfirst-extrasmall-menu-actual-chevron-down"></span>
+						</button>
+					</div>
+				</div>
+			</div>
+			<div class="collapse" id="bs-example-navbar-collapse-2">
+				<div class="whosonfirst-extrasmall-nav-collection">
+					<ul class="nav navbar-nav navbar-right whosonfirst-extrasmall-nav">
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="/docs/properties/" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">properties</a>
+						</li>
+						<!-- properties -->
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="/docs/concordances/" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">concordances</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="/docs/placetypes/" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">placetypes</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="/docs/hierarchies/" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">hierarchies</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="/docs/names/" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">names</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="/docs/geometries/" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">geometries</a>
+						</li>
+						<!-- geometries -->
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="/docs/dates/" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">dates</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="/docs/categories/" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed whosonfirst-nav-active">categories</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="/docs/sources/" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">sources</a>
+						</li>
+						<!-- sources -->
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="/docs/tests/" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">tests</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="/docs/contributing/" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">contributing</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="/docs/licenses/" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">data licenses</a>
+						</li>
+						<!-- <li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="/docs/processes/" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed">processes and workflows</a>
+						</li> -->
+						<!-- processes -->
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element  whosonfirst-extrasmall-nav-link-collapsed-last">
+							<a href="/docs/keyterms/" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed whosonfirst-extrasmall-nav-link-collapsed-last">key terms</a>
+						</li>
+					</ul>
+				</div>
+			</div><!-- /.navbar-collapse -->
+		</div>
+	</div>
+	<div class="whosonfirst-tabs-content">
+<p>
+IMPORTANT: THIS IS WORK IN PROGRESS.
+</p>
+<p>
+Right now it is as much about just putting things down on paper to look at them
+as it is actually deciding the how or the what of anything.
+</p>
+<h2>
+<a id="user-content-its-like-triples-but-with-a-point-of-view" class="anchor" href="#its-like-triples-but-with-a-point-of-view" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+It&#39;s like triples... but with a point of view
+</h2>
+<h3>
+<a id="user-content-points-of-view" class="anchor" href="#points-of-view" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+Points of view
+</h3>
+<p>
+At the moment there is only one point of view. The point (sorry) is there can be
+others but there aren&#39;t yet. You know,
+<a href="https://boingboing.net/2007/11/09/flickr-places-shows.html">
+like this
+</a>
+:
+</p>
+<p>
+<a href="/whosonfirst/whosonfirst-categories/blob/master/chicken.jpg" target="_blank">
+<img src="/whosonfirst/whosonfirst-categories/raw/master/chicken.jpg" alt="" style="max-width:100%;">
+</a>
+</p>
+<p>
+The default point of view, to start with, is essentially the tyranny of the
+commons. It is &#34;stuff people search for&#34; and other things can be easily ranked
+and quantified in to something you might understand as the popular or dominant
+opinion.
+</p>
+<p>
+Example points of view might include:
+</p>
+<ul>
+<li>
+consensus
+</li>
+<li>
+local
+</li>
+<li>
+tourist
+</li>
+</ul>
+<h3>
+<a id="user-content-classes" class="anchor" href="#classes" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+Classes
+</h3>
+<p>
+The view from 50, 000 feet, approximately. These are high level buckets of human
+activities. The convention and best practice for classes is that there are
+roughly only (10) of them per point of view.
+</p>
+<p>
+Classes are parented by points of view. Classes may be shared across multiple points of view. Example classes might include:
+</p>
+<ul>
+<li>
+eating
+</li>
+<li>
+drinking
+</li>
+<li>
+industry
+</li>
+<li>
+natural
+</li>
+</ul>
+<h3>
+<a id="user-content-categories" class="anchor" href="#categories" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+Categories
+</h3>
+<p>
+<em>
+This is an unfortunate name. We should find another one.
+</em>
+</p>
+<p>
+The view from 10, 000 feet approximately. This is like when someone asks you how
+your day was and you&#39;re
+<em>
+not
+</em>
+the boring person who answers the question in
+detail.
+</p>
+<p>
+This is more like saying
+<em>
+that
+</em>
+you threw your laptop across the room rather
+than
+<em>
+why
+</em>
+.
+</p>
+<p>
+The convention and best practice for categories is that are roughly 10x of them
+relative to their parent class.
+</p>
+<p>
+Categories are parented by classes. Categories may be shared across multiple classes. Example categories might include:
+</p>
+<ul>
+<li>
+restaurant
+</li>
+<li>
+department-store
+</li>
+<li>
+veterinarian
+</li>
+</ul>
+<h3>
+<a id="user-content-sub-categories" class="anchor" href="#sub-categories" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+Sub-categories
+</h3>
+<p>
+<em>
+This is an even more unfortunate name than &#34;category&#34;. We should find another one
+for this, too.
+</em>
+</p>
+<p>
+This is a free-for-all. Essentially these are just tags with a parent
+(sub-category) and a grandparent (category) and some serious sins-of-the-father
+baggage (point of view).
+</p>
+<p>
+There can be an arbitrary number of sub-categories for class/category pair.
+</p>
+<p>
+Sub-categories are parented by categories. Sub-categories may be shared across multiple categories. Example sub-categories might include:
+</p>
+<ul>
+<li>
+afghan
+</li>
+<li>
+chinese
+</li>
+<li>
+bagels
+</li>
+</ul>
+<h2>
+<a id="user-content-tags" class="anchor" href="#tags" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+Tags
+</h2>
+<p>
+You know, words. Or short sequences of words. Not paragraphs. When in doubt, not
+this:
+</p>
+<p>
+<a href="https://collection.cooperhewitt.org/media/page414">
+https://collection.cooperhewitt.org/media/page414
+</a>
+</p>
+<p>
+Tags are parented by sub-categories (and maybe categories). Tags can be shared willy-nilly. Example tags are left as an exercise to the reader.
+</p>
+<h2>
+<a id="user-content-naming-conventions" class="anchor" href="#naming-conventions" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+Naming conventions
+</h2>
+<p>
+Naming conventions for keys/properties in any JSON representation of a type
+(class, category, etc.)
+</p>
+<h3>
+<a id="user-content-id" class="anchor" href="#id" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+id
+</h3>
+<p>
+Brooklyn Integers, yo.
+</p>
+<h3>
+<a id="user-content-name" class="anchor" href="#name" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+name
+</h3>
+<p>
+This is a URL-safe name that is unique across its type (class, category, etc.)
+and ideally unique across all types. Names may
+<strong>
+not
+</strong>
+contain colons (
+<code>
+:
+</code>
+) for
+reasons that are explained below.
+</p>
+<h3>
+<a id="user-content-label" class="anchor" href="#label" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+label
+</h3>
+<p>
+A human-readable display label. (Something something something translations and
+localizations...)
+</p>
+<h3>
+<a id="user-content-class" class="anchor" href="#class" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+class
+</h3>
+<p>
+This property would be defined in the definition for a category and be a list of
+well-defined structured strings denoting the point of view and class (that the
+category belongs to). For example:
+</p>
+<pre>
+<code>
+&#34;name&#34;: &#34;restaurant&#34;,
+&#34;class&#34;: [ &#34;consensus:eating&#34;, &#34;tourist:eating&#34;, &#34;local:nomnomnom&#34; ],
+</code>
+</pre>
+<p>
+Strings should be parsed left-to-right, splitting on colons. The position and
+order of each part of the string corresponds to a specific type:
+</p>
+<pre>
+<code>
+POINT-OF-VIEW &gt; CLASS
+</code>
+</pre>
+<p>
+Each part of the exploded string points to the URL-safe name (and by extension
+filename) for that type so that you can easily refer to
+<code>
+points-of-view/POINT-OF-VIEW.json
+</code>
+and so on.
+</p>
+<h3>
+<a id="user-content-category" class="anchor" href="#category" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+category
+</h3>
+<p>
+This property would be defined in the definition for a sub-category and be a list of
+well-defined structured strings denoting the point of view, class and category (that the
+sub-category belongs to). For example:
+</p>
+<pre>
+<code>
+&#34;name&#34;: &#34;afghan&#34;,
+&#34;category&#34;: [ &#34;consensus:eating:restaurant&#34;, &#34;local:nomnomnom:restaurant&#34; ],
+</code>
+</pre>
+<p>
+Strings should be parsed left-to-right, splitting on colons. The position and
+order of each part of the string corresponds to a specific type:
+</p>
+<pre>
+<code>
+POINT-OF-VIEW &gt; CLASS &gt; CATEGORY
+</code>
+</pre>
+<p>
+Each part of the exploded string points to the URL-safe name (and by extension
+filename) for that type so that you can easily refer to
+<code>
+categories/CATEGORY.json
+</code>
+and so on.
+</p>
+<h2>
+<a id="user-content-translations-and-localization" class="anchor" href="#translations-and-localization" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+Translations and localization
+</h2>
+<p>
+See also:
+<a href="https://mapzen.com/blog/who-s-on-first#names">
+How we handle place names in Who&#39;s On First
+</a>
+</p>
+<h2>
+<a id="user-content-gotchas" class="anchor" href="#gotchas" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+Gotchas
+</h2>
+<h3>
+<a id="user-content-homonyms" class="anchor" href="#homonyms" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+Homonyms
+</h3>
+<p>
+Sigh...
+</p>
+<h3>
+<a id="user-content-counts-for-things-like-sub-categories" class="anchor" href="#counts-for-things-like-sub-categories" aria-hidden="true">
+<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+</path>
+</svg>
+</a>
+Counts (for things like sub-categories)
+</h3>
+<p>
+Or more specifically the absence of any sub-categories for
+<code>
+class:category
+</code>
+pair. Yeah, that&#39;s a thing...
+</p>
+					</div>
+				</div>
+			</article>
+		</div>
+		<div class="col-lg-2 col-md-0 col-sm-0 col-xs-0"></div>
+	</div>
+</div>
+			<!-- START footer.html -->
+
+		</div>
+		<footer>
+			<nav class="navbar navbar-default navbar-bottom">
+				<div class="container">
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<ul class="nav navbar-nav navbar-right whosonfirst-footer">
+						<li class="whosonfirst-nav-link-nounderline whoosonfooter-gig">who's on first is a <a href="https://mapzen.com/" class="whosonfirst-nav-link whosonfirst-nav-link-innounderline">mapzen</a> gig</li>
+						<li><a href="/docs/contributing/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">contributing</a></li>
+						<li><a href="/docs/licensing/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">licensing</a></li>
+						<li><a href="https://github.com/whosonfirst" class="whosonfirst-nav-link whosonfirst-footer-nav-link">code github</a></li>
+						<li><a href="https://github.com/whosonfirst-data" class="whosonfirst-nav-link whosonfirst-footer-nav-link">data github</a></li>
+						<li><a href="https://twitter.com/alloftheplaces/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">twitter</a></li>
+					</ul>
+				</div>
+			</nav>
+		</footer>
+
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="/javascript/jquery.min.js"></script>
+		<!-- Include all compiled plugins (below), or include individual files as needed -->
+		<script src="/javascript/bootstrap.min.js"></script>
+		<script src="/javascript/mapzen.whosonfirst.home.js"></script>
+		<script src="/javascript/mapzen.whosonfirst.subpage.js"></script>
+		<!-- JavaScript for code styling from highlightpack.js -->
+		<script src="/javascript/highlightpack.js"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
+	</body>
+</html>
+
+<!-- END footer.html -->
