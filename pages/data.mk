@@ -2,10 +2,16 @@ WOF_DATA_REPO := https://github.com/whosonfirst-data/whosonfirst-data/blob/maste
 
 data: data-download-content data-build-pages
 
-data-download-content:
+data-download-content: \
+	data-download-knownknowns \
+	data-download-pullrequest
+
+data-download-knownknowns:
 	@make URL=$(WOF_DATA_REPO)README.KNOWN.KNOWNS.md \
 	      OUT=data/knownknowns.html \
 	      download-content
+
+data-download-pullrequest:
 	@make URL=$(WOF_DATA_REPO)PULL_REQUEST_TEMPLATE_NEIGHBOURHOOD.md \
 	      OUT=data/pullrequest.html \
 	      download-content
