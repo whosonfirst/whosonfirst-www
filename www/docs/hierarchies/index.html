@@ -113,7 +113,7 @@
 		</div>
 		<div class="col-lg-7 col-md-9 col-sm-9 col-xs-12">
 			<article>
-<h1 id="hierarchies" class="whosonfirst-subpage-header">
+<h1 class="whosonfirst-subpage-header">
 Hierarchies
 </h1>
 <div class="whosonfirst-fulltabs-container">
@@ -186,147 +186,80 @@ Hierarchies
 		</div>
 	</div>
 	<div class="whosonfirst-tabs-content">
-<p>
-Hierarchies in Who’s On First are represented as a list of dictionaries, where each item is a dictionary containing a full hierarchy. Like this:
-</p>
+
+<p>Hierarchies in Who’s On First are represented as a list of dictionaries, where each item is a dictionary containing a full hierarchy. Like this:</p>
 <pre>
-<code>
-&#34;wof:hierarchy&#34;: [
+<code>"wof:hierarchy": [
   {
-    &#34;country_id&#34;: &#34;85633147&#34;,
-    &#34;region_id&#34;: &#34;85683255&#34;,
-    &#34;county_id&#34;: &#34;102072387&#34;,
-    &#34;locality_id&#34;: &#34;101750223&#34;,
-    &#34;neighbourhood_id&#34;: &#34;85794581&#34;
+    "country_id": "85633147",
+    "region_id": "85683255",
+    "county_id": "102072387",
+    "locality_id": "101750223",
+    "neighbourhood_id": "85794581"
   }
-]
-</code>
+]</code>
 </pre>
-<p>
-This is because a location in Who’s On First can have multiple divergent hierarchies. Consider place types like metropolitan areas (the “Bay Area” in and around San Francisco, “New York” inclusive of all five boroughs and even some parts of New Jersey and so on) which often contain multiple children of the same place type. Consider disputed territories. There is a whole separate document about the rationale for this decision and how we arrived at it but the short excerpted version is this:
-</p>
-<p>
-Reasons why this suggestion is good:
-</p>
+<p>This is because a location in Who’s On First can have multiple divergent hierarchies. Consider place types like metropolitan areas (the “Bay Area” in and around San Francisco, “New York” inclusive of all five boroughs and even some parts of New Jersey and so on) which often contain multiple children of the same place type. Consider disputed territories. There is a whole separate document about the rationale for this decision and how we arrived at it but the short excerpted version is this:</p>
+<p>Reasons why this suggestion is good:</p>
 <ul>
-<li>
-It is explicit
-</li>
-<li>
-It is easy to compare multiple hierarchies
-</li>
-<li>
-It doesn’t require the user do a lot of mental arithmetic to construct the complete hierarchy or to support whatever “efficiencies” we dream up in the moment
-</li>
-<li>
-It is easier to change going forward (say before an “official” launch) than the alternatives
-</li>
+<li>It is explicit</li>
+<li>It is easy to compare multiple hierarchies</li>
+<li>It doesn’t require the user do a lot of mental arithmetic to construct the complete hierarchy or to support whatever “efficiencies” we dream up in the moment</li>
+<li>It is easier to change going forward (say before an “official” launch) than the alternatives</li>
 </ul>
-<p>
-Reasons why this suggestion is, or might be, bad:
-</p>
+<p>Reasons why this suggestion is, or might be, bad:</p>
 <ul>
-<li>
-If we support metropolitan areas, then many places (localities, neighbourhood, venues) may have multiple hierarchies where the only difference will (likely) be the county, leaving all the remaining ancestors in common
-</li>
-<li>
-File size, disk space and bandwidth - this is the corollary of the first point and akin to whitespace or coordinates with &gt; 6 decimal points in GeoJSON files which can become burdensome quickly
-</li>
+<li>If we support metropolitan areas, then many places (localities, neighbourhood, venues) may have multiple hierarchies where the only difference will (likely) be the county, leaving all the remaining ancestors in common</li>
+<li>File size, disk space and bandwidth - this is the corollary of the first point and akin to whitespace or coordinates with > 6 decimal points in GeoJSON files which can become burdensome quickly</li>
 </ul>
-<h2 id="disputed-areas">
-Disputed Areas
-</h2>
-<p>
-Although it is true that all neighbourhoods and many localities are “disputed” in a friendly-banter kind of way some places are genuinely more disputed than others because they involve two or more countries (and sometimes so-called non-state actors), a real threat of violence and consequences that in no way resemble “friendly banter”.
-</p>
-<p>
-For the time being we have explicitly assigned places we know to be disputed a place type of disputed. As of this writing disputed places are parented, in their hierarchies, by two or more countries. This approach does not reflect the subtleties of the facts on the ground in any, of these disputed places. On the other hand it does allow to “block out” areas that are contested and, as we’ve said above, to leave the decisions about how to reflect the dispute to individual applications.
-</p>
-<h2 id="parent-ids-and-custody">
-Parent ids and “custody”
-</h2>
-<p>
-Even though a place can have multiple hierarchies we still assume that in most cases there is a single “authority” in place, on the ground. For example, the Golan Heights is disputed by both Syria and Israel, a fact reflected in the place hierarchy, but is still “parented” by Israel:
-</p>
+
+<h2 id="disputed-areas">Disputed Areas</h2>
+<p>Although it is true that all neighbourhoods and many localities are “disputed” in a friendly-banter kind of way some places are genuinely more disputed than others because they involve two or more countries (and sometimes so-called non-state actors), a real threat of violence and consequences that in no way resemble “friendly banter”.</p>
+<p>For the time being we have explicitly assigned places we know to be disputed a place type of disputed. As of this writing disputed places are parented, in their hierarchies, by two or more countries. This approach does not reflect the subtleties of the facts on the ground in any, of these disputed places. On the other hand it does allow to “block out” areas that are contested and, as we’ve said above, to leave the decisions about how to reflect the dispute to individual applications.</p>
+<h2 id="parent-ids-and-custody">Parent ids and “custody”</h2>
+<p>Even though a place can have multiple hierarchies we still assume that in most cases there is a single “authority” in place, on the ground. For example, the Golan Heights is disputed by both Syria and Israel, a fact reflected in the place hierarchy, but is still “parented” by Israel:</p>
 <pre>
-<code>
-&#34;wof:hierarchy&#34;: [
+<code>"wof:hierarchy": [
   {
-    &#34;continent_id&#34;: &#34;102191569&#34;,
-    &#34;country_id&#34;: &#34;85632315&#34;,
-    &#34;disputed_id&#34;: &#34;85632221&#34;
+    "continent_id": "102191569",
+    "country_id": "85632315",
+    "disputed_id": "85632221"
     },
   {
-    &#34;continent_id&#34;: &#34;102191569&#34;,
-    &#34;country_id&#34;: &#34;85632413&#34;,
-    &#34;disputed_id&#34;: &#34;85632221&#34;
+    "continent_id": "102191569",
+    "country_id": "85632413",
+    "disputed_id": "85632221"
   }
 ],
-&#34;wof:id&#34;: &#34;85632221&#34;,
-&#34;wof:name&#34;: &#34;Golan Heights&#34;,
-&#34;wof:parent_id&#34;: &#34;85632315&#34;,
-</code>
+"wof:id": "85632221",
+"wof:name": "Golan Heights",
+"wof:parent_id": "85632315",</code>
 </pre>
-<p>
-In a few isolated cases we really don’t have a good answer for who the parent is or if we’re just not sure because it’s early days and are still vetting the data we will assign a value of -1 for the parent record.
-</p>
-<p>
-Occasionally we will assign a value of -2. This should be interpreted as “:shrug: the world is a complicated place”. For example, the Baykonur Cosmodrome is a little donut hole of Russia surrounded by the nation of Kazakhstan.
-</p>
-<h2 id="superseding">
-Supersedes / Superseded By
-</h2>
-<p>
-One of the large and difficult philosophical questions that working with geography raises is this: How do you decide when something has simply been updated versus when has something fundamentally changed?
-</p>
-<p>
-This is not a “geo” question per se, only that “geo” has a habit of poking it in the eye. For example Poland, France and Germany spent the better part of a hundred years claiming and reclaiming (and then sometimes reclaiming again) the same territory. Those borders, and the periods during which they existed, are important contextual information for lots of applications beyond just maps. Consider works of art created in those parts of Poland that were German at the time of their creation. How do you create stable identifiers for a location that has changed, in concrete and meaningful ways, over time?
-</p>
-<p>
-A little closer to home, in New York City, everyone’s favourite that-is-so-not-a-neighbourhood is called: “BoCoCa”. BoCoCa is short for Boerum Hill, Cobble Hill and Carroll Gardens, three adjacent neighbourhoods south of downtown Brooklyn. BoCoCa is neither a name that anyone seems to like, nor is it a place type that most people recognize as a neighbourhood. On the other hand it is a neighbourhood (and an identifier) that has made its way into lots of other maps and datasets. Whatever we may think about it BoCoCa has “existed”.
-</p>
-<p>
-So in Who’s On First we’ve changed its place type and made BoCoCa a “macrohood” that parents the three neighbourhoods from which its name is derived.
-</p>
-<p>
-A location’s place type is a pretty fundamental property and it’s easy to imagine that a third-party application might use and store that metadata for important application-specific purposes. Which is to say: We don’t need to have an opinion about what or why an application is doing something with the metadata associated with a location and if we start by saying that WOF ID 85892915 is a neighbourhood (which it was when we imported the data from Quattroshapes) we probably shouldn’t just change it on a whim.
-</p>
-<p>
-We also don’t think BoCoCa is a neighbourhood, though. We absolutely have an opinion about that. At one time BoCoCa might have been a neighbourhood but in our world it no longer is. The way that we reconcile problems like this is by creating a new record with a new place type (BoCoCa the macrohood) and by updating each record to indicate that one supersedes the other.
-</p>
-<p>
-For example, the record for BoCoCa the neighbourhood looks like this:
-</p>
+<p>In a few isolated cases we really don’t have a good answer for who the parent is or if we’re just not sure because it’s early days and are still vetting the data we will assign a value of -1 for the parent record.</p>
+<p>Occasionally we will assign a value of -2. This should be interpreted as “:shrug: the world is a complicated place”. For example, the Baykonur Cosmodrome is a little donut hole of Russia surrounded by the nation of Kazakhstan.</p>
+
+<h2 id="superseding">Supersedes / Superseded By</h2>
+<p>One of the large and difficult philosophical questions that working with geography raises is this: How do you decide when something has simply been updated versus when has something fundamentally changed?</p>
+<p>This is not a “geo” question per se, only that “geo” has a habit of poking it in the eye. For example Poland, France and Germany spent the better part of a hundred years claiming and reclaiming (and then sometimes reclaiming again) the same territory. Those borders, and the periods during which they existed, are important contextual information for lots of applications beyond just maps. Consider works of art created in those parts of Poland that were German at the time of their creation. How do you create stable identifiers for a location that has changed, in concrete and meaningful ways, over time?</p>
+<p>A little closer to home, in New York City, everyone’s favourite that-is-so-not-a-neighbourhood is called: “BoCoCa”. BoCoCa is short for Boerum Hill, Cobble Hill and Carroll Gardens, three adjacent neighbourhoods south of downtown Brooklyn. BoCoCa is neither a name that anyone seems to like, nor is it a place type that most people recognize as a neighbourhood. On the other hand it is a neighbourhood (and an identifier) that has made its way into lots of other maps and datasets. Whatever we may think about it BoCoCa has “existed”.</p>
+<p>So in Who’s On First we’ve changed its place type and made BoCoCa a “macrohood” that parents the three neighbourhoods from which its name is derived.</p>
+<p>A location’s place type is a pretty fundamental property and it’s easy to imagine that a third-party application might use and store that metadata for important application-specific purposes. Which is to say: We don’t need to have an opinion about what or why an application is doing something with the metadata associated with a location and if we start by saying that WOF ID 85892915 is a neighbourhood (which it was when we imported the data from Quattroshapes) we probably shouldn’t just change it on a whim.</p>
+<p>We also don’t think BoCoCa is a neighbourhood, though. We absolutely have an opinion about that. At one time BoCoCa might have been a neighbourhood but in our world it no longer is. The way that we reconcile problems like this is by creating a new record with a new place type (BoCoCa the macrohood) and by updating each record to indicate that one supersedes the other.</p>
+<p>For example, the record for BoCoCa the neighbourhood looks like this:</p>
 <pre>
-<code>
-&#34;wof:superseded_by&#34;: [102147495],
-&#34;wof:supersedes&#34;: [],
-</code>
+<code>"wof:superseded_by": [102147495],
+"wof:supersedes": [],</code>
 </pre>
-<p>
-While the record for BoCoCa the macrohood looks like this:
-</p>
+<p>While the record for BoCoCa the macrohood looks like this:</p>
 <pre>
-<code>
-&#34;wof:superseded_by&#34;: [],
-&#34;wof:supersedes&#34;: [85892915]
-</code>
+<code>"wof:superseded_by": [],
+"wof:supersedes": [85892915]</code>
 </pre>
-<p>
-It is left up to individual applications to decide how or whether to treat records that have been superseded differently. A search engine, for instance, may choose to weight a superseded place differently or exclude it altogether.
-</p>
-<h2 id="breaches">
-Breaches
-</h2>
-<p>
-Every record has a wof:breaches list attached to its properties. Depending on when you read this blog post, most or all of those lists may still be empty. A “breach” occurs when the geometry of a given location is intersected by the geometry of another location of the same place type.
-</p>
-<p>
-The purpose of these lists is to signal to users of the Who’s On First data that there is either an error in the data (most country records shouldn’t breach any of their neighbours) or that there is a legitimate difference of opinion about the boundaries of a place (neighbourhoods, for example).
-</p>
-<p>
-Like many signals its precise meaning and significance and how it should be handled is left up to individual applications.
-</p>
+<p>It is left up to individual applications to decide how or whether to treat records that have been superseded differently. A search engine, for instance, may choose to weight a superseded place differently or exclude it altogether.</p>
+<h2 id="breaches">Breaches</h2>
+<p>Every record has a wof:breaches list attached to its properties. Depending on when you read this blog post, most or all of those lists may still be empty. A “breach” occurs when the geometry of a given location is intersected by the geometry of another location of the same place type.</p>
+<p>The purpose of these lists is to signal to users of the Who’s On First data that there is either an error in the data (most country records shouldn’t breach any of their neighbours) or that there is a legitimate difference of opinion about the boundaries of a place (neighbourhoods, for example).</p>
+<p>Like many signals its precise meaning and significance and how it should be handled is left up to individual applications.</p>
 					</div>
 				</div>
 			</article>
