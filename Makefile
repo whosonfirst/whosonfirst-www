@@ -8,9 +8,8 @@ all: mapzen favicons js css home data docs tools
 include pages/docs.mk
 include pages/data.mk
 include pages/tools.mk
-
-blog:
-	utils/clone-blog.sh
+include pages/blog.mk
+include pages/getstarted.mk
 
 download: \
 	data-download-content \
@@ -29,6 +28,9 @@ home-build-pages:
 	@make CONTENT=home.html OUT=index.html build-page-level0
 	@make CONTENT=state.html \
 	      OUT=state/index.html \
+	      build-page-level0
+	@make CONTENT=interns.html \
+	      OUT=interns/index.html \
 	      build-page-level0
 
 setup: mk-tools
@@ -316,93 +318,3 @@ docs-processes-woflifecycle:
 	rm www/docs/processes/woflifecycle.html-e
 
 docs-processes: docs-processes-significantevent docs-processes-assigningcessation docs-processes-s3requirements docs-processes-wikipediaconcordances docs-processes-seattleneighborhoodupdates docs-processes-updatingsanfrancisconeighborhoods docs-processes-woflifecycle docs-processes-index
-
-blog-withalltheblogfolder:
-	cat content/blog/blog.html | $(PUP) 'body h1' > www/alltheblog/temp-content1.html
-	cat content/blog/blog.html | $(PUP) 'body :not(h1)' > www/alltheblog/temp-content2.html
-	sed -i -e 's/\<h1/\<h1 class\=\"whosonfirst\-subpage\-header\"/' www/alltheblog/temp-content1.html
-	cat components/head/head-onelevelup.html components/navbar/navbar-onelevelup.html components/subnav/blog/subnav-top.html www/alltheblog/temp-content1.html components/subnav/blog/subnav-bottom.html  www/alltheblog/temp-content2.html components/footer/footer-onelevelup.html > www/alltheblog/index.html
-	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>blog\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>blog\<\/a\>/' www/alltheblog/index.html
-	rm www/alltheblog/temp-content1.html
-	rm www/alltheblog/temp-content2.html
-	rm www/alltheblog/temp-content1.html-e
-	rm www/alltheblog/index.html-e
-
-blog-home:
-	cat content/blog/blog.html | $(PUP) 'body h1' > www/blog/temp-content1.html
-	cat content/blog/blog.html | $(PUP) 'body :not(h1)' > www/blog/temp-content2.html
-	sed -i -e 's/\<h1/\<h1 class\=\"whosonfirst\-subpage\-header\"/' www/blog/temp-content1.html
-	cat components/head/head-onelevelup.html components/navbar/navbar-onelevelup.html components/subnav/blog/subnav-top.html www/blog/temp-content1.html components/subnav/blog/subnav-bottom.html  www/blog/temp-content2.html components/footer/footer-onelevelup.html > www/blog/index.html
-	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>blog\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>blog\<\/a\>/' www/blog/index.html
-	rm www/blog/temp-content1.html
-	rm www/blog/temp-content2.html
-	rm www/blog/temp-content1.html-e
-	rm www/blog/index.html-e
-
-blog-mesoshapes:
-	cat content/blog/mesoshapes/mesoshapes.html | $(PUP) 'body h1' > www/blog/mesoshapes/temp-content1.html
-	cat content/blog/mesoshapes/mesoshapes.html | $(PUP) 'body :not(h1)' > www/blog/mesoshapes/temp-content2.html
-	sed -i -e 's/\<h1/\<h1 class\=\"whosonfirst\-subpage\-header\"/' www/blog/mesoshapes/temp-content1.html
-	cat components/head/head.html components/navbar/navbar.html components/subnav/blog/subnav-top.html www/blog/mesoshapes/temp-content1.html components/subnav/blog/subnav-bottom.html  www/blog/mesoshapes/temp-content2.html components/footer/footer.html > www/blog/mesoshapes/index.html
-	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>blog\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>blog\<\/a\>/' www/blog/mesoshapes/index.html
-	rm www/blog/mesoshapes/temp-content1.html
-	rm www/blog/mesoshapes/temp-content2.html
-	rm www/blog/mesoshapes/temp-content1.html-e
-	rm www/blog/mesoshapes/index.html-e
-
-state:
-	cat content/state/state.html | $(PUP) 'body h1' > www/state/temp-content1.html
-	cat content/state/state.html | $(PUP) 'body :not(h1)' > www/state/temp-content2.html
-	sed -i -e 's/\<h1/\<h1 class\=\"whosonfirst\-subpage\-header\"/' www/state/temp-content1.html
-	cat components/head/head-onelevelup.html components/navbar/navbar-onelevelup.html components/subnav/state/subnav-top.html www/state/temp-content1.html components/subnav/state/subnav-bottom.html  www/state/temp-content2.html components/footer/footer-onelevelup.html > www/state/index.html
-	rm www/state/temp-content1.html
-	rm www/state/temp-content2.html
-	rm www/state/temp-content1.html-e
-
-getstarted-index:
-	cat content/getstarted/getstarted.html | $(PUP) 'body h1' > www/getstarted/temp-content1.html
-	cat content/getstarted/getstarted.html | $(PUP) 'body :not(h1)' > www/getstarted/temp-content2.html
-	sed -i -e 's/\<h1/\<h1 class\=\"whosonfirst\-subpage\-header\"/' www/getstarted/temp-content1.html
-	cat components/head/head-onelevelup.html components/navbar/navbar-onelevelup.html components/subnav/getstarted/subnav-top.html www/getstarted/temp-content1.html components/subnav/getstarted/subnav-bottom.html  www/getstarted/temp-content2.html components/footer/footer-onelevelup.html > www/getstarted/index.html
-	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>get started\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>get started\<\/a\>/' www/getstarted/index.html
-	rm www/getstarted/temp-content1.html
-	rm www/getstarted/temp-content2.html
-	rm www/getstarted/temp-content1.html-e
-	rm www/getstarted/index.html-e
-
-getstarted-retrievevenues:
-	cat content/getstarted/retrievevenues.html | $(PUP) 'body h1' > www/getstarted/temp-content1.html
-	cat content/getstarted/retrievevenues.html | $(PUP) 'body :not(h1)' > www/getstarted/temp-content2.html
-	sed -i -e 's/\<h1/\<h1 class\=\"whosonfirst\-subpage\-header\"/' www/getstarted/temp-content1.html
-	cat components/head/head-onelevelup.html components/navbar/navbar-onelevelup.html components/subnav/getstarted/subnav-top.html www/getstarted/temp-content1.html components/subnav/getstarted/subnav-bottom.html  www/getstarted/temp-content2.html components/footer/footer-onelevelup.html > www/getstarted/retrievevenues.html
-	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>get started\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>get started\<\/a\>/' www/getstarted/retrievevenues.html
-	rm www/getstarted/temp-content1.html
-	rm www/getstarted/temp-content2.html
-	rm www/getstarted/temp-content1.html-e
-	sed -i -e 's/whosonfirst\-sidenav\-link\"\>retrieve v/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>retrieve v/' www/getstarted/retrievevenues.html
-	sed -i -e 's/whosonfirst\-extrasmall\-nav\-link\-collapsed\"\>retrieve v/whosonfirst\-extrasmall\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>retrieve v/' www/getstarted/retrievevenues.html
-	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Get Started\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Retrieve Venues\<\/div\>/' www/getstarted/retrievevenues.html
-	rm www/getstarted/retrievevenues.html-e
-
-getstarted-retrieveneighbourhoods:
-	cat content/getstarted/retrieveneighbourhoods.html | $(PUP) 'body h1' > www/getstarted/temp-content1.html
-	cat content/getstarted/retrieveneighbourhoods.html | $(PUP) 'body :not(h1)' > www/getstarted/temp-content2.html
-	sed -i -e 's/\<h1/\<h1 class\=\"whosonfirst\-subpage\-header\"/' www/getstarted/temp-content1.html
-	cat components/head/head-onelevelup.html components/navbar/navbar-onelevelup.html components/subnav/getstarted/subnav-top.html www/getstarted/temp-content1.html components/subnav/getstarted/subnav-bottom.html  www/getstarted/temp-content2.html components/footer/footer-onelevelup.html > www/getstarted/retrieveneighbourhoods.html
-	sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>get started\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>get started\<\/a\>/' www/getstarted/retrieveneighbourhoods.html
-	rm www/getstarted/temp-content1.html
-	rm www/getstarted/temp-content2.html
-	rm www/getstarted/temp-content1.html-e
-	sed -i -e 's/whosonfirst\-sidenav\-link\"\>retrieve n/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>retrieve n/' www/getstarted/retrieveneighbourhoods.html
-	sed -i -e 's/whosonfirst\-extrasmall\-nav\-link\-collapsed-last\"\>retrieve n/whosonfirst\-extrasmall\-nav\-link\-collapsed-last whosonfirst\-nav\-active\"\>retrieve n/' www/getstarted/retrieveneighbourhoods.html
-	sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Get Started\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>Retrieve Neighbourhoods\<\/div\>/' www/getstarted/retrieveneighbourhoods.html
-	rm www/getstarted/retrieveneighbourhoods.html-e
-
-interns:
-	cat content/interns/interns.html | $(PUP) 'body h1' > www/interns/temp-content1.html
-	cat content/interns/interns.html | $(PUP) 'body :not(h1)' > www/interns/temp-content2.html
-	sed -i -e 's/\<h1/\<h1 class\=\"whosonfirst\-subpage\-header\"/' www/interns/temp-content1.html
-	cat components/head/head-onelevelup.html components/navbar/navbar-onelevelup.html components/subnav/interns/subnav-top.html www/interns/temp-content1.html components/subnav/interns/subnav-bottom.html  www/interns/temp-content2.html components/footer/footer-onelevelup.html > www/interns/index.html
-	rm www/interns/temp-content1.html
-	rm www/interns/temp-content2.html
-	rm www/interns/temp-content1.html-e

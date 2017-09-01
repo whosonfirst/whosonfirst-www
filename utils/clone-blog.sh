@@ -20,12 +20,12 @@ BLOG="${WWW}/blog"
 
 PUP="${UTILS}/darwin/pup"	# PLEASE FIX ME TO CHECK OS...
 
-for URL in `cat ${THEORY}/index.html | ${PUP} '.wof-blog-post attr{href}' | grep -v .pdf`
+for URL in `cat ${BLOG}/index.html | ${PUP} '.wof-blog-post attr{href}' | grep -v .pdf`
 do
-    
+
     FNAME=`basename ${URL}`
     POST="${BLOG}/${FNAME}"
-    
+
     if [ ! -d ${POST} ]
     then
 	mkdir -p ${POST}
@@ -36,7 +36,7 @@ do
     if [ ! -e ${POST}/index.html ]
     then
 	echo "FETCH ${URL}"
-	curl -s -L ${URL} | ${PUP} '#content' > ${POST}/index.html 
+	curl -s -L ${URL} | ${PUP} '#content' > ${POST}/index.html
     fi
 
     # fetch the images
@@ -48,7 +48,7 @@ do
 	then
 	    mkdir -p ${POST}/images
 	fi
-	
+
 	I_FNAME=`basename ${IMG}`
 
 	if [ ! -e ${POST}/images/${I_FNAME} ]
@@ -56,9 +56,9 @@ do
 	    echo "FETCH ${IMG}"
 	    curl -s -o ${POST}/images/${I_FNAME} ${IMG}
 	fi
-	
+
     done
 
     perl -p -i -e "s/https\:\/\/mapzen-assets\.s3\.amazonaws\.com\/images\/${FNAME}\//images\//g" ${POST}/index.html
-        
+
 done

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Who’s On First | Get Started | Retrieve Venues</title>
+		<meta name="description" content="Who’s on First is a gazetteer of places.">
+		<link rel="apple-touch-icon" href="/images/favicons/apple-touch-icon.png" sizes="180x180">
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-16x16.png" sizes="16x16">
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-32x32.png" sizes="32x32">
+		<link rel="manifest" href="/images/favicons/manifest.json">
+		<link rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg" color="#2C1E3F">
+		<link rel="stylesheet" href="/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/css/mapzen.whosonfirst.css">
+		<!-- CSS for code styling from highlightpack.js -->
+		<link rel="stylesheet" href="/css/styles/grayscale.css">
+	</head>
+	<body>
+		<div class="whosonfirst-wrapper">
+
+			<nav class="navbar navbar-default navbar-fixed-top whosonfirst-fixed-subpage-navbar">
+				<div class="container">
+
+					<!-- Brand and toggle get grouped for better mobile display -->
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="/">Who’s On First</a>
+					</div>
+
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav navbar-right">
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/data/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">data</a>
+							</li>
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/docs/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">docs</a>
+							</li>
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/tools/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">tools</a>
+							</li>
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/blog/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">blog</a>
+							</li>
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/getstarted/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed whosonfirst-nav-active">get started</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+<div class="container whosonfirst-subpage-container">
+	<div class="row">
+		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-0">
+			<aside>
+				<div class="whosonfirst-sidenav-container">
+					<ul class="whosonfirst-sidenav-list">
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="/getstarted/retrievevenues/" class="whosonfirst-nav-link whosonfirst-sidenav-link whosonfirst-nav-active">retrieve venues</a>
+						</li>
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="/getstarted/retrieveneighbourhoods/" class="whosonfirst-nav-link whosonfirst-sidenav-link">retrieve neighbourhoods</a>
+						</li>
+					</ul>
+				</div>
+			</aside>
+		</div>
+		<div class="col-lg-7 col-md-9 col-sm-9 col-xs-12">
+			<article>
+<h1 class="whosonfirst-subpage-header">
+Retrieve Venues
+</h1>
+<div class="whosonfirst-fulltabs-container">
+	<div class="whosonfirst-extrasmall-tabs-menu">
+		<div class="whosonfirst-extrasmall-tabs-menu-content">
+			<div class="whosonfirst-extrasmall-tabs-menu-content-header">
+				<div class="row whosonfirst-extrasmall-menu-row">
+					<div class="col-xs-11">
+						<div class="whosonfirst-extrasmall-tab-selection">Retrieve Venues</div>
+					</div>
+					<div class="col-xs-1 whosonfirst-extrasmall-menu-chevron-col">
+						<button type="button" class="navbar-toggle collapsed whosonfirst-extrasmall-menu-chevron-down" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2" aria-expanded="false">
+							<span id="glyphicon-one" class="glyphicon glyphicon-menu-down whosonfirst-extrasmall-menu-actual-chevron-down"></span>
+						</button>
+					</div>
+				</div>
+			</div>
+			<div class="collapse" id="bs-example-navbar-collapse-2">
+				<div class="whosonfirst-extrasmall-nav-collection">
+					<ul class="nav navbar-nav navbar-right whosonfirst-extrasmall-nav">
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="/getstarted/retrievevenues/" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed whosonfirst-nav-active">retrieve venues</a>
+						</li>
+						<li class="whosonfirst-navbar-element-collapsed whosonfirst-extrasmall-nav-element">
+							<a href="/getstarted/retrieveneighbourhoods/" class="whosonfirst-nav-link whosonfirst-extrasmall-nav-link-collapsed whosonfirst-extrasmall-nav-link-collapsed-last">retrieve neighbourhoods</a>
+						</li>
+					</ul>
+				</div>
+			</div><!-- /.navbar-collapse -->
+		</div>
+	</div>
+	<div class="whosonfirst-tabs-content">
+
+<p>The <a href="https://mapzen.com/documentation/wof/">Who’s On First API</a> allows you to query and retrieve Who’s On First data including venue data via a REST-ish interface.</p>
+<p>In this tutorial, you will use the API to retrieve venues in New York City's Flatiron District and display them on a map. To do this, you will:</p>
+<ol class="whosonfirst-content-list">
+	<li class="whosonfirst-content-list-item"><a href="#step-1-create-a-map" class="whosonfirst-content-list-item-link">Create a Map</a></li>
+	<li class="whosonfirst-content-list-item"><a href="#step-2-find-info-with-spelunker" class="whosonfirst-content-list-item-link">Find Info With Spelunker</a></li>
+	<li class="whosonfirst-content-list-item"><a href="#step-3-retrieve-data-using-the-api" class="whosonfirst-content-list-item-link">Retrieve Data using the API</a></li>
+	<li class="whosonfirst-content-list-item"><a href="#step-4-display-the-data" class="whosonfirst-content-list-item-link">Display the data</a></li>
+</ol>
+<h2 id="step-1-create-a-map" class="whosonfirst-subpage-subheader">Step 1: Create a Map</h2>
+<p>We are going to utilize <a href="https://mapzen.com/documentation/mapzen-js/">mapzen.js</a> to make our initial map.</p>
+<p>To do this, we need to create a html page. Within that page, we use the code below to create the map.</p>
+<pre>
+  <code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;title>My Web Map&lt;/title&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;link rel="stylesheet" href="https://mapzen.com/js/mapzen.css"&gt;
+    &lt;script src="https://mapzen.com/js/mapzen.min.js"&gt;&lt;/script&gt;
+    &lt;style&gt;
+      #map {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+      }
+      html,body{margin: 0; padding: 0;}
+    &lt;/style&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id="map"&gt;&lt;/div&gt;
+    &lt;script&gt;
+      L.Mapzen.apiKey = 'your-mapzen-api-key';
+      var map = L.Mapzen.map('map', {
+        tangramOptions: {
+          scene: {
+            import: [
+              'https://mapzen.com/carto/refill-style/8/refill-style.zip', 'https://mapzen.com/carto/refill-style/8/themes/color-gray.zip'
+          ] } }
+      });
+      map.setView([40.741331,-73.989332], 19);
+    &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code>
+</pre>
+<p>To learn more about mapzen.js, check out it's <a href="https://mapzen.com/documentation/mapzen-js/get-started/">Get Started tutorial</a>.</p>
+<h2 id="step-2-find-info-with-spelunker" class="whosonfirst-subpage-subheader">Step 2: Find Info With Spelunker</h2>
+<p>Now, we need some background info (WOF ID, latitude, longitude, etc...) to best utilize the API. To do this, we are going to take a look at the <a href="https://whosonfirst.mapzen.com/spelunker/">Spelunker</a>.</p>
+<p>Search for Flatiron District New York in the Spelunker. Find the one that is the locality in the United States. You should find the page below.</p>
+<img class="img-responsive" src="../images/wofspelunkerny.png"/>
+<p>Note the wof id. You can find it if you scroll down, it also the number located near the top of the page preceded by / and followed by .geojson. For the Flatiron District, this is 85869245.</p>
+<p>Also, verify that you map is centered on the the right coordinates and the level is set correctly. For our purposes, we are going to level 19.</p>
+<pre>
+  <code>&lt;script&gt;
+  L.Mapzen.apiKey = 'your-mapzen-api-key';
+  var map = L.Mapzen.map('map');
+  map.setView([40.741331,-73.989332], 19);
+&lt;/script&gt;</code>
+</pre>
+<h2 id="step-3-retrieve-data-using-the-api" class="whosonfirst-subpage-subheader">Step 3: Retrieve Data using the API</h2>
+<p>To retrieve data using the API, we are going to utilize the <a href="https://raw.githubusercontent.com/whosonfirst/electron-whosonfirst-bookmarks/master/javascript/mapzen.whosonfirst.api.js">mapzen.whosonfirst.api.js</a> file.</p>
+<p>Add the script to your html file.</p>
+<pre><code>&lt;script src="mapzen.whosonfirst.api.js"&gt;&lt;/script&gt;</code></pre>
+<p>Also add jquery we are going to use that later.</p>
+<pre><code>&lt;script src="jquery.min.js"&gt;&lt;/script&gt;</code></pre>
+<p>This script will allow you to make the queries available through the <a href="https://mapzen.com/documentation/wof/">WOF API</a>.</p>
+<p>Add the following helper function to make those calls from your html file. Note that we are using the <a href="https://mapzen.com/documentation/wof/methods/#whosonfirst.places.getDescendants">whosonfirst.places.getDescendants API method</a>. We include geom: so we are able to obtain information about the venue.</p>
+<pre>
+  <code>function runWhosOnFirstAPI() {
+// Setup the API key
+mapzen.whosonfirst.api.set_handler('authentication', function() {
+  return 'your-mapzen-key';
+});
+
+// See: https://mapzen.com/documentation/wof/methods/#whosonfirst.places.getDescendants
+// San Francisco's WOF ID
+var parent_id = '85869245';
+var method = 'whosonfirst.places.getDescendants';
+var data = {
+  id: '85869245',
+  per_page: 500,
+  extras: 'geom:', // this gets us lat/lng coords
+};
+
+// Ok now we actually call the API
+mapzen.whosonfirst.api.execute_method_paginated(method, data, onsuccess, onerror, onprogress);
+};</code>
+</pre>
+<p>Add the following helper functions. Not that the show_venue function has not yet been created.</p>
+<pre>
+  <code>// NOOP (we are using onprogress instead)
+var onsuccess = function() { return; };
+
+// Just log errors to the JS console
+var onerror = function(rsp) {
+  console.error(rsp);
+};
+
+// Take all the API results and show them on the map
+var onprogress = function(rsp) {
+  //console.log(rsp);
+  for (var i = 0; i < rsp.places.length; i++) {
+    var place = rsp.places[i];
+    show_venue(place);
+  }
+};</code>
+</pre>
+<h2 id="step-4-display-the-data" class="whosonfirst-subpage-subheader">Step 4: Display the Data</h2>
+<p>Now we are going to display the data. To do this, we are going to write a show_venue function. The show_venue function takes a place's latitude and longitude and stylizes it as a circle with a fill and stroke using the marker style. For our purposes, we have selected a shade of grey.</p>
+<pre>
+  <code>// Venues are shown as a green circle
+var markerStyle = {
+  "weight": 2,
+  "opacity": .6,
+  "fillOpacity": .2,
+  "radius": 9,
+  "fillColor": "#888888",
+  "color": "#888888"
+};
+
+// How we should handle each API result
+var show_venue = function(place) {
+  var marker = L.circleMarker({
+    lat: place['geom:latitude'],
+    lng: place['geom:longitude']
+  }, markerStyle);
+  map.addLayer(marker);
+};</code>
+</pre>
+<p>Your code should now resemble:</p>
+<pre>
+  <code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;title>My Web Map&lt;/title&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;link rel="stylesheet" href="https://mapzen.com/js/mapzen.css"&gt;
+    &lt;script src="https://mapzen.com/js/mapzen.min.js"&gt;&lt;/script&gt;
+    &lt;style&gt;
+      #map {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+      }
+      html,body{margin: 0; padding: 0;}
+    &lt;/style&gt;
+  &lt;/head&gt;
+  &lt;body onload="runWhosOnFirstAPI()"&gt;
+    &lt;div id="map"&gt;&lt;/div&gt;
+    &lt;script src="../javascript/mapzen.whosonfirst.api.js"&gt;&lt;/script&gt;
+    &lt;script src="../javascript/jquery.min.js"&gt;&lt;/script&gt;
+    &lt;script&gt;
+    L.Mapzen.apiKey = 'mapzen-aetZmeQ';
+    var map = L.Mapzen.map('map', {
+      tangramOptions: {
+        scene: {
+          import: [
+            'https://mapzen.com/carto/refill-style/8/refill-style.zip', 'https://mapzen.com/carto/refill-style/8/themes/color-gray.zip', 'https://mapzen.com/carto/refill-style/8/themes/detail-1.zip'
+        ] } }
+    });
+    map.setView([40.741331, -73.989332], 19);
+			
+    var markerStyle = {
+      "weight": 2,
+      "opacity": .6,
+      "fillOpacity": .2,
+      "radius": 9,
+      "fillColor": "#888888",
+      "color": "#888888"
+    };
+
+    // How we should handle each API result
+    var show_venue = function(place) {
+      var marker = L.circleMarker({
+        lat: place['geom:latitude'],
+        lng: place['geom:longitude']
+      }, markerStyle);
+      map.addLayer(marker);
+    };
+
+    // NOOP (we are using onprogress instead)
+    var onsuccess = function() { return; };
+
+    // Just log errors to the JS console
+    var onerror = function(rsp) {
+        console.error(rsp);
+    };
+
+    // Take all the API results and show them on the map
+    var onprogress = function(rsp) {
+      //console.log(rsp);
+      for (var i = 0; i < rsp.places.length; i++) {
+        var place = rsp.places[i];
+        show_plane(place);
+      }
+    };
+
+    function runWhosOnFirstAPI() {
+      // Setup the API key
+      mapzen.whosonfirst.api.set_handler('authentication', function() {
+        return 'mapzen-aetZmeQ';
+      });
+
+      // Get all the venues in the Flatiron District
+      // See: https://mapzen.com/documentation/wof/methods/#whosonfirst.places.getDescendants
+      var parent_id = '85869245';
+      var method = 'whosonfirst.places.getDescendants';
+      var data = {
+        id: parent_id,
+        per_page: 500,
+        extras: 'geom:', // this gets us lat/lng coords
+      };
+
+      // Ok now we actually call the API
+      mapzen.whosonfirst.api.execute_method_paginated(method, data, onsuccess, onerror, onprogress);
+    };
+    &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code>
+</pre>
+<p>When you refresh your html page, you should see this.</p>
+<img class="img-responsive" src="../images/tutorialmapny.png"/>
+<p>Congrats, you just made a map of venues in New York City's Flatiron District using the WOF API.</p>
+					</div>
+				</div>
+			</article>
+		</div>
+		<div class="col-lg-2 col-md-0 col-sm-0 col-xs-0"></div>
+	</div>
+</div>
+			<!-- START footer.html -->
+
+		</div>
+		<footer>
+			<nav class="navbar navbar-default navbar-bottom">
+				<div class="container">
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<ul class="nav navbar-nav navbar-right whosonfirst-footer">
+						<li class="whosonfirst-nav-link-nounderline whoosonfooter-gig">who's on first is a <a href="https://mapzen.com/" class="whosonfirst-nav-link whosonfirst-nav-link-innounderline">mapzen</a> gig</li>
+						<li><a href="/docs/contributing/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">contributing</a></li>
+						<li><a href="/docs/licensing/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">licensing</a></li>
+						<li><a href="https://github.com/whosonfirst" class="whosonfirst-nav-link whosonfirst-footer-nav-link">code github</a></li>
+						<li><a href="https://github.com/whosonfirst-data" class="whosonfirst-nav-link whosonfirst-footer-nav-link">data github</a></li>
+						<li><a href="https://twitter.com/alloftheplaces/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">twitter</a></li>
+					</ul>
+				</div>
+			</nav>
+		</footer>
+
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="/javascript/jquery.min.js"></script>
+		<!-- Include all compiled plugins (below), or include individual files as needed -->
+		<script src="/javascript/bootstrap.min.js"></script>
+		<script src="/javascript/mapzen.whosonfirst.home.js"></script>
+		<script src="/javascript/mapzen.whosonfirst.subpage.js"></script>
+		<!-- JavaScript for code styling from highlightpack.js -->
+		<script src="/javascript/highlightpack.js"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
+	</body>
+</html>
+
+<!-- END footer.html -->
