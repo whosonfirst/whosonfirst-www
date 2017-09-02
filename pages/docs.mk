@@ -24,6 +24,7 @@ docs-download-content: \
 	docs-download-tests \
 	docs-download-contributing \
 	docs-download-licenses \
+	docs-download-processes \
 	docs-download-keyterms
 
 docs-build-pages: \
@@ -40,6 +41,7 @@ docs-build-pages: \
 	docs-tests \
 	docs-contributing \
 	docs-licenses \
+	docs-processes \
 	docs-keyterms
 
 docs-download-properties:
@@ -108,6 +110,53 @@ docs-download-licenses:
 	@make URL=$(COOKBOOK_REPO)definition/data_licenses.md \
 	      OUT=docs/licenses.html \
 	      download-content
+
+docs-download-processes: \
+	docs-download-processes-cessation-deprecation \
+	docs-download-processes-significant-event \
+	docs-download-processes-wof-life-cycle \
+	docs-download-processes-s3-import \
+	docs-download-processes-seattle-neighbourhoods \
+	docs-download-processes-san-francisco-neighbourhoods
+
+docs-download-processes-cessation-deprecation:
+	@make URL=$(COOKBOOK_REPO)definition/deprecated_vs_cessation.md \
+	      OUT=docs/processes/cessation-deprecation.html \
+	      download-content
+
+docs-download-processes-significant-event:
+	@make URL=$(COOKBOOK_REPO)definition/significant_event.md \
+	      OUT=docs/processes/significant-event.html \
+	      download-content
+
+docs-download-processes-wof-life-cycle:
+	@make URL=$(COOKBOOK_REPO)definition/wof:id_lifecycle.md \
+	      OUT=docs/processes/wof-life-cycle.html \
+	      download-content
+
+docs-download-processes-s3-import:
+	@make URL=$(COOKBOOK_REPO)how_to/requirements_for_s3.md \
+	      OUT=docs/processes/s3-import.html \
+	      download-content
+
+docs-download-processes-seattle-neighbourhoods:
+	@make URL=$(COOKBOOK_REPO)issue_workflows/seattle_neighbourhood_updates.md \
+	      OUT=docs/processes/seattle-neighbourhoods.html \
+	      download-content
+
+docs-download-processes-san-francisco-neighbourhoods:
+	@make URL=$(COOKBOOK_REPO)issue_workflows/sf_neighbourhood_updates_pt_1.md \
+	      OUT=docs/processes/san-francisco-neighbourhoods1.html \
+	      download-content
+	@make URL=$(COOKBOOK_REPO)issue_workflows/sf_neighbourhood_updates_pt_1.md \
+	      OUT=docs/processes/san-francisco-neighbourhoods2.html \
+	      download-content
+	@echo "Merge content/docs/processes/san-francisco-neighbourhoods.html"
+	@cat content/docs/processes/san-francisco-neighbourhoods1.html \
+	     content/docs/processes/san-francisco-neighbourhoods2.html \
+	     > content/docs/processes/san-francisco-neighbourhoods.html
+	@rm content/docs/processes/san-francisco-neighbourhoods1.html
+	@rm content/docs/processes/san-francisco-neighbourhoods2.html
 
 docs-download-keyterms:
 	@make URL=$(COOKBOOK_REPO)definition/key_terms.md \
@@ -249,6 +298,78 @@ docs-licenses:
 	      PAGE_TITLE='Data Licenses' \
 	      SIDENAV_LINK='data licenses' \
 	      docs-build-page-level2
+
+docs-processes: \
+	docs-processes-home \
+	docs-processes-cessation-deprecation \
+	docs-processes-significant-event \
+	docs-processes-wof-life-cycle \
+	docs-processes-s3-import \
+	docs-processes-seattle-neighbourhoods \
+	docs-processes-san-francisco-neighbourhoods \
+	docs-processes-wikipedia-concordances
+
+docs-processes-home:
+	@make CONTENT=docs/processes/processes.html \
+	      OUT=docs/processes/index.html \
+	      PAGE_TITLE='Processes and Workflows' \
+	      SIDENAV_LINK='processes and workflows' \
+	      SUBSUBNAV=processes \
+	      docs-build-page-level2
+
+docs-processes-build-page-level3:
+	@make SUBSECTION_TITLE='Processes and Workflows' \
+	      SUBSUBNAV=processes \
+	      docs-build-page-level3
+
+docs-processes-cessation-deprecation:
+	@make CONTENT=docs/processes/cessation-deprecation.html \
+	      OUT=docs/processes/cessation-deprecation/index.html \
+	      PAGE_TITLE='Cessation and Deprecation' \
+	      SIDENAV_LINK='cessation and deprecation' \
+	      docs-processes-build-page-level3
+
+docs-processes-significant-event:
+	@make CONTENT=docs/processes/significant-event.html \
+	      OUT=docs/processes/significant-event/index.html \
+	      PAGE_TITLE='What is a Significant Event' \
+	      SIDENAV_LINK='what is a significant event' \
+	      docs-processes-build-page-level3
+
+docs-processes-wof-life-cycle:
+	@make CONTENT=docs/processes/wof-life-cycle.html \
+	      OUT=docs/processes/wof-life-cycle/index.html \
+	      PAGE_TITLE='wof:id life cycle' \
+	      SIDENAV_LINK='wof life cycle' \
+	      docs-processes-build-page-level3
+
+docs-processes-s3-import:
+	@make CONTENT=docs/processes/s3-import.html \
+	      OUT=docs/processes/s3-import/index.html \
+	      PAGE_TITLE='S3 Import Requirements' \
+	      SIDENAV_LINK='s3 import requirements' \
+	      docs-processes-build-page-level3
+
+docs-processes-seattle-neighbourhoods:
+	@make CONTENT=docs/processes/seattle-neighbourhoods.html \
+	      OUT=docs/processes/seattle-neighbourhoods/index.html \
+	      PAGE_TITLE='Seattle Neighbourhood Updates' \
+	      SIDENAV_LINK='seattle neighbourhoods' \
+	      docs-processes-build-page-level3
+
+docs-processes-san-francisco-neighbourhoods:
+	@make CONTENT=docs/processes/san-francisco-neighbourhoods.html \
+	      OUT=docs/processes/san-francisco-neighbourhoods/index.html \
+	      PAGE_TITLE='San Francisco Neighbourhood Updates' \
+	      SIDENAV_LINK='san francisco neighbourhoods' \
+	      docs-processes-build-page-level3
+
+docs-processes-wikipedia-concordances:
+	@make CONTENT=docs/processes/wikipedia-concordances.html \
+	      OUT=docs/processes/wikipedia-concordances/index.html \
+	      PAGE_TITLE='Wikipedia Concordances' \
+	      SIDENAV_LINK='wikipedia concordances' \
+	      docs-processes-build-page-level3
 
 docs-keyterms:
 	@make CONTENT=docs/keyterms.html \
