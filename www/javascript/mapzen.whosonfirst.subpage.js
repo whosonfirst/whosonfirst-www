@@ -17,10 +17,11 @@ $(document).ready(function(){
 	});
 	*/
 	window.addEventListener("hashchange", function() { scrollBy(0, -60) })
-	
-	$('h1,h2,h3,h4,h5,h6').each(function() {
-		if ($(this).find('a.anchor').length !== 0) {
-			$(this).attr('id',$(this).children().attr('id'));
+
+	$('h2, h3, h4, h5, h6').each(function() {
+		var id = $(this).attr('id');
+		if (id && $(this).find('a.hash').length == 0) {
+			$(this).append($('<a href="#' + id + '" class="hash">#</a>'));
 		}
 	});
 });

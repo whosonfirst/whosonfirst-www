@@ -3,7 +3,7 @@ OS := $(shell uname -s | tr '[:upper:]' '[:lower:]')
 PUP="utils/$(OS)/pup"
 WOF_CLONE_WEBSITE="utils/$(OS)/wof-clone-website"
 
-all: mapzen favicons js css home data docs tools
+all: mapzen favicons js css home data docs tools blog getstarted
 
 include pages/docs.mk
 include pages/data.mk
@@ -14,13 +14,17 @@ include pages/getstarted.mk
 download: \
 	data-download-content \
 	docs-download-content \
-	tools-download-content
+	tools-download-content \
+	blog-download-content \
+	getstarted-download-content
 
 build-pages: \
 	home-build-pages \
 	data-build-pages \
 	docs-build-pages \
-	tools-build-pages
+	tools-build-pages \
+	blog-build-pages \
+	getstarted-build-pages
 
 home: home-build-pages
 
@@ -89,9 +93,9 @@ download-content:
 	@sed -i -e "s/<\/svg>//g" temp_article.html
 	@sed -i -e "s/<path[^>]*>//g" temp_article.html
 	@sed -i -e "s/<\/path>//g" temp_article.html
-	@sed -i -e "s/<a[^>]*><\/a>//g" temp_article.html
-	@sed -i -e -E 's/".+\/master\/images\//"\/images\//' temp_article.html
-	@mv temp_article.html content/$(OUT)
+	@sed -E 's/<h([1-9])><a id="user-content-([^"]+)[^>]*><\/a>/<h\1 id="\2">/g' temp_article.html > temp_content.html
+	@sed -i -e -E 's/".+\/master\/images\//"\/images\//' temp_content.html
+	@cp temp_content.html content/$(OUT)
 	@rm temp*
 
 build-page-content:

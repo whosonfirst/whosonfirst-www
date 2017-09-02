@@ -1331,13 +1331,26 @@ a:hover .whosonfirst-subpage-container-doublewidth-col-card-h1, a:hover .whosonf
 	border-color: #FE189B;
 }
 
-h2:hover::after, h3:hover::after, h4:hover::after, h5:hover::after, h6:hover::after {
-	content: "#" attr(id);
+h2, h3, h4, h5, h6 {
+	position: relative;
+}
+
+h2 a.hash, h3 a.hash, h4 a.hash, h5 a.hash, h6 a.hash {
+	display: none;
+	position: absolute;
+	left: 0;
+	bottom: 2px;
+	padding-right: 15px;
+	margin-left: -15px;
 	font-weight: 200;
-	font-size: 12px;
-	line-height: 12px;
+	font-size: 15px;
+	line-height: 15px;
 	font-family: "Roboto", Helvetica, Arial, sans-serif;
 	letter-spacing: 0;
+}
+
+h2:hover a.hash, h3:hover a.hash, h4:hover a.hash, h5:hover a.hash, h6:hover a.hash {
+	display: block;
 }
 
 .hljs {
