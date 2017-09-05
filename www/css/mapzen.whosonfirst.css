@@ -211,6 +211,21 @@ div.whosonfirst-card-container h6.whosonfirst-main-headline {
 	padding: 140px 30px 12px 30px;
 }
 
+.whosonfirst-wip {
+	position: relative;
+}
+
+.whosonfirst-wip::after {
+	position: absolute;
+	left: 10px;
+	top: 10px;
+	content: "this is wet paint";
+	color: #fff;
+	background: #FE189D;
+	padding: 5px;
+	border-radius: 5px;
+}
+
 /* Dealing with multiple cards side by side in same column */
 
 .whosonfirst-other-card-in-col {
@@ -1336,7 +1351,7 @@ h2, h3, h4, h5, h6 {
 }
 
 h2 a.hash, h3 a.hash, h4 a.hash, h5 a.hash, h6 a.hash {
-	display: none;
+	color: transparent;
 	position: absolute;
 	left: 0;
 	bottom: 2px;
@@ -1349,8 +1364,18 @@ h2 a.hash, h3 a.hash, h4 a.hash, h5 a.hash, h6 a.hash {
 	letter-spacing: 0;
 }
 
-h2:hover a.hash, h3:hover a.hash, h4:hover a.hash, h5:hover a.hash, h6:hover a.hash {
-	display: block;
+a.hash:hover,
+h2:hover a.hash,
+h3:hover a.hash,
+h4:hover a.hash,
+h5:hover a.hash,
+h6:hover a.hash {
+	color: #000;
+	visibility: visible;
+}
+
+a.hash:hover {
+	color: #FE189D !important;
 }
 
 .hljs {
