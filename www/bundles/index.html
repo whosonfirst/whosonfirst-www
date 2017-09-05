@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta http-equiv="x-ua-compatible" content="ie=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Who’s On First</title>
+		<title>Who’s On First | </title>
 		<meta name="description" content="Who’s on First is a gazetteer of places.">
 		<link rel="apple-touch-icon" href="/images/favicons/apple-touch-icon.png" sizes="180x180">
 		<link rel="icon" type="image/png" href="/images/favicons/favicon-16x16.png" sizes="16x16">
@@ -55,7 +55,29 @@
 					</div>
 				</div>
 			</nav>
-<h1 id="whos-on-first">Who’s On First Bundles</h1>
+<div class="container whosonfirst-subpage-container">
+	<div class="row">
+		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-0">
+			<aside>
+				<div class="whosonfirst-sidenav-container">
+				</div>
+			</aside>
+		</div>
+		<div class="col-lg-7 col-md-9 col-sm-9 col-xs-12">
+			<article>
+<h1 class="whosonfirst-subpage-header">
+Who’s On First Bundles
+</h1>
+<div class="whosonfirst-fulltabs-container">
+	<div class="whosonfirst-extrasmall-tabs-menu">
+		<div class="whosonfirst-extrasmall-tabs-menu-content">
+			<div class="whosonfirst-extrasmall-tabs-menu-content-header">
+				<div class="whosonfirst-extrasmall-tab-selection">WOF Bundles</div>
+			</div>
+		</div>
+	</div>
+	<div class="whosonfirst-tabs-content">
+
 <p>Bundles (of Who's On First data) are still considered experimental. They are being actively used (by Mapzen itself) but they are a still work in progress so some things may not be quite right, yet.</p>
 <p>Bundles are a collection of GeoJSON formatted files (Who's On First data) grouped by a specific property, like placetype. They allow for people to more easily bulk download a subset of the entire Who's On First dataset. Currently there are only bundles by placetype but eventually we will add a variety of different <q>slices</q> of the data as demand and interest require.</p>
 <p>There is only ever one bundle-per-property at any given moment. When a new bundle is generated it replaces the old one. If you need to test whether a bundle has changed without downloading the bundle itself the best way is to compare the <code>SHA1</code> hash of the meta file for that property.</p>
@@ -342,6 +364,13 @@
 <p><small>Please note that there is little to no error-checking in the example below so you should adjust this to taste. Also it assumes that you are comfortable working on the command-line and that your computer has copies of the <code>tar</code>, <code>curl</code> and <code>rsync</code> utilities pre-installed (this is true for all Linux and OS X computers).</small></p>
 <pre>#!/bin/sh<br>PLACETYPES='continent country region locality neighbourhood'<br>DATA="data"<br><br>if [ ! -d ${DATA} ]<br>then<div class="pre-block">mkdir ${DATA}</div>fi<br><br>for PT in ${PLACETYPES}<br>do<div class="pre-block">BUNDLE="wof-${PT}-latest-bundle"<br>COMPRESSED="${BUNDLE}.tar.bz2"<br><br>if [ -e ${COMPRESSED} ]<br>then<div class="pre-block">echo "remove ${COMPRESSED}"<br>rm -i ${COMPRESSED}</div>fi<br><br>if [ -d ${BUNDLE} ]<br>then<div class="pre-block">echo "remove ${BUNDLE}"<br>rm -ri ${BUNDLE}</div>fi<br><br>echo "fetch ${COMPRESSED}"<br>curl -s -o ${COMPRESSED} https://whosonfirst.mapzen.com/bundles/${COMPRESSED}<br><br>echo "expand ${COMPRESSED}"<br>tar -xvjf ${COMPRESSED}<br><br>echo "sync ${BUNDLE}"<br>rsync -av ${BUNDLE}/data/ ${DATA}/<br><br></div>done
 </pre>
+					</div>
+				</div>
+			</article>
+		</div>
+		<div class="col-lg-2 col-md-0 col-sm-0 col-xs-0"></div>
+	</div>
+</div>
 			<!-- START footer.html -->
 
 		</div>
