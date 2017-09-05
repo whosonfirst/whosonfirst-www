@@ -58,8 +58,8 @@ Open `pages/docs.mk` and add an additional line to the `docs-download-content` t
 docs-download-content: \
 	docs-download-properties \
 	docs-download-brooklynintegers \
-    ...
-    docs-download-foo
+	...
+	docs-download-foo
 ```
 
 Define your new download target, using a variable for the repo base URL, defined at the top of `pages/docs.mk`:
@@ -70,9 +70,9 @@ SOME_REPO := https://github.com/whosonfirst/whosonfirst-some-repo/blob/master/
 ...
 
 docs-download-foo:
-    @make URL=$(SOME_REPO)pages/foo.md \
-          OUT=docs/foo.html \
-          download-content
+	@make URL=$(SOME_REPO)pages/foo.md \
+	      OUT=docs/foo.html \
+	      download-content
 ```
 
 This will download HTML from `https://github.com/whosonfirst/whosonfirst-some-repo/blob/master/pages/foo.md` and save it to `content/docs/foo.html`.
