@@ -211,7 +211,7 @@ div.whosonfirst-card-container h6.whosonfirst-main-headline {
 	padding: 140px 30px 12px 30px;
 }
 
-.whosonfirst-wip {
+.wof-card {
 	position: relative;
 }
 
@@ -1113,7 +1113,7 @@ a.whosonfirst-dark-gradient > div > .whosonfirst-card-highlight-docs {
 }
 
 a.whosonfirst-dark-gradient > div > .whosonfirst-card-highlight-explore-test, a.whosonfirst-dark-gradient > div > .whosonfirst-card-highlight-data-test{
-	top: 650px;
+	top: 260px;
 	opacity: 0;
 	transition: opacity .7s ease-in-out, top .7s ease-in-out;
 }
@@ -1138,7 +1138,7 @@ a.whosonfirst-dark-gradient:hover > div > .whosonfirst-card-highlight-explore{
 }
 
 a.whosonfirst-dark-gradient:hover > div > .whosonfirst-card-highlight-explore-test{
-	top: 668px;
+	top: 278px;
 	opacity: 1;
 }
 
@@ -1168,7 +1168,7 @@ a.whosonfirst-dark-gradient:hover > div > .whosonfirst-card-highlight-data {
 }
 
 a.whosonfirst-dark-gradient:hover > div > .whosonfirst-card-highlight-data-test {
-	top: 668px;
+	top: 278px;
 	opacity: 1;
 }
 
@@ -1212,11 +1212,11 @@ a.whosonfirst-dark-gradient:hover > div > .whosonfirst-card-highlight-theory-tes
 }
 
 a.whosonfirst-dark-gradient:hover > div > .whosonfirst-card-highlight-state {
-	width: 200px;
+	width: 283px;
 }
 
 .whosonfirst-card-highlight-state-test {
-	width: 200px;
+	width: 283px;
 }
 
 a.whosonfirst-dark-gradient:hover > div > .whosonfirst-card-highlight-state-test {
