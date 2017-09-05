@@ -5,6 +5,7 @@ WOF_CLONE_WEBSITE="utils/$(OS)/wof-clone-website"
 
 all: mapzen favicons js css home data docs tools blog getstarted
 
+include pages/home.mk
 include pages/docs.mk
 include pages/data.mk
 include pages/tools.mk
@@ -25,17 +26,6 @@ build-pages: \
 	tools-build-pages \
 	blog-build-pages \
 	getstarted-build-pages
-
-home: home-build-pages
-
-home-build-pages:
-	@make CONTENT=home.html OUT=index.html build-page-level0
-	@make CONTENT=state.html \
-	      OUT=state/index.html \
-	      build-page-level0
-	@make CONTENT=interns.html \
-	      OUT=interns/index.html \
-	      build-page-level0
 
 setup: mk-tools
 	ubuntu/setup-nginx.sh
@@ -86,7 +76,8 @@ download-content:
 	@echo "Download content/$(OUT)"
 	@curl -s $(URL) > temp.html
 	@tr '\n' ' ' < temp.html > temp_flat.html
-	@grep -E -o '<article.+>.+</article>' temp_flat.html > temp_article.html
+	@echo "<!-- $(URL) -->" > temp_article.html
+	@grep -E -o '<article.+>.+</article>' temp_flat.html >> temp_article.html
 	@sed -i -e "s/<article[^>]*>//" temp_article.html
 	@sed -i -e "s/<\/article>//" temp_article.html
 	@sed -i -e "s/<svg[^>]*>//g" temp_article.html
@@ -165,8 +156,8 @@ else
 	     components/footer.html > www/$(OUT)
 endif
 	@sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>$(NAV_LINK)\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>$(NAV_LINK)\<\/a\>/' www/$(OUT)
-	@sed -i -e 's/whosonfirst\-sidenav\-link\"\>$(SIDENAV_LINK)/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>$(SIDENAV_LINK)/' www/$(OUT)
-	@sed -i -e 's/whosonfirst\-extrasmall\-nav\-link\-collapsed\"\>$(SIDENAV_LINK)/whosonfirst\-extrasmall\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>$(SIDENAV_LINK)/' www/$(OUT)
+	@sed -i -e 's/whosonfirst\-sidenav\-link\"\>$(SUBNAV_LINK)/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>$(SUBNAV_LINK)/' www/$(OUT)
+	@sed -i -e 's/whosonfirst\-extrasmall\-nav\-link\-collapsed\"\>$(SUBNAV_LINK)/whosonfirst\-extrasmall\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>$(SUBNAV_LINK)/' www/$(OUT)
 	@sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>$(SECTION_TITLE)\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>$(PAGE_TITLE)\<\/div\>/' www/$(OUT)
 	@sed -i -e 's/<title>Who’s On First<\/title>/<title>Who’s On First | $(SECTION_TITLE) | $(PAGE_TITLE)<\/title>/' www/$(OUT)
 	@make build-page-cleanup
@@ -193,8 +184,8 @@ build-page-level3:
 	@rm subnav-bottom-aa
 	@rm subnav-bottom-ab
 	@sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>$(NAV_LINK)\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>$(NAV_LINK)\<\/a\>/' www/$(OUT)
-	@sed -i -e 's/whosonfirst\-sidenav\-link\"\>$(SIDENAV_LINK)/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>$(SIDENAV_LINK)/' www/$(OUT)
-	@sed -i -e 's/whosonfirst\-extrasmall\-nav\-link\-collapsed\"\>$(SIDENAV_LINK)/whosonfirst\-extrasmall\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>$(SIDENAV_LINK)/' www/$(OUT)
+	@sed -i -e 's/whosonfirst\-sidenav\-link\"\>$(SUBNAV_LINK)/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>$(SUBNAV_LINK)/' www/$(OUT)
+	@sed -i -e 's/whosonfirst\-extrasmall\-nav\-link\-collapsed\"\>$(SUBNAV_LINK)/whosonfirst\-extrasmall\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>$(SUBNAV_LINK)/' www/$(OUT)
 	@sed -i -e 's/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>$(SECTION_TITLE)\<\/div\>/\<div class\=\"whosonfirst\-extrasmall\-tab\-selection\"\>$(PAGE_TITLE)\<\/div\>/' www/$(OUT)
 	@sed -i -e 's/<title>Who’s On First<\/title>/<title>Who’s On First | $(SECTION_TITLE) | $(SUBSECTION_TITLE) | $(PAGE_TITLE)<\/title>/' www/$(OUT)
 	@make build-page-cleanup

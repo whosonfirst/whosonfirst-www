@@ -188,7 +188,7 @@ docs-properties:
 	@make CONTENT=docs/properties/properties.html \
 	      OUT=docs/properties/index.html \
 	      PAGE_TITLE='Properties' \
-	      SIDENAV_LINK=properties \
+	      SUBNAV_LINK=properties \
 	      SUBSUBNAV=properties \
 	      docs-build-page-level2
 	@for prop in $(PROPERTY_LIST) ; do \
@@ -196,7 +196,7 @@ docs-properties:
 		     OUT=docs/properties/$$prop/index.html \
 		     PAGE_TITLE=$$prop \
 		     SUBSECTION_TITLE=Properties \
-		     SIDENAV_LINK=$$prop \
+		     SUBNAV_LINK=$$prop \
 		     SUBSUBNAV=properties \
 		     docs-build-page-level3 ; \
 	done
@@ -204,7 +204,7 @@ docs-properties:
 	      OUT=docs/properties/brooklynintegers/index.html \
 	      PAGE_TITLE='Brooklyn Integers' \
 	      SUBSECTION_TITLE=Properties \
-	      SIDENAV_LINK='brooklyn integers' \
+	      SUBNAV_LINK='brooklyn integers' \
 	      SUBSUBNAV=properties \
 	      docs-build-page-level3
 
@@ -212,41 +212,41 @@ docs-concordances:
 	@make CONTENT=docs/concordances.html \
 	      OUT=docs/concordances/index.html \
 	      PAGE_TITLE='Concordances' \
-	      SIDENAV_LINK=concordances \
+	      SUBNAV_LINK=concordances \
 	      docs-build-page-level2
 
 docs-placetypes:
 	@make CONTENT=docs/placetypes.html \
 	      OUT=docs/placetypes/index.html \
 	      PAGE_TITLE='Placetypes' \
-	      SIDENAV_LINK=placetypes \
+	      SUBNAV_LINK=placetypes \
 	      docs-build-page-level2
 
 docs-hierarchies:
 	@make CONTENT=docs/hierarchies.html \
 	      OUT=docs/hierarchies/index.html \
 	      PAGE_TITLE='Hierarchies' \
-	      SIDENAV_LINK=hierarchies \
+	      SUBNAV_LINK=hierarchies \
 	      docs-build-page-level2
 
 docs-names:
 	@make CONTENT=docs/names.html \
 	      OUT=docs/names/index.html \
 	      PAGE_TITLE='Names' \
-	      SIDENAV_LINK=names \
+	      SUBNAV_LINK=names \
 	      docs-build-page-level2
 
 docs-geometries:
 	@make CONTENT=docs/geometries/geometries.html \
 	      OUT=docs/geometries/index.html \
 	      PAGE_TITLE='Geometries' \
-	      SIDENAV_LINK=geometries \
+	      SUBNAV_LINK=geometries \
 	      SUBSUBNAV=geometries \
 	      docs-build-page-level2
 	@make CONTENT=docs/geometries/alt_geometries.html \
 	      OUT=docs/geometries/alt/index.html \
 	      PAGE_TITLE='Alt Geometries' \
-	      SIDENAV_LINK='alt geometries' \
+	      SUBNAV_LINK='alt geometries' \
 	      SUBSUBNAV=geometries \
 	      docs-build-page-level3
 
@@ -254,27 +254,27 @@ docs-dates:
 	@make CONTENT=docs/dates.html \
 	      OUT=docs/dates/index.html \
 	      PAGE_TITLE='Dates' \
-	      SIDENAV_LINK=dates \
+	      SUBNAV_LINK=dates \
 	      docs-build-page-level2
 
 docs-categories:
 	@make CONTENT=docs/categories.html \
 	      OUT=docs/categories/index.html \
 	      PAGE_TITLE='Categories' \
-	      SIDENAV_LINK=categories \
+	      SUBNAV_LINK=categories \
 	      docs-build-page-level2
 
 docs-sources:
 	@make CONTENT=docs/sources/sources.html \
 	      OUT=docs/sources/index.html \
 	      PAGE_TITLE='Sources' \
-	      SIDENAV_LINK=sources \
+	      SUBNAV_LINK=sources \
 	      SUBSUBNAV=sources \
 	      docs-build-page-level2
 	@make CONTENT=docs/sources/source_list.html \
 	      OUT=docs/sources/list/index.html \
 	      PAGE_TITLE='List of Sources' \
-	      SIDENAV_LINK='list of sources' \
+	      SUBNAV_LINK='list of sources' \
 	      SUBSUBNAV=sources \
 	      docs-build-page-level3
 
@@ -282,21 +282,21 @@ docs-tests:
 	@make CONTENT=docs/tests.html \
 	      OUT=docs/tests/index.html \
 	      PAGE_TITLE='Tests' \
-	      SIDENAV_LINK=tests \
+	      SUBNAV_LINK=tests \
 	      docs-build-page-level2
 
 docs-contributing:
 	@make CONTENT=docs/contributing.html \
 	      OUT=docs/contributing/index.html \
 	      PAGE_TITLE='Contributing' \
-	      SIDENAV_LINK=contributing \
+	      SUBNAV_LINK=contributing \
 	      docs-build-page-level2
 
 docs-licenses:
 	@make CONTENT=docs/licenses.html \
 	      OUT=docs/licenses/index.html \
 	      PAGE_TITLE='Data Licenses' \
-	      SIDENAV_LINK='data licenses' \
+	      SUBNAV_LINK='data licenses' \
 	      docs-build-page-level2
 
 docs-processes: \
@@ -313,7 +313,7 @@ docs-processes-home:
 	@make CONTENT=docs/processes/processes.html \
 	      OUT=docs/processes/index.html \
 	      PAGE_TITLE='Processes and Workflows' \
-	      SIDENAV_LINK='processes and workflows' \
+	      SUBNAV_LINK='processes and workflows' \
 	      SUBSUBNAV=processes \
 	      docs-build-page-level2
 
@@ -326,54 +326,54 @@ docs-processes-cessation-deprecation:
 	@make CONTENT=docs/processes/cessation-deprecation.html \
 	      OUT=docs/processes/cessation-deprecation/index.html \
 	      PAGE_TITLE='Cessation and Deprecation' \
-	      SIDENAV_LINK='cessation and deprecation' \
+	      SUBNAV_LINK='cessation and deprecation' \
 	      docs-processes-build-page-level3
 
 docs-processes-significant-event:
 	@make CONTENT=docs/processes/significant-event.html \
 	      OUT=docs/processes/significant-event/index.html \
 	      PAGE_TITLE='What is a Significant Event' \
-	      SIDENAV_LINK='what is a significant event' \
+	      SUBNAV_LINK='what is a significant event' \
 	      docs-processes-build-page-level3
 
 docs-processes-wof-life-cycle:
 	@make CONTENT=docs/processes/wof-life-cycle.html \
 	      OUT=docs/processes/wof-life-cycle/index.html \
 	      PAGE_TITLE='wof:id life cycle' \
-	      SIDENAV_LINK='wof life cycle' \
+	      SUBNAV_LINK='wof life cycle' \
 	      docs-processes-build-page-level3
 
 docs-processes-s3-import:
 	@make CONTENT=docs/processes/s3-import.html \
 	      OUT=docs/processes/s3-import/index.html \
 	      PAGE_TITLE='S3 Import Requirements' \
-	      SIDENAV_LINK='s3 import requirements' \
+	      SUBNAV_LINK='s3 import requirements' \
 	      docs-processes-build-page-level3
 
 docs-processes-seattle-neighbourhoods:
 	@make CONTENT=docs/processes/seattle-neighbourhoods.html \
 	      OUT=docs/processes/seattle-neighbourhoods/index.html \
 	      PAGE_TITLE='Seattle Neighbourhood Updates' \
-	      SIDENAV_LINK='seattle neighbourhoods' \
+	      SUBNAV_LINK='seattle neighbourhoods' \
 	      docs-processes-build-page-level3
 
 docs-processes-san-francisco-neighbourhoods:
 	@make CONTENT=docs/processes/san-francisco-neighbourhoods.html \
 	      OUT=docs/processes/san-francisco-neighbourhoods/index.html \
 	      PAGE_TITLE='San Francisco Neighbourhood Updates' \
-	      SIDENAV_LINK='san francisco neighbourhoods' \
+	      SUBNAV_LINK='san francisco neighbourhoods' \
 	      docs-processes-build-page-level3
 
 docs-processes-wikipedia-concordances:
 	@make CONTENT=docs/processes/wikipedia-concordances.html \
 	      OUT=docs/processes/wikipedia-concordances/index.html \
 	      PAGE_TITLE='Wikipedia Concordances' \
-	      SIDENAV_LINK='wikipedia concordances' \
+	      SUBNAV_LINK='wikipedia concordances' \
 	      docs-processes-build-page-level3
 
 docs-keyterms:
 	@make CONTENT=docs/keyterms.html \
 	      OUT=docs/keyterms/index.html \
 	      PAGE_TITLE='Key Terms' \
-	      SIDENAV_LINK='key terms' \
+	      SUBNAV_LINK='key terms' \
 	      docs-build-page-level2

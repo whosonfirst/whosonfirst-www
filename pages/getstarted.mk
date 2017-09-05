@@ -29,12 +29,12 @@ getstarted-retrievevenues:
 	@make CONTENT=getstarted/retrievevenues.html \
 	      OUT=getstarted/retrievevenues/index.html \
 	      PAGE_TITLE='Retrieve Venues' \
-	      SIDENAV_LINK='retrieve venues' \
+	      SUBNAV_LINK='retrieve venues' \
 	      getstarted-build-page-level2
 
 getstarted-retrieveneighbourhoods:
 	@make CONTENT=getstarted/retrieveneighbourhoods.html \
 	      OUT=getstarted/retrieveneighbourhoods/index.html \
 	      PAGE_TITLE='Retrieve Neighbourhoods' \
-	      SIDENAV_LINK='retrieve neighbourhoods' \
+	      SUBNAV_LINK='retrieve neighbourhoods' \
 	      getstarted-build-page-level2
