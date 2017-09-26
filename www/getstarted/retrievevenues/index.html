@@ -118,11 +118,10 @@ Retrieve Venues
 <h2 id="step-1-create-a-map" class="whosonfirst-subpage-subheader">Step 1: Create a Map</h2>
 <p>We are going to utilize <a href="https://mapzen.com/documentation/mapzen-js/">mapzen.js</a> to make our initial map.</p>
 <p>To do this, we need to create a html page. Within that page, we use the code below to create the map.</p>
-<pre>
-  <code>&lt;!DOCTYPE html&gt;
+<pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
   &lt;head&gt;
-    &lt;title>My Web Map&lt;/title&gt;
+    &lt;title&gt;Flatiron District Venues&lt;/title&gt;
     &lt;meta charset="utf-8"&gt;
     &lt;link rel="stylesheet" href="https://mapzen.com/js/mapzen.css"&gt;
     &lt;script src="https://mapzen.com/js/mapzen.min.js"&gt;&lt;/script&gt;
@@ -138,34 +137,46 @@ Retrieve Venues
   &lt;body&gt;
     &lt;div id="map"&gt;&lt;/div&gt;
     &lt;script&gt;
-      // Get an API key from https://mapzen.com/dashboard
-      L.Mapzen.apiKey = 'your-mapzen-api-key';
-      var map = L.Mapzen.map('map', {
-        tangramOptions: {
-          scene: {
-            import: [
-              'https://mapzen.com/carto/refill-style/8/refill-style.zip', 'https://mapzen.com/carto/refill-style/8/themes/color-gray.zip'
-          ] } }
-      });
-      map.setView([40.741331,-73.989332], 19);
+    // Get an API key from https://mapzen.com/dashboard
+    L.Mapzen.apiKey = 'your-mapzen-api-key';
+    var map = L.Mapzen.map('map', {
+      tangramOptions: {
+        scene: {
+          import: [
+            'https://mapzen.com/carto/refill-style/8/refill-style.zip',
+            'https://mapzen.com/carto/refill-style/8/themes/color-gray.zip',
+            'https://mapzen.com/carto/refill-style/8/themes/label-1.zip'
+          ]
+        }
+      }
+    });
+    map.setView([40.741331,-73.989332], 19);
     &lt;/script&gt;
   &lt;/body&gt;
-&lt;/html&gt;</code>
-</pre>
-<p>To learn more about mapzen.js, check out it's <a href="https://mapzen.com/documentation/mapzen-js/get-started/">Get Started tutorial</a>.</p>
+&lt;/html&gt;</code></pre>
+<p>To learn more about mapzen.js, check out its <a href="https://mapzen.com/documentation/mapzen-js/get-started/">Get Started tutorial</a>.</p>
 <h2 id="step-2-find-info-with-spelunker" class="whosonfirst-subpage-subheader">Step 2: Find Info With Spelunker</h2>
 <p>Now, we need some background info (WOF ID, latitude, longitude, etc...) to best utilize the API. To do this, we are going to take a look at the <a href="https://whosonfirst.mapzen.com/spelunker/">Spelunker</a>.</p>
 <p>Search for Flatiron District New York in the Spelunker. Find the one that is the locality in the United States. You should find the page below.</p>
-<img class="img-responsive" src="../images/wofspelunkerny.png"/>
+<img class="img-responsive" src="/images/wofspelunkerny.png"/>
 <p>Note the WOF ID. You can find it if you scroll down, it also the number located near the top of the page preceded by / and followed by .geojson. For the Flatiron District, this is 85869245.</p>
 <p>Also, verify that you map is centered on the the right coordinates and the level is set correctly. For our purposes, we are going to level 19.</p>
-<pre>
-  <code>&lt;script&gt;
-  L.Mapzen.apiKey = 'your-mapzen-api-key';
-  var map = L.Mapzen.map('map');
-  map.setView([40.741331,-73.989332], 19);
-&lt;/script&gt;</code>
-</pre>
+<pre><code>&lt;script&gt;
+// Get an API key from https://mapzen.com/dashboard
+L.Mapzen.apiKey = 'your-mapzen-api-key';
+var map = L.Mapzen.map('map', {
+  tangramOptions: {
+    scene: {
+      import: [
+        'https://mapzen.com/carto/refill-style/8/refill-style.zip',
+        'https://mapzen.com/carto/refill-style/8/themes/color-gray.zip',
+        'https://mapzen.com/carto/refill-style/8/themes/label-1.zip'
+      ]
+    }
+  }
+});
+map.setView([40.741331,-73.989332], 19);
+&lt;/script&gt;</code></pre>
 <h2 id="step-3-retrieve-data-using-the-api" class="whosonfirst-subpage-subheader">Step 3: Retrieve Data using the API</h2>
 <p>To retrieve data using the API, we are going to utilize the <a href="https://raw.githubusercontent.com/whosonfirst/js-mapzen-whosonfirst/master/src/mapzen.places.api.js">mapzen.places.api.js</a> file.</p>
 <p>Download a local copy and then add the script to your html file.</p>
@@ -174,30 +185,23 @@ Retrieve Venues
 <pre><code>&lt;script src="jquery.min.js"&gt;&lt;/script&gt;</code></pre>
 <p>This script will allow you to make the queries available through the <a href="https://mapzen.com/documentation/places/">Mapzen Places API</a>.</p>
 <p>Add the following helper function to make those calls from your html file. Note that we are using the <a href="https://mapzen.com/documentation/places/methods/#mapzen.places.getDescendants">mapzen.places.getDescendants API method</a>. We include geom: so we are able to obtain information about the venue.</p>
-<pre>
-  <code>function init() {
-// Setup the API key
-mapzen.places.api.set_handler('api_key', function() {
-  return 'your-mapzen-key';
-});
+<pre><code>function init() {
 
-// Get all the venues in the Flatiron District
-// See: https://mapzen.com/documentation/wof/methods/#mapzen.places.getDescendants
-var parent_id = 85869245;
-var method = 'mapzen.places.getDescendants';
-var data = {
-  id: parent_id,
-  per_page: 500,
-  extras: 'geom:', // this gets us lat/lng coords
-};
+  // Get all the venues in the Flatiron District
+  // See: https://mapzen.com/documentation/wof/methods/#mapzen.places.getDescendants
+  var parent_id = 85869245;
+  var method = 'mapzen.places.getDescendants';
+  var data = {
+    id: parent_id,
+    per_page: 500,
+    extras: 'geom:' // this gets us lat/lng coords
+  };
 
-// Ok now we actually call the API
-mapzen.whosonfirst.api.execute_method_paginated(method, data, onsuccess, onerror, onprogress);
-};</code>
-</pre>
+  // Ok now we actually call the API
+  mapzen.places.api.call_paginated(method, data, onpage, onerror, oncomplete);
+}</code></pre>
 <p>Add the following helper functions. Not that the show_venue function has not yet been created.</p>
-<pre>
-  <code>// Incrementally show API results on the map
+<pre><code>// Incrementally show API results on the map
 var onpage = function(rsp) {
   //console.log(rsp);
   for (var i = 0; i < rsp.places.length; i++) {
@@ -212,12 +216,10 @@ var onerror = function(rsp) {
 };
 
 // NOOP (we are using onpage instead)
-var oncomplete = function() { return; };</code>
-</pre>
+var oncomplete = function() { return; };</code></pre>
 <h2 id="step-4-display-the-data" class="whosonfirst-subpage-subheader">Step 4: Display the Data</h2>
 <p>Now we are going to display the data. To do this, we are going to write a show_venue function. The show_venue function takes a place's latitude and longitude and stylizes it as a circle with a fill and stroke using the marker style. For our purposes, we have selected a shade of grey.</p>
-<pre>
-  <code>// Venues are shown as a green circle
+<pre><code>// Venues are shown as a green circle
 var markerStyle = {
   "weight": 2,
   "opacity": .6,
@@ -233,15 +235,14 @@ var show_venue = function(place) {
     lat: place['geom:latitude'],
     lng: place['geom:longitude']
   }, markerStyle);
+  marker.bindTooltip(place['wof:name']);
   map.addLayer(marker);
-};</code>
-</pre>
+};</code></pre>
 <p>Your code should now resemble:</p>
-<pre>
-  <code>&lt;!DOCTYPE html&gt;
+<pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
   &lt;head&gt;
-    &lt;title>My Web Map&lt;/title&gt;
+    &lt;title&gt;Flatiron District Venues&lt;/title&gt;
     &lt;meta charset="utf-8"&gt;
     &lt;link rel="stylesheet" href="https://mapzen.com/js/mapzen.css"&gt;
     &lt;script src="https://mapzen.com/js/mapzen.min.js"&gt;&lt;/script&gt;
@@ -259,13 +260,18 @@ var show_venue = function(place) {
     &lt;script src="mapzen.places.api.js"&gt;&lt;/script&gt;
     &lt;script src="jquery.min.js"&gt;&lt;/script&gt;
     &lt;script&gt;
-    L.Mapzen.apiKey = 'your-api-key';
+    // Get an API key from https://mapzen.com/dashboard
+    L.Mapzen.apiKey = 'your-mapzen-api-key';
     var map = L.Mapzen.map('map', {
       tangramOptions: {
         scene: {
           import: [
-            'https://mapzen.com/carto/refill-style/8/refill-style.zip', 'https://mapzen.com/carto/refill-style/8/themes/color-gray.zip', 'https://mapzen.com/carto/refill-style/8/themes/detail-1.zip'
-        ] } }
+            'https://mapzen.com/carto/refill-style/8/refill-style.zip',
+            'https://mapzen.com/carto/refill-style/8/themes/color-pink.zip',
+            'https://mapzen.com/carto/refill-style/8/themes/label-1.zip'
+          ]
+        }
+      }
     });
     map.setView([40.741331, -73.989332], 19);
 
@@ -284,6 +290,7 @@ var show_venue = function(place) {
         lat: place['geom:latitude'],
         lng: place['geom:longitude']
       }, markerStyle);
+      marker.bindTooltip(place['wof:name']);
       map.addLayer(marker);
     };
 
@@ -306,11 +313,6 @@ var show_venue = function(place) {
 
     function init() {
 
-      // Setup the API key
-      mapzen.places.api.set_handler('api_key', function() {
-        return 'your-api-key';
-      });
-
       // Get all the venues in the Flatiron District
       // See: https://mapzen.com/documentation/wof/methods/#mapzen.places.getDescendants
       var parent_id = 85869245;
@@ -326,10 +328,9 @@ var show_venue = function(place) {
     }
     &lt;/script&gt;
   &lt;/body&gt;
-&lt;/html&gt;</code>
-</pre>
+&lt;/html&gt;</code></pre>
 <p>When you refresh your html page, you should see this.</p>
-<img class="img-responsive" src="../images/tutorialmapny.png"/>
+<img class="img-responsive" src="/images/tutorialmapny.png"/>
 <p>Congrats, you just made a map of venues in New York City's Flatiron District using the Mapzen Places API.</p>
 					</div>
 				</div>
