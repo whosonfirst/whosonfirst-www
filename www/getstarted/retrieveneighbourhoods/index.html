@@ -107,7 +107,7 @@ Retrieve Neighbourhoods
 	</div>
 	<div class="whosonfirst-tabs-content">
 
-<p>The <a href="https://mapzen.com/documentation/wof/">Mapzen Places API</a> allows you to query and retrieve Who’s On First data including neighbourhood data via a REST-ish interface.</p>
+<p>The <a href="https://mapzen.com/documentation/places/">Mapzen Places API</a> allows you to query and retrieve Who’s On First data including neighbourhood data via a REST-ish interface.</p>
 <p>In this tutorial, you will use the API to retrieve San Francisco's neighbourhoods and display them on a map. To do this, you will:</p>
 <ol class="whosonfirst-content-list">
 	<li class="whosonfirst-content-list-item"><a href="#step-1-create-a-map" class="whosonfirst-content-list-item-link">Create a Map</a></li>
@@ -138,13 +138,15 @@ Retrieve Neighbourhoods
   &lt;body&gt;
     &lt;div id="map"&gt;&lt;/div&gt;
     &lt;script&gt;
+
+      // Get an API key from https://mapzen.com/dashboard
       L.Mapzen.apiKey = 'your-mapzen-api-key';
       var map = L.Mapzen.map('map', {
         tangramOptions: {
           scene: {
           import: [
             'https://mapzen.com/carto/refill-style/8/refill-style.zip', 'https://mapzen.com/carto/refill-style/8/themes/color-gray.zip', 'https://mapzen.com/carto/refill-style/8/themes/detail-1.zip'
-          ]} 
+          ]}
         }
       });
       map.setView([37.77493, -122.41942], 12);
@@ -157,7 +159,7 @@ Retrieve Neighbourhoods
 <p>Now, we need some background info (WOF ID, latitude, longitude, etc...) to best utilize the API. To do this, we are going to take a look at the <a href="https://whosonfirst.mapzen.com/spelunker/">Spelunker</a>.</p>
 <p>Search for San Francisco in the Spelunker. Find the one that is the locality in the United States. You should find the page below.</p>
 <img class="img-responsive" src="../images/wofspelunkersf.png"/>
-<p>Note the wof id. You can find it if you scroll down, it also the number located near the top of the page preceded by / and followed by .geojson. For San Francisco, this is 85922583.</p>
+<p>Note the WOF ID. You can find it if you scroll down, it also the number located near the top of the page preceded by / and followed by .geojson. For San Francisco, this is 85922583.</p>
 <p>Also, verify that you map is centered on the the right coordinates and the level is set correctly. For our purposes, we are going to level 14.</p>
 <pre>
   <code>&lt;script&gt;
@@ -167,58 +169,58 @@ Retrieve Neighbourhoods
 &lt;/script&gt;</code>
 </pre>
 <h2 id="step-3-retrieve-data-using-the-api" class="whosonfirst-subpage-subheader">Step 3: Retrieve Data using the API</h2>
-<p>To retrieve data using the API, we are going to utilize the <a href="https://raw.githubusercontent.com/whosonfirst/electron-whosonfirst-bookmarks/master/javascript/mapzen.whosonfirst.api.js">mapzen.whosonfirst.api.js</a> file.</p>
-<p>Add the script to your html file.</p>
-<pre><code>&lt;script src="mapzen.whosonfirst.api.js"&gt;&lt;/script&gt;</code></pre>
-<p>Also add jquery we are going to use that later.</p>
+<p>To retrieve data using the API, we are going to utilize the <a href="https://raw.githubusercontent.com/whosonfirst/js-mapzen-whosonfirst/master/src/mapzen.places.api.js">mapzen.places.api.js</a> file.</p>
+<p>Download a local copy and then add the script to your html file.</p>
+<pre><code>&lt;script src="mapzen.places.api.js"&gt;&lt;/script&gt;</code></pre>
+<p>Also add <a href="http://jquery.com/download/">jQuery</a>, we are going to use that later.</p>
 <pre><code>&lt;script src="jquery.min.js"&gt;&lt;/script&gt;</code></pre>
-<p>This script will allow you to make the queries available by the <a href="https://mapzen.com/documentation/wof/">WOF API</a>.</p>
-<p>Add the following helper function to make those calls from your html file. Note that we are using the <a href="https://mapzen.com/documentation/wof/methods/#whosonfirst.places.getDescendants">whosonfirst.places.getDescendants API method</a>. We include mz:uri as an extra so we are able to retrieve a neighbourhood's geometry. Also note that we only want neighbourhood descendants.</p>
+<p>This script will allow you to make the queries available by the <a href="https://mapzen.com/documentation/places/">Mapzen Places API</a>.</p>
+<p>Add the following helper function to make those calls from your html file. Note that we are using the <a href="https://mapzen.com/documentation/places/methods/#mapzen.places.getDescendants">mapzen.places.getDescendants API method</a>. We include <code>mz:uri</code> as an extra so we are able to retrieve a neighbourhood's geometry. Also note that we only want neighbourhood descendants.</p>
 <pre>
-  <code>function runWhosOnFirstAPI() {
+  <code>function init() {
 // Setup the API key
-mapzen.whosonfirst.api.set_handler('authentication', function() {
-  return 'your-mapzen-key';
+mapzen.places.api.set_handler('api_key', function() {
+  return 'your-mapzen-api-key';
 });
 
-// See: https://mapzen.com/documentation/wof/methods/#whosonfirst.places.getDescendants
+// See: https://mapzen.com/documentation/places/methods/#mapzen.places.getDescendants
 // San Francisco's WOF ID
-var parent_id = '85922583';
-var method = 'whosonfirst.places.getDescendants';
+var parent_id = 85922583;
+var method = 'mapzen.places.getDescendants';
 var data = {
-  id: '85922583',
+  id: parent_id,
   per_page: 500,
-  extras: 'mz:uri,geom:latitude,geom:longitude', // this gets us lat/lng coords
+  extras: 'mz:uri',
   placetype: 'neighbourhood'
 };
 
 // Ok now we actually call the API
-mapzen.whosonfirst.api.execute_method_paginated(method, data, onsuccess, onerror, onprogress);
+mapzen.places.api.call_paginated(method, data, onpage, onerror, oncomplete);
 };</code>
 </pre>
-<p>Add the following helper functions. Not that the show_plane function has not yet been created.</p>
+<p>Add the following helper functions. Not that the show_place function has not yet been created.</p>
 <pre>
-  <code>// NOOP (we are using onprogress instead)
-var onsuccess = function() { return; };
+  <code>// Take all the API results and show them on the map
+var onpage = function(rsp) {
+  //console.log(rsp);
+  for (var i = 0; i < rsp.places.length; i++) {
+    var place = rsp.places[i];
+    show_place(place);
+  }
+};
 
 // Just log errors to the JS console
 var onerror = function(rsp) {
   console.error(rsp);
 };
 
-// Take all the API results and show them on the map
-var onprogress = function(rsp) {
-  //console.log(rsp);
-  for (var i = 0; i < rsp.places.length; i++) {
-    var place = rsp.places[i];
-    show_plane(place);
-  }
-};</code>
+// NOOP (we are using onpage instead)
+var oncomplete = function() { return; };</code>
 </pre>
 <h2 id="step-4-display-the-data" class="whosonfirst-subpage-subheader">Step 4: Display the Data</h2>
-<p>Now we are going to display the data. To do this, we are going to write a show_plane function. The show_plane function takes a place's geometry and stylizes it with a fill and stroke. For our purposes, we are selecting random shades of gray.</p>
+<p>Now we are going to display the data. To do this, we are going to write a show_place function. The show_place function takes a place's geometry and styles it with a fill and stroke. For our purposes, we are selecting random shades of gray.</p>
 <pre>
-  <code>var show_plane = function(place) {
+  <code>var show_place = function(place) {
   $.get(place['mz:uri'], function(result) {
     L.geoJSON(result, {style: function (feature) {
       randomNumber1 = 86+Math.ceil(Math.random()*100);
@@ -246,24 +248,26 @@ var onprogress = function(rsp) {
       html,body{margin: 0; padding: 0;}
     &lt;/style&gt;
   &lt;/head&gt;
-  &lt;body onload="runWhosOnFirstAPI()"&gt;
+  &lt;body onload="init()"&gt;
     &lt;div id="map"&gt;&lt;/div&gt;
-      &lt;script src="../javascript/mapzen.whosonfirst.api.js"&gt;&lt;/script&gt;
-      &lt;script src="../javascript/jquery.min.js"&gt;&lt;/script&gt;
+    &lt;script src="mapzen.places.api.js"&gt;&lt;/script&gt;
+    &lt;script src="jquery.min.js"&gt;&lt;/script&gt;
     &lt;script&gt;
-    L.Mapzen.apiKey = 'mapzen-aetZmeQ';
+
+    // Get an API key from https://mapzen.com/dashboard
+    L.Mapzen.apiKey = 'your-mapzen-api-key';
     var map = L.Mapzen.map('map', {
       tangramOptions: {
         scene: {
           import: [
             'https://mapzen.com/carto/refill-style/8/refill-style.zip', 'https://mapzen.com/carto/refill-style/8/themes/color-gray.zip', 'https://mapzen.com/carto/refill-style/8/themes/detail-1.zip'
-        ]} 
+        ]}
       }
     });
     map.setView([37.77493, -122.41942], 14);
-			
+
     // How we should handle each API result
-    var show_plane = function(place) {
+    var show_place = function(place) {
       $.get(place['mz:uri'], function(result) {
         L.geoJSON(result, {style: function (feature) {
           randomNumber1 = 86+Math.ceil(Math.random()*100);
@@ -273,50 +277,50 @@ var onprogress = function(rsp) {
       });
     }
 
-    // NOOP (we are using onprogress instead)
-    var onsuccess = function() { return; };
+    // Incrementally show API results on the map
+    var onpage = function(rsp) {
+      //console.log(rsp);
+      for (var i = 0; i < rsp.places.length; i++) {
+        var place = rsp.places[i];
+        show_place(place);
+      }
+    };
 
     // Just log errors to the JS console
     var onerror = function(rsp) {
       console.error(rsp);
     };
 
-    // Take all the API results and show them on the map
-    var onprogress = function(rsp) {
-      //console.log(rsp);
-      for (var i = 0; i < rsp.places.length; i++) {
-        var place = rsp.places[i];
-        show_plane(place);
-      }
-    };
+    // NOOP (we are using onpage instead)
+    var oncomplete = function() { return; };
 
-    function runWhosOnFirstAPI() {
+    function init() {
       // Setup the API key
-      mapzen.whosonfirst.api.set_handler('authentication', function() {
+      mapzen.places.api.set_handler('api_key', function() {
         return 'your-mapzen-key';
       });
 
       // Get all the venues in the Flatiron District
-      // See: https://mapzen.com/documentation/wof/methods/#whosonfirst.places.getDescendants
-      var parent_id = '85922583';
-      var method = 'whosonfirst.places.getDescendants';
+      // See: https://mapzen.com/documentation/places/methods/#mapzen.places.getDescendants
+      var parent_id = 85922583;
+      var method = 'mapzen.places.getDescendants';
       var data = {
-      id: parent_id,
-      per_page: 500,
-      extras: 'mz:uri,geom:latitude,geom:longitude', // this gets us lat/lng coords
-      placetype: 'neighbourhood'
-    };
+        id: parent_id,
+        per_page: 500,
+        extras: 'mz:uri',
+        placetype: 'neighbourhood'
+      };
 
-    // Ok now we actually call the API
-    mapzen.whosonfirst.api.execute_method_paginated(method, data, onsuccess, onerror, onprogress);
-  };
+      // Ok now we actually call the API
+      mapzen.places.api.call_paginated(method, data, onpage, onerror, oncomplete);
+    }
   &lt;/script&gt;
   &lt;/body&gt;
 &lt;/html&gt;</code>
 </pre>
 <p>When you refresh your html page, you should see this.</p>
 <img class="img-responsive" src="../images/tutorialmapsf.png"/>
-<p>Congrats, you just made a map of San Francisco's neighbourhoods using the WOF API.</p>
+<p>Congrats, you just made a map of San Francisco's neighbourhoods using the Mapzen Places API.</p>
 					</div>
 				</div>
 			</article>

@@ -170,7 +170,7 @@ Retrieve Venues
 <p>To retrieve data using the API, we are going to utilize the <a href="https://raw.githubusercontent.com/whosonfirst/js-mapzen-whosonfirst/master/src/mapzen.places.api.js">mapzen.places.api.js</a> file.</p>
 <p>Download a local copy and then add the script to your html file.</p>
 <pre><code>&lt;script src="mapzen.places.api.js"&gt;&lt;/script&gt;</code></pre>
-<p>Also add jquery we are going to use that later.</p>
+<p>Also add <a href="http://jquery.com/download/">jQuery</a>, we are going to use that later.</p>
 <pre><code>&lt;script src="jquery.min.js"&gt;&lt;/script&gt;</code></pre>
 <p>This script will allow you to make the queries available through the <a href="https://mapzen.com/documentation/places/">Mapzen Places API</a>.</p>
 <p>Add the following helper function to make those calls from your html file. Note that we are using the <a href="https://mapzen.com/documentation/places/methods/#mapzen.places.getDescendants">mapzen.places.getDescendants API method</a>. We include geom: so we are able to obtain information about the venue.</p>
@@ -181,12 +181,12 @@ mapzen.places.api.set_handler('api_key', function() {
   return 'your-mapzen-key';
 });
 
-// See: https://mapzen.com/documentation/places/methods/#mapzen.places.getDescendants
-// San Francisco's WOF ID
-var parent_id = '85869245';
+// Get all the venues in the Flatiron District
+// See: https://mapzen.com/documentation/wof/methods/#mapzen.places.getDescendants
+var parent_id = 85869245;
 var method = 'mapzen.places.getDescendants';
 var data = {
-  id: '85869245',
+  id: parent_id,
   per_page: 500,
   extras: 'geom:', // this gets us lat/lng coords
 };
@@ -197,22 +197,22 @@ mapzen.whosonfirst.api.execute_method_paginated(method, data, onsuccess, onerror
 </pre>
 <p>Add the following helper functions. Not that the show_venue function has not yet been created.</p>
 <pre>
-  <code>// NOOP (we are using onprogress instead)
-var onsuccess = function() { return; };
+  <code>// Incrementally show API results on the map
+var onpage = function(rsp) {
+  //console.log(rsp);
+  for (var i = 0; i < rsp.places.length; i++) {
+    var place = rsp.places[i];
+    show_venue(place);
+  }
+};
 
 // Just log errors to the JS console
 var onerror = function(rsp) {
   console.error(rsp);
 };
 
-// Take all the API results and show them on the map
-var onprogress = function(rsp) {
-  //console.log(rsp);
-  for (var i = 0; i < rsp.places.length; i++) {
-    var place = rsp.places[i];
-    show_venue(place);
-  }
-};</code>
+// NOOP (we are using onpage instead)
+var oncomplete = function() { return; };</code>
 </pre>
 <h2 id="step-4-display-the-data" class="whosonfirst-subpage-subheader">Step 4: Display the Data</h2>
 <p>Now we are going to display the data. To do this, we are going to write a show_venue function. The show_venue function takes a place's latitude and longitude and stylizes it as a circle with a fill and stroke using the marker style. For our purposes, we have selected a shade of grey.</p>
@@ -256,8 +256,8 @@ var show_venue = function(place) {
   &lt;/head&gt;
   &lt;body onload="init()"&gt;
     &lt;div id="map"&gt;&lt;/div&gt;
-    &lt;script src="../javascript/mapzen.whosonfirst.api.js"&gt;&lt;/script&gt;
-    &lt;script src="../javascript/jquery.min.js"&gt;&lt;/script&gt;
+    &lt;script src="mapzen.places.api.js"&gt;&lt;/script&gt;
+    &lt;script src="jquery.min.js"&gt;&lt;/script&gt;
     &lt;script&gt;
     L.Mapzen.apiKey = 'your-api-key';
     var map = L.Mapzen.map('map', {
@@ -292,7 +292,7 @@ var show_venue = function(place) {
       //console.log(rsp);
       for (var i = 0; i < rsp.places.length; i++) {
         var place = rsp.places[i];
-        show_plane(place);
+        show_venue(place);
       }
     };
 
@@ -301,29 +301,29 @@ var show_venue = function(place) {
         console.error(rsp);
     };
 
-    // NOOP (we are using onprogress instead)
+    // NOOP (we are using onpage instead)
     var oncomplete = function() { return; };
 
     function init() {
 
       // Setup the API key
-      mapzen.whosonfirst.api.set_handler('authentication', function() {
-        return 'mapzen-aetZmeQ';
+      mapzen.places.api.set_handler('api_key', function() {
+        return 'your-api-key';
       });
 
       // Get all the venues in the Flatiron District
       // See: https://mapzen.com/documentation/wof/methods/#mapzen.places.getDescendants
-      var parent_id = '85869245';
+      var parent_id = 85869245;
       var method = 'mapzen.places.getDescendants';
       var data = {
         id: parent_id,
         per_page: 500,
-        extras: 'geom:', // this gets us lat/lng coords
+        extras: 'geom:' // this gets us lat/lng coords
       };
 
       // Ok now we actually call the API
       mapzen.places.api.call_paginated(method, data, onpage, onerror, oncomplete);
-    };
+    }
     &lt;/script&gt;
   &lt;/body&gt;
 &lt;/html&gt;</code>
