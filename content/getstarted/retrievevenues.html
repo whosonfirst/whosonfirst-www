@@ -1,5 +1,5 @@
 <h1 id="retrieve-venues">Retrieve Venues</h1>
-<p>The <a href="https://mapzen.com/documentation/wof/">Who’s On First API</a> allows you to query and retrieve Who’s On First data including venue data via a REST-ish interface.</p>
+<p>The <a href="https://mapzen.com/documentation/wof/">Mapzen Places API</a> allows you to query and retrieve Who’s On First data including venue data via a REST-ish interface.</p>
 <p>In this tutorial, you will use the API to retrieve venues in New York City's Flatiron District and display them on a map. To do this, you will:</p>
 <ol class="whosonfirst-content-list">
 	<li class="whosonfirst-content-list-item"><a href="#step-1-create-a-map" class="whosonfirst-content-list-item-link">Create a Map</a></li>
@@ -63,7 +63,7 @@
 <pre><code>&lt;script src="mapzen.whosonfirst.api.js"&gt;&lt;/script&gt;</code></pre>
 <p>Also add jquery we are going to use that later.</p>
 <pre><code>&lt;script src="jquery.min.js"&gt;&lt;/script&gt;</code></pre>
-<p>This script will allow you to make the queries available through the <a href="https://mapzen.com/documentation/wof/">WOF API</a>.</p>
+<p>This script will allow you to make the queries available through the <a href="https://mapzen.com/documentation/wof/">Mapzen Places API</a>.</p>
 <p>Add the following helper function to make those calls from your html file. Note that we are using the <a href="https://mapzen.com/documentation/wof/methods/#whosonfirst.places.getDescendants">whosonfirst.places.getDescendants API method</a>. We include geom: so we are able to obtain information about the venue.</p>
 <pre>
   <code>function runWhosOnFirstAPI() {
@@ -220,4 +220,4 @@ var show_venue = function(place) {
 </pre>
 <p>When you refresh your html page, you should see this.</p>
 <img class="img-responsive" src="../images/tutorialmapny.png"/>
-<p>Congrats, you just made a map of venues in New York City's Flatiron District using the WOF API.</p>
+<p>Congrats, you just made a map of venues in New York City's Flatiron District using the Mapzen Places API.</p>
