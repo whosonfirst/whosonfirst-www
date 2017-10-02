@@ -103,7 +103,7 @@ Retrieve Venues
 	</div>
 	<div class="whosonfirst-tabs-content"><p>
 The
-<a href="https://mapzen.com/documentation/wof/">
+<a href="https://mapzen.com/documentation/places/">
 Mapzen Places API
 </a>
 allows you to query and retrieve Who’s On First data including venue data via a REST-ish interface.
@@ -245,14 +245,14 @@ Also add jquery we are going to use that later.
 </pre>
 <p>
 This script will allow you to make the queries available through the
-<a href="https://mapzen.com/documentation/wof/">
+<a href="https://mapzen.com/documentation/places/">
 Mapzen Places API
 </a>
 .
 </p>
 <p>
 Add the following helper function to make those calls from your html file. Note that we are using the
-<a href="https://mapzen.com/documentation/wof/methods/#whosonfirst.places.getDescendants">
+<a href="https://mapzen.com/documentation/places/methods/#whosonfirst.places.getDescendants">
 whosonfirst.places.getDescendants API method
 </a>
 . We include geom: so we are able to obtain information about the venue.
@@ -265,7 +265,7 @@ mapzen.whosonfirst.api.set_handler(&#39;authentication&#39;, function() {
   return &#39;your-mapzen-key&#39;;
 });
 
-// See: https://mapzen.com/documentation/wof/methods/#whosonfirst.places.getDescendants
+// See: https://mapzen.com/documentation/places/methods/#whosonfirst.places.getDescendants
 // San Francisco&#39;s WOF ID
 var parent_id = &#39;85869245&#39;;
 var method = &#39;whosonfirst.places.getDescendants&#39;;
@@ -409,7 +409,7 @@ Your code should now resemble:
       });
 
       // Get all the venues in the Flatiron District
-      // See: https://mapzen.com/documentation/wof/methods/#whosonfirst.places.getDescendants
+      // See: https://mapzen.com/documentation/places/methods/#whosonfirst.places.getDescendants
       var parent_id = &#39;85869245&#39;;
       var method = &#39;whosonfirst.places.getDescendants&#39;;
       var data = {

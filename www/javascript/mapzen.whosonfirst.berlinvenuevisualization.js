@@ -83,7 +83,7 @@ function runWhosOnFirstAPI() {
         return api_key;
     });
     // Get all the venues in the Flatiron District
-    // See: https://mapzen.com/documentation/wof/methods/#whosonfirst.places.getDescendants
+    // See: https://mapzen.com/documentation/places/methods/#whosonfirst.places.getDescendants
     var parent_id = chosenlocation[2];
     var method = 'whosonfirst.places.getDescendants';
     var data = {

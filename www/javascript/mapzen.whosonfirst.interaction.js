@@ -200,7 +200,7 @@ function retrieveInputCoordinates() {
         return api_key;
     });
     // Get all the venues in the Flatiron District
-    // See: https://mapzen.com/documentation/wof/methods/#whosonfirst.places.getDescendants
+    // See: https://mapzen.com/documentation/places/methods/#whosonfirst.places.getDescendants
     var parent_id = chosenParent;
     var method = 'whosonfirst.places.getDescendants';
     var data = {
@@ -443,7 +443,7 @@ function customSearch() {
         return api_key;
     });
     // Get all the venues in the Flatiron District
-    // See: https://mapzen.com/documentation/wof/methods/#whosonfirst.places.getDescendants
+    // See: https://mapzen.com/documentation/places/methods/#whosonfirst.places.getDescendants
     var search_terms = document.getElementById("search-text-go").value;
 	console.log("Search Terms: " + search_terms);
     var method = 'whosonfirst.places.search';
@@ -460,7 +460,7 @@ function customSearch() {
     mapzen.whosonfirst.api.execute_method(method, data, onprogress, onerror);
 	
 	console.log("Updated Input Selections");
-	var customQuery = "curl -X GET 'https://whosonfirst-api.mapzen.com/?method=whosonfirst.places.search&api_key=your-mapzen-api-key&q="+search_terms+"&locality_id:0&extras=geom:,mz:&per_page=50'"
+	var customQuery = "curl -X GET 'https://places.mapzen.com/v1?method=whosonfirst.places.search&api_key=your-mapzen-api-key&q="+search_terms+"&locality_id:0&extras=geom:,mz:&per_page=50'"
 	if (document.getElementsByClassName("whosonfirst-tutorial-individual-code-box")[0].classList.contains("whosonfirst-api-initial-no-show")) {
 		document.getElementsByClassName("whosonfirst-tutorial-individual-code-box")[0].classList.remove("whosonfirst-api-initial-no-show");
 	}
@@ -483,7 +483,7 @@ function getByLatLonRadius() {
         return api_key;
     });
     // Get all the venues in the Flatiron District
-    // See: https://mapzen.com/documentation/wof/methods/#whosonfirst.places.getDescendants
+    // See: https://mapzen.com/documentation/places/methods/#whosonfirst.places.getDescendants
     var search_latitude = document.getElementById("whosonfirst-tutorial-form-latitude").value;
 	var search_longtitude = document.getElementById("whosonfirst-tutorial-form-longitude").value;
 	var search_radius = document.getElementById("whosonfirst-tutorial-form-radius").value;
@@ -548,7 +548,7 @@ function getByLatLonRadius() {
 	
 	/*Using Filderstatt where Stuttgart has an airport, id is 101761809*/
 	
-	var customQuery = "curl -X GET 'https://whosonfirst-api.mapzen.com/?method=whosonfirst.places.getNearby&api_key=your-mapzen-api-key&latitude="+search_latitude +"&longitude="+search_longtitude+"&search_radius="+search_radius+"&extras=geom:,mz:&per_page=50'"
+	var customQuery = "curl -X GET 'https://places.mapzen.com/v1?method=whosonfirst.places.getNearby&api_key=your-mapzen-api-key&latitude="+search_latitude +"&longitude="+search_longtitude+"&search_radius="+search_radius+"&extras=geom:,mz:&per_page=50'"
 	if (document.getElementsByClassName("whosonfirst-tutorial-individual-code-box")[0].classList.contains("whosonfirst-api-initial-no-show")) {
 		document.getElementsByClassName("whosonfirst-tutorial-individual-code-box")[0].classList.remove("whosonfirst-api-initial-no-show");
 	}
@@ -569,7 +569,7 @@ function getByMaxAndMinLatLonRadius() {
         return api_key;
     });
     // Get all the venues in the Flatiron District
-    // See: https://mapzen.com/documentation/wof/methods/#whosonfirst.places.getDescendants
+    // See: https://mapzen.com/documentation/places/methods/#whosonfirst.places.getDescendants
     var search_max_latitude = document.getElementById("whosonfirst-tutorial-form-max-latitude").value;
 	var search_min_latitude = document.getElementById("whosonfirst-tutorial-form-min-latitude").value;
 	var search_max_longtitude = document.getElementById("whosonfirst-tutorial-form-max-longitude").value;
@@ -670,7 +670,7 @@ function getByMaxAndMinLatLonRadius() {
 	
 	/*Using Filderstatt where Stuttgart has an airport, id is 101761809*/
 	
-	var customQuery = "curl -X GET 'https://whosonfirst-api.mapzen.com/?method=whosonfirst.places.getIntersects&api_key=your-mapzen-api-key&min_latitude="+search_min_latitude +"&max_latitude="+search_max_latitude+"&min_longitude="+search_min_longtitude+"&max_longitude="+search_max_longtitude+"&extras=geom:,mz:&per_page=50'"
+	var customQuery = "curl -X GET 'https://places.mapzen.com/v1?method=whosonfirst.places.getIntersects&api_key=your-mapzen-api-key&min_latitude="+search_min_latitude +"&max_latitude="+search_max_latitude+"&min_longitude="+search_min_longtitude+"&max_longitude="+search_max_longtitude+"&extras=geom:,mz:&per_page=50'"
 	if (document.getElementsByClassName("whosonfirst-tutorial-individual-code-box")[0].classList.contains("whosonfirst-api-initial-no-show")) {
 		document.getElementsByClassName("whosonfirst-tutorial-individual-code-box")[0].classList.remove("whosonfirst-api-initial-no-show");
 	}

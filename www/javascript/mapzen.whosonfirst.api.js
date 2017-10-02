@@ -33,7 +33,7 @@
 	};
 
 	var mapzen_endpoint = function(){
-		return "https://whosonfirst-api.mapzen.com"
+		return "https://places.mapzen.com/v1"
 	};
 
 	var mapzen_authentication = function(){

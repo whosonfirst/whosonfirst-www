@@ -415,10 +415,10 @@
               <div class="col-md-8 col-xs-12 whosonfirst-doublewidth-col">
                   <div class="whosonfirst-doublewidth-card whosonfirst-light-gradient whosonfirst-card-shadow">
                       <div class="whosonfirst-card-map-content">
-                          <div class="whosonfirst-card-map-explantation">try it out, retrieve <div id="whosonfirst-custom-card-map-explanation-content">neighbourhoods in seoul</div> by running the following <a class="whosonfirst-content-link" href="https://mapzen.com/documentation/wof/">api</a> method</div>
+                          <div class="whosonfirst-card-map-explantation">try it out, retrieve <div id="whosonfirst-custom-card-map-explanation-content">neighbourhoods in seoul</div> by running the following <a class="whosonfirst-content-link" href="https://mapzen.com/documentation/places/">api</a> method</div>
                           <div class="whosonfirst-card-map-code">
                               <div id="whosonfirst-card-map-code-content" class="whosonfirst-card-map-code-content">
-                                  $	curl -X GET 'https://whosonfirst-api.mapzen.com/?method=whosonfirst.places.getDescendants&api_key=[your-mapzen-key]&id=<span id="whosFirstDescendantKey"></span>&per_page=500'
+                                  $	curl -X GET 'https://places.mapzen.com/v1?method=whosonfirst.places.getDescendants&api_key=[your-mapzen-key]&id=<span id="whosFirstDescendantKey"></span>&per_page=500'
                               </div>
                               <div id="whosonfirst-card-map-code-content-response" class="whosonfirst-card-map-code-content whosonfirst-card-map-code-content-response">
                               </div>
@@ -429,10 +429,10 @@
             </div>
             <pre><code>&lt;div class="whosonfirst-doublewidth-card whosonfirst-light-gradient whosonfirst-card-shadow">
   &lt;div class="whosonfirst-card-map-content">
-    &lt;div class="whosonfirst-card-map-explantation">try it out, retrieve &lt;div id="whosonfirst-custom-card-map-explanation-content">neighbourhoods in seoul&lt;/div> by running the following &lt;a class="whosonfirst-content-link" href="https://mapzen.com/documentation/wof/">api&lt;/a> method&lt;/div>
+    &lt;div class="whosonfirst-card-map-explantation">try it out, retrieve &lt;div id="whosonfirst-custom-card-map-explanation-content">neighbourhoods in seoul&lt;/div> by running the following &lt;a class="whosonfirst-content-link" href="https://mapzen.com/documentation/places/">api&lt;/a> method&lt;/div>
     &lt;div class="whosonfirst-card-map-code">
       &lt;div id="whosonfirst-card-map-code-content" class="whosonfirst-card-map-code-content">
-        $	curl -X GET 'https://whosonfirst-api.mapzen.com/?method=whosonfirst.places.getDescendants&api_key=[your-mapzen-key]&id=&lt;span id="whosFirstDescendantKey">&lt;/span>&per_page=500'
+        $	curl -X GET 'https://places.mapzen.com/v1?method=whosonfirst.places.getDescendants&api_key=[your-mapzen-key]&id=&lt;span id="whosFirstDescendantKey">&lt;/span>&per_page=500'
       &lt;/div>
       &lt;div id="whosonfirst-card-map-code-content-response" class="whosonfirst-card-map-code-content whosonfirst-card-map-code-content-response">
       &lt;/div>
