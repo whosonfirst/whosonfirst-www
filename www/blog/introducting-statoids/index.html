@@ -1,0 +1,944 @@
+<div class="container" id="content">
+ <div class="row text-center headroom-large hidden-print">
+  <div class="col-xs-12">
+   <a class="btn btn-default btn-transparent" href="/blog">
+    <i class="fa fa-angle-left">
+    </i>
+    blog
+   </a>
+  </div>
+ </div>
+ <div class="row headroom-large">
+  <div class="col-md-8 col-md-offset-2">
+   <h2 class="no-margin text-center">
+    Statoids, Mesoshapes, and Who&#39;s On First
+   </h2>
+   <ul class="tag-list headroom">
+    <a href="/tag/whosonfirst">
+     <li>
+      whosonfirst
+     </li>
+    </a>
+    <a href="/tag/data">
+     <li>
+      data
+     </li>
+    </a>
+   </ul>
+   <div class="">
+   </div>
+   <div class="static-content headroom-large blog-content">
+    <div style="margin: 0 auto; width:640px;">
+     <a href="https://mapzen-assets.s3.amazonaws.com/images/statoids-meso/main_photo.jpg">
+      <img src="https://mapzen-assets.s3.amazonaws.com/images/statoids-meso/main_photo.jpg" height="360" width="640">
+     </a>
+    </div>
+    <p>
+     Recently, we’ve been working with two datasets,
+     <strong>
+      Mesoshapes
+     </strong>
+     , which we’ve
+     <a href="https://mapzen.com/blog/mesoshapes/">
+      previewed before
+     </a>
+     , and
+     <strong>
+      Statoids
+     </strong>
+     , the premier encyclopedia of administrative subdivisions.
+    </p>
+    <p>
+     We are happy to announce a partnership with Statoids to allow their data to be included in Who’s On First and
+     <a href="https://mapzen.com/pricing/">
+      Mapzen Places
+     </a>
+     under generous CC-BY terms. Both these datasets have been merged with existing (and new) Who’s On First records and provide nearly complete global coverage at the
+     <code>
+      region
+     </code>
+     and
+     <code>
+      county
+     </code>
+     placetypes and bring in additional properties like population values and localized placetype names. Please have a read and explore our new additions!
+    </p>
+    <h2 id="mesoshapes">
+     Mesoshapes
+    </h2>
+    <p>
+     We previously
+     <a href="https://mapzen.com/blog/mesoshapes/">
+      wrote about
+     </a>
+     our work of increasing county coverage in the
+     <a href="https://whosonfirst.mapzen.com">
+      Who’s On First
+     </a>
+     gazetteer. This work involved importing new, more detailed geometries for secondary administrative divisions around the globe, as well as importing more place-specific properties for each record. We have since wrapped up the Mesoshapes work and are proud to now maintain just over
+     <strong>
+      46,500
+     </strong>
+     <code>
+      county
+     </code>
+     records in Who’s On First!
+    </p>
+    <p>
+     This isn’t all we’ve done; we were also able to update records for primary divisions in each country (
+     <code>
+      region
+     </code>
+     records), too. We verified and increased the accuracy of
+     <code>
+      region
+     </code>
+     records in Who’s On First for each of the 110+ countries delivered by Mesoshapes, adding them to the
+     <code>
+      county
+     </code>
+     records already in Who’s On First!
+    </p>
+    <p>
+     Recently, we’ve joined this work with a new dataset,
+     <a href="http://www.statoids.com/">
+      Statoids
+     </a>
+     , to substantially enhance our records with
+     <em>
+      many
+     </em>
+     new properties that we would like to outline below.
+    </p>
+    <h2 id="statoids">
+     Statoids
+    </h2>
+    <h3 id="what-exactly-is-statoids?">
+     What exactly
+     <em>
+      is
+     </em>
+     Statoids?
+    </h3>
+    <p>
+     Statoids is an online database that organizes the primary and secondary administrative divisions for all countries, dependencies, and disputed areas of the world. These divisions have unique identifiers, which we call the
+     <code>
+      hasc:id
+     </code>
+     (you can read more about HASC,
+     <a href="http://www.statoids.com/ihasc.html">
+      here
+     </a>
+     ). The Mesoshapes import included many
+     <code>
+      hasc:id
+     </code>
+     values; by linking the HASC concordance values, we imported this encyclopedia of geographic data into Who’s On First.
+    </p>
+    <p>
+     We’ve long admired Statoids for its global coverage and attention to detail. For over 15 years Gwillim Law was the force behind the printed version of
+     <a href="https://www.amazon.com/exec/obidos/ASIN/0786407298/">
+      Statoids
+     </a>
+     followed by copious updates on
+     <a href="http://www.statoids.com">
+      Statoids.com
+     </a>
+     . We were saddened to hear of Gwillim’s
+     <a href="http://www.statoids.com/mgtletter.html">
+      passing
+     </a>
+     August 31, 2016.
+    </p>
+    <p>
+     In talking to Gwillim’s daughter Shirley over the last year we came up with a way to memorialize his work: We are happy to announce a partnership with Statoids to allow their data to be included in Who’s On First under generous CC-BY terms. We hope Gwillim’s work finds an even larger audience, and together we can continue the work he started. The full terms are in our
+     <a href="https://github.com/whosonfirst/whosonfirst-sources/blob/master/sources/README.md#statoids">
+      sources
+     </a>
+     repo.
+    </p>
+    <h3 id="what-does-statoids-contain?">
+     What does Statoids contain?
+    </h3>
+    <p>
+     The Statoids database has plenty of useful data that Who’s On First was able to harvest. This data comes in the form of data tables, separated by parent country and administrative division; take a look at the
+     <a href="http://www.statoids.com/yno.html">
+      Statoids page for secondary divisions in Norway
+     </a>
+     , for an example. After crafting various Python scripts to handle the Statoids data tables, we were able to bring in a variety of new properties and concordances to Who’s On First.
+Below is a list of harvested data we were able to pull into Who’s On First from Statoids:
+    </p>
+    <p>
+     <strong>
+      Concordances
+     </strong>
+     to:
+    </p>
+    <ul>
+     <li>
+      <a href="https://en.wikipedia.org/wiki/List_of_country_calling_codes">
+       Dial codes
+      </a>
+     </li>
+     <li>
+      <a href="http://www.unece.org/trans/welcome.html">
+       Distinguishing sign codes
+      </a>
+     </li>
+     <li>
+      <a href="http://www.rsssf.com/miscellaneous/fifa-codes.html">
+       FIFA codes
+      </a>
+     </li>
+     <li>
+      <a href="http://www.fao.org/geonetwork/srv/en/metadata.show?id=12691">
+       GAUL (Food and Agriculture Organization)
+      </a>
+     </li>
+     <li>
+      <a href="https://www.olympic.org/the-ioc">
+       International Olympic Committee
+      </a>
+     </li>
+     <li>
+      <a href="https://www.iso.org/home.html">
+       ISO
+      </a>
+     </li>
+     <li>
+      <a href="https://www.itu.int/online/mm/scripts/gensel8">
+       Identity Radio Transmitter
+      </a>
+      codes
+     </li>
+     <li>
+      <a href="http://www.loc.gov/marc/countries/cou_home.html">
+       <strong>
+        MA
+       </strong>
+       chine-
+       <strong>
+        R
+       </strong>
+       eadable
+       <strong>
+        C
+       </strong>
+       ataloging codes
+      </a>
+      (MARC) from the Library of Congress
+     </li>
+     <li>
+      <a href="http://icoads.noaa.gov/metadata/wmo47/wmo_quarterly/47CodeTables9903.html">
+       World Meteorlogical Organization
+      </a>
+     </li>
+     <li>
+      Unique identifiers (see our
+      <a href="https://github.com/whosonfirst/whosonfirst-sources">
+       whosonfirst-sources
+      </a>
+      repository for more information on the
+      <code>
+       hasc:id
+      </code>
+      )
+     </li>
+    </ul>
+    <p>
+     Properties, including:
+    </p>
+    <ul>
+     <li>
+      Names
+     </li>
+     <li>
+      Population counts
+     </li>
+     <li>
+      Names of Capital cities and areas
+     </li>
+     <li>
+      Historical notes about each place
+     </li>
+     <li>
+      Timezones
+     </li>
+     <li>
+      Translations
+     </li>
+     <li>
+      Area (kilometers and miles, squared)
+     </li>
+     <li>
+      A brief overview of each placetype “set” per country
+     </li>
+     <li>
+      Dates of the most recent Census figures
+     </li>
+     <li>
+      Local terms for the administrative division
+     </li>
+    </ul>
+    <h3 id="property-specifics...">
+     Property Specifics…
+    </h3>
+    <p>
+     We can store each property as a top-level
+     <code>
+      statoids:
+     </code>
+     property (see our
+     <a href="https://github.com/whosonfirst/whosonfirst-properties">
+      whosonfirst-property
+     </a>
+     repository for detailed information on each
+     <code>
+      statoids:*
+     </code>
+     property), harvest new
+     <code>
+      name:*
+     </code>
+     properties, link capital cities to their parent(s), link timezone records to the administrative division, and build population and population-related properties from the official population counts in Statoids.
+    </p>
+    <p>
+     A list of newly harvested Statoids properties, below:
+    </p>
+    <ul>
+     <li>
+      <code>
+       src:population
+      </code>
+     </li>
+     <li>
+      <code>
+       statoids:area_km
+      </code>
+     </li>
+     <li>
+      <code>
+       statoids:area_mi
+      </code>
+     </li>
+     <li>
+      <code>
+       statoids:capital
+      </code>
+     </li>
+     <li>
+      <code>
+       statoids:country
+      </code>
+     </li>
+     <li>
+      <code>
+       statoids:as_of_date
+      </code>
+     </li>
+     <li>
+      <code>
+       statoids:hasc
+      </code>
+     </li>
+     <li>
+      <code>
+       statoids:name
+      </code>
+     </li>
+     <li>
+      <code>
+       statoids:population
+      </code>
+     </li>
+     <li>
+      <code>
+       statoids:statoid
+      </code>
+     </li>
+     <li>
+      <code>
+       statoids:timezone
+      </code>
+     </li>
+     <li>
+      <code>
+       statoids:type
+      </code>
+     </li>
+     <li>
+      <code>
+       wof:population
+      </code>
+     </li>
+     <li>
+      <code>
+       wof:population_rank
+      </code>
+     </li>
+     <li>
+      <code>
+       src:population
+      </code>
+     </li>
+     <li>
+      <code>
+       wof:placetype_local
+      </code>
+     </li>
+     <li>
+      various
+      <code>
+       name:*
+      </code>
+      properties
+     </li>
+    </ul>
+    <p>
+     Below you can see HASC codes and populations for Panama, Yemen, and the Central African Republic, showing the HASC code and population for both
+     <code>
+      region
+     </code>
+     and
+     <code>
+      county
+     </code>
+     , along with the localized name for the
+     <code>
+      county
+     </code>
+     . Color intensity is relative to the
+     <code>
+      region
+     </code>
+     and
+     <code>
+      county
+     </code>
+     population data. Note that we’re filtering and revealing data and labels at different zoom levels – zoom in to explore, and
+     <a href="/resources/blog/statoids/index.html">
+      open full-screen for variable zoom
+     </a>
+     !
+    </p>
+    <div class="demo-wrapper" id="bike">
+     <iframe src="/resources/blog/statoids/index.html">
+     </iframe>
+    </div>
+    <p>
+     <em>
+      <a href="/resources/blog/statoids/index.html">
+       Open full-screen
+      </a>
+      and
+      <a href="https://mapzen.com/tangram/play/?api=22/1018#6.167/7.403/20.723">
+       check out the scene file in Tangram Play
+      </a>
+      to see how we built it. We aggregated this data using the
+      <a href="https://whosonfirst.mapzen.com/spelunker/download/85632499/?exclude=nullisland">
+       Who’s On First Descender
+      </a>
+      .
+     </em>
+    </p>
+    <h3 id="now,-an-example...">
+     Now, an example…
+    </h3>
+    <p>
+     Let’s take a look at the Who’s On First record for
+     <a href="https://whosonfirst.mapzen.com/spelunker/id/85681463/">
+      Queensland, Australia
+     </a>
+     . Queensland gained both top-level
+     <code>
+      statoids:*
+     </code>
+     properties, as well as
+     <code>
+      wof:*
+     </code>
+     ,
+     <code>
+      src:*
+     </code>
+     , and concordance properties.
+    </p>
+    <p>
+     Here are the new Statoids properties and how they apply to Queensland:
+    </p>
+    <table>
+     <thead>
+      <tr>
+       <th style="text-align: left">
+        Property Name
+       </th>
+       <th style="text-align: left">
+        Description
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td style="text-align: left">
+        <code>
+         &#34;statoids:country&#34;:&#34;AU&#34;
+        </code>
+       </td>
+       <td style="text-align: left">
+        The country code used by Statoids for the record’s parent country (in this case,
+        <a href="https://whosonfirst.mapzen.com/spelunker/id/85632793/">
+         Australia
+        </a>
+        )
+       </td>
+      </tr>
+      <tr>
+       <td style="text-align: left">
+        <code>
+         &#34;statoids:gec&#34;:&#34;AS04&#34;
+        </code>
+       </td>
+       <td style="text-align: left">
+        The
+        <code>
+         gec
+        </code>
+        identifier for Queensland (also stored in concordances)
+       </td>
+      </tr>
+      <tr>
+       <td style="text-align: left">
+        <code>
+         &#34;statoids:hasc&#34;:&#34;AU.QL&#34;
+        </code>
+       </td>
+       <td style="text-align: left">
+        The
+        <code>
+         hasc:id
+        </code>
+        for Queensland (also stored in concordances)
+       </td>
+      </tr>
+      <tr>
+       <td style="text-align: left">
+        <code>
+         &#34;statoids:iso&#34;:&#34;QLD&#34;
+        </code>
+       </td>
+       <td style="text-align: left">
+        The ISO alpha-3 code for Queensland (also stored in concordances)
+       </td>
+      </tr>
+      <tr>
+       <td style="text-align: left">
+        <code>
+         &#34;statoids:name&#34;:&#34;Queensland&#34;
+        </code>
+       </td>
+       <td style="text-align: left">
+        The English, UTF-8 name for this record in Statoids
+       </td>
+      </tr>
+      <tr>
+       <td style="text-align: left">
+        <code>
+         &#34;statoids:population&#34;:&#34;4332739&#34;
+        </code>
+       </td>
+       <td style="text-align: left">
+        The catalogued population for Queensland, see below
+       </td>
+      </tr>
+      <tr>
+       <td style="text-align: left">
+        <code>
+         &#34;statoids:type&#34;:&#34;state&#34;
+        </code>
+       </td>
+       <td style="text-align: left">
+        What locals call this administrative division, see below
+       </td>
+      </tr>
+      <tr>
+       <td style="text-align: left">
+        <code>
+         &#34;statoids:tz&#34;:&#34;+10&#34;
+        </code>
+       </td>
+       <td style="text-align: left">
+        The timezone of Queensland, represented by the difference from GMT
+       </td>
+      </tr>
+      <tr>
+       <td style="text-align: left">
+        <code>
+         &#34;wof:placetype_local&#34;:&#34;state&#34;
+        </code>
+       </td>
+       <td style="text-align: left">
+        A top-level
+        <code>
+         wof:*
+        </code>
+        property, harvested from the
+        <code>
+         statoids:type
+        </code>
+        property
+       </td>
+      </tr>
+      <tr>
+       <td style="text-align: left">
+        <code>
+         &#34;wof:population&#34;:4332739
+        </code>
+       </td>
+       <td style="text-align: left">
+        A top-level
+        <code>
+         wof:*
+        </code>
+        property, harvested from the
+        <code>
+         statoids:population
+        </code>
+        property
+       </td>
+      </tr>
+      <tr>
+       <td style="text-align: left">
+        <code>
+         &#34;wof:population_rank&#34;:12
+        </code>
+       </td>
+       <td style="text-align: left">
+        A top-level
+        <code>
+         wof:*
+        </code>
+        property, an integer value (0-18), built from
+        <code>
+         wof:population
+        </code>
+       </td>
+      </tr>
+      <tr>
+       <td style="text-align: left">
+        <code>
+         &#34;src:population&#34;:&#34;statoids&#34;
+        </code>
+       </td>
+       <td style="text-align: left">
+        The source used to build
+        <code>
+         wof:population
+        </code>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 id="results">
+     Results
+    </h2>
+    <p>
+     As of today, Who’s On First has added properties for
+     <strong>
+      256
+     </strong>
+     top-level administrative entities (
+     <code>
+      country
+     </code>
+     and
+     <code>
+      dependency
+     </code>
+     records). Additionally,
+     <strong>
+      3,811
+     </strong>
+     primary administrative divisions were updated with new properties and concordances and
+     <strong>
+      22,993
+     </strong>
+     secondary administrative divisions were updated with new properties and concordances.  Take a look at the new
+     <code>
+      statoids:*
+     </code>
+     properties and all the concordances we now have! Links to selected updated records at the
+     <code>
+      country
+     </code>
+     ,
+     <code>
+      region
+     </code>
+     , and
+     <code>
+      county
+     </code>
+     placetypes are below.
+    </p>
+    <h3 id="a-few-examples,-by-placetype">
+     A few examples, by placetype
+    </h3>
+    <p>
+     <strong>
+      Country
+     </strong>
+    </p>
+    <p>
+     A few top-level countries that received new
+     <code>
+      statoids:*
+     </code>
+     properties and concordances:
+    </p>
+    <ul>
+     <li>
+      <a href="https://whosonfirst.mapzen.com/spelunker/id/85632173">
+       Lesotho
+      </a>
+     </li>
+     <li>
+      <a href="https://whosonfirst.mapzen.com/spelunker/id/85632181">
+       Myanmar
+      </a>
+     </li>
+     <li>
+      <a href="https://whosonfirst.mapzen.com/spelunker/id/85632299">
+       Qatar
+      </a>
+     </li>
+    </ul>
+    <p>
+     <strong>
+      Region
+     </strong>
+    </p>
+    <p>
+     Some primary divisions that received new
+     <code>
+      statoids:*
+     </code>
+     properties and concordances:
+    </p>
+    <ul>
+     <li>
+      <a href="https://whosonfirst.mapzen.com/spelunker/id/85673203/">
+       South Chungcheong, South Korea
+      </a>
+     </li>
+     <li>
+      <a href="https://whosonfirst.mapzen.com/spelunker/id/85671149/">
+       Addis Ababa, Ethiopia
+      </a>
+     </li>
+     <li>
+      <a href="https://whosonfirst.mapzen.com/spelunker/id/85670391/">
+       San José, Costa Rica
+      </a>
+     </li>
+    </ul>
+    <p>
+     <strong>
+      County
+     </strong>
+    </p>
+    <p>
+     Examples of secondary divisions that received new
+     <code>
+      statoids:*
+     </code>
+     properties and concordances:
+    </p>
+    <ul>
+     <li>
+      <a href="https://whosonfirst.mapzen.com/spelunker/id/1092041727/">
+       Tariat, Arhangay, Mongolia
+      </a>
+     </li>
+     <li>
+      <a href="https://whosonfirst.mapzen.com/spelunker/id/1092030459/">
+       Paktha, Bokeo, Laos
+      </a>
+     </li>
+     <li>
+      <a href="https://whosonfirst.mapzen.com/spelunker/id/421179955/">
+       Vlorë, Sarandë, Albania
+      </a>
+     </li>
+    </ul>
+    <h2 id="next-steps?">
+     Next Steps?
+    </h2>
+    <p>
+     This work is far from over. Follow-up issues to untangle recent administrative changes in all countries have been filed, and additional concordance work will be done to improve our records with more top-level properties, more names, more detailed geometries and alt-geometries, and add even more concordances. We are working to import more properties from
+     <a href="https://www.geonames.com">
+      GeoNames
+     </a>
+     ,
+     <a href="https://www.wikidata.com">
+      Wikidata
+     </a>
+     , and
+     <a href="https://www.naturalearth.com">
+      Natural Earth
+     </a>
+     . Stay tuned for more!
+    </p>
+    <p>
+     If you would like to contribute, file a new issue in the
+     <a href="https://github.com/whosonfirst-data/whosonfirst-data/issues/new">
+      whosonfirst-data
+     </a>
+     repository or
+     <a href="mailto:hello@mapzen.com">
+      drop us a line
+     </a>
+     !
+    </p>
+    <p>
+     <em>
+      Photo Credit:
+      <a href="https://flic.kr/p/SacxZh">
+       sagesolar. (Flickr, CC BY 2.0)
+      </a>
+     </em>
+    </p>
+   </div>
+   <div class="headroom-large footroom-large text-center hidden-print">
+    <div class="social-buttons hidden-print">
+     <ul>
+      <li class="social-button social-button-twitter">
+       <a href="http://twitter.com/home?status=Statoids, Mesoshapes, and Who&#39;s On First%20@mapzen%20https://mapzen.com/blog/introducting-statoids" class="social-popup" title="Twitter">
+        <span class="icon">
+         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" space="preserve">
+          <path d="M24.253,8.756C24.689,17.08,18.297,24.182,9.97,24.62c-3.122,0.162-6.219-0.646-8.861-2.32
+            c2.703,0.179,5.376-0.648,7.508-2.321c-2.072-0.247-3.818-1.661-4.489-3.638c0.801,0.128,1.62,0.076,2.399-0.155
+            C4.045,15.72,2.215,13.6,2.115,11.077c0.688,0.275,1.426,0.407,2.168,0.386c-2.135-1.65-2.729-4.621-1.394-6.965
+            C5.575,7.816,9.54,9.84,13.803,10.071c-0.842-2.739,0.694-5.64,3.434-6.482c2.018-0.623,4.212,0.044,5.546,1.683
+            c1.186-0.213,2.318-0.662,3.329-1.317c-0.385,1.256-1.247,2.312-2.399,2.942c1.048-0.106,2.069-0.394,3.019-0.851
+            C26.275,7.229,25.39,8.196,24.253,8.756z">
+          </path>
+         </svg>
+        </span>
+        <span class="sr-only">
+         twitter
+        </span>
+       </a>
+      </li>
+      <li class="social-button social-button-facebook">
+       <a href="https://www.facebook.com/sharer/sharer.php?u=https://mapzen.com/blog/introducting-statoids" class="social-popup" title="Facebook">
+        <span class="icon">
+         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" space="preserve">
+          <path d="M27.825,4.783c0-2.427-2.182-4.608-4.608-4.608H4.783c-2.422,0-4.608,2.182-4.608,4.608v18.434
+              c0,2.427,2.181,4.608,4.608,4.608H14V17.379h-3.379v-4.608H14v-1.795c0-3.089,2.335-5.885,5.192-5.885h3.718v4.608h-3.726
+              c-0.408,0-0.884,0.492-0.884,1.236v1.836h4.609v4.608h-4.609v10.446h4.916c2.422,0,4.608-2.188,4.608-4.608V4.783z">
+          </path>
+         </svg>
+        </span>
+        <span class="sr-only">
+         facebook
+        </span>
+       </a>
+      </li>
+      <li class="social-button social-button-pinterest">
+       <a href="http://pinterest.com/pin/create/button/?url=https://mapzen.com/blog/introducting-statoids&amp;media=https://mapzen-assets.s3.amazonaws.com/images/statoids-meso/main_photo.jpg&amp;description=Statoids, Mesoshapes, and Who&#39;s On First" class="social-popup" title="Pinterest">
+        <span class="icon">
+         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" space="preserve">
+          <path d="M14.021,1.57C6.96,1.57,1.236,7.293,1.236,14.355c0,7.062,5.724,12.785,12.785,12.785c7.061,0,12.785-5.725,12.785-12.785
+            C26.807,7.294,21.082,1.57,14.021,1.57z M15.261,18.655c-1.161-0.09-1.649-0.666-2.559-1.219c-0.501,2.626-1.113,5.145-2.925,6.458
+            c-0.559-3.971,0.822-6.951,1.462-10.116c-1.093-1.84,0.132-5.545,2.438-4.632c2.837,1.123-2.458,6.842,1.099,7.557
+            c3.711,0.744,5.227-6.439,2.925-8.775c-3.325-3.374-9.678-0.077-8.897,4.754c0.19,1.178,1.408,1.538,0.489,3.168
+            C7.165,15.378,6.53,13.7,6.611,11.462c0.131-3.662,3.291-6.227,6.46-6.582c4.007-0.448,7.771,1.474,8.29,5.239
+            c0.579,4.255-1.816,8.865-6.102,8.533L15.261,18.655z">
+          </path>
+         </svg>
+        </span>
+        <span class="sr-only">
+         pinterest
+        </span>
+       </a>
+      </li>
+      <li class="social-button social-button-email">
+       <a href="mailto:?subject=Statoids, Mesoshapes, and Who&#39;s On First&amp;body=https://mapzen.com/blog/introducting-statoids" class="social-popup" title="E-mail">
+        <span class="icon">
+         <svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" space="preserve">
+          <g>
+           <path d="M20.111 26.147c-2.336 1.051-4.361 1.401-7.125 1.401c-6.462 0-12.146-4.633-12.146-12.265 c0-7.94 5.762-14.833 14.561-14.833c6.853 0 11.8 4.7 11.8 11.252c0 5.684-3.194 9.265-7.399 9.3 c-1.829 0-3.153-0.934-3.347-2.997h-0.077c-1.208 1.986-2.96 2.997-5.023 2.997c-2.532 0-4.361-1.868-4.361-5.062 c0-4.749 3.504-9.071 9.111-9.071c1.713 0 3.7 0.4 4.6 0.973l-1.169 7.203c-0.388 2.298-0.116 3.3 1 3.4 c1.673 0 3.773-2.102 3.773-6.58c0-5.061-3.27-8.994-9.303-8.994c-5.957 0-11.175 4.673-11.175 12.1 c0 6.5 4.2 10.2 10 10.201c1.986 0 4.089-0.43 5.646-1.245L20.111 26.147z M16.646 10.1 c-0.311-0.078-0.701-0.155-1.207-0.155c-2.571 0-4.595 2.53-4.595 5.529c0 1.5 0.7 2.4 1.9 2.4 c1.441 0 2.959-1.828 3.311-4.087L16.646 10.068z">
+           </path>
+          </g>
+         </svg>
+        </span>
+        <span class="sr-only">
+         email
+        </span>
+       </a>
+      </li>
+     </ul>
+    </div>
+   </div>
+   <div class="post-meta headroom text-center">
+    <div class="byline">
+     <span class="byline-date no-top-margin">
+      19 September 2017
+     </span>
+    </div>
+    <ul class="author-blurbs clearfix">
+     <li class="author-blurb author-blurb-half-width">
+      <div class="author-blurb-portrait">
+       <a href="https://twitter.com/stepps00" class="no-print-link">
+        <img class="avatar" src=" https://avatars3.githubusercontent.com/u/18567700 ">
+       </a>
+      </div>
+      <div class="author-blurb-text">
+       <span class="byline-author">
+        <a href="https://twitter.com/stepps00" class="no-print-link">
+         Stephen Epps
+        </a>
+       </span>
+       <p>
+        Stephen is Mapzen&#39;s gardener and fixer-upper of geographic data.
+       </p>
+      </div>
+     </li>
+     <li class="author-blurb author-blurb-half-width">
+      <div class="author-blurb-portrait">
+       <a href="https://twitter.com/kelsoscorner" class="no-print-link">
+        <img class="avatar" src=" https://www.gravatar.com/userimage/3501320/c1d5ee2eb950f87d2febe309ea5a1ce5.png ">
+       </a>
+      </div>
+      <div class="author-blurb-text">
+       <span class="byline-author">
+        <a href="https://twitter.com/kelsoscorner" class="no-print-link">
+         Nathaniel Vaughn Kelso
+        </a>
+       </span>
+       <p>
+        Map geek, cartographer, and data omnivore. Nathaniel leads the data team at Mapzen and vacations @nullisland.
+       </p>
+      </div>
+     </li>
+    </ul>
+   </div>
+   <div class="pagination headroom hidden-print">
+    <a class="pagination-link pagination-previous" href="/blog/mapzen-places-libpostal">
+     <i class="fa fa-fw fa-angle-left">
+     </i>
+     <span class="pagination-link-text">
+      Welcoming Mapzen Places and Libpostal to Mapzen Flex
+     </span>
+    </a>
+    <a class="pagination-link pagination-next" href="/blog/map-matching-post-processing">
+     <i class="fa fa-fw fa-angle-right">
+     </i>
+     <span class="pagination-link-text">
+      A &#34;data-driven&#34; approach to improving map-matching, Part III -- Post-processing for Quality
+     </span>
+    </a>
+   </div>
+  </div>
+ </div>
+</div>
