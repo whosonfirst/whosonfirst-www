@@ -20,7 +20,7 @@ BLOG="${WWW}/blog"
 
 PUP="${UTILS}/darwin/pup"	# PLEASE FIX ME TO CHECK OS...
 
-for URL in `cat ${BLOG}/index.html | ${PUP} '.wof-blog-post attr{href}' | grep -v .pdf`
+for URL in `cat ${BLOG}/index.html | ${PUP} '.blog-post attr{href}' | grep -v .pdf`
 do
 
     FNAME=`basename ${URL}`
