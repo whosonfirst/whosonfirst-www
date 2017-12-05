@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Retail and Services Classifiers</title>
+    <meta charset="utf-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="https://mapzen.com/js/mapzen.css" />
+    <script src="https://mapzen.com/js/mapzen.min.js"></script>
+    <style>
+      html, body { margin: 0; padding: 0; }
+      #map { height: 100%; width: 100%; position: absolute; }
+
+        .legend {
+            background: rgba(255, 255, 255, 0.85);
+            padding: 5px 10px;
+            width: 230px; /*width: 120px;*/
+            border-radius: 5px;
+        }
+        .circle {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            border: 2px solid black;
+        }
+        .tooltip-content {
+            width: 300px;
+            word-wrap: break-word;
+        }
+        .tooltip-content p {
+            margin: 2px 0;
+        }
+        /* leaflet override forces tooltip text to wrap */
+        .leaflet-tooltip{
+            white-space: normal;
+        }
+    </style>
+  </head>
+  <body>
+  <div id="map"></div>
+  <script>
+    var click_lat, click_lng
+    var lat, lng
+    var bike_lat, bike_lng;
+
+    var collide_labels = true
+    var filter = {bar: 0, services: 0, professional: 0, retail: 0, food: 0, doctor: 0, construction: 0, others: 0, transportation: 0};
+    var filter_zoom = 0;
+
+    var color = { },
+        color_services,
+        color_professional,
+        color_retail,
+        color_food,
+        color_bar,
+        color_doctor,
+        color_construction,
+        color_others;
+
+    var scene,
+        legend;
+        
+    var wof_url = 'https://places.mapzen.com/v1/?method=mapzen.places.getNearby&',
+        wof_api_key = 'mapzen-UJDfMvY',
+        wof_lat, wof_lon,
+        wof_placetype = 'venue',
+        wof_radius = 500,
+        wof_per_page = 500,
+        wof_format = 'geojson',
+        wof_is_superseded = 0,
+        wof_extras = 'wof:tags,wof:concordances,mz:is_current,addr:housenumber,addr:street,wof:supersedes,wof:superseded_by,sg:classifiers,edtf:inception,edtf:cessation,';
+
+
+    var map = L.Mapzen.map('map', {
+        center: [37.74284, -122.42161],
+        zoom: 14.9,
+        tangramOptions: {
+          //scene: 'https://mapzen.com/api/scenes/22/1253/resources/blank.yaml' 
+          scene: 'wof_classifiers.yaml'
+        }
+    });
+
+    L.Mapzen.apiKey = wof_api_key 
+    L.Mapzen.hash({
+        map: map,
+    });
+
+    var popup = L.popup(),
+        tooltip = L.tooltip({
+          direction: 'top',
+          opacity: 1
+        });
+
+    /*******************
+     * Set map events
+     *******************/
+
+    map.on('tangramloaded', function(e){
+      console.log('tangram loaded')
+      var tangramLayer = e.tangramLayer;
+      scene = tangramLayer.scene;
+
+      setupKeyAndGeocoder(scene);
+
+      var center = map.getCenter()
+      var lat = center.lat
+      var lng = center.lng;
+      console.log('Tangram loaded, center of map at ', lat, lng);
+
+      getWOF(lat,lng);
+      getColors();
+      buildLegend();
+
+      tangramLayer.setSelectionEvents({
+          hover: onMapHover,
+          click: onMapClick
+      });
+
+    });
+
+    // May use this in the future
+    /*
+    map.on('moveend', function(e) {
+        var center = map.getCenter(),
+            lat = center.lat,
+            lng = center.lng;
+
+        console.log('moved map to', lat, lng);
+        getWOF(lat,lng)
+    });
+    */
+
+    function setupKeyAndGeocoder(scene) {
+      L.Mapzen.apiKey = scene.config.global.sdk_mapzen_api_key
+      wof_api_key = L.Mapzen.apiKey
+      geocoder = L.Mapzen.geocoder();
+      geocoder.addTo(map);
+    }
+
+    function onMapHover(selection) {
+
+      if (selection.feature && selection.feature.properties['wof:id']){
+        // Show popup on hover
+        var latlng = getLatLngFromSelection(selection),
+            props = selection.feature.properties,
+            label = buildLabel(props);
+
+        showTooltip(latlng, label);
+
+        // Update cursor on hover
+        document.getElementById('map').style.cursor = 'pointer';
+      } 
+      else {
+        hideTooltip();
+        document.getElementById('map').style.cursor = '';
+      }
+    }
+
+    function onMapClick(selection){
+        var latlng = selection.leaflet_event.latlng;
+        lat = latlng.lat,
+        lng = latlng.lng;
+      console.log('Tangram loaded, center of map at ', lat, lng);
+        // If user clicked on a venue, show popup
+        if (selection.feature && selection.feature.properties['wof:id']){
+            var props = selection.feature.properties,
+                label = buildLabel(props, 'full'),
+                latlng = getLatLngFromSelection(selection);
+
+            showPopup(latlng, label);
+
+        // If user did not click on a venue, fetch venues
+        } else {
+            console.log('clicked, fetching venues')
+            getWOF(lat,lng)
+        }
+    }
+
+    function buildLabel(props, style) {
+      var classifiers = getClassifiers(props);
+
+      var current = '',
+          slash = '',
+          inception = '',
+          cessation = '';
+
+      if (props['mz:is_current'] == 1){
+          current = "this is a venue that we believe to be open"
+      } else if (props['mz:is_current'] == 0){
+          current = "this is a venue that we believe to be closed"
+      } 
+      if (props['edtf:inception'] != 'uuuu'){
+          inception = props['edtf:inception']
+          slash = "/"
+      }
+      if (props['edtf:cessation'] != 'uuuu'){
+          cessation = props['edtf:cessation']
+          slash = "/"
+      }
+
+      var label = "<h2>" + props['wof:name'] + "</h2>"
+                + '<p>' + props['addr:housenumber'] + " " + props['addr:street'] + '</p>'
+                + '<i>' + current + inception + slash + cessation + '</i> '
+                + '<p><b>WOF ID:</b> ' + props['wof:id'] + '</p>'
+                + '<p><b>tags:</b> ' + props['wof:tags'] + '</p>'
+                + '<p><b>classifiers:</b> ' + classifiers + '</p>';
+
+      if (style == 'full') {
+          label += '<a href="https://whosonfirst.mapzen.com/spelunker/id/'
+                + props['wof:id'] 
+                + '" target="_blank">view</a> / <a href="https://whosonfirst.mapzen.com/boundaryissues/id/' 
+                + props['wof:id'] 
+                + '" target="_blank">edit</a>';
+      }
+      return label;
+    }
+
+    function showPopup(latlng, label) {
+      popup
+        .setLatLng(latlng)
+        .setContent('<div class="tooltip-content">' + label + '</div>')
+        .openOn(map);
+    }
+
+    function showTooltip(latlng, label) {
+      tooltip
+        .setLatLng(latlng)
+        .setContent('<div class="tooltip-content">' + label + '</div>')
+        .addTo(map);
+    }
+
+    function hideTooltip() {
+      tooltip.remove();
+    }
+
+    function getLatLngFromSelection(selection) {
+      var latlng = selection.leaflet_event.latlng;
+
+      // Use WOF's lat/lng if available
+      if (selection.feature.properties['geom:latitude'] && selection.feature.properties['geom:longitude']) {
+        latlng = {
+          lat: selection.feature.properties['geom:latitude'],
+          lng: selection.feature.properties['geom:longitude']
+        }
+      }
+
+      return latlng;
+    }
+
+    function getClassifiers(feature){
+      var cats = []
+      if (feature["sg:classifiers"]){
+        for (var classifier in feature["sg:classifiers"]){
+            var category = (feature["sg:classifiers"][classifier]["category"])
+            var subcat = (feature["sg:classifiers"][classifier]["subcategory"])
+            var type = (feature["sg:classifiers"][classifier]["type"])
+            var text = category + "/" + subcat + "/" + type 
+            // cats += item
+            cats.push(text)
+        }
+      }
+      return cats.join() ;
+    }
+
+    function getWOF(lat,lng){
+      if (scene) {
+        scene.setDataSource('venues', { type: 'GeoJSON', url: wof_url, url_params: { latitude: lat, longitude: lng, radius: wof_radius, per_page: wof_per_page, format: wof_format, placetype: wof_placetype, is_superseded: wof_is_superseded, api_key: wof_api_key, extras: wof_extras } })
+        scene.updateConfig();        
+      }
+    console.log('getWOF: lat: ' + lat + ' lon: ' + lng + ' radius: ' + wof_radius + ' per_page: ' + wof_per_page)        
+
+    }
+
+    function getColors(){
+      color_professional = convertRGB(scene.config.global.professional.color.slice())
+      color_retail = convertRGB(scene.config.global.retail.color.slice())
+      color_food = convertRGB(scene.config.global.food.color.slice())
+      color_bar = convertRGB(scene.config.global.bar.color.slice())
+      color_doctor = convertRGB(scene.config.global.doctor.color.slice())
+      color_services = convertRGB(scene.config.global.services.color.slice())
+      color_construction = convertRGB(scene.config.global.construction.color.slice())
+      color_transportation = convertRGB(scene.config.global.transportation.color.slice())
+      color_others = convertRGB(scene.config.global.others.color.slice())
+      console.log('pulled colors from scene file')
+    }
+
+    function convertRGB(color){
+        color[0] = Math.floor(color[0]*255)
+        color[1] = Math.floor(color[1]*255)
+        color[2] = Math.floor(color[2]*255)
+        color[3] = 0.75
+        //console.log('converted color to rgb 255:' + color.toString())
+        return color
+    }
+
+        function toggle (toggle){
+        //  1: only show that layer, hide others.
+        // -1, don't show that layer, show others. 
+        //  0: show that layer with others
+            if (filter[toggle] == 0){
+                // disable all layers except the one selected
+                filter[toggle] = 1
+                for (var layer in scene.config.layers._venues){
+                    //scene.config.layers._venues[layer].enabled = true
+                    if (filter[layer] == 1){
+                        scene.config.layers._venues[layer].enabled = true
+                    } else {
+                    scene.config.layers._venues[layer].enabled = false
+                    }
+                }
+                console.log(scene.config.global[toggle].key + ' is for ' + scene.config.global[toggle].short + ': ' + filter[toggle])
+            } else if (filter[toggle] == 1){ 
+                // enable all layers except the one selected
+                filter[toggle] = -1
+                for (var layer in scene.config.layers._venues){
+                    if (filter[layer] == -1){
+                        scene.config.layers._venues[layer].enabled = false
+                    } else {
+                    scene.config.layers._venues[layer].enabled = true
+                    }
+                }
+                console.log(scene.config.global[toggle].key + ' is for no '+ scene.config.global[toggle].short + ': ' + filter[toggle])                
+            } else if (filter[toggle] == -1){ 
+                // reset the layer being toggled, keeping others already hidden, hidden
+                filter[toggle] = 0
+                for (var layer in scene.config.layers._venues){
+                    if (filter[layer] == -1){
+                        scene.config.layers._venues[layer].enabled = false
+                    } else {
+                    scene.config.layers._venues[layer].enabled = true
+                    }
+                }
+                console.log(scene.config.global[toggle].key + ' is for '+ scene.config.global[toggle].short + ' and everything: ' + filter[toggle])                
+            }
+            for (var layer in filter){
+                console.log('filter ' + layer + ': ' + filter[layer])
+            }
+            map.removeControl(legend)
+            console.log('removing legend')
+            buildLegend();
+            console.log('rebuilding legend')
+        }
+
+//         map.on("keypress", function(e) {
+        document.onkeydown = function(e) {
+            e = e || window.event;
+            switch(e.key) {
+//               case 's':
+//                 scene.screenshot().then(function(screenshot) { window.open(screenshot.url); });
+//                 break;
+              case 'b':
+                toggle('bar')
+                break; 
+              case 'c':
+                toggle('construction')
+                break;      
+              case 'd':
+                toggle('doctor')
+                break;  
+              case 'f':
+                toggle('food')
+                break; 
+              case 'p':
+                toggle('professional')
+                break;  
+              case 'r':
+                toggle('retail')
+                break;      
+              case 's':
+                toggle('services')
+                break;  
+              case 't':
+                toggle('transportation')
+                break;    
+              case 'o':
+                toggle('others')
+                break;  
+                
+              case 'a':
+                for (var layer in scene.config.layers._venues){
+                    scene.config.layers._venues[layer].enabled = true
+                    filter[layer] = 0
+                    console.log('all: enabling ' + layer)
+                    map.removeControl(legend)
+                    console.log('all: removing legend')
+                    buildLegend();
+                    console.log('all: rebuilding legend')
+                }
+                break; 
+
+              case 'u':
+                console.log('blend_order before = ' + scene.config.styles._points1.blend_order)
+                if (scene.config.styles._points1.blend_order == 1){
+                    scene.config.styles._points1.blend_order = 4
+                } else {
+                    scene.config.styles._points1.blend_order = 1
+                }
+                console.log('blend_order after = ' + scene.config.styles._points1.blend_order)
+
+//                 for (var layer in scene.config.layers._venues){
+//                     console.log('looking in ' + layer)
+//                     if (scene.config.layers._venues[layer].draw.points.style){
+// //                         scene.config.layers._venues[layer].draw.points.style = '_points4'
+//                         console.log('changing points style to  ' + scene.config.layers._venues[layer].draw.points.style)
+//                     }
+//                 }
+                break; 
+                     
+                           
+              case '1':
+                wof_radius = 100
+                getWOF(lat,lng)
+                console.log('1 is for a wof_radius of ' + wof_radius) 
+                map.removeControl(legend)
+                buildLegend();
+                break;  
+              case '2':
+                wof_radius = 200
+                getWOF(lat,lng)
+                console.log('2 is for a wof_radius of ' + wof_radius) 
+                map.removeControl(legend)
+                buildLegend();
+                break;                          
+              case '3':
+                wof_radius = 300
+                getWOF(lat,lng)
+                console.log('3 is for a wof_radius of ' + wof_radius) 
+                map.removeControl(legend)
+                buildLegend();
+                break;    
+              case '4':
+                wof_radius = 400
+                getWOF(lat,lng)
+                console.log('4 is for a wof_radius of ' + wof_radius)
+                map.removeControl(legend)
+                buildLegend();
+                break;    
+              case '5':
+                wof_radius = 500
+                getWOF(lat,lng)
+                console.log('4 is for a wof_radius of ' + wof_radius)
+                map.removeControl(legend)
+                buildLegend();
+                break;    
+              case '6':
+                wof_radius = 750
+                getWOF(lat,lng)
+                console.log('5 is for a wof_radius of ' + wof_radius)  
+                map.removeControl(legend)
+                buildLegend();
+                break;    
+              case '7':
+                wof_radius = 1000
+                getWOF(lat,lng)
+                console.log('7 is for a wof_radius of ' + wof_radius)  
+                map.removeControl(legend)
+                buildLegend();
+                break;    
+              case '7':
+                wof_radius = 1500
+                getWOF(lat,lng)
+                console.log('7 is for a wof_radius of ' + wof_radius)  
+                map.removeControl(legend)
+                buildLegend();
+                break;    
+              case '8':
+                wof_radius = 2500
+                getWOF(lat,lng)
+                console.log('8 is for a wof_radius of ' + wof_radius)  
+                map.removeControl(legend)
+                buildLegend();
+                break;    
+              case '9':
+                wof_radius = 3000
+                getWOF(lat,lng)
+                console.log('9 is for a wof_radius of ' + wof_radius)  
+                map.removeControl(legend)
+                buildLegend();
+                break;    
+              case '0':
+                wof_radius = 5000
+                getWOF(lat,lng)
+                console.log('0 is for a wof_radius of ' + wof_radius)  
+                map.removeControl(legend)
+                buildLegend();
+                break;    
+                                               
+              case 'l':
+                console.log('l is for labels')
+                console.log('BEFORE: collide: ' + scene.config.global.text.collide)
+                if (scene.config.global.text.collide == true){
+                    console.log('collide the labels')
+                    scene.config.global.text.collide = false
+                    console.log('AFTER: collide: ' + scene.config.global.text.collide)
+                } else if (scene.config.global.text.collide == false){
+                    console.log('show ALL of the labels oh god so many labels press L again please')
+                    scene.config.global.text.collide = true
+                    console.log('AFTER: collide: ' + scene.config.global.text.collide)
+                }  
+                break; 
+              default:
+                // do nothing
+                return;
+            }
+            // Update basemap
+            scene.updateConfig();
+        };
+//         }); // to close map.on("keypress", function(e) {
+
+    function buildLegend(){
+        var LegendControl = L.Control.extend({
+          options: {
+              position: 'bottomleft'
+          },
+          onAdd: function (map) {
+              console.log('adding container')
+              var container = L.DomUtil.create('div', 'legend');
+              
+              var table_1 = '<tr><td><div class="circle" style="background: rgba('
+              var table_2 = ');"></div></td><td>'
+              var table_3 = ' (press '
+              var table_4 = ')</td></tr>'
+              
+              var labels = {}
+              var table_row = ''
+              
+              for (var item in scene.config.global){
+                    var format_filter_start = ""
+                    var format_filter_end = ""
+//                     console.log('testing for ' + item + ' filter: ' + filter[item])
+                    if (filter[item] == -1){
+                        console.log('striking through' + item + ' filter[item] = ' + filter[item])
+                        format_filter_start = '<del><i>'
+                        format_filter_end = '</i></del>'
+                    }
+                    if (filter[item] == 1){
+                        console.log('striking through' + item + ' filter[item] = ' + filter[item])
+                        format_filter_start = '<b>'
+                        format_filter_end = '</b>'
+                    }                    
+                    if (scene.config.global[item].legend){
+                        labels.color = convertRGB(scene.config.global[item].color.slice())
+                        labels.short = scene.config.global[item].short
+                        labels.key = scene.config.global[item].key
+//                         console.log('label: ' + labels.short + ', ' + labels.key + ', ' + labels.color )
+                        table_row += table_1 + labels.color + table_2 + format_filter_start + labels.short + format_filter_end + table_3 + labels.key + table_4
+//                         console.log(table_row) // for item-by-item legend-building troubleshooting
+                    }
+                } 
+//               console.log(table_row) // the whole dynamically generated portion of the legend
+              
+//               var html_top = '<div>'
+//                 + '<h3>WOF Classifiers</h3>' 
+//                 + '<h4>press keys to isolate/exclude/reset<br>press 1-9 for search radius<br>press L to show every label, U to raise/lower labels<br>press A to show all</h4>' 
+//                 + '<table id="travel-modes">'
+              container.innerHTML = '<div>'
+                + '<h3>WOF Classifiers</h3>' 
+                + '<h4>press keys to isolate/exclude/reset<br>press 1-9 for search radius (' + wof_radius + 'm)<br>press L to show every label<br>press U to raise/lower labels<br>press A to show all</h4>' 
+                + '<table id="travel-modes">'
+                + table_row
+                + '</table>'
+                + '</div>';
+              L.DomEvent.on(container, "click", this.onClick);
+              return container;
+          },
+          onClick: function (e) {
+            // stop propagation to avoid triggering onMapClick
+            e.stopPropagation();
+//             updateMap()
+
+          }
+        });
+        legend = new LegendControl();
+        map.addControl(legend);
+        console.log('legend added')
+    }
+
+
+    </script>
+  </body>
+</html>
