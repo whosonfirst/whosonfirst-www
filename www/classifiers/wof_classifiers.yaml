@@ -1,0 +1,357 @@
+import: 
+    # - https://mapzen.com/carto/walkabout-style/5/walkabout-style.zip
+    - https://mapzen.com/carto/refill-style/8/refill-style.zip
+    - https://mapzen-assets.s3.amazonaws.com/resources/demo.yaml
+    #- https://raw.githubusercontent.com/tangrams/walkabout-style/gh-pages/layers/bike-interlay.yaml
+    # - https://mapzen.com/carto/walkabout-style/5/layers/bike-interlay.yaml
+    # - https://mapzen.com/carto/refill-style/8/themes/detail-8.zip
+    # - https://mapzen.com/carto/refill-style/8/themes/label-5.zip
+    # - https://mapzen.com/carto/refill-style/8/themes/color-gray-gold.zip
+
+styles:
+    _text:
+        base: text
+        blend_order: 2
+    _points4:
+        base: points
+        blend_order: 4
+    _points3:
+        base: points
+        blend_order: 3
+    _points2:
+        base: points
+        blend_order: 2
+    _points1:
+        base: points
+        blend_order: 4
+    _points:
+        base: points
+        blend_order: 1
+    _lines:
+        base: lines
+        blend_order: 4
+
+global:
+    fade: 0.7
+    denver_lat: 39.7711
+    denver_lon: -105.0909
+    sf_lat: 37.7440667
+    sf_lon: -122.4214722
+    bos_lat: 42.3480
+    bos_lon: -71.0544
+    text_optional: true
+    classifier: |
+        function(feature){
+            for (var classifier in feature["sg:classifiers"]){
+                var category = (feature["sg:classifiers"][classifier]["category"] )
+                var subcat = (feature["sg:classifiers"][classifier]["subcategory"] )
+                var type = (feature["sg:classifiers"][classifier]["type"] )
+            }
+            return 
+        }
+    text: 
+        collide: true
+        optional: global.text_optional
+        style: _text
+        text_wrap: 12px
+        text_source: |
+            function(){
+                var cats = []
+                if (feature["sg:classifiers"]){
+                    for (var classifier in feature["sg:classifiers"]){
+                        var category = (feature["sg:classifiers"][classifier]["category"])
+                        var subcat = (feature["sg:classifiers"][classifier]["subcategory"])
+                        var type = (feature["sg:classifiers"][classifier]["type"])
+                        var text = '(' + category + "/" + subcat + "/" + type + ')'
+                        // cats += item
+                        cats.push(text)
+                        }
+                }
+                return feature["wof:name"]  + '\n' + cats.join() ;
+            }
+        font:
+            # style: bold
+            size: 10px
+            fill: black
+            stroke:
+                color: white
+                width: 3px
+
+
+    retail:
+        legend: true
+        order: 0
+        label: Retail, Shopping (category)
+        short: retail
+        key: r
+        color: [1,0,1,0.5]
+        filter: function() { if(feature["sg:classifiers"] && feature["sg:classifiers"][0]){ return ((feature["sg:classifiers"][0]["category"] == "Retail") ||  (feature["sg:classifiers"][0]["category"] == "Shopping"))} else {return false} }
+        #unfilter: function() { return ((feature["sg:classifiers"][0]["category"] != "Retail") &&  (feature["sg:classifiers"][0]["category"] != "Shopping"))}
+    doctor:
+        legend: true
+        order: 1
+        label: Doctor (category)
+        short: doctor
+        key: d
+        color: [1,0,0.5,0.5]
+        filter: function() { if(feature["sg:classifiers"] && feature["sg:classifiers"][0]){ return ((feature["sg:classifiers"][0]["subcategory"] == "Doctor") || (feature["sg:classifiers"][0]["category"] == "Health Services"))} else {return false} }
+        #unfilter: function() { return ((feature["sg:classifiers"][0]["subcategory"] != "Doctor") && (feature["sg:classifiers"][0]["category"] != "Health Services")) }
+        logic: (subcat == 'Doctor')
+    professional:
+        legend: true
+        order: 2
+        label: Professional (category)
+        short: professional
+        key: p
+        color: [1,0.25,0,0.5]
+        filter: function() { if(feature["sg:classifiers"] && feature["sg:classifiers"][0]){ return feature["sg:classifiers"][0]["type"] == "Professional"} else {return false} }
+        #filter: function() { return feature["sg:classifiers"][0]["category"] == "Professional" }
+        #unfilter: function() { return feature["sg:classifiers"][0]["category"] != "Professional" }
+    services:
+        legend: true
+        order: 3
+        label: Services (category)
+        short: services
+        key: s
+        color: [1,0.5,0,0.5]
+        filter: function() { if(feature["sg:classifiers"] && feature["sg:classifiers"][0]){ return feature["sg:classifiers"][0]["type"] == "Services"} else {return false} }
+        #unfilter: function() { return feature["sg:classifiers"][0]["type"] != "Services" }
+    bar:
+        legend: true
+        order: 4
+        label: Bar (category)
+        short: bar
+        key: b
+        color: [1,1,0,0.5]
+        filter: function() { if(feature["sg:classifiers"] && feature["sg:classifiers"][0]){ return feature["sg:classifiers"][0]["type"] == "Bars & Pubs"} else {return false} }
+        #filter: function() { return feature["sg:classifiers"][0]["category"] == "Bars & Pubs" }
+        #unfilter: function() { return feature["sg:classifiers"][0]["category"] != "Bars & Pubs" }
+        logic: (category == 'Bars & Pubs')
+    food:
+        legend: true
+        order: 5
+        label: Food & Drink (type), Food & Bev (category)
+        short: food
+        key: f
+        color: [0,1,0,0.5]
+        # filter: function() { return (((feature["sg:classifiers"][0]["category"] == "Food & Beverages") || (feature["sg:classifiers"][0]["type"] == "Food & Drink"))}
+        filter: function() { if(feature["sg:classifiers"] && feature["sg:classifiers"][0]){ return (((feature["sg:classifiers"][0]["category"] == "Food & Beverages") || (feature["sg:classifiers"][0]["type"] == "Food & Drink")) && (feature["sg:classifiers"][0]["category"] != "Bars & Pubs"))} else {return false}}
+        #unfilter: function() { return ((feature["sg:classifiers"][0]["category"] != "Food & Beverages") && (feature["sg:classifiers"][0]["type"] != "Food & Drink"))}
+        logic: |
+            function(){
+                if ((type == "Food & Drink") || (category == "Food & Beverages"))
+            }
+            (type == "Food & Drink") || (category == "Food & Beverages")
+    construction:
+        legend: true
+        order: 6
+        label: Building & Trades (category)
+        short: construction
+        key: c
+        color: [0,1,1,0.5]
+        filter: function() { if(feature["sg:classifiers"] && feature["sg:classifiers"][0]){ return feature["sg:classifiers"][0]["type"] == "Building & Trades"} else {return false} }
+        #filter: function() { return feature["sg:classifiers"][0]["category"] == "Building & Trades" }
+        #unfilter: function() { return feature["sg:classifiers"][0]["category"] != "Building & Trades" }
+    transportation:
+        legend: true
+        order: 7
+        label: Transportation (category)
+        short: transportation
+        key: t
+        color: [0,0.5,1,0.5]
+        filter: function() { if(feature["sg:classifiers"] && feature["sg:classifiers"][0]){ return feature["sg:classifiers"][0]["type"] == "Transportation"} else {return false} }
+        #unfilter: function() { return feature["sg:classifiers"][0]["type"] != "Transportation" }
+    none:
+        filter: 
+    others:
+        legend: true
+        order: 8
+        label: others
+        short: others
+        key: o
+        color: [0,0,1,0.5]
+        filter:
+            not: 
+                - global.doctor.filter
+                - global.food.filter
+                - global.services.filter
+                - global.construction.filter
+                - global.transportation.filter
+                - global.retail.filter
+        #unfilter: 
+        #    - global.doctor.filter
+        #    - global.food.filter
+        #    - global.services.filter
+        #    - global.construction.filter
+        #    - global.retail.filter
+sources:
+
+    venues:
+        type: GeoJSON
+        url: https://places.mapzen.com/v1/?method=mapzen.places.getNearby&
+        url_params:
+            api_key: global.sdk_mapzen_api_key
+            # latitude: global.bos_lat
+            # longitude: global.bos_lon
+            latitude: 37.7440667
+            longitude: -122.4214722
+            radius: 500
+            placetype: venue
+            # is_current: 1
+            # is_ceased: 0
+            is_superseded: 0
+            format: geojson
+            per_page: 500
+            extras: wof:tags,wof:concordances,mz:is_current,addr:housenumber,wof:supersedes,wof:superseded_by,sg:classifiers
+
+layers:
+    _venues:
+        data: {source: venues}
+        food:
+            # enabled: false
+            filter: global.food.filter
+            draw:
+                points:
+                    interactive: true
+                    style: _points1
+                    color: global.food.color
+                    size: 16px
+                    outline:
+                        width: 2px
+                        color: black
+                    collide: false
+                    text: global.text
+        bar:
+            # enabled: false
+            filter: global.bar.filter
+            draw:
+                points:
+                    interactive: true
+                    style: _points4
+                    color: global.bar.color
+                    size: 16px
+                    outline:
+                        width: 2px
+                        color: black
+                    collide: false
+                    text: global.text
+        retail:
+            # enabled: false
+            filter: global.retail.filter
+            draw:
+                points:
+                    interactive: true
+                    style: _points1
+                    color: global.retail.color
+                    size: 16px
+                    outline:
+                        width: 2px
+                        color: black
+                    collide: false
+                    text: global.text
+        doctor:
+            # enabled: false
+            filter: global.doctor.filter
+            draw:
+                points:
+                    interactive: true
+                    style: _points1
+                    color: global.doctor.color
+                    size: 16px
+                    outline:
+                        width: 2px
+                        color: black
+                    collide: false
+                    text: global.text
+        professional:
+            # enabled: false
+            filter: global.professional.filter
+            draw:
+                points:
+                    interactive: true
+                    style: _points1
+                    color: global.professional.color
+                    size: 16px
+                    outline:
+                        width: 2px
+                        color: black
+                    collide: false
+                    text: global.text
+        construction:
+            # enabled: false
+            filter: global.construction.filter
+            draw:
+                points:
+                    interactive: true
+                    style: _points1
+                    color: global.construction.color
+                    size: 16px
+                    outline:
+                        width: 2px
+                        color: black
+                    collide: false
+                    text: global.text
+        services:
+            # enabled: false
+            filter: global.services.filter
+            draw:
+                points:
+                    interactive: true
+                    style: _points1
+                    color: global.services.color
+                    size: 16px
+                    outline:
+                        width: 2px
+                        color: black
+                    collide: false
+                    text: global.text
+        transportation:
+            # enabled: false
+            filter: global.transportation.filter
+            draw:
+                points:
+                    interactive: true
+                    style: _points1
+                    color: global.transportation.color
+                    size: 16px
+                    outline:
+                        width: 2px
+                        color: black
+                    collide: false
+                    text: global.text
+        others:
+            # enabled: false
+            filter: global.others.filter
+            dots:
+                draw:
+                    points:
+                        interactive: true
+                        style: _points1
+                        color: global.others.color
+                        size: 16px
+                        outline:
+                            width: 2px
+                            color: black
+                        collide: false
+                        text: global.text
+
+
+
+        # filter: global.others
+        # filter: 
+        #     not: 
+        #         - global.doctor.filter
+        #         - global.food.filter
+        #         - global.services.filter
+        #         - global.construction.filter
+        #         - global.retail.filter
+        # filter: function() { return feature["sg:classifiers"][0]["type"] == "Food & Drink"}
+        # filter: 
+        #     not: 
+        #         - global.retail.filter
+        #         - global.food.filter
+        # filter:
+        #     any:
+                # - $zoom: {min: 15}
+                # - 'mz:is_current': -1
+

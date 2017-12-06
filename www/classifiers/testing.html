@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Retail and Services Classifiers</title>
+    <meta charset="utf-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="https://mapzen.com/js/mapzen.css" />
+    <script src="https://mapzen.com/js/mapzen.min.js"></script>
+    <script src="TangramLegendControl.js"></script>
+    <style>
+      html, body { margin: 0; padding: 0; }
+      #map { height: 100%; width: 100%; position: absolute; }
+
+      /* Legend */
+      .tangram-legend-control {
+          background: rgba(255, 255, 255, 0.85);
+          padding: 5px 10px;
+          max-width: 300px;
+          border-radius: 5px;
+      }
+      .tangram-legend-item label {
+        cursor: pointer;
+        vertical-align: middle;
+      }
+      .tangram-legend-item label input {
+        margin-right: 0.5em;
+      }
+      .circle {
+          display: inline-block;
+          width: 16px;
+          height: 16px;
+          border-radius: 50%;
+          border: 2px solid black;
+          vertical-align: middle;
+          margin: 3px 10px 3px 0;
+      }
+      .inactive {
+        color: #777;
+      }
+      .inactive .circle {
+        opacity: 0.5;
+      }
+      .toggle-all {
+        border-top: 1px solid gray;
+        padding: 10px 0 5px;
+        margin-top: 10px;
+      }
+      .separator {
+        padding: 0 3px;
+      }
+
+      /* Tooltips & Popups */
+      .tooltip-content {
+          width: 300px;
+          word-wrap: break-word;
+          padding: 5px 10px;
+      }
+      .popup-content p,
+      .tooltip-content p {
+          margin: 2px 0;
+      }
+      /* leaflet override forces tooltip text to wrap */
+      .leaflet-tooltip{
+          white-space: normal;
+      }
+    </style>
+  </head>
+  <body>
+  <div id="map"></div>
+  <script>
+
+    var legendLayers = {
+      'Retail, Shopping': 'retail',
+      'Doctor': 'doctor',
+      'Professional': 'professional',
+      'Services': 'services',
+      'Bar': 'bar',
+      'Food & Drink': 'food',
+      'Building & Trades': 'construction',
+      'Transportation': 'transportation',
+      'Other': 'others'
+    };
+    var scene,
+        legend;
+        
+    var wof_url = 'https://places.mapzen.com/v1/?method=mapzen.places.getNearby&',
+        wof_api_key = 'mapzen-UJDfMvY',
+        wof_lat, wof_lon,
+        wof_placetype = 'venue',
+        wof_radius = 500,
+        wof_per_page = 500,
+        wof_format = 'geojson',
+        wof_is_superseded = 0,
+        wof_extras = 'wof:tags,wof:concordances,mz:is_current,addr:housenumber,addr:street,wof:supersedes,wof:superseded_by,sg:classifiers,edtf:inception,edtf:cessation,';
+
+
+    var map = L.Mapzen.map('map', {
+        center: [37.74284, -122.42161],
+        zoom: 14.9,
+        tangramOptions: {
+          //scene: 'https://mapzen.com/api/scenes/22/1253/resources/blank.yaml' 
+          scene: 'wof_classifiers.yaml'
+        }
+    });
+
+    L.Mapzen.apiKey = wof_api_key 
+    L.Mapzen.hash({
+        map: map,
+    });
+
+    var popup = L.popup(),
+        tooltip = L.tooltip({
+          direction: 'top',
+          opacity: 1
+        });
+
+    /*******************
+     * Set map events
+     *******************/
+
+    map.on('tangramloaded', function(e){
+      console.log('tangram loaded')
+      var tangramLayer = e.tangramLayer;
+      scene = tangramLayer.scene;
+
+      setupKeyAndGeocoder(scene);
+
+      var center = map.getCenter(),
+          lat = center.lat,
+          lng = center.lng;
+      console.log('Tangram loaded, center of map at ', lat, lng);
+
+      getWOF(lat,lng);
+
+      // Build the legend
+      L.control.tangramLegendControl(legendLayers, {
+        scene: scene,
+        title: "WOF Classifiers"
+      }).addTo(map);
+
+      tangramLayer.setSelectionEvents({
+          hover: onMapHover,
+          click: onMapClick
+      });
+
+    });
+
+    // May use this in the future
+    /*
+    map.on('moveend', function(e) {
+        var center = map.getCenter(),
+            lat = center.lat,
+            lng = center.lng;
+
+        console.log('moved map to', lat, lng);
+        getWOF(lat,lng)
+    });
+    */
+
+    function setupKeyAndGeocoder(scene) {
+      L.Mapzen.apiKey = scene.config.global.sdk_mapzen_api_key
+      wof_api_key = L.Mapzen.apiKey
+      geocoder = L.Mapzen.geocoder();
+      geocoder.addTo(map);
+    }
+
+    function onMapHover(selection) {
+
+      if (selection.feature && selection.feature.properties['wof:id']){
+        // Show popup on hover
+        var latlng = getLatLngFromSelection(selection),
+            props = selection.feature.properties,
+            label = buildLabel(props);
+
+        showTooltip(latlng, label);
+
+        // Update cursor on hover
+        document.getElementById('map').style.cursor = 'pointer';
+      } 
+      else {
+        hideTooltip();
+        document.getElementById('map').style.cursor = '';
+      }
+    }
+
+    function onMapClick(selection){
+        var latlng = selection.leaflet_event.latlng;
+
+        // If user clicked on a venue, show popup
+        if (selection.feature && selection.feature.properties['wof:id']){
+            var props = selection.feature.properties,
+                label = buildLabel(props, 'full'),
+                latlng = getLatLngFromSelection(selection);
+
+            showPopup(latlng, label);
+
+        // If user did not click on a venue, fetch venues
+        } else {
+            console.log('clicked, fetching venues')
+            getWOF(latlng.lat,latlng.lng)
+        }
+    }
+
+    function buildLabel(props, style) {
+      var classifiers = getClassifiers(props);
+
+      var current = '',
+          slash = '',
+          inception = '',
+          cessation = '';
+
+      if (props['mz:is_current'] == 1){
+          current = "this is a venue that we believe to be open "
+      } else if (props['mz:is_current'] == 0){
+          current = "this is a venue that we believe to be closed "
+      } 
+      if (props['edtf:inception'] != 'uuuu'){
+          inception = props['edtf:inception']
+          slash = " / "
+      }
+      if (props['edtf:cessation'] != 'uuuu'){
+          cessation = props['edtf:cessation']
+          slash = " / "
+      }
+
+      var label = "<h2>" + props['wof:name'] + "</h2>"
+                + '<p>' + props['addr:housenumber'] + " " + props['addr:street'] + '</p>'
+                + '<i>' + current + inception + slash + cessation + '</i> '
+                + '<p><b>WOF ID:</b> ' + props['wof:id'] + '</p>'
+                + '<p><b>tags:</b> ' + props['wof:tags'] + '</p>'
+                + '<p><b>classifiers:</b> ' + classifiers + '</p>';
+
+      if (style == 'full') {
+          label += '<a href="https://whosonfirst.mapzen.com/spelunker/id/'
+                + props['wof:id'] 
+                + '" target="_blank">view</a> / <a href="https://whosonfirst.mapzen.com/boundaryissues/id/' 
+                + props['wof:id'] 
+                + '" target="_blank">edit</a>';
+      }
+      return label;
+    }
+
+    function showPopup(latlng, label) {
+      popup
+        .setLatLng(latlng)
+        .setContent('<div class="popup-content">' + label + '</div>')
+        .openOn(map);
+    }
+
+    function showTooltip(latlng, label) {
+      tooltip
+        .setLatLng(latlng)
+        .setContent('<div class="tooltip-content">' + label + '</div>')
+        .addTo(map);
+    }
+
+    function hideTooltip() {
+      tooltip.remove();
+    }
+
+    function getLatLngFromSelection(selection) {
+      var latlng = selection.leaflet_event.latlng;
+
+      // Use WOF's lat/lng if available
+      if (selection.feature.properties['geom:latitude'] && selection.feature.properties['geom:longitude']) {
+        latlng = {
+          lat: selection.feature.properties['geom:latitude'],
+          lng: selection.feature.properties['geom:longitude']
+        }
+      }
+
+      return latlng;
+    }
+
+    function getClassifiers(feature){
+      var cats = []
+      if (feature["sg:classifiers"]){
+        for (var classifier in feature["sg:classifiers"]){
+            var category = (feature["sg:classifiers"][classifier]["category"])
+            var subcat = (feature["sg:classifiers"][classifier]["subcategory"])
+            var type = (feature["sg:classifiers"][classifier]["type"])
+            var text = category + "/" + subcat + "/" + type 
+            // cats += item
+            cats.push(text)
+        }
+      }
+      return cats.join() ;
+    }
+
+    function getWOF(lat,lng){
+      if (scene) {
+        scene.setDataSource('venues', { type: 'GeoJSON', url: wof_url, url_params: { latitude: lat, longitude: lng, radius: wof_radius, per_page: wof_per_page, format: wof_format, placetype: wof_placetype, is_superseded: wof_is_superseded, api_key: wof_api_key, extras: wof_extras } })
+        scene.updateConfig();        
+      }
+    }
+
+    function capitalize(str) {
+      return str.charAt(0).toUpperCase() + str.substr(1).toLowerCase();
+    }
+
+    </script>
+  </body>
+</html>
