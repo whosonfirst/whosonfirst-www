@@ -67,10 +67,10 @@ css-bundle:
 www: www-dev www-prod
 
 www-dev: css
-	$(WOF_CLONE_WEBSITE) -ignore \~ -ignore .DS_Store -ignore .gitignore -strict -s3-bucket whosonfirst.dev.mapzen.com -source www/
+	$(WOF_CLONE_WEBSITE) -ignore \~ -ignore .DS_Store -ignore .gitignore -ignore README.md -strict -s3-bucket whosonfirst.dev.mapzen.com -source www/
 
 www-prod: css
-	$(WOF_CLONE_WEBSITE) -ignore \~ -ignore .DS_Store -ignore .gitignore -strict -source www/
+	$(WOF_CLONE_WEBSITE) -ignore \~ -ignore .DS_Store -ignore .gitignore -ignore README.md -strict -source www/
 
 download-content:
 	@echo "Download content/$(OUT)"
