@@ -1,0 +1,135 @@
+<h1 id="whos-on-first">Who’s On First SQLite databases</h1>
+
+<p>SQLite databases (of Who's On First data) are still considered experimental. They are still work in progress so <a href="https://github.com/whosonfirst/go-whosonfirst-sqlite/issues/">some things may not be quite right</a>, yet.</p>
+
+<p>Each SQLites database contains four tables, one containing all the data for a given Who's On First record and three others that contained name, relationship and "standard places" data. These databases will hopefully allow people to more easily bulk download a targeted subset of the entire Who's On First dataset. Currently there are only databases <a href="/docs/placetypes/">grouped by placetype</a> but eventually we will add a variety of different <q>slices</q> of the data as demand and interest require.</p>
+
+<p>The databases are created using the <a href="https://github.com/whosonfirst/go-whosonfirst-sqlite#wof-sqlite-index">wof-sqlite-index</a> tool.</p>
+
+<h2>Tables</h2>
+
+<p>Each of the SQLite databases contains the following tables:</p>
+
+<h3>Ancestors</h3>
+
+<pre>
+CREATE TABLE ancestors (
+	id INTEGER NOT NULL,
+	ancestor_id INTEGER NOT NULL,
+	ancestor_placetype TEXT,
+	lastmodified INTEGER
+);
+
+CREATE INDEX ancestors_by_id ON ancestors (id,ancestor_placetype,lastmodified);
+CREATE INDEX ancestors_by_ancestor ON ancestors (ancestor_id,ancestor_placetype,lastmodified);
+CREATE INDEX ancestors_by_lastmod ON ancestors (lastmodified);
+</pre>
+
+<h3>geojson</h3>
+
+<pre>
+CREATE TABLE geojson (
+	id INTEGER NOT NULL PRIMARY KEY,
+	body TEXT,
+	lastmodified INTEGER
+);
+
+CREATE INDEX geojson_by_lastmod ON geojson (lastmodified);
+</pre>
+
+<h3>names</h3>
+
+<pre>
+CREATE TABLE names (
+       id INTEGER NOT NULL,
+       placetype TEXT,
+       country TEXT,
+       language TEXT,
+       extlang TEXT,
+       script TEXT,
+       region TEXT,
+       variant TEXT,
+       extension TEXT,
+       privateuse TEXT,
+       name TEXT,
+       lastmodified INTEGER
+);
+
+CREATE INDEX names_by_lastmod ON names (lastmodified);
+CREATE INDEX names_by_country ON names (country,privateuse,placetype);
+CREATE INDEX names_by_language ON names (language,privateuse,placetype);
+CREATE INDEX names_by_placetype ON names (placetype,country,privateuse);
+CREATE INDEX names_by_name ON names (name, placetype, country);
+CREATE INDEX names_by_name_private ON names (name, privateuse, placetype, country);
+CREATE INDEX names_by_wofid ON names (id);
+</pre>
+
+<h3>spr</h3>
+
+<p><small style="italic"><code>spr</code> stands for "standard places response"</small></p>
+
+<pre>
+CREATE TABLE spr (
+	id INTEGER NOT NULL PRIMARY KEY,
+	parent_id INTEGER,
+	name TEXT,
+	placetype TEXT,
+	country TEXT,
+	repo TEXT,
+	latitude REAL,
+	longitude REAL,
+	min_latitude REAL,
+	min_longitude REAL,
+	max_latitude REAL,
+	max_longitude REAL,
+	is_current INTEGER,
+	is_deprecated INTEGER,
+	is_ceased INTEGER,
+	is_superseded INTEGER,
+	is_superseding INTEGER,
+	superseded_by TEXT,
+	supersedes TEXT,
+	lastmodified INTEGER
+);
+
+CREATE INDEX spr_by_lastmod ON spr (lastmodified);
+CREATE INDEX spr_by_parent ON spr (parent_id, is_current, lastmodified);
+CREATE INDEX spr_by_placetype ON spr (placetype, is_current, lastmodified);
+CREATE INDEX spr_by_country ON spr (country, placetype, is_current, lastmodified);
+CREATE INDEX spr_by_name ON spr (name, placetype, is_current, lastmodified);
+CREATE INDEX spr_by_centroid ON spr (latitude, longitude, is_current, lastmodified);
+CREATE INDEX spr_by_bbox ON spr (min_latitude, min_longitude, max_latitude, max_longitude, placetype, is_current, lastmodified);
+CREATE INDEX spr_by_repo ON spr (repo, lastmodified);
+CREATE INDEX spr_by_current ON spr (is_current, lastmodified);
+CREATE INDEX spr_by_deprecated ON spr (is_deprecated, lastmodified);
+CREATE INDEX spr_by_ceased ON spr (is_ceased, lastmodified);
+CREATE INDEX spr_by_superseded ON spr (is_superseded, lastmodified);
+CREATE INDEX spr_by_superseding ON spr (is_superseding, lastmodified);
+</pre>
+
+<h2>Downloads</h2>
+
+<p><small style="italic">These are not all the possible SQLite databases that could be made, only the ones we've made so far (December, 2017).</small></p>
+
+<ul>
+  <li><a href="borough-20171212.db.bz2">boroughs</a> <small>3 MB</small></li>
+  <li><a href="campus-20171212.db.bz2">campuses</a> <small>8 MB</small></li>
+  <li><a href="continent-20171212.db.bz2">continents</a> <small>3 MB</small></li>
+  <li><a href="country-20171212.db.bz2">countries</a> <small>97 MB</small></li>
+  <li><a href="county-20171212.db.bz2">counties</a> <small>586 MB</small></li>
+  <li><a href="dependency-20171212.db.bz2">dependencies</a> <small>less than 1MB</small></li>
+  <li><a href="disputed-20171212.db.bz2">disputed areas</a> <small>less than 1MB</small></li>
+  <li><a href="empire-20171212.db.bz2">empires</a> <small>1.5 MB</small></li>
+  <li><a href="localadmin-20171212.db.bz2">local admins</a> <small>606 MB</small></li>
+  <li><a href="locality-20171212.db.bz2">localities</a> <small>670 MB</small></li>
+  <li><a href="macrocounty-20171212.db.bz2">macrocounties</a> <small>5 MB</small></li>
+  <li><a href="macrohood-20171212.db.bz2">macrohoods</a> <small>6 MB</small></li>
+  <li><a href="macroregion-20171212.db.bz2">macroregions</a> <small>19 MB</small></li>
+  <li><a href="marinearea-20171212.db.bz2">marine areas</a> <small>2 MB</small></li>
+  <li><a href="microhood-20171212.db.bz2">microhoods</a> <small>6 MB</small></li>
+  <li><a href="neighbourhood-20171212.db.bz2">neighbourhoods</a> <small>250 MB</small></li>
+  <li><a href="ocean-20171212.db.bz2">oceans</a> <small>less than 1MB</small></li>
+  <li><a href="planet-20171212.db.bz2">planet(s)</a> <small>less than 1MB</small></li>
+  <li><a href="region-20171212.db.bz2">regions</a> <small>217 MB</small></li>
+  <li><a href="timezone-20171212.db.bz2">timezones</a> <small>15 MB</small></li>
+</ul>

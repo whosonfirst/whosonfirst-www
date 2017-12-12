@@ -26,3 +26,9 @@ home-bundles:
 	      OUT=bundles/index.html \
 	      SUBNAV_DIR=bundles \
 	      build-page-level1
+
+home-sqlite:
+	@make CONTENT=sqlite.html \
+	      OUT=sqlite/index.html \
+	      SUBNAV_DIR=sqlite \
+	      build-page-level1
