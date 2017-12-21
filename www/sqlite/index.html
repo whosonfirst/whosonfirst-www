@@ -104,6 +104,22 @@ CREATE INDEX ancestors_by_ancestor ON ancestors (ancestor_id,ancestor_placetype,
 CREATE INDEX ancestors_by_lastmod ON ancestors (lastmodified);
 </pre>
 
+<h3>concordances</h3>
+
+<pre>
+CREATE TABLE concordances (
+	id INTEGER NOT NULL,
+	concordance_id INTEGER NOT NULL,
+	concordance_souce TEXT,
+	lastmodified INTEGER
+);
+
+CREATE INDEX concordances_by_id ON concordances (id,lastmodified);
+CREATE INDEX concordances_by_other ON concordances (other_source,other_id);	
+CREATE INDEX concordances_by_other_lastmod ON concordances (other_source,other_id,lastmodified);
+CREATE INDEX ancestors_by_lastmod ON concordances (lastmodified);`
+</pre>
+
 <h3>geojson</h3>
 
 <pre>
@@ -188,30 +204,9 @@ CREATE INDEX spr_by_superseding ON spr (is_superseding, lastmodified);
 
 <h2>Downloads</h2>
 
-<p><small style="italic">These are not all the possible SQLite databases that could be made, only the ones we've made so far (December, 2017).</small></p>
+<p>The list of available SQLite databases for download is published at <a href="inventory.html" style="font-weight:700;">https://whosonfirst.mapzen.com/sqlite/inventory.html</a>.</p>
 
-<ul>
-  <li><a href="borough-20171212.db.bz2">boroughs</a> <small>3 MB</small></li>
-  <li><a href="campus-20171212.db.bz2">campuses</a> <small>8 MB</small></li>
-  <li><a href="continent-20171212.db.bz2">continents</a> <small>3 MB</small></li>
-  <li><a href="country-20171212.db.bz2">countries</a> <small>97 MB</small></li>
-  <li><a href="county-20171212.db.bz2">counties</a> <small>586 MB</small></li>
-  <li><a href="dependency-20171212.db.bz2">dependencies</a> <small>less than 1MB</small></li>
-  <li><a href="disputed-20171212.db.bz2">disputed areas</a> <small>less than 1MB</small></li>
-  <li><a href="empire-20171212.db.bz2">empires</a> <small>1.5 MB</small></li>
-  <li><a href="localadmin-20171212.db.bz2">local admins</a> <small>606 MB</small></li>
-  <li><a href="locality-20171212.db.bz2">localities</a> <small>670 MB</small></li>
-  <li><a href="macrocounty-20171212.db.bz2">macrocounties</a> <small>5 MB</small></li>
-  <li><a href="macrohood-20171212.db.bz2">macrohoods</a> <small>6 MB</small></li>
-  <li><a href="macroregion-20171212.db.bz2">macroregions</a> <small>19 MB</small></li>
-  <li><a href="marinearea-20171212.db.bz2">marine areas</a> <small>2 MB</small></li>
-  <li><a href="microhood-20171212.db.bz2">microhoods</a> <small>6 MB</small></li>
-  <li><a href="neighbourhood-20171212.db.bz2">neighbourhoods</a> <small>250 MB</small></li>
-  <li><a href="ocean-20171212.db.bz2">oceans</a> <small>less than 1MB</small></li>
-  <li><a href="planet-20171212.db.bz2">planet(s)</a> <small>less than 1MB</small></li>
-  <li><a href="region-20171212.db.bz2">regions</a> <small>217 MB</small></li>
-  <li><a href="timezone-20171212.db.bz2">timezones</a> <small>15 MB</small></li>
-</ul>
+<p>There is also a machine-readable version available at <a href="inventory.json">https://whosonfirst.mapzen.com/sqlite/inventory.json</a>.</p>
 					</div>
 				</div>
 			</article>

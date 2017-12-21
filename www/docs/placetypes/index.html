@@ -225,7 +225,13 @@ handy wof-graph-placetypes script in the py-mapzen-whosonfirst-placetypes librar
 		<script src="/javascript/mapzen.whosonfirst.subpage.js"></script>
 		<!-- JavaScript for code styling from highlightpack.js -->
 		<script src="/javascript/highlightpack.js"></script>
-		<script>hljs.initHighlightingOnLoad();</script>
+		<script>
+		  try {
+		  	hljs.initHighlightingOnLoad();
+		  } catch (e) {
+		  	console.log("HLJS", e);
+		  }
+		</script>
 	</body>
 </html>
 

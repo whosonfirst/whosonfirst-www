@@ -366,7 +366,13 @@ var show_venue = function(place) {
 		<script src="/javascript/mapzen.whosonfirst.subpage.js"></script>
 		<!-- JavaScript for code styling from highlightpack.js -->
 		<script src="/javascript/highlightpack.js"></script>
-		<script>hljs.initHighlightingOnLoad();</script>
+		<script>
+		  try {
+		  	hljs.initHighlightingOnLoad();
+		  } catch (e) {
+		  	console.log("HLJS", e);
+		  }
+		</script>
 	</body>
 </html>
 
