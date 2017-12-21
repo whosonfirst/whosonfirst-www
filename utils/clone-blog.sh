@@ -26,6 +26,8 @@ do
     FNAME=`basename ${URL}`
     POST="${BLOG}/${FNAME}"
 
+    echo "FETCH ${POST} AS ${FNAME}"
+    
     if [ ! -d ${POST} ]
     then
 	mkdir -p ${POST}

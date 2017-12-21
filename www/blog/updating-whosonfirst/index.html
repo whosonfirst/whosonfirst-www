@@ -1,0 +1,351 @@
+<div class="container" id="content">
+ <div class="row text-center headroom-large hidden-print">
+  <div class="col-xs-12">
+   <a class="btn btn-default btn-transparent" href="/blog">
+    <i class="fa fa-angle-left">
+    </i>
+    blog
+   </a>
+  </div>
+ </div>
+ <div class="row headroom-large">
+  <div class="col-md-8 col-md-offset-2">
+   <h2 class="no-margin text-center">
+    Whos On First Updates, 2017
+   </h2>
+   <ul class="tag-list headroom">
+    <a href="/tag/whosonfirst">
+     <li>
+      whosonfirst
+     </li>
+    </a>
+    <a href="/tag/data">
+     <li>
+      data
+     </li>
+    </a>
+   </ul>
+   <div class="">
+   </div>
+   <div class="static-content headroom-large blog-content">
+    <div style="margin: 0 auto; width:640px;">
+     <a href="https://mapzen-assets.s3.amazonaws.com/images/wof-updates/eraser.jpg">
+      <img src="https://mapzen-assets.s3.amazonaws.com/images/wof-updates/eraser.jpg" height="360" width="640">
+     </a>
+    </div>
+    <h2 id="so,-what&#39;s-new-in-who&#39;s-on-first?">
+     So, what’s new in Who’s On First?
+    </h2>
+    <p>
+     Before the year’s end, I wanted to take a few moments to describe three issues that we’ve recently tackled in Who’s On First. While many of the data issues in Who’s On First can be complex, each issue has to be addressed with a unique set of tools, a specific workflow, and should follow simple rules that we’ve outlined to ensure our changes and adjustments can be added to the database.
+    </p>
+    <p>
+     We’ve tackled many large-scale issues in 2017, from the
+     <a href="https://mapzen.com/blog/introducting-statoids/">
+      Statoids and Mesoshapes imports
+     </a>
+     , to
+     <a href="https://mapzen.com/blog/neighbourhood-updates-two/">
+      updating neighbourhood records
+     </a>
+     , to the
+     <a href="https://mapzen.com/blog/summer-2017-wof/">
+      GeoNames name localization
+     </a>
+     work. I wanted to outline a few of the smaller issues we’ve dealt with in the past few months, and describe what it took to fix the issues.
+    </p>
+    <p>
+     The issues are below, each with a brief description of the problem and solution. Take a look and enjoy!
+    </p>
+    <h2 id="santa-barbara-neighbourhoods">
+     Santa Barbara Neighbourhoods
+    </h2>
+    <p>
+     In October,
+     <a href="https://github.com/whosonfirst-data/whosonfirst-data/issues/997">
+      a user reported
+     </a>
+     that the record for the neighbourhood of Midco in California had
+     <a href="https://github.com/whosonfirst-data/whosonfirst-data/blob/028f288cc2a2995edb819a90d395a73c553017b0/data/420/552/455/420552455.geojson">
+      a
+      <em>
+       large
+      </em>
+      geometry
+     </a>
+     . So large, in fact, the geometry spanned some 50+ miles, from Santa Maria, CA to Santa Barbara, CA. This geometry was causing the
+     <a href="https://mapzen.com/blog/whosonfirst-api/">
+      Who’s On First API
+     </a>
+     to return peculiar hierarchy results for this area.
+    </p>
+    <p>
+     This geometry issue was two-fold; first, we needed to shrink the size of the Midco neighbourhood geometry down to a size that actually represents Midco and secondly, we needed to find a source for new neighbourhood records in Santa Barbara (Midco covered the entire city of Santa Barbara).
+    </p>
+    <p>
+     Once Midco was
+     <a href="https://whosonfirst.mapzen.com/spelunker/id/420552455/">
+      cut down to size
+     </a>
+     ,
+     <a href="https://github.com/whosonfirst/whosonfirst-sources/blob/master/sources/santabar.json">
+      openly licensed
+     </a>
+     neighbourhood data on
+     <a href="https://maps.santabarbaraca.gov/Html5Viewer/Index.html?configBase=/Geocortex/Essentials/REST/sites/City_of_Santa_Barbara__Public/viewers/SantaBarbaraPublic/virtualdirectory/Resources/Config/Default">
+      Santa Barbara’s website
+     </a>
+     was found. After downloading the neighbourhood data, I was able to mint new
+     <code>
+      wof:id
+     </code>
+     values (thank you,
+     <a href="www.brooklynintegers.com">
+      Brooklyn Integers
+     </a>
+     for new Who’s On First records), map the source properties into applicable Who’s On First
+     <a href="https://github.com/whosonfirst/whosonfirst-properties/tree/master/properties">
+      properties
+     </a>
+     , and import them as new records!
+    </p>
+    <p>
+     To download Santa Barbara neighbourhoods, use our Bundler tool,
+     <a href="https://whosonfirst.mapzen.com/spelunker/download/85921779/?exclude=nullisland">
+      here
+     </a>
+     or take a look at the geometries below!
+    </p>
+    <div class="demo-wrapper" style="height: 60vh; width: 80vw; margin-left: calc(50% - 40vw);">
+     <iframe src="https://tangrams.github.io/tangram-frame/?noscroll&amp;url=https://s3.amazonaws.com/mapzen-assets/images/wof-updates/santabarbara.yaml#12.0000/34.4331/-119.7546">
+      Your browser doesn&amp;rsquo;t support iframe, &lt;a href=&#34;https://tangrams.github.io/tangram-frame/?noscroll&amp;url=https://s3.amazonaws.com/mapzen-assets/images/wof-updates/santabarbara.yaml#12.0000/34.4331/-119.7546&#34; target=&#34;_blank&#34;&gt;click here to see demo&lt;/a&gt;
+     </iframe>
+    </div>
+    <p>
+     <em>
+      Above: New neighbourhood records for Santa Barbara, CA.
+     </em>
+    </p>
+    <h2 id="australia-regions">
+     Australia Regions
+    </h2>
+    <p>
+     While the type of geometry and property updates in Australia are not new to Who’s On First, they represent the type of updates that many Who’s On First records have received in the past and what many records will receive in the future. In a
+     <a href="https://github.com/whosonfirst-data/whosonfirst-data/pull/688">
+      pull request
+     </a>
+     in the
+     <code>
+      whosonfirst-data
+     </code>
+     repository, new geometries were added to the records for regions in Australia.
+    </p>
+    <p>
+     To do this, the source data from
+     <a href="https://github.com/whosonfirst/whosonfirst-sources/blob/master/sources/austriaod.json">
+      Australia Open Data
+     </a>
+     was loaded into
+     <a href="https://www.qgis.org/en/site/">
+      QGIS
+     </a>
+     . A new property field was added to the source data with the corresponding
+     <code>
+      wof:id
+     </code>
+     for each feature; this is essentially allows us to “link” the new source data features to the existing Who’s On First records. Then, using a simple Python script, the geometries for each Who’s On First record were updated and existing geometries were saved as alt-geometry files.
+    </p>
+    <p>
+     And, just like that, Australia regions were updated!
+    </p>
+    <p>
+     An example of these geometry updates is shown below. Zooming out, you’ll see the older, less detailed geometry we maintained for Christmas Island. Zooming in, you’ll see the new, more detailed geometry - quite the improvement!
+    </p>
+    <div class="demo-wrapper" style="height: 60vh; width: 80vw; margin-left: calc(50% - 40vw);">
+     <iframe src="https://tangrams.github.io/tangram-frame/?noscroll&amp;url=https://s3.amazonaws.com/mapzen-assets/images/wof-updates/christmasisland.yaml#12.0000/-10.4778/105.6241">
+      Your browser doesn&amp;rsquo;t support iframe, &lt;a href=&#34;https://tangrams.github.io/tangram-frame/?noscroll&amp;url=https://s3.amazonaws.com/mapzen-assets/images/wof-updates/christmasisland.yaml#12.0000/-10.4778/105.6241&#34; target=&#34;_blank&#34;&gt;click here to see demo&lt;/a&gt;
+     </iframe>
+    </div>
+    <p>
+     <em>
+      Above: Comparison of region geometries for Christmas Island.
+     </em>
+    </p>
+    <h2 id="leningrad-and-st-petersburg">
+     Leningrad and St Petersburg
+    </h2>
+    <p>
+     Piggy-backing on the historical administrative work we started in
+     <a href="https://whosonfirst.mapzen.com/spelunker/id/1108955789/">
+      Yugoslavia
+     </a>
+     , we adjusted records in and around
+     <a href="https://whosonfirst.mapzen.com/spelunker/id/1158857531/">
+      St. Petersburg, Russia
+     </a>
+     to reflect the administrative changes in that area since the
+     <a href="https://en.wikipedia.org/wiki/Saint_Petersburg#Revolution_and_Soviet_Era_(1917%E2%80%931941)">
+      Russian Revolution
+     </a>
+     .
+    </p>
+    <p>
+     <a href="https://github.com/whosonfirst-data/whosonfirst-data/issues/948">
+      An issue was filed
+     </a>
+     in the
+     <code>
+      whosonfirst-data
+     </code>
+     repository, letting us know there were two distinct records in Who’s On First for St. Petersburg - one for St. Petersburg and one for Leningrad. Upon further inspection, we actually had four duplicate records in that area, all of which were merged, superseded, and updated.
+    </p>
+    <p>
+     Take a look at the record for the St. Petersburg locality,
+     <a href="https://whosonfirst.mapzen.com/spelunker/id/1158857531/">
+      here
+     </a>
+     .
+    </p>
+    <h3 id="wrapping-up">
+     Wrapping Up
+    </h3>
+    <p>
+     And, with that, I hope this is given you insight into the daily workings of geometry and property issues in Who’s On First!
+    </p>
+    <p>
+     As always, if you would like to contribute to Who’s On First, file a new issue in the
+     <a href="https://github.com/whosonfirst-data/whosonfirst-data/issues/new">
+      whosonfirst-data
+     </a>
+     repository or
+     <a href="mailto:hello@mapzen.com">
+      drop us a line
+     </a>
+     !
+    </p>
+    <p>
+     <em>
+      Photo Credit:
+      <a href="https://flic.kr/p/mAYbSi">
+       Carol VanHook. (Flickr, CC BY 2.0)
+      </a>
+     </em>
+    </p>
+   </div>
+   <div class="headroom-large footroom-large text-center hidden-print">
+    <div class="social-buttons hidden-print">
+     <ul>
+      <li class="social-button social-button-twitter">
+       <a href="http://twitter.com/home?status=Whos On First Updates, 2017%20@mapzen%20https://mapzen.com/blog/updating-whosonfirst" class="social-popup" title="Twitter">
+        <span class="icon">
+         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" space="preserve">
+          <path d="M24.253,8.756C24.689,17.08,18.297,24.182,9.97,24.62c-3.122,0.162-6.219-0.646-8.861-2.32
+            c2.703,0.179,5.376-0.648,7.508-2.321c-2.072-0.247-3.818-1.661-4.489-3.638c0.801,0.128,1.62,0.076,2.399-0.155
+            C4.045,15.72,2.215,13.6,2.115,11.077c0.688,0.275,1.426,0.407,2.168,0.386c-2.135-1.65-2.729-4.621-1.394-6.965
+            C5.575,7.816,9.54,9.84,13.803,10.071c-0.842-2.739,0.694-5.64,3.434-6.482c2.018-0.623,4.212,0.044,5.546,1.683
+            c1.186-0.213,2.318-0.662,3.329-1.317c-0.385,1.256-1.247,2.312-2.399,2.942c1.048-0.106,2.069-0.394,3.019-0.851
+            C26.275,7.229,25.39,8.196,24.253,8.756z">
+          </path>
+         </svg>
+        </span>
+        <span class="sr-only">
+         twitter
+        </span>
+       </a>
+      </li>
+      <li class="social-button social-button-facebook">
+       <a href="https://www.facebook.com/sharer/sharer.php?u=https://mapzen.com/blog/updating-whosonfirst" class="social-popup" title="Facebook">
+        <span class="icon">
+         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" space="preserve">
+          <path d="M27.825,4.783c0-2.427-2.182-4.608-4.608-4.608H4.783c-2.422,0-4.608,2.182-4.608,4.608v18.434
+              c0,2.427,2.181,4.608,4.608,4.608H14V17.379h-3.379v-4.608H14v-1.795c0-3.089,2.335-5.885,5.192-5.885h3.718v4.608h-3.726
+              c-0.408,0-0.884,0.492-0.884,1.236v1.836h4.609v4.608h-4.609v10.446h4.916c2.422,0,4.608-2.188,4.608-4.608V4.783z">
+          </path>
+         </svg>
+        </span>
+        <span class="sr-only">
+         facebook
+        </span>
+       </a>
+      </li>
+      <li class="social-button social-button-pinterest">
+       <a href="http://pinterest.com/pin/create/button/?url=https://mapzen.com/blog/updating-whosonfirst&amp;media=https://mapzen-assets.s3.amazonaws.com/images/wof-updates/eraser.jpg&amp;description=Whos On First Updates, 2017" class="social-popup" title="Pinterest">
+        <span class="icon">
+         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" space="preserve">
+          <path d="M14.021,1.57C6.96,1.57,1.236,7.293,1.236,14.355c0,7.062,5.724,12.785,12.785,12.785c7.061,0,12.785-5.725,12.785-12.785
+            C26.807,7.294,21.082,1.57,14.021,1.57z M15.261,18.655c-1.161-0.09-1.649-0.666-2.559-1.219c-0.501,2.626-1.113,5.145-2.925,6.458
+            c-0.559-3.971,0.822-6.951,1.462-10.116c-1.093-1.84,0.132-5.545,2.438-4.632c2.837,1.123-2.458,6.842,1.099,7.557
+            c3.711,0.744,5.227-6.439,2.925-8.775c-3.325-3.374-9.678-0.077-8.897,4.754c0.19,1.178,1.408,1.538,0.489,3.168
+            C7.165,15.378,6.53,13.7,6.611,11.462c0.131-3.662,3.291-6.227,6.46-6.582c4.007-0.448,7.771,1.474,8.29,5.239
+            c0.579,4.255-1.816,8.865-6.102,8.533L15.261,18.655z">
+          </path>
+         </svg>
+        </span>
+        <span class="sr-only">
+         pinterest
+        </span>
+       </a>
+      </li>
+      <li class="social-button social-button-email">
+       <a href="mailto:?subject=Whos On First Updates, 2017&amp;body=https://mapzen.com/blog/updating-whosonfirst" class="social-popup" title="E-mail">
+        <span class="icon">
+         <svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" space="preserve">
+          <g>
+           <path d="M20.111 26.147c-2.336 1.051-4.361 1.401-7.125 1.401c-6.462 0-12.146-4.633-12.146-12.265 c0-7.94 5.762-14.833 14.561-14.833c6.853 0 11.8 4.7 11.8 11.252c0 5.684-3.194 9.265-7.399 9.3 c-1.829 0-3.153-0.934-3.347-2.997h-0.077c-1.208 1.986-2.96 2.997-5.023 2.997c-2.532 0-4.361-1.868-4.361-5.062 c0-4.749 3.504-9.071 9.111-9.071c1.713 0 3.7 0.4 4.6 0.973l-1.169 7.203c-0.388 2.298-0.116 3.3 1 3.4 c1.673 0 3.773-2.102 3.773-6.58c0-5.061-3.27-8.994-9.303-8.994c-5.957 0-11.175 4.673-11.175 12.1 c0 6.5 4.2 10.2 10 10.201c1.986 0 4.089-0.43 5.646-1.245L20.111 26.147z M16.646 10.1 c-0.311-0.078-0.701-0.155-1.207-0.155c-2.571 0-4.595 2.53-4.595 5.529c0 1.5 0.7 2.4 1.9 2.4 c1.441 0 2.959-1.828 3.311-4.087L16.646 10.068z">
+           </path>
+          </g>
+         </svg>
+        </span>
+        <span class="sr-only">
+         email
+        </span>
+       </a>
+      </li>
+     </ul>
+    </div>
+   </div>
+   <div class="post-meta headroom text-center">
+    <div class="byline">
+     <span class="byline-date no-top-margin">
+      14 December 2017
+     </span>
+    </div>
+    <ul class="author-blurbs clearfix">
+     <li class="author-blurb author-blurb-full-width">
+      <div class="author-blurb-portrait">
+       <a href="https://twitter.com/stepps00" class="no-print-link">
+        <img class="avatar" src=" https://avatars3.githubusercontent.com/u/18567700 ">
+       </a>
+      </div>
+      <div class="author-blurb-text">
+       <span class="byline-author">
+        <a href="https://twitter.com/stepps00" class="no-print-link">
+         Stephen Epps
+        </a>
+       </span>
+       <p>
+        Stephen is Mapzen&#39;s gardener and fixer-upper of geographic data.
+       </p>
+      </div>
+     </li>
+    </ul>
+   </div>
+   <div class="pagination headroom hidden-print">
+    <a class="pagination-link pagination-previous" href="/blog/tangram-unity">
+     <i class="fa fa-fw fa-angle-left">
+     </i>
+     <span class="pagination-link-text">
+      Announcing Tangram Unity
+     </span>
+    </a>
+    <a class="pagination-link pagination-next" href="/blog/refill-terrain">
+     <i class="fa fa-fw fa-angle-right">
+     </i>
+     <span class="pagination-link-text">
+      Refill Terrain
+     </span>
+    </a>
+   </div>
+  </div>
+ </div>
+</div>

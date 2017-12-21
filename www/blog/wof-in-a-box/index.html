@@ -1,0 +1,1366 @@
+<div class="container" id="content">
+ <div class="row text-center headroom-large hidden-print">
+  <div class="col-xs-12">
+   <a class="btn btn-default btn-transparent" href="/blog">
+    <i class="fa fa-angle-left">
+    </i>
+    blog
+   </a>
+  </div>
+ </div>
+ <div class="row headroom-large">
+  <div class="col-md-8 col-md-offset-2">
+   <h2 class="no-margin text-center">
+    WOF in a Box (part 1)
+   </h2>
+   <ul class="tag-list headroom">
+    <a href="/tag/whosonfirst">
+     <li>
+      whosonfirst
+     </li>
+    </a>
+   </ul>
+   <div class="">
+   </div>
+   <div class="static-content headroom-large blog-content">
+    <p>
+     One of central design constraints of Who’s On First is that we don’t pick your database for you. We publish our gazetteer in
+     <a href="https://whosonfirst.mapzen.com/data">
+      GeoJSON
+     </a>
+     , CSV, and
+     <a href="https://whosonfirst.mapzen.com/sqlite">
+      SQLite
+     </a>
+     and you can decide how you want to import into your software stack of choice. We aspire to support all programming languages, on whatever platform you happen to be using.
+    </p>
+    <p>
+     We have written our own editorial tools and utility scripts in a variety of languages including
+     <a href="https://github.com/whosonfirst?utf8=%E2%9C%93&amp;q=&amp;type=&amp;language=php">
+      PHP
+     </a>
+     ,
+     <a href="https://github.com/whosonfirst?utf8=%E2%9C%93&amp;q=&amp;type=&amp;language=python">
+      Python
+     </a>
+     , and
+     <a href="https://github.com/whosonfirst?utf8=%E2%9C%93&amp;q=&amp;type=&amp;language=go">
+      Go
+     </a>
+     . Some of these are general purpose libraries, like
+     <a href="https://github.com/whosonfirst/py-mapzen-whosonfirst">
+      py-mapzen-whosonfirst
+     </a>
+     , and some are narrowly scoped utilities like
+     <a href="https://github.com/whosonfirst/go-whosonfirst-pip-v2">
+      go-whosonfirst-pip-v2
+     </a>
+     .
+    </p>
+    <p>
+     Describing the
+     <em>
+      full range
+     </em>
+     of the tools and services that compose Who’s On First, in its entirety, is beyond the scope of this guide, but it’s a good start. So far we’ve relied on a mix of shell scripts, Makefiles, and the AWS-hosted Chef deployment system known as OpsWorks. This exercise in documenting the installation of the WOF stack onto “bare metal” is a way to ensure the stack can exist outside the AWS ecosystem.
+    </p>
+    <p>
+     This guide is the first in a two part series describing how to set up tools for managing Who’s On First records on a single Ubuntu Linux server:
+    </p>
+    <ul>
+     <li>
+      <a href="https://github.com/whosonfirst/whosonfirst-www-spelunker/">
+       WOF Spelunker
+      </a>
+      for exploring WOF records through a
+      <a href="https://whosonfirst.mapzen.com/spelunker">
+       web interface
+      </a>
+     </li>
+     <li>
+      <a href="https://github.com/whosonfirst/whosonfirst-www-api/">
+       Who’s On First API
+      </a>
+      (aka
+      <a href="https://places.mapzen.com/">
+       Mapzen Places
+      </a>
+      ) to query the data via a
+      <a href="https://mapzen.com/documentation/places">
+       REST API
+      </a>
+     </li>
+     <li>
+      <a href="https://github.com/whosonfirst/whosonfirst-www-boundaryissues/">
+       Boundary Issues
+      </a>
+      for editing records using a bespoke web-based CMS
+     </li>
+    </ul>
+    <p>
+     Part two will cover the last pair of web applications, this first part focuses on the Spelunker and the various dependencies required to get it up and running.
+    </p>
+    <p>
+     We’ll begin by setting up a fresh server from scratch, installing all the dependencies required to host
+     <a href="https://github.com/whosonfirst-data/whosonfirst-data">
+      administrative data
+     </a>
+     and each of the tools. Some of the underlying technologies we’ll be using include:
+    </p>
+    <ul>
+     <li>
+      Python
+     </li>
+     <li>
+      Elasticsearch
+     </li>
+     <li>
+      nginx
+     </li>
+     <li>
+      Apache
+     </li>
+     <li>
+      PHP
+     </li>
+     <li>
+      MySQL
+     </li>
+    </ul>
+    <p>
+     The Apache/PHP/MySQL parts will come in the second part of the guide.
+    </p>
+    <p>
+     One thing that
+     <em>
+      isn’t
+     </em>
+     part of the install process yet is Docker. We have started to Dockerize the setup process, but we have a long way to go before the whole stack is covered. If anyone out there is inclined to help us translate our current setup process into Docker, we would definitely appreciate the help.
+    </p>
+    <p>
+     These docs are a work in progress. If you have thoughts or concerns, or if you get stuck, we would appreciate your feedback! Another caveat is that we are in the midst of migrating our servers from Ubuntu 14.04 to 16.04 (and PHP from version 5 to 7), so there may be some hiccups along the way.
+    </p>
+    <h2 id="the-server-itself">
+     The server itself
+    </h2>
+    <p>
+     This guide assumes you have, in your possession, an actual physical computer to install all of this onto. It could be the computer you’re reading this on, or a brand new one. The steps are not tied to a particular kind of hosting, and you can certainly set everything up in a cloud-hosted server if you prefer.
+    </p>
+    <p>
+     We will be using
+     <a href="http://releases.ubuntu.com/16.04/">
+      Ubuntu 16.04 LTS
+     </a>
+     . Things should work on other versions and flavors of Linux, but you may need to adjust some of the setup commands. You can cherry pick various parts of this guide that are interesting to you if you don’t feel like setting up the full stack. Each service is designed to work independently of the others and they plug into each other by editing configurable URLs. There are also feature flags to enable/disable functionality, so if you see anything missing it may just be turned off.
+    </p>
+    <p>
+     I recommend running your WOF in a Box on an
+     <a href="https://www.intel.com/content/www/us/en/products/boards-kits/nuc.html">
+      Intel NUC
+     </a>
+     -based server. It’s more powerful than a Raspberry Pi, but is affordable and easy to source. Unlike rack-mounted hardware, it will sit quietly on your desk and you can transport it easily in a backpack. The base systems run in the $100-200 range, and you decide how much RAM and disk to install on it. The total system should cost $300-700 depending on your chosen specs. I recommend maxing out the RAM, if you can afford it, but disk space is easy to expand later with external storage.
+    </p>
+    <p>
+     Hardware checklist:
+    </p>
+    <ul>
+     <li>
+      Intel NUC
+     </li>
+     <li>
+      RAM, the more the better (usually two sticks of equal size)
+     </li>
+     <li>
+      mSATA SSD hard drive
+     </li>
+     <li>
+      A USB wired keyboard
+     </li>
+     <li>
+      An HDMI-capable monitor
+     </li>
+     <li>
+      Screwdrivers (to install RAM, SSD disk)
+     </li>
+     <li>
+      An Ethernet cable &amp; a network you can plug it into
+     </li>
+     <li>
+      A USB memory stick to install Ubuntu
+     </li>
+    </ul>
+    <p>
+     I am not going to describe the hardware setup process in detail here, but if you have all the right parts on hand it should be pretty clear what plugs in where when you open up the case.
+    </p>
+    <p>
+     <img src="images/parts.jpg" alt="NUC components">
+    </p>
+    <h2 id="operating-system">
+     Operating System
+    </h2>
+    <p>
+     Start by installing Ubuntu on the machine. If you’re going with a cloud-hosted server option, like AWS or DigitalOcean, you can skip this part.
+    </p>
+    <ol>
+     <li>
+      <a href="https://www.ubuntu.com/download/server">
+       Download the installer from Ubuntu
+      </a>
+     </li>
+     <li>
+      <a href="https://tutorials.ubuntu.com/tutorial/tutorial-create-a-usb-stick-on-macos#0">
+       Write the installer to a USB stick
+      </a>
+     </li>
+     <li>
+      Plug the USB stick into the computer and boot to the installer (I have had a weird experience with NUC hardware where only some USB ports can boot from a USB drive, in case you find your machine doesn’t boot up at first)
+     </li>
+    </ol>
+    <p>
+     The install process starts from a menu where you can choose “Install Ubuntu Server” and presents you with a sequence of system configurations. I mostly stick with whatever the defaults are, but make sure that you configure the server to automatically install security upgrades. When you get to the “Software Selection” stage you should probably enable “OpenSSH Server” (press the space bar to toggle it), which will make it easier to manage the server remotely.
+    </p>
+    <p>
+     One key moment in the install process comes when the software is about to partition the disk and erase the contents: “Write the changes to disks and configure LVM?” You will have to select “yes” (which is not the default) and be sure you have the SSD selected, not the USB thumb drive. It will ask you a second time “Write the changes to disks?” Assuming the disk doesn’t have anything on it already, you can make these choices with confidence, with the understanding that you can always start over if something goes wrong.
+    </p>
+    <p>
+     You will be asked if you want to install the Grub boot loader (choose yes) and then which disk to install it onto (the SSD device). Finally the installer will ask you to remove the USB drive and then it will reboot your newly installed system.
+    </p>
+    <h2 id="basic-ubuntu-setup">
+     Basic Ubuntu setup
+    </h2>
+    <p>
+     Once the install has completed, you should get a login prompt at the console. Login with the account you set up before and then use the console session to figure out what the IP address is for the server. That will let you SSH in, which I find to be an easier way to work with the server, compared to directly typing into the keyboard console.
+    </p>
+    <p>
+     Use the
+     <code>
+      ifconfig
+     </code>
+     command to get the current network configuration. There should be a line like
+     <code>
+      inet addr:192.168.0.47
+     </code>
+     and that shows your current IP address. Yours will be different, depending on your particular network setup, but we’ll just assume in this guide that the IP is
+     <code>
+      192.168.0.47
+     </code>
+     as a placeholder.
+    </p>
+    <p>
+     The first thing we’ll do is upgrade to the latest versions of everything.
+    </p>
+    <div class="highlight">
+     <pre>
+      <code class="language-text" data-lang="text">
+       sudo apt-get update
+sudo apt-get upgrade -y
+      </code>
+     </pre>
+    </div>
+    <p>
+     Next we’ll add some basic utilities and secure the server with a
+     <code>
+      ufw
+     </code>
+     firewall. We’ll keep things simple here, but for a more comprehensive security baseline setup you may want to read
+     <a href="https://plusbryan.com/my-first-5-minutes-on-a-server-or-essential-security-for-linux-servers">
+      Bryan Kennedy’s “first five minutes” guide
+     </a>
+     .
+    </p>
+    <div class="highlight">
+     <pre>
+      <code class="language-text" data-lang="text">
+       sudo apt-get install -y git ufw fail2ban unattended-upgrades unzip make jq
+sudo ufw allow 22
+sudo ufw allow 80
+sudo ufw allow 443
+sudo ufw enable
+      </code>
+     </pre>
+    </div>
+    <p>
+     Your firewall is now configured to listen on ports for SSH, HTTP, HTTPS, and will block network requests for anything else.
+    </p>
+    <p>
+     <img src="images/inhand.jpg" alt="WOF data in hand">
+    </p>
+    <h2 id="where-files-go">
+     Where files go
+    </h2>
+    <p>
+     We use the following convention for Who’s On First:
+    </p>
+    <ul>
+     <li>
+      Code goes in
+      <code>
+       /usr/local/mapzen
+      </code>
+     </li>
+     <li>
+      Data goes in
+      <code>
+       /usr/local/data
+      </code>
+     </li>
+    </ul>
+    <p>
+     Here’s how to prepare those base directories:
+    </p>
+    <div class="highlight">
+     <pre>
+      <code class="language-text" data-lang="text">
+       sudo mkdir -p /usr/local/mapzen
+sudo mkdir -p /usr/local/data
+sudo chown $USER /usr/local/mapzen
+sudo chown $USER /usr/local/data
+      </code>
+     </pre>
+    </div>
+    <p>
+     You can choose to install stuff elsewhere if you prefer, but the default configurations will expect things to exist in those base directories.
+    </p>
+    <h2 id="download-some-data">
+     Download some data
+    </h2>
+    <p>
+     Now we are getting to the good part: downloading WOF data! The Who’s On First data repos are split up
+     <a href="https://github.com/whosonfirst-data/">
+      by placetype
+     </a>
+     . The data repository we’ll be working with is
+     <code>
+      whosonfirst-data
+     </code>
+     , which only includes administrative placetypes. That includes records for cities, countries, neighbourhoods, etc. We’ve split other placetypes like venues, constituencies and postalcodes into their own separate repositories, but everything contained in this guide should work the same with them.
+    </p>
+    <p>
+     Each Who’s On First repository contains two top level folders,
+     <code>
+      data
+     </code>
+     and
+     <code>
+      meta
+     </code>
+     . The
+     <code>
+      meta
+     </code>
+     folder has CSV summaries of all the GeoJSON files contained in the
+     <code>
+      data
+     </code>
+     directory. Those CSV meta files tend to get large, so we are currently storing them using
+     <a href="https://git-lfs.github.com/">
+      git lfs
+     </a>
+     . It’s a service provided by GitHub that accommodates files over 100MB that get stored in the repo as stub files. Once we have git lfs installed, it will take care of pulling down those big CSV files from GitHub as a separate stage at the end of a
+     <code>
+      git pull
+     </code>
+     .
+    </p>
+    <p>
+     So before we can clone the data repositories, we’ll need to
+     <a href="https://github.com/git-lfs/git-lfs/wiki/Installation">
+      set up git lfs
+     </a>
+     .
+    </p>
+    <p>
+     <em>
+      We are also
+      <a href="https://github.com/whosonfirst-data/whosonfirst-data/blob/master/meta/README.md#meta-files">
+       in the process of phasing out git lfs-stored meta files
+      </a>
+      , in favour of having them generated on demand, but for now the
+      <code>
+       git lfs
+      </code>
+      dance is still an unfortunate dependency.
+     </em>
+    </p>
+    <div class="highlight">
+     <pre>
+      <code class="language-text" data-lang="text">
+       curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
+sudo apt-get install git-lfs
+git lfs install
+      </code>
+     </pre>
+    </div>
+    <p>
+     After you install git lfs, you may notice that your home directory has a new configuration in
+     <code>
+      ~/.gitconfig
+     </code>
+     :
+    </p>
+    <div class="highlight">
+     <pre>
+      <code class="language-text" data-lang="text">
+       [filter &#34;lfs&#34;]
+    process = git-lfs filter-process
+    required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+      </code>
+     </pre>
+    </div>
+    <p>
+     These filters are how the LFS system plugs into
+     <code>
+      git
+     </code>
+     commands.
+    </p>
+    <p>
+     This next part is going to take some time, so you may want to use a
+     <code>
+      screen
+     </code>
+     session (
+     <code>
+      tmux
+     </code>
+     is another popular alternative). I’m including a brief introduction to how
+     <code>
+      screen
+     </code>
+     works here.
+    </p>
+    <div class="highlight">
+     <pre>
+      <code class="language-text" data-lang="text">
+       screen -S download
+      </code>
+     </pre>
+    </div>
+    <p>
+     This creates a new session called “download” that will keep your commands running in the background. It’s especially helpful for when you can’t stay logged in via SSH until a long task completes.
+    </p>
+    <p>
+     To “detach” from your session and keep it running behind the scenes, type
+     <code>
+      ctrl-A
+     </code>
+     followed by
+     <code>
+      D
+     </code>
+     (note to Mac users: this is the actual
+     <code>
+      ctrl
+     </code>
+     key, not
+     <code>
+      cmd
+     </code>
+     ).
+    </p>
+    <p>
+     Then, to check up on its progress later, you can reattach by typing
+     <code>
+      screen -x download
+     </code>
+     . You can also use
+     <code>
+      screen -ls
+     </code>
+     to see what sessions you already have running.
+    </p>
+    <p>
+     You may want to read this
+     <a href="https://gist.github.com/fredrick/1216878">
+      <code>
+       screen
+      </code>
+      keyboard command cheat sheet
+     </a>
+     , courtesy of
+     <a href="https://gist.github.com/fredrick">
+      Fredrick Galoso
+     </a>
+     .
+    </p>
+    <p>
+     Okay, now we can download some data!
+    </p>
+    <div class="highlight">
+     <pre>
+      <code class="language-text" data-lang="text">
+       cd /usr/local/data
+git clone https://github.com/whosonfirst-data/whosonfirst-data.git
+      </code>
+     </pre>
+    </div>
+    <p>
+     This should download about 37GB worth of Who’s On First records, a little over 700,000 of worldwide administrative GeoJSON records.
+    </p>
+    <p>
+     <img src="images/setup.jpg" alt="Setting up is messy">
+    </p>
+    <h2 id="setting-up-python">
+     Setting up Python
+    </h2>
+    <p>
+     We are going to need some Python tools. It’s important to mention that our Python libraries are a reference implementation and poorly documented. Recently we have been porting much of the functionality to Go, and we also intend to support Python 3 (and finally document things), but for now Python 2 is what works. Python has a lot of twisty dependency issues, so it can be weird and frustrating to set up, but with some patience we will get it all working.
+    </p>
+    <div class="highlight">
+     <pre>
+      <code class="language-text" data-lang="text">
+       sudo apt-get install -y python-pip python-pyparsing python-setuptools libpython-dev libssl-dev libffi-dev
+sudo python -m pip install --upgrade --force pip
+sudo pip install --upgrade setuptools
+sudo pip install --upgrade pyopenssl ndg-httpsclient pyasn1 &#39;requests[security]&#39;
+      </code>
+     </pre>
+    </div>
+    <p>
+     Now we can install the
+     <a href="https://github.com/whosonfirst/py-mapzen-whosonfirst">
+      WOF Python libraries
+     </a>
+     .
+    </p>
+    <div class="highlight">
+     <pre>
+      <code class="language-text" data-lang="text">
+       cd /usr/local/mapzen
+git clone https://github.com/whosonfirst/py-mapzen-whosonfirst.git
+cd py-mapzen-whosonfirst
+sudo pip install --upgrade -r requirements.txt --process-dependency-links .
+      </code>
+     </pre>
+    </div>
+    <p>
+     Now that we have WOF python tools we can start working with the records. Here is an example of a very basic crawl script you could use to iterate over every WOF record in a directory tree:
+    </p>
+    <div class="highlight">
+     <pre>
+      <code class="language-text" data-lang="text">
+       #!/usr/bin/env python
+
+import mapzen.whosonfirst.utils
+
+def cb(feature):
+    print feature.keys()
+
+source = &#34;/usr/local/data/whosonfirst-data/data&#34;
+crawl = mapzen.whosonfirst.utils.crawl_with_callback(source, cb, inflate=True, multiprocessing=True)
+      </code>
+     </pre>
+    </div>
+    <p>
+     Note that you won’t see any records in
+     <code>
+      /usr/local/data/whosonfirst-data
+     </code>
+     until the
+     <code>
+      git clone
+     </code>
+     command finishes in your
+     <code>
+      screen
+     </code>
+     session.
+    </p>
+    <h2 id="setting-up-elasticsearch">
+     Setting up Elasticsearch
+    </h2>
+    <p>
+     As we said at the top of this guide, we don’t intend to choose your database, but
+     <a href="https://www.elastic.co/products/elasticsearch">
+      Elasticsearch
+     </a>
+     is what we use to run all of the tools in this guide.
+    </p>
+    <p>
+     We first need to install Java to run Elasticsearch. The first step will require an extra
+     <code>
+      [enter]
+     </code>
+     to confirm you’re okay with adding an
+     <a href="https://askubuntu.com/questions/4983/what-are-ppas-and-how-do-i-use-them">
+      apt Personal Package Archives source
+     </a>
+     for Java.
+    </p>
+    <div class="highlight">
+     <pre>
+      <code class="language-text" data-lang="text">
+       sudo add-apt-repository ppa:webupd8team/java
+sudo apt-get update
+sudo apt-get install -y oracle-java8-installer
+      </code>
+     </pre>
+    </div>
+    <p>
+     The third step will prompt you to accept the Java legal terms.
+    </p>
+    <p>
+     Now we can install Elasticsearch itself.
+    </p>
+    <div class="highlight">
+     <pre>
+      <code class="language-text" data-lang="text">
+       wget https://download.elastic.co/elasticsearch/release/org/elasticsearch/distribution/deb/elasticsearch/2.4.6/elasticsearch-2.4.6.deb
+sudo dpkg -i elasticsearch-2.4.6.deb
+sudo systemctl enable elasticsearch.service
+      </code>
+     </pre>
+    </div>
+    <p>
+     Next we will edit some configurations:
+    </p>
+    <div class="highlight">
+     <pre>
+      <code class="language-text" data-lang="text">
+       sudo nano /etc/elasticsearch/elasticsearch.yml
+      </code>
+     </pre>
+    </div>
+    <p>
+     Add the following to the config:
+    </p>
+    <div class="highlight">
+     <pre>
+      <code class="language-text" data-lang="text">
+       cluster.name: whosonfirst
+node.name: &#34;Who&#39;s On First&#34;
+index.number_of_shards: 1
+index.number_of_replicas: 0
+      </code>
+     </pre>
+    </div>
+    <p>
+     Now we can start the Elasticsearch service:
+    </p>
+    <div class="highlight">
+     <pre>
+      <code class="language-text" data-lang="text">
+       sudo systemctl start elasticsearch
+      </code>
+     </pre>
+    </div>
+    <p>
+     Give it 30 seconds or so to finish starting up, and then you should be able to
+     <code>
+      curl http://localhost:9200/
+     </code>
+     and get back a response (“you know, for search”).
+    </p>
+    <p>
+     There’s a more detailed discussion of setting up Elasticsearch in Ubuntu 16.04 in the excellent
+     <a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-elasticsearch-on-ubuntu-16-04">
+      DigitalOcean documentation
+     </a>
+     .
+    </p>
+    <h2 id="elasticsearch-schemas">
+     Elasticsearch schemas
+    </h2>
+    <p>
+     Elasticsearch is great at a lot of things, but it is really fussy about how you maintain its index schemas. By default it uses “magic” to infer datatypes of JSON properties when you index them, but when it guesses wrong the result can be very frustrating. As a result we need to be careful with managing our index schemas.
+    </p>
+    <p>
+     We keep the WOF Elasticsearch schemas in
+     <a href="https://github.com/whosonfirst/es-whosonfirst-schema">
+      a dedicated repo
+     </a>
+     .
+    </p>
+    <div class="highlight">
+     <pre>
+      <code class="language-text" data-lang="text">
+       cd /usr/local/mapzen
+git clone https://github.com/whosonfirst/es-whosonfirst-schema.git
+      </code>
+     </pre>
+    </div>
+    <p>
+     We have some synonyms that help out decipher incoming search queries, we need to copy those to the Elasticsearch config folder.
+    </p>
+    <div class="highlight">
+     <pre>
+      <code class="language-text" data-lang="text">
+       sudo mkdir -p /etc/elasticsearch/synonyms
+cd /usr/local/mapzen/es-whosonfirst-schema/synonyms
+sudo cp *.txt /etc/elasticsearch/synonyms/
+      </code>
+     </pre>
+    </div>
+    <p>
+     Now we can set up the schema for the Spelunker.
+    </p>
+    <div class="highlight">
+     <pre>
+      <code class="language-text" data-lang="text">
+       cd /usr/local/mapzen/es-whosonfirst-schema
+cat schema/2.4/mappings.spelunker.json | curl -X PUT http://localhost:9200/spelunker_20171221 -d @-
+curl -X POST http://localhost:9200/_aliases -d &#39;{ &#34;actions&#34;: [ { &#34;add&#34;: { &#34;alias&#34;: &#34;spelunker&#34;, &#34;index&#34;: &#34;spelunker_20171221&#34; } } ] }&#39;
+      </code>
+     </pre>
+    </div>
+    <p>
+     We have actually done two things:
+    </p>
+    <ol>
+     <li>
+      Created an index called
+      <code>
+       spelunker_20171221
+      </code>
+     </li>
+     <li>
+      Aliased it to respond to
+      <code>
+       spelunker
+      </code>
+     </li>
+    </ol>
+    <p>
+     Using an alias makes upgrading the schema easier in the future.
+    </p>
+    <p>
+     Let’s check to make sure the index and alias are set up properly:
+    </p>
+    <div class="highlight">
+     <pre>
+      <code class="language-text" data-lang="text">
+       curl -s http://localhost:9200/_aliases | jq
+      </code>
+     </pre>
+    </div>
+    <p>
+     You should see a response like:
+    </p>
+    <div class="highlight">
+     <pre>
+      <code class="language-text" data-lang="text">
+       {
+  &#34;spelunker_20171221&#34;: {
+    &#34;aliases&#34;: {
+      &#34;spelunker&#34;: {}
+    }
+  }
+}
+      </code>
+     </pre>
+    </div>
+    <h2 id="index-the-data">
+     Index the data
+    </h2>
+    <p>
+     The next logical step is to index the data into Elasticsearch, but there is a chance you may still be waiting on the
+     <code>
+      git clone
+     </code>
+     command to finish. This might be a good time to check on the download we had running in a
+     <code>
+      screen
+     </code>
+     session from earlier:
+     <code>
+      screen -x download
+     </code>
+     . Remember, to detach from the session press
+     <code>
+      ctrl-A
+     </code>
+     then
+     <code>
+      D
+     </code>
+     .
+    </p>
+    <p>
+     If it hasn’t finished, continue on with the next steps and circle back to this later.
+    </p>
+    <p>
+     Once
+     <code>
+      git
+     </code>
+     has finished cloning, we can index the records into Elasticsearch. This will also take a while to complete, so you may want to just keep the
+     <code>
+      screen
+     </code>
+     session going.
+    </p>
+    <div class="highlight">
+     <pre>
+      <code class="language-text" data-lang="text">
+       cd /usr/local/data/whosonfirst-data
+wof-es-index -s . --index=spelunker -b
+      </code>
+     </pre>
+    </div>
+    <p>
+     Once this completes, you’ll be able to make requests to Elasticsearch to inspect individual records like this:
+    </p>
+    <div class="highlight">
+     <pre>
+      <code class="language-text" data-lang="text">
+       curl -s http://localhost:9200/spelunker/locality/102027181 | jq
+      </code>
+     </pre>
+    </div>
+    <p>
+     That should give you the GeoJSON for
+     <a href="https://whosonfirst.mapzen.com/spelunker/id/102027181/">
+      Shanghai
+     </a>
+     .
+    </p>
+    <p>
+     <img src="images/grass.jpg" alt="WOF in the &#34;grass&#34;">
+    </p>
+    <h2 id="installing-the-spelunker">
+     Installing the Spelunker
+    </h2>
+    <p>
+     Before we spin up the Spelunker itself, there are
+     <em>
+      more
+     </em>
+     Python dependencies we need to install first.
+    </p>
+    <div class="highlight">
+     <pre>
+      <code class="language-text" data-lang="text">
+       sudo apt-get update
+sudo apt-get install -y gunicorn python-gevent gdal-bin
+sudo pip install flask flask-cors pycountry
+      </code>
+     </pre>
+    </div>
+    <p>
+     Now we can download and set up the Spelunker web app.
+    </p>
+    <div class="highlight">
+     <pre>
+      <code class="language-text" data-lang="text">
+       cd /usr/local/mapzen
+git clone https://github.com/whosonfirst/whosonfirst-www-spelunker.git
+cd whosonfirst-www-spelunker
+./ubuntu/setup-spelunker.sh
+./ubuntu/setup-gunicorn.sh
+      </code>
+     </pre>
+    </div>
+    <p>
+     The Spelunker itself is a simple
+     <a href="http://flask.pocoo.org/">
+      Flask application
+     </a>
+     . Flask applications implement the
+     <a href="https://www.python.org/dev/peps/pep-0333/">
+      Web Server Gateway Interface
+     </a>
+     which allow requests to be handled a more robust web server application, like
+     <a href="http://gunicorn.org/">
+      gunicorn
+     </a>
+     . Finally, for our purposes we route requests to the
+     <code>
+      gunicorn
+     </code>
+     web server through the
+     <code>
+      nginx
+     </code>
+     proxy server, discussed below.
+    </p>
+    <p>
+     Basically gunicorn is the long underwear and nginx is the down parka that your Flask application (the Spelunker) wears when it goes outside in to the cold winter of the Internet. An unfortunate side-effect of this otherwise fruitful relationship is that there a few too many settings and different config files that need to be managed in order for everything to work smoothly. Which is to say:
+    </p>
+    <p>
+     There are a handful of config files in the
+     <code>
+      config
+     </code>
+     folder you may want to look at, but we will leave them with their default settings.
+    </p>
+    <p>
+     There is one JavaScript config file we need to set up.
+    </p>
+    <div class="highlight">
+     <pre>
+      <code class="language-text" data-lang="text">
+       cd /usr/local/mapzen/whosonfirst-www-spelunker/www/static/javascript
+cp mapzen.whosonfirst.config.js.example mapzen.whosonfirst.config.js
+nano mapzen.whosonfirst.config.js
+      </code>
+     </pre>
+    </div>
+    <p>
+     Look for
+     <code>
+      var api_key = &#39;mapzen-xxxxxx&#39;;
+     </code>
+     and replace the key with your own Mapzen API key. You can register one from the
+     <a href="https://mapzen.com/dashboard">
+      Mapzen dashboard
+     </a>
+     .
+    </p>
+    <p>
+     Next we will set up a log file for the Spelunker.
+    </p>
+    <div class="highlight">
+     <pre>
+      <code class="language-text" data-lang="text">
+       sudo touch /var/log/spelunker
+sudo chown www-data:www-data /var/log/spelunker
+      </code>
+     </pre>
+    </div>
+    <p>
+     Let’s try starting up the Spelunker in debug mode. (Note that we intend to update this
+     <code>
+      init.d
+     </code>
+     script to use something more modern.)
+    </p>
+    <div class="highlight">
+     <pre>
+      <code class="language-text" data-lang="text">
+       sudo /etc/init.d/whosonfirst-www-spelunker.sh debug
+      </code>
+     </pre>
+    </div>
+    <p>
+     You will very likely get an error at this point:
+     <code>
+      Error: class uri &#39;egg:gunicorn#gevent&#39; invalid or not found
+     </code>
+    </p>
+    <p>
+     We are still figuring out why
+     <code>
+      gevent
+     </code>
+     isn’t working on platforms like the NUC, so the interim solution is to just comment it out. If you happen to know
+     <em>
+      why
+     </em>
+     gevent isn’t working for us, we’d be very interested to know why.
+    </p>
+    <div class="highlight">
+     <pre>
+      <code class="language-text" data-lang="text">
+       cd /usr/local/mapzen/whosonfirst-www-spelunker/config
+nano whosonfirst-www-spelunker-gunicorn.cfg
+      </code>
+     </pre>
+    </div>
+    <p>
+     Look for this line and add a
+     <code>
+      #
+     </code>
+     comment to disable it:
+    </p>
+    <div class="highlight">
+     <pre>
+      <code class="language-text" data-lang="text">
+       # worker_class = &#34;egg:gunicorn#gevent&#34;
+      </code>
+     </pre>
+    </div>
+    <p>
+     Then try again running in debug mode.
+    </p>
+    <div class="highlight">
+     <pre>
+      <code class="language-text" data-lang="text">
+       sudo /etc/init.d/whosonfirst-www-spelunker.sh debug
+      </code>
+     </pre>
+    </div>
+    <p>
+     If that works, we can start the service to run in the background.
+    </p>
+    <p>
+     So, yes,
+     <code>
+      init.d
+     </code>
+     scripts have been deprecated in Ubuntu 16.04. We are still finding our way to the right
+     <a href="https://www.digitalocean.com/community/tutorials/systemd-essentials-working-with-services-units-and-the-journal">
+      Systemd equivalents
+     </a>
+     , so for now we will kind of hold our nose and pretend this is just fine. The first
+     <code>
+      killall
+     </code>
+     command is for shutting down any previously-running instances of the Spelunker.
+    </p>
+    <div class="highlight">
+     <pre>
+      <code class="language-text" data-lang="text">
+       sudo killall gunicorn
+sudo /etc/init.d/whosonfirst-www-spelunker.sh start
+      </code>
+     </pre>
+    </div>
+    <p>
+     You should now be able to see the service running locally.
+    </p>
+    <div class="highlight">
+     <pre>
+      <code class="language-text" data-lang="text">
+       curl http://localhost:7777/
+      </code>
+     </pre>
+    </div>
+    <p>
+     <img src="images/stalking.jpg" alt="Stalking the wofinabox">
+    </p>
+    <h2 id="setting-up-nginx">
+     Setting up nginx
+    </h2>
+    <p>
+     Now that we have the Spelunker working we need a web proxy to send requests for
+     <code>
+      /spelunker
+     </code>
+     to
+     <code>
+      localhost:7777
+     </code>
+     . We’ll be using
+     <a href="https://www.nginx.com/resources/wiki/">
+      nginx
+     </a>
+     to handle this.
+    </p>
+    <p>
+     But while we are here configuring nginx, we’ll set it up for the rest of the WOF stack too.
+    </p>
+    <ul>
+     <li>
+      <code>
+       /
+      </code>
+      - served statically from
+      <code>
+       /usr/local/data/whosonfirst-www/www
+      </code>
+     </li>
+     <li>
+      <code>
+       /data
+      </code>
+      - raw data served statically from
+      <code>
+       /usr/local/data/whosonfirst-data/data
+      </code>
+     </li>
+     <li>
+      <code>
+       /spelunker
+      </code>
+      - proxied to
+      <code>
+       localhost:7777
+      </code>
+     </li>
+     <li>
+      <code>
+       /api
+      </code>
+      - proxied to
+      <code>
+       localhost:8888
+      </code>
+     </li>
+     <li>
+      <code>
+       /boundaryissues
+      </code>
+      - proxied to
+      <code>
+       localhost:9999
+      </code>
+     </li>
+    </ul>
+    <p>
+     And that first path doesn’t exist yet, so let’s clone the Who’s On First website repo.
+    </p>
+    <div class="highlight">
+     <pre>
+      <code class="language-text" data-lang="text">
+       cd /usr/local/mapzen
+git clone https://github.com/whosonfirst/whosonfirst-www.git
+      </code>
+     </pre>
+    </div>
+    <p>
+     This gives us a basic website with lots of Who’s On First documentation, available from the server’s homepage.
+    </p>
+    <p>
+     Okay, now let’s install nginx.
+    </p>
+    <div class="highlight">
+     <pre>
+      <code class="language-text" data-lang="text">
+       sudo apt-get update
+sudo apt-get install -y nginx
+cd /etc/nginx/sites-available
+      </code>
+     </pre>
+    </div>
+    <p>
+     Now create a new config file
+     <code>
+      whosonfirst
+     </code>
+     .
+    </p>
+    <div class="highlight">
+     <pre>
+      <code class="language-text" data-lang="text">
+       sudo nano whosonfirst
+      </code>
+     </pre>
+    </div>
+    <p>
+     Add the following configurations to it:
+    </p>
+    <div class="highlight">
+     <pre>
+      <code class="language-text" data-lang="text">
+       server {
+    listen 80;
+    server_name _;
+    index index.html;
+
+    root /usr/local/mapzen/whosonfirst-www/www;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+
+    location /data {
+        root /usr/local/data/whosonfirst-data/data;
+    }
+
+    location /spelunker {
+        proxy_pass http://localhost:7777;
+        proxy_set_header Host $http_host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Scheme $scheme;
+        proxy_set_header X-Proxy-Path /spelunker; # this bit is important (tomorrow)
+        proxy_set_header X-Script-Name /spelunker; # this bit is important (today)
+        # https://github.com/whosonfirst/whosonfirst-www-spelunker/blob/master/www/server.py#L45
+    }
+
+    location /api {
+        proxy_pass http://localhost:8888;
+        proxy_set_header Host $http_host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Scheme $scheme;
+        proxy_set_header X-Proxy-Path /api;
+    }
+
+    location /boundaryissues {
+        proxy_pass http://localhost:9999;
+        proxy_set_header Host $http_host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Scheme $scheme;
+        proxy_set_header X-Proxy-Path /boundaryissues;
+    }
+}
+      </code>
+     </pre>
+    </div>
+    <p>
+     Next we will enable the
+     <code>
+      whosonfirst
+     </code>
+     configuration.
+    </p>
+    <div class="highlight">
+     <pre>
+      <code class="language-text" data-lang="text">
+       cd /etc/nginx/sites-enabled
+sudo rm default
+sudo ln -s ../sites-available/whosonfirst whosonfirst
+      </code>
+     </pre>
+    </div>
+    <p>
+     Now we can restart nginx for our new configurations to kick in.
+    </p>
+    <div class="highlight">
+     <pre>
+      <code class="language-text" data-lang="text">
+       sudo service nginx restart
+      </code>
+     </pre>
+    </div>
+    <p>
+     Here’s a quick test that should indicate whether things are working:
+    </p>
+    <div class="highlight">
+     <pre>
+      <code class="language-text" data-lang="text">
+       curl -I http://localhost/
+curl -I http://localhost/data/0/0.geojson
+curl -I http://localhost/spelunker/
+      </code>
+     </pre>
+    </div>
+    <p>
+     If each of those report back with
+     <code>
+      HTTP/1.1 200 OK
+     </code>
+     then you are in good shape. If the second request for
+     <code>
+      0.geojson
+     </code>
+     comes back with a 404 error, that may be because you’re still not done cloning data with
+     <code>
+      git
+     </code>
+     . If you want to test it out from a web browser, just go to
+     <a href="http://192.168.0.47/spelunker/">
+      http://192.168.0.47/spelunker/
+     </a>
+     (substituting whatever your actual IP address is).
+    </p>
+    <p>
+     <img src="images/wof-pages.gif" alt="WOF pages">
+    </p>
+    <h2 id="stay-tuned-for-part-two">
+     Stay tuned for part two
+    </h2>
+    <p>
+     That concludes the first part of the WOF in a Box guide. We have some WOF data and a Spelunker tool to explore it with. The second installment will add a
+     <a href="https://github.com/whosonfirst/whosonfirst-www-api/">
+      REST API
+     </a>
+     and a
+     <a href="https://github.com/whosonfirst/whosonfirst-www-boundaryissues/">
+      web-based CMS
+     </a>
+     to edit records with.
+    </p>
+   </div>
+   <div class="headroom-large footroom-large text-center hidden-print">
+    <div class="social-buttons hidden-print">
+     <ul>
+      <li class="social-button social-button-twitter">
+       <a href="http://twitter.com/home?status=WOF in a Box (part 1)%20@mapzen%20https://mapzen.com/blog/wof-in-a-box" class="social-popup" title="Twitter">
+        <span class="icon">
+         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" space="preserve">
+          <path d="M24.253,8.756C24.689,17.08,18.297,24.182,9.97,24.62c-3.122,0.162-6.219-0.646-8.861-2.32
+            c2.703,0.179,5.376-0.648,7.508-2.321c-2.072-0.247-3.818-1.661-4.489-3.638c0.801,0.128,1.62,0.076,2.399-0.155
+            C4.045,15.72,2.215,13.6,2.115,11.077c0.688,0.275,1.426,0.407,2.168,0.386c-2.135-1.65-2.729-4.621-1.394-6.965
+            C5.575,7.816,9.54,9.84,13.803,10.071c-0.842-2.739,0.694-5.64,3.434-6.482c2.018-0.623,4.212,0.044,5.546,1.683
+            c1.186-0.213,2.318-0.662,3.329-1.317c-0.385,1.256-1.247,2.312-2.399,2.942c1.048-0.106,2.069-0.394,3.019-0.851
+            C26.275,7.229,25.39,8.196,24.253,8.756z">
+          </path>
+         </svg>
+        </span>
+        <span class="sr-only">
+         twitter
+        </span>
+       </a>
+      </li>
+      <li class="social-button social-button-facebook">
+       <a href="https://www.facebook.com/sharer/sharer.php?u=https://mapzen.com/blog/wof-in-a-box" class="social-popup" title="Facebook">
+        <span class="icon">
+         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" space="preserve">
+          <path d="M27.825,4.783c0-2.427-2.182-4.608-4.608-4.608H4.783c-2.422,0-4.608,2.182-4.608,4.608v18.434
+              c0,2.427,2.181,4.608,4.608,4.608H14V17.379h-3.379v-4.608H14v-1.795c0-3.089,2.335-5.885,5.192-5.885h3.718v4.608h-3.726
+              c-0.408,0-0.884,0.492-0.884,1.236v1.836h4.609v4.608h-4.609v10.446h4.916c2.422,0,4.608-2.188,4.608-4.608V4.783z">
+          </path>
+         </svg>
+        </span>
+        <span class="sr-only">
+         facebook
+        </span>
+       </a>
+      </li>
+      <li class="social-button social-button-pinterest">
+       <a href="http://pinterest.com/pin/create/button/?url=https://mapzen.com/blog/wof-in-a-box&amp;media=images/inhand.jpg&amp;description=WOF in a Box (part 1)" class="social-popup" title="Pinterest">
+        <span class="icon">
+         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" space="preserve">
+          <path d="M14.021,1.57C6.96,1.57,1.236,7.293,1.236,14.355c0,7.062,5.724,12.785,12.785,12.785c7.061,0,12.785-5.725,12.785-12.785
+            C26.807,7.294,21.082,1.57,14.021,1.57z M15.261,18.655c-1.161-0.09-1.649-0.666-2.559-1.219c-0.501,2.626-1.113,5.145-2.925,6.458
+            c-0.559-3.971,0.822-6.951,1.462-10.116c-1.093-1.84,0.132-5.545,2.438-4.632c2.837,1.123-2.458,6.842,1.099,7.557
+            c3.711,0.744,5.227-6.439,2.925-8.775c-3.325-3.374-9.678-0.077-8.897,4.754c0.19,1.178,1.408,1.538,0.489,3.168
+            C7.165,15.378,6.53,13.7,6.611,11.462c0.131-3.662,3.291-6.227,6.46-6.582c4.007-0.448,7.771,1.474,8.29,5.239
+            c0.579,4.255-1.816,8.865-6.102,8.533L15.261,18.655z">
+          </path>
+         </svg>
+        </span>
+        <span class="sr-only">
+         pinterest
+        </span>
+       </a>
+      </li>
+      <li class="social-button social-button-email">
+       <a href="mailto:?subject=WOF in a Box (part 1)&amp;body=https://mapzen.com/blog/wof-in-a-box" class="social-popup" title="E-mail">
+        <span class="icon">
+         <svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" space="preserve">
+          <g>
+           <path d="M20.111 26.147c-2.336 1.051-4.361 1.401-7.125 1.401c-6.462 0-12.146-4.633-12.146-12.265 c0-7.94 5.762-14.833 14.561-14.833c6.853 0 11.8 4.7 11.8 11.252c0 5.684-3.194 9.265-7.399 9.3 c-1.829 0-3.153-0.934-3.347-2.997h-0.077c-1.208 1.986-2.96 2.997-5.023 2.997c-2.532 0-4.361-1.868-4.361-5.062 c0-4.749 3.504-9.071 9.111-9.071c1.713 0 3.7 0.4 4.6 0.973l-1.169 7.203c-0.388 2.298-0.116 3.3 1 3.4 c1.673 0 3.773-2.102 3.773-6.58c0-5.061-3.27-8.994-9.303-8.994c-5.957 0-11.175 4.673-11.175 12.1 c0 6.5 4.2 10.2 10 10.201c1.986 0 4.089-0.43 5.646-1.245L20.111 26.147z M16.646 10.1 c-0.311-0.078-0.701-0.155-1.207-0.155c-2.571 0-4.595 2.53-4.595 5.529c0 1.5 0.7 2.4 1.9 2.4 c1.441 0 2.959-1.828 3.311-4.087L16.646 10.068z">
+           </path>
+          </g>
+         </svg>
+        </span>
+        <span class="sr-only">
+         email
+        </span>
+       </a>
+      </li>
+     </ul>
+    </div>
+   </div>
+   <div class="post-meta headroom text-center">
+    <div class="byline">
+     <span class="byline-date no-top-margin">
+      21 December 2017
+     </span>
+    </div>
+    <ul class="author-blurbs clearfix">
+     <li class="author-blurb author-blurb-full-width">
+      <div class="author-blurb-portrait">
+       <a href="https://twitter.com/dphiffer" class="no-print-link">
+        <img class="avatar" src=" https://www.gravatar.com/avatar/67664b0311adf87957b7addb332f576e ">
+       </a>
+      </div>
+      <div class="author-blurb-text">
+       <span class="byline-author">
+        <a href="https://twitter.com/dphiffer" class="no-print-link">
+         Dan Phiffer
+        </a>
+       </span>
+       <p>
+        Dan is a data carpenter, which tbh is kind of a made up title. But he likes it all the same.
+       </p>
+      </div>
+     </li>
+    </ul>
+   </div>
+   <div class="pagination headroom hidden-print">
+    <a class="pagination-link pagination-previous" href="/blog/refill-terrain">
+     <i class="fa fa-fw fa-angle-left">
+     </i>
+     <span class="pagination-link-text">
+      Refill Terrain
+     </span>
+    </a>
+   </div>
+  </div>
+ </div>
+</div>
