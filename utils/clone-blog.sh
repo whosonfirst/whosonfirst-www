@@ -62,5 +62,25 @@ do
     done
 
     perl -p -i -e "s/https\:\/\/mapzen-assets\.s3\.amazonaws\.com\/images\/${FNAME}\//images\//g" ${POST}/index.html
+    
+    for IMG in `cat ${POST}/index.html | ${PUP} "img attr{src}" | grep s3.amazonaws.com/mapzen-assets`
+    do
 
+	if [ ! -d ${POST}/images ]
+	then
+	    mkdir -p ${POST}/images
+	fi
+
+	I_FNAME=`basename ${IMG}`
+
+	if [ ! -e ${POST}/images/${I_FNAME} ]
+	then
+	    echo "FETCH ${IMG}"
+	    curl -s -o ${POST}/images/${I_FNAME} ${IMG}
+	fi
+
+    done    
+
+    perl -p -i -e "s/https\:\/\/s3\.amazonaws\.com\/mapzen-assets\/images\/${FNAME}\//images\//g" ${POST}/index.html
+    
 done
