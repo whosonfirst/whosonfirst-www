@@ -4,12 +4,12 @@ title: Whos On First Updates, 2017
 category: blog
 excerpt: Outlining a few one-offs, changes, and edits that were made to Who's On First in 2017
 authors: [stepps00]
-image: "https://mapzen-assets.s3.amazonaws.com/images/wof-updates/eraser.jpg"
+image: "images/eraser.jpg"
 tag: [whosonfirst, data]
 ---
 
 <div style="margin: 0 auto; width:640px;">
-<a href="https://mapzen-assets.s3.amazonaws.com/images/wof-updates/eraser.jpg"><img src="https://mapzen-assets.s3.amazonaws.com/images/wof-updates/eraser.jpg" height="360" width="640" /></a>
+<a href="images/eraser.jpg"><img src="images/eraser.jpg" height="360" width="640" /></a>
 </div>
 
 ## So, what's new in Who's On First?

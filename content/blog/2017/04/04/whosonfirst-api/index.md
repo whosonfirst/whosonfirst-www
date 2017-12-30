@@ -4,11 +4,11 @@ title: The Who's On First API
 category: blog
 excerpt: Anything you can do by clicking around the Spelunker should be able to be automated using code.
 authors: [thisisaaronland]
-image: https://s3.amazonaws.com/mapzen-assets/images/whosonfirst-api/splash-sq.png
+image: images/splash-sq.png
 tag: [whosonfirst]
 ---
 
-<a href="https://en.wikipedia.org/wiki/Common_Gateway_Interface"><img width="600" height="200" src="https://s3.amazonaws.com/mapzen-assets/images/whosonfirst-api/splash.png"></a>
+<a href="https://en.wikipedia.org/wiki/Common_Gateway_Interface"><img width="600" height="200" src="images/splash.png"></a>
 
 Today we are pleased to announce [the Who's On First API](https://mapzen.com/documentation/wof/). This is something that has been hiding in plain sight for a little while now and that a few people may have noticed if they "looked under the hood" of the [Spelunker code](https://github.com/whosonfirst/whosonfirst-www-spelunker/) following the recent blog post about the [Who's On First bundler tool](https://mapzen.com/blog/bundler/).
 
@@ -28,7 +28,7 @@ Successful API responses can be returned in one of three possible formats: [JSON
 
 Meta files are the CSV files included with every [Who's On First data repository](https://github.com/whosonfirst-data). The easiest way to think about meta files is that they canned indices or views in to the data; a way for people to grab or work with a slice of the data, say by placetype, without having to set up and load everything in to a database. As such, a lot of tooling has been built to consume meta files from the [I Am Here](https://mapzen.com/blog/iamhere) tool, to the Who's On First [point-in-polygon server](https://github.com/whosonfirst/go-whosonfirst-pip/), to the tools we use to [generate bundles](https://github.com/whosonfirst/go-whosonfirst-clone#example) (you can read more about bundles [over here](https://whosonfirst.mapzen.com/bundles/)), to indexing WOF data in [in third-party tools like Tile38](https://github.com/whosonfirst/go-whosonfirst-tile38#example-1) to [generating FeatureCollections](https://github.com/whosonfirst/py-mapzen-whosonfirst-utils/blob/master/scripts/wof-csv-to-feature-collection). Now rather than just consuming the [default meta files](https://github.com/whosonfirst-data/whosonfirst-data/tree/master/meta) included with each repository all of those tools can be fed the output of whatever query you dream up using the [whosonfirst.places.search](https://mapzen.com/documentation/wof/methods/#whosonfirst.places.search), or similar, API methods.
 
-<a href="https://collection.cooperhewitt.org/objects/18214745/"><img width="589" height="589" src="https://s3.amazonaws.com/mapzen-assets/images/whosonfirst-api/gate.jpg"></a>
+<a href="https://collection.cooperhewitt.org/objects/18214745/"><img width="589" height="589" src="images/gate.jpg"></a>
 
 Other API responses can and will be added as time and circumstance permit. We are interested in people _using_ the Who's On First API in whatever format their software needs and with not in making our opinions about API responses someone else's problem. If there's a particular response format you need to start using the Who's On First API please send up a flare [via email](mailto:hello@mapzen.com) or [Twitter](https://twitter.com/alloftheplaces).
 
@@ -200,7 +200,7 @@ Also, did you notice the many different pagination properties in the JSON respon
 
 ## A short miserable history of pagination
 
-<a href="https://collection.cooperhewitt.org/objects/18805295/"><img width="589" height="400" src="https://s3.amazonaws.com/mapzen-assets/images/whosonfirst-api/unicorn.jpg"></a>
+<a href="https://collection.cooperhewitt.org/objects/18805295/"><img width="589" height="400" src="images/unicorn.jpg"></a>
 
 Pagination, the practice of chunking a lot of results in to smaller sets, shouldn’t be complicated. But it is. Because databases, after all these years, are still complicated beasts.
 
@@ -388,7 +388,7 @@ geom_bbox,wof_country,wof_id,wof_name,wof_parent_id,wof_placetype,wof_repo
 ## Libraries
 
 <div style="width:451px; margin: 0 auto;">
-<a href="https://collection.cooperhewitt.org/objects/18612725/"><img width="451" height="600" src="https://s3.amazonaws.com/mapzen-assets/images/whosonfirst-api/kitten.jpg"></a>
+<a href="https://collection.cooperhewitt.org/objects/18612725/"><img width="451" height="600" src="images/kitten.jpg"></a>
 </div>
 
 As of this writing there are two general-purpose software libraries for accessing the Who's On First API, one written in [Python](https://github.com/whosonfirst/py-mapzen-whosonfirst-api) and another in [Go](https://github.com/whosonfirst/go-whosonfirst-api). We also have PHP and Javascript libraries that we use internally but they are still full of Mapzen-isms which we'd like to clean up before releasing.
@@ -445,7 +445,7 @@ func main() {
 
 There is also a command line tool called `wof-api` for performing simple and batch operations with the API. For example, using the tool it's possible to [fetch all 63,387 venues in San Francisco](https://github.com/whosonfirst/go-whosonfirst-api#example) as a single GeoJSON FeatureCollection. There are lots of ways to do this but the nice thing about the `wof-api` tool is that depending on your network connection this can be accomplished in as little as 5 minutes.
 
-![](https://s3.amazonaws.com/mapzen-assets/images/whosonfirst-api/sf-venues.png)
+![](images/sf-venues.png)
 
 All those dots in the image above were produced by typing `wof-api -param method=whosonfirst.places.search -param locality_id=85922583 -param api_key=mapzen-xxxxxx -param per_page=500 -param placetype=venue -paginated -geojson -output venues.geojson -timings -async`
 
@@ -453,7 +453,7 @@ Note the use of the `-paginated` flag which will instruct the tool to handle all
 
 ## Inspirational conclusion
 
-<a href="https://collection.cooperhewitt.org/objects/18402495/"><img width="589" height="400" src="https://s3.amazonaws.com/mapzen-assets/images/whosonfirst-api/shadow.jpg"></a>
+<a href="https://collection.cooperhewitt.org/objects/18402495/"><img width="589" height="400" src="images/shadow.jpg"></a>
 
 We hope you make awesome things with the API. Enjoy!
 

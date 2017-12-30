@@ -4,7 +4,7 @@ title: WOF in a Box (part 1)
 category: blog
 excerpt: Run Who's On First on your own hardware.
 authors: [dphiffer]
-image: "https://mapzen-assets.s3.amazonaws.com/images/wof-in-a-box/inhand.jpg"
+image: "images/inhand.jpg"
 tag: [whosonfirst]
 ---
 
@@ -58,7 +58,7 @@ Hardware checklist:
 
 I am not going to describe the hardware setup process in detail here, but if you have all the right parts on hand it should be pretty clear what plugs in where when you open up the case.
 
-![NUC components](https://mapzen-assets.s3.amazonaws.com/images/wof-in-a-box/parts.jpg)
+![NUC components](images/parts.jpg)
 
 ## Operating System
 
@@ -99,7 +99,7 @@ sudo ufw enable
 
 Your firewall is now configured to listen on ports for SSH, HTTP, HTTPS, and will block network requests for anything else.
 
-![WOF data in hand](https://mapzen-assets.s3.amazonaws.com/images/wof-in-a-box/inhand.jpg)
+![WOF data in hand](images/inhand.jpg)
 
 ## Where files go
 
@@ -170,7 +170,7 @@ git clone https://github.com/whosonfirst-data/whosonfirst-data.git
 
 This should download about 37GB worth of Who’s On First records, a little over 700,000 of worldwide administrative GeoJSON records.
 
-![Setting up is messy](https://mapzen-assets.s3.amazonaws.com/images/wof-in-a-box/setup.jpg)
+![Setting up is messy](images/setup.jpg)
 
 ## Setting up Python
 
@@ -329,7 +329,7 @@ curl -s http://localhost:9200/spelunker/locality/102027181 | jq
 
 That should give you the GeoJSON for [Shanghai](https://whosonfirst.mapzen.com/spelunker/id/102027181/).
 
-![WOF in the "grass"](https://mapzen-assets.s3.amazonaws.com/images/wof-in-a-box/grass.jpg)
+![WOF in the "grass"](images/grass.jpg)
 
 ## Installing the Spelunker
 
@@ -416,7 +416,7 @@ You should now be able to see the service running locally.
 curl http://localhost:7777/
 ```
 
-![Stalking the wofinabox](https://mapzen-assets.s3.amazonaws.com/images/wof-in-a-box/stalking.jpg)
+![Stalking the wofinabox](images/stalking.jpg)
 
 ## Setting up nginx
 
@@ -523,7 +523,7 @@ curl -I http://localhost/spelunker/
 
 If each of those report back with `HTTP/1.1 200 OK` then you are in good shape. If the second request for `0.geojson` comes back with a 404 error, that may be because you're still not done cloning data with `git`. If you want to test it out from a web browser, just go to http://192.168.0.47/spelunker/ (substituting whatever your actual IP address is).
 
-![WOF pages](https://mapzen-assets.s3.amazonaws.com/images/wof-in-a-box/wof-pages.gif)
+![WOF pages](images/wof-pages.gif)
 
 ## Stay tuned for part two
 

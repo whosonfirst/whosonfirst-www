@@ -78,11 +78,11 @@ Note that the original shapes have a more organic, popcorn-looking shape, while 
 - **New and updated neighbourhood** features are shown from zoom 12 to zoom 13 <span style="color:green; font-weight: bold;">in green</span>.
 - **New microhood** features are shown **past** zoom 13 <span style="color:purple; font-weight: bold;">in purple</span>.
 
-<div class="demo-wrapper" id="refillcycle" style="background-image:url('https://s3.amazonaws.com/mapzen-assets/images/neighbourhood-updates-II/denver.gif');">
+<div class="demo-wrapper" id="refillcycle" style="background-image:url('images/denver.gif');">
 <div id=screenshot></div>
-<iframe src="https://tangrams.github.io/tangram-frame/?noscroll&url=https://s3.amazonaws.com/mapzen-assets/images/neighbourhood-updates-II/denver.yaml#10.5/39.7609/-104.8612"></iframe>
+<iframe src="https://tangrams.github.io/tangram-frame/?noscroll&url=images/denver.yaml#10.5/39.7609/-104.8612"></iframe>
 </div>
-<p style="text-align: center"  class='caption'><br><a style="font-weight:normal"href="https://tangrams.github.io/tangram-frame/?url=https://s3.amazonaws.com/mapzen-assets/images/neighbourhood-updates-II/denver.yaml#10.5/39.7609/-104.8612">Click to view Denver in full screen ➹</a> <br></p>
+<p style="text-align: center"  class='caption'><br><a style="font-weight:normal"href="https://tangrams.github.io/tangram-frame/?url=images/denver.yaml#10.5/39.7609/-104.8612">Click to view Denver in full screen ➹</a> <br></p>
 
 
 
@@ -93,7 +93,7 @@ Note that the original shapes have a more organic, popcorn-looking shape, while 
 - **New and updated neighbourhood** features are shown from zoom 12 to zoom 13 <span style="color:green; font-weight: bold;">in green</span>.
 - **New microhood** features are shown **past** zoom 13 <span style="color:purple; font-weight: bold;">in purple</span>.
 
-<div class="demo-wrapper" id="refillcycle" style="background-image:url('https://s3.amazonaws.com/mapzen-assets/images/neighbourhood-updates-II/amsterdam.gif');"><iframe src="https://tangrams.github.io/tangram-frame/?noscroll&url=https://s3.amazonaws.com/mapzen-assets/images/neighbourhood-updates-II/amsterdam.yaml#10.5/52.3553/4.8892"></iframe></div><p style="text-align: center"  class='caption'><br><a style="font-weight:normal"href="https://tangrams.github.io/tangram-frame/?url=https://s3.amazonaws.com/mapzen-assets/images/neighbourhood-updates-II/amsterdam.yaml#10.5/52.3553/4.8892">Click to view Amsterdam in full screen ➹</a> <br></p>
+<div class="demo-wrapper" id="refillcycle" style="background-image:url('images/amsterdam.gif');"><iframe src="https://tangrams.github.io/tangram-frame/?noscroll&url=images/amsterdam.yaml#10.5/52.3553/4.8892"></iframe></div><p style="text-align: center"  class='caption'><br><a style="font-weight:normal"href="https://tangrams.github.io/tangram-frame/?url=images/amsterdam.yaml#10.5/52.3553/4.8892">Click to view Amsterdam in full screen ➹</a> <br></p>
 
 ##In conclusion…
 

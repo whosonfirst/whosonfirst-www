@@ -4,14 +4,14 @@ category: blog
 published: true
 title: maîtres chez nous
 excerpt: Perhaps we can stop teaching our tools the bad habits of the past.
-image: /images/whosonfirst-nacis-2017/whosonfirst-nacis-2017.018.jpg
+image: images/whosonfirst-nacis-2017.018.jpg
 authors: [thisisaaronland]
 tags: [nacis, whosonfirst]
 ---
 
 <a name="intro"></a>
 
-[![maîtres chez nous](/images/whosonfirst-nacis-2017/whosonfirst-nacis-2017.001.jpg)](#intro)
+[![maîtres chez nous](images/whosonfirst-nacis-2017.001.jpg)](#intro)
 
 _The following are the slides and notes for a talk about [Who's On First](https://whosonfirst.mapzen.com) that I delivered at the [2017 NACIS conference](http://nacis.org) in Montreal._ 
  
@@ -25,7 +25,7 @@ Thank you for inviting me to speak.
 
 <a name="past"></a>
 
-[![the past keeps changing because we keep asking different questions of it - margaret macmillan](/images/whosonfirst-nacis-2017/whosonfirst-nacis-2017.002.jpg)](#past)
+[![the past keeps changing because we keep asking different questions of it - margaret macmillan](images/whosonfirst-nacis-2017.002.jpg)](#past)
 
 This is a talk about gazetteers and in particular the gazetteer that I work on, called [Who's On First](https://whosonfirst.mapzen.com). Who's On First has set itself the ambitious goal of global coverage from continents all the way down to venues.
 
@@ -39,7 +39,7 @@ This is not a talk about how we work on a gazetteer like Who's On First but rath
 
 <a name="what"></a>
 
-[![what is who's on first](/images/whosonfirst-nacis-2017/whosonfirst-nacis-2017.003.jpg)](#what)
+[![what is who's on first](images/whosonfirst-nacis-2017.003.jpg)](#what)
 
 If not how but instead why, we still need to start with what. What is the shape of the Who's On First gazetteer?
 
@@ -71,7 +71,7 @@ This is why I often refer to Who's On First as ["a gazetteer of consensual hallu
 
 <a name="leonard-cohen">
 
-[![leonard cohen](/images/whosonfirst-nacis-2017/whosonfirst-nacis-2017.004.jpg)](#leonard-cohen)
+[![leonard cohen](images/whosonfirst-nacis-2017.004.jpg)](#leonard-cohen)
 
 To explain why I'm going to start with this guy.
 
@@ -81,13 +81,13 @@ St. Laurent Boulevard is often referred to by locals simply as "The Main".
 
 <a name="the-main"></a>
 
-[![the main](/images/whosonfirst-nacis-2017/whosonfirst-nacis-2017.005.jpg)](#the-main)
+[![the main](images/whosonfirst-nacis-2017.005.jpg)](#the-main)
 
 The Main is so-called because it is one the city’s oldest streets running along a North-South axis, starting in Old Montreal at the bank of the [St. Lawrence River](https://places.mapzen.com/id/404529181/).
 
 <a name="north-south"></a>
 
-[![north/south](/images/whosonfirst-nacis-2017/whosonfirst-nacis-2017.006.jpg)](#north-south)
+[![north/south](images/whosonfirst-nacis-2017.006.jpg)](#north-south)
 
 Like a lot of cities in the world, Montreal's North-South axis has no bearing in reality.
 
@@ -97,7 +97,7 @@ What's important about The Main is less its directionality than the fact that it
 
 <a name="english-french"></a>
 
-[![english-french](/images/whosonfirst-nacis-2017/whosonfirst-nacis-2017.007.jpg)](#english-french)
+[![english-french](images/whosonfirst-nacis-2017.007.jpg)](#english-french)
 
 It is only in recent years that The Main has not served as the dividing line between the city's English and French speaking populations.
 
@@ -105,7 +105,7 @@ This was famously described by the author [Hugh MacLennan](http://www.hipmuseum.
 
 <a name="golden-square-mile"></a>
 
-[![the golden square mile](/images/whosonfirst-nacis-2017/whosonfirst-nacis-2017.008.jpg)](#golden-square-mile)
+[![the golden square mile](images/whosonfirst-nacis-2017.008.jpg)](#golden-square-mile)
 
 It is also not really possible to talk about that divide without talking about it as the border between the haves and the have-nots.
 
@@ -119,7 +119,7 @@ This continued to varying degrees until the 1950s and what is known as [the Quie
 
 <a name="blvd-rene-levesque"></a>
 
-[![boulevard rené lévesque](/images/whosonfirst-nacis-2017/whosonfirst-nacis-2017.009.jpg)](#blvd-rene-levesque)
+[![boulevard rené lévesque](images/whosonfirst-nacis-2017.009.jpg)](#blvd-rene-levesque)
 
 You may have noticed that the conference hotel sits on a street named after a guy called [René Lévesque](https://en.wikipedia.org/wiki/Ren%C3%A9_L%C3%A9vesque).
 
@@ -139,7 +139,7 @@ The answer lies in what Boulevard René Lévesque used to be called.
 
 <a name="blvd-dorchester"></a>
 
-[![boulevard dorchester](/images/whosonfirst-nacis-2017/whosonfirst-nacis-2017.010.jpg)](#blvd-dorchester)
+[![boulevard dorchester](images/whosonfirst-nacis-2017.010.jpg)](#blvd-dorchester)
 
 Boulevard René Lévesque used to be called Dorchester Boulevard after the English Lord Dorchester, who was formerly known as Lord Durham.
 
@@ -149,12 +149,12 @@ Fun fact: The rebellions were led by [Louis-Joseph Papineau](https://web.archive
 
 <a name="sans-histoire"></a>
 
-[![un peuple sans histoire](/images/whosonfirst-nacis-2017/whosonfirst-nacis-2017.011.jpg)](#sans-histoire)
+[![un peuple sans histoire](images/whosonfirst-nacis-2017.011.jpg)](#sans-histoire)
 
 [Lord Durham’s report](https://en.wikipedia.org/wiki/Report_on_the_Affairs_of_British_North_America) might have faded into historical obscurity had its author not offered the opinion that the French Canadians, who predated the first English settlers by a hundred years or more, were "un peuple sans histoire" or "a people without history."
 
 <a name="je-me-souviens"></a>
-[![je me souviens](/images/whosonfirst-nacis-2017/whosonfirst-nacis-2017.012.jpg)](#je-me-souviens)
+[![je me souviens](images/whosonfirst-nacis-2017.012.jpg)](#je-me-souviens)
 
 It is not for nothing that all the license plates in this province now read ["je me souviens"](https://www.youtube.com/watch?v=2FZXQZJxZRk) or "I remember".
 
@@ -162,7 +162,7 @@ Nor is it surprising that Dorchester Boulevard was purposely renamed to honour R
 
 <a name="westmount"></a>
 
-[![westmount remembers](/images/whosonfirst-nacis-2017/whosonfirst-nacis-2017.013.jpg)](#westmount)
+[![westmount remembers](images/whosonfirst-nacis-2017.013.jpg)](#westmount)
 
 You know who else remembers, though? The city of [Westmount](https://places.mapzen.com/id/101736451/) remembers.
 
@@ -172,13 +172,13 @@ Westmount is a sort of leftover bronze square mile of wealth and privilege and i
 
 <a name="cohen-westmount"></a>
 
-[![leonard cohen, b. westmount](/images/whosonfirst-nacis-2017/whosonfirst-nacis-2017.014.jpg)](#cohen-westmount)
+[![leonard cohen, b. westmount](images/whosonfirst-nacis-2017.014.jpg)](#cohen-westmount)
 
 Fun fact: [Leonard Cohen was born in Westmount](http://www.leonardcohenfiles.com/montreal.html), in 1934.
 
 <a name="cohen-la"></a>
 
-[![leonard cohen, angelino](/images/whosonfirst-nacis-2017/whosonfirst-nacis-2017.015.jpg)](#cohen-la)
+[![leonard cohen, angelino](images/whosonfirst-nacis-2017.015.jpg)](#cohen-la)
 
 So, we're back to this guy.
 
@@ -188,7 +188,7 @@ In the minds of many people in this city Leonard Cohen is before all things [a M
 
 <a name="blvd-leonard-cohen"></a>
 
-[![boulevard leonard cohen](/images/whosonfirst-nacis-2017/whosonfirst-nacis-2017.016.jpg)](#blvd-leonard-cohen)
+[![boulevard leonard cohen](images/whosonfirst-nacis-2017.016.jpg)](#blvd-leonard-cohen)
 
 It is in all seriousness then that I would like to propose that the city of Montreal rename St. Laurent Boulevard after Leonard Cohen.
 
@@ -198,7 +198,7 @@ We are overdue something that reflects the present. [We are overdue a celebratio
 
 <a name="blind"></a>
 
-[![we have been blind](/images/whosonfirst-nacis-2017/whosonfirst-nacis-2017.017.jpg)](#blind)
+[![we have been blind](images/whosonfirst-nacis-2017.017.jpg)](#blind)
 
 I have told you these stories for two reasons:
 
@@ -214,7 +214,7 @@ We have closed our eyes to the fact that almost from the beginning we have syste
 
 <a name="place-is-history"></a>
 
-[![place is history](/images/whosonfirst-nacis-2017/whosonfirst-nacis-2017.018.jpg)](#place-is-history)
+[![place is history](images/whosonfirst-nacis-2017.018.jpg)](#place-is-history)
 
 In 2017 there is at least a nascent awareness, something approaching acknowledgement, among Canadians that [these things happened and that we did them](https://gadebate.un.org/en/72/canada).
 
@@ -228,7 +228,7 @@ If you believe that place is history or that language is culture or that naming 
 
 <a name="burden"></a>
 
-[![the past is our burden](/images/whosonfirst-nacis-2017/whosonfirst-nacis-2017.019.jpg)](#burden)
+[![the past is our burden](images/whosonfirst-nacis-2017.019.jpg)](#burden)
 
 I take the view that the sins of a mother or a father are not those of their sons or their daughters. We have enough evidence to suggest that things never end well when we assume they are. I do not believe however that this allows those same sons and daughters to abdicate their past.
 
@@ -244,7 +244,7 @@ If there is another common thread it has been to assume the argument is a zero-s
 
 <a name="better-than-yesterday"></a>
 
-[![better than yesterday](/images/whosonfirst-nacis-2017/whosonfirst-nacis-2017.020.jpg)](#better-than-yesterday)
+[![better than yesterday](images/whosonfirst-nacis-2017.020.jpg)](#better-than-yesterday)
 
 What if we stopped doing that?
 

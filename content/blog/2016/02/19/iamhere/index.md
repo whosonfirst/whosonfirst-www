@@ -5,7 +5,7 @@ title: I Am Here
 category: blog
 excerpt: Mapzen should always be Consumer Zero (of Mapzen services).
 authors: [thisisaaronland]
-image: "https://mapzen-assets.s3.amazonaws.com/images/iamhere/iamhere-v2-sbc-head.png"
+image: "images/iamhere-v2-sbc-head.png"
 tag: [whosonfirst]
 ---
 
@@ -23,15 +23,15 @@ The website was built using [the Google Maps API](https://developers.google.com/
 
 Somewhere between 2007 and now the domain renewal for Get Lat Lon lapsed and now it's... something else entirely, something not worth linking to. You can still get a feeling for the simplicity and elegance of its overall design because there are snapshots of the website in the [Wayback Machine](https://web.archive.org/) except... none of the Javascript works anymore.
 
-<img src="https://mapzen-assets.s3.amazonaws.com/images/iamhere/getlatlon-empty.png" style="border: 1px solid silver !important" alt="I am not here">
+<img src="images/getlatlon-empty.png" style="border: 1px solid silver !important" alt="I am not here">
 
 In 2009 I decided to write my own version of Get Lat Lon. Instead of using the Google Maps API it would use all <q>open</q> software and data. The map data would be from [OpenStreetMap](http://www.openstreetmap.org/). The map tiles would be [from CloudMade using exciting new cartography from Stamen Design](http://mike.teczno.com/notes/cloudmade-styles.html). It would use the [modestmaps.js](https://github.com/stamen/modestmaps-js) library for managing all those tiles. It would support the then still-nascent browser-based [Geolocation API](http://www.w3.org/TR/geolocation-API/) to help determine your location. The geocoding would [be handled by Flickr](https://www.flickr.com/services/api/flickr.places.find.html) and in addition to geocoding it would also try to _reverse_ geocode your location and display [the shape of the place](http://code.flickr.net/2008/10/30/the-shape-of-alpha/) contained by a latlon, again [using the Flickr API](https://www.flickr.com/services/api/flickr.places.findByLatLon.html).
 
-<img src="https://mapzen-assets.s3.amazonaws.com/images/iamhere/iamhere-v1-baghdad.png" style="border: 1px solid silver !important" alt="old Baghdad">
+<img src="images/iamhere-v1-baghdad.png" style="border: 1px solid silver !important" alt="old Baghdad">
 
 And... it would be [so clever and modular](https://github.com/straup/js-iamheremap) that it would support multiple service providers and you could just drop it in to any webpage and it would work, as if like magic. It was called <q>I Am Here</q> and I think I was the only person to ever use it but [it's still running](http://www.aaronland.info/iamhere/). In 2014, though, CloudMade [got out of the tile business](https://wiki.openstreetmap.org/wiki/CloudMade) and so there is literally not much to see anymore.
 
-<img src="https://mapzen-assets.s3.amazonaws.com/images/iamhere/iamhere-v1-empty.png" style="border: 1px solid silver !important" alt="no Baghdad">
+<img src="images/iamhere-v1-empty.png" style="border: 1px solid silver !important" alt="no Baghdad">
 
 _I am pretty sure that it's exactly [one line of code to define a new map provider](https://github.com/straup/js-iamheremap/blob/master/iamheremap.src.js#L268-L280) to make I Am Here work again but to be perfectly honest just looking at all that too-too clever code now, in 2016, is exhausting. Also, see the way the licensing information on the map data hasn't been updated to reflect [the switch to the ODbL](http://www.openstreetmap.org/copyright)..._
 
@@ -49,7 +49,7 @@ Fast forward to last year (2015) and work has begun in earnest on the [Who's On 
 
 That's it. The purpose of the `go-whosonfirst-pip` code is to do fiddly math across a large and heterogenous dataset as quickly as possible.
 
-[![rtree](https://mapzen-assets.s3.amazonaws.com/images/iamhere/rtree.png)](https://commons.wikimedia.org/w/index.php?curid=10008216)
+[![rtree](images/rtree.png)](https://commons.wikimedia.org/w/index.php?curid=10008216)
 
 
 _This is what an R-tree looks like, courtesy [Wikimedia user Chire](https://commons.wikimedia.org/wiki/User:Chire)_
@@ -122,7 +122,7 @@ The nice thing about the `go-whosonfirst-pip` tools is that they are designed to
 
 So far, so good. We have [an enormous bag of (Who's On First) data](https://github.com/whosonfirst/whosonfirst-data/) and we have [a tool for establishing the relationship(s) between those files](https://github.com/whosonfirst/go-whosonfirst-pip/) but any volume of geographic data absent a map is... hard to see.
 
-[![gowanus](https://mapzen-assets.s3.amazonaws.com/images/iamhere/iamhere-v2-gowanus.png)](https://whosonfirst.mapzen.com/iamhere/#14/40.676277/-73.988371)
+[![gowanus](images/iamhere-v2-gowanus.png)](https://whosonfirst.mapzen.com/iamhere/#14/40.676277/-73.988371)
 
 So, I rebuilt I Am Here (or Get Lat Lon) ... again. It's called [whosonfirst-www-iamhere](https://github.com/whosonfirst/whosonfirst-www-iamhere) or just I Am Here (again) for short.
 
@@ -130,7 +130,7 @@ It does everything that the combination of Get Lat Lon and the original I Am Her
 
 Aside from an ongoing need to simply know what the coordinates are for any given spot on a map it seemed like `whosonfirst-www-iamhere` would be a good and useful tool for visualizing and sanity-checking the results returned by the `go-whosonfirst-pip` code.
 
-[![probably a bug](https://mapzen-assets.s3.amazonaws.com/images/iamhere/iamhere-v2-ggh.png)](https://whosonfirst.mapzen.com/iamhere/#14/37.751376/-122.469149)
+[![probably a bug](images/iamhere-v2-ggh.png)](https://whosonfirst.mapzen.com/iamhere/#14/37.751376/-122.469149)
 
 _For example, Golden Gate...what?_
 
@@ -168,7 +168,7 @@ $> ./bin/start.py -d /path/to/your/whosonfirst-data/data \
   /path/to/your/whosonfirst-data/meta/wof-locality-latest.csv
 ```
 
-[![baghdad-2](https://mapzen-assets.s3.amazonaws.com/images/iamhere/iamhere-v2-baghdad.png)](https://whosonfirst.mapzen.com/iamhere/#11/33.332823/44.426651)
+[![baghdad-2](images/iamhere-v2-baghdad.png)](https://whosonfirst.mapzen.com/iamhere/#11/33.332823/44.426651)
 
 The short version is that once the `start.py` script has finished setting everything up you can open your web browser up at `http://localhost:8001` and start poking around countries and neighbourhoods from Who's On First.
 
@@ -180,13 +180,13 @@ The longer version follows. By default the `start.py` tool requires a minimum of
 
 All of these port numbers can be changed if necessary. To do so you would pass your own setting as parameters to the `start.py` tools and as custom settings in the `mapzen.whosonfirst.config.js` config file.
 
-[![boston](https://mapzen-assets.s3.amazonaws.com/images/iamhere/iamhere-v2-boston.png)](https://whosonfirst.mapzen.com/iamhere/#11/42.358430/-71.059770)
+[![boston](images/iamhere-v2-boston.png)](https://whosonfirst.mapzen.com/iamhere/#11/42.358430/-71.059770)
 
 ## Bundles
 
 One of the challenges with Who's On First has been balancing our desire for a robust and portable data format (plain text GeoJSON files), the needs for an historical audit trail and the mechanics of working with and distributing a large and ever-growing dataset. We have been using Git and GitHub extensively for much of the work to date but as the commit history around [the data]() grows so too does the size of the `whosonfirst-data` repository and the burden in using it or simply getting started with Who's On First.
 
-[![quebec](https://mapzen-assets.s3.amazonaws.com/images/iamhere/iamhere-v2-quebec.png)](https://whosonfirst.mapzen.com/iamhere/#3/45.5080/-73.6166)
+[![quebec](images/iamhere-v2-quebec.png)](https://whosonfirst.mapzen.com/iamhere/#3/45.5080/-73.6166)
 
 As an alternative we have been working on something called <q>bundles</q>. Bundles are:
 
@@ -203,7 +203,7 @@ $> tar -xvjf wof-microhood-latest-bundle.tar.bz2
 $> ./bin/start.py -d wof-microhood-latest-bundle/data wof-microhood-latest-bundle/wof-microhood-latest.csv
 ```
 
-[![this really happened...](https://mapzen-assets.s3.amazonaws.com/images/iamhere/iamhere-v2-sbc.png)](https://whosonfirst.mapzen.com/iamhere/#14/37.796356/-122.396107)
+[![this really happened...](images/iamhere-v2-sbc.png)](https://whosonfirst.mapzen.com/iamhere/#14/37.796356/-122.396107)
 
 All of the details and currently available bundles are listed over at [https://whosonfirst.mapzen.com/bundles](https://whosonfirst.mapzen.com/bundles) and... yes, [Super Bowl City](https://whosonfirst.mapzen.com/spelunker/id/420561633/) is a thing that really happened in 2016.
 

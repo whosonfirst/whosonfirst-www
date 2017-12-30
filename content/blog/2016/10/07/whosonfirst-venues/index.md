@@ -3,14 +3,14 @@ layout: page
 category: blog
 title: Venues, Postal Codes... and All Those GitHub Repositories
 excerpt: Multiply &quot;a lot of venues, even in the smallest of communities&quot; by the &quot;entire planet&quot; and you've got... well, a lot of venues.
-image: https://s3.amazonaws.com/mapzen-assets/images/whosonfirst-venues/whosonfirst-venues-splash.png
+image: images/whosonfirst-venues-splash.png
 authors: [thisisaaronland]
 tags: [whosonfirst,venues]
 ---
 
 ## Venues
 
-![Entertaining guests at the California alligator farm, Los Angeles, by The California Historical Society](https://s3.amazonaws.com/mapzen-assets/images/whosonfirst-venues/16356193176_02404fa0d1_z.jpg)
+![Entertaining guests at the California alligator farm, Los Angeles, by The California Historical Society](images/16356193176_02404fa0d1_z.jpg)
 
 tl;dr - [20 million openly licensed venues, all with full (or at least partial) Who's On First hierarchies](https://whosonfirst.mapzen.com/spelunker/placetypes/venue).
 
@@ -36,7 +36,7 @@ Multiply _a lot of venues, even in the smallest of communities_ by the _entire p
 
 Which makes venues a hard problem. It's a hard problem collecting all those venues. It's a hard problem vetting them and to keeping them up to date. It's a hard problem to figure out where to _put_ them all and harder still to figure out how to make that many things searchable. These are hard problems and that has meant only companies with an interest in reselling access to that data have endeavoured to take up the challenge. That's not very interesting to Who's On First.
 
-![Franzi and cable car, by Phil Gyford](https://s3.amazonaws.com/mapzen-assets/images/whosonfirst-venues/14251596747_bc13128e8c_z.jpg)
+![Franzi and cable car, by Phil Gyford](images/14251596747_bc13128e8c_z.jpg)
 
 Historically, there haven't been a whole lot venue databases that don't impose constraints, of one kind or another, on their re-use. The goal for Who's On First is to have an openly licensed database of places that _may_ be used in a commercial project, without any additional restrictions. Something akin to an [MIT](https://en.wikipedia.org/wiki/MIT_License) or [BSD](https://en.wikipedia.org/wiki/BSD_licenses) software license but for data. That is not everyone's definition of "open" and that's okay. There are different flavours of "open" and different reasons for choosing one over another.
 
@@ -54,7 +54,7 @@ In 2015, we started importing those venues in to Who's On First. The import proc
 
 Aside from a general desire to add all those venues in to Who's On First the sheer volume of data was attractive as a way to test some of the assumptions and infrastructure we've developed to manage [all these places](https://mapzen.com/blog/who-s-on-first/) we've taken under our wing. Any comprehensive database of venues in Who's On First, whether we seeded it using SimpleGeo or another source, would have all the same problems of scale so even though there were some initial concerns about the quality and the focus of the Public Spaces Collection we figured "Why not at least use it to start testing things, now?"
 
-![Postcard of the sea serpent, by The Nantucket Historical Association](https://s3.amazonaws.com/mapzen-assets/images/whosonfirst-venues/3177485572_5d75a01b79_z.jpg)
+![Postcard of the sea serpent, by The Nantucket Historical Association](images/3177485572_5d75a01b79_z.jpg)
 
 The SimpleGeo data was released in 2011 and it's 2016, today, so it's safe to assume that we will _not_ have a venue record for that cool new bar which just opened in [London](https://whosonfirst.mapzen.com/spelunker/ID/descendants&placetype=venue) or [Los Angeles](https://whosonfirst.mapzen.com/spelunker/ID/descendants&placetype=venue) or [Shanghai](https://whosonfirst.mapzen.com/spelunker/ID/descendants&placetype=venue). We aspire to have those venues, and aspire to have them in something approaching real-time, but today we do not.
 
@@ -66,7 +66,7 @@ That's the interesting thing about the term "venues", in 2016: It has become sho
 
 These venues are also almost always _current_ venues suggesting the thrill, however illusory, of something that [hasn't been discovered by everyone else yet](http://www.aaronland.info/weblog/2014/10/06/interpretation/#brick) and aimed very specifically at what marketers refer to as "the 18-35 year old" demographic.
 
-![Turtle club, caught between San Pedro & Catalina Island, Cal., by The California Historical Society](https://s3.amazonaws.com/mapzen-assets/images/whosonfirst-venues/15485394421_aa931019bb_z.jpg)
+![Turtle club, caught between San Pedro & Catalina Island, Cal., by The California Historical Society](images/15485394421_aa931019bb_z.jpg)
 
 But let's stop for a moment and remember a few things: Let's remember the [nearly 100-year old butcher shop](https://whosonfirst.mapzen.com/spelunker/id/572151977/) in your neighbourhood. Or the [local bar](https://whosonfirst.mapzen.com/spelunker/id/572077043/) that closed last year [whose history runs deeper](https://en.wikipedia.org/wiki/The_Lexington_Club) than a pint glass. Let's remember our new best friend [Poop Emoji Rock](https://whosonfirst.mapzen.com/spelunker/id/1008184051/).
 
@@ -84,7 +84,7 @@ In the meantime there are 20, 848, 132 (and counting) venues that have been [Who
 
 ## Postal Codes
 
-![Sitting with travel trailer at St. Petersburg Beach, by The State Library and Archives of Florida](https://s3.amazonaws.com/mapzen-assets/images/whosonfirst-venues/14889402267_8853eb04af_z.jpg)
+![Sitting with travel trailer at St. Petersburg Beach, by The State Library and Archives of Florida](images/14889402267_8853eb04af_z.jpg)
 
 tl;dr - [3 million openly licensed postal codes with centroids or polygons](https://whosonfirst.mapzen.com/spelunker/placetypes/postalcode/?exclude=nullisland) in 14 countries.
 
@@ -116,7 +116,7 @@ These geometries are very much Weird Data so it is left up to you to decide whet
 
 ## All Those GitHub Repositories
 
-![The Endless Staircase, by Ben Terrett](https://s3.amazonaws.com/mapzen-assets/images/whosonfirst-venues/9785396672_a6220b8421_z.jpg)
+![The Endless Staircase, by Ben Terrett](images/9785396672_a6220b8421_z.jpg)
 
 tl;dr - We are betting on the future and [making do with the present](https://github.com/whosonfirst-data).
 
@@ -151,7 +151,7 @@ The [whosonfirst-data](https://github.com/whosonfirst-data/whosonfirst-data) rep
 
 <div style="padding-top:-24.5px;height:305px;">
      <div style="margin-left:auto;margin-right:auto;width:408px;height:295px;">
-     	  <a href="http://www.nytimes.com/2016/07/14/world/what-in-the-world/in-new-zealand-lands-and-rivers-can-be-people-legally-speaking.html"><img src="https://s3.amazonaws.com/mapzen-assets/images/whosonfirst-venues/nz_water_person.png" width="408" height="295" align="center" style="border: 1px #999 solid;" /></a>
+     	  <a href="http://www.nytimes.com/2016/07/14/world/what-in-the-world/in-new-zealand-lands-and-rivers-can-be-people-legally-speaking.html"><img src="images/nz_water_person.png" width="408" height="295" align="center" style="border: 1px #999 solid;" /></a>
      </div>
 </div>
 

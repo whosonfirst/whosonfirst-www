@@ -3,12 +3,12 @@ layout: page
 category: blog
 title: Mapping with Bias
 excerpt: I like that idea that there might be an instrument to measure the motion – the velocity – of people’s understanding of place
-image: https://mapzen-assets.s3.amazonaws.com/images/mapping-with-bias/stickers.jpg
+image: images/mapping-with-bias/stickers.jpg
 authors: [thisisaaronland]
 tags: [whosonfirst, wof, thisisaaronland]
 ---
 
-[![](https://mapzen-assets.s3.amazonaws.com/images/mapping-with-bias/mapping-with-bias.001.jpeg)](#intro)
+[![](images/mapping-with-bias/mapping-with-bias.001.jpeg)](#intro)
 	
 _The following are the slides and notes for a talk I presented at the [Mapping With Perspective](https://mapzen.com/blog/mapzen-sf-event-april-26/) event held at the [Mapzen West](https://whosonfirst.mapzen.com/spelunker/id/907212541/) offices, in April 2016._
 
@@ -20,7 +20,7 @@ _My talk was titled "Mapping with Bias" and this is what I said._
 
 <a name="intro"></a>
 
-I had stickers made for the [Who’s On First](https://whosonfirst.mapzen.com/) project recently. They look [like this.](https://mapzen-assets.s3.amazonaws.com/images/mapping-with-bias/stickers.jpg)
+I had stickers made for the [Who’s On First](https://whosonfirst.mapzen.com/) project recently. They look [like this.](images/mapping-with-bias/stickers.jpg)
 
 No one has any idea what they depict and that’s led to some hilarious speculation about what they "are" ranging from a hockey stick (I am from Canada) to the Lexus car logo to [an e-cigarette](https://twitter.com/alloftheplaces/status/720359919749169152).
 
@@ -34,11 +34,11 @@ It goes on the describe "flow velocity" as:
 
 [Who’s On First](https://whosonfirst.mapzen.com) is _not really_ a pitot tube but I like that idea that there might be an instrument to measure the motion – the velocity – of people’s understanding of place.
 
-[Also, I like shiny things](https://mapzen-assets.s3.amazonaws.com/images/mapping-with-bias/stickers.jpg).
+[Also, I like shiny things](images/mapping-with-bias/stickers.jpg).
 
 <a name="theory"></a>
 
-[![](https://mapzen-assets.s3.amazonaws.com/images/mapping-with-bias/mapping-with-bias.002.jpeg)](#theory)
+[![](images/mapping-with-bias/mapping-with-bias.002.jpeg)](#theory)
 
 [Who's On First](https://whosonfirst.mapzen.com) is a gazetteer. A gazetteer is a "big bag of places" in which every place has a stable and permanent identifier, supporting metadata and pointers to other IDs in the gazetteer for places with which it has a relationship.
 
@@ -46,7 +46,7 @@ Over [15, 000 words have written about Who's On First](https://whosonfirst.mapze
 
 Rather than trying to squeeze [all the details](https://mapzen.com/tag/whosonfirst/) in to a 20-minute talk I am going to focus instead on some of the first principles motivating the project and governing our day-to-day work.
 
-[![](https://mapzen-assets.s3.amazonaws.com/images/mapping-with-bias/mapping-with-bias.003.jpeg)](https://collection.cooperhewitt.org/objects/18297119/)
+[![](images/mapping-with-bias/mapping-with-bias.003.jpeg)](https://collection.cooperhewitt.org/objects/18297119/)
 
 The toxic trinity of "geo" has always been the unholy union of: _licensing and coverage and quality_.
 
@@ -66,11 +66,11 @@ What follows are six "umbrella" ideas that we keep in mind as we work towards th
 
 <a name="consensual"></a>
 
-[![](https://mapzen-assets.s3.amazonaws.com/images/mapping-with-bias/mapping-with-bias.004.jpeg)](#consensual)
+[![](images/mapping-with-bias/mapping-with-bias.004.jpeg)](#consensual)
 
 The first is the idea that [Who’s On First](https://whosonfirst.mapzen.com/) is **a gazetteer of consensual hallucinations**.
 
-[![](https://mapzen-assets.s3.amazonaws.com/images/mapping-with-bias/mapping-with-bias.005.jpeg)](https://collection.cooperhewitt.org/objects/68775917/)
+[![](images/mapping-with-bias/mapping-with-bias.005.jpeg)](https://collection.cooperhewitt.org/objects/68775917/)
 
 The history of geospatial technologies has for most part been one of [force projection](http://www.aaronland.info/weblog/2012/03/13/godhelpus/#sxaesthetic) and [tax collection](http://www.aaronland.info/weblog/2015/02/24/effort/#holodeck). Some people argue they are the same thing.
 
@@ -86,11 +86,11 @@ It’s not just Flickr. There is a long and growing list of companies – really
 
 <a name="geometries"></a>
 
-[![](https://mapzen-assets.s3.amazonaws.com/images/mapping-with-bias/mapping-with-bias.006.jpeg)](#geometries)
+[![](images/mapping-with-bias/mapping-with-bias.006.jpeg)](#geometries)
 
 Or put another way, [Who’s On First](https://whosonfirst.mapzen.com/) is **not a gazetteer of geometries**.
 
-[![](https://mapzen-assets.s3.amazonaws.com/images/mapping-with-bias/mapping-with-bias.007.jpeg)](https://collection.cooperhewitt.org/objects/18643589/)
+[![](images/mapping-with-bias/mapping-with-bias.007.jpeg)](https://collection.cooperhewitt.org/objects/18643589/)
 
 One of our earliest decisions was on that each record in [Who’s On First](https://whosonfirst.mapzen.com) would contain multiple geometries.
 
@@ -108,11 +108,11 @@ The purpose and the value of [Who's On First](https://whosonfirst.mapzen.com) is
 
 <a name="ancestors"></a>
 
-[![](https://mapzen-assets.s3.amazonaws.com/images/mapping-with-bias/mapping-with-bias.008.jpeg)](#ancestors)
+[![](images/mapping-with-bias/mapping-with-bias.008.jpeg)](#ancestors)
 
 Another core principle of [Who's On First](https://whosonfirst.mapzen.com) that is every record shares **a common set of ancestors**.
 
-[![](https://mapzen-assets.s3.amazonaws.com/images/mapping-with-bias/mapping-with-bias.009.jpeg)](https://collection.cooperhewitt.org/objects/18643587/)
+[![](images/mapping-with-bias/mapping-with-bias.009.jpeg)](https://collection.cooperhewitt.org/objects/18643587/)
 
 Hierarchies, in particular administrative hierarchies, vary wildly from country to country. We used to say that all locations in [Who's On First](https://whosonfirst.mapzen.com) share a common hierarchy but I think that was often more confusing than not.
 
@@ -130,11 +130,11 @@ There is also a related discussion about places having _multiple_ hierarchies bu
 
 <a name="supersedes"></a>
 
-[![](https://mapzen-assets.s3.amazonaws.com/images/mapping-with-bias/mapping-with-bias.010.jpeg)](#supersedes)
+[![](images/mapping-with-bias/mapping-with-bias.010.jpeg)](#supersedes)
 
 [Who’s On First](https://whosonfirst.mapzen.com) is **not a linear scorched-earth view of the world**.
 
-[![](https://mapzen-assets.s3.amazonaws.com/images/mapping-with-bias/mapping-with-bias.011.jpeg)](https://collection.cooperhewitt.org/objects/18334353/)
+[![](images/mapping-with-bias/mapping-with-bias.011.jpeg)](https://collection.cooperhewitt.org/objects/18334353/)
 
 Places change. The physical boundaries of the USA [changed 141 times](https://github.com/whosonfirst-data/whosonfirst-data/issues/176) between the years 1789 and 1959. The entire notion of what Yugoslavia _meant_ changed three times in the 20th century before finally atomizing in to [seven countries](https://en.wikipedia.org/wiki/Yugoslavia#/media/File:Former_Yugoslavia_2008.PNG), by 2008.
 
@@ -153,11 +153,11 @@ We do this as a way to foster confidence in the robustness and durability of [Wh
 
 <a name="signal"></a>
 
-[![](https://mapzen-assets.s3.amazonaws.com/images/mapping-with-bias/mapping-with-bias.012.jpeg)](#signal)
+[![](images/mapping-with-bias/mapping-with-bias.012.jpeg)](#signal)
 
 [Who’s On First](https://whosonfirst.mapzen.com) is **a gazetteer of signal fires**.
 
-[![](https://mapzen-assets.s3.amazonaws.com/images/mapping-with-bias/mapping-with-bias.013.jpeg)](https://collection.cooperhewitt.org/objects/18334351/)
+[![](images/mapping-with-bias/mapping-with-bias.013.jpeg)](https://collection.cooperhewitt.org/objects/18334351/)
 
 It's probably obviously by now but it bears repeating: The world is full of complex and contradictory opinions. We do not want to try and settle those debates. We can not settle those debates.
 
@@ -171,11 +171,11 @@ When there is genuine debate about something we leave it to the consumers of the
 
 <a name="database"></a>
 
-[![](https://mapzen-assets.s3.amazonaws.com/images/mapping-with-bias/mapping-with-bias.014.jpeg)](#database)
+[![](images/mapping-with-bias/mapping-with-bias.014.jpeg)](#database)
 
 Finally, **the data is not the database.**
 
-[![](https://mapzen-assets.s3.amazonaws.com/images/mapping-with-bias/mapping-with-bias.015.jpeg)](https://collection.cooperhewitt.org/objects/18616235/)
+[![](images/mapping-with-bias/mapping-with-bias.015.jpeg)](https://collection.cooperhewitt.org/objects/18616235/)
 
 I mentioned at the beginning that [Who's On First](https://whosonfirst.mapzen.com) was designed to "outlast people's reluctance".
 
@@ -197,7 +197,7 @@ These are [subjects](https://www.bell-labs.com/usr/dmr/www/hist.html) that could
 
 But that is the work.
 
-![](https://mapzen-assets.s3.amazonaws.com/images/mapping-with-bias/mapping-with-bias.016.jpeg)
+![](images/mapping-with-bias/mapping-with-bias.016.jpeg)
 
 Thank you. If you'd like a sticker [send up a flare](https://www.twitter.com/alloftheplaces).
 

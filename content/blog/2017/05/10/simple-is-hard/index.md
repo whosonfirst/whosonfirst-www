@@ -3,7 +3,7 @@ layout: page
 category: blog
 title: "Simple is hard"
 excerpt: "Making something less complicated is complicated."
-image: "https://mapzen-assets.s3.amazonaws.com/images/simple-is-hard/delancy_essex.jpg"
+image: "images/delancy_essex.jpg"
 authors: [dphiffer]
 tag: [boundaryissues, whosonfirst, data]
 ---
@@ -22,7 +22,7 @@ So I brought in the records using the [Transitland Datastore API](https://transi
 
 Here is a screen capture I took while I was testing to give you a sense for the process.
 
-<div class="video-wrapper ratio-16-9"><video src="https://mapzen-assets.s3.amazonaws.com/images/simple-is-hard/transitland_import.mp4" controls="controls"></video></div>
+<div class="video-wrapper ratio-16-9"><video src="images/transitland_import.mp4" controls="controls"></video></div>
 
 It worked! I imported all of the subway stations, using a home team geometry source. There is one remaining mystery regarding the number of stations; of the 502 CSV rows I discovered a handful of duplicates on the way in, ultimately resulting in [471 records](https://whosonfirst.mapzen.com/spelunker/concordances/transitland/). However, according to [Wikipedia](https://en.wikipedia.org/wiki/New_York_City_Subway_stations) we should actually have 472 stations. In due time we will untangle the station count discrepancy. Better than yesterday!
 
@@ -34,15 +34,15 @@ De-duping places is a _hard problem (a.k.a. tricky business)_ (*[Deduplicating a
 
 Here’s what it looks like:
 
-![Dupe UI: City Hall Station](https://mapzen-assets.s3.amazonaws.com/images/simple-is-hard/dupe_city_hall.jpg)
+![Dupe UI: City Hall Station](images/dupe_city_hall.jpg)
 
 Sometimes it found _obviously wrong_ dupe candidates:
 
-![Dupe UI: Pizza Hut in New York City??](https://mapzen-assets.s3.amazonaws.com/images/simple-is-hard/dupe_pizza_hut.jpg)
+![Dupe UI: Pizza Hut in New York City??](images/dupe_pizza_hut.jpg)
 
 And sometimes it surfaced incorrect (or at least *incomplete*) WOF records:
 
-![Dupe UI: 1 train at Fulton St](https://mapzen-assets.s3.amazonaws.com/images/simple-is-hard/dupe_1_train.jpg)
+![Dupe UI: 1 train at Fulton St](images/dupe_1_train.jpg)
 
 Despite the mixed quality of the dupe candidates, it worked! I was able to discover and merge the new data with existing WOF records.
 
@@ -52,11 +52,11 @@ One caveat to add is that my dupe-detection UI has both false positives (suggest
 
 I came to learn quickly that NYC’s subway stations are full of challenging edge cases. Lots of stations have the same name! Canal Street has five different subway stations, from which you can take the 1, A, C, E, J, N, Q, R, J, or Z trains.
 
-![The "Canal Street" problem](https://mapzen-assets.s3.amazonaws.com/images/simple-is-hard/canal_st.jpg)
+![The "Canal Street" problem](images/canal_st.jpg)
 
 As the data was coming in, I had to determine if the incoming record actually represented a _new Canal St_ or another dimension of an existing record. To make matters more confusing, Transitland accounts for each platform within a subway station complex.
 
-![The "Delancy - Essex" problem](https://mapzen-assets.s3.amazonaws.com/images/simple-is-hard/delancy_essex.jpg)
+![The "Delancy - Essex" problem](images/delancy_essex.jpg)
 
 I decided on a rule that I could follow: if there’s a _dot on the official MTA map_ that dot represents a distinct station. Even if you can walk between two of the dots on the map via a connecting tunnel—DOT EQUALS STATION. Anything more complicated elevates the likelihood of forming the wrong mental model for the next person to try to understand.
 
@@ -70,7 +70,7 @@ For some reason during my import process the hierarchies came out all funky. Som
 
 I have since added a small indicator that shows what the direct parent of the place is, which should help clue in the person importing data when something goes wrong.
 
-![14 St - Union Square](https://mapzen-assets.s3.amazonaws.com/images/simple-is-hard/union_square.jpg)
+![14 St - Union Square](images/union_square.jpg)
 
 For a more in-depth description of the Who’s On First placetype hierarchy, see the [whosonfirst-placetype repo](https://github.com/whosonfirst/whosonfirst-placetypes).
 
@@ -82,7 +82,7 @@ I deployed the validation check, Aaron helped me clean up the incorrectly-encode
 
 Almost immediately I heard from three people, more or less in unison, that something was wrong. They could not save WOF records using the importer! Something about an `Incorrect parent ID`.
 
-![Parent ID bug](https://mapzen-assets.s3.amazonaws.com/images/simple-is-hard/parent_id.png)
+![Parent ID bug](images/parent_id.png)
 
 So I went back to the drawing board. There turned out to be a flaw in how we were requesting [point-in-polygon](https://en.wikipedia.org/wiki/Point_in_polygon) results. However, the larger problem was that overzealous validation was blocking the save process. A person adding a venue just wants the _save button_ to _save the thing_. They don’t know what a parent ID error is, especially when they have no means of fixing it.
 
@@ -99,13 +99,13 @@ All this time I was fixing issues with the CSV importer, I was testing out anoth
 
 It’s the same list of subway stations, but it includes some interesting summarized descriptions of what you can find at each station in terms of train lines and service frequency.
 
-![Lines and schedules!](https://mapzen-assets.s3.amazonaws.com/images/simple-is-hard/lines_schedules.png)
+![Lines and schedules!](images/lines_schedules.png)
 
 More importantly, it means we will have records with both the official object ID assigned from the NYC Open Data website _and also_ the concordance from Transitland. If any other application uses the “official” data source, they can now use a WOF record to correlate _their stuff_ with _Transitland’s stuff_.
 
 Until then, here are the [Transitland concordances](https://whosonfirst.mapzen.com/spelunker/concordances/transitland/) we do have.
 
-![Transitland concordances](https://mapzen-assets.s3.amazonaws.com/images/simple-is-hard/concordances.png)
+![Transitland concordances](images/concordances.png)
 
 ## It just _looks_ simple
 

@@ -4,11 +4,11 @@ title: Who's On First Life Cycle Documentation
 category: blog
 excerpt: Documenting the life cycle and tracking rules of the Who's On First ID
 authors: [stepps00]
-image: https://mapzen-assets.s3.amazonaws.com/images/wof-lifecycle-document/new_growth.jpg
+image: images/new_growth.jpg
 tag: [WOF, ID, whosonfirst, data, Who's On First, lifecycle]
 ---
 
-![WOF is growing, up](https://mapzen-assets.s3.amazonaws.com/images/wof-lifecycle-document/new_growth.jpg)
+![WOF is growing, up](images/new_growth.jpg)
 
 [Who's On First](https://whosonfirst.mapzen.com) is Mapzen's gazatteer of places. Within Who's On First, each place is represented as a record with a unique and stable identifier that we call the **wof:id**. Because our gazetteer tracks changes to places over time we create new records when places experience significant events (and point the old record forward to the new record's **wof:id**).
 

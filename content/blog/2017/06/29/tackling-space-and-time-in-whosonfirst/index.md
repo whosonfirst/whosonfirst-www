@@ -4,7 +4,7 @@ title: Tackling Space and Time in Who's On First
 category: blog
 excerpt: Using the Extended Date/Time Format to track historical records in Who's On First.
 authors: [stepps00]
-image: "https://mapzen-assets.s3.amazonaws.com/images/whosonfirst-edtf/main_photo.jpg"
+image: "images/main_photo.jpg"
 tag: [whosonfirst, data]
 ---
 

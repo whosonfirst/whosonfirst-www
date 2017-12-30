@@ -3,7 +3,7 @@ layout: page
 category: blog
 title: "The world is weird and wonderful!"
 excerpt: "The multifaceted maps we make simply reflect the weird and wonderful territory they represent. CSV and GeoJSON make it easier."
-image: "https://mapzen-assets.s3.amazonaws.com/images/weird-and-wonderful/mural1.jpg"
+image: "images/mural1.jpg"
 authors: [dphiffer]
 tag: [boundaryissues, whosonfirst, data]
 ---
@@ -14,7 +14,7 @@ _TL;DR: we've added a CSV import feature to [Boundary Issues](https://mapzen.com
 
 Like many New Yorkers who grew up on the west coast, the subway system is endlessly fascinating to me. Our sprawling 24-hour transit is a source of pride, the subject of gripes and strongly held opinions, and maybe the most interesting venue for [contemporary dance](http://gothamist.com/2015/06/29/two_showtime_dancers_give_us_the_lo.php) in a city well known for its performing arts.
 
-![](https://mapzen-assets.s3.amazonaws.com/images/weird-and-wonderful/subway-feet.jpg "Plaque metadata")
+![](images/subway-feet.jpg "Plaque metadata")
 
 Naturally, we love to map the subway here in NYC. There’s the familiar and practical [MTA official map](http://web.mta.info/maps/submap.html) (whose [evolution](http://gizmodo.com/18-subway-maps-that-trace-nycs-transit-history-1242514280) is also a subject of obsession) and its many [opinionated variations](http://www.citylab.com/design/2014/07/a-vignelli-inspired-map-designed-to-make-the-least-amount-of-people-mad/374680/). Two of my favorites are the [prewalker](http://www.urbandictionary.com/define.php?term=prewalking)’s essential tool, [ExitStrategy](http://gizmodo.com/5310818/nyc-exit-strategy-the-other-nyc-subway-app-you-need), and [BulletMap](https://medium.com/@anthonydenaro/mapping-nyc-transit-all-of-it-e16e76a95a0e), a map optimized for transfers between the subway and bus networks.
 
@@ -24,21 +24,21 @@ All of this is to say, the “subway map” means different things to different 
 
 Let’s isolate ourselves to just one subway station, let’s say the [36th Street D/N/R/W stop](https://en.wikipedia.org/wiki/36th_Street_(BMT_Fourth_Avenue_Line)) in the historically working class neighborhood of Sunset Park. You can find this useful metadata embedded within the station itself.
 
-![](https://mapzen-assets.s3.amazonaws.com/images/weird-and-wonderful/station-info.jpg "Plaque metadata")
+![](images/station-info.jpg "Plaque metadata")
 
 Let’s just stand back a little bit. Behold, there are restrooms here! (For those not familiar with NYC subway facilities, this is uncommon.)
 
-![](https://mapzen-assets.s3.amazonaws.com/images/weird-and-wonderful/restrooms.jpg "Don't turn into a pumpkin")
+![](images/restrooms.jpg "Don't turn into a pumpkin")
 
 Also included are more valuable hours-of-operation metadata, especially useful if you find yourself returning home from a late night out, looking for relief. (Either rush home _before midnight_ or take your time and wait until _after 5am_.)
 
 Let’s keep looking around this station. Oh man, check out these tile murals!
 
-<div id="mural-designers"><img src="https://mapzen-assets.s3.amazonaws.com/images/weird-and-wonderful/mural2.jpg"></div>
+<div id="mural-designers"><img src="images/mural2.jpg"></div>
 <script>
 
 var div_id = 'mural-designers';
-var img_hover_src = 'https://mapzen-assets.s3.amazonaws.com/images/weird-and-wonderful/mural2-hover.jpg';
+var img_hover_src = 'images/mural2-hover.jpg';
 
 var div = document.getElementById(div_id);
 var img = div.querySelector('img');
@@ -67,21 +67,21 @@ div.addEventListener('touchend', function() {
 
 <p class="caption">The designers. (Hover or tap on this if you want to <em>blow your mind</em>.)</p>
 
-<div><img src="https://mapzen-assets.s3.amazonaws.com/images/weird-and-wonderful/mural3.jpg"></div>
+<div><img src="images/mural3.jpg"></div>
 
 <p class="caption">The builders.</p>
 
-<div><img src="https://mapzen-assets.s3.amazonaws.com/images/weird-and-wonderful/mural1.jpg"></div>
+<div><img src="images/mural1.jpg"></div>
 
 <p class="caption">The riders.</p>
 
 Like all of the public art in NYC subway stations, we’ve got more good metadata here. (Shout out to Peter Columbo, whose name is misspelled on the plaque, but whose mosaic handiwork is [also at 110th St and Lexington](http://www.metmuseum.org/exhibitions/listings/2012/byzantium-and-islam/blog/cultural-connections/posts/byzantium-and-hip-hop).)
 
-![](https://mapzen-assets.s3.amazonaws.com/images/weird-and-wonderful/mural-meta.jpg "Mmmm ... metadata")
+![](images/mural-meta.jpg "Mmmm ... metadata")
 
 Checking out the [Wikipedia article](https://en.wikipedia.org/wiki/36th_Street_(BMT_Fourth_Avenue_Line)) for the station gives us an even denser picture of the station’s attributes. I am as fascinated by the train enthusiasts who obsessively compile this info, as I am by the train systems themselves. (n.b. I very much [count myself](https://www.youtube.com/playlist?list=PL_WssN5hKWUY9exh9UonSJBO9ntpL137Y) as one of those weirdo train enthusiasts.)
 
-![](https://mapzen-assets.s3.amazonaws.com/images/weird-and-wonderful/wikipedia.png "Wikipedia metadata")
+![](images/wikipedia.png "Wikipedia metadata")
 
 Despite the impressive diagram illustrating how the station’s unused tracks are positioned, Wikipedia does not mention restrooms or public art. That there are restrooms, that the mural here is a great example of Social Realism, are facts that are _just as valid_ and frankly _more interesting_ than the latitude and longitude for this place. Lots of the nuance that captures why we should even care about places tends to get ignored by datasets that are considered comprehensive.
 
@@ -129,7 +129,7 @@ For my work on [Boundary Issues](https://github.com/whosonfirst/whosonfirst-www-
 
 While [GeoJSON](http://geojson.org/) offers an amazing level of flexibility and compatibility for describing places, it turns out CSV is an _even better_ format for expressing many places at once. First of all it’s just been around longer; [FORTRAN 77 supported it in 1978](https://en.wikipedia.org/wiki/Comma-separated_values#History). That longevity means it has support in a wide range of spreadsheet editors, from VisiCalc to Google Sheets.
 
-![](https://mapzen-assets.s3.amazonaws.com/images/weird-and-wonderful/icecream.png)
+![](images/icecream.png)
 
 Unlike JSON (or XML), data encoded into CSV format doesn’t require that you read the entire file before you can start parsing it. That means CSV files can get _really really big_, and your software will still be able to read a single row efficiently. There are drawbacks to CSV as well, chiefly among them is it’s harder to express nested information inside its columnar structure. It’s all a trade-off, and choosing the right data format to encode stuff in has everything to do with the circumstances at hand.
 
@@ -149,39 +149,39 @@ Throughout the development of the CSV import feature, I had the pleasure of work
 
 > OUTgoing: The Hidden History of New York's Gay Nightlife—is an effort to map documented historic locations of gay nightlife in New York City as far back and comprehensively as possible. We now have all 50 states with legalized gay marriage, and the LGBT experience is in the midst of a 21st century upshift. It's time to look back and get some perspective and data—in order to look forward. From historic records, we’ve gathered 969 nighttime spots—bars, clubs, bathhouses, coffee houses, cruising areas, late-night diners, etc.—from the 1800s to 2015. It is nowhere near complete.
 
-![](https://mapzen-assets.s3.amazonaws.com/images/weird-and-wonderful/outgoing-map.jpg)
+![](images/outgoing-map.jpg)
 
 Jeff was kind enough to share a CSV file of all his collected places, which is dense with excellent metadata like `year_opened`, `year_closed`, and `mafia_owned`.
 
-![](https://mapzen-assets.s3.amazonaws.com/images/weird-and-wonderful/outgoing-csv.jpg)
+![](images/outgoing-csv.jpg)
 
 Here’s how we can start importing that data into Who’s On First: select the CSV file we want to upload.
 
-![](https://mapzen-assets.s3.amazonaws.com/images/weird-and-wonderful/csv-choose-file.gif)
+![](images/csv-choose-file.gif)
 
 The upload interface reveals some general options, allowing us to specify whether the CSV file has a column header row,  identify a _source_ for the data (in this case, [`outgoing`](https://github.com/whosonfirst/whosonfirst-sources/tree/master/sources#outgoing)), and choose a _prefix_ for the properties we are merging into Who’s On First.
 
-![](https://mapzen-assets.s3.amazonaws.com/images/weird-and-wonderful/csv-source-prefix.gif)
+![](images/csv-source-prefix.gif)
 
 Next we will map _which columns_ should be saved to _which properties_. Some columns map onto generic, well-known WOF properties like `wof:name`, `geom:latitude`, and `geom:longitude`, while others get saved as new properties with the `out:` prefix. The code detects predictable column headings like `latitude` and `longitude` and maps them automatically.
 
-![](https://mapzen-assets.s3.amazonaws.com/images/weird-and-wonderful/csv-properties.gif)
+![](images/csv-properties.gif)
 
 Once that property mapping is ready, we can click the “upload” button and begin stepping through each of the rows in the CSV file.
 
-![](https://mapzen-assets.s3.amazonaws.com/images/weird-and-wonderful/csv-add-venue.jpg)
+![](images/csv-add-venue.jpg)
 
 This row-by-row process allows us to make any necessary adjustments to the record before we import it into the Who’s On First dataset. In some cases, we may need to choose which address is the correct one.
 
-![](https://mapzen-assets.s3.amazonaws.com/images/weird-and-wonderful/csv-address.gif)
+![](images/csv-address.gif)
 
 We also want to avoid duplicating existing records, if possible.
 
-![](https://mapzen-assets.s3.amazonaws.com/images/weird-and-wonderful/csv-dupes.gif)
+![](images/csv-dupes.gif)
 
 Once we complete the step-through import process, we can download a new CSV file modified to include a new `wof_id` column. This additional column allows us to round-trip our edits back into Who’s On First, effectively turning your spreadsheet editor into a new external interface to change properties en masse.
 
-![](https://mapzen-assets.s3.amazonaws.com/images/weird-and-wonderful/csv-download.gif)
+![](images/csv-download.gif)
 
 Working with real data has been extremely helpful for shaping the CSV step-through feature. Huge thanks to [Jeff](https://twitter.com/zingbot) for sharing his research and for being so generous with the underlying dataset. The OUTgoing data is quirky and opinionated, and was instrumental in identifying unexpected edge cases as I was writing the code.
 

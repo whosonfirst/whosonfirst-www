@@ -4,7 +4,7 @@ title: All of the Places
 category: blog
 excerpt: A tiny website for sharing links to places.
 authors: [dphiffer]
-image: https://mapzen-assets.s3.amazonaws.com/images/all-of-the-places/alloftheplaces-head.png
+image: images/alloftheplaces-head.png
 tag: [whosonfirst, data, wof, api]
 ---
 
@@ -18,7 +18,7 @@ In this case my phone showed [New York](https://whosonfirst.mapzen.com/spelunker
 
 The experience stuck with me. How is it that one URL could yield a single, *but different* result for each person? Further inspection made me realize I’d linked to a photo icon on the map, and that linking to photos isn’t well supported on the iOS version of Google Maps.
 
-![Google Maps photo place](https://mapzen-assets.s3.amazonaws.com/images/all-of-the-places/google-maps.png)
+![Google Maps photo place](images/google-maps.png)
 
 I’d also complicated the situation by modifying the URL before I shared it. Part of what I removed, the latitude and longitude coordinates, turn out to be an important fallback for settling search result ambiguities. But the link worked for me at the time, so I figured it was safe to share. Nobody is better at intuiting meaning from fuzzy text than Google’s search engine. But sometimes it’s better for an interactive map to fail rather than offer up a guess. And this appears to be the new behavior, so kudos to the Google Maps team for improving that.
 
@@ -38,7 +38,7 @@ A lot of this may be specific to an NYC-style of routing: transit-focused, with 
 
 First issue: Who’s On First had no record of the place I was trying to navigate to (Grand Army Plaza). There was also no record of the art space I was traveling to afterward (Pioneer Works, now [added](https://alloftheplaces.xyz/907130503)). The data will get better, and I’d like to experiment with capturing new places directly from  alloftheplaces.xyz, perhaps by collecting them via *another* tiny Mapzen service that Aaron is working on called Maplibs.
 
-![Maplibs](https://mapzen-assets.s3.amazonaws.com/images/all-of-the-places/maplibs.png)
+![Maplibs](images/maplibs.png)
 
 Second issue: As a New Yorker, I have opinions about things like local vs. express trains. When I asked for a route, it only offered me a single choice, though the Mapzen Mobility team has alternate routes on their radar.
 
@@ -50,7 +50,7 @@ I’m thinking about how to offer a similar experience but with less of Google�
 
 In any case, here’s what I’m seeing on my phone as I leave the office:
 
-![Directions part one](https://mapzen-assets.s3.amazonaws.com/images/all-of-the-places/alloftheplaces1.png)
+![Directions part one](images/alloftheplaces1.png)
 
 Using this interface on such a tiny screen is still kind of a hot mess. To a large extent this is because I made a compromise to split up the vertical screen space between map and directions. Scrolling through that list of walking directions inside such a tiny box is painful, and offers too much detail.
 
@@ -63,18 +63,18 @@ And then I could tap on the [+](#) for each of the high-level steps to get more 
 
 [Sarah Lensing](https://twitter.com/sarahlensing), who works on the mobile team here, is testing a version of the directions view in Erasermap that takes a similar approach, structuring the various modes of a multimodal trip (available soon!)
 
-![Erasermap](https://mapzen-assets.s3.amazonaws.com/images/all-of-the-places/erasermap.png)
+![Erasermap](images/erasermap.png)
 
 Now I’m on the train, and I’ve lost my bandwidth, but I’m using my phone to figure out which stop to get off at. This is another place where that overview view could be helpful—I really care about “where do I get off the train?” and to a lesser degree “where am I going to walk once I get there?" Bonus points if I could pre-cache a high zoom level neighborhood map of my destination to look at while I’m en route. To the extent that it’s possible, anything I download on my phone should be cached for offline use, probably with something like [localForage](https://github.com/localForage/localForage).
 
 Here’s how things look now on the train:
 
-![Directions part two](https://mapzen-assets.s3.amazonaws.com/images/all-of-the-places/alloftheplaces2.png)
+![Directions part two](images/alloftheplaces2.png)
 
 I make it to my destination and I’m done, but my map is still trying to geolocate me. Was it trying to do this the whole time I was underground? I need some way to tell the map “I’m done” and for the map to notice “we’re offline, stop trying to geolocate.” I wonder if most browsers/phones are smart enough to detect when you’ve lost connectivity and stop trying to geolocate you? Uncertain, but I can always just listen for an [`offline` event](https://developer.mozilla.org/en-US/docs/Online_and_offline_events) so the map responds correctly when I go underground.
 
 Another pain point I’ve experienced nearing the end of the trip is when I emerge from the train, blinking in the bright sunlight, and the map hasn’t really accounted for my new situation. Which way should I walk? If I have a CitiBike membership (I do), where are the racks with available bikes? [Citymapper](https://citymapper.com/) has a great bike sharing interface for this type of scenario), and the Mapzen Mobility team is thinking about [how to implement this](https://github.com/transitland/transitland-datastore/issues/310).
 
-![Emerging from underground](https://mapzen-assets.s3.amazonaws.com/images/all-of-the-places/subway-escalator.jpg)
+![Emerging from underground](images/subway-escalator.jpg)
 
 I made it to Grand Army Plaza. The test was a partial success, with lots of pointers toward things that should change. I don’t think my experimental web map is going to become anyone’s new default, but there’s a whole lot you can spin up quickly with various Mapzen APIs. The capacity to add new records to the Who’s On First dataset, and then *link to them*, means I’ll be far less likely to accidentally send my friends to New Jersey.

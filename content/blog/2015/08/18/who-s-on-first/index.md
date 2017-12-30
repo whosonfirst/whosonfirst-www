@@ -4,14 +4,14 @@ category: blog
 published: true
 title: Who’s On First
 excerpt: Mapzen is building a gazetteer of places. Not quite all the places in the world but a whole lot of them and, we hope, the kinds of places that we mostly share in common. You might want to get a cup of coffee or maybe a drink if you’ve been thinking about this sort of thing for as long as we have (or maybe longer).
-image: /images/who-s-on-first/20150818-wof-phones.png
+image: images/20150818-wof-phones.png
 authors: [thisisaaronland, nvkelso]
 tags: [whosonfirst]
 ---
 
 ## The short version
 
-![phone booth](/images/who-s-on-first/20150818-wof-phones.png)
+![phone booth](images/20150818-wof-phones.png)
 
 All the places! Still not a magic pony!! Yet!!!
 
@@ -29,7 +29,7 @@ Our gazetteer is absolutely not finished – both in terms of data coverage as w
 
 We are releasing the data now because _we believe it is important not just to articulate our goals and intentions around the project but also to back them up with tangible proofs_. Think of this blog post, and the data we are publishing today, as the arc and direction of our efforts but not necessarily where they will land.
 
-![screenshot - villa doria](/images/who-s-on-first/20150818-wof-villadoria.png)
+![screenshot - villa doria](images/20150818-wof-villadoria.png)
 
 <pullquote>We believe it is important not just to articulate our goals and intentions around the project but also to back them up with tangible proofs.</pullquote>
 
@@ -59,7 +59,7 @@ We make use of a number of open data sources, some of whom do require attributio
 
 ## The long version
 
-![Bench on the seashore](/images/who-s-on-first/20150818-wof-oceanbeach.jpg)
+![Bench on the seashore](images/20150818-wof-oceanbeach.jpg)
 
 <pullquote>An interesting way to think about a gazetteer is to consider it as the space where debate about a place is _managed_ but not decided.</pullquote>
 
@@ -77,7 +77,7 @@ For example I might say "Montreal" (in English) while you might say “몬트리
 
 A more complicated expression of the idea that a gazetteer exists to manage debate is to remember that "place" is a hard problem because it is often a contested space at social, political and often very emotional levels. This is not a new problem. People have argued and sometimes fought over the meaning and the expression of place for as long as anyone can remember.
 
-![screenshot - example of Montreal](/images/who-s-on-first/20150818-wof-montreal.png)
+![screenshot - example of Montreal](images/20150818-wof-montreal.png)
 
 Even with the luxury of complete sentences and full paragraphs and entire books on the subject different writers and scholars _still_ after all these years can't or don't or won't agree on the meaning of a given place. It would be ... unhelpful, at best, to believe that any list of key-value pairs, no matter how comprehensive,  attempting to describe the nuance of a place will do any better at resolving long-standing disputes about the fundamental meaning and interpretation about that place.
 
@@ -115,7 +115,7 @@ We use [GeoJSON](http://www.geojson.org) as the primary exchange format for the 
 
 ### Tell me more (the hard bits)
 
-![mirrorball](/images/who-s-on-first/20150818-wof-mirrorball.jpg)
+![mirrorball](images/20150818-wof-mirrorball.jpg)
 
 If you are immediately curious about the simple bits, where "simple" means names, geometries and minimal viable properties (and which are simple relative only to what follows) then you should [jump ahead](#the-simple-bits).
 
@@ -193,7 +193,7 @@ Venues! Buildings!! [Microhoods](https://github.com/whosonfirst/whosonfirst-data
 
 So many new things but throughout you can still see a common skeleton. There is an [entire Github repository devoted to the topic of placetypes](https://github.com/whosonfirst/whosonfirst-placetypes) including a discussion (and a canonical reference) about each of the place types described above.
 
-![screenshot - example of Beijing](/images/who-s-on-first/20150818-wof-beijing.png)
+![screenshot - example of Beijing](images/20150818-wof-beijing.png)
 
 #### <a name="hierarchies"></a> Hierarchies
 
@@ -307,7 +307,7 @@ Like many signals its precise meaning and significance and how it should be hand
 
 ### Tell me more (the simple bits)
 
-![bernal](/images/who-s-on-first/20150818-wof-bernal.jpg)
+![bernal](images/20150818-wof-bernal.jpg)
 
 _Remember, what follows is the "simple" stuff..._
 
@@ -362,13 +362,13 @@ For example:
 
 ###### The "consensus" geometry
 
-![canada geojson](/images/who-s-on-first/20150818-wof-canada.png)
+![canada geojson](images/20150818-wof-canada.png)
 
 Every place will have a single "consensus" geometry associated with it. The definition of "consensus" remains to be determined. Also, the use of the word "consensus" is understood to be problematic. It _will_ be deprecated and replaced with a more accurate term.
 
 ###### All the "other" geometries
 
-![canada alternative geometry](/images/who-s-on-first/20150818-wof-canada-alt.png)
+![canada alternative geometry](images/20150818-wof-canada-alt.png)
 
 Every place will also have an "alternate" file containing multiple named geometries. These might include contested geographies or simplified geometries or geometries that have been optimized for specific use-cases, like geocoding.
 
@@ -447,7 +447,7 @@ Dates are actually a pretty complex space so we are going to start with the simp
 
 ### <a name="where-is-the-data"></a> But wait... where is this data you speak of?
 
-![screenshot](/images/who-s-on-first/20150818-wof-yo.png)
+![screenshot](images/20150818-wof-yo.png)
 
 First – and this is Very Very Very Important – please understand that Who’s On First is a work in progress and that means a few things:
 
@@ -495,7 +495,7 @@ So again: Don’t get overly attached to the Git parts of the Who’s On First d
 
 ### What is next?
 
-![bushwick](/images/who-s-on-first/20150818-wof-bushwick.jpg)
+![bushwick](images/20150818-wof-bushwick.jpg)
 
 A lot of work is what’s next.
 

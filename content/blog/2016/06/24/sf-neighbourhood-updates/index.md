@@ -4,11 +4,11 @@ title: Updating Neighbourhood Records in Who's on First
 category: blog
 excerpt: A handy guide updating neighbourhood records in Who's On First!
 authors: [stepps00]
-image: https://mapzen-assets.s3.amazonaws.com/images/sf-neighbourhood-updates/battery_park.jpg
+image: images/battery_park.jpg
 tag: [whosonfirst, tutorial, data]
 ---
 
-![Historic Manhattan](https://mapzen-assets.s3.amazonaws.com/images/sf-neighbourhood-updates/battery_park.jpg)
+![Historic Manhattan](images/battery_park.jpg)
 _Photo Credit: [Gustave Straubenmuller, Flickr](https://www.flickr.com/photos/internetarchivebookimages/14782952795/in/photolist-owjuQt-oeXUZF-oskqGG-6cfLKf-owddJm-owqudn-owtHpZ-owEBqR-owjvdn-ou63Tn-ov9vB1-ownwLy-osPEQ5-oddXQL-ovv6CR-oePvaL-odFukR-ounhb6-odFyjT-5ZzStu-4ibzJo-ouq595-x4qKZf-ouGC9w-oeY2hR-owg7Gq-odeqaE-owrPU6-oskoPo-ouooHD-odqeuY-ouq6SW-oweTDU-owSur6-oy5fzP-i7JBGv-oeX74i-ouAb8q-owq57g-y8iw81-ouMDmm-zhvmPt-Dczajt-w9YJux-oeXeWH-xnwY2E-owaNsr-oeWXFN-owrSwv-oycF32)_
 
 Here at Mapzen, we _love_ neighbourhoods - you've seen them on our maps and in your search results. We acknowledge there are issues with our data and hope that you'll use your local knowledge and expertise to help update our neighbourhood records in Who's on First. We want your help!

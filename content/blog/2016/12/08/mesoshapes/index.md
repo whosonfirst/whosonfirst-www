@@ -4,11 +4,11 @@ title: Improving county coverage in Who's On First
 category: blog
 excerpt: We've doubled the number of counties in Who's On First by adding data sources and introducing mesoshapes to fill the gaps
 authors: [stepps00, nvkelso, martin-gamache]
-image: https://mapzen-assets.s3.amazonaws.com/images/mesoshapes/mesohapes-import-1-2015-2016.gif
+image: images/mesohapes-import-1-2015-2016.gif
 tag: [WOF, county, whosonfirst, data, mesoshapes, Who's On First]
 ---
 
-![One county at a time](https://mapzen-assets.s3.amazonaws.com/images/mesoshapes/mesohapes-import-1-timeseries.gif)
+![One county at a time](images/mesohapes-import-1-timeseries.gif)
 
 We've doubled the number of `county` features in [Who's On First](https://whosonfirst.mapzen.com), a gazetteer of places all based on open data.
 
@@ -78,13 +78,13 @@ After the import, Who's On First contains **21,469** `county` features for those
 
 In rare cases (including Chile, Indonesia, New Zealand, South Africa, and the Ukraine), the earlier 2015 data was found to be poor-quality and was upgraded with high-quality data.
 
-![Mesoshapes in 2016](https://mapzen-assets.s3.amazonaws.com/images/mesoshapes/mesohapes-import-1-2016.gif)
+![Mesoshapes in 2016](images/mesohapes-import-1-2016.gif)
 
 ### Next steps...
 
 While Who's On First has already imported a substantial number of new `county` features, we plan on importing additional `county` features through early 2017. So far we've processed an additional 3,353 features over today's announcement (show in black outlines on the map below). That leaves Canada and a handful of countries in Africa and Asia (ignoring small island countries for now). In our research we've found many European countries skip the `county` administrative level and go straight to `localadmin`, but please send us data sources, tips, and corrections!
 
-![Mesoshapes in progress](https://mapzen-assets.s3.amazonaws.com/images/mesoshapes/mesohapes-import-1-in-progress.gif)
+![Mesoshapes in progress](images/mesohapes-import-1-in-progress.gif)
 
 We found a few other data gems along the way, so expect related improvements to other placetypes including `locality` and `region`.
 

@@ -3,12 +3,12 @@ layout: page
 category: blog
 title: Mapzen Places is here! And there! And everywhere. 
 excerpt: Get geometries, hierarchies, statistics and more with the Mapzen Places API.
-image: https://s3.amazonaws.com/mapzen-assets/images/mapzen-places-is-here/map_hats.jpg
+image: images/map_hats.jpg
 authors: [mapzen]
 tags: [places, flex, data, whosonfirst]
 ---
 
-![map hat pieces](https://s3.amazonaws.com/mapzen-assets/images/mapzen-places-is-here/map_hats.jpg)
+![map hat pieces](images/map_hats.jpg)
 
 [Mapzen Places](https://mapzen.com/data/places/) is here! Find out more about a location, its geometry, its relationships, and return useful metadata, all through a [convenient and well-documented API](https://mapzen.com/documentation/places/). Mapzen Places is all based on open data, with licensing suitable for commercial projects. Start using it via [Mapzen Flex](https://mapzen.com/pricing/) today!
 

@@ -4,12 +4,12 @@ title: Statoids, Mesoshapes, and Who's On First
 category: blog
 excerpt: Check out our recent additions to the Who's On First gazetteer, including our partnership with Statoids!
 authors: [stepps00, nvkelso]
-image: "https://mapzen-assets.s3.amazonaws.com/images/statoids-meso/main_photo.jpg"
+image: "images/main_photo.jpg"
 tag: [whosonfirst, data]
 ---
 
 <div style="margin: 0 auto; width:640px;">
-<a href="https://mapzen-assets.s3.amazonaws.com/images/statoids-meso/main_photo.jpg"><img src="https://mapzen-assets.s3.amazonaws.com/images/statoids-meso/main_photo.jpg" height="360" width="640" /></a>
+<a href="images/main_photo.jpg"><img src="images/main_photo.jpg" height="360" width="640" /></a>
 </div>
 
 Recently, we've been working with two datasets, **Mesoshapes**, which we've [previewed before](https://mapzen.com/blog/mesoshapes/), and **Statoids**, the premier encyclopedia of administrative subdivisions. 

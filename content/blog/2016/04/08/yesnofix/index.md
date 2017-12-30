@@ -5,7 +5,7 @@ title: Yes No Fix
 category: blog
 excerpt: Yes No Fix is not a perfect solution but our hope is that it will at least make things a little better than they were yesterday.
 authors: [thisisaaronland]
-image: "https://mapzen-assets.s3.amazonaws.com/images/yesnofix/yesnofix-sanfran-no.png"
+image: "images/yesnofix-sanfran-no.png"
 tag: [whosonfirst]
 ---
 
@@ -31,7 +31,7 @@ The Building Inspector project began after the NYPL developed [a suite of comput
 
 It looks like this:
 
-![](https://mapzen-assets.s3.amazonaws.com/images/yesnofix/nypl-yesnofix.png)
+![](images/nypl-yesnofix.png)
 
 The [project](https://github.com/nypl-spacetime/building-inspector) has since evolved to allow contributors to vet more than just building footprints and the NYPL recently announced [that people have contributed more than 1.5 million tasks](https://twitter.com/nypl_labs/status/716999124319670272) since launching. That original concept to atomize the problem (individual building footprints) and then ask the public for simple observations (yes, no, fix) remains a stroke of genius. So we thought we'd try copying it.
 
@@ -76,11 +76,11 @@ Here's an example using the `names` section for [the city of San Francisco](http
 
 And the rendered version looks like this:
 
-![screenshot](https://mapzen-assets.s3.amazonaws.com/images/yesnofix/yesnofix-sf.png)
+![screenshot](images/yesnofix-sf.png)
 
 When you mouse over a value - in this case the English colloquial name of **The City** - you'll see an `edit` control.
 
-![screenshot](https://mapzen-assets.s3.amazonaws.com/images/yesnofix/yesnofix-sf-hover.png)
+![screenshot](images/yesnofix-sf-hover.png)
 
 If you click on it then a series of controls (yes, no and fix) will appear next to that value. Like this:
 
@@ -88,36 +88,36 @@ If you click on it then a series of controls (yes, no and fix) will appear next 
 
 The first is **yes** which means that you agree with the value (and its parent nesting).
 
-![screenshot](https://mapzen-assets.s3.amazonaws.com/images/yesnofix/yesnofix-sf-yes.png)
+![screenshot](images/yesnofix-sf-yes.png)
 
 ### No
 
 The second is **no**. [No means no.](https://en.wikipedia.org/wiki/Nomeansno) San Francisco is not called _Frisco_.
 
 
-![screenshot](https://mapzen-assets.s3.amazonaws.com/images/yesnofix/yesnofix-sf-no.png)
+![screenshot](images/yesnofix-sf-no.png)
 
 *\[Ed. Some of us think `Frisco` [is](https://www.thrillist.com/entertainment/san-francisco/san-francisco-nickname-frisco-sf) actually [OK](http://www.buzzfeed.com/burritojustice/frisco-24wct). Which kind of proves the point of Yes No Fix. `San Fran` on the other hand...\]*
 
-![screenshot](https://mapzen-assets.s3.amazonaws.com/images/yesnofix/yesnofix-sanfran-no.png)
+![screenshot](images/yesnofix-sanfran-no.png)
 
 ### Fix
 
 The third value is **fix** which means broadly _this is weird data_. If that seems a little vague and ambiguous that is because it's meant to be. "Fix" is a shorthand for things that are sort of correct and but still incorrect or vice versa. Life is complicated that way.
 
-![screenshot](https://mapzen-assets.s3.amazonaws.com/images/yesnofix/yesnofix-sf-fix.png)
+![screenshot](images/yesnofix-sf-fix.png)
 
 ### Locked
 
 Sometimes a value might be "locked" or "excluded" which means that it is not possible to make a `yesnofix` style assertion about it. The reasons why something might be excluded are defined by individual applications. We'll explain how that's done, below. In this example the `edtf:inception` and `edtf:cessation` dates are locked because they already have a default value of "unknown" so there's not a lot of use in collecting opinions about them.
 
-![screenshot](https://mapzen-assets.s3.amazonaws.com/images/yesnofix/yesnofix-sf-lock.png)
+![screenshot](images/yesnofix-sf-lock.png)
 
 ### Reports
 
 In the screenshot above there is a `show report` button. When clicked it will display three more elements: A comma-separated value (CSV) rendering of all the assertions that have been made so far and another button for submitting the report (and a button to hide everything).
 
-![screenshot](https://mapzen-assets.s3.amazonaws.com/images/yesnofix/yesnofix-sf-report.png)
+![screenshot](images/yesnofix-sf-report.png)
 
 By default, Yes No Fix will "submit" the report to a new browser window because that's all it knows how to do. Here's a plain-text version of the report shown in the screenshot above:
 
@@ -326,13 +326,13 @@ I mentioned that Yes No Fix is now enabled on the Who's On First Spelunker, whic
 
 They will but, again by design, the data reporting is meant to be entirely separate from the data collection. We're finishing up the details on the data collection piece and so, in the meantime, we're going to light up the data reporting side of things and see how that works first.
 
-![screenshot](https://mapzen-assets.s3.amazonaws.com/images/yesnofix/yesnofix-tokyo-submit.png)
+![screenshot](images/yesnofix-tokyo-submit.png)
 
 _Once both of these things are up and running the next task will be to use those reports to inform [the editorial tools and processes](https://github.com/whosonfirst/whosonfirst-www-boundaryissues) we are starting to build for managing Who's On First. But that's another blog post for another day._
 
 ## Yes No Fix is not just a Who's On First (or a Mapzen) thing
 
-![screenshot](https://mapzen-assets.s3.amazonaws.com/images/yesnofix/yesnofix-iamhere-gowanus.png)
+![screenshot](images/yesnofix-iamhere-gowanus.png)
 
 Yes No Fix is not designed to work with any one application but rather arbitrary blobs of data. For example, once we finish getting the data collection hooks working the obvious next step is to make the neighbourhoods (and other placetypes) in the Who's On First [I Am Here](https://mapzen.com/blog/iamhere/) map Yes-No-Fix -able.
 
@@ -340,11 +340,11 @@ My current mornings-and-weekends project is building [a tool that will create a 
 
 Like the properties in a Who's On First document the Cooper Hewitt data is encoded as [blobs of JSON](https://github.com/cooperhewitt/collection/blob/master/objects/184/915/01/18491501.json) which is great for robots but not really great for humans to look at. I was able to drop the `yesnofix.js` libraries in to my code and [point the API response blobs at them](https://github.com/thisisaaronland/go-cooperhewitt-shoebox/blob/master/javascript/shoebox.item.js#L59-L81) and _poof_ there was something a little less terrible to look at. Just the way the Spelunker has been using `yesnofix.js` with the editorial controls disabled, for over a month now.
 
-![screenshot](https://mapzen-assets.s3.amazonaws.com/images/yesnofix/yesnofix-ch-lamp.png)
+![screenshot](images/yesnofix-ch-lamp.png)
 
 This tool is still very much a "wet paint" project so it hasn't been taught to use any of the fancy rendering tricks described above but that's really just a question of time-and-typing. Likewise the actual Yes No Fix controls are disabled but maybe it's worth enabling them and creating a custom submit handler directing people to send their reports to the museum via [their Zendesk account](https://cooperhewitt.zendesk.com/hc/en-us/requests/new).
 
-![screenshot](https://mapzen-assets.s3.amazonaws.com/images/yesnofix/yesnofix-ch-zendesk.png)
+![screenshot](images/yesnofix-ch-zendesk.png)
 
 This is what we mean when we say that Yes No Fix is designed to be agnostic about what happens with the data it collects. Also... _[OMG, that lamp!!!!](https://collection.cooperhewitt.org/objects/18491501/)_
 

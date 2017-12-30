@@ -3,7 +3,7 @@ layout: page
 category: blog
 title: "Geotagging WOF venues"
 excerpt: "Photography as data collection."
-image: "https://mapzen-assets.s3.amazonaws.com/images/geotagging-wof-venues/yoonseoul-selfie.jpg"
+image: "images/yoonseoul-selfie.jpg"
 authors: [dphiffer]
 tag: [boundaryissues, whosonfirst, data]
 ---
@@ -26,7 +26,7 @@ I’ve gotten better at planning ahead, making a deliberate effort to cache the 
 
 In testing out Boundary Issues, the first thing I learned is that mobile web slippy maps don’t really work so well on a bandwidth-constrained network. I would load up the “Add A Venue” page and just stare at the place where a map should appear. After waiting long enough, the screen would turn off to save battery and I’d mutter something rude under my breath.
 
-![3G network blues](https://mapzen-assets.s3.amazonaws.com/images/geotagging-wof-venues/3g-sadness.jpg)
+![3G network blues](images/3g-sadness.jpg)
 
 ## The “headless” option
 
@@ -34,7 +34,7 @@ I decided to try a different approach. What if instead of relying on a mobile we
 
 I took a bunch of photos around Seoul with each of my phones. This method was so much faster, and felt less battery intensive compared to my mobile web interface. Once I got back to my laptop, I downloaded the photos and ran them through a [command-line script](https://github.com/whosonfirst/whosonfirst-www-boundaryissues/blob/master/bin/jpgs2csv.php) to convert a folder of images into a CSV file containing a list of filenames and latitude/longitude coordinates.
 
-![CSV geotagging](https://mapzen-assets.s3.amazonaws.com/images/geotagging-wof-venues/csv-geotagging.jpg)
+![CSV geotagging](images/csv-geotagging.jpg)
 
 I took that CSV file and imported it into Boundary Issues, using the [step-through venue importer](https://mapzen.com/blog/weird-and-wonderful/). And it worked! The one flaw in this setup was matching up each filename from the CSV with its corresponding photo in order to remember the place names.
 
@@ -48,7 +48,7 @@ The newest incarnation of the geotagged importer is basically an [HTML file inpu
 
 At some point we may offer an opportunity for users to opt into a Creative Commons license, and associate their photos with WOF records, but that opens up lots of questions we aren’t yet prepared to address. For now Boundary Issues cares very narrowly about geotag metadata, only keeping a photograph (in `localStorage`) long enough for you to remember which place it depicts.
 
-![Geotagging Yoonseul](https://mapzen-assets.s3.amazonaws.com/images/geotagging-wof-venues/yoonseoul.gif)
+![Geotagging Yoonseul](images/yoonseoul.gif)
 <p class="caption"><a href="https://whosonfirst.mapzen.com/spelunker/id/1158786431/">윤슬 or Yoonseul</a> is a <a href="http://societyofarchitecture.com/soa/project/yoonsulmanridong-reflects-seoul/">public art/public space installation</a> in Seoul</a></p>
 
 ## EXIF tags contain multitudes
@@ -65,7 +65,7 @@ Another important tag I inadvertently encountered is the [EXIF Orientation mode]
 
 As it happens, there is a [CSS3 `image-orientation` property](https://developer.mozilla.org/en-US/docs/Web/CSS/image-orientation) for exactly this purpose. It even includes a magical sounding `from-image` setting, which sounds like it should fix things right up. Unfortunately [nobody but Firefox](http://caniuse.com/#search=image-orientation) supports this approach. It’s up to us web developers to rotate EXIF-oriented photos ourselves.
 
-![plz caniuse?](https://mapzen-assets.s3.amazonaws.com/images/geotagging-wof-venues/caniuse-image-orientation.jpg)
+![plz caniuse?](images/caniuse-image-orientation.jpg)
 
 ## Compatibility is (usually) better than correctness
 
@@ -75,7 +75,7 @@ Let’s say you upload a photo you took in EXIF Orientation 3 (volume buttons up
 
 One additional caveat I discovered is that iOS _only_ compensates for the EXIF Orientation with `<img>` tags, ignoring the EXIF orientation of background images, like non-iOS browsers. My geotagging interface switches between `<img>` and `background-image` CSS, so this detail was just one more mystery to untangle along the way.
 
-![Taipei 101, as viewed from Xiangshan Trail](https://mapzen-assets.s3.amazonaws.com/images/geotagging-wof-venues/taipei-101.jpg)
+![Taipei 101, as viewed from Xiangshan Trail](images/taipei-101.jpg)
 <p class="caption"><a href="https://whosonfirst.mapzen.com/spelunker/id/1141959909/">Taipei 101</a> as viewed from the <a href="https://whosonfirst.mapzen.com/spelunker/id/1141959907/">象山 Xiangshan Trail</a> (aka Elephant Mountain).</p>
 
 ## Yep, CSS can fix it
@@ -94,7 +94,7 @@ This is kind of getting back to where I started, except with a slightly differen
 
 In iOS you can totally launch the camera from a web page, and the JavaScript gets the same data Blob, but the EXIF metadata is mysteriously lacking geotags. Even if you’ve enabled location services for Mobile Safari, Chrome, and the Camera. Android _does_ include geotags with photos taken with its version of the Chrome browser, but I’ve found that it occasionally omits them.
 
-I’ve filed a <a href="https://mapzen-assets.s3.amazonaws.com/images/geotagging-wof-venues/geotags-bug-report.jpg">bug report with Apple</a> and created a <a href="https://phiffer.org/etc/file-input-geotags/">minimal test case</a>, but so far it’s hard to say <em>why</em> iOS omits geotags, or whether it’s likely to be fixed in a future release. I’ll update this post as I learn more.
+I’ve filed a <a href="images/geotags-bug-report.jpg">bug report with Apple</a> and created a <a href="https://phiffer.org/etc/file-input-geotags/">minimal test case</a>, but so far it’s hard to say <em>why</em> iOS omits geotags, or whether it’s likely to be fixed in a future release. I’ll update this post as I learn more.
 
 ## Metadata is complicated
 

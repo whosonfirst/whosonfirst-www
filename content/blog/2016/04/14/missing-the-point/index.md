@@ -5,7 +5,7 @@ title: Missing the Point- GeoIP's, Points, Polygons, and a Precarious Farm in Ka
 category: blog
 excerpt: Investigating the consequences of ambiguity in geography has never been so terrifying.
 authors: [riordan, thisisaaronland]
-image: "https://mapzen-assets.s3.amazonaws.com/images/missing-the-point/missing-the-point-splash.png"
+image: "images/missing-the-point-splash.png"
 tag: [whosonfirst]
 ---
 
@@ -26,7 +26,7 @@ MaxMind, the most prominent GeoIP provider, only intended to give back the "gene
 
 Part of the reason we're writing this is to point out that we have [our own project to augment the MaxMind GeoIP database](https://whosonfirst.mapzen.com/mmdb) with data from [Who's On First](https://whosonfirst.mapzen.com/) to interpret the results coming back from an IP lookup as a geographic area, and not a single point. Rather than sending back a point and some words saying where an IP address is location our modified version of the MaxMind database returns both a Who's on First ID and a bounding box (as well as its complete hierarchy) for that location. It means the United States is the container for the United States and that small town in Kansas is just that small town in Kansas. This is still an experimental project and we are working through the mechanics of what we store in the databases (we could include complete polygons but that might makes things a bit... heavy) and how often things get updated. As of this writing we haven't yet updated our databases to [reflect the changes that MaxMind has made to their own data](http://fusion.net/story/290772/ip-mapping-maxmind-new-us-default-location/) yet.
 
-![screenshot](https://mapzen-assets.s3.amazonaws.com/images/missing-the-point/iamhere_iplookup.png)
+![screenshot](images/iamhere_iplookup.png)
 
 One of the other things this story has prompted us to do it finish up the work to enable IP lookups in [the I Am Here project](https://mapzen.com/blog/iamhere/). When enabled the code on [the I Am Here website](https://whosonfirst.mapzen.com/iamhere) will try to use your computer's IP address and its corresponding location (using a [Who's On First enabled MaxMind database](https://whosonfirst.mapzen.com/mmdb/)) to automatically position the map. Previously the map would always load centered on San Francisco's majestic [Space Claw](https://www.flickr.com/people/spaceclaw/photosof/)... I mean Sutro Tower, which is great but a bit tiresome if don't live in San Francisco and always need to start using the website by zooming out to a different location.
 

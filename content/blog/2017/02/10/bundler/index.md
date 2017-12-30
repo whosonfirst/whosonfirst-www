@@ -3,7 +3,7 @@ layout: page
 category: blog
 title: Bundling up descendants into GeoJSON
 excerpt: We made a handy tool that lets you download the descendants of a place as GeoJSON.
-image: https://s3.amazonaws.com/mapzen-assets/images/descender/wof_canada-descender.gif
+image: images/wof_canada-descender.gif
 authors: [burritojustice, stepps00, dphiffer]
 tags: [whosonfirst, data]
 ---
@@ -26,7 +26,7 @@ In the record for Manitoba, there's a list of relations, both upward (Canada, No
 
 Since these relationships are all available via the Who's On First API, we decided to implement a tool we're calling the Bundler, based off an experiment called the [Descender](https://burritojustice.github.io/wof-descender/). It lets you collect all the geometries of specified levels of the descendants of a parent and bundles them into one handy blob of GeoJSON for you to download and use as you see fit.
 
-![bundler screenshot](https://s3.amazonaws.com/mapzen-assets/images/descender/wof_canada-descender.gif)
+![bundler screenshot](images/wof_canada-descender.gif)
 
 ##Life Before Bundles
 
@@ -84,7 +84,7 @@ From the perspective of a user of data, the benefits of the Bundler are substant
 
 We also let you gather descendants for different placetypes at the same time -- for example, you can get the counties and postal codes of North Dakota all bundled up in one handy blob of GeoJSON.
 
-![wof nd county and postal bundle](https://s3.amazonaws.com/mapzen-assets/images/descender/ND-counties-postal.gif)
+![wof nd county and postal bundle](images/ND-counties-postal.gif)
 
 A few examples of what you can collect through the Bundler:
 

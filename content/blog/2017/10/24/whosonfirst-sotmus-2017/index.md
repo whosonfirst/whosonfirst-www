@@ -4,13 +4,13 @@ category: blog
 published: true
 title: Who's On First ꞉fist-bump꞉  OpenStreetMap
 excerpt: The 70s were weird like that in a way that we don’t have time to discuss today except to say that Who’s On First would like to be the bucket of water to OpenStreetMap’s giant eagle.
-image: /images/whosonfirst-sotmus-2017/sotm-us-2017.004.jpg
+image: images/sotm-us-2017.004.jpg
 authors: [thisisaaronland]
 tags: [osm,sotmus,whosonfirst]
 ---
 
 <a name="intro"></a>
-[![](/images/whosonfirst-sotmus-2017/sotm-us-2017.001.jpg)](https://mapzen.com/blog/whosonfirst-sotmus-2017#intro)
+[![](images/sotm-us-2017.001.jpg)](https://mapzen.com/blog/whosonfirst-sotmus-2017#intro)
 
 Hello. I haven’t been able to attend [State of the Map](https://2017.stateofthemap.us) since [2014](https://2014.stateofthemap.us) so it’s good to be back. Thank you for inviting me to speak.
 
@@ -21,7 +21,7 @@ The full title of this talk is “Who’s On First colon fist-bump colon OpenStr
 There is not an emoji for ["fist-bump"](https://www.flickr.com/photos/secret_canadian/galleries/72157623155364950/) yet but I’m hoping there will be soon. Now that the [LEFT-FACING FIST](https://emojipedia.org/left-facing-fist/) and [RIGHT-FACING FIST](https://emojipedia.org/right-facing-fist/) characters have been added to Unicode 10 all that is necessary to [create a FIST-BUMP emoji](https://unicode.org/emoji/selection.html) is a combining character.
 
 <a name="unicode"></a>
-[![](/images/whosonfirst-sotmus-2017/sotm-us-2017.002.jpg)](https://mapzen.com/blog/whosonfirst-sotmus-2017#unicode)
+[![](images/sotm-us-2017.002.jpg)](https://mapzen.com/blog/whosonfirst-sotmus-2017#unicode)
 
 Not many operating systems have adopted [Unicode 10](https://www.unicode.org/versions/Unicode10.0.0/) yet, which is why I included a fake emoji shortcode.
 
@@ -30,7 +30,7 @@ For example, that last slide is actually an image. I prepared this talk on a dif
 _Tangentially related the software used to publish this blog gets upset when you use the standard [COLON](https://thisisaaronland.github.io/unicode-table/#58) character in a title which is why we've used the less common [MODIFIER LETTER COLON](https://thisisaaronland.github.io/unicode-table/#42889) character in it's place..._
 
 <a name="punching"></a>
-[![](/images/whosonfirst-sotmus-2017/sotm-us-2017.003.jpg)](https://mapzen.com/blog/whosonfirst-sotmus-2017#punching)
+[![](images/sotm-us-2017.003.jpg)](https://mapzen.com/blog/whosonfirst-sotmus-2017#punching)
 
 Somewhere between submitting this talk for consideration and its inclusion in the conference program the title was lost in translation.
 
@@ -41,7 +41,7 @@ I am not really bothered by this except to point out that the title takes on a s
 For the record, punching [OpenSteetMap](https://openstreetmap.org) (OSM) is not what I had in mind.
 
 <a name="wondertwins"></a>
-[![](/images/whosonfirst-sotmus-2017/sotm-us-2017.004.jpg)](https://mapzen.com/blog/whosonfirst-sotmus-2017#wondertwins)
+[![](images/sotm-us-2017.004.jpg)](https://mapzen.com/blog/whosonfirst-sotmus-2017#wondertwins)
 
 This is more what I had in mind.
 
@@ -54,7 +54,7 @@ The Wonder Twins would "activate" their super powers by fist-bumping upon which 
 The 70s were weird like that in a way that we don’t have time to discuss today except to say that Who’s On First would like to be the bucket of water to OpenStreetMap’s giant eagle.
 
 <a name="whosonfirst"></a>
-[![](/images/whosonfirst-sotmus-2017/sotm-us-2017.005.jpg)](https://mapzen.com/blog/whosonfirst-sotmus-2017#whosonfirst)
+[![](images/sotm-us-2017.005.jpg)](https://mapzen.com/blog/whosonfirst-sotmus-2017#whosonfirst)
 
 [Who’s On First](https://whosonfirst.mapzen.com) (WOF) is a gazetteer. If you’ve never heard the term "gazetteer" before it's basically just a big phone book, but a phone book of places rather than people. I am going to spend most of this talk discussing venues but I want to start with a high-level overview of what Who’s On First is. The shape of the elephant so to speak.
 
@@ -102,7 +102,7 @@ At the same time I still need and want an openly licensed location database that
 This is the space that Who’s On First occupies and it is why we will not – can not – import data from OpenStreetMap.
 
 <a name="ifnotosm"></a>
-[![](/images/whosonfirst-sotmus-2017/sotm-us-2017.007.jpg)](https://mapzen.com/blog/whosonfirst-sotmus-2017#ifnotosm)
+[![](images/sotm-us-2017.007.jpg)](https://mapzen.com/blog/whosonfirst-sotmus-2017#ifnotosm)
 
 About this time, two years ago, I had a little freak out at work.
 
@@ -115,7 +115,7 @@ Other companies like Facebook, we're told, have amassed similar and sometimes su
 Which really only leaves two alternatives. The first is the gaping void of nothingness that we’ve all come to know and love. The second is to embrace the idea that _something is better than nothing_ and that something which can be improved upon over time is even better than that.
 
 <a name="absence"></a>
-[![](/images/whosonfirst-sotmus-2017/sotm-us-2017.008.jpg)](https://mapzen.com/blog/whosonfirst-sotmus-2017#absence)
+[![](images/sotm-us-2017.008.jpg)](https://mapzen.com/blog/whosonfirst-sotmus-2017#absence)
 
 To embrace, or at least accept, that our burden in the near-term will be one of managing absence.
 
@@ -124,7 +124,7 @@ That _in addition_ to all the hard work of collecting, vetting and improving dat
 This makes an already daunting project exhausting even to think about.
 
 <a name="simplegeo"></a>
-[![](/images/whosonfirst-sotmus-2017/sotm-us-2017.009.jpg)](https://mapzen.com/blog/whosonfirst-sotmus-2017#simplegeo)
+[![](images/sotm-us-2017.009.jpg)](https://mapzen.com/blog/whosonfirst-sotmus-2017#simplegeo)
 
 The good news is that there was in fact one open venue database, available for use, in 2015. In 2011 the geo-services company SimpleGeo [published their Places database](https://web.archive.org/web/20110514083813/http://blog.simplegeo.com/2011/04/20/open-places-data/), containing 21 million business listings, under a Creative Commons Zero public domain license.
 
@@ -133,7 +133,7 @@ The company went out of business shortly after that but not before [Jason Scott]
 The first thing to know about the SimpleGeo data is that it is a flawed dataset.
 
 <a name="outofdate"></a>
-[![](/images/whosonfirst-sotmus-2017/sotm-us-2017.010.jpg)](https://mapzen.com/blog/whosonfirst-sotmus-2017#outofdate)
+[![](images/sotm-us-2017.010.jpg)](https://mapzen.com/blog/whosonfirst-sotmus-2017#outofdate)
 
 For starters it is almost 8 years "out of date".
 
@@ -146,32 +146,32 @@ The funny thing is that lots of businesses survive longer than 17 years. Think o
 That’s the stuff the SimpleGeo dataset is made of so to say that it’s out of date seems inaccurate and unfair.
 
 <a name="usa"></a>
-[![](/images/whosonfirst-sotmus-2017/sotm-us-2017.011.jpg)](https://mapzen.com/blog/whosonfirst-sotmus-2017#usa)
+[![](images/sotm-us-2017.011.jpg)](https://mapzen.com/blog/whosonfirst-sotmus-2017#usa)
 
 The data is [heavily slanted towards the US](https://whosonfirst.mapzen.com/spelunker/placetypes/venue/). SimpleGeo claimed the data covered 60 countries but that is disingenuous when you consider all but about a dozen countries have fewer than a hundred venues.
 
 <a name="services"></a>
-[![](/images/whosonfirst-sotmus-2017/sotm-us-2017.012.jpg)](https://mapzen.com/blog/whosonfirst-sotmus-2017#service)
+[![](images/sotm-us-2017.012.jpg)](https://mapzen.com/blog/whosonfirst-sotmus-2017#service)
 
 The data is also heavily weighted towards professional services. There are a lot of CPAs and lawyers and doctors and, to be honest, the sheer volume can make it difficult to see the trees for the forest.
 
 <a name="data"></a>
-[![](/images/whosonfirst-sotmus-2017/sotm-us-2017.013.jpg)](https://mapzen.com/blog/whosonfirst-sotmus-2017#data)
+[![](images/sotm-us-2017.013.jpg)](https://mapzen.com/blog/whosonfirst-sotmus-2017#data)
 
 There is some genuinely bad data. No surprises there and I doubt anyone here is ready to cast the first stone when it comes to bad data.
 
 <a name="relational"></a>
-[![](/images/whosonfirst-sotmus-2017/sotm-us-2017.014.jpg)](https://mapzen.com/blog/whosonfirst-sotmus-2017#relational)
+[![](images/sotm-us-2017.014.jpg)](https://mapzen.com/blog/whosonfirst-sotmus-2017#relational)
 
 There is minimal structured relational data. For example, the only way to find all the records in a given a locality or neighbourhood is to load everything in to a database and perform spatial queries.
 
 <a name="geojson"></a>
-[![](/images/whosonfirst-sotmus-2017/sotm-us-2017.015.jpg)](https://mapzen.com/blog/whosonfirst-sotmus-2017#geojson)
+[![](images/sotm-us-2017.015.jpg)](https://mapzen.com/blog/whosonfirst-sotmus-2017#geojson)
 
 Everything was published as a single line-separated GeoJSON file. Had I been in SimpleGeo’s shoes at the time I might have made the same decision. As a consumer of that data, the decision has been nothing but 100% sad-making.
 
 <a name="better"></a>
-[![](/images/whosonfirst-sotmus-2017/sotm-us-2017.016.jpg)](https://mapzen.com/blog/whosonfirst-sotmus-2017#better)
+[![](images/sotm-us-2017.016.jpg)](https://mapzen.com/blog/whosonfirst-sotmus-2017#better)
 
 But it’s a good start and the first thing we did was to [explode that 21 million line text file in to 21 million discrete records](https://mapzen.com/blog/whosonfirst-venues), each with a new Who’s On First ID.
 
@@ -184,7 +184,7 @@ Simply having 21 million files on a single volume, in 2017, still causes people 
 But there are more than 21 million venues in the world and we’re going to have to figure these things out eventually so we might as well start now.
 
 <a name="palace"></a>
-[![](/images/whosonfirst-sotmus-2017/sotm-us-2017.017.jpg)](https://mapzen.com/blog/whosonfirst-sotmus-2017#palace)
+[![](images/sotm-us-2017.017.jpg)](https://mapzen.com/blog/whosonfirst-sotmus-2017#palace)
 
 This is what that looks like and if all the venues in the world weren’t enough, we also want to be able to track historical venues.
 
@@ -193,21 +193,21 @@ Let’s pretend that Who’s On First existed in 1985 and a writer has published
 It is important that both the author and the readers of that article can rely on that ID with the confidence that its meaning won’t change even though the Palace went out of business in 2009 and that space has been occupied by [three](https://places.mapzen.com/id/1108800487) [different](https://places.mapzen.com/id/1108800489) [restaurants](https://places.mapzen.com/id/1126130035) since then.
 
 <a name="mission"></a>
-[![](/images/whosonfirst-sotmus-2017/sotm-us-2017.018.jpg)](https://mapzen.com/blog/whosonfirst-sotmus-2017#mission)
+[![](images/sotm-us-2017.018.jpg)](https://mapzen.com/blog/whosonfirst-sotmus-2017#mission)
 
 The second thing we did was assign each venue a hierarchy with pointers to all the other places in Who’s On First that venue holds hands with.
 
 If nothing else this reduces the problem of [finding all the venues in the Mission](https://whosonfirst.mapzen.com/spelunker/id/1108830809/descendants/?exclude=nullisland&placetype=venue) to a simple two-part key/value query.
 
 <a name="brands"></a>
-[![](/images/whosonfirst-sotmus-2017/sotm-us-2017.019.jpg)](https://mapzen.com/blog/whosonfirst-sotmus-2017#brands)
+[![](images/sotm-us-2017.019.jpg)](https://mapzen.com/blog/whosonfirst-sotmus-2017#brands)
 
 It’s early days still but [we are also starting to do the work to track brands](https://github.com/whosonfirst-data/whosonfirst-brands/), assigning them each their own stable IDs and static records. It’s very primitive work right now and relies entirely on unsophisticated string-matching but it’s something to build on.
 
 One of the medium-term goals we have is to work with actual brands and to have them contribute and take responsibility for maintaining their venues inside of Who’s On First.
 
 <a name="api"></a>
-[![](/images/whosonfirst-sotmus-2017/sotm-us-2017.020.jpg)](https://mapzen.com/blog/whosonfirst-sotmus-2017#api)
+[![](images/sotm-us-2017.020.jpg)](https://mapzen.com/blog/whosonfirst-sotmus-2017#api)
 
 In addition to static downloads everything is available through the [Mapzen Places API](https://mapzen.com/documentation/places/).
 
@@ -225,7 +225,7 @@ Dan spent the summer in [South Korea](https://places.mapzen.com/id/85632231) and
 Dan’s tool allowed him to roam freely during the day quickly taking pictures of venues and points of interest and uploading them after the fact to create new records in Who’s On First.
 
 <a name="lieu"></a>
-[![](/images/whosonfirst-sotmus-2017/sotm-us-2017.022.jpg)](https://mapzen.com/blog/whosonfirst-sotmus-2017#lieu)
+[![](images/sotm-us-2017.022.jpg)](https://mapzen.com/blog/whosonfirst-sotmus-2017#lieu)
 
 Finally we’ve been working with [Al Barrentine](https://twitter.com/albarrentine), who wrote the [libpostal address parser](https://mapzen.com/blog/inside-libpostal/). Building on that work we’ve asked Al to take a first pass at address de-duplication.
 
@@ -238,7 +238,7 @@ We don’t have the choice of giving up on this problem.
 Al’s remit was not to solve all the things but to build a viable "1.0" tool that demonstrated tangible results and can be improved upon going forward.
 
 <a name="business"></a>
-[![](/images/whosonfirst-sotmus-2017/sotm-us-2017.023.jpg)](https://mapzen.com/blog/whosonfirst-sotmus-2017#business)
+[![](images/sotm-us-2017.023.jpg)](https://mapzen.com/blog/whosonfirst-sotmus-2017#business)
 
 The tool is called `lieu` and, as with libpostal [it is available as open source software](https://github.com/openvenues/lieu).
 
@@ -249,7 +249,7 @@ One of the benefits of Al’s software is that when we establish a match between
 The next step as we get ready to finish up this phase of work and push it out the nest is to de-duplicate Who’s On First against itself.
 
 <a name="fuzzy"></a>
-[![](/images/whosonfirst-sotmus-2017/sotm-us-2017.024.jpg)](https://mapzen.com/blog/whosonfirst-sotmus-2017#fuzzy)
+[![](images/sotm-us-2017.024.jpg)](https://mapzen.com/blog/whosonfirst-sotmus-2017#fuzzy)
 
 The software is also able to work with fuzzy and approximate location data for venues.
 
@@ -260,7 +260,7 @@ This means that basically [every health and safety inspection record ever publis
 We can validate records that we already have and import new ones with a high, if not perfect, degree of confidence and start chipping away at the "no new stuff" problem.
 
 <a name="outro"></a>
-[![](/images/whosonfirst-sotmus-2017/sotm-us-2017.025.jpg)](https://mapzen.com/blog/whosonfirst-sotmus-2017#outro)
+[![](images/sotm-us-2017.025.jpg)](https://mapzen.com/blog/whosonfirst-sotmus-2017#outro)
 
 By now some of you may be wondering what this has to do with [OpenStreetMap](https://www.openstreetmap.org/)? The answer is: I don’t know but something, I hope.
 

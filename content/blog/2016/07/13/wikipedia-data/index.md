@@ -3,12 +3,12 @@ layout: page
 category: blog
 title: Concordances with Wikipedia data
 excerpt: Collecting and analyzing Wikipedia data to extract useful information.
-image: https://mapzen-assets.s3.amazonaws.com/images/Wikipedia-data-blog/Image.PNG
+image: images/Wikipedia-data-blog/Image.PNG
 authors: [okavvada]
 tags: [data, whosonfirst]
 ---
 
-![Wikipedia Concordances Main Image](https://mapzen-assets.s3.amazonaws.com/images/Wikipedia-data-blog/Image.PNG)
+![Wikipedia Concordances Main Image](images/Wikipedia-data-blog/Image.PNG)
 _Illustration: Olga Kavvada. Photo Credits:
 [Wikipedia](https://www.wikipedia.org/), [Stay Connected](https://theinnovationenterprise.com/summits/global-sports-innovation-summit-boston/stay-connected)_
 
@@ -47,33 +47,33 @@ This worked relatively well but as you can imagine for the ambiguous cases (wher
 
 In the table below you can see a selected subset of the raw results that we got from Wikipedia `wk:page` for each Who's On First `wof:name`.
 
-<img width="480" alt="Subset of original Wikipedia concordances" src="https://mapzen-assets.s3.amazonaws.com/images/Wikipedia-data-blog/original_1.png">
+<img width="480" alt="Subset of original Wikipedia concordances" src="images/Wikipedia-data-blog/original_1.png">
 
 We used several approaches to sanity check the results and only keep the correct ones to prevent importing bogus Wikipedia concordances into the Who's On First database. This involved a classification process to evaluate if the result name from Wikipedia was a good match for the input name from Who's On First (`correct` column). The entire code for the data clean-up can be found in this [iPython notebook](https://github.com/mapzen-data/wikipedia-notebooks/blob/master/Jupyter_notebooks_with_analysis/Find_original_wikipedia_title_and_wordcount.ipynb).
 
 The first approach involved identifying and discarding any Wikipedia titles that were included in a "blacklist". This blacklist consisted of page titles that included numbers `0` thru `9` or any of the words `timeline`, `birthday`, `political`, `environmental` or `music` which would probably point to aggregate Wikipedia pages that were not of interest to us.  This would help eliminate false Wikipedia concordances such as the ones listed below:
 
-<img width="520" alt="Wrong Wikipedia concordances" src="https://mapzen-assets.s3.amazonaws.com/images/Wikipedia-data-blog/lists_music_1.png">
+<img width="520" alt="Wrong Wikipedia concordances" src="images/Wikipedia-data-blog/lists_music_1.png">
 
 Another easy fix was to try and find results that were not referring to the same placetype even though their names might match. Such examples would be entries that did not have the word `Airport` or `Facility` in both the input name as well as the returned Wikipedia page. On the other hand, if the words `District` of `Municipality` were included in the returned result, they were classified as correct as we were looking for administrative places. Wikipedia sometimes returned the disambiguation page as a page title result which was disregarded.
 
-<img width="500" alt="Wikipedia concordances referring to different placetypes" src="https://mapzen-assets.s3.amazonaws.com/images/Wikipedia-data-blog/airports_1.png">
+<img width="500" alt="Wikipedia concordances referring to different placetypes" src="images/Wikipedia-data-blog/airports_1.png">
 
 For the remaining results, we calculated the [Levenshtein distance](https://en.wikipedia.org/wiki/Levenshtein_distance) of the input name and the result name which is a metric for quantifying the difference between two [strings](https://en.wikipedia.org/wiki/String_(computer_science)). This value would be used as a metric for dissimilarities between the two names. To avoid misclassifying occurrences that involved some kind of hierarchical order (for example, `Scottsville` vs. `Scottsville, Kentucky`), we calculated a separate the Levenshtein distance between the Wikipedia result and the name after joining with its corresponding region or country.
 
 The Levenshtein distance metric provided insight on which results were probably correct, thus their names were as similar as possible. We allowed entries that matched 100% with the Levenshtein distance metric but we were flexible enough to accept up to 30% dissimilarities (see `Tafaraoui Airport` example). Dissimilarities more that 80% of the strings were marked as not correct. Below you can identify some examples that were classified with the use of the Levenshtein distance.
 
-![Wikipedia concordances and their Levenshtein distances](https://mapzen-assets.s3.amazonaws.com/images/Wikipedia-data-blog/leve_1.png)
+![Wikipedia concordances and their Levenshtein distances](images/Wikipedia-data-blog/leve_1.png)
 
 Each of the Who's On First records has an associated placetype that describes its hierarchy. A semi-automatic classification involved checking for placetypes in the Who's On First data and the results from the Wikipedia page. The placetypes between Who's On First and Wikipedia should match else the Wikipedia title was considered as wrong. In some cases multiple Who's On First entries would share a name but have different placetypes associated with them (see example for `China` in the table below). For those cases the Wikipedia title was connected to the Who's On First entry with the higher ranking of a placetype in the hierarchy of places (for example, `country` > `locality` > `neighborhood`).
 
-<img width="420" alt="Wikipedia concordances with placetype fixes" src="https://mapzen-assets.s3.amazonaws.com/images/Wikipedia-data-blog/placetype_2.png">
+<img width="420" alt="Wikipedia concordances with placetype fixes" src="images/Wikipedia-data-blog/placetype_2.png">
 
 The final technique was to manually classify the entries as correct or not by going through the ones not yet classified especially in the areas where we had personal knowledge. The Slavic and Greek languages were classified by hand as it was impossible to find a point of connection between the different alphabets.
 
 A snippet of the Wikipedia results and our final quality classification is shown in the table below:
 
-<img width="580" alt="Subset of Wikipedia concordances after clean up" src="https://mapzen-assets.s3.amazonaws.com/images/Wikipedia-data-blog/final_1.png">
+<img width="580" alt="Subset of Wikipedia concordances after clean up" src="images/Wikipedia-data-blog/final_1.png">
 
 After cleaning up the data gathered from Wikipedia we ended up with about **155,000** of entries with Wikipedia titles classified as correct (`OK` in the table above), **24,000** were uncertain (`maybe`), and **81,000** were classified as wrong (`NO`).
 
@@ -92,7 +92,7 @@ We also requested the word count of each web page from the Wikipedia API. This w
 
 A subset of our Who's On First data with the corresponding Wikidata IDs is shown below:
 
-<img width="620" alt="Wikipedia concordances with Wikidata IDs" src="https://mapzen-assets.s3.amazonaws.com/images/Wikipedia-data-blog/wd_ids_1.png">
+<img width="620" alt="Wikipedia concordances with Wikidata IDs" src="images/Wikipedia-data-blog/wd_ids_1.png">
 
 ###Wikipedia languages
 Another important feature we were interested in getting from Wikipedia was different names in many languages for each Who's On First record. Wikipedia has been designed in many different languages and also gives aliases to names for localized languages. This information is be valuable for labeling places on a map and for search engines.
@@ -106,7 +106,7 @@ A sample python request using the <code>requests</code> python package for the l
 
 Here are a few of Yosemite Valley's different language aliases:
 
-<img width="200" alt="Wikipedia languages" src="https://mapzen-assets.s3.amazonaws.com/images/Wikipedia-data-blog/language.png">
+<img width="200" alt="Wikipedia languages" src="images/Wikipedia-data-blog/language.png">
 
 ###Wikipedia demographics and location data
 For administrative places, it would be great if we could add more information on population, elevation from sea level and location coordinates. Since this data cannot be directly accessed from the MediaWiki API, we used Wikidata's [SPARQL API](https://query.wikidata.org/) query service. By using SPARQL we were able to get population, elevation and location data for some administrative places in Wikipedia.
@@ -115,7 +115,7 @@ The bottleneck of this process is that Wikipedia categories are not well defined
 
 Using this technique we were able to add population data to about **5,500** records in Who's On First, elevation to **10,000** and latitude and longitude to about **26,000**.
 
-![Wikipedia concordances with population data](https://mapzen-assets.s3.amazonaws.com/images/Wikipedia-data-blog/populations_1.png)
+![Wikipedia concordances with population data](images/Wikipedia-data-blog/populations_1.png)
 
 
 ###We love our data! (but it can always be improved...)

@@ -4,7 +4,7 @@ title: WOF in a Box (part 2)
 category: blog
 excerpt: Run Who's On First on your own hardware.
 authors: [dphiffer]
-image: "https://mapzen-assets.s3.amazonaws.com/images/wof-in-a-box-part2/cats-in-boxes.jpg"
+image: "images/cats-in-boxes.jpg"
 tag: [whosonfirst]
 ---
 
@@ -18,7 +18,7 @@ Before we jump into installing the Who's On First [REST API](https://github.com/
 
 Some of the stuff we set up in part one, like Elasticsearch and nginx, are dependencies for this second part of the stack too.
 
-![Boxes and arrows](https://mapzen-assets.s3.amazonaws.com/images/wof-in-a-box-part2/boxes-and-arrows.png)
+![Boxes and arrows](images/boxes-and-arrows.png)
 
 These next parts we're setting up run on a [LAMP stack](https://en.wikipedia.org/wiki/LAMP_(software_bundle)), each built with [Flamework, a set of libraries and conventions](https://github.com/exflickr/flamework/blob/master/docs/philosophy.md) originally created for the Flickr back-end. It still works just fine, although you can find some crufty bits if you poke around.
 
@@ -53,7 +53,7 @@ sudo ntpdate time.nist.gov
 
 With that settled, let's continue.
 
-[![Let's continue](https://mapzen-assets.s3.amazonaws.com/images/wof-in-a-box-part2/continue.gif)](https://giphy.com/gifs/trolling-wtCFBQ0lNjxaU)
+[![Let's continue](images/continue.gif)](https://giphy.com/gifs/trolling-wtCFBQ0lNjxaU)
 
 ## Setting up the API
 
@@ -131,7 +131,7 @@ We use GitHub's OAuth mechanism to authenticate users. We will need to set some 
 * The Authorization callback URL is similar to the Homepage URL, but with an `/auth` path suffix, e.g., `http://192.168.0.47/auth`
 * Click the Register Application button
 
-![screenshot](https://mapzen-assets.s3.amazonaws.com/images/wof-in-a-box-part2/oauth-app.jpg)
+![screenshot](images/oauth-app.jpg)
 
 Edit `/usr/local/mapzen/whosonfirst-www-api/www/include/secrets.php` and copy/paste the GitHub OAuth tokens using the following configurations. You'll want to add this just before `# the end`.
 
@@ -222,11 +222,11 @@ Save your `config_local.php` configuration, and then load up your WOF in a Box's
 
 In the top-right corner, choose __Sign In__ from the drop-down menu labeled __You__.
 
-![screenshot](https://mapzen-assets.s3.amazonaws.com/images/wof-in-a-box-part2/signin.jpg)
+![screenshot](images/signin.jpg)
 
 GitHub will ask for permission to authenticate you with the OAuth application you just set up. Click the green button to login.
 
-![screenshot](https://mapzen-assets.s3.amazonaws.com/images/wof-in-a-box-part2/authorize.jpg)
+![screenshot](images/authorize.jpg)
 
 You should get redirected back to the WOF in a Box homepage. If all goes well you should see your name appear in the top-right drop-down menu. You have been OAuth'd by GitHub.
 
@@ -240,11 +240,11 @@ Give your token a name ("WOF in a Box" is a safe choice), permissions ("Read" is
 
 Then you have to click one more __I agree!__ checkbox and you should be set.
 
-![screenshot](https://mapzen-assets.s3.amazonaws.com/images/wof-in-a-box-part2/access-token.jpg)
+![screenshot](images/access-token.jpg)
 
 You should see a green "hooray" message, with a hexidecimal token for you to copy/paste.
 
-![screenshot](https://mapzen-assets.s3.amazonaws.com/images/wof-in-a-box-part2/hooray.jpg)
+![screenshot](images/hooray.jpg)
 
 For the sake of having a realistic looking example token, we'll go with `87ffbaee33443e4b9b385606d6b9af28`, but yours will be different.
 
@@ -299,7 +299,7 @@ You should take some time to explore the API documentation, and try out the [sta
 
 Important note: not all of the API methods will work for you at this point. We need some additional software for spatial queries and an additional Elasticsearch index for brands to work. Those can be subjects of some future WOF guide.
 
-[![Onward](https://mapzen-assets.s3.amazonaws.com/images/wof-in-a-box-part2/onward.gif)](https://giphy.com/gifs/cat-box-j1BQPAjNzKh9K)
+[![Onward](images/onward.gif)](https://giphy.com/gifs/cat-box-j1BQPAjNzKh9K)
 
 ## Setting up Boundary Issues
 
@@ -408,7 +408,7 @@ Let that run in the background while we finish up the rest of the Boundary Issue
 
 Okay, so a lot of what's below may seem familiar after setting up the API. And I know you are eager to start editing WOF records. We are getting there!
 
-[![Angry cat in a box](https://mapzen-assets.s3.amazonaws.com/images/wof-in-a-box-part2/angrycat.gif)](https://www.tumblr.com/search/cat%20in%20a%20box%20gif)
+[![Angry cat in a box](images/angrycat.gif)](https://www.tumblr.com/search/cat%20in%20a%20box%20gif)
 
 Unfortunately, because the API and Boundary Issues are separate apps, we need to set up a second GitHub OAuth application to handle redirects properly.
 
@@ -465,25 +465,25 @@ Now that we've set a whole bunch of Boundary Issues stuff... let's maybe try it?
 
 Go to `http://192.168.0.47/boundaryissues/` in a browser (again, with your IP subbed in), and see if it loads up. You should see something similar, but not quite the same as, the API's homepage.
 
-![screenshot](https://mapzen-assets.s3.amazonaws.com/images/wof-in-a-box-part2/bi-home.jpg)
+![screenshot](images/bi-home.jpg)
 
 Click on the same __You__ menu and then __Sign in with GitHub__. You should see a similar OAuth confirmation page on GitHub, and then redirect back to the Boundary Issues homepage.
 
 Once you get redirected back, you will have to accept some terms before you can continue.
 
-![screenshot](https://mapzen-assets.s3.amazonaws.com/images/wof-in-a-box-part2/terms.jpg)
+![screenshot](images/terms.jpg)
 
 Let's search for a record, for example [Brooklyn](https://whosonfirst.mapzen.com/spelunker/id/421205765/).
 
-![screenshot](https://mapzen-assets.s3.amazonaws.com/images/wof-in-a-box-part2/search.jpg)
+![screenshot](images/search.jpg)
 
 You want to click on the one that's a [Borough placetype](https://whosonfirst.mapzen.com/docs/placetypes/#borough).
 
-![screenshot](https://mapzen-assets.s3.amazonaws.com/images/wof-in-a-box-part2/edit-bk.jpg)
+![screenshot](images/edit-bk.jpg)
 
 Okay now we are getting somewhere, although...
 
-![screenshot](https://mapzen-assets.s3.amazonaws.com/images/wof-in-a-box-part2/unauthorized.jpg)
+![screenshot](images/unauthorized.jpg)
 
 ... by default, new users don't have permissions to edit records.
 
@@ -531,23 +531,23 @@ Go back to the __Edit Brooklyn__ page in Boundary Issues and reload it. You shou
 
 Scroll down to the __name__ section, and expand it open. Add the colonial name "Breuckelen" to the list of variant names (technically this should be under the Dutch language, not English, but one thing at a time).
 
-![screenshot](https://mapzen-assets.s3.amazonaws.com/images/wof-in-a-box-part2/breuckelen.jpg)
+![screenshot](images/breuckelen.jpg)
 
 Notice how the interface added a blue indicator next to the field? That helps you keep track of which things you've edited.
 
-![screenshot](https://mapzen-assets.s3.amazonaws.com/images/wof-in-a-box-part2/save.jpg)
+![screenshot](images/save.jpg)
 
 When you hit the save button, if all goes well, it should replace the list of changed properties with __Saved__. If it gets stuck on __Saving...__ you may want to try again and keep an eye on the JavaScript console looking for error messages.
 
 Finally, let's try searching for updated name using the Spelunker.
 
-![screenshot](https://mapzen-assets.s3.amazonaws.com/images/wof-in-a-box-part2/spelunker-updated.jpg)
+![screenshot](images/spelunker-updated.jpg)
 
 Hooray, you made an edit and it showed up in the Spelunker. There is more to all of this that I won't go into in this blog post. Right now all the changes you make end up in `/usr/local/data/whosonfirst-pending`, without modifying the actual WOF Git repos. If we wanted to actually upstream the changes to GitHub, we would need to set up a new user on the server (we tend to go with `botsonfirst`) with credentials to push up to GitHub. And that user would execute the script `bin/save_pending.php` on a cron job.
 
 There is also the whole subject of pipeline tasks vs. offline tasks, but maybe you can ask me about that over a beer some day.
 
-[![Maru](https://mapzen-assets.s3.amazonaws.com/images/wof-in-a-box-part2/maru.gif)](http://i68.tinypic.com/2j3qvm1.gif)
+[![Maru](images/maru.gif)](http://i68.tinypic.com/2j3qvm1.gif)
 
 ## Bundler config
 
@@ -611,16 +611,16 @@ Next, load up the Spelunker page for Brooklyn (or Breuckelen). The URL should be
 
 Now, scroll down until you get to the "Other" links, below the Hierarchy.
 
-![screenshot](https://mapzen-assets.s3.amazonaws.com/images/wof-in-a-box-part2/other-links.jpg)
+![screenshot](images/other-links.jpg)
 
 You should see a new link for __Download descendants of Brooklyn__. Click on that.
 
 If everything is working, you should now be able to bundle and download all the descendants records of Brooklyn, using the NUC's API and data. Let's try getting all the Brooklyn neighbourhoods.
 
-![screenshot](https://mapzen-assets.s3.amazonaws.com/images/wof-in-a-box-part2/bundler.gif)
+![screenshot](images/bundler.gif)
 
 ## That's all, folks
 
 That was a whole lotta WOF in a Box, thanks for reading this far!
 
-[![Too much WOF in the Box](https://mapzen-assets.s3.amazonaws.com/images/wof-in-a-box-part2/toomuch.gif)](https://giphy.com/gifs/vtT53Z1YmKCxW)
+[![Too much WOF in the Box](images/toomuch.gif)](https://giphy.com/gifs/vtT53Z1YmKCxW)

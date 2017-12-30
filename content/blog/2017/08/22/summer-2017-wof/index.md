@@ -4,7 +4,7 @@ title: Increasing Name Translations in Who's On First
 category: blog
 excerpt: Outlining and visualizing the work we've done to increase name translations in the Who's On First gazetteer.
 authors: [ndcartography, stepps00]
-image: "https://mapzen-assets.s3.amazonaws.com/images/names-in-wof/photo_main.jpg"
+image: "images/photo_main.jpg"
 tag: [whosonfirst, data, interns]
 ---
 
@@ -14,7 +14,7 @@ Who's On First is Mapzen's big list of places, each with a stable identifier and
 
 In addition to having every place documented, an overarching goal for Who's On First is to catalogue all [names](https://github.com/whosonfirst/whosonfirst-names) in all the  languages.
 
-![](https://mapzen-assets.s3.amazonaws.com/images/names-in-wof/charts-after/total-by-UN.png)
+![](images/charts-after/total-by-UN.png)
 
 _Above: The number of new translations added this summer, for the six major world languages used by the United Nations. For example, English gained 23,115 new name translations, while Spanish gained 2,916 new name translations._
 
@@ -64,7 +64,7 @@ The International Organization for Standardization ([ISO](https://www.iso.org/ab
 
 The above `name:` properties show "[North America](https://whosonfirst.mapzen.com/spelunker/id/102191575/)" in English, as well as the Latin, Sinhalese (Sinhala), and Spanish translations.
 
-![](https://mapzen-assets.s3.amazonaws.com/images/names-in-wof/oceania-compare.gif)
+![](images/oceania-compare.gif)
 
 Above, the `continent` of [Australia](https://whosonfirst.mapzen.com/spelunker/id/85632793/), is shown in Mapzen's  [Bubble Wrap](http://tangrams.github.io/bubble-wrap/#4/-28.73/144.62) basemap style. You’ll notice the Australia label is set to the default language (in this case, English), and, when we switch the name label to Arabic, we see the label change to `أستراليا`. _(You can do this in Bubble Wrap by toggling the "language" drop-down in the Controls menu, or by [defining](https://mapzen.com/blog/languages-of-india/) the `ux_language`  global in Tangram)_.
 
@@ -112,9 +112,9 @@ Using [QGIS](https://www.qgis.org/), I was able to import and style featuress to
 
 **Continents**
 
-![](https://mapzen-assets.s3.amazonaws.com/images/names-in-wof/maps/continent.gif)
+![](images/maps/continent.gif)
 
-Here are additional graphics for the [ocean](https://mapzen-assets.s3.amazonaws.com/images/names-in-wof/maps/ocean.gif), [disputed](https://mapzen-assets.s3.amazonaws.com/images/names-in-wof/maps/disputed.gif), [marinearea](https://mapzen-assets.s3.amazonaws.com/images/names-in-wof/maps/marinearea.gif), and [region](https://mapzen-assets.s3.amazonaws.com/images/names-in-wof/maps/region.gif) placetypes.
+Here are additional graphics for the [ocean](images/maps/ocean.gif), [disputed](images/maps/disputed.gif), [marinearea](images/maps/marinearea.gif), and [region](images/maps/region.gif) placetypes.
 
 
 ## Holding Hands with Open Data
@@ -146,7 +146,7 @@ From Occitan to Catalan to Persian, you're now able to browse our records throug
 
 **By placetype (overall)**
 
-![](https://mapzen-assets.s3.amazonaws.com/images/names-in-wof/charts-after/by-placetype.png)
+![](images/charts-after/by-placetype.png)
 
 The chart above shows the total increase in translated names by each placetype. The light purple represents what I started with in the beginning of the summer, the darker purple is how many names were added, and the grey bar represents what is still missing. The numbers represent an average for all 20 languages.
 
@@ -154,19 +154,19 @@ _Note: You'll notice a discrepancy in the number of `country` records when compa
 
 **By placetype, then by the six languages used by the United Nations (comparison)**
 
-![](https://mapzen-assets.s3.amazonaws.com/images/names-in-wof/charts-after/all-UN.gif)
+![](images/charts-after/all-UN.gif)
 
 _Above: The added translations, by placetype, for the six official UN languages. Work done for English translations resulted in 100% coverage across four placetype categories!_
 
 **By placetype, then by zoom level (comparison)**
 
-![](https://mapzen-assets.s3.amazonaws.com/images/names-in-wof/charts-after/by-placetype-zoom.gif)
+![](images/charts-after/by-placetype-zoom.gif)
 
 _Above: Added translations, by placetype, for zoom levels 0 to 8. There are fewer placetype categories and a higher percentage of translated names at the lower zoom levels. At the highest zoom levels, translation percentages drop as more features become present. (Other charts in this post are equivalent to zoom 16.)_
 
 **By language (overall)**
 
-![](https://mapzen-assets.s3.amazonaws.com/images/names-in-wof/charts-after/total-by-lang.png)
+![](images/charts-after/total-by-lang.png)
 
 _Above: This chart shows the total number of features with translations for all 20 languages we focused on. Dutch appeared to be the highest translated language before the summer, with an additional 3,800 name translations added, but was beat by English which saw larger gains._
 

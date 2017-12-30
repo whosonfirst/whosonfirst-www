@@ -4,12 +4,12 @@ title: The Who's On First API Explorer
 category: blog
 excerpt: I like to think the WOF API Explorer is another illustration of the idea that "Mapzen should always be Consumer Zero (of Mapzen services)".
 authors: [thisisaaronland]
-image: https://s3.amazonaws.com/mapzen-assets/images/whosonfirst-api-explorer/light.jpg
+image: images/light.jpg
 tag: [whosonfirst, electron]
 ---
 
 <div style="margin: 0 auto; width:341px;">
-<a href="https://collection.cooperhewitt.org/objects/18419753/"><img src="https://s3.amazonaws.com/mapzen-assets/images/whosonfirst-api-explorer/light.jpg" height="480" width="341" /></a>
+<a href="https://collection.cooperhewitt.org/objects/18419753/"><img src="images/light.jpg" height="480" width="341" /></a>
 </div>
 
 A few weeks ago [Lou built an Electron application](https://mapzen.com/blog/tangram-work-developer-commentary). For April Fools' Day he made a version of [Tangram Play](https://mapzen.com/blog/introducing-tangram-work) in the style of a 90's era Windows application and published it as a living breathing desktop application rather than [the web application](https://mapzen.com/tangram/play/) we've come to know and love. In addition he was able to publish MacOS and Linux native applications, all from the same code base. The same code base that is ultimately just HTML and CSS and Javascript (aka "a web application"). An [increasing number of desktop applications](https://electron.atom.io/apps) are being developed this way and it's what makes Electron pretty exciting.
@@ -18,13 +18,13 @@ Shortly after Lou's blog post we pushed the [Who's On First API](https://mapzen.
 
 The Who's On First API has always enjoyed a internal web-based "explorer" tool. API explorers are pretty common these days but if you're not sure they are [have a look at the Flickr API Explorer](https://www.flickr.com/services/api/) which is pretty much the ur-Explorer that started them all. Go ahead, we'll wait...
 
-![](https://s3.amazonaws.com/mapzen-assets/images/whosonfirst-api-explorer/flickr-api-explorer.png)
+![](images/flickr-api-explorer.png)
 
 _Also, Cal Henderson's 2007 talk ["Flickr and APIs: A Love Story"](http://www.iamcal.com/talks/open_hack_day.pps) which is a 22MB PowerPoint presentation because... it was 2007, I guess. Anyway, it it a good talk._
 
 We use our own API Explorer extensively for debugging and generally poking around. It is often the fastest way to answer a question about the data. I find it difficult to imagine developing or working with APIs _without_ an API explorer now and that makes the internal-iness of the WOF API Explorer less than awesome. For a variety of reasons it won't be made public any time soon which is sort of like pouring salt in your own wound.
 
-![](https://s3.amazonaws.com/mapzen-assets/images/whosonfirst-api-explorer/whosonfirst-api-explorer.png)
+![](images/whosonfirst-api-explorer.png)
 
 By now, some of you might have figured out where this is going: If the WOF API has a full suite of methods for inspecting the API and Electron makes it easy to develop custom applications in HTML and Javascript then why not build... [a standalone Who's On First API Explorer](https://github.com/whosonfirst/electron-whosonfirst-api-explorer). So we did!
 
@@ -43,49 +43,49 @@ The [WOF API Explorer is available for anyone to try](https://github.com/whosonf
 
 In the interim, here are a bunch of screenshots to hopefully make that extra work seem worth doing:
 
-![](https://s3.amazonaws.com/mapzen-assets/images/whosonfirst-api-explorer/api-explorer-start.png)
+![](images/api-explorer-start.png)
 
 _Here's what happens when you start the API Explorer for the first time: [You are asked for a Mapzen API key!](https://mapzen.com/developers)_
 
-![](https://s3.amazonaws.com/mapzen-assets/images/whosonfirst-api-explorer/api-explorer-methods.png)
+![](images/api-explorer-methods.png)
 
 _List views appear in the left-hand sidebar. Here's a list of all the API methods. API methods, errors and formats are fetched from the API when the Explorer starts up and there is a handy "refresh" button at the bottom of each list view update things while the application is running._
 
-![](https://s3.amazonaws.com/mapzen-assets/images/whosonfirst-api-explorer/api-explorer-docs.png)
+![](images/api-explorer-docs.png)
 
 _Here's an example of the documentation for the [whosonfirst.places.getInfo](https://mapzen.com/documentation/wof/methods/#whosonfirst.places.getInfo) API method, which isn't that different from what you'd see on the [Mapzen website](https://mapzen.com/documentation/wof/)._
 
-![](https://s3.amazonaws.com/mapzen-assets/images/whosonfirst-api-explorer/api-explorer-request.png)
+![](images/api-explorer-request.png)
 
 _From any documentation page you can click through to a corresponding "explore" panel for that method. You can update the parameters that will be sent to the API and then click the handy `MAKE IT SO!` button to start the API request._
 
-![](https://s3.amazonaws.com/mapzen-assets/images/whosonfirst-api-explorer/api-explorer-fetch.png)
+![](images/api-explorer-fetch.png)
 
 _[:partyparrot:](https://github.com/whosonfirst/electron-whosonfirst-api-explorer/blob/master/images/party-parrot.gif) will keep you company while your API request is being processed._
 
-![](https://s3.amazonaws.com/mapzen-assets/images/whosonfirst-api-explorer/api-explorer-results.png)
+![](images/api-explorer-results.png)
 
 _Oh look, here's a new part of the Who's On First API: [GeoJSON](https://mapzen.com/documentation/wof/formats/#geojson) as an output format._
 
-![](https://s3.amazonaws.com/mapzen-assets/images/whosonfirst-api-explorer/api-explorer-csv.png)
+![](images/api-explorer-csv.png)
 
 _The API Explorer can also render non-JSON output formats. There is also [an open ticket to enable downloading of results](https://github.com/whosonfirst/electron-whosonfirst-api-explorer/issues/21) from the API Explorer._
 
-![](https://s3.amazonaws.com/mapzen-assets/images/whosonfirst-api-explorer/api-explorer-offline.png)
+![](images/api-explorer-offline.png)
 
 _Importantly the API Explorer will continue to work offline. See the way the ☁️ in the top-left corner became a 🚫  - that means the API Explorer can't find the Internets. You won't be able to send API requests out across the network but you can still read the documentation and construct API requests to review._
 
-![](https://s3.amazonaws.com/mapzen-assets/images/whosonfirst-api-explorer/api-explorer-settings.png)
+![](images/api-explorer-settings.png)
 
 _You can also change the API endpoint for making requests and by extension information about the API itself. via the `api.spec` methods. This probably isn't that useful to anyone else right now but it's very helpful for us when testing new API methods on our dev servers. Eventually [we'd like to support "named" and "toggle-able" configurations](https://github.com/whosonfirst/electron-whosonfirst-api-explorer/issues/31) in the API Explorer to make it easy to switch from one API endpoint to another._
 
-![](https://s3.amazonaws.com/mapzen-assets/images/whosonfirst-api-explorer/api-explorer-formats.png)
+![](images/api-explorer-formats.png)
 
 _Most of the work, in both the API and the Explorer, has been around API methods. There is still some more work to do for the other things..._
 
 _There's an [an experimental and currently disabled print feature](https://github.com/whosonfirst/electron-whosonfirst-api-explorer/issues/10) to generate print-friendly version of both API documentation and results._
 
-![](https://s3.amazonaws.com/mapzen-assets/images/whosonfirst-api-explorer/api-explorer-print.png)
+![](images/api-explorer-print.png)
 
 _Unfortunately, I can't figure out why print versions are truncated after one "page" so we'll turned off that functionality for now. Also apparently Emoji (specifically the 👍 signifying a required parameter) are silently dropped in the print output because... computers?_
 
