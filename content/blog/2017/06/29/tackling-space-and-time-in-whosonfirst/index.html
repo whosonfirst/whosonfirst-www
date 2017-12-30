@@ -1,0 +1,163 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Tackling Space and Time in Who&rsquo;s On First</title>
+  <meta name="GENERATOR" content="Blackfriday Markdown Processor v2.0" />
+  <meta charset="utf-8" />
+</head>
+<body>
+
+<style type="text/css">
+		body { font-family: serif; margin:2em; margin-left: 10%; margin-right: 10%; font-size: 1.3em; line-height: 1.5em; }
+		img { max-width: 640px !important; max-height: 480px !important; border: 1px dotted #ccc; padding: .5em; margin: 0 auto; margin-bottom:1em; margin-top: 1em; }
+	</style> <h2>Tackling Space and Time in Who's On First</h2><p>##Let&rsquo;s start with Yugoslavia</p>
+
+<p>Creating historical records in the <a href="https://whosonfirst.mapzen.com/">Who&rsquo;s On First</a> gazetteer for Yugoslavia is an excellent test case in helping us answer the following question:</p>
+
+<p><em>How can Who&rsquo;s On First catalogue and preserve records for Yugoslavia, the former Soviet republics, and everything in between?</em></p>
+
+<p>##Introducing EDTF</p>
+
+<p>The Library of Congress developed the <a href="https://www.loc.gov/standards/datetime/pre-submission.html"><strong>Extended Date/Time Format (EDTF)</strong></a>, and is in the process of adding it as an extension to <a href="http://dotat.at/tmp/ISO_8601-2004_E.pdf"><strong>ISO 8601</strong></a>. This date/time string is used to express the concept of a fixed or known date (<code>YYYY-MM-DD</code>, <code>YYYY-MM</code> or <code>YYYY</code>), as well as other semantic qualifiers like <em>&ldquo;approximately the year 2017&rdquo;</em> (<code>YYYY~</code>) and <em>&ldquo;approximately 2003, but that is uncertain&rdquo;</em> (<code>2003?~</code>).</p>
+
+<p>This format is perfectly suited to tracking historical administrative records, specifically &ldquo;places&rdquo; in <a href="https://whosonfirst.mapzen.com/spelunker/placetypes/disputed/#4/-1.32/112.73">dispute and contention</a>. Being able to catalogue a place with as many moving pieces as Yugoslavia allows us to use &ldquo;soft&rdquo; beginning and end dates.</p>
+
+<p>##The how</p>
+
+<p>Who&rsquo;s On First uses this format for several <a href="https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/edtf.md">properties</a>, including:</p>
+
+<p>####edtf:inception:</p>
+
+<blockquote>
+<p><em>Indicates the date when a place was first created or established.</em></p>
+</blockquote>
+
+<p>####edtf:cessation:</p>
+
+<blockquote>
+<p><em>Indicates when a place stopped being a &ldquo;going concern&rdquo;. The semantics for something ceasing may vary from placetype to placetype. For example, a venue may cease operations or a country may split in to multiple countries.</em></p>
+</blockquote>
+
+<p>####edtf:deprecated:</p>
+
+<blockquote>
+<p><em>Indicates the date when a place was determined to be invalid (was never a &ldquo;going concern&rdquo;).</em></p>
+</blockquote>
+
+<p>####edtf:superseded:</p>
+
+<blockquote>
+<p><em>Indicates the date when a record was superseded by another record.</em></p>
+</blockquote>
+
+<p>##The why</p>
+
+<p>The Extended Date/Time Format is a useful method to categorize &ldquo;soft dates&rdquo; for Who&rsquo;s On First, one example being the record for the country of Croatia as it relates to Yugoslavia. At the start of 1990, Croatia was a socialist republic within Yugoslavia. That same year, the government was dissolved in favor of a multi-party democracy and, soon after, an independence referendum was held. Independence from Yugoslavia was favored and within a month, Croatia declared independence.</p>
+
+<p>This leaves us with a few questions. <em>Do we use the date of the independence vote as the inception date for Yugoslavia?</em>  <em>Do we use the date of declared independence as the inception date?</em> <em>Is Croatia actually a separate &ldquo;place&rdquo; from Yugoslavia?</em> The answer to these questions is, well&hellip; yes, yes, and yes.</p>
+
+<p>We can use <em>both</em> the date of the independence vote and the date of declared independence for Croatia&rsquo;s inception date using the Extended Date/Time Format. We know Croatia succeeded Yugoslavia, but the debate lies at <em>when</em> this took place. Using the date/string below allows us to be flexible, but still catalogue the &ldquo;place&rdquo; of Croatia:</p>
+
+<p><code>&quot;edtf:inception&quot;:&quot;1991-05~/1991-06~&quot;</code></p>
+
+<p>That flexibility let&rsquo;s Who&rsquo;s On First to note the times around both dates related to Croatia&rsquo;s independence.</p>
+
+<p>##Let&rsquo;s take a stroll through history</p>
+
+<h2>1918-12~ to 1945-11-29</h2>
+
+<p>In December 1918, the <a href="https://whosonfirst.mapzen.com/spelunker/id/1108955789">Kingdom of Yugoslavia</a> came into existence after the dissolution of the Kingdom of Serbia and the Austro-Hungarian Empire. Also known as the &ldquo;Kingdom of Serbs, Croats, and Slovenes&rdquo; or simply &ldquo;Yugoslavia&rdquo;, the country was a combination of six republics: Bosnia &amp; Herzegovina, Croatia, Macedonia, Montenegro, Serbia (including Kosovo), and Slovenia.</p>
+
+<p><div class="demo-wrapper" id="map_one">
+<iframe src="https://tangrams.github.io/tangram-frame/?noscroll&url=https://s3.amazonaws.com/mapzen-assets/images/whosonfirst-edtf/yaml/yugo_1.yaml#6/44.292/-341.644"></iframe>
+</div>
+<p style="text-align: center"  class='caption'><br><a style="font-weight:normal" href="https://tangrams.github.io/tangram-frame/?url=https://s3.amazonaws.com/mapzen-assets/images/whosonfirst-edtf/yaml/yugo_1.yaml#6/44.292/-341.644">Click to view in full screen ➹</a> <br></p></p>
+
+<h2>1945-11-29 to 1991-06~</h2>
+
+<p>Following an <a href="https://en.wikipedia.org/wiki/World_War_II_in_Yugoslavia">invasion and control by Axis powers</a> between April 6, 1941 (1941-04-06) and November 29, 1945 (1945-11-29), the Kingdom of Yugoslavia was renamed the Federal People&rsquo;s Republic of Yugoslavia, then renamed the <a href="https://whosonfirst.mapzen.com/spelunker/id/1126113567">Socialist Federal Republic of Yugoslavia</a>.</p>
+
+<p><div class="demo-wrapper" id="map_two">
+<iframe src="https://tangrams.github.io/tangram-frame/?noscroll&url=https://s3.amazonaws.com/mapzen-assets/images/whosonfirst-edtf/yaml/yugo_2.yaml#6/44.292/-341.644"></iframe>
+</div>
+<p style="text-align: center"  class='caption'><br><a style="font-weight:normal" href="https://tangrams.github.io/tangram-frame/?url=https://s3.amazonaws.com/mapzen-assets/images/whosonfirst-edtf/yaml/yugo_2.yaml#6/44.292/-341.644">Click to view in full screen ➹</a> <br></p></p>
+
+<h2>1991-06~ to 1991-09~</h2>
+
+<p>Around June 1991, the former socialist republics of <a href="https://whosonfirst.mapzen.com/spelunker/id/85633779">Slovenia</a> and <a href="https://whosonfirst.mapzen.com/spelunker/id/85633229">Croatia</a> broke from the <a href="https://whosonfirst.mapzen.com/spelunker/id/1108955787">Socialist Federal Republic of Yugoslavia</a> to <a href="https://en.wikipedia.org/wiki/Breakup_of_Yugoslavia#Independence_of_Slovenia_and_Croatia">form countries of their own</a>.</p>
+
+<p><div class="demo-wrapper" id="map_three">
+<iframe src="https://tangrams.github.io/tangram-frame/?noscroll&url=https://s3.amazonaws.com/mapzen-assets/images/whosonfirst-edtf/yaml/yugo_3.yaml#6/44.292/-341.644"></iframe>
+</div>
+<p style="text-align: center"  class='caption'><br><a style="font-weight:normal" href="https://tangrams.github.io/tangram-frame/?url=https://s3.amazonaws.com/mapzen-assets/images/whosonfirst-edtf/yaml/yugo_3.yaml#6/44.292/-341.644">Click to view in full screen ➹</a> <br></p></p>
+
+<h2>1991-09~ to 1992-03~</h2>
+
+<p>Around September 1991, the former socialist republic of <a href="https://whosonfirst.mapzen.com/spelunker/id/85632373">Macedonia</a> broke from the <a href="https://whosonfirst.mapzen.com/spelunker/id/1108955785">Socialist Federal Republic of Yugoslavia</a>) to <a href="https://en.wikipedia.org/wiki/Breakup_of_Yugoslavia#Independence_of_the_Republic_of_Macedonia_and_Bosnia_and_Herzegovina">form a country of its own</a>.</p>
+
+<p><div class="demo-wrapper" id="map_four">
+<iframe src="https://tangrams.github.io/tangram-frame/?noscroll&url=https://s3.amazonaws.com/mapzen-assets/images/whosonfirst-edtf/yaml/yugo_4.yaml#6/44.292/-341.644"></iframe>
+</div>
+<p style="text-align: center"  class='caption'><br><a style="font-weight:normal" href="https://tangrams.github.io/tangram-frame/?url=https://s3.amazonaws.com/mapzen-assets/images/whosonfirst-edtf/yaml/yugo_4.yaml#6/44.292/-341.644">Click to view in full screen ➹</a> <br></p></p>
+
+<h2>1992-03~ to 2006</h2>
+
+<p>Around March 1992, the former socialist republic of <a href="https://whosonfirst.mapzen.com/spelunker/id/85632609">Bosnia &amp; Herzegovina</a> broke from the <a href="https://whosonfirst.mapzen.com/spelunker/id/1108955783">Socialist Federal Republic of Yugoslavia</a> to <a href="https://en.wikipedia.org/wiki/Breakup_of_Yugoslavia#Independence_of_the_Republic_of_Macedonia_and_Bosnia_and_Herzegovina">form a country of its own</a>.</p>
+
+<p><div class="demo-wrapper" id="map_five">
+<iframe src="https://tangrams.github.io/tangram-frame/?noscroll&url=https://s3.amazonaws.com/mapzen-assets/images/whosonfirst-edtf/yaml/yugo_5.yaml#6/44.292/-341.644"></iframe>
+</div>
+<p style="text-align: center"  class='caption'><br><a style="font-weight:normal" href="https://tangrams.github.io/tangram-frame/?url=https://s3.amazonaws.com/mapzen-assets/images/whosonfirst-edtf/yaml/yugo_5.yaml#6/44.292/-341.644">Click to view in full screen ➹</a> <br></p></p>
+
+<h2>Present Day</h2>
+
+<p>The Socialist Federal Republic of Yugoslavia <a href="https://en.wikipedia.org/wiki/Breakup_of_Yugoslavia#Aftermath_in_Serbia_and_Montenegro">dissolved in 2006</a> and, soon after, <a href="https://whosonfirst.mapzen.com/spelunker/id/85632667">Montenegro</a> joined Slovenia, Croatia, and Bosnia and Herzegovina in being internationally recognized as independent nations. <a href="https://whosonfirst.mapzen.com/spelunker/id/85633259">Kosovo</a> followed suit in 2008, with <a href="https://whosonfirst.mapzen.com/spelunker/id/85633755">Serbia</a> remaining as the successor state to Socialist Federal Republic of Yugoslavia.</p>
+
+<p><div class="demo-wrapper" id="map_six">
+<iframe src="https://tangrams.github.io/tangram-frame/?noscroll&url=https://s3.amazonaws.com/mapzen-assets/images/whosonfirst-edtf/yaml/yugo_dissolved.yaml#6/44.292/-341.644"></iframe>
+</div>
+<p style="text-align: center"  class='caption'><br><a style="font-weight:normal" href="https://tangrams.github.io/tangram-frame/?url=https://s3.amazonaws.com/mapzen-assets/images/whosonfirst-edtf/yaml/yugo_dissolved.yaml#6/44.292/-341.644">Click to view in full screen ➹</a> <br></p></p>
+
+<p>You&rsquo;ll notice <code>supersedes</code> and <code>superseded_by</code> entries in WOF records. These are pointers to other WOF records: a current record can supersede the record of a place that is no longer a going concern, and a record not longer a going concern can be superseded by a current record. Looking at Yugoslavia, this is effectively a linked list:</p>
+
+<pre><code>1108955789 superseded by 1126113567
+1126113567 superseded by 1108955787, 85633779, 85633229
+1108955787 superseded by 1108955785, 85632373
+1108955785 superseded by 1108955783, 85632609
+1108955783 superseded by 85633755, 85632667, 85633259*
+</code></pre>
+
+<p><em>* Note: Kosovo was in a disputed state between 2006~ and 2008~</em></p>
+
+<p>Here is the dissolution of Yugoslavia in the form of a GIF, along with the WOF IDs and EDTF data:</p>
+
+<p><img src="https://s3.amazonaws.com/mapzen-assets/images/whosonfirst-edtf/geom/yugoslavia.gif" alt="" /></p>
+
+<p>You too can travel through time, space and politics by <a href="https://mapzen.com/tangram/view/?api=22/770#6.529/44.129/-341.711">superseding layers in Tangram Play</a>.</p>
+
+<p>##How does this relate to other records?</p>
+
+<p>Great question!</p>
+
+<p>###Constituency records</p>
+
+<p>We&rsquo;ve recently imported constituency data for the 115th U.S. Congress (<a href="https://github.com/whosonfirst-data/whosonfirst-data-constituency-us">take a look!</a>) and have the scaffolding in place to import additional constituency data from previous sessions of Congress, as well as constituency data for other countries. While each Congress has a &ldquo;hard&rdquo; end date, the <code>edtf:*</code> properties will still be used signify dates in historical constituency records.</p>
+
+<h3>Manifest Destiny project</h3>
+
+<p>The <a href="http://michaelporath.com/projects/manifest-destiny/">Manifest Destiny project</a> is another interesting use case for the <code>edtf:*</code> properties. This project has geometries of unclaimed areas, claims, states, and territories in the United States from March 1789 to the present; this is a proposed import for Who&rsquo;s On First and an interesting test case for more superseding and date classification work.</p>
+
+<h3>Existing records</h3>
+
+<p>We&rsquo;ve done something similar with a smaller batch of records in San Francisco. Follow the <code>supersedes</code> links for two venues in San Francisco: <a href="https://whosonfirst.mapzen.com/spelunker/id/890535433/#14/37.7458/-122.4211">Rock Bar</a> and <a href="https://whosonfirst.mapzen.com/spelunker/id/1126130035/#13/37.7604/-122.4143">Francisca&rsquo;s (neé The Palace)</a>.</p>
+
+<p>##Caveats&hellip;</p>
+
+<p>If it isn&rsquo;t obvious by now, tackling these types of issues can be challenging. We&rsquo;re doing our best to catalogue historical places, but that comes with caveats. Using dates and superseding properties is helpful in creating a timeline of a &ldquo;place&rdquo;, but it is difficult to manage every edge case with the Extended Date/Time Format and other Who&rsquo;s On First properties. Yugoslavia was an area with relative agreement when creating records and adding dates, but other places in long-term conflict will not be as easy to catalogue.</p>
+
+<p>We welcome anyone to suggest improvements or methods to help us navigate through this historical work. If you have suggestions, questions, ideas, or comments, please <a href="mailto:hello@mapzen.com">let use know</a>!</p>
+
+<p><em>Photo Credit: <a href="https://www.flickr.com/photos/aiari/3766024455/in/photolist-6JMRS8-6DruhW-dMpjq-qEC1wW-8jqbkg-3eKq11-9vJDWb-RYEBSv-erDaj-9UQbk-5Xx3no-5MLX4y-7SinmX-q9yT2J-hZMUDT-dEDz8e-VCw3RH-8o2aQe-d9txSf-Sb3iEj-8E1s88-SNrkgW-vESZ2-Uz71gq-Dn2miV-5YW8LF-TSNui7-B4uAyk-dbtWi5-71c6CD-KZsfb-oiYot-dAnKbo-a7Et8u-Av2fPK-bXANVG-9BGheC-bfxnzi-Uz77WE-o7oMjJ-DxpmsQ-7DPAkZ-Uz74ej-8XXBFV-dxVxBL-LqUFzX-Uvvtum-Uz79oY-oiJ5aM-dm4Qmn">Iraia Martínez, Pixabay. (CC BY 2.0)</a></em></p>
+
+</body>
+</html>

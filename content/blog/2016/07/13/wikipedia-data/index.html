@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Concordances with Wikipedia data</title>
+  <meta name="GENERATOR" content="Blackfriday Markdown Processor v2.0" />
+  <meta charset="utf-8" />
+</head>
+<body>
+
+<style type="text/css">
+		body { font-family: serif; margin:2em; margin-left: 10%; margin-right: 10%; font-size: 1.3em; line-height: 1.5em; }
+		img { max-width: 640px !important; max-height: 480px !important; border: 1px dotted #ccc; padding: .5em; margin: 0 auto; margin-bottom:1em; margin-top: 1em; }
+	</style> <h2>Concordances with Wikipedia data</h2><p><img src="images/Wikipedia-data-blog/Image.PNG" alt="Wikipedia Concordances Main Image" />
+<em>Illustration: Olga Kavvada. Photo Credits:
+<a href="https://www.wikipedia.org/">Wikipedia</a>, <a href="https://theinnovationenterprise.com/summits/global-sports-innovation-summit-boston/stay-connected">Stay Connected</a></em></p>
+
+<p>We recently <a href="https://twitter.com/alloftheplaces/status/748202320677109760">tweeted</a> that Who&rsquo;s On First was &ldquo;holding hands&rdquo; with even more of Wikipedia. Today I will talk about how that work was completed.</p>
+
+<p>To recap:</p>
+
+<ul>
+<li><strong>155,000</strong> more Who&rsquo;s on First records were linked up to Wikipedia</li>
+<li><strong>2 million</strong> more localized names (in multiple languages) were added for <strong>135,000</strong> Who&rsquo;s On First records</li>
+</ul>
+
+<p>Our vision is to be able to make a unique connection between our <a href="https://whosonfirst.mapzen.com/">Who&rsquo;s On First</a> data and the corresponding Wikipedia page. Who&rsquo;s On First is Mapzen&rsquo;s gazetteer of places, each record has a stable identifier and descriptive properties about that place. We use Who&rsquo;s On First data for several Mapzen services to help with <strong>labelling</strong> the map and improving <strong>search</strong> results.</p>
+
+<p>Wikipedia is an encyclopedia which is collaboratively built by its users and has more than 5,000,000 articles covering many subjects and disciplines. The benefit of Wikipedia is that it has come to be one of the most popular websites on the internet, constantly evolving and one of the largest general reference works. Linking Who&rsquo;s On First data to Wikipedia articles, allowing the two projects to &ldquo;hold hands&rdquo;, enables us (and you!) to benefit from this collective knowledge.</p>
+
+<h3>Wikipedia Structure</h3>
+
+<p>The first step is to understand the structure of Wikipedia’s database. Wikipedia has a web service API that provides access to its main wiki features, data and metadata, namely the <a href="https://www.mediawiki.org/wiki/API:Main_page">MediaWiki API</a>. An <a href="http://readwrite.com/2013/09/19/api-defined/">API</a> is essentially a tool that allows software applications to talk to each other in a structured way.</p>
+
+<p>To make things a little more helpful (or complicated!), Wikipedia has a related project called <a href="https://www.wikidata.org/wiki/Wikidata:Main_Page">Wikidata</a> that acts as a central storage space for all the structured data in Wikipedia. Each Wikidata record is uniquely identified and links to each related Wikipedia entry (think <em>web page</em>) in all the different Wikipedia&rsquo;s languages (282 at last count!) for that entity.</p>
+
+<p>For example, in the English language Wikipedia the page is <a href="https://en.wikipedia.org/wiki/Spain">Spain</a> and in the Spanish language Wikipedia the page is <a href="https://es.wikipedia.org/wiki/Espa%C3%B1a">España</a>. As a result, in order to find the specific country (or city!) in the Wikipedia of your choice, you would need to know the language code of the Wikipedia site along with the title of the page in that language.</p>
+
+<p>Since we&rsquo;re interested in adding <em>more</em> localized names in all the languages to each Who&rsquo;s On First record, we&rsquo;ll look for the feature first by the name we already know it as, then collect and add the rest of the names from the many Wikipedias keyed off the <code>Wikidata ID</code> identifier. For Spain the Wikidata ID is <a href="http://www.wikidata.org/wiki/Q29">Q29</a> and that record has entries for both of the articles mentioned above, and in many more languages. We&rsquo;re lucky each project has unique identifiers for places!</p>
+
+<p>###Wikipedia Titles</p>
+
+<p>To link up the projects, we needed to get the original Wikipedia titles of each Who&rsquo;s On First record (for example the borough that is called <code>Bronx</code> in Who&rsquo;s On First but named <code>The Bronx</code> in Wikipedia and the <code>Queenstown</code> locality in Who&rsquo;s On First is named <code>Queenstown, New Zealand</code> in Wikipedia), the Wikidata ID of each entry, the Wikipedia url and all the localized language translations of each place. In addition, we wanted to get population data for the administrative places, elevation from the sea level, area and latitude and longitude coordinates. The entire code structure can be found in this <a href="https://github.com/mapzen-data/wikipedia-notebooks">repository</a> as an iPython Notebook.</p>
+
+<p>The first step of adding concordance between Who&rsquo;s On First and Wikipedia data was to identify a connection point. Wikipedia allows you to search its database for a place name and returns the most likely Wikipedia page title. We used this API query to identify the potential original Wikipedia page title for all the administrative places in our database using the Who&rsquo;s On First name as the key input argument.</p>
+
+<p>A sample python request using the <code>requests</code> python package for the original Wikipedia titles (<code>wk:page</code>) is shown below:</p>
+
+<pre><code>request_API = (&quot;https://en.wikipedia.org/w/api.php?action=query&amp;list=search&amp;srsearch=%s&amp;srprop=title&amp;srlimit=1&amp;format=json&quot; %name)
+result_request=requests.get(request_API)
+</code></pre>
+
+<p>This worked relatively well but as you can imagine for the ambiguous cases (where multiple results could match) Wikipedia sometimes returned page titles that were not the ones we were looking for. We looked through the results and applied several cleanup steps to identify which ones were correct and which ones were not.</p>
+
+<p>In the table below you can see a selected subset of the raw results that we got from Wikipedia <code>wk:page</code> for each Who&rsquo;s On First <code>wof:name</code>.</p>
+
+<p><img width="480" alt="Subset of original Wikipedia concordances" src="images/Wikipedia-data-blog/original_1.png"></p>
+
+<p>We used several approaches to sanity check the results and only keep the correct ones to prevent importing bogus Wikipedia concordances into the Who&rsquo;s On First database. This involved a classification process to evaluate if the result name from Wikipedia was a good match for the input name from Who&rsquo;s On First (<code>correct</code> column). The entire code for the data clean-up can be found in this <a href="https://github.com/mapzen-data/wikipedia-notebooks/blob/master/Jupyter_notebooks_with_analysis/Find_original_wikipedia_title_and_wordcount.ipynb">iPython notebook</a>.</p>
+
+<p>The first approach involved identifying and discarding any Wikipedia titles that were included in a &ldquo;blacklist&rdquo;. This blacklist consisted of page titles that included numbers <code>0</code> thru <code>9</code> or any of the words <code>timeline</code>, <code>birthday</code>, <code>political</code>, <code>environmental</code> or <code>music</code> which would probably point to aggregate Wikipedia pages that were not of interest to us.  This would help eliminate false Wikipedia concordances such as the ones listed below:</p>
+
+<p><img width="520" alt="Wrong Wikipedia concordances" src="images/Wikipedia-data-blog/lists_music_1.png"></p>
+
+<p>Another easy fix was to try and find results that were not referring to the same placetype even though their names might match. Such examples would be entries that did not have the word <code>Airport</code> or <code>Facility</code> in both the input name as well as the returned Wikipedia page. On the other hand, if the words <code>District</code> of <code>Municipality</code> were included in the returned result, they were classified as correct as we were looking for administrative places. Wikipedia sometimes returned the disambiguation page as a page title result which was disregarded.</p>
+
+<p><img width="500" alt="Wikipedia concordances referring to different placetypes" src="images/Wikipedia-data-blog/airports_1.png"></p>
+
+<p>For the remaining results, we calculated the <a href="https://en.wikipedia.org/wiki/Levenshtein_distance">Levenshtein distance</a> of the input name and the result name which is a metric for quantifying the difference between two <a href="https://en.wikipedia.org/wiki/String_(computer_science">strings</a>). This value would be used as a metric for dissimilarities between the two names. To avoid misclassifying occurrences that involved some kind of hierarchical order (for example, <code>Scottsville</code> vs. <code>Scottsville, Kentucky</code>), we calculated a separate the Levenshtein distance between the Wikipedia result and the name after joining with its corresponding region or country.</p>
+
+<p>The Levenshtein distance metric provided insight on which results were probably correct, thus their names were as similar as possible. We allowed entries that matched 100% with the Levenshtein distance metric but we were flexible enough to accept up to 30% dissimilarities (see <code>Tafaraoui Airport</code> example). Dissimilarities more that 80% of the strings were marked as not correct. Below you can identify some examples that were classified with the use of the Levenshtein distance.</p>
+
+<p><img src="images/Wikipedia-data-blog/leve_1.png" alt="Wikipedia concordances and their Levenshtein distances" /></p>
+
+<p>Each of the Who&rsquo;s On First records has an associated placetype that describes its hierarchy. A semi-automatic classification involved checking for placetypes in the Who&rsquo;s On First data and the results from the Wikipedia page. The placetypes between Who&rsquo;s On First and Wikipedia should match else the Wikipedia title was considered as wrong. In some cases multiple Who&rsquo;s On First entries would share a name but have different placetypes associated with them (see example for <code>China</code> in the table below). For those cases the Wikipedia title was connected to the Who&rsquo;s On First entry with the higher ranking of a placetype in the hierarchy of places (for example, <code>country</code> &gt; <code>locality</code> &gt; <code>neighborhood</code>).</p>
+
+<p><img width="420" alt="Wikipedia concordances with placetype fixes" src="images/Wikipedia-data-blog/placetype_2.png"></p>
+
+<p>The final technique was to manually classify the entries as correct or not by going through the ones not yet classified especially in the areas where we had personal knowledge. The Slavic and Greek languages were classified by hand as it was impossible to find a point of connection between the different alphabets.</p>
+
+<p>A snippet of the Wikipedia results and our final quality classification is shown in the table below:</p>
+
+<p><img width="580" alt="Subset of Wikipedia concordances after clean up" src="images/Wikipedia-data-blog/final_1.png"></p>
+
+<p>After cleaning up the data gathered from Wikipedia we ended up with about <strong>155,000</strong> of entries with Wikipedia titles classified as correct (<code>OK</code> in the table above), <strong>24,000</strong> were uncertain (<code>maybe</code>), and <strong>81,000</strong> were classified as wrong (<code>NO</code>).</p>
+
+<p>###Wikidata IDs
+Having identified the correct Wikipedia page title for most of our entries we then requested the Wikidata ID for each page in our dataset. This returned a unique identifier for each entry that had an original Wikipedia title. These values are extremely useful as they provide a point of connection between all the different Wikipedias in the 282 different languages where the data is stored in a structured way.</p>
+
+<p>A sample python request using the <code>requests</code> python package for the Wikidata IDs (<code>wd:id</code>) is shown below:</p>
+
+<pre><code>request_API = (&quot;https://en.wikipedia.org/w/api.php?action=query&amp;prop=pageprops&amp;titles=%s&amp;format=json&quot; %name)
+result_request=requests.get(request_API)
+</code></pre>
+
+<p>We also requested the word count of each web page from the Wikipedia API. This will help generate a quantifiable metric for assessing the importance of each place and will be described in a future post. A sample python request using the <code>requests</code> python package for the <code>wordcount</code> is shown below:</p>
+
+<pre><code>request_API= (&quot;https://en.wikipedia.org/w/api.php?action=query&amp;list=search&amp;srsearch=%s&amp;srprop=wordcount&amp;srlimit=1&amp;format=json&quot; %name)
+result_request=requests.get(request_API)
+</code></pre>
+
+<p>A subset of our Who&rsquo;s On First data with the corresponding Wikidata IDs is shown below:</p>
+
+<p><img width="620" alt="Wikipedia concordances with Wikidata IDs" src="images/Wikipedia-data-blog/wd_ids_1.png"></p>
+
+<p>###Wikipedia languages
+Another important feature we were interested in getting from Wikipedia was different names in many languages for each Who&rsquo;s On First record. Wikipedia has been designed in many different languages and also gives aliases to names for localized languages. This information is be valuable for labeling places on a map and for search engines.</p>
+
+<p>The average number of language aliases for a Wikipedia place was 15 and some places had up to 266. Because some entries had so many Wikipedia aliases several consecutive API calls had to be made to get all the aliases for each place as each request only returns a small number of aliases at a time.</p>
+
+<p>A sample python request using the <code>requests</code> python package for the languages is shown below:</p>
+
+<pre><code>request_API= (&quot;https://en.wikipedia.org/w/api.php?action=query&amp;titles=%s&amp;prop=langlinks&amp;format=json&quot; %name)
+result_request=requests.get(request_API)
+</code></pre>
+
+<p>Here are a few of Yosemite Valley&rsquo;s different language aliases:</p>
+
+<p><img width="200" alt="Wikipedia languages" src="images/Wikipedia-data-blog/language.png"></p>
+
+<p>###Wikipedia demographics and location data
+For administrative places, it would be great if we could add more information on population, elevation from sea level and location coordinates. Since this data cannot be directly accessed from the MediaWiki API, we used Wikidata&rsquo;s <a href="https://query.wikidata.org/">SPARQL API</a> query service. By using SPARQL we were able to get population, elevation and location data for some administrative places in Wikipedia.</p>
+
+<p>The bottleneck of this process is that Wikipedia categories are not well defined so it is hard to search for all administrative places as they can be under many different categories. We searched for the most prominent ones like <code>country</code>, <code>region</code>, <code>county</code>, <code>city</code>, <code>town</code>, <code>village</code>, <code>neighborhood</code>, <code>airport</code> and <code>archaeological site</code> and then by using the Wikidata IDs joined them to the administrative places in Who&rsquo;s On First.</p>
+
+<p>Using this technique we were able to add population data to about <strong>5,500</strong> records in Who&rsquo;s On First, elevation to <strong>10,000</strong> and latitude and longitude to about <strong>26,000</strong>.</p>
+
+<p><img src="images/Wikipedia-data-blog/populations_1.png" alt="Wikipedia concordances with population data" /></p>
+
+<p>###We love our data! (but it can always be improved&hellip;)
+Wikipedia is a huge source of information and we are proud to have the Who&rsquo;s On First gazetteer &ldquo;holding hands&rdquo; with more of it.</p>
+
+<p>Of the <strong>155,000</strong> Who&rsquo;s on First records that were linked up with Wikipedia, almost all Wiki places were in multiple languages. This allowed us to add nearly <strong>2 million</strong> localized names for <strong>135,000</strong> Who&rsquo;s On First records. A smaller set of records received some additional properties. For example, see <a href="https://whosonfirst.mapzen.com/spelunker/id/85633253/#5/41.546/12.560">Italy</a>, where all the localized names are under the tab <code>names</code> and the Wikipedia concordances under <code>wof</code> - <code>concordances</code>.</p>
+
+<p>You can see the full effects of the new Wikipedia data in Who&rsquo;s on First by using the <a href="https://mapzen.com/blog/spelunker-jumping-into-who-s-on-first/">Spelunker</a> to view lists of all the Who&rsquo;s On First places with:</p>
+
+<ul>
+<li><a href="https://whosonfirst.mapzen.com/spelunker/concordances/wikidata/">Wikidata concordances</a></li>
+<li><a href="https://whosonfirst.mapzen.com/spelunker/concordances/wikipedia/">Wikipedia concordances</a></li>
+</ul>
+
+<p>This is still a work in progress and as new data comes into Who&rsquo;s On First we will need to keep our Wiki concordances fresh.</p>
+
+<p>We wish to use this data for other types of analyses as well, such as a ranking method of feature importance to help mapping and search. We will keep you posted!</p>
+
+</body>
+</html>

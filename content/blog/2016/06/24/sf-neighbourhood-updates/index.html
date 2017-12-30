@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Updating Neighbourhood Records in Who&rsquo;s on First</title>
+  <meta name="GENERATOR" content="Blackfriday Markdown Processor v2.0" />
+  <meta charset="utf-8" />
+</head>
+<body>
+
+<style type="text/css">
+		body { font-family: serif; margin:2em; margin-left: 10%; margin-right: 10%; font-size: 1.3em; line-height: 1.5em; }
+		img { max-width: 640px !important; max-height: 480px !important; border: 1px dotted #ccc; padding: .5em; margin: 0 auto; margin-bottom:1em; margin-top: 1em; }
+	</style> <h2>Updating Neighbourhood Records in Who's on First</h2><p><img src="images/battery_park.jpg" alt="Historic Manhattan" />
+<em>Photo Credit: <a href="https://www.flickr.com/photos/internetarchivebookimages/14782952795/in/photolist-owjuQt-oeXUZF-oskqGG-6cfLKf-owddJm-owqudn-owtHpZ-owEBqR-owjvdn-ou63Tn-ov9vB1-ownwLy-osPEQ5-oddXQL-ovv6CR-oePvaL-odFukR-ounhb6-odFyjT-5ZzStu-4ibzJo-ouq595-x4qKZf-ouGC9w-oeY2hR-owg7Gq-odeqaE-owrPU6-oskoPo-ouooHD-odqeuY-ouq6SW-oweTDU-owSur6-oy5fzP-i7JBGv-oeX74i-ouAb8q-owq57g-y8iw81-ouMDmm-zhvmPt-Dczajt-w9YJux-oeXeWH-xnwY2E-owaNsr-oeWXFN-owrSwv-oycF32">Gustave Straubenmuller, Flickr</a></em></p>
+
+<p>Here at Mapzen, we <em>love</em> neighbourhoods - you&rsquo;ve seen them on our maps and in your search results. We acknowledge there are issues with our data and hope that you&rsquo;ll use your local knowledge and expertise to help update our neighbourhood records in Who&rsquo;s on First. We want your help!</p>
+
+<p>The rundown:</p>
+
+<ul>
+<li>We have a Gazetter called <strong>Who&rsquo;s on First</strong></li>
+<li>We use it for, well, <strong>everything</strong></li>
+<li>We love neighbourhoods, but some of our neighbourhoods <strong>could be improved</strong></li>
+<li>We <strong>need your help</strong> to improve them</li>
+<li>We have a <strong><a href="https://github.com/whosonfirst/whosonfirst-cookbook/blob/master/issue_workflows/sf_neighbourhood_updates_pt_1.md">tutorial and list of steps</a></strong> for you to follow if you&rsquo;d like to contribute</li>
+</ul>
+
+<h2><em>We have a Gazetteer called Who&rsquo;s on First</em></h2>
+
+<p>A while back[^1], we wrote about the <a href="https://whosonfirst.mapzen.com/">Who&rsquo;s On First</a> project. Who&rsquo;s on First is a gazetteer of places&hellip; not quite all the places in the world, but a whole lot of them and, we hope, the kinds of places that we mostly share in common.</p>
+
+<blockquote>
+<p><em>A <strong>gazetteer</strong> is a big list of places, each with a stable identifier and some number of descriptive properties about that location.</em></p>
+</blockquote>
+
+<p>It is essentially a (very) large collection of open administrative and venue data. We&rsquo;ve developed a useful browsing tool that displays our Who&rsquo;s on First records&rsquo; geometries and attributes in our <a href="https://whosonfirst.mapzen.com/spelunker/">Spelunker</a>.</p>
+
+<h2><em>We use it for, well, everything</em></h2>
+
+<p>Who&rsquo;s on First is used in many Mapzen services. Specifically, neighbourhood records in Who&rsquo;s on First are important because they are used for:</p>
+
+<ul>
+<li><strong>Labelling:</strong> When we use a mapping application, we want neighbourhoods to be labelled on the map (in the right place and at the right zoom)</li>
+<li><strong>Ability to search:</strong> Neighbourhoods should be searchable (with the ability to know how large the feature is and fit it into view)</li>
+<li><strong>Browsing venues:</strong> We should be able to browse venues by neighbourhood</li>
+</ul>
+
+<h2><em>We love neighbourhoods (some of our neighbourhoods could be improved)</em></h2>
+
+<p>Not every gazetteer includes neighbourhood geometries, but Who&rsquo;s On First <em>does</em> and we&rsquo;re proud of that. We&rsquo;ve spent a lot of time cleaning up their names and positions on the map, and now we&rsquo;re starting to clean up their shapes.</p>
+
+<p>While Who’s On First uses <a href="www.quattroshapes.com">Quattroshapes</a> geometries for most neighbourhoods globally, many neighbourhoods in the United States, including San Francisco, source their default geometry from <a href="www.zetashapes.com">Zetashapes</a>. The Zetashapes project follows the same basic principles as Quattroshapes, but builds shapes up from Census 2010 features. We’ve seen problems with shapes extending into adjacent localities, counties, and sometime far out into neighboring rural areas. This automated technique used by Zetashapes is responsible for some of the issues that we want to address. We want shapes touched by a human, and we&rsquo;ll <a href="https://github.com/whosonfirst/whosonfirst-cookbook/blob/master/issue_workflows/sf_neighbourhood_updates_pt_1.md">show you how to do so in San Francisco</a> as this map illustrates:</p>
+
+<p><div class="demo-wrapper" id="refillcycle"><iframe src="https://tangrams.github.io/tangram-frame/?lib=0.8&noscroll&url=https://s3.amazonaws.com/whosonfirst.mapzen.com/misc/_blogs/neighbourhood_blogpost.yaml#13/37.7669/-122.4398"></iframe></div><p style="text-align: center"  class='caption'>San Francisco macrohoods (red), WOF neighbourhoods (blue), additional SFGov neighbourhoods (green) &amp; microhoods (purple).<br><a style="font-weight:normal"href="https://tangrams.github.io/tangram-frame/?lib=0.8&noscroll&url=https://s3.amazonaws.com/whosonfirst.mapzen.com/misc/_blogs/neighbourhood_blogpost.yaml#13/37.7669/-122.4398">Click to view San Francisco in full screen ➹</a> <br></p></p>
+
+<h2><em>We need your help to improve them</em></h2>
+
+<p>Because we (unfortunately) do not have expert knowledge of every neighbourhood on Earth, we are hoping you&rsquo;ll help us improve these neighbourhood shapes for your locality!</p>
+
+<p>Big cities love neighbourhoods. Neighbourhoods like <em>Kensington Gardens (London)</em>, <em>Capitol Hill (Seattle)</em>, <em>The Mission (San Francisco)</em>, and <em>French Quarter (New Orleans)</em> are well-known and often mentioned in apartment rental and housing ads. Smaller cities might have a couple well known neighbourhoods, but they&rsquo;re &ldquo;squishy&rdquo;, and you&rsquo;d probably say things like &ldquo;by the shopping mall&rdquo; or &ldquo;by the high school&rdquo; instead of using a neighbourhood name.</p>
+
+<p>In larger localities, like San Francisco and New York City, we generate neighbourhood names in our <a href="https://mapzen.com/projects/search/">Search</a> results for the more interesting neighbourhoods. This is why we want our neighbourhoods to be as clean and as accurate as possible - your local knowledge and expertise will help us accomplish this.</p>
+
+<h2><em>We have a tutorial and list of steps for you to follow if you&rsquo;d like to contribute</em></h2>
+
+<p>If this sounds like a project you&rsquo;d like to contribute to, check out our <a href="https://github.com/whosonfirst/whosonfirst-cookbook/blob/master/issue_workflows/sf_neighbourhood_updates_pt_1.md">tutorial on updating Who&rsquo;s on First records</a>.</p>
+
+<p><strong>We look forward to hearing from you!</strong></p>
+
+<p>[^1]:
+    Blog posts <a href="https://mapzen.com/blog/who-s-on-first">introducing Who&rsquo;s On First</a>,
+    using the Spelunker and <a href="https://mapzen.com/blog/spelunker-jumping-into-who-s-on-first">Jumping into Who&rsquo;s On First</a>,
+    WOF neighbourhoods in <a href="https://mapzen.com/blog/vector-tiles-v0-8-preview">Mapzen Vector Tiles</a>, and
+    WOF places powering <a href="https://mapzen.com/blog/wof-search-live/">Mapzen Search</a></p>
+
+</body>
+</html>

@@ -1,26 +1,38 @@
-<p><em>This is the second of the two part guide to running <a href="https://whosonfirst.mapzen.com" rel="nofollow">Who’s On First</a> tools on your own hardware. You may want to read <a href="https://mapzen.com/blog/wof-in-a-box/" rel="nofollow">part 1</a> first.</em></p>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>WOF in a Box (part 2)</title>
+  <meta name="GENERATOR" content="Blackfriday Markdown Processor v2.0" />
+  <meta charset="utf-8" />
+</head>
+<body>
 
-<p>Before we jump into installing the Who’s On First <a href="https://github.com/whosonfirst/whosonfirst-www-api" rel="nofollow">REST API</a> and <a href="https://github.com/whosonfirst/whosonfirst-www-boundaryissues" rel="nofollow">editor</a>, let’s briefly take stock of what we have running from the <a href="https://mapzen.com/blog/wof-in-a-box/" rel="nofollow">first part</a> of this guide.</p>
+<style type="text/css">
+		body { font-family: serif; margin:2em; margin-left: 10%; margin-right: 10%; font-size: 1.3em; line-height: 1.5em; }
+		img { max-width: 640px !important; max-height: 480px !important; border: 1px dotted #ccc; padding: .5em; margin: 0 auto; margin-bottom:1em; margin-top: 1em; }
+	</style> <h2>WOF in a Box (part 2)</h2><p><em>This is the second of the two part guide to running <a href="https://whosonfirst.mapzen.com">Who&rsquo;s On First</a> tools on your own hardware. You may want to read <a href="https://mapzen.com/blog/wof-in-a-box/">part 1</a> first.</em></p>
+
+<p>Before we jump into installing the Who&rsquo;s On First <a href="https://github.com/whosonfirst/whosonfirst-www-api">REST API</a> and <a href="https://github.com/whosonfirst/whosonfirst-www-boundaryissues">editor</a>, let&rsquo;s briefly take stock of what we have running from the <a href="https://mapzen.com/blog/wof-in-a-box/">first part</a> of this guide.</p>
 
 <ul>
-<li>We have a git repo of <a href="https://github.com/whosonfirst-data/whosonfirst-data" rel="nofollow">WOF administrative data</a></li>
-<li>Incoming web requests get proxied by <a href="https://www.nginx.com/" rel="nofollow">nginx</a></li>
-<li>We can explore the data with our own installation of the <a href="https://github.com/whosonfirst/whosonfirst-www-spelunker/" rel="nofollow">WOF Spelunker</a></li>
+<li>We have a git repo of <a href="https://github.com/whosonfirst-data/whosonfirst-data">WOF administrative data</a></li>
+<li>Incoming web requests get proxied by <a href="https://www.nginx.com/">nginx</a></li>
+<li>We can explore the data with our own installation of the <a href="https://github.com/whosonfirst/whosonfirst-www-spelunker/">WOF Spelunker</a></li>
 </ul>
 
 <p>Some of the stuff we set up in part one, like Elasticsearch and nginx, are dependencies for this second part of the stack too.</p>
 
-<p><img src="https://mapzen-assets.s3.amazonaws.com/images/wof-in-a-box-part2/boxes-and-arrows.png" alt="Boxes and arrows"/></p>
+<p><img src="images/boxes-and-arrows.png" alt="Boxes and arrows" /></p>
 
-<p>These next parts we’re setting up run on a <a href="https://en.wikipedia.org/wiki/LAMP_(software_bundle" rel="nofollow">LAMP stack</a>), each built with <a href="https://github.com/exflickr/flamework/blob/master/docs/philosophy.md" rel="nofollow">Flamework, a set of libraries and conventions</a> originally created for the Flickr back-end. It still works just fine, although you can find some crufty bits if you poke around.</p>
+<p>These next parts we&rsquo;re setting up run on a <a href="https://en.wikipedia.org/wiki/LAMP_(software_bundle">LAMP stack</a>), each built with <a href="https://github.com/exflickr/flamework/blob/master/docs/philosophy.md">Flamework, a set of libraries and conventions</a> originally created for the Flickr back-end. It still works just fine, although you can find some crufty bits if you poke around.</p>
 
 <p>The two remaining web apps exist separately for now, but could very well be combined into a single codebase at some point in the future. The diagram shown above is rather simplified, and reflects a slight adjustment from the plan in the first part of this guide. Instead of API requests getting routed through <code>/api</code>, we will use the top-level <code>/</code> path.</p>
 
-<p>The Who’s On First documentation we used to have at the top-level <code>/</code> path is still <a href="https://whosonfirst.mapzen.com/" rel="nofollow">available online</a>, if not on your NUC.</p>
+<p>The Who&rsquo;s On First documentation we used to have at the top-level <code>/</code> path is still <a href="https://whosonfirst.mapzen.com/">available online</a>, if not on your NUC.</p>
 
 <h2>Getting the time right</h2>
 
-<p>Before we start, there is one minor change from how we set up the server in <a href="https://mapzen.com/blog/wof-in-a-box/" rel="nofollow">part one</a> of the guide. During the Ubuntu server setup I mentioned that I just accept the defaults except for a handful important changes. One important change that I left out was to set the server’s timezone to <a href="https://en.wikipedia.org/wiki/Coordinated_Universal_Time" rel="nofollow">UTC (Coordinated Universal Time)</a>.</p>
+<p>Before we start, there is one minor change from how we set up the server in <a href="https://mapzen.com/blog/wof-in-a-box/">part one</a> of the guide. During the Ubuntu server setup I mentioned that I just accept the defaults except for a handful important changes. One important change that I left out was to set the server&rsquo;s timezone to <a href="https://en.wikipedia.org/wiki/Coordinated_Universal_Time">UTC (Coordinated Universal Time)</a>.</p>
 
 <p>We can easily revisit that step in the setup menu.</p>
 
@@ -29,30 +41,30 @@
 
 <p>Then choose <strong>None of the above</strong>, then <strong>UTC</strong>. Then select <strong>Ok</strong>.</p>
 
-<p>Let’s err on the side of caution and install some software to ensure the server has the most up-to-date time set.</p>
+<p>Let&rsquo;s err on the side of caution and install some software to ensure the server has the most up-to-date time set.</p>
 
 <pre><code>sudo apt-get update
 sudo apt-get install -y ntpdate
 </code></pre>
 
-<p>Now we can update the time from the <a href="https://www.nist.gov/" rel="nofollow">National Institute of Standards and Technology</a>.</p>
+<p>Now we can update the time from the <a href="https://www.nist.gov/">National Institute of Standards and Technology</a>.</p>
 
 <pre><code>sudo ntpdate time.nist.gov
 </code></pre>
 
-<p>With that settled, let’s continue.</p>
+<p>With that settled, let&rsquo;s continue.</p>
 
-<p><a href="https://giphy.com/gifs/trolling-wtCFBQ0lNjxaU" rel="nofollow"><img src="https://mapzen-assets.s3.amazonaws.com/images/wof-in-a-box-part2/continue.gif"/></a></p>
+<p><a href="https://giphy.com/gifs/trolling-wtCFBQ0lNjxaU"><img src="images/continue.gif" alt="Let&rsquo;s continue" /></a></p>
 
 <h2>Setting up the API</h2>
 
-<p>Okay, let’s begin setting up the API. I’m going to assume you’re already SSH’d into the NUC machine.</p>
+<p>Okay, let&rsquo;s begin setting up the API. I&rsquo;m going to assume you&rsquo;re already SSH&rsquo;d into the NUC machine.</p>
 
 <pre><code>cd /usr/local/mapzen
 git clone https://github.com/whosonfirst/whosonfirst-www-api.git
 </code></pre>
 
-<p>Much of the API’s setup process is automated, but if you look inside the <a href="https://github.com/whosonfirst/whosonfirst-www-api/blob/master/Makefile" rel="nofollow">Makefile</a> you can inspect each step in detail.</p>
+<p>Much of the API&rsquo;s setup process is automated, but if you look inside the <a href="https://github.com/whosonfirst/whosonfirst-www-api/blob/master/Makefile">Makefile</a> you can inspect each step in detail.</p>
 
 <p>Since we are proxying requests with nginx, we will set things up without SSL support (for now).</p>
 
@@ -65,11 +77,11 @@ make setup-nossl
 <p>When all of this finishes your API setup will <em>almost</em> be in working order. Some things you should know about how the stack is set up:</p>
 
 <ul>
-<li>The API’s Apache configuration is symlinked from <code>whosonfirst-www-api/config/whosonfirst-www-api-apache.conf</code></li>
+<li>The API&rsquo;s Apache configuration is symlinked from <code>whosonfirst-www-api/config/whosonfirst-www-api-apache.conf</code></li>
 <li>The database is called <code>wof_api</code> and is accessed by user <code>wof_api</code></li>
 <li>All passwords and tokens are stored in <code>www/include/secrets.php</code></li>
-<li>You will learn a lot by reading <a href="https://github.com/whosonfirst/whosonfirst-www-api/blob/master/www/.htaccess" rel="nofollow"><code>www/.htaccess</code></a></li>
-<li>There’s also a great number of configuration tweaks contained in <a href="https://github.com/whosonfirst/whosonfirst-www-api/blob/master/www/include/config.php" rel="nofollow"><code>www/include/config.php</code></a> (the convention is to set overrides in a separate file, we’ll get to that down below)</li>
+<li>You will learn a lot by reading <a href="https://github.com/whosonfirst/whosonfirst-www-api/blob/master/www/.htaccess"><code>www/.htaccess</code></a></li>
+<li>There&rsquo;s also a great number of configuration tweaks contained in <a href="https://github.com/whosonfirst/whosonfirst-www-api/blob/master/www/include/config.php"><code>www/include/config.php</code></a> (the convention is to set overrides in a separate file, we&rsquo;ll get to that down below)</li>
 </ul>
 
 <h2>Configuring Apache</h2>
@@ -85,18 +97,18 @@ nano config/whosonfirst-www-api-apache.conf
 <pre><code>&lt;VirtualHost *:8888&gt;
 </code></pre>
 
-<p>Next, edit Apache’s <code>ports.conf</code>.</p>
+<p>Next, edit Apache&rsquo;s <code>ports.conf</code>.</p>
 
 <pre><code>sudo nano /etc/apache2/ports.conf
 </code></pre>
 
-<p>We’re instructing Apache to listen on 8888 and also 9999 (for Boundary Issues). We can get rid of the existing configurations for port 80 and 443. Those ports are handled by nginx.</p>
+<p>We&rsquo;re instructing Apache to listen on 8888 and also 9999 (for Boundary Issues). We can get rid of the existing configurations for port 80 and 443. Those ports are handled by nginx.</p>
 
 <pre><code>Listen 0.0.0.0:8888    # API
 Listen 0.0.0.0:9999    # Boundary Issues
 </code></pre>
 
-<p>Let’s restart Apache and check to make sure we can reach port 8888.</p>
+<p>Let&rsquo;s restart Apache and check to make sure we can reach port 8888.</p>
 
 <pre><code>sudo service apache2 restart
 curl -I http://localhost:8888/
@@ -106,28 +118,28 @@ curl -I http://localhost:8888/
 
 <h2>GitHub OAuth application</h2>
 
-<p>We use GitHub’s OAuth mechanism to authenticate users. We will need to set some things up at GitHub in order for that to work.</p>
+<p>We use GitHub&rsquo;s OAuth mechanism to authenticate users. We will need to set some things up at GitHub in order for that to work.</p>
 
 <ul>
-<li>Go to GitHub’s <a href="https://github.com/settings/developers" rel="nofollow">Developer settings</a> and navigate to OAuth Apps</li>
-<li>Click the <a href="https://github.com/settings/applications/new" rel="nofollow">New OAuth App</a> button</li>
+<li>Go to GitHub&rsquo;s <a href="https://github.com/settings/developers">Developer settings</a> and navigate to OAuth Apps</li>
+<li>Click the <a href="https://github.com/settings/applications/new">New OAuth App</a> button</li>
 <li>Enter an Application Name (<code>WOF in a Box</code> is a good choice)</li>
-<li>For the Homepage URL, enter your server’s IP address, for example <code>http://192.168.0.47/</code></li>
+<li>For the Homepage URL, enter your server&rsquo;s IP address, for example <code>http://192.168.0.47/</code></li>
 <li>The Authorization callback URL is similar to the Homepage URL, but with an <code>/auth</code> path suffix, e.g., <code>http://192.168.0.47/auth</code></li>
 <li>Click the Register Application button</li>
 </ul>
 
-<p><img src="https://mapzen-assets.s3.amazonaws.com/images/wof-in-a-box-part2/oauth-app.jpg" alt="screenshot"/></p>
+<p><img src="images/oauth-app.jpg" alt="screenshot" /></p>
 
-<p>Edit <code>/usr/local/mapzen/whosonfirst-www-api/www/include/secrets.php</code> and copy/paste the GitHub OAuth tokens using the following configurations. You’ll want to add this just before <code># the end</code>.</p>
+<p>Edit <code>/usr/local/mapzen/whosonfirst-www-api/www/include/secrets.php</code> and copy/paste the GitHub OAuth tokens using the following configurations. You&rsquo;ll want to add this just before <code># the end</code>.</p>
 
-<pre><code>$GLOBALS[&#39;cfg&#39;][&#39;github_oauth_key&#39;] = &#39;(your client ID)&#39;;
-$GLOBALS[&#39;cfg&#39;][&#39;github_oauth_secret&#39;] = &#39;(your client secret)&#39;;
+<pre><code>$GLOBALS['cfg']['github_oauth_key'] = '(your client ID)';
+$GLOBALS['cfg']['github_oauth_secret'] = '(your client secret)';
 </code></pre>
 
 <h2>Secret hashes</h2>
 
-<p>While we’re looking at this file, check to see if the first three configurations are set. If they have values like <code>You must set cfg.crypto_password_secret</code> that means we need to set them still. These are used for things like cookie sessions, passwords, and <a href="https://en.wikipedia.org/wiki/Cross-site_request_forgery" rel="nofollow">CSRF</a>-deterrent crumbs.</p>
+<p>While we&rsquo;re looking at this file, check to see if the first three configurations are set. If they have values like <code>You must set cfg.crypto_password_secret</code> that means we need to set them still. These are used for things like cookie sessions, passwords, and <a href="https://en.wikipedia.org/wiki/Cross-site_request_forgery">CSRF</a>-deterrent crumbs.</p>
 
 <p>Generate a new secret hash for each of the three configurations, using the following script:</p>
 
@@ -139,9 +151,9 @@ php bin/generate_secret.php
 
 <p>Those hashes get copied into <code>secrets.php</code> like this (your hashes will be different):</p>
 
-<pre><code>$GLOBALS[&#39;cfg&#39;][&#39;crypto_cookie_secret&#39;] = &#39;lfMi9sHoC2gnFKmMBgG8wUWqvqWO80eq&#39;;
-$GLOBALS[&#39;cfg&#39;][&#39;crypto_password_secret&#39;] = &#39;afEp7fVgVe7TeO07jhud1y9opqgmhsmy&#39;;
-$GLOBALS[&#39;cfg&#39;][&#39;crypto_crumb_secret&#39;] = &#39;u73GlqrDxqBOriFK921H8a0OsT8YZExz&#39;;
+<pre><code>$GLOBALS['cfg']['crypto_cookie_secret'] = 'lfMi9sHoC2gnFKmMBgG8wUWqvqWO80eq';
+$GLOBALS['cfg']['crypto_password_secret'] = 'afEp7fVgVe7TeO07jhud1y9opqgmhsmy';
+$GLOBALS['cfg']['crypto_crumb_secret'] = 'u73GlqrDxqBOriFK921H8a0OsT8YZExz';
 </code></pre>
 
 <h2>Configuring nginx</h2>
@@ -169,14 +181,14 @@ $GLOBALS[&#39;cfg&#39;][&#39;crypto_crumb_secret&#39;] = &#39;u73GlqrDxqBOriFK92
 }
 </code></pre>
 
-<p>Let’s restart nginx to make those configurations take effect.</p>
+<p>Let&rsquo;s restart nginx to make those configurations take effect.</p>
 
 <pre><code>sudo service nginx restart
 </code></pre>
 
 <h2>Logging in with GitHub</h2>
 
-<p>There is one last configuration we need to make for all of this to run on plain vanilla HTTP. It’s not so much that we wouldn’t want to run on HTTPS, just that we would need a public hostname, or a self-signed certificate.</p>
+<p>There is one last configuration we need to make for all of this to run on plain vanilla HTTP. It&rsquo;s not so much that we wouldn&rsquo;t want to run on HTTPS, just that we would need a public hostname, or a self-signed certificate.</p>
 
 <p>If file <code>config_local.php</code> exists, it gets loaded in to override the default values defined in <code>config.php</code>.</p>
 
@@ -184,28 +196,28 @@ $GLOBALS[&#39;cfg&#39;][&#39;crypto_crumb_secret&#39;] = &#39;u73GlqrDxqBOriFK92
 nano www/include/config_local.php
 </code></pre>
 
-<p>Add the following to disable HTTPS and, while we’re in here, use the right Elasticsearch index:</p>
+<p>Add the following to disable HTTPS and, while we&rsquo;re in here, use the right Elasticsearch index:</p>
 
 <pre><code>&lt;?php
 
-	$GLOBALS[&#39;cfg&#39;][&#39;server_force_https&#39;] = 0;
-	$GLOBALS[&#39;cfg&#39;][&#39;api_require_ssl&#39;] = 0;
-	$GLOBALS[&#39;cfg&#39;][&#39;elasticsearch_spelunker_index&#39;] = &#39;spelunker&#39;;
+	$GLOBALS['cfg']['server_force_https'] = 0;
+	$GLOBALS['cfg']['api_require_ssl'] = 0;
+	$GLOBALS['cfg']['elasticsearch_spelunker_index'] = 'spelunker';
 </code></pre>
 
-<p>We don’t need a trailing <code>?&gt;</code> since it is optional, and can lead to <a href="https://stackoverflow.com/questions/4410704/why-would-one-omit-the-close-tag" rel="nofollow">unexpected side-effects</a>.</p>
+<p>We don&rsquo;t need a trailing <code>?&gt;</code> since it is optional, and can lead to <a href="https://stackoverflow.com/questions/4410704/why-would-one-omit-the-close-tag">unexpected side-effects</a>.</p>
 
-<p>Save your <code>config_local.php</code> configuration, and then load up your WOF in a Box’s IP address (something like <a href="http://192.168.0.47/" rel="nofollow">http://192.168.0.47/</a>) in a browser.</p>
+<p>Save your <code>config_local.php</code> configuration, and then load up your WOF in a Box&rsquo;s IP address (something like <a href="http://192.168.0.47/">http://192.168.0.47/</a>) in a browser.</p>
 
 <p>In the top-right corner, choose <strong>Sign In</strong> from the drop-down menu labeled <strong>You</strong>.</p>
 
-<p><img src="https://mapzen-assets.s3.amazonaws.com/images/wof-in-a-box-part2/signin.jpg" alt="screenshot"/></p>
+<p><img src="images/signin.jpg" alt="screenshot" /></p>
 
 <p>GitHub will ask for permission to authenticate you with the OAuth application you just set up. Click the green button to login.</p>
 
-<p><img src="https://mapzen-assets.s3.amazonaws.com/images/wof-in-a-box-part2/authorize.jpg" alt="screenshot"/></p>
+<p><img src="images/authorize.jpg" alt="screenshot" /></p>
 
-<p>You should get redirected back to the WOF in a Box homepage. If all goes well you should see your name appear in the top-right drop-down menu. You have been OAuth’d by GitHub.</p>
+<p>You should get redirected back to the WOF in a Box homepage. If all goes well you should see your name appear in the top-right drop-down menu. You have been OAuth&rsquo;d by GitHub.</p>
 
 <h2>Create an access token</h2>
 
@@ -213,74 +225,74 @@ nano www/include/config_local.php
 
 <p>Click on <strong>Your Access Tokens</strong>, then <strong>Create a new access token for yourself</strong>.</p>
 
-<p>Give your token a name (“WOF in a Box” is a safe choice), permissions (“Read” is good), and expiration (“until I revoke it”).</p>
+<p>Give your token a name (&ldquo;WOF in a Box&rdquo; is a safe choice), permissions (&ldquo;Read&rdquo; is good), and expiration (&ldquo;until I revoke it&rdquo;).</p>
 
 <p>Then you have to click one more <strong>I agree!</strong> checkbox and you should be set.</p>
 
-<p><img src="https://mapzen-assets.s3.amazonaws.com/images/wof-in-a-box-part2/access-token.jpg" alt="screenshot"/></p>
+<p><img src="images/access-token.jpg" alt="screenshot" /></p>
 
-<p>You should see a green “hooray” message, with a hexidecimal token for you to copy/paste.</p>
+<p>You should see a green &ldquo;hooray&rdquo; message, with a hexidecimal token for you to copy/paste.</p>
 
-<p><img src="https://mapzen-assets.s3.amazonaws.com/images/wof-in-a-box-part2/hooray.jpg" alt="screenshot"/></p>
+<p><img src="images/hooray.jpg" alt="screenshot" /></p>
 
-<p>For the sake of having a realistic looking example token, we’ll go with <code>87ffbaee33443e4b9b385606d6b9af28</code>, but yours will be different.</p>
+<p>For the sake of having a realistic looking example token, we&rsquo;ll go with <code>87ffbaee33443e4b9b385606d6b9af28</code>, but yours will be different.</p>
 
 <h2>Accessing the API</h2>
 
 <p>If you navigate to the <strong>API methods</strong> section of the Developer pages, you can try out some of the methods using the web-based API explorer.</p>
 
-<p>Let’s try calling some API methods using <code>curl</code>.</p>
+<p>Let&rsquo;s try calling some API methods using <code>curl</code>.</p>
 
-<pre><code>curl -s &#34;http://192.168.0.47/api/rest/?method=api.test.echo&amp;access_token=87ffbaee33443e4b9b385606d6b9af28&#34; | jq
+<pre><code>curl -s &quot;http://192.168.0.47/api/rest/?method=api.test.echo&amp;access_token=87ffbaee33443e4b9b385606d6b9af28&quot; | jq
 </code></pre>
 
 <p>You should see the following result:</p>
 
 <pre><code>{
-  &#34;method&#34;: &#34;api.test.echo&#34;,
-  &#34;access_token&#34;: &#34;87ffbaee33443e4b9b385606d6b9af28&#34;,
-  &#34;stat&#34;: &#34;ok&#34;
+  &quot;method&quot;: &quot;api.test.echo&quot;,
+  &quot;access_token&quot;: &quot;87ffbaee33443e4b9b385606d6b9af28&quot;,
+  &quot;stat&quot;: &quot;ok&quot;
 }
 </code></pre>
 
 <p>We can use a shell variable to store the IP address and access token, which should make the examples easier to copy/paste. Note, again, that your own IP and token will be different.</p>
 
-<pre><code>wof_api=&#34;http://192.168.0.47&#34;
-wof_token=&#34;87ffbaee33443e4b9b385606d6b9af28&#34;
+<pre><code>wof_api=&quot;http://192.168.0.47&quot;
+wof_token=&quot;87ffbaee33443e4b9b385606d6b9af28&quot;
 </code></pre>
 
-<p>Now we should be able to test out the REST API. Let’s get a list of all the API method names.</p>
+<p>Now we should be able to test out the REST API. Let&rsquo;s get a list of all the API method names.</p>
 
-<pre><code>curl -s &#34;$wof_api/api/rest/?method=api.spec.methods&amp;access_token=$wof_token&#34; | jq &#34;[ .methods[].name ]&#34;
+<pre><code>curl -s &quot;$wof_api/api/rest/?method=api.spec.methods&amp;access_token=$wof_token&quot; | jq &quot;[ .methods[].name ]&quot;
 </code></pre>
 
-<p>Let’s load up some info about a specific WOF record.</p>
+<p>Let&rsquo;s load up some info about a specific WOF record.</p>
 
-<pre><code>curl -s &#34;$wof_api/api/rest/?method=whosonfirst.places.getInfo&amp;id=102030609&amp;access_token=$wof_token&#34; | jq
+<pre><code>curl -s &quot;$wof_api/api/rest/?method=whosonfirst.places.getInfo&amp;id=102030609&amp;access_token=$wof_token&quot; | jq
 </code></pre>
 
-<p>You should see a record for <a href="https://whosonfirst.mapzen.com/spelunker/id/102030609/" rel="nofollow">Mumbai</a>.</p>
+<p>You should see a record for <a href="https://whosonfirst.mapzen.com/spelunker/id/102030609/">Mumbai</a>.</p>
 
-<p>One last example, all the <a href="https://whosonfirst.mapzen.com/docs/placetypes/#microhood" rel="nofollow">microhoods</a> in <a href="https://whosonfirst.mapzen.com/spelunker/id/85922583/" rel="nofollow">San Francisco</a>:</p>
+<p>One last example, all the <a href="https://whosonfirst.mapzen.com/docs/placetypes/#microhood">microhoods</a> in <a href="https://whosonfirst.mapzen.com/spelunker/id/85922583/">San Francisco</a>:</p>
 
-<pre><code>curl -s &#34;$wof_api/api/rest/?method=whosonfirst.places.getDescendants&amp;id=85922583&amp;placetype=microhood&amp;access_token=$wof_token&#34; | jq &#39;[ .places[][&#34;wof:name&#34;] ]&#39;
+<pre><code>curl -s &quot;$wof_api/api/rest/?method=whosonfirst.places.getDescendants&amp;id=85922583&amp;placetype=microhood&amp;access_token=$wof_token&quot; | jq '[ .places[][&quot;wof:name&quot;] ]'
 </code></pre>
 
-<p>You should take some time to explore the API documentation, and try out the <a href="https://mapzen.com/blog/whosonfirst-api-explorer/" rel="nofollow">standalone API Explorer desktop app</a>. It has a settings pane that lets you change the API endpoint, so you can test out requests against your own WOF in a Box rig.</p>
+<p>You should take some time to explore the API documentation, and try out the <a href="https://mapzen.com/blog/whosonfirst-api-explorer/">standalone API Explorer desktop app</a>. It has a settings pane that lets you change the API endpoint, so you can test out requests against your own WOF in a Box rig.</p>
 
 <p>Important note: not all of the API methods will work for you at this point. We need some additional software for spatial queries and an additional Elasticsearch index for brands to work. Those can be subjects of some future WOF guide.</p>
 
-<p><a href="https://giphy.com/gifs/cat-box-j1BQPAjNzKh9K" rel="nofollow"><img src="https://mapzen-assets.s3.amazonaws.com/images/wof-in-a-box-part2/onward.gif" alt="Onward"/></a></p>
+<p><a href="https://giphy.com/gifs/cat-box-j1BQPAjNzKh9K"><img src="images/onward.gif" alt="Onward" /></a></p>
 
 <h2>Setting up Boundary Issues</h2>
 
-<p>We are in the home stretch. The final part of the stack is <a href="https://mapzen.com/tag/boundaryissues/" rel="nofollow">our bespoke web-based WOF editor</a>, called <a href="https://github.com/whosonfirst/whosonfirst-www-boundaryissues/" rel="nofollow">Boundary Issues</a>. It has a similar setup process as the API.</p>
+<p>We are in the home stretch. The final part of the stack is <a href="https://mapzen.com/tag/boundaryissues/">our bespoke web-based WOF editor</a>, called <a href="https://github.com/whosonfirst/whosonfirst-www-boundaryissues/">Boundary Issues</a>. It has a similar setup process as the API.</p>
 
 <pre><code>cd /usr/local/mapzen
 git clone https://github.com/whosonfirst/whosonfirst-www-boundaryissues.git
 </code></pre>
 
-<p>Like the API, much of the setup has been automated with a Makefile to run a sequence of shell scripts. And as with the API, we will set things up without HTTPS, since we’re proxying requests through nginx.</p>
+<p>Like the API, much of the setup has been automated with a Makefile to run a sequence of shell scripts. And as with the API, we will set things up without HTTPS, since we&rsquo;re proxying requests through nginx.</p>
 
 <pre><code>cd /usr/local/mapzen/whosonfirst-www-boundaryissues
 make setup-nossl
@@ -296,23 +308,23 @@ make setup-nossl
 <p>Most of the offline task dependencies are pulled in from modular single-purpose Flamework repos that take care of setting up each of:</p>
 
 <ul>
-<li><a href="https://github.com/whosonfirst/flamework-redis" rel="nofollow">redis</a></li>
-<li><a href="https://github.com/whosonfirst/flamework-gearman" rel="nofollow">gearman</a></li>
-<li><a href="https://github.com/whosonfirst/flamework-logstash" rel="nofollow">logstash</a></li>
+<li><a href="https://github.com/whosonfirst/flamework-redis">redis</a></li>
+<li><a href="https://github.com/whosonfirst/flamework-gearman">gearman</a></li>
+<li><a href="https://github.com/whosonfirst/flamework-logstash">logstash</a></li>
 </ul>
 
-<p>You may notice the process of setting up <code>gearman</code> has an exceptionally large set of dependencies. This is the unfortunate consequence of <code>apt-get install gearman</code> not working in Ubuntu 16.04. Instead we install a few low-level dependencies and then build it <a href="https://github.com/gearman/gearmand/" rel="nofollow">from source</a>. The process is automated by a shell script, so you shouldn’t have to type anything extra, but you will notice a whole lot more scrolling by.</p>
+<p>You may notice the process of setting up <code>gearman</code> has an exceptionally large set of dependencies. This is the unfortunate consequence of <code>apt-get install gearman</code> not working in Ubuntu 16.04. Instead we install a few low-level dependencies and then build it <a href="https://github.com/gearman/gearmand/">from source</a>. The process is automated by a shell script, so you shouldn&rsquo;t have to type anything extra, but you will notice a whole lot more scrolling by.</p>
 
-<p>Also, for some reason <code>logstash</code> doesn’t get validated during its installation, so you will need to manually confirm that you’re okay with that.</p>
+<p>Also, for some reason <code>logstash</code> doesn&rsquo;t get validated during its installation, so you will need to manually confirm that you&rsquo;re okay with that.</p>
 
 <p>Once all that finishes, things will be set up similarly to the API:</p>
 
 <ul>
-<li>The API’s Apache configuration is symlinked from <code>whosonfirst-www-boundaryissues/config/whosonfirst-www-boundaryissues-apache.conf</code></li>
+<li>The API&rsquo;s Apache configuration is symlinked from <code>whosonfirst-www-boundaryissues/config/whosonfirst-www-boundaryissues-apache.conf</code></li>
 <li>The database is called <code>boundaryissues</code> and is accessed by user <code>boundaryissues</code></li>
 <li>All passwords and tokens are stored in <code>www/include/secrets.php</code></li>
-<li>Reading the bottom part of <a href="https://github.com/whosonfirst/whosonfirst-www-boundaryissues/blob/master/www/.htaccess" rel="nofollow"><code>www/.htaccess</code></a> will show you all the URL path routing logic</li>
-<li>There’s also an awful lot of configuration tweaks contained in <a href="https://github.com/whosonfirst/whosonfirst-www-boundaryissues/blob/master/www/include/config.php" rel="nofollow"><code>www/include/config.php</code></a> (we’ll set some overrides in a <code>config_local.php</code> down below)</li>
+<li>Reading the bottom part of <a href="https://github.com/whosonfirst/whosonfirst-www-boundaryissues/blob/master/www/.htaccess"><code>www/.htaccess</code></a> will show you all the URL path routing logic</li>
+<li>There&rsquo;s also an awful lot of configuration tweaks contained in <a href="https://github.com/whosonfirst/whosonfirst-www-boundaryissues/blob/master/www/include/config.php"><code>www/include/config.php</code></a> (we&rsquo;ll set some overrides in a <code>config_local.php</code> down below)</li>
 </ul>
 
 <h2>Configuring Apache (again)</h2>
@@ -343,20 +355,20 @@ curl -I http://localhost:9999/
 
 <h2>Indexing Elasticsearch (again)</h2>
 
-<p>One of the quirks about the Who’s On First ecosystem is that Boundary Issues and the Spelunker run on separate Elasticsearch indexes. This was intended to reduce the likelihood of accidentally screwing up live data in the Spelunker. We may combine them at some point, but for now it means we have some more schemas and indexing to take care of.</p>
+<p>One of the quirks about the Who&rsquo;s On First ecosystem is that Boundary Issues and the Spelunker run on separate Elasticsearch indexes. This was intended to reduce the likelihood of accidentally screwing up live data in the Spelunker. We may combine them at some point, but for now it means we have some more schemas and indexing to take care of.</p>
 
-<p>Let’s start with the schemas, yes plural. Boundary Issues uses three of them! I’m assuming we already did all the other Elasticsearch setup from <a href="https://mapzen.com/blog/wof-in-a-box/" rel="nofollow">part one</a> of the guide.</p>
+<p>Let&rsquo;s start with the schemas, yes plural. Boundary Issues uses three of them! I&rsquo;m assuming we already did all the other Elasticsearch setup from <a href="https://mapzen.com/blog/wof-in-a-box/">part one</a> of the guide.</p>
 
 <pre><code>cd /usr/local/mapzen/es-whosonfirst-schema
 cat schema/2.4/mappings.boundaryissues.json | curl -X PUT http://localhost:9200/boundaryissues_20171229 -d @-
-curl -X POST http://localhost:9200/_aliases -d &#39;{ &#34;actions&#34;: [ { &#34;add&#34;: { &#34;alias&#34;: &#34;boundaryissues&#34;, &#34;index&#34;: &#34;boundaryissues_20171229&#34; } } ] }&#39;
+curl -X POST http://localhost:9200/_aliases -d '{ &quot;actions&quot;: [ { &quot;add&quot;: { &quot;alias&quot;: &quot;boundaryissues&quot;, &quot;index&quot;: &quot;boundaryissues_20171229&quot; } } ] }'
 cat schema/2.4/mappings.offline_tasks.json | curl -X PUT http://localhost:9200/offline_tasks_20171229 -d @-
-curl -X POST http://localhost:9200/_aliases -d &#39;{ &#34;actions&#34;: [ { &#34;add&#34;: { &#34;alias&#34;: &#34;offline_tasks&#34;, &#34;index&#34;: &#34;offline_tasks_20171229&#34; } } ] }&#39;
+curl -X POST http://localhost:9200/_aliases -d '{ &quot;actions&quot;: [ { &quot;add&quot;: { &quot;alias&quot;: &quot;offline_tasks&quot;, &quot;index&quot;: &quot;offline_tasks_20171229&quot; } } ] }'
 cat schema/2.4/mappings.audit_trail.json | curl -X PUT http://localhost:9200/audit_trail_20171229 -d @-
-curl -X POST http://localhost:9200/_aliases -d &#39;{ &#34;actions&#34;: [ { &#34;add&#34;: { &#34;alias&#34;: &#34;audit_trail&#34;, &#34;index&#34;: &#34;audit_trail_20171229&#34; } } ] }&#39;
+curl -X POST http://localhost:9200/_aliases -d '{ &quot;actions&quot;: [ { &quot;add&quot;: { &quot;alias&quot;: &quot;audit_trail&quot;, &quot;index&quot;: &quot;audit_trail_20171229&quot; } } ] }'
 </code></pre>
 
-<p>That’s a whole lot of schemas and aliases. Basically what we did was set up three new indexes, aliased to make future upgrades easier:</p>
+<p>That&rsquo;s a whole lot of schemas and aliases. Basically what we did was set up three new indexes, aliased to make future upgrades easier:</p>
 
 <ul>
 <li><code>boundaryissues</code> aliased to <code>boundaryissues_20171229</code></li>
@@ -364,7 +376,7 @@ curl -X POST http://localhost:9200/_aliases -d &#39;{ &#34;actions&#34;: [ { &#3
 <li><code>audit_trail</code> aliased to <code>audit_trail_20171229</code></li>
 </ul>
 
-<p>Now we can start the process of indexing the WOF records into the <code>boundaryissues</code> index. As with the Spelunker’s Elasticsearch index, this will take some time to finish, so you may want to use <code>screen</code> for it.</p>
+<p>Now we can start the process of indexing the WOF records into the <code>boundaryissues</code> index. As with the Spelunker&rsquo;s Elasticsearch index, this will take some time to finish, so you may want to use <code>screen</code> for it.</p>
 
 <pre><code>cd /usr/local/data/whosonfirst-data
 wof-es-index -s . --index=boundaryissues -b
@@ -374,27 +386,27 @@ wof-es-index -s . --index=boundaryissues -b
 
 <h2>Secret hashes and GitHub OAuth (again again)</h2>
 
-<p>Okay, so a lot of what’s below may seem familiar after setting up the API. And I know you are eager to start editing WOF records. We are getting there!</p>
+<p>Okay, so a lot of what&rsquo;s below may seem familiar after setting up the API. And I know you are eager to start editing WOF records. We are getting there!</p>
 
-<p><a href="https://www.tumblr.com/search/cat%20in%20a%20box%20gif" rel="nofollow"><img src="https://mapzen-assets.s3.amazonaws.com/images/wof-in-a-box-part2/angrycat.gif" alt="Angry cat in a box"/></a></p>
+<p><a href="https://www.tumblr.com/search/cat%20in%20a%20box%20gif"><img src="images/angrycat.gif" alt="Angry cat in a box" /></a></p>
 
 <p>Unfortunately, because the API and Boundary Issues are separate apps, we need to set up a second GitHub OAuth application to handle redirects properly.</p>
 
 <ul>
-<li>Go to GitHub’s <a href="https://github.com/settings/developers" rel="nofollow">Developer settings</a> and click the <a href="https://github.com/settings/applications/new" rel="nofollow">New OAuth App</a> button</li>
+<li>Go to GitHub&rsquo;s <a href="https://github.com/settings/developers">Developer settings</a> and click the <a href="https://github.com/settings/applications/new">New OAuth App</a> button</li>
 <li>Enter another Application Name (<code>Boundary Issues in a Box</code> is a good choice)</li>
-<li>For the Homepage URL, enter your server’s IP address, for example <code>http://192.168.0.47/boundaryissues</code></li>
+<li>For the Homepage URL, enter your server&rsquo;s IP address, for example <code>http://192.168.0.47/boundaryissues</code></li>
 <li>The Authorization callback URL is similar to the Homepage URL, but with an <code>/auth</code> path suffix, e.g., <code>http://192.168.0.47/boundaryissues/auth</code></li>
 <li>Click the Register Application button</li>
 </ul>
 
-<p>Now let’s open up <code>secrets.php</code> and insert those GitHub OAuth credentials.</p>
+<p>Now let&rsquo;s open up <code>secrets.php</code> and insert those GitHub OAuth credentials.</p>
 
-<pre><code>$GLOBALS[&#39;cfg&#39;][&#39;github_oauth_key&#39;] = &#39;(your client ID)&#39;;
-$GLOBALS[&#39;cfg&#39;][&#39;github_oauth_secret&#39;] = &#39;(your client secret)&#39;;
+<pre><code>$GLOBALS['cfg']['github_oauth_key'] = '(your client ID)';
+$GLOBALS['cfg']['github_oauth_secret'] = '(your client secret)';
 </code></pre>
 
-<p>Next we’ll generate three new secret hashes, for the crypto hash configs:</p>
+<p>Next we&rsquo;ll generate three new secret hashes, for the crypto hash configs:</p>
 
 <pre><code>cd /usr/local/mapzen/whosonfirst-www-boundaryissues
 php bin/generate_secret.php
@@ -404,9 +416,9 @@ php bin/generate_secret.php
 
 <p>Those hashes get copied into <code>secrets.php</code> like this (your hashes will be different):</p>
 
-<pre><code>$GLOBALS[&#39;cfg&#39;][&#39;crypto_cookie_secret&#39;] = &#39;9NBEy7d484AN3muSObRPsicoQIpjrhxQ&#39;;
-$GLOBALS[&#39;cfg&#39;][&#39;crypto_password_secret&#39;] = &#39;HRoQz6jcuCB6lHhSmOhlWmfH3X7Nw9xa&#39;;
-$GLOBALS[&#39;cfg&#39;][&#39;crypto_crumb_secret&#39;] = &#39;AxM2yCFsTwY9lVgyDUpJphrv4Qxf3gwI&#39;;
+<pre><code>$GLOBALS['cfg']['crypto_cookie_secret'] = '9NBEy7d484AN3muSObRPsicoQIpjrhxQ';
+$GLOBALS['cfg']['crypto_password_secret'] = 'HRoQz6jcuCB6lHhSmOhlWmfH3X7Nw9xa';
+$GLOBALS['cfg']['crypto_crumb_secret'] = 'AxM2yCFsTwY9lVgyDUpJphrv4Qxf3gwI';
 </code></pre>
 
 <h2>The pending folder</h2>
@@ -419,44 +431,44 @@ $GLOBALS[&#39;cfg&#39;][&#39;crypto_crumb_secret&#39;] = &#39;AxM2yCFsTwY9lVgyDU
 sudo chown www-data:www-data /usr/local/data/whosonfirst-pending
 </code></pre>
 
-<p>… and then symlink <em>that</em> into the Boundary Issues folder.</p>
+<p>&hellip; and then symlink <em>that</em> into the Boundary Issues folder.</p>
 
 <pre><code>sudo ln -s /usr/local/data/whosonfirst-pending /usr/local/mapzen/whosonfirst-www-boundaryissues/pending
 </code></pre>
 
-<h2>Let’s test things out</h2>
+<h2>Let&rsquo;s test things out</h2>
 
-<p>Now that we’ve set a whole bunch of Boundary Issues stuff… let’s maybe try it?</p>
+<p>Now that we&rsquo;ve set a whole bunch of Boundary Issues stuff&hellip; let&rsquo;s maybe try it?</p>
 
-<p>Go to <code>http://192.168.0.47/boundaryissues/</code> in a browser (again, with your IP subbed in), and see if it loads up. You should see something similar, but not quite the same as, the API’s homepage.</p>
+<p>Go to <code>http://192.168.0.47/boundaryissues/</code> in a browser (again, with your IP subbed in), and see if it loads up. You should see something similar, but not quite the same as, the API&rsquo;s homepage.</p>
 
-<p><img src="https://mapzen-assets.s3.amazonaws.com/images/wof-in-a-box-part2/bi-home.jpg" alt="screenshot"/></p>
+<p><img src="images/bi-home.jpg" alt="screenshot" /></p>
 
 <p>Click on the same <strong>You</strong> menu and then <strong>Sign in with GitHub</strong>. You should see a similar OAuth confirmation page on GitHub, and then redirect back to the Boundary Issues homepage.</p>
 
 <p>Once you get redirected back, you will have to accept some terms before you can continue.</p>
 
-<p><img src="https://mapzen-assets.s3.amazonaws.com/images/wof-in-a-box-part2/terms.jpg" alt="screenshot"/></p>
+<p><img src="images/terms.jpg" alt="screenshot" /></p>
 
-<p>Let’s search for a record, for example <a href="https://whosonfirst.mapzen.com/spelunker/id/421205765/" rel="nofollow">Brooklyn</a>.</p>
+<p>Let&rsquo;s search for a record, for example <a href="https://whosonfirst.mapzen.com/spelunker/id/421205765/">Brooklyn</a>.</p>
 
-<p><img src="https://mapzen-assets.s3.amazonaws.com/images/wof-in-a-box-part2/search.jpg" alt="screenshot"/></p>
+<p><img src="images/search.jpg" alt="screenshot" /></p>
 
-<p>You want to click on the one that’s a <a href="https://whosonfirst.mapzen.com/docs/placetypes/#borough" rel="nofollow">Borough placetype</a>.</p>
+<p>You want to click on the one that&rsquo;s a <a href="https://whosonfirst.mapzen.com/docs/placetypes/#borough">Borough placetype</a>.</p>
 
-<p><img src="https://mapzen-assets.s3.amazonaws.com/images/wof-in-a-box-part2/edit-bk.jpg" alt="screenshot"/></p>
+<p><img src="images/edit-bk.jpg" alt="screenshot" /></p>
 
-<p>Okay now we are getting somewhere, although…</p>
+<p>Okay now we are getting somewhere, although&hellip;</p>
 
-<p><img src="https://mapzen-assets.s3.amazonaws.com/images/wof-in-a-box-part2/unauthorized.jpg" alt="screenshot"/></p>
+<p><img src="images/unauthorized.jpg" alt="screenshot" /></p>
 
-<p>… by default, new users don’t have permissions to edit records.</p>
+<p>&hellip; by default, new users don&rsquo;t have permissions to edit records.</p>
 
 <h2>Add a user role</h2>
 
 <p>One last setup task: we just need to add the role <code>admin</code> to your user account and you should be all set.</p>
 
-<p>Here’s how that works (again, swap in the email address you used to sign up for your GitHub account):</p>
+<p>Here&rsquo;s how that works (again, swap in the email address you used to sign up for your GitHub account):</p>
 
 <pre><code>cd /usr/local/mapzen/whosonfirst-www-boundaryissues
 php bin/add_user_role.php your.email@example.com admin
@@ -470,11 +482,11 @@ php bin/add_user_role.php your.email@example.com admin
 nano config_local.php
 </code></pre>
 
-<p>This will make Boundary Issues update the Spelunker’s Elasticsearch index, upon saving.</p>
+<p>This will make Boundary Issues update the Spelunker&rsquo;s Elasticsearch index, upon saving.</p>
 
 <pre><code>&lt;?php
 
-	$GLOBALS[&#39;cfg&#39;][&#39;enable_feature_index_spelunker&#39;] = 1;
+	$GLOBALS['cfg']['enable_feature_index_spelunker'] = 1;
 
 </code></pre>
 
@@ -490,29 +502,29 @@ sudo supervisorctl start all
 
 <p>Go back to the <strong>Edit Brooklyn</strong> page in Boundary Issues and reload it. You should be able to edit things now, yay!</p>
 
-<p>Scroll down to the <strong>name</strong> section, and expand it open. Add the colonial name “Breuckelen” to the list of variant names (technically this should be under the Dutch language, not English, but one thing at a time).</p>
+<p>Scroll down to the <strong>name</strong> section, and expand it open. Add the colonial name &ldquo;Breuckelen&rdquo; to the list of variant names (technically this should be under the Dutch language, not English, but one thing at a time).</p>
 
-<p><img src="https://mapzen-assets.s3.amazonaws.com/images/wof-in-a-box-part2/breuckelen.jpg" alt="screenshot"/></p>
+<p><img src="images/breuckelen.jpg" alt="screenshot" /></p>
 
-<p>Notice how the interface added a blue indicator next to the field? That helps you keep track of which things you’ve edited.</p>
+<p>Notice how the interface added a blue indicator next to the field? That helps you keep track of which things you&rsquo;ve edited.</p>
 
-<p><img src="https://mapzen-assets.s3.amazonaws.com/images/wof-in-a-box-part2/save.jpg" alt="screenshot"/></p>
+<p><img src="images/save.jpg" alt="screenshot" /></p>
 
-<p>When you hit the save button, if all goes well, it should replace the list of changed properties with <strong>Saved</strong>. If it gets stuck on <strong>Saving…</strong> you may want to try again and keep an eye on the JavaScript console looking for error messages.</p>
+<p>When you hit the save button, if all goes well, it should replace the list of changed properties with <strong>Saved</strong>. If it gets stuck on <strong>Saving&hellip;</strong> you may want to try again and keep an eye on the JavaScript console looking for error messages.</p>
 
-<p>Finally, let’s try searching for updated name using the Spelunker.</p>
+<p>Finally, let&rsquo;s try searching for updated name using the Spelunker.</p>
 
-<p><img src="https://mapzen-assets.s3.amazonaws.com/images/wof-in-a-box-part2/spelunker-updated.jpg" alt="screenshot"/></p>
+<p><img src="images/spelunker-updated.jpg" alt="screenshot" /></p>
 
-<p>Hooray, you made an edit and it showed up in the Spelunker. There is more to all of this that I won’t go into in this blog post. Right now all the changes you make end up in <code>/usr/local/data/whosonfirst-pending</code>, without modifying the actual WOF Git repos. If we wanted to actually upstream the changes to GitHub, we would need to set up a new user on the server (we tend to go with <code>botsonfirst</code>) with credentials to push up to GitHub. And that user would execute the script <code>bin/save_pending.php</code> on a cron job.</p>
+<p>Hooray, you made an edit and it showed up in the Spelunker. There is more to all of this that I won&rsquo;t go into in this blog post. Right now all the changes you make end up in <code>/usr/local/data/whosonfirst-pending</code>, without modifying the actual WOF Git repos. If we wanted to actually upstream the changes to GitHub, we would need to set up a new user on the server (we tend to go with <code>botsonfirst</code>) with credentials to push up to GitHub. And that user would execute the script <code>bin/save_pending.php</code> on a cron job.</p>
 
 <p>There is also the whole subject of pipeline tasks vs. offline tasks, but maybe you can ask me about that over a beer some day.</p>
 
-<p><a href="http://i68.tinypic.com/2j3qvm1.gif" rel="nofollow"><img src="https://mapzen-assets.s3.amazonaws.com/images/wof-in-a-box-part2/maru.gif" alt="Maru"/></a></p>
+<p><a href="http://i68.tinypic.com/2j3qvm1.gif"><img src="images/maru.gif" alt="Maru" /></a></p>
 
 <h2>Bundler config</h2>
 
-<p>Okay one final set of config changes before we call it a day. The Spelunker has a very handy tool called the <a href="https://mapzen.com/blog/bundler/" rel="nofollow">Bundler</a> and we should get it working with our new <em>WOF in a Box</em> stack.</p>
+<p>Okay one final set of config changes before we call it a day. The Spelunker has a very handy tool called the <a href="https://mapzen.com/blog/bundler/">Bundler</a> and we should get it working with our new <em>WOF in a Box</em> stack.</p>
 
 <p>SSH into the NUC server and edit the flask config.</p>
 
@@ -520,7 +532,7 @@ sudo supervisorctl start all
 nano whosonfirst-www-spelunker-flask.cfg
 </code></pre>
 
-<p>We’ll make two edits here, the first enables the bundler feature:</p>
+<p>We&rsquo;ll make two edits here, the first enables the bundler feature:</p>
 
 <pre><code>enable_feature_bundler=1
 </code></pre>
@@ -539,7 +551,7 @@ nano mapzen.whosonfirst.config.js
 <p>We are going to scroll down to the bottom and edit this part:</p>
 
 <pre><code>if (mapzen.whosonfirst.api) {
-        mapzen.whosonfirst.api.set_endpoint(&#39;https://&#39; + api_host + api_path);
+        mapzen.whosonfirst.api.set_endpoint('https://' + api_host + api_path);
         mapzen.whosonfirst.api.set_key(api_key);
 }
 </code></pre>
@@ -547,8 +559,8 @@ nano mapzen.whosonfirst.config.js
 <p>Change it so that it looks like this (remember the access token we generated for the API?):</p>
 
 <pre><code>if (mapzen.whosonfirst.api) {
-		mapzen.whosonfirst.api.set_endpoint(&#39;http://192.168.0.47/api/rest/&#39;);
-		mapzen.whosonfirst.api.set_token(&#39;87ffbaee33443e4b9b385606d6b9af28&#39;);
+		mapzen.whosonfirst.api.set_endpoint('http://192.168.0.47/api/rest/');
+		mapzen.whosonfirst.api.set_token('87ffbaee33443e4b9b385606d6b9af28');
 }
 </code></pre>
 
@@ -563,18 +575,21 @@ nano mapzen.whosonfirst.config.js
 
 <p>Next, load up the Spelunker page for Brooklyn (or Breuckelen). The URL should be something like <code>http://192.168.0.47/spelunker/id/421205765/</code>.</p>
 
-<p>Now, scroll down until you get to the “Other” links, below the Hierarchy.</p>
+<p>Now, scroll down until you get to the &ldquo;Other&rdquo; links, below the Hierarchy.</p>
 
-<p><img src="https://mapzen-assets.s3.amazonaws.com/images/wof-in-a-box-part2/other-links.jpg" alt="screenshot"/></p>
+<p><img src="images/other-links.jpg" alt="screenshot" /></p>
 
 <p>You should see a new link for <strong>Download descendants of Brooklyn</strong>. Click on that.</p>
 
-<p>If everything is working, you should now be able to bundle and download all the descendants records of Brooklyn, using the NUC’s API and data. Let’s try getting all the Brooklyn neighbourhoods.</p>
+<p>If everything is working, you should now be able to bundle and download all the descendants records of Brooklyn, using the NUC&rsquo;s API and data. Let&rsquo;s try getting all the Brooklyn neighbourhoods.</p>
 
-<p><img src="https://mapzen-assets.s3.amazonaws.com/images/wof-in-a-box-part2/bundler.gif" alt="screenshot"/></p>
+<p><img src="images/bundler.gif" alt="screenshot" /></p>
 
-<h2>That’s all, folks</h2>
+<h2>That&rsquo;s all, folks</h2>
 
 <p>That was a whole lotta WOF in a Box, thanks for reading this far!</p>
 
-<p><a href="https://giphy.com/gifs/vtT53Z1YmKCxW" rel="nofollow"><img src="https://mapzen-assets.s3.amazonaws.com/images/wof-in-a-box-part2/toomuch.gif" alt="Too much WOF in the Box"/></a></p>
+<p><a href="https://giphy.com/gifs/vtT53Z1YmKCxW"><img src="images/toomuch.gif" alt="Too much WOF in the Box" /></a></p>
+
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>I Am Here</title>
+  <meta name="GENERATOR" content="Blackfriday Markdown Processor v2.0" />
+  <meta charset="utf-8" />
+</head>
+<body>
+
+<style type="text/css">
+		body { font-family: serif; margin:2em; margin-left: 10%; margin-right: 10%; font-size: 1.3em; line-height: 1.5em; }
+		img { max-width: 640px !important; max-height: 480px !important; border: 1px dotted #ccc; padding: .5em; margin: 0 auto; margin-bottom:1em; margin-top: 1em; }
+	</style> <h2>I Am Here</h2><h1>I Am Here</h1>
+
+<h2>tl;dr</h2>
+
+<p><a href="https://whosonfirst.mapzen.com/iamhere/">https://whosonfirst.mapzen.com/iamhere/</a> is a shiny new version of <a href="http://blog.simonwillison.net/">Simon Willison&rsquo;s</a> classic <q>Get Lat Lon</q> application <a href="https://github.com/whosonfirst/whosonfirst-www-iamhere">full of Mapzen-y goodness</a>.</p>
+
+<h2>A short history</h2>
+
+<p>In late 2007 <a href="http://blog.simonwillison.net/">Simon Willison</a> launched what some people have described as <q>the most useful website on the internet</q>. The website was called <a href="https://web.archive.org/web/20071013001113/http://getlatlon.com/">Get Lat Lon</a> and its entire purpose was to enable a visitor to <q>find the latitude and longitude of a point on a map</a>.</p>
+
+<p>The website was built using <a href="https://developers.google.com/maps/">the Google Maps API</a> and had a form for geocoding addresses or place names but the primary interface was a simple map with a set of crosshairs centered in the viewport. Get Lat Lon would simply print the geographic coordinates of whatever location happened to be beneath the crosshairs. Brilliant!</p>
+
+<p>Somewhere between 2007 and now the domain renewal for Get Lat Lon lapsed and now it&rsquo;s&hellip; something else entirely, something not worth linking to. You can still get a feeling for the simplicity and elegance of its overall design because there are snapshots of the website in the <a href="https://web.archive.org/">Wayback Machine</a> except&hellip; none of the Javascript works anymore.</p>
+
+<p><img src="images/getlatlon-empty.png" style="border: 1px solid silver !important" alt="I am not here"></p>
+
+<p>In 2009 I decided to write my own version of Get Lat Lon. Instead of using the Google Maps API it would use all <q>open</q> software and data. The map data would be from <a href="http://www.openstreetmap.org/">OpenStreetMap</a>. The map tiles would be <a href="http://mike.teczno.com/notes/cloudmade-styles.html">from CloudMade using exciting new cartography from Stamen Design</a>. It would use the <a href="https://github.com/stamen/modestmaps-js">modestmaps.js</a> library for managing all those tiles. It would support the then still-nascent browser-based <a href="http://www.w3.org/TR/geolocation-API/">Geolocation API</a> to help determine your location. The geocoding would <a href="https://www.flickr.com/services/api/flickr.places.find.html">be handled by Flickr</a> and in addition to geocoding it would also try to <em>reverse</em> geocode your location and display <a href="http://code.flickr.net/2008/10/30/the-shape-of-alpha/">the shape of the place</a> contained by a latlon, again <a href="https://www.flickr.com/services/api/flickr.places.findByLatLon.html">using the Flickr API</a>.</p>
+
+<p><img src="images/iamhere-v1-baghdad.png" style="border: 1px solid silver !important" alt="old Baghdad"></p>
+
+<p>And&hellip; it would be <a href="https://github.com/straup/js-iamheremap">so clever and modular</a> that it would support multiple service providers and you could just drop it in to any webpage and it would work, as if like magic. It was called <q>I Am Here</q> and I think I was the only person to ever use it but <a href="http://www.aaronland.info/iamhere/">it&rsquo;s still running</a>. In 2014, though, CloudMade <a href="https://wiki.openstreetmap.org/wiki/CloudMade">got out of the tile business</a> and so there is literally not much to see anymore.</p>
+
+<p><img src="images/iamhere-v1-empty.png" style="border: 1px solid silver !important" alt="no Baghdad"></p>
+
+<p><em>I am pretty sure that it&rsquo;s exactly <a href="https://github.com/straup/js-iamheremap/blob/master/iamheremap.src.js#L268-L280">one line of code to define a new map provider</a> to make I Am Here work again but to be perfectly honest just looking at all that too-too clever code now, in 2016, is exhausting. Also, see the way the licensing information on the map data hasn&rsquo;t been updated to reflect <a href="http://www.openstreetmap.org/copyright">the switch to the ODbL</a>&hellip;</em></p>
+
+<h2>Reverse geocoding</h2>
+
+<p>Fast forward to last year (2015) and work has begun in earnest on the <a href="https://whosonfirst.mapzen.com/">Who&rsquo;s On First (WOF) gazetteer</a> at Mapzen. Part of that work has been to build hierarchies for each record in the gazetteer which is something of a <a href="https://github.com/whosonfirst/whosonfirst-placetypes#here-is-a-pretty-picture">chicken-and-egg problem</a>. We&rsquo;ve been automating the process with a general purpose <a href="https://github.com/whosonfirst/go-whosonfirst-pip/">point-in-polygon tool</a> that we&rsquo;ve written in-house using the Go programming language. It is called <code>go-whosonfirst-pip</code> and it works like this:</p>
+
+<ul>
+<li><p>It loads an arbitrary number of WOF documents in to memory. <em>Where <q>WOF document</q> just means any GeoJSON document with a properties dictionary containing <code>id</code>, <code>name</code> and <code>placetype</code> keys.</em></p></li>
+
+<li><p>The documents are indexed using an <a href="https://en.wikipedia.org/wiki/R-tree">R-tree</a>. <em>An R-tree is a data structure optimized for storing multi-dimensional information, like geometries.</em></p></li>
+
+<li><p>The document set is queried with a latitude and a longitude and optionally filtered by placetype.</p></li>
+
+<li><p>Because the R-tree stores bounding boxes instead of complex geometries (as Wikipedia says: <em>The &ldquo;R&rdquo; in R-tree is for rectangle</em>) there is a final operation (called <a href="https://en.wikipedia.org/wiki/Ray_casting">raycasting</a>) to ensure that a point is actually contained by any of the candidate results.</p></li>
+</ul>
+
+<p>That&rsquo;s it. The purpose of the <code>go-whosonfirst-pip</code> code is to do fiddly math across a large and heterogenous dataset as quickly as possible.</p>
+
+<p><a href="https://commons.wikimedia.org/w/index.php?curid=10008216"><img src="images/rtree.png" alt="rtree" /></a></p>
+
+<p><em>This is what an R-tree looks like, courtesy <a href="https://commons.wikimedia.org/wiki/User:Chire">Wikimedia user Chire</a></em></p>
+
+<p>It only knows about points and things that contains those points but it does not know about context. For example, consider the following question: What continent is <a href="https://whosonfirst.mapzen.com/spelunker/id/85632685/">Russia</a> a part of? Europe? Asia? All of the above? There are lots of interesting applications that remain to be built on top of <code>go-whosonfirst-pip</code> but it is important to remember that it is <em>not</em> an inference engine, by design.</p>
+
+<p>The code includes a simple HTTP server (called <code>wof-pip-server</code>) that you can use to easily load (and then query) one or more <a href="https://github.com/whosonfirst/whosonfirst-data/tree/master/meta">&ldquo;meta&rdquo; files</a> containing pointers to different WOF documents. If a WOF document is just a GeoJSON with a few explicit properties then a &ldquo;meta&rdquo; file is just a CSV with a <code>path</code> column containing a <em>relative</em> path to a WOF document.</p>
+
+<p><em>Although the &ldquo;meta&rdquo; files were originally conceived as little more than a simple helper tool (or index) for large volumes of data they have grown in to something of a &ldquo;first class&rdquo; object inside the world of Who&rsquo;s On First, with more and more of the tooling and infrastructure built around them. They are due for a longer more detailed discussion but not today.</em></p>
+
+<p>To get started with an instance of <code>wof-pip-server</code> that will query for countries and neighbourhoods you would do:</p>
+
+<pre><code>$&gt; ./bin/wof-pip-server -data /usr/local/mapzen/whosonfirst-data/data/ \
+  /usr/local/mapzen/whosonfirst-data/meta/wof-country-latest.csv \
+  /usr/local/mapzen/whosonfirst-data/meta/wof-neighbourhood-latest.csv 
+[placetype] country 219
+[placetype] neighbourhood 49906
+</code></pre>
+
+<p>Depending on how fast your computer is the indexing process might take a couple of minutes. By default the <code>wof-pip-server</code> listens for requests on port <code>8080</code> on your computer&rsquo;s local &ldquo;loopback&rdquo; network interface which is also called <code>localhost</code>, so the URL for querying the server would be <code>http://localhost:8080</code>. For example:</p>
+
+<pre><code>$&gt; curl 'http://localhost:8080?latitude=40.677524&amp;longitude=-73.987343' | python -mjson.tool
+[
+    {
+        &quot;Id&quot;: 102061079,
+        &quot;Name&quot;: &quot;Gowanus Heights&quot;,
+        &quot;Placetype&quot;: &quot;neighbourhood&quot;
+    },
+    {
+        &quot;Id&quot;: 85633793,
+        &quot;Name&quot;: &quot;United States&quot;,
+        &quot;Placetype&quot;: &quot;country&quot;
+    },
+    {
+        &quot;Id&quot;: 85865587,
+        &quot;Name&quot;: &quot;Gowanus&quot;,
+        &quot;Placetype&quot;: &quot;neighbourhood&quot;
+    }
+]
+</code></pre>
+
+<p>If you want to limit the result set to a specific placetype simply append <code>placetype=PLACETYPE</code> to your query string, like this:</p>
+
+<pre><code>$&gt; curl 'http://localhost:8080?latitude=40.677524&amp;longitude=-73.987343&amp;placetype=neighbourhood' | python -mjson.tool
+[
+    {
+        &quot;Id&quot;: 102061079,
+        &quot;Name&quot;: &quot;Gowanus Heights&quot;,
+        &quot;Placetype&quot;: &quot;neighbourhood&quot;
+    },
+    {
+        &quot;Id&quot;: 85865587,
+        &quot;Name&quot;: &quot;Gowanus&quot;,
+        &quot;Placetype&quot;: &quot;neighbourhood&quot;
+    }
+]
+</code></pre>
+
+<p><em>Currently it is <a href="https://github.com/whosonfirst/go-whosonfirst-pip/issues/22">not possible</a> to filter the result set with multiple placetypes. That&rsquo;s not technically a bug but it&rsquo;s become clear that it&rsquo;s also not a feature.</em></p>
+
+<p>The <code>wof-pip-server</code> returns as little information as possible because it stores as little information as possible, mostly for performance reasons. It is left up to applications using <code>wof-pip-server</code> to decide whether and how to look up more information about any given WOF document.</p>
+
+<p>The nice thing about the <code>go-whosonfirst-pip</code> tools is that they are designed to be agnostic as possible about the data they index and serve. For example I recently downloaded <a href="https://archive.org/details/FlickrShapesPublicDataset2.0.1.tar">version 2.0.1 of the Flickr Alpha Shape files</a> and re-jiggled the file structure (but not the actual data) of the alpha shapes and now they will Just Work&amp;#8482; with  <code>wof-pip-server</code>.</p>
+
+<h2>whosonfirst-www-iamhere</h2>
+
+<p>So far, so good. We have <a href="https://github.com/whosonfirst/whosonfirst-data/">an enormous bag of (Who&rsquo;s On First) data</a> and we have <a href="https://github.com/whosonfirst/go-whosonfirst-pip/">a tool for establishing the relationship(s) between those files</a> but any volume of geographic data absent a map is&hellip; hard to see.</p>
+
+<p><a href="https://whosonfirst.mapzen.com/iamhere/#14/40.676277/-73.988371"><img src="images/iamhere-v2-gowanus.png" alt="gowanus" /></a></p>
+
+<p>So, I rebuilt I Am Here (or Get Lat Lon) &hellip; again. It&rsquo;s called <a href="https://github.com/whosonfirst/whosonfirst-www-iamhere">whosonfirst-www-iamhere</a> or just I Am Here (again) for short.</p>
+
+<p>It does everything that the combination of Get Lat Lon and the original I Am Here did, but is built entirely using Mapzen tools and services.</p>
+
+<p>Aside from an ongoing need to simply know what the coordinates are for any given spot on a map it seemed like <code>whosonfirst-www-iamhere</code> would be a good and useful tool for visualizing and sanity-checking the results returned by the <code>go-whosonfirst-pip</code> code.</p>
+
+<p><a href="https://whosonfirst.mapzen.com/iamhere/#14/37.751376/-122.469149"><img src="images/iamhere-v2-ggh.png" alt="probably a bug" /></a></p>
+
+<p><em>For example, Golden Gate&hellip;what?</em></p>
+
+<p>This time, though, it&rsquo;s been built with two guiding principles in mind. The first is that <q>Mapzen should always be Consumer Zero (of Mapzen services)</q> and the second is to minimize the pain and nuisance of any one piece, of what is actually a pretty complex application, failing or shutting down or otherwise going offline.</p>
+
+<h3>Mapzen as Consumer Zero</h3>
+
+<p>The latest version of I Am Here uses a bunch of Mapzen services already:</p>
+
+<ul>
+<li>It uses the <a href="https://github.com/tangrams/tangram">Tangram</a> Javascript library for rendering tiles and <a href="https://github.com/tangrams/refill-style">Refill</a> for styling them.</li>
+<li>It uses <a href="https://mapzen.com/projects/search">Mapzen Search</a>, for geocoding. <em>This is not enabled by default as you&rsquo;ll need to <a href="https://mapzen.com/developers">sign up for an API key</a> (it&rsquo;s really easy!) and add it to the <code>mapzen.whosonfirst.config.js</code> config file.</em></li>
+<li>It uses <a href="https://whosonfirst.mapzen.com/data/">Who&rsquo;s On First data</a> for reverse geocoding and for displaying geometries and other metadata about a place.</li>
+</ul>
+
+<p>In time, it will also use:</p>
+
+<ul>
+<li><a href="https://mapzen.com/projects/valhalla">Mapzen Turn-by-Turn</a> to visualize the placetypes along a journey route. <em>There is <a href="https://github.com/whosonfirst/go-whosonfirst-pip/tree/polyline">a branch of the <code>go-whosonfirst-pip</code> code</a> that will perform point-in-polygon tests along an <a href="https://developers.google.com/maps/documentation/utilities/polylinealgorithm">encoded polyline</a> as returned by the Turn-by-Turn service so this feature is mostly waiting on user-interface details rather than number-crunching.</em></li>
+<li>A <a href="https://whosonfirst.mapzen.com/mmdb/">Who&rsquo;s On First enabled IP lookup service</a> to help determine where to position the map when I Am Here is launched.</li>
+</ul>
+
+<h3>Small pieces, loosely failing</h3>
+
+<p>The ultimate goal of <code>whosonfirst-www-iamhere</code> is to work from your own computer in offline-mode (or when you don&rsquo;t have a network connection) without needing to download and install a long list of dependencies. As of this writing:</p>
+
+<ul>
+<li>It <em>does not</em> come with pre-installed WOF data, but that&rsquo;s also a deliberate choice. We&rsquo;ll talk more about that in a moment.</li>
+<li>It <em>does not</em> come with pre-installed or cached vector tiles (used by Tangram). <em>There is <a href="https://github.com/thisisaaronland/tangram/tree/localforage">a margins-of-the-day project to enable tile-caching in Tangram</a> but it is not ready for general usage yet.</em></li>
+<li>It <em>does not</em> come with a pre-installed version of Mapzen Search for offline use. <em>Since the code that powers the service (Pelias) is open source and designed to be run by an individual that piece is left as an exercise to the user.</em></li>
+<li>It <em>does</em> come with pre-installed platform specific (OS X, Linux and Windows) binary applications for serving the Tangram Javascript code and the <code>wof-pip-server</code> endpoint.</li>
+<li>It <em>does</em> come with a handy &ldquo;startup&rdquo; tool meant to take care all of the details when launching <code>whosonfirst-www-iamhere</code>. <em>Currently the tool is written in Python which comes pre-installed on OS X and Linux computers. For people using Windows computers installing Python fails the yet-another-dependency test so there is added impetus for rewriting it (the startup tool) as something can be pre-compiled to run on a Windows machine, too.</em></li>
+<li>It <em>does not</em> come with a handy GUI startup tool. <em>Currently it assumes a level of familiarity with your computer&rsquo;s command-line (or terminal) interface.</em></li>
+</ul>
+
+<p>Here is an example of how you might start <code>whosonfirst-www-iamhere</code> from your computer. This assumes that you have downloaded (or cloned) the <a href="https://github.com/whosonfirst/whosonfirst-www-iamhere">whosonfirst-www-iamhere</a> code and have navigated in to the root directory.</p>
+
+<pre><code>$&gt; ./bin/start.py -d /path/to/your/whosonfirst-data/data \
+  /path/to/your/whosonfirst-data/meta/wof-neighbourhood-latest.csv \
+  /path/to/your/whosonfirst-data/meta/wof-locality-latest.csv
+</code></pre>
+
+<p><a href="https://whosonfirst.mapzen.com/iamhere/#11/33.332823/44.426651"><img src="images/iamhere-v2-baghdad.png" alt="baghdad-2" /></a></p>
+
+<p>The short version is that once the <code>start.py</code> script has finished setting everything up you can open your web browser up at <code>http://localhost:8001</code> and start poking around countries and neighbourhoods from Who&rsquo;s On First.</p>
+
+<p>The longer version follows. By default the <code>start.py</code> tool requires a minimum of two arguments. The first (<code>-d</code>) is the path to where, on your computer, you&rsquo;ve stored your raw Who&rsquo;s On First data files. The second and third arguments are the paths to &ldquo;meta&rdquo; files (remember them?) that the <code>wof-pip-server</code> will index. The <code>start.py</code> tool will start three separate servers running on your computer:</p>
+
+<ul>
+<li>A simple web server that will the Who&rsquo;s On First data you specified (with the <code>-d</code> parameter) running on port <code>9999</code>. <em>Remember the way we said that <code>wof-pip-server</code> returns little more than a WOF ID? The reason for this data-only server is that the <code>whosonfirst-www-iamhere</code> application will &ldquo;inflate&rdquo; a WOF ID, returned by the PIP server, by fetching its record from the data server.</em></li>
+<li>Another simple web server that will host the <code>whosonfirst-www-iamhere</code> application running on port <code>8001</code>. <em>These two pieces could be served by a single more sophisticated web server.</em></li>
+<li>Finally the <code>wof-pip-server</code> itself running on port <code>8080</code>.</li>
+</ul>
+
+<p>All of these port numbers can be changed if necessary. To do so you would pass your own setting as parameters to the <code>start.py</code> tools and as custom settings in the <code>mapzen.whosonfirst.config.js</code> config file.</p>
+
+<p><a href="https://whosonfirst.mapzen.com/iamhere/#11/42.358430/-71.059770"><img src="images/iamhere-v2-boston.png" alt="boston" /></a></p>
+
+<h2>Bundles</h2>
+
+<p>One of the challenges with Who&rsquo;s On First has been balancing our desire for a robust and portable data format (plain text GeoJSON files), the needs for an historical audit trail and the mechanics of working with and distributing a large and ever-growing dataset. We have been using Git and GitHub extensively for much of the work to date but as the commit history around [the data]() grows so too does the size of the <code>whosonfirst-data</code> repository and the burden in using it or simply getting started with Who&rsquo;s On First.</p>
+
+<p><a href="https://whosonfirst.mapzen.com/iamhere/#3/45.5080/-73.6166"><img src="images/iamhere-v2-quebec.png" alt="quebec" /></a></p>
+
+<p>As an alternative we have been working on something called <q>bundles</q>. Bundles are:</p>
+
+<blockquote>
+<p>&hellip;a collection of GeoJSON formatted files (Who&rsquo;s On First data) grouped by a specific property, like placetype. They allow for people to more easily bulk download a subset of the entire Who&rsquo;s On First dataset. Currently there are only bundles by placetype but eventually we will add a variety of different &ldquo;slices&rdquo; of the data as demand and interest require.</p>
+</blockquote>
+
+<p>Each bundle contains a &ldquo;meta&rdquo; file (<em>see&hellip; they just keep popping up all over the place!</em>) and a folder named <code>data</code> which contains the files listed in the meta file. Bundles do not contain any Git history or related metadata but our hunch is that many people don&rsquo;t need or want that information. The startup tool mentioned above does not yet have support for bundles but that will happen shortly. In the meantime you can get started with <code>whosonfirst-www-iamhere</code> and bundles with a few short commands in your terminal.</p>
+
+<p>For example, if you just wanted to run a copy of <code>whosonfirst-www-iamhere</code> using only <a href="https://whosonfirst.mapzen.com/spelunker/placetypes/microhood/">microhoods</a> (which are currently <a href="https://whosonfirst.mapzen.com/spelunker/id/85922583/descendants/?&amp;placetype=microhood">all in San Francisco</a>) you would do the following:</p>
+
+<pre><code>$&gt; cd /path/to/your/whosonfirst-www-iamhere
+$&gt; curl -O https://whosonfirst.mapzen.com/bundles/wof-microhood-latest-bundle.tar.bz2
+$&gt; tar -xvjf wof-microhood-latest-bundle.tar.bz2
+$&gt; ./bin/start.py -d wof-microhood-latest-bundle/data wof-microhood-latest-bundle/wof-microhood-latest.csv
+</code></pre>
+
+<p><a href="https://whosonfirst.mapzen.com/iamhere/#14/37.796356/-122.396107"><img src="images/iamhere-v2-sbc.png" alt="this really happened&hellip;" /></a></p>
+
+<p>All of the details and currently available bundles are listed over at <a href="https://whosonfirst.mapzen.com/bundles">https://whosonfirst.mapzen.com/bundles</a> and&hellip; yes, <a href="https://whosonfirst.mapzen.com/spelunker/id/420561633/">Super Bowl City</a> is a thing that really happened in 2016.</p>
+
+<h2>Or you can just use our version</h2>
+
+<p>As mentioned at the beginning of this blog post there is a publicly accessible version of I Am Here for you to play with at <a href="https://whosonfirst.mapzen.com/iamhere/">https://whosonfirst.mapzen.com/iamhere/</a>.</p>
+
+<p>Right now it only display neighbourhoods but shortly <a href="https://github.com/whosonfirst/go-whosonfirst-pip/issues/22">we will add the ability to select different (even multiple) placetypes to display at the same time</a>. And as circumstance permits we will add the additional features (routing and IP lookups) mentioned above. And then all the stuff we haven&rsquo;t even thought of yet.</p>
+
+<p>Enjoy!</p>
+
+</body>
+</html>

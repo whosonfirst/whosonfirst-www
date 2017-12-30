@@ -1,0 +1,256 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Redesigning and Rebuilding the Who&rsquo;s On First website</title>
+  <meta name="GENERATOR" content="Blackfriday Markdown Processor v2.0" />
+  <meta charset="utf-8" />
+</head>
+<body>
+
+<style type="text/css">
+		body { font-family: serif; margin:2em; margin-left: 10%; margin-right: 10%; font-size: 1.3em; line-height: 1.5em; }
+		img { max-width: 640px !important; max-height: 480px !important; border: 1px dotted #ccc; padding: .5em; margin: 0 auto; margin-bottom:1em; margin-top: 1em; }
+	</style> <h2>Redesigning and Rebuilding the Who's On First website</h2><p>My name is <a href="http://scottdombkowski.com/" title="Scott's Portfolio">Scott</a> and I am an intern on the Mapzen data team this summer. I am also pursuing a graduate degree at the <a href="http://design.cmu.edu/" title="Carnegie Mellon School of Design">Carnegie Mellon School of Design</a>.</p>
+
+<p>At Mapzen, I am tasked with <a href="https://whosonfirst.mapzen.com/interns/#2017-ux" title="WOF Internship Call">improving how Who’s On First (WOF) is presented to the world and increasing its accessibility to a wider range of users</a>.</p>
+
+<p>For the majority of my first three weeks at Mapzen, I have focused on the redesign and the rebuilding of the <a href="https://whosonfirst.mapzen.com/" title="WOF Website">WOF website</a>. (For those who aren’t familiar with the current website, here&rsquo;s a
+<a href="images/WhosOnFirstCurrentState.png" title="Mockup of Current Website">full-size image</a>)</p>
+
+<p>The website currently contains:</p>
+
+<ul>
+<li><a href="https://whosonfirst.mapzen.com" title="WOF Documentation">an introduction/explanation of Who’s On First</a> (What is WOF?, What state WOF is in?)</li>
+<li><a href="https://whosonfirst.dev.mapzen.com/#documentation" title="WOF Documentation">a section with links to WOF documentation</a></li>
+<li><a href="https://whosonfirst.mapzen.com/#examples" title="WOF Tools">a section with links to WOF tools</a> (ex: WOF spelunker (a tool to browse WOF data))</li>
+<li><a href="https://whosonfirst.mapzen.com/#theory" title="WOF Theory">a section with links to the thinking surrounding the project</a> (What is the purpose of WOF?, How are WOF places organized?)</li>
+<li><a href="https://whosonfirst.mapzen.com/#data" title="WOF Data">a section with links to access WOF data and explanations on how the data is organized</a> (Where does the data live?, Why is the data organized that way?)</li>
+<li><a href="https://whosonfirst.mapzen.com/#sources" title="WOF Sources">a section with links to WOF sources</a> (human-friendly and JSON formats)</li>
+<li><a href="https://whosonfirst.mapzen.com/#license" title="WOF License">a section dedicated to licensing and how to credit WOF and other projects properly</a></li>
+</ul>
+
+<p>##Goals</p>
+
+<p>After gaining a better understanding of the website and the project itself, I developed four goals to help guide the redesign:</p>
+
+<ul>
+<li>Provide an overview of the project showing the entirety of the thought put into the project, while not being so overwhelming as to scare potential users off.</li>
+<li>Provide the tools to immediately utilize WOF.</li>
+<li>Provide the tools for deeper exploration into WOF.</li>
+<li>Get individuals excited about the project.</li>
+</ul>
+
+<p>##Users</p>
+
+<p>I also began to think about the users of the website. Are they all similar? Are they coming to the project for different reasons? What kind of backgrounds and experiences do they bring with them?</p>
+
+<p>I concluded that the majority of these users will come from three different groups.</p>
+
+<ol>
+<li><em>Users actively working on a project that could benefit from WOF.</em> They are not stumbling upon the project, they have come to the website with a specific purpose. They have either used WOF before or have background knowledge about WOF. They have some technical knowledge.</li>
+<li><em>Users not actively working on a project that could benefit from using WOF.</em> These users are interested in WOF, but don’t have an immediate need for it. They are interested in learning about the project, but are not looking for in-depth knowledge. They may or may not have technical knowledge.</li>
+<li><em>Users who stumble upon WOF.</em> They come to the project without preconceptions. They may never have a use for WOF, but may spend some time on the page if they find it interesting.</li>
+</ol>
+
+<p>##Ideation</p>
+
+<p>With established goals and thoughts concerning website users, new questions began popping up.</p>
+
+<ul>
+<li>How can we most effectively allow for understanding of WOF?</li>
+<li>What are the most effective ways of visualizing WOF?</li>
+<li>Can understanding of WOF be acquired through some sort of interaction?</li>
+<li>How can users directly interact with the data?</li>
+<li>How can we replicate a user’s interaction with WOF outside the website within the website?</li>
+<li>Can we utilize the website’s content to create a dialog that gets the attention of a user while also showing the depth of the project?</li>
+<li>How can we visualize that this project is a continuous work in progress?</li>
+</ul>
+
+<p>With these questions and others in mind, I searched for answers moving from lower fidelity to higher fidelity prototypes.</p>
+
+<p><em>Note: Throughout the design process, I have been using the <a href="https://mapzen.com/common/styleguide/" title="Mapzen Styleguide">Mapzen Styleguide</a> so that anything I was designing or building would align with the Mapzen visual style and other Mapzen product pages.</em></p>
+
+<p>##Prototyping</p>
+
+<p>One of the first things I focused on was how users directly interact with WOF data. Do we create some sort of interactive component where individuals can immediately interact and get a sense of the data made available by WOF? If so, what powers that component? One feature that WOF provides is an <a href="https://mapzen.com/documentation/wof/" title="WOF API">API</a>. We talked about this <a href="https://mapzen.com/blog/whosonfirst-api/">a few months back</a>:</p>
+
+<blockquote>
+<p>The API provides programmatic access for you and your robots to all the Who’s On First data. You can query individual places and their relations, look for concordances and perform basic spatial queries. You can also use the API to query things like all the different placetypes or sources for data.</p>
+</blockquote>
+
+<p>While some of the <a href="https://mapzen.com/documentation/wof/methods/" title="WOF API Queries">API queries</a> require background knowledge, a number of them could be understood by a first-time user, like <a href="https://mapzen.com/documentation/wof/methods/#whosonfirst.places.getByLatLon" title="WOF getByLatLong Query">getByLatLon</a>.</p>
+
+<p>Knowing that I could use the <a href="https://mapzen.com/documentation/wof/" title="WOF API">API</a>, I explored different ways the <a href="https://mapzen.com/documentation/wof/methods/" title="WOF API Queries">API methods</a> could be visualized.</p>
+
+<p>Could we create a card with tabs that would display specific fields based on the tab selected?</p>
+
+<p><img src="images/WhosOnFirstMock7Small.png" alt="Card with Tab Mockup" title="Card with Tab Mockup" />
+<a href="images/WhosOnFirstMock7Small.png" title="Card with Tab Mockup">See full-size image</a></p>
+
+<p>Results would appear below the tabs and fields.</p>
+
+<p><img src="images/WhosOnFirstMock2Small.png" alt="Card with Tab Mockup" title="Card with Tab Mockup" />
+<a href="images/WhosOnFirstMock2Small.png" title="Card with Tab Mockup">See full-size image</a></p>
+
+<p>Or we could create a map that would allow for interaction? A user could select a specific point or draw a box on the map and results based on that point or rectangle would appear.</p>
+
+<p><img src="images/WhosOnFirstMock10Small.png" alt="Map Mockup" title="Map Mockup" />
+<a href="images/WhosOnFirstMock10Small.png" title="Map Mockup">See full-size image</a></p>
+
+<p>I had some concerns with this approach. Would the interaction interfere with the main navigation of the page? Should the first thing be an element relying on user interaction? I ultimately came to the conclusion that this first element should not rely on a user’s interaction.</p>
+
+<p>###Initial Component</p>
+
+<p>Since I didn’t want the first element to rely on a user interacting with it, I created further iterations.</p>
+
+<p>I knew that I wanted the element to immediately capture the user’s attention and show some of the capabilities of WOF. With that in mind, I created the mockup below where users are able to see WOF places depicted by red circles.</p>
+
+<p><img src="images/WhosOnFirstMock14Small.png" alt="Initial Component without API Command" title="Initial Component Without API Command" />
+<a href="images/WhosOnFirstMock14Small.png" title="Initial Component Without API Command">See full-size image</a></p>
+
+<p>I showed it to my team and they suggested including the API command powering the visualization.</p>
+
+<p><img src="images/WhosOnFirstMock19Small.png" alt="Initial Component with API Command" title="Initial Component with API Command" />
+<a href="images/WhosOnFirstMock19Small.png" title="Initial Component with API Command">See full-size image</a></p>
+
+<p>When initially building this out, I&rsquo;d planned to detect a user’s location and run a WOF API query based on that location. However, this can lead to <a href="https://mapzen.com/blog/missing-the-point/" title="Missing the Point Blog Post">potential problems with GeoIP lookups</a>. The mockup is now built to randomly select one of five locations and run a WOF API query based on that location.</p>
+
+<p>###Interactive Component</p>
+
+<p>After building out the initial component, I still wanted to create an element that would allow for a deeper and more direct interaction with WOF. Consulting with my team about <a href="https://mapzen.com/documentation/wof/methods/#whosonfirstplaces" title="WOF API Queries">the most important API queries</a>, we settled on:</p>
+
+<ul>
+<li><a href="https://mapzen.com/documentation/wof/methods/#whosonfirst.places.getByLatLon" title="WOF getByLatLong Query"><strong>getByLatLon</strong></a>: returns WOF places intersecting a latitude and longitude</li>
+<li><a href="https://mapzen.com/documentation/wof/methods/#whosonfirst.places.getNearby" title="WOF getNearby Query"><strong>getNearby</strong></a>: returns all the WOF records near a point</li>
+<li><a href="https://mapzen.com/documentation/wof/methods/#whosonfirst.places.getIntersects" title="WOF getIntersects Query"><strong>getIntersects</strong></a>: returns all the WOF places intersecting a bounding box</li>
+</ul>
+
+<p>Using my earlier mockups as inspiration, I thought about ways a user could run these queries through an interface. This inspired another set of mockups.</p>
+
+<p><img src="images/WhosOnFirstMock19Small2.png" alt="Early Concept Mockup" title="Early Concept Mockup" />
+<a href="images/WhosOnFirstMock19Small2.png" title="Early Concept Mockup">See full-size image</a></p>
+
+<p>These brought up a new question.</p>
+
+<p>Could you combine the <a href="https://mapzen.com/documentation/wof/methods/#whosonfirst.places.getByLatLon" title="WOF getByLatLong Query">getByLatLong function</a> with the <a href="https://mapzen.com/documentation/wof/methods/#whosonfirst.places.getNearby" title="WOF getNearby Query">getNearby function</a>? The <a href="https://mapzen.com/documentation/wof/methods/#whosonfirst.places.getByLatLon" title="WOF getByLatLong Query">getByLatLong function</a> is essentially equivalent to the <a href="https://mapzen.com/documentation/wof/methods/#whosonfirst.places.getNearby" title="WOF getNearby Query">getNearby function</a>, without the radius argument.</p>
+
+<p>This convinced me to combine the <a href="https://mapzen.com/documentation/wof/methods/#whosonfirst.places.getByLatLon" title="WOF getByLatLong Query">getByLatLong</a> and <a href="https://mapzen.com/documentation/wof/methods/#whosonfirst.places.getNearby" title="WOF getNearby Query">getNearby</a> queries into one type of interaction, while the <a href="https://mapzen.com/documentation/wof/methods/#whosonfirst.places.getIntersects" title="WOF getIntersects Query">getIntersects query</a> would be represented by a different interaction. They would be represented by the icons in the top left of the mockup below.</p>
+
+<p><img src="images/MapInteraction33.png" alt="Combined Mockup" title="Combined Mockup" />
+<a href="images/MapInteraction33.png" title="Combined Mockup">See full-size image</a></p>
+
+<p>The point (dot) icon would represent the <code>getByLatLong</code> and <code>getNearby</code> interaction. When active, users would be able to select a point on the map and/or specify a radius, latitude, and longitude in a window on the bottom left. The box icon would represent the <code>getIntersects</code> interaction. When active, users would be able to draw a box on the map or specify minimum and maximum latitudes and longitudes in a window on the bottom left. The results of the those queries would be seen in the right hand column, followed by the API query run to acquire those results.</p>
+
+<p><img src="images/MapInteraction39.png" alt="Activated Icon Mockup" title="Activated Icon Mockup" />
+<a href="images/MapInteraction39.png" title="Activated Icon Mockup">See full-size image</a></p>
+
+<p>We would also need a walkthrough to help users understand the functionality of the component.</p>
+
+<p><img src="images/MapInteraction33Small.png" alt="Component Walkthrough" title="Component Walkthrough" />
+<a href="images/MapInteraction33Small.png" title="Component Walkthrough">See full-size image</a></p>
+
+<p>After showing my team this set of mockups, they mentioned including descendants. I felt it would difficult for users to utilize the point and box functionality to find specific places and their descendants.</p>
+
+<p>Users could search for a place and then view the descendants of those places, but the walkthrough would have to be broken up.</p>
+
+<p><img src="images/MapInteraction41.png" alt="Search Walkthrough Screen" title="Search Walkthrough Screen" />
+<a href="images/MapInteraction41.png" title="Search Walkthrough Screen">See full-size image</a></p>
+
+<p><img src="images/MapInteraction46.png" alt="Point Walkthrough Screen" title="Point Walkthrough Screen" />
+<a href="images/MapInteraction46.png" title="Point Walkthrough Screen">See full-size image</a></p>
+
+<p>I also explored different possible implementations.</p>
+
+<p>For instance, could you recognize a place, find that place’s locality, find that locality’s parent, and then use that parent to find different places on the same level as the original place’s locality? You could then give users the ability to view the descendants of those localities.
+<p>
+<div style="margin: 0 auto; width:25%;">
+<img alt="View Descendants" src="images/MapInteraction47Small.png">
+</div>
+<p>
+Or could you provide users an interface to move from one level to another.
+<p>
+<div style="margin: 0 auto; width:25%;">
+<img alt="View Descendants" src="images/MapInteraction48Small.png">
+</div>
+<p>
+I ultimately believe that these implementations would not work as well as a search and would lead to more difficulty for the user.</p>
+
+<p>###Stats</p>
+
+<p>An additional way to create a dialog that could capture the attention of a user, while showing the depth of the project, would be through stats. WOF provides an ample amount of stats that could be relevant to a wide variety of users. At the same time, stats must be limited. You do not want to be consistently processing statistics in the background.</p>
+
+<p>With the stats, I also wanted to avoid the parts of WOF that require background knowledge. Users shouldn’t have to discern what things mean, and the stats should be relatively simple.</p>
+
+<p>So what statistics would users understand?</p>
+
+<ul>
+<li><em>Total # of records</em> - <em>users definitely understand records when given some context</em></li>
+<li><em>Total # of countries</em> - <em>users understand countries too</em></li>
+<li><em>Total # of marine areas</em> - <em>a user may not immediately connect oceans, rivers, and seas with marines areas, maybe this one should be avoided</em></li>
+<li><em>Total # of regions</em> - <em>users have a general sense of regions</em></li>
+<li><em>Total # of counties</em> - <em>counties should be avoided, there are a greater number of localities than counties</em></li>
+<li><em>Total # of localities</em> - <em>users will not be able to immediately identify what a locality is, but we can add a small explanation that a locality is a city or town</em></li>
+<li><em>Total # of neighborhoods</em> - <em>probably does not fit, not every venue has a neighborhood, users from different areas may identify a neighborhood differently</em></li>
+<li><em>Total # of venues</em> - <em>users should understand this and it is at the core of WOF</em></li>
+</ul>
+
+<p>Further exploration needs to take place to understand how to organize and visualize the stats. Should it go from higher levels place types (countries, regions, etc…) to lower level place types (venues, etc…)? Should these stats be context specific? How much more computation would that require? Is that computation worth it?</p>
+
+<p><img src="images/WhosOnFirstMock4Small.png" alt="Stat Mockup 1" title="Stat Mockup 1" />
+<a href="images/WhosOnFirstMock4Small.png" title="Stat Mockup 1">See full-size image</a></p>
+
+<p><img src="images/WhosOnFirstMock5Small.png" alt="Stat Mockup 2" title="Stat Mockup 2" />
+<a href="images/WhosOnFirstMock5Small.png" title="Stat Mockup 2">See full-size image</a></p>
+
+<p><img src="images/WhosOnFirstMock6Small.png" alt="Stat Mockup 3" title="Stat Mockup 3" />
+<a href="images/WhosOnFirstMock6Small.png" title="Stat Mockup 3">See full-size image</a></p>
+
+<p>###Getting Users Started</p>
+
+<p>The website should also provide users with tools to immediately get started with WOF. This includes the different options a user could take to use WOF. For example, if a user knows the specific path and ID for a particular place, the website should provide that user with an example URL they could use to retrieve data. Or if the user wants to use the <a href="https://mapzen.com/documentation/wof/" title="WOF API">WOF API</a>, that user should see a number of example queries and links to additional documentation. A link to <a href="https://github.com/whosonfirst-data" title="WOF Data Github repo">the Github repo where all WOF data lives</a> would also work, users could then download their own version of the data if they so desire. You can find a mockup below to see just how this could work.</p>
+
+<p><img src="images/WhosOnFirstMock12Small.png" alt="Getting Started Mockup" title="Getting Started Mockup" />
+<a href="images/WhosOnFirstMock12Small.png" title="Getting Started Mockup">See full-size image</a></p>
+
+<p>###Information Architecture</p>
+
+<p>Currently, part of WOF lives solely on <a href="https://github.com/whosonfirst," title="WOF Github Repo">Github</a>. One example of this is <a href="https://github.com/whosonfirst/whosonfirst-sources" title="WOF Sources">source information</a>. In order to make WOF more useable we plan to clone selected parts of the information on Github to the website.</p>
+
+<p>Some subpages already exist, for example the theory and data page, but at the very least there should be a page for tools, the blog, data, and docs. All these topics are complicated. By creating separate pages, less emphasis can be paid to those subjects on the home page.</p>
+
+<p>We are currently working on just how all this information will be organized. Below you can find some mockups.</p>
+
+<p><img src="images/WhosOnFirstSubpageMock4.png" alt="Subpage Mockup" title="Subpage Mockup" />
+<a href="images/WhosOnFirstSubpageMock4.png" title="Subpage Mockup">See full-size image</a></p>
+
+<p><img src="images/WhosOnFirstSubpageMock2.png" alt="Subpage Mockup" title="Subpage Mockup" />
+<a href="images/WhosOnFirstSubpageMock2.png" title="Subpage Mockup">See full-size image</a></p>
+
+<p><img src="images/WhosOnFirstSubpageMock6.png" alt="Subpage Mockup" title="Subpage Mockup" />
+<a href="images/WhosOnFirstSubpageMock6.png" title="Subpage Mockup">See full-size image</a></p>
+
+<p><img src="images/WhosOnFirstSubpageMock8.png" alt="Subpage Mockup" title="Subpage Mockup" />
+<a href="images/WhosOnFirstSubpageMock8.png" title="Subpage Mockup">See full-size image</a></p>
+
+<p>##Where Are We Now?</p>
+
+<p>Below you will see how the current site looks in a development environment. We just pushed this out to production.</p>
+
+<p><img src="images/whoswholescreen.png" alt="Current Rebuilt Website" title="Current Rebuilt Website" />
+<a href="images/whoswholescreen.png" title="Current Rebuilt Website">See full-size image</a></p>
+
+<p>##Where Are We Going To Be?</p>
+
+<p>Over the course of the next couple weeks, we plan to make further improvements to the website in the following areas:</p>
+
+<ul>
+<li>Building out the interactive component.</li>
+<li>Creating a narrative around WOF stats.</li>
+<li>Working on the information architecture of the website.</li>
+<li>Deciding what information lives on the website and what information lives on Github.</li>
+</ul>
+
+<p>Let us know what you think at @<a href="https://twitter.com/alloftheplaces">alloftheplaces</a>!</p>
+
+</body>
+</html>
