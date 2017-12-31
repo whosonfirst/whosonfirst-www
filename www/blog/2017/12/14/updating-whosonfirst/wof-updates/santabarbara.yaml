@@ -1,0 +1,47 @@
+import:
+    - https://mapzen.com/carto/refill-style-no-labels/6/refill-style-no-labels.zip
+    
+global:
+  sdk_mapzen_api_key: mapzen-Nv28m8Y
+
+sources:
+    santa_barbara_hoods:
+        type: GeoJSON
+        url: https://s3.amazonaws.com/mapzen-assets/images/wof-updates/santabarbara_neighbourhoods.geojson
+        generate_label_centroids: true
+
+layers:
+    #load the original neighbourhoods geojson file
+    santa_barbara_hoods:
+        data: { source: santa_barbara_hoods}
+        draw:
+            polygons_transparent:
+                order: global.sdk_order_over_everything_but_text_0
+                color: [0.655, 0.792, 0.941, 0.50]
+                width: [[5,1px],[10,2px]]
+            lines:
+                order: global.sdk_order_over_everything_but_text_0
+                color: [0.196, 0.404, 0.800, 0.80]
+                width: [[5,1px],[10,2px]]
+        label:
+            filter: { label_placement: true }            
+            draw:
+                text-blend-order-overlay:
+                    #text_source: "name"
+                    font:
+                        fill: white
+                        size:  12px
+                        stroke:
+                            color: black
+                            width: 2
+        filter: { $zoom: { min: 8} }
+
+styles:
+    text-blend-order-overlay:
+        base: text
+        blend_order: 2
+    polygons_transparent:
+        base: polygons
+        blend: overlay
+
+#2017 // https://github.com/stepps00 and https://github.com/zbsingleton

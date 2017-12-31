@@ -1,0 +1,137 @@
+import:
+    - https://mapzen.com/carto/refill-style-no-labels/6/refill-style-no-labels.zip
+
+global:
+  sdk_mapzen_api_key: mapzen-Nv28m8Y
+  dark_blue: [0.455, 0.557, 0.639, 1.00]
+  light_blue: [0.290, 0.424, 0.533, .5]
+
+
+sources:
+    orig_amsterdam_neighbourhoods:
+        type: GeoJSON
+        url: https://s3.amazonaws.com/mapzen-assets/images/neighbourhood-updates-II/Amsterdam_neighborhoods_original.geojson
+        generate_label_centroids: true
+    new_amsterdam_microhoods:
+        type: GeoJSON
+        url: https://s3.amazonaws.com/mapzen-assets/images/neighbourhood-updates-II/amsterdam_microhoods.geojson
+        generate_label_centroids: true
+    new_amsterdam_neighbourhoods:
+        type: GeoJSON
+        url: https://s3.amazonaws.com/mapzen-assets/images/neighbourhood-updates-II/amsterdam_neighbourhoods.geojson
+        generate_label_centroids: true
+    new_amsterdam_boroughs:
+        type: GeoJSON
+        url: https://s3.amazonaws.com/mapzen-assets/images/neighbourhood-updates-II/amsterdam_boroughs.geojson
+        generate_label_centroids: true
+
+layers:
+    #load the original neighbourhoods geojson file
+    orig_amsterdam_neighbourhoods:
+        data: { source: orig_amsterdam_neighbourhoods}
+        filter: { $zoom: { min: 8, max: 11} }
+        draw:
+            polygons_transparent:
+                order: global.sdk_order_over_everything_but_text_0
+                color: global.light_blue
+                width: [[5,1px],[10,2px]]
+            lines:
+                order: global.sdk_order_over_everything_but_text_0
+                color: global.dark_blue
+                width: [[5,1px],[10,2px]]
+        label:
+            filter: { label_placement: true }
+            draw:
+                text-blend-order-overlay:
+                    #text_source: "name"
+                    font:
+                        fill: white
+                        size:  12px
+                        stroke:
+                            color: black
+                            width: 3px
+
+    #load the new microhoods geojson file
+    new_amsterdam_microhoods:
+        data: { source: new_amsterdam_microhoods}
+        filter: { $zoom: { min: 13} }
+        draw:
+            polygons_transparent:
+                order: global.sdk_order_over_everything_but_text_0
+                color: global.light_blue
+                width: [[5,1px],[10,2px]]
+            lines:
+                order: global.sdk_order_over_everything_but_text_0
+                color: global.dark_blue
+                width: [[5,1px],[10,2px]]
+        label:
+            filter: { label_placement: true }
+            draw:
+                text-blend-order-overlay:
+                    #text_source: "name"
+                    font:
+                        fill: white
+                        size:  12px
+                        stroke:
+                            color: black
+                            width: 3px
+
+    #load the new neighbourhoods geojson file
+    new_amsterdam_neighbourhoods:
+        data: { source: new_amsterdam_neighbourhoods}
+        filter: { $zoom: { min: 12, max: 13} }
+        draw:
+            polygons_transparent:
+                order: global.sdk_order_over_everything_but_text_0
+                color: global.light_blue
+                width: [[5,1px],[10,2px]]
+            lines:
+                order: global.sdk_order_over_everything_but_text_0
+                color: global.dark_blue
+                width: [[5,1px],[10,2px]]
+        label:
+            filter: { label_placement: true }
+            draw:
+                text-blend-order-overlay:
+                    #text_source: "name"
+                    font:
+                        fill: white
+                        size:  12px
+                        stroke:
+                            color: black
+                            width: 3px
+
+    #load the new boroughs geojson file
+    new_amsterdam_boroughs:
+        data: { source: new_amsterdam_boroughs}
+        filter: { $zoom: { min: 11, max: 12} }
+        draw:
+            polygons_transparent:
+                order: global.sdk_order_over_everything_but_text_0
+                color: global.light_blue
+                width: [[5,1px],[10,2px]]
+            lines:
+                order: global.sdk_order_over_everything_but_text_0
+                color: global.dark_blue
+                width: [[5,1px],[10,2px]]
+        label:
+            filter: { label_placement: true }
+            draw:
+                text-blend-order-overlay:
+                    #text_source: "name"
+                    font:
+                        fill: white
+                        size:  12px
+                        stroke:
+                            color: black
+                            width: 3px
+
+styles:
+    text-blend-order-overlay:
+        base: text
+        blend_order: 2
+    polygons_transparent:
+        base: polygons
+        blend: overlay
+
+#2017 // https://github.com/stepps00 and https://github.com/zbsingleton

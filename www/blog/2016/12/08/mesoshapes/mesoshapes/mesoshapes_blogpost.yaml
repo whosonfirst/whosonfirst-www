@@ -1,0 +1,158 @@
+global:
+  sdk_mapzen_api_key: mapzen-UJDfMvY
+
+import:
+    - https://tangrams.github.io/blocks/global.yaml
+    - https://tangrams.github.io/blocks/filter/height.yaml
+
+sources:
+    osm:
+        type: TopoJSON
+        url: https://tile.mapzen.com/mapzen/vector/v1/all/{z}/{x}/{y}.topojson
+        max_zoom: 16
+        url_params:
+            api_key: global.sdk_mapzen_api_key
+
+    afghanistan_pre:
+        type: GeoJSON
+        url: https://mapzen-assets.s3.amazonaws.com/images/mesoshapes/afghanistan_pre_mesoshapes.geojson
+        
+        
+        
+    afghanistan_post_geo:
+        type: GeoJSON
+        url: https://mapzen-assets.s3.amazonaws.com/images/mesoshapes/afghanistan_post_mesoshapes.geojson  
+        generate_label_centroids: true
+        
+    afghanistan_post_topo:
+        type: TopoJSON
+        url: https://mapzen-assets.s3.amazonaws.com/images/mesoshapes/afghanistan_post_mesoshapes.topojson     
+        generate_label_centroids: true
+        
+    afghanistan_border:
+        type: GeoJSON
+        url: https://whosonfirst.mapzen.com/data/856/322/29/85632229.geojson
+        generate_label_centroids: true 
+
+layers:
+    
+    afghanistan_border:
+        data: { source: afghanistan_border}
+        draw:
+            lines:
+                color: yellow
+                width: 2px
+                order: 9000
+
+    _pre:
+        data: { source: afghanistan_pre}
+        draw:
+            points:
+                color: yellow
+                width: 2px
+        labels:
+            filter: { $zoom: { max: 6 } }
+
+            draw:
+
+                points:
+                    text:
+                        collide: false
+                        text_source: "wof:name"
+                        font:
+                            fill: white
+                            size:  12px
+                            stroke:
+                                color: black
+                                width: 1
+
+
+    _post_topo:
+        data: { source: afghanistan_post_topo}
+        filter: { $zoom: { min: 5 } }
+
+        draw:
+            lines:
+                color: aqua
+                width: [[5,0.5px],[7,1px],[18,3px]]
+                order: 10000
+        _county_labels:
+            filter: 
+                all:
+                    - label_placement: true 
+                    - $zoom: { min: 6 } 
+            draw:
+                text:
+                    text_source: NAME_EN
+                    font:
+                        fill: white
+                        size: [[7,10px],[12,24px]]
+                        stroke:
+                            color: black
+                            width: 2
+                
+
+    water:
+        data: { source: osm }
+        draw:
+            water:
+                order: global.order
+                color: '#353535'
+    earth:
+        data: { source: osm }
+        draw:
+            earth:
+                order: global.order
+                color: '#555'
+    landuse:
+        data: { source: osm }
+        draw:
+            landuse:
+                order: global.order
+                color: '#666'
+    roads:
+        data: { source: osm }
+        filter: { not: { kind: [rail, ferry] } }
+        draw:
+            roads:
+                order: global.order
+                color: [0.988, 0.988, 0.988]
+                width: [[7,0.0px], [10, .5px], [15, .75px], [17, 5m]]
+        highway:
+            filter: { kind: highway }
+            draw:
+                roads:
+                    order: global.order
+                    width: [[8,0px], [8,.25px], [11, 1.5px], [14, 2px], [16, 4px], [17, 10m]]
+            link:
+                filter: { is_link: true } # on- and off-ramps, etc
+                draw:
+                    roads:
+                        width: [[8,0px], [14, 3px], [16, 5px], [18, 10m]]
+                tunnel-link:
+                    filter: {is_tunnel: true, $zoom: {min: 13} }
+        tunnel:
+            filter: {is_tunnel: true }
+            draw:
+                roads:
+                    order: global.order
+    buildings:
+        data: { source: osm }
+        draw:
+            buildings:
+                order: global.order
+                color: '#999'
+                extrude: true
+styles:
+    water:
+        base: polygons
+    earth:
+        base: polygons
+    landuse:
+        base: polygons
+    roads:
+        base: lines
+        lighting: false
+    buildings:
+        base: polygons
+        mix: [filter-height]

@@ -1,0 +1,168 @@
+global:
+  sdk_mapzen_api_key: mapzen-Nv28m8Y
+
+sources:
+    mapzen:
+        type: TopoJSON
+        url: https://tile.mapzen.com/mapzen/vector/v1/all/{z}/{x}/{y}.topojson
+        url_params:
+            api_key: global.sdk_mapzen_api_key
+    #macrohoods:
+#        type: GeoJSON
+#        url: https://s3.amazonaws.com/whosonfirst.mapzen.com/misc/Issue%20316/1%20Macrohood_Import.geojson
+#        generate_label_centroids: true
+#
+#    macro_mission:
+#        type: GeoJSON
+#        url: https://s3.amazonaws.com/whosonfirst.mapzen.com/misc/Issue%20316/5%20MacrohoodNew_Import.geojson
+#        generate_label_centroids: true
+#
+#    neighbourhood_updates:
+#        type: GeoJSON
+#        url: https://s3.amazonaws.com/whosonfirst.mapzen.com/misc/Issue%20316/2%20NeighbourhoodUpdates_Import.geojson
+#        generate_label_centroids: true
+#
+#    neighbourhood_new:
+#        type: GeoJSON
+#        url: https://s3.amazonaws.com/whosonfirst.mapzen.com/misc/Issue%20316/3%20NeighbourhoodNew_Import.geojson
+#        generate_label_centroids: true
+#
+#    microhoods:
+#        type: GeoJSON
+#        url: https://s3.amazonaws.com/whosonfirst.mapzen.com/misc/Issue%20316/4%20Microhood_Import.geojson
+#        generate_label_centroids: true
+
+    all_hoods:
+        type: GeoJSON
+        url:     https://gist.githubusercontent.com/burritojustice/092ce7d7f4b7d50e5748d3cdfdcced2f/raw/hoods_all_together.geojson
+        generate_label_centroids: true
+
+cameras:
+    perspective:
+        type: flat
+
+styles:
+    lines_transparent:
+        base: lines
+        blend: overlay
+    polygons_transparent:
+        base: polygons
+        blend: overlay
+
+layers:
+    earth:
+        data: { source: mapzen }
+        draw:
+            polygons:
+                order: 0
+                color: '#777'
+    water:
+        data: { source: mapzen }
+        draw:
+            polygons:
+                order: 1
+                color: '#ddd'
+
+    all_hoods:
+        data: { source: all_hoods }
+        label-defaults:
+            filter: { label_placement: true }
+            draw:
+                text:
+                    #text_source: "wof:name"
+                    text_source: wof_name
+        macrohood:
+            #filter: { "wof:placetype": macrohood }
+            filter: { wof_placet: macrohood }
+            draw:
+                polygons:
+                    color: '#555'
+                    order: 5
+                lines_transparent:
+                    color: [1.,1.,1.,0.5]
+                    width: [[12,3px],[15,5px]]
+                    order: 9
+            reclassify:
+                filter: { action: reclassify_to_macrohood }
+                labels:
+                    filter: { label_placement: true }
+                    draw:
+                        text:
+                            priority: 10
+                            font:
+                                fill: red
+                                stroke: { color: white, width: 4 }
+                                size: 12px
+                                transform: uppercase
+            macro_mission:
+                filter: { action: add_macrohood }
+                labels:
+                    filter: { label_placement: true }
+                    draw:
+                        text:
+                            priority: 11
+                            font:
+        #                    font: Times
+                                fill: red
+                                stroke: { color: '#999', width: 3 }
+                                size: 12px
+                                style: italic
+                                transform: uppercase
+
+        neighbourhoods:
+            #filter: { "wof:placetype": neighbourhood }
+            filter: { wof_placet: neighbourhood }
+            draw:
+                lines:
+                    color: white
+                    width: [[12,2px],[15,4px]]
+                    order: 8
+                text:
+                    font:
+                        size: [[10,10px],[15,12px]]
+            neighbourhood_updates:
+                filter: { action: update_neighbourhood }
+                labels:
+                    filter: { label_placement: true }
+                    draw:
+                        text:
+                            #text_source: "wof:name"
+                            text_source: wof_name
+                            priority: 20
+                            font:
+        #                    font: Times
+                                fill: blue
+                                stroke: { color: '#999', width: 3 }
+        #                    style: italic
+            neighbourhood_new:
+                filter: { action: import_new_neighbourhood }
+                draw:
+                    polygons_transparent:
+                        color: [1,1,1,0.3]
+                        order: 6
+                labels:
+                    filter: { label_placement: true }
+                    draw:
+                        text:
+                            priority: 21
+                            font:
+        #                    font: Times
+                                stroke: { color: '#fff', width: 3 }
+                                fill: green
+        microhoods:
+            #filter: { "wof:placetype": microhood }
+            filter: { wof_placet: microhood }
+            draw:
+                lines_transparent:
+                    color: [1.,1.,1.,0.3]
+                    width: [[12,1px],[15,2px]]
+                    order: 7
+            labels:
+                filter: { label_placement: true, $zoom: { min: 14 } }
+                draw:
+                    text:
+                        priority: 30
+                        font:
+                            fill: white
+                            stroke: { color: purple, width: 1 }
+                            size: 9px

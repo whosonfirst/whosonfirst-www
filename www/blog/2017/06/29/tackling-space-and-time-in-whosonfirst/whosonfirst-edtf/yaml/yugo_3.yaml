@@ -1,0 +1,81 @@
+global:
+    draw_global:
+        draw:
+            polygons:
+                order: 2000
+                color: [0.051, 0.416, 1.000, .7]
+                width: [[5,1px],[10,2px]]
+            lines:
+                order: 2001
+                color: [0.910, 0.494, 0.047, 1.00]
+                width: [[5,3px],[10,3px]]
+        label:
+            filter: { label_placement: true }
+            draw:
+                text-blend-order-overlay:
+                    text_source: "wof:name"
+                    font:
+                        fill: white
+                        size:  12px
+                        stroke:
+                            color: black
+                            width: 1px
+
+scene:
+    background: 
+        color: lightblue
+
+sources:
+    yugo_3:
+        type: GeoJSON
+        url: https://s3.amazonaws.com/mapzen-assets/images/whosonfirst-edtf/geom/yugo_3.geojson
+        generate_label_centroids: true
+    croatia:
+        type: GeoJSON
+        url: https://s3.amazonaws.com/mapzen-assets/images/whosonfirst-edtf/geom/croatia.geojson
+        generate_label_centroids: true
+    slovenia:
+        type: GeoJSON
+        url: https://s3.amazonaws.com/mapzen-assets/images/whosonfirst-edtf/geom/slovenia.geojson
+        generate_label_centroids: true
+    mapzen:
+        type: TopoJSON
+        url: https://tile.mapzen.com/mapzen/vector/v1/all/{z}/{x}/{y}.topojson
+        url_params:
+            api_key: mapzen-Nv28m8Y
+        max_zoom: 16
+
+layers:
+    yugo_3:
+        data: { source: yugo_3}
+        really: global.draw_global
+    croatia:
+        data: { source: croatia}
+        really: global.draw_global
+    slovenia:
+        data: { source: slovenia}
+        really: global.draw_global
+    earth:
+        data: { source: mapzen }
+        draw:
+            polygons:
+                order: 1
+                color: grey
+    water:
+        data: { source: mapzen }
+        draw:
+            polygons:
+                order: 1
+                color: lightblue
+
+styles:
+    text-blend-order-overlay:
+        base: text
+        blend_order: 2
+    polygons_transparent:
+        base: polygons
+        blend: overlay
+
+#2017 // https://github.com/stepps00
+
+

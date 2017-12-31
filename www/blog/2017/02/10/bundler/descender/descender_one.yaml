@@ -1,0 +1,26 @@
+import: https://mapzen.com/carto/refill-style/6/refill-style.yaml
+
+global:
+  sdk_mapzen_api_key: mapzen-Nv28m8Y
+
+sources:
+    mapzen:
+        type: TopoJSON
+        url: https://tile.mapzen.com/mapzen/vector/v1/all/{z}/{x}/{y}.topojson
+        url_params:
+            api_key: global.sdk_mapzen_api_key
+
+    manitoba:
+        type: GeoJSON
+        url: https://whosonfirst.mapzen.com/data/856/820/85/85682085.geojson  
+
+layers:
+
+    _manitoba:
+        data: { source: manitoba}
+        draw:
+            lines:
+                # order: sdk_order_over_everything_but_text_0
+                order: 1000
+                color: red
+                width: 3px
