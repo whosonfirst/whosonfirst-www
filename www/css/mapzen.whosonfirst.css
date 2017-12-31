@@ -981,7 +981,8 @@ ol, ul {
 a {
 	word-break: normal;
 	text-decoration: none;
-	color: #1F1F1F;
+	// color: #1F1F1F;
+	color: #FE189D;	
 }
 
 a:hover {
