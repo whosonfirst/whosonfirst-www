@@ -303,17 +303,15 @@ div.whosonfirst-card-container h6.whosonfirst-main-headline {
 }
 
 .navbar-default .navbar-nav>li>a {
-	color: #1F1F1F;
-	padding-bottom: 0px;
+    padding-bottom: 0px;
     padding-left: 2px;
     padding-right: 2px;
     margin-right: 13px;
     margin-left: 13px;
-	margin-bottom: 14px;
+    margin-bottom: 14px;
 }
 
 .navbar-default .navbar-nav>li>a:hover {
-	color: #FE189D;
 	border-color: #FE189D;
 }
 
@@ -981,13 +979,11 @@ ol, ul {
 a {
 	word-break: normal;
 	text-decoration: none;
-	// color: #1F1F1F;
-	color: #FE189D;	
+	color: #FE189D !important;	
 }
 
 a:hover {
 	text-decoration: none;
-	color: #FE189D;
 	border-color: #FE189D;
 }
 
@@ -1343,7 +1339,6 @@ a.whosonfirst-dynamically-generated-post:hover:after {
 
 a:hover .whosonfirst-subpage-container-doublewidth-col-card-h1, a:hover .whosonfirst-subpage-container-singlewidth-col-card-h1, a:hover .whosonfirst-subpage-container-triplewidth-col-card-h1 {
 	text-decoration: none;
-	color: #FE189B;
 	border-color: #FE189B;
 }
 
