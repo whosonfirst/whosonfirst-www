@@ -6,11 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Increasing Name Translations in Who&#39;s On First</title>
 		<meta name="description" content="Who’s on First is a gazetteer of places.">
-		<link rel="apple-touch-icon" href="/images/favicons/apple-touch-icon.png" sizes="180x180">
-		<link rel="icon" type="image/png" href="/images/favicons/favicon-16x16.png" sizes="16x16">
-		<link rel="icon" type="image/png" href="/images/favicons/favicon-32x32.png" sizes="32x32">
-		<link rel="manifest" href="/images/favicons/manifest.json">
-		<link rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg" color="#2C1E3F">
+		
 		<link rel="stylesheet" href="/css/bootstrap.min.css">
 		<link rel="stylesheet" href="/css/mapzen.whosonfirst.css">
 		
@@ -25,7 +21,7 @@
 		<meta property="twitter:card" value="summary" />
 		<meta property="twitter:site" content="@alloftheplaces" />
 		<meta property="twitter:creator" content="@alloftheplaces" />
-		<meta property="twitter:url" content="/blog/2017/08/22/summer-2017-wof/" />
+		<meta property="twitter:url" content="https://www.whosonfirst.org/blog/2017/08/22/summer-2017-wof/" />
 		<meta property="twitter:title" content="Increasing Name Translations in Who&#39;s On First" />
 		<meta property="twitter:description" content="Outlining and visualizing the work we&#39;ve done to increase name translations in the Who&#39;s On First gazetteer." />
 		<meta property="twitter:image" content="/id/&#34;images/photo_main.jpg&#34;" />
@@ -59,6 +55,12 @@
 		  .hey-look {
 		  font-weight: 700;
 		  }
+
+		  #blog-post {
+		  margin-top:2em;
+		  margin-bottom:5em;
+		  }
+		  
 		</style>
 	</head>
 	<body>
@@ -69,9 +71,11 @@
 	    Increasing Name Translations in Who&#39;s On First
 	    <small>This is a blog post by
 	      <span class="hey-look">ndcartography</span> and <span class="hey-look">stepps00</span>
-	      on August 22, 2017 
-	       tagged <span class="hey-look">whosonfirst</span>, <span class="hey-look">data</span> and <span class="hey-look">interns</span></small>
+	      that was published on August 22, 2017 
+	       and tagged <span class="hey-look">whosonfirst</span>, <span class="hey-look">data</span> and <span class="hey-look">interns</span></small>
 	  </h2>
+
+	  <div id="blog-post">
 <p>This summer, Mapzen embarked on a large project to quantify and visualize name translation coverage in <a href="https://whosonfirst.mapzen.com/">Who&rsquo;s On First</a>, and to add new translations from <a href="http://www.geonames.org">GeoNames</a> by walking the concordance between the two datasets. Much of the work was done by Nathaniel Douglass, our summer intern on the Data team.</p>
 
 <p>Who&rsquo;s On First is Mapzen&rsquo;s big list of places, each with a stable identifier and descriptive properties. These places represent various <a href="https://github.com/whosonfirst/whosonfirst-placetypes">placetypes</a> like <a href="https://whosonfirst.mapzen.com/spelunker/placetypes/country/"><code>country</code></a>, <a href="https://whosonfirst.mapzen.com/spelunker/placetypes/region/"><code>region</code></a>, <a href="https://whosonfirst.mapzen.com/spelunker/placetypes/locality/"><code>locality</code></a>, and even <a href="https://whosonfirst.mapzen.com/spelunker/placetypes/marinearea/"><code>marinearea</code></a>.</p>
@@ -292,5 +296,6 @@
 <p>If you have names you would like to add to a record, please feel free to file a new issue in the <a href="https://github.com/whosonfirst-data/whosonfirst-data/issues/new"><code>whosonfirst-data</code></a> repository or <a href="mailto:hello@mapzen.com">drop us a line</a>!</p>
 
 <p><em>Photo Credit: <a href="https://flic.kr/p/ewKKu">quiddle. (Flickr)</a></em></p>
-	</body>
+</div>
+</body>
 </html>

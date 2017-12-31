@@ -6,11 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Bundling up descendants into GeoJSON</title>
 		<meta name="description" content="Who’s on First is a gazetteer of places.">
-		<link rel="apple-touch-icon" href="/images/favicons/apple-touch-icon.png" sizes="180x180">
-		<link rel="icon" type="image/png" href="/images/favicons/favicon-16x16.png" sizes="16x16">
-		<link rel="icon" type="image/png" href="/images/favicons/favicon-32x32.png" sizes="32x32">
-		<link rel="manifest" href="/images/favicons/manifest.json">
-		<link rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg" color="#2C1E3F">
+		
 		<link rel="stylesheet" href="/css/bootstrap.min.css">
 		<link rel="stylesheet" href="/css/mapzen.whosonfirst.css">
 		
@@ -25,7 +21,7 @@
 		<meta property="twitter:card" value="summary" />
 		<meta property="twitter:site" content="@alloftheplaces" />
 		<meta property="twitter:creator" content="@alloftheplaces" />
-		<meta property="twitter:url" content="/blog/2017/02/10/bundler/" />
+		<meta property="twitter:url" content="https://www.whosonfirst.org/blog/2017/02/10/bundler/" />
 		<meta property="twitter:title" content="Bundling up descendants into GeoJSON" />
 		<meta property="twitter:description" content="We made a handy tool that lets you download the descendants of a place as GeoJSON." />
 		<meta property="twitter:image" content="/id/images/wof_canada-descender.gif" />
@@ -59,6 +55,12 @@
 		  .hey-look {
 		  font-weight: 700;
 		  }
+
+		  #blog-post {
+		  margin-top:2em;
+		  margin-bottom:5em;
+		  }
+		  
 		</style>
 	</head>
 	<body>
@@ -69,9 +71,11 @@
 	    Bundling up descendants into GeoJSON
 	    <small>This is a blog post by
 	      <span class="hey-look">burritojustice</span>, <span class="hey-look">stepps00</span> and <span class="hey-look">dphiffer</span>
-	      on February 10, 2017 
-	       tagged <span class="hey-look">whosonfirst</span> and <span class="hey-look">data</span></small>
+	      that was published on February 10, 2017 
+	       and tagged <span class="hey-look">whosonfirst</span> and <span class="hey-look">data</span></small>
 	  </h2>
+
+	  <div id="blog-post">
 <p>Every record in <a href="https://whosonfirst.mapzen.com/spelunker/">Who’s On First</a>, our gazetteer of places around the world, has two powerful properties &ndash; geometry and hierarchy. Since the raw data of any WOF record is a blob of GeoJSON, you can take the URL and draw it in any modern mapping application with minimal effort. We thought it would be nice to let you grab GeoJSON for a bunch of records at once, so we added a tool called the Bundler for you using the soon-to-be-released Who’s On First API.</p>
 
 <p>##Descending into Mapness</p>
@@ -232,5 +236,6 @@ frame.src = frame.getAttribute(&quot;source&quot;);
 </ul>
 
 <p>But most importantly, <a href="mailto:hello@mapzen.com?subject=bundler%20is%20happy">let us know</a> how you use the Bundler!</p>
-	</body>
+</div>
+</body>
 </html>

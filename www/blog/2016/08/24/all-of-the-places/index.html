@@ -6,11 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>All of the Places</title>
 		<meta name="description" content="Who’s on First is a gazetteer of places.">
-		<link rel="apple-touch-icon" href="/images/favicons/apple-touch-icon.png" sizes="180x180">
-		<link rel="icon" type="image/png" href="/images/favicons/favicon-16x16.png" sizes="16x16">
-		<link rel="icon" type="image/png" href="/images/favicons/favicon-32x32.png" sizes="32x32">
-		<link rel="manifest" href="/images/favicons/manifest.json">
-		<link rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg" color="#2C1E3F">
+		
 		<link rel="stylesheet" href="/css/bootstrap.min.css">
 		<link rel="stylesheet" href="/css/mapzen.whosonfirst.css">
 		
@@ -25,7 +21,7 @@
 		<meta property="twitter:card" value="summary" />
 		<meta property="twitter:site" content="@alloftheplaces" />
 		<meta property="twitter:creator" content="@alloftheplaces" />
-		<meta property="twitter:url" content="/blog/2016/08/24/all-of-the-places/" />
+		<meta property="twitter:url" content="https://www.whosonfirst.org/blog/2016/08/24/all-of-the-places/" />
 		<meta property="twitter:title" content="All of the Places" />
 		<meta property="twitter:description" content="A tiny website for sharing links to places." />
 		<meta property="twitter:image" content="/id/images/alloftheplaces-head.png" />
@@ -59,6 +55,12 @@
 		  .hey-look {
 		  font-weight: 700;
 		  }
+
+		  #blog-post {
+		  margin-top:2em;
+		  margin-bottom:5em;
+		  }
+		  
 		</style>
 	</head>
 	<body>
@@ -69,9 +71,11 @@
 	    All of the Places
 	    <small>This is a blog post by
 	      <span class="hey-look">dphiffer</span>
-	      on August 24, 2016 
-	       tagged <span class="hey-look">whosonfirst</span>, <span class="hey-look">data</span>, <span class="hey-look">wof</span> and <span class="hey-look">api</span></small>
+	      that was published on August 24, 2016 
+	       and tagged <span class="hey-look">whosonfirst</span>, <span class="hey-look">data</span>, <span class="hey-look">wof</span> and <span class="hey-look">api</span></small>
 	  </h2>
+
+	  <div id="blog-post">
 <p><em>TL;DR I got lost with my friend, and then found <a href="https://alloftheplaces.xyz/">alloftheplaces.xyz</a> using all of the Mapzen APIs.</em></p>
 
 <p>I was meeting my friend <a href="https://twitter.com/carolinesinders">Caroline</a> on the July 4th holiday to discuss <a href="https://smalldata.coop/">a project we’re working on</a>. She said “we must find something holiday themed,” and so we planned a field trip to Ellis Island. I suggested a time and sent her <a href="https://www.google.com/maps/place/Ellis+Island+from+Battery+Park">a link</a> (now defunct) to where we should meet up. On Monday morning I waited for a while next to the line of tourists, and some time passed. It was a holiday, so there was no particular rush, but I started to suspect she was lost. And then, after some confused texting, we discovered we’d each ended up in different states!</p>
@@ -142,5 +146,6 @@
 <p><img src="images/subway-escalator.jpg" alt="Emerging from underground" /></p>
 
 <p>I made it to Grand Army Plaza. The test was a partial success, with lots of pointers toward things that should change. I don’t think my experimental web map is going to become anyone’s new default, but there’s a whole lot you can spin up quickly with various Mapzen APIs. The capacity to add new records to the Who’s On First dataset, and then <em>link to them</em>, means I’ll be far less likely to accidentally send my friends to New Jersey.</p>
-	</body>
+</div>
+</body>
 </html>
