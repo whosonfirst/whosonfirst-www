@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>All of the Places</title>
+		<meta name="description" content="Who’s on First is a gazetteer of places.">
+		<link rel="apple-touch-icon" href="/images/favicons/apple-touch-icon.png" sizes="180x180">
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-16x16.png" sizes="16x16">
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-32x32.png" sizes="32x32">
+		<link rel="manifest" href="/images/favicons/manifest.json">
+		<link rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg" color="#2C1E3F">
+		<link rel="stylesheet" href="/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/css/mapzen.whosonfirst.css">
+		
+		<link rel="stylesheet" href="/css/styles/grayscale.css">
+
+		<meta property="og:type" content="article" />
+		<meta property="og:site_name" content="Who's On First" />
+		<meta property="og:title" content="All of the Places" />
+		<meta property="og:description" content="A tiny website for sharing links to places." />
+		<meta property="og:image" content="images/alloftheplaces-head.png" />
+		
+		<meta property="twitter:card" value="summary" />
+		<meta property="twitter:site" content="@alloftheplaces" />
+		<meta property="twitter:creator" content="@alloftheplaces" />
+		<meta property="twitter:url" content="/blog/2016/08/24/all-of-the-places/" />
+		<meta property="twitter:title" content="All of the Places" />
+		<meta property="twitter:description" content="A tiny website for sharing links to places." />
+		<meta property="twitter:image" content="/id/images/alloftheplaces-head.png" />
+		
+		<style type="text/css">
+		  body {
+		  font-family: serif;
+		  margin:2em;
+		  margin-left: 10%;
+		  margin-right: 10%;
+		  font-size: 1.3em;
+		  line-height: 1.5em;
+		  }
+
+		  img {
+		  max-width: 640px !important;
+		  max-height: 480px !important;
+		  border: 1px dotted #ccc;
+		  padding: .5em;
+		  margin-bottom:1em;
+		  margin-top: 1em;
+		  }
+
+		  h2 small {
+		  display: block;
+		  margin-top:.10em;
+		  font-weight: 100;
+		  font-size: .5em;
+		  }
+
+		  .hey-look {
+		  font-weight: 700;
+		  }
+		</style>
+	</head>
+	<body>
+
+	  
+	  
+	  <h2>
+	    All of the Places
+	    <small>This is a blog post by
+	      <span class="hey-look">dphiffer</span>
+	      on August 24, 2016 
+	       tagged <span class="hey-look">whosonfirst</span>, <span class="hey-look">data</span>, <span class="hey-look">wof</span> and <span class="hey-look">api</span></small>
+	  </h2>
+<p><em>TL;DR I got lost with my friend, and then found <a href="https://alloftheplaces.xyz/">alloftheplaces.xyz</a> using all of the Mapzen APIs.</em></p>
+
+<p>I was meeting my friend <a href="https://twitter.com/carolinesinders">Caroline</a> on the July 4th holiday to discuss <a href="https://smalldata.coop/">a project we’re working on</a>. She said “we must find something holiday themed,” and so we planned a field trip to Ellis Island. I suggested a time and sent her <a href="https://www.google.com/maps/place/Ellis+Island+from+Battery+Park">a link</a> (now defunct) to where we should meet up. On Monday morning I waited for a while next to the line of tourists, and some time passed. It was a holiday, so there was no particular rush, but I started to suspect she was lost. And then, after some confused texting, we discovered we’d each ended up in different states!</p>
+
+<p>The ferry to the Statue of Liberty and Ellis Island leaves from two different docks. One departs from Battery Park, at the tip of Manhattan. The other leaves from across the Hudson, in New Jersey. I had sent her a URL that yielded ambiguous results. Testing the link afterward suggested that depending on what kind of device you used, where you made your request from, (perhaps various other personalization factors?) it was unpredictable where the map might lead you.</p>
+
+<p>In this case my phone showed <a href="https://whosonfirst.mapzen.com/spelunker/id/907288683/">New York</a>, hers showed <a href="https://whosonfirst.mapzen.com/spelunker/id/907289587/">New Jersey</a>. We sorted out the confusion and met in the middle, on Ellis Island. All was good.</p>
+
+<p>The experience stuck with me. How is it that one URL could yield a single, <em>but different</em> result for each person? Further inspection made me realize I’d linked to a photo icon on the map, and that linking to photos isn’t well supported on the iOS version of Google Maps.</p>
+
+<p><img src="images/google-maps.png" alt="Google Maps photo place" /></p>
+
+<p>I’d also complicated the situation by modifying the URL before I shared it. Part of what I removed, the latitude and longitude coordinates, turn out to be an important fallback for settling search result ambiguities. But the link worked for me at the time, so I figured it was safe to share. Nobody is better at intuiting meaning from fuzzy text than Google’s search engine. But sometimes it’s better for an interactive map to fail rather than offer up a guess. And this appears to be the new behavior, so kudos to the Google Maps team for improving that.</p>
+
+<p>I got to thinking about how our own <a href="https://mapzen.com/blog/who-s-on-first/">Who’s On First</a> gazetteer might help in this type of situation. We already have the <a href="https://whosonfirst.mapzen.com/spelunker/id/874411113/">Spelunker</a> to find and inspect records, but I decided to build something with far less detail. I just want to <em>link to a place on the map</em>, and get directions there. And decorate it with links to other relevant websites—to our own <a href="https://whosonfirst.mapzen.com/spelunker">Spelunker</a>, to the official web presence for the place (if one exists), to social media, Wikipedia, etc.</p>
+
+<p>My place-permalinking website is called <a href="https://alloftheplaces.xyz/">alloftheplaces.xyz</a> and it’s still very much an early prototype. As such, it still doesn’t quite do what it says on the tin. We are far from including “all of the places,” if that is even possible. It’s an aspirational name, and is consistent with the Who’s On First <a href="https://twitter.com/alloftheplaces">Twitter account</a>.</p>
+
+<div class="demo-wrapper"><iframe scrolling="no" src="https://alloftheplaces.xyz/874411113">
+    Your browser doesn't support iframe, please go to 'https://alloftheplaces.xyz/874411113' to see demo.
+</iframe></div>
+
+<p>I wired up <a href="https://github.com/mapzen/mapzen.js">Mapzen.js</a> using the new <a href="https://mapzen.com/blog/walkabout/">Walkabout</a> map style, and set it up to pull in data from <a href="https://whosonfirst.mapzen.com/">Who’s On First</a>. On top of that: <a href="https://mapzen.com/products/turn-by-turn/">Turn-By-Turn navigation</a> and <a href="https://mapzen.com/products/search/">Mapzen Search</a>. This little website could just as well be called “All of the Mapzen Services.”</p>
+
+<p>Last week <a href="http://aaronland.info/">Aaron</a> asked me to take the directions feature out for a spin and to keep track of my experience. So I did that, and it helped clarify some ideas and feelings about using mobile devices to navigate meatspace.</p>
+
+<p>A lot of this may be specific to an NYC-style of routing: transit-focused, with sensitivity to offline use. On the other hand, a lot of general-purpose mapping apps have an everyone-drives-everywhere bias. I’m still undecided about whether a mobile web slippy map is up to this task, but I do think it’s a good way to quickly try out UI ideas.</p>
+
+<p>First issue: Who’s On First had no record of the place I was trying to navigate to (Grand Army Plaza). There was also no record of the art space I was traveling to afterward (Pioneer Works, now <a href="https://alloftheplaces.xyz/907130503">added</a>). The data will get better, and I’d like to experiment with capturing new places directly from  alloftheplaces.xyz, perhaps by collecting them via <em>another</em> tiny Mapzen service that Aaron is working on called Maplibs.</p>
+
+<p><img src="images/maplibs.png" alt="Maplibs" /></p>
+
+<p>Second issue: As a New Yorker, I have opinions about things like local vs. express trains. When I asked for a route, it only offered me a single choice, though the Mapzen Mobility team has alternate routes on their radar.</p>
+
+<p>At this point in my test I still haven’t left yet, but I’m using the routing service as a probe to figure out how soon I need to leave. The initial view should emphasize the travel time more. A feature that might be useful here is a built-in reminder: “hey, time to start leaving.” Apple does this with Calendar.app events with locations, but it seems to assume that everyone drives everywhere.</p>
+
+<p>I leave, and I’m transitioning from my desktop to my phone. I have to look up the trip again on my phone, and I’m probably doing it in the elevator where bandwidth is iffy. A thing that Google Maps does well here is it uses my Google account to sync up recently searched things, which means I don’t have to thumb-type my search again. This is a nice feature that feels like an invasive lock-in, but it’s still a nice feature.</p>
+
+<p>I’m thinking about how to offer a similar experience but with less of Google’s “let us organize *all of your data.*” For starters I could save each search query in the web browser cache, so that found things stay found. But the real challenge in a feature like this is syncing these searches between devices and doing it in a way that keeps the user in control of her or his own data. Building out all the plumbing required for that type of use case makes me think of <a href="https://www.youtube.com/watch?v=7s664NsLeFM">Carl Sagan’s apple pie recipe</a>.</p>
+
+<p>In any case, here’s what I’m seeing on my phone as I leave the office:</p>
+
+<p><img src="images/alloftheplaces1.png" alt="Directions part one" /></p>
+
+<p>Using this interface on such a tiny screen is still kind of a hot mess. To a large extent this is because I made a compromise to split up the vertical screen space between map and directions. Scrolling through that list of walking directions inside such a tiny box is painful, and offers too much detail.</p>
+
+<p>Maybe what I want is a summarized version that says:
+<a href="#">+</a> Walk to 34th St - Herald Sq Station
+<a href="#">+</a> Take the B train to 7th Ave
+<a href="#">+</a> Walk to Prospect Park</p>
+
+<p>And then I could tap on the <a href="#">+</a> for each of the high-level steps to get more details. Maybe I can use the raw turn-by-turn data and group each of the steps by mode to create each top-level step. Worth a try anyway.</p>
+
+<p><a href="https://twitter.com/sarahlensing">Sarah Lensing</a>, who works on the mobile team here, is testing a version of the directions view in Erasermap that takes a similar approach, structuring the various modes of a multimodal trip (available soon!)</p>
+
+<p><img src="images/erasermap.png" alt="Erasermap" /></p>
+
+<p>Now I’m on the train, and I’ve lost my bandwidth, but I’m using my phone to figure out which stop to get off at. This is another place where that overview view could be helpful—I really care about “where do I get off the train?” and to a lesser degree “where am I going to walk once I get there?&rdquo; Bonus points if I could pre-cache a high zoom level neighborhood map of my destination to look at while I’m en route. To the extent that it’s possible, anything I download on my phone should be cached for offline use, probably with something like <a href="https://github.com/localForage/localForage">localForage</a>.</p>
+
+<p>Here’s how things look now on the train:</p>
+
+<p><img src="images/alloftheplaces2.png" alt="Directions part two" /></p>
+
+<p>I make it to my destination and I’m done, but my map is still trying to geolocate me. Was it trying to do this the whole time I was underground? I need some way to tell the map “I’m done” and for the map to notice “we’re offline, stop trying to geolocate.” I wonder if most browsers/phones are smart enough to detect when you’ve lost connectivity and stop trying to geolocate you? Uncertain, but I can always just listen for an <a href="https://developer.mozilla.org/en-US/docs/Online_and_offline_events"><code>offline</code> event</a> so the map responds correctly when I go underground.</p>
+
+<p>Another pain point I’ve experienced nearing the end of the trip is when I emerge from the train, blinking in the bright sunlight, and the map hasn’t really accounted for my new situation. Which way should I walk? If I have a CitiBike membership (I do), where are the racks with available bikes? <a href="https://citymapper.com/">Citymapper</a> has a great bike sharing interface for this type of scenario), and the Mapzen Mobility team is thinking about <a href="https://github.com/transitland/transitland-datastore/issues/310">how to implement this</a>.</p>
+
+<p><img src="images/subway-escalator.jpg" alt="Emerging from underground" /></p>
+
+<p>I made it to Grand Army Plaza. The test was a partial success, with lots of pointers toward things that should change. I don’t think my experimental web map is going to become anyone’s new default, but there’s a whole lot you can spin up quickly with various Mapzen APIs. The capacity to add new records to the Who’s On First dataset, and then <em>link to them</em>, means I’ll be far less likely to accidentally send my friends to New Jersey.</p>
+	</body>
+</html>

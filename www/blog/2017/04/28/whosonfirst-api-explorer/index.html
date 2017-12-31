@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>The Who&#39;s On First API Explorer</title>
+		<meta name="description" content="Who’s on First is a gazetteer of places.">
+		<link rel="apple-touch-icon" href="/images/favicons/apple-touch-icon.png" sizes="180x180">
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-16x16.png" sizes="16x16">
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-32x32.png" sizes="32x32">
+		<link rel="manifest" href="/images/favicons/manifest.json">
+		<link rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg" color="#2C1E3F">
+		<link rel="stylesheet" href="/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/css/mapzen.whosonfirst.css">
+		
+		<link rel="stylesheet" href="/css/styles/grayscale.css">
+
+		<meta property="og:type" content="article" />
+		<meta property="og:site_name" content="Who's On First" />
+		<meta property="og:title" content="The Who&#39;s On First API Explorer" />
+		<meta property="og:description" content="I like to think the WOF API Explorer is another illustration of the idea that &#34;Mapzen should always be Consumer Zero (of Mapzen services)&#34;." />
+		<meta property="og:image" content="images/light.jpg" />
+		
+		<meta property="twitter:card" value="summary" />
+		<meta property="twitter:site" content="@alloftheplaces" />
+		<meta property="twitter:creator" content="@alloftheplaces" />
+		<meta property="twitter:url" content="/blog/2017/04/28/whosonfirst-api-explorer/" />
+		<meta property="twitter:title" content="The Who&#39;s On First API Explorer" />
+		<meta property="twitter:description" content="I like to think the WOF API Explorer is another illustration of the idea that &#34;Mapzen should always be Consumer Zero (of Mapzen services)&#34;." />
+		<meta property="twitter:image" content="/id/images/light.jpg" />
+		
+		<style type="text/css">
+		  body {
+		  font-family: serif;
+		  margin:2em;
+		  margin-left: 10%;
+		  margin-right: 10%;
+		  font-size: 1.3em;
+		  line-height: 1.5em;
+		  }
+
+		  img {
+		  max-width: 640px !important;
+		  max-height: 480px !important;
+		  border: 1px dotted #ccc;
+		  padding: .5em;
+		  margin-bottom:1em;
+		  margin-top: 1em;
+		  }
+
+		  h2 small {
+		  display: block;
+		  margin-top:.10em;
+		  font-weight: 100;
+		  font-size: .5em;
+		  }
+
+		  .hey-look {
+		  font-weight: 700;
+		  }
+		</style>
+	</head>
+	<body>
+
+	  
+	  
+	  <h2>
+	    The Who&#39;s On First API Explorer
+	    <small>This is a blog post by
+	      <span class="hey-look">thisisaaronland</span>
+	      on April 28, 2017 
+	       tagged <span class="hey-look">whosonfirst</span> and <span class="hey-look">electron</span></small>
+	  </h2>
+<div style="margin: 0 auto; width:341px;">
+<a href="https://collection.cooperhewitt.org/objects/18419753/"><img src="images/light.jpg" height="480" width="341" /></a>
+</div>
+
+<p>A few weeks ago <a href="https://mapzen.com/blog/tangram-work-developer-commentary">Lou built an Electron application</a>. For April Fools&rsquo; Day he made a version of <a href="https://mapzen.com/blog/introducing-tangram-work">Tangram Play</a> in the style of a 90&rsquo;s era Windows application and published it as a living breathing desktop application rather than <a href="https://mapzen.com/tangram/play/">the web application</a> we&rsquo;ve come to know and love. In addition he was able to publish MacOS and Linux native applications, all from the same code base. The same code base that is ultimately just HTML and CSS and Javascript (aka &ldquo;a web application&rdquo;). An <a href="https://electron.atom.io/apps">increasing number of desktop applications</a> are being developed this way and it&rsquo;s what makes Electron pretty exciting.</p>
+
+<p>Shortly after Lou&rsquo;s blog post we pushed the <a href="https://mapzen.com/blog/whosonfirst-api">Who&rsquo;s On First API</a> out the door. One of the features of the API is that it exposes a suite of <code>api.spec.*</code> methods <a href="https://mapzen.com/documentation/wof/methods/#apispec">that allow you to introspect the API itself</a>. You can fetch all of the <a href="https://mapzen.com/documentation/wof/methods/#api.spec.methods">methods</a> (and their parameters and errors), all of the <a href="https://mapzen.com/documentation/wof/methods/#api.spec.errors">common errors</a> and all of the supported <a href="https://mapzen.com/documentation/wof/methods/#api.spec.formats">output formats</a>. These methods owe a debt of inspiration to the nice people at <a href="http://linode.com">Linode</a> who started doing something similar <a href="http://blog.linode.com/2012/04/04/api_spec/">way back in 2012</a> and from which the <code>api.spec</code> naming convention is derived.</p>
+
+<p>The Who&rsquo;s On First API has always enjoyed a internal web-based &ldquo;explorer&rdquo; tool. API explorers are pretty common these days but if you&rsquo;re not sure they are <a href="https://www.flickr.com/services/api/">have a look at the Flickr API Explorer</a> which is pretty much the ur-Explorer that started them all. Go ahead, we&rsquo;ll wait&hellip;</p>
+
+<p><img src="images/flickr-api-explorer.png" alt="" /></p>
+
+<p>_Also, Cal Henderson&rsquo;s 2007 talk <a href="http://www.iamcal.com/talks/open_hack_day.pps">&ldquo;Flickr and APIs: A Love Story&rdquo;</a> which is a 22MB PowerPoint presentation because&hellip; it was 2007, I guess. Anyway, it it a good talk._</p>
+
+<p>We use our own API Explorer extensively for debugging and generally poking around. It is often the fastest way to answer a question about the data. I find it difficult to imagine developing or working with APIs <em>without</em> an API explorer now and that makes the internal-iness of the WOF API Explorer less than awesome. For a variety of reasons it won&rsquo;t be made public any time soon which is sort of like pouring salt in your own wound.</p>
+
+<p><img src="images/whosonfirst-api-explorer.png" alt="" /></p>
+
+<p>By now, some of you might have figured out where this is going: If the WOF API has a full suite of methods for inspecting the API and Electron makes it easy to develop custom applications in HTML and Javascript then why not build&hellip; <a href="https://github.com/whosonfirst/electron-whosonfirst-api-explorer">a standalone Who&rsquo;s On First API Explorer</a>. So we did!</p>
+
+<p>After I showed an early version to a friend he asked <em>&ldquo;Why an Electron application?&rdquo;</em> for an API explorer. Aside from the reasons outlined above I offered the following rationale:</p>
+
+<ol>
+<li>Curiousity. Does the Who&rsquo;s On First API lend itself to an Electron application? (It does!)</li>
+<li>If you set aside some boring details about code-signing and paying Apple or Microsoft for the privilege, there is the possibility of generating native platform specific binaries for Electron applications. That means never having to say <em>&ldquo;Just install Node.js&hellip;&rdquo;</em> to someone. You can replace <a href="https://nodejs.org/">Node.js</a> with any number of technologies and the dynamic is the same. Tools that don&rsquo;t require a laundry list of extra steps to get started with are important. Not everyone is interested in the technology details because they are busy being awesome in other endeavours.</li>
+<li>It was (is) a good way to put the <code>api.spec</code> methods through their paces. We&rsquo;ve been able to identify a bunch of places where the API doesn&rsquo;t return enough information to usefully build an explorer-style interface. Many have been fixed already and the rest (notably information about output formats) are slated to be improved shortly.</li>
+<li>It allows us offer a public version of the API explorer.</li>
+<li>It is a good way to figure out which out <a href="https://github.com/whosonfirst/js-mapzen-whosonfirst">the Who&rsquo;s On First Javascript libraries</a> should be rejiggered to hold hands with &ldquo;modern Javascript&rdquo; and Node.js – things like the <a href="https://github.com/whosonfirst/electron-whosonfirst-api-explorer/blob/master/mapzen.whosonfirst.api.js">mapzen.whosonfirst.api.js</a> library which we&rsquo;d like to bless as officially supported alongside the <a href="https://github.com/whosonfirst/go-whosonfirst-api">Go</a> and <a href="https://github.com/whosonfirst/py-mapzen-whosonfirst-api">Python</a> libraries.</li>
+<li>It works offline because initial calls to the <code>api.spec.*</code> methods are cached locally.</li>
+</ol>
+
+<p>I like to think the WOF API Explorer is another illustration of the idea that <a href="https://mapzen.com/blog/iamhere">&ldquo;Mapzen should always be Consumer Zero (of Mapzen services)&rdquo;</a>. The WOF API Explorer is just one of many possible <a href="https://mapzen.com/blog/bundler">targeted and focused applications</a> that we might build with tools like Electron and <a href="https://www.mapzen.com/documentation">our own services</a>.</p>
+
+<p>The <a href="https://github.com/whosonfirst/electron-whosonfirst-api-explorer">WOF API Explorer is available for anyone to try</a>. As of this writing, and despite what I said above, you will still need to <em>&ldquo;Just install Node.js&rdquo;</em> to get it to work. Hopefully the time when we dig in to the details of building and signing native applications will come soon. Until then there is <a href="https://github.com/whosonfirst/electron-whosonfirst-api-explorer#install">a little bit (possibly a lot, depending on your skill and comfort level) of preamble</a> you&rsquo;ll need to do to get the WOF API Explorer up and running.</p>
+
+<p>In the interim, here are a bunch of screenshots to hopefully make that extra work seem worth doing:</p>
+
+<p><img src="images/api-explorer-start.png" alt="" /></p>
+
+<p><em>Here&rsquo;s what happens when you start the API Explorer for the first time: <a href="https://mapzen.com/developers">You are asked for a Mapzen API key!</a></em></p>
+
+<p><img src="images/api-explorer-methods.png" alt="" /></p>
+
+<p><em>List views appear in the left-hand sidebar. Here&rsquo;s a list of all the API methods. API methods, errors and formats are fetched from the API when the Explorer starts up and there is a handy &ldquo;refresh&rdquo; button at the bottom of each list view update things while the application is running.</em></p>
+
+<p><img src="images/api-explorer-docs.png" alt="" /></p>
+
+<p><em>Here&rsquo;s an example of the documentation for the <a href="https://mapzen.com/documentation/wof/methods/#whosonfirst.places.getInfo">whosonfirst.places.getInfo</a> API method, which isn&rsquo;t that different from what you&rsquo;d see on the <a href="https://mapzen.com/documentation/wof/">Mapzen website</a>.</em></p>
+
+<p><img src="images/api-explorer-request.png" alt="" /></p>
+
+<p><em>From any documentation page you can click through to a corresponding &ldquo;explore&rdquo; panel for that method. You can update the parameters that will be sent to the API and then click the handy <code>MAKE IT SO!</code> button to start the API request.</em></p>
+
+<p><img src="images/api-explorer-fetch.png" alt="" /></p>
+
+<p><em><a href="https://github.com/whosonfirst/electron-whosonfirst-api-explorer/blob/master/images/party-parrot.gif">:partyparrot:</a> will keep you company while your API request is being processed.</em></p>
+
+<p><img src="images/api-explorer-results.png" alt="" /></p>
+
+<p><em>Oh look, here&rsquo;s a new part of the Who&rsquo;s On First API: <a href="https://mapzen.com/documentation/wof/formats/#geojson">GeoJSON</a> as an output format.</em></p>
+
+<p><img src="images/api-explorer-csv.png" alt="" /></p>
+
+<p><em>The API Explorer can also render non-JSON output formats. There is also <a href="https://github.com/whosonfirst/electron-whosonfirst-api-explorer/issues/21">an open ticket to enable downloading of results</a> from the API Explorer.</em></p>
+
+<p><img src="images/api-explorer-offline.png" alt="" /></p>
+
+<p><em>Importantly the API Explorer will continue to work offline. See the way the ☁️ in the top-left corner became a 🚫  - that means the API Explorer can&rsquo;t find the Internets. You won&rsquo;t be able to send API requests out across the network but you can still read the documentation and construct API requests to review.</em></p>
+
+<p><img src="images/api-explorer-settings.png" alt="" /></p>
+
+<p><em>You can also change the API endpoint for making requests and by extension information about the API itself. via the <code>api.spec</code> methods. This probably isn&rsquo;t that useful to anyone else right now but it&rsquo;s very helpful for us when testing new API methods on our dev servers. Eventually <a href="https://github.com/whosonfirst/electron-whosonfirst-api-explorer/issues/31">we&rsquo;d like to support &ldquo;named&rdquo; and &ldquo;toggle-able&rdquo; configurations</a> in the API Explorer to make it easy to switch from one API endpoint to another.</em></p>
+
+<p><img src="images/api-explorer-formats.png" alt="" /></p>
+
+<p><em>Most of the work, in both the API and the Explorer, has been around API methods. There is still some more work to do for the other things&hellip;</em></p>
+
+<p><em>There&rsquo;s an <a href="https://github.com/whosonfirst/electron-whosonfirst-api-explorer/issues/10">an experimental and currently disabled print feature</a> to generate print-friendly version of both API documentation and results.</em></p>
+
+<p><img src="images/api-explorer-print.png" alt="" /></p>
+
+<p><em>Unfortunately, I can&rsquo;t figure out why print versions are truncated after one &ldquo;page&rdquo; so we&rsquo;ll turned off that functionality for now. Also apparently Emoji (specifically the 👍 signifying a required parameter) are silently dropped in the print output because&hellip; computers?</em></p>
+
+<p>Like the API itself, the API Explorer still tilts towards beta as of this writing. There are a number of <a href="https://github.com/whosonfirst/electron-whosonfirst-api-explorer/issues">outstanding issues</a>, most of them minor and nothing that should prevent you from using the API Explorer from&hellip; exploring the <a href="https://mapzen.com/documentation/wof">Who&rsquo;s On First API</a>.</p>
+
+<p>The source code is available from <a href="https://github.com/whosonfirst/electron-whosonfirst-api-explorer">https://github.com/whosonfirst/electron-whosonfirst-api-explorer</a> and we would welcome your feedback and suggestions.</p>
+
+<hr />
+
+<p>Image credits:</p>
+
+<ul>
+<li><a href="https://collection.cooperhewitt.org/objects/18419753/">Drawing, To Explore by that Cheerless Illumination for Leaks, ca. 1904; Frank Walter Taylor ; USA; point of brush and black, gray wash, white goache, black crayon on bristol board; Sheet: 44.4 x 30.6 cm (17 <sup>1</sup>&frasl;<sub>2</sub> x 12 <sup>1</sup>&frasl;<sub>16</sub> in.); Gift of F. Elizabeth De Voy; 1957-58-15</a></li>
+</ul>
+	</body>
+</html>

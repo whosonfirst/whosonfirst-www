@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>&#34;Simple is hard&#34;</title>
+		<meta name="description" content="Who’s on First is a gazetteer of places.">
+		<link rel="apple-touch-icon" href="/images/favicons/apple-touch-icon.png" sizes="180x180">
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-16x16.png" sizes="16x16">
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-32x32.png" sizes="32x32">
+		<link rel="manifest" href="/images/favicons/manifest.json">
+		<link rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg" color="#2C1E3F">
+		<link rel="stylesheet" href="/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/css/mapzen.whosonfirst.css">
+		
+		<link rel="stylesheet" href="/css/styles/grayscale.css">
+
+		<meta property="og:type" content="article" />
+		<meta property="og:site_name" content="Who's On First" />
+		<meta property="og:title" content="&#34;Simple is hard&#34;" />
+		<meta property="og:description" content="&#34;Making something less complicated is complicated.&#34;" />
+		<meta property="og:image" content="&#34;images/delancy_essex.jpg&#34;" />
+		
+		<meta property="twitter:card" value="summary" />
+		<meta property="twitter:site" content="@alloftheplaces" />
+		<meta property="twitter:creator" content="@alloftheplaces" />
+		<meta property="twitter:url" content="/blog/2017/05/10/simple-is-hard/" />
+		<meta property="twitter:title" content="&#34;Simple is hard&#34;" />
+		<meta property="twitter:description" content="&#34;Making something less complicated is complicated.&#34;" />
+		<meta property="twitter:image" content="/id/&#34;images/delancy_essex.jpg&#34;" />
+		
+		<style type="text/css">
+		  body {
+		  font-family: serif;
+		  margin:2em;
+		  margin-left: 10%;
+		  margin-right: 10%;
+		  font-size: 1.3em;
+		  line-height: 1.5em;
+		  }
+
+		  img {
+		  max-width: 640px !important;
+		  max-height: 480px !important;
+		  border: 1px dotted #ccc;
+		  padding: .5em;
+		  margin-bottom:1em;
+		  margin-top: 1em;
+		  }
+
+		  h2 small {
+		  display: block;
+		  margin-top:.10em;
+		  font-weight: 100;
+		  font-size: .5em;
+		  }
+
+		  .hey-look {
+		  font-weight: 700;
+		  }
+		</style>
+	</head>
+	<body>
+
+	  
+	  
+	  <h2>
+	    &#34;Simple is hard&#34;
+	    <small>This is a blog post by
+	      <span class="hey-look">dphiffer</span>
+	      on May 10, 2017 
+	       tagged <span class="hey-look">boundaryissues</span>, <span class="hey-look">whosonfirst</span> and <span class="hey-look">data</span></small>
+	  </h2>
+<p>Last Wednesday I gave a talk at <a href="https://csvconf.com/">csv,conf</a> in Portland, OR. The conference gathered a variety of people who care about open data, technical and non-technical alike. I adapted the talk from my last blog post <a href="https://mapzen.com/blog/weird-and-wonderful/">The world is weird and wonderful!</a> I’ve been told the conference organizers will post videos talks, so <a href="https://twitter.com/csvconference">stay tuned</a>.</p>
+
+<p>Like the blog post, my talk was split into two parts. I started by introducing <a href="https://mapzen.com/tag/whosonfirst/">Who’s On First</a> and <a href="https://mapzen.com/tag/boundaryissues/">Boundary Issues</a> to an audience not necessarily familiar with open geo, and then showed a hands-on demo of the <a href="https://mapzen.com/blog/weird-and-wonderful/">Boundary Issues CSV import feature</a>.</p>
+
+<h2>Hello, Transitland!</h2>
+
+<p>Both my blog post and talk focus on New York City’s subway. As I was thinking about the system, and the 36th St station I used for my example, I realized that we did not actually <em>have</em> records for subway stations in Who’s On First.</p>
+
+<p>That seemed like as good excuse as any to <em>import the subway stations</em>. After all, I just made this fancy new CSV importer, why not put it to use?</p>
+
+<p>So I brought in the records using the <a href="https://transit.land/documentation/datastore/api-endpoints.html">Transitland Datastore API</a>. I wrote <a href="https://gist.github.com/dphiffer/00aa7b646cd206e067feee1bf7c5b04c">a shell script</a> that generated <a href="https://gist.github.com/dphiffer/00aa7b646cd206e067feee1bf7c5b04c#file-2_transitland_nyc_subway-csv">a CSV file</a>, encoding each station as a row. The columns include a station name, a <a href="https://transit.land/documentation/onestop-id-scheme/">Onestop ID</a>, and latitude/longitude coordinates.</p>
+
+<p>Here is a screen capture I took while I was testing to give you a sense for the process.</p>
+
+<div class="video-wrapper ratio-16-9"><video src="images/transitland_import.mp4" controls="controls"></video></div>
+
+<p>It worked! I imported all of the subway stations, using a home team geometry source. There is one remaining mystery regarding the number of stations; of the 502 CSV rows I discovered a handful of duplicates on the way in, ultimately resulting in <a href="https://whosonfirst.mapzen.com/spelunker/concordances/transitland/">471 records</a>. However, according to <a href="https://en.wikipedia.org/wiki/New_York_City_Subway_stations">Wikipedia</a> we should actually have 472 stations. In due time we will untangle the station count discrepancy. Better than yesterday!</p>
+
+<h2>Don’t get duped by dupes</h2>
+
+<p>For each new venue you import during the step-through process there’s a possibility that we already have a WOF record in the dataset. We don’t want two records for the same place, so it’s incumbent upon the user interface to alert you when something with the same name and location exists.</p>
+
+<p>De-duping places is a <em>hard problem (a.k.a. tricky business)</em> (<em><a href="https://research.fb.com/publications/deduplicating-a-places-database/">Deduplicating a Places Database</a></em> is a paper from Facebook Research that has been recommended to me, although I haven&rsquo;t read it yet) and I did not set out to solve in a complete or even correct way. What I did set out to do is make a de-duping interface we could live with today and that we could improve on tomorrow. I created the <em>simplest dumbest thing</em>, a stepping stone to a <em>marginally less dumb, more nuanced thing</em>.</p>
+
+<p>Here’s what it looks like:</p>
+
+<p><img src="images/dupe_city_hall.jpg" alt="Dupe UI: City Hall Station" /></p>
+
+<p>Sometimes it found <em>obviously wrong</em> dupe candidates:</p>
+
+<p><img src="images/dupe_pizza_hut.jpg" alt="Dupe UI: Pizza Hut in New York City??" /></p>
+
+<p>And sometimes it surfaced incorrect (or at least <em>incomplete</em>) WOF records:</p>
+
+<p><img src="images/dupe_1_train.jpg" alt="Dupe UI: 1 train at Fulton St" /></p>
+
+<p>Despite the mixed quality of the dupe candidates, it worked! I was able to discover and merge the new data with existing WOF records.</p>
+
+<p>One caveat to add is that my dupe-detection UI has both false positives (suggestions for places that aren&rsquo;t the same) and false negatives (it fails to suggest some existing places). I am more concerned with fixing the latter, but in the interim I have added a method for manually specifying a duplicate place by WOF ID.</p>
+
+<h2>The Canal St Station problem</h2>
+
+<p>I came to learn quickly that NYC’s subway stations are full of challenging edge cases. Lots of stations have the same name! Canal Street has five different subway stations, from which you can take the 1, A, C, E, J, N, Q, R, J, or Z trains.</p>
+
+<p><img src="images/canal_st.jpg" alt="The &ldquo;Canal Street&rdquo; problem" /></p>
+
+<p>As the data was coming in, I had to determine if the incoming record actually represented a <em>new Canal St</em> or another dimension of an existing record. To make matters more confusing, Transitland accounts for each platform within a subway station complex.</p>
+
+<p><img src="images/delancy_essex.jpg" alt="The &ldquo;Delancy - Essex&rdquo; problem" /></p>
+
+<p>I decided on a rule that I could follow: if there’s a <em>dot on the official MTA map</em> that dot represents a distinct station. Even if you can walk between two of the dots on the map via a connecting tunnel—DOT EQUALS STATION. Anything more complicated elevates the likelihood of forming the wrong mental model for the next person to try to understand.</p>
+
+<p>As I was writing this blog post, I heard about some new Transitland updates that are in the works. <a href="https://github.com/irees">Ian Rees</a> along with <a href="https://twitter.com/heyknisely">Greg</a> and <a href="https://twitter.com/DuaneGearhart">Duane</a> have been working on Transitland&rsquo;s station hierarchies, which capture station/platform/entrance relationships. More is coming soon!</p>
+
+<h2>Place hierarchies are hard</h2>
+
+<p>For each record we add to Who’s On First, we wire in its hierarchy of parent places. For example, <a href="https://whosonfirst.mapzen.com/spelunker/id/1108958717/">14 St - Union Square Station</a> is in Union Square neighbourhood, in Manhattan, which is in New York City, etc. Additionally, each place has a direct <code>wof:parent_id</code> assigned to it.</p>
+
+<p>For some reason during my import process the hierarchies came out all funky. Some, but not all, records were parented by <code>borough</code> records (skipping <code>intersection</code>, <code>microhood</code>, <code>neighbourhoud</code>, etc.). Other records had no hierarchy or parent. Unfortunately my <em>very pared down, very simple</em> user interface didn’t provide any indication of the hierarchy (or lack thereof).</p>
+
+<p>I have since added a small indicator that shows what the direct parent of the place is, which should help clue in the person importing data when something goes wrong.</p>
+
+<p><img src="images/union_square.jpg" alt="14 St - Union Square" /></p>
+
+<p>For a more in-depth description of the Who’s On First placetype hierarchy, see the <a href="https://github.com/whosonfirst/whosonfirst-placetypes">whosonfirst-placetype repo</a>.</p>
+
+<h2>Shipping good bug fixes is hard</h2>
+
+<p>Once I discovered the importer was generating bad hierarchies and assigning the wrong parent IDs, I decided to add a check that would do some validation before the record gets saved.</p>
+
+<p>I deployed the validation check, Aaron helped me clean up the incorrectly-encoded subway records, and then I went back to enjoying the csv,conf presentations.</p>
+
+<p>Almost immediately I heard from three people, more or less in unison, that something was wrong. They could not save WOF records using the importer! Something about an <code>Incorrect parent ID</code>.</p>
+
+<p><img src="images/parent_id.png" alt="Parent ID bug" /></p>
+
+<p>So I went back to the drawing board. There turned out to be a flaw in how we were requesting <a href="https://en.wikipedia.org/wiki/Point_in_polygon">point-in-polygon</a> results. However, the larger problem was that overzealous validation was blocking the save process. A person adding a venue just wants the <em>save button</em> to <em>save the thing</em>. They don’t know what a parent ID error is, especially when they have no means of fixing it.</p>
+
+<p>I&rsquo;m not sure whether I’ve nailed down all the root causes for bad <code>wof:hierarchy</code> and <code>wof:parent_id</code> properties, but I have come up with a better way to mitigate that situation if it crops up again. Now when you press the save button, the code does a slightly looser validation check, and if the hierarchy/parent stuff looks wrong—it will tell you two things:</p>
+
+<ol>
+<li>Hey, the hierarchy/parent stuff looks bad</li>
+<li>But don’t worry I’m fixing it (try saving again!)</li>
+</ol>
+
+<p>And then it goes and fixes it. For now you still have to press the save button one more time, which is a temporary compromise. On the one hand, I am curious to know how often people encounter this particular problem. On the other hand, you just want to <em>save the thing</em>, and <em>why can&rsquo;t it just fix-and-then-save automatically?</em> Today it is <em>somewhat</em> annoying, but not to the degree that it stops you from doing what you&rsquo;re trying to do.</p>
+
+<h2>Still to come</h2>
+
+<p>All this time I was fixing issues with the CSV importer, I was testing out another subway data set I got from the official <a href="https://data.cityofnewyork.us/Transportation/Subway-Stations/arq3-7z49">NYC Open Data website</a>.</p>
+
+<p>It’s the same list of subway stations, but it includes some interesting summarized descriptions of what you can find at each station in terms of train lines and service frequency.</p>
+
+<p><img src="images/lines_schedules.png" alt="Lines and schedules!" /></p>
+
+<p>More importantly, it means we will have records with both the official object ID assigned from the NYC Open Data website <em>and also</em> the concordance from Transitland. If any other application uses the “official” data source, they can now use a WOF record to correlate <em>their stuff</em> with <em>Transitland’s stuff</em>.</p>
+
+<p>Until then, here are the <a href="https://whosonfirst.mapzen.com/spelunker/concordances/transitland/">Transitland concordances</a> we do have.</p>
+
+<p><img src="images/concordances.png" alt="Transitland concordances" /></p>
+
+<h2>It just <em>looks</em> simple</h2>
+
+<p>A big motivation for creating a CSV importer has been to reduce the complexity involved in getting data into Who’s On First. I created a venue editor with just three text inputs: <em>name</em>, <em>address</em>, and <em>tags</em>, instead of the myriad property editing controls of the fully featured edit page. Without having studied the full corpus of <a href="https://whosonfirst.mapzen.com/theory/">WOF theory</a>, someone with a CSV file to share should be able to contribute to the dataset.</p>
+
+<p>Enter a name, pick a location, hit the save button. You put the data in, and <em>boing</em>, your place is on the map. (Shout out to my mom, Kathleen Phiffer, whose one sentence-summary of my talk I borrowed here.)</p>
+
+<p>My simpler add-a-venue page <em>still produces fully-functional GeoJSON</em>. There’s a whole lot going on behind the scenes that’s easy to miss.</p>
+
+<p>Do you have good open data you want to try? <a href="mailto:boundaryissues@mapzen.com">Drop us a line</a> if you want to test.</p>
+
+<h2>Excuse me while I promote one more thing</h2>
+
+<p>Plug: <em>I’m going to be giving a shorter version of my csv,conf talk at month’s GeoNYC. It is happening on Monday May 15, so if you don’t have plans already come on out to <a href="https://whosonfirst.mapzen.com/spelunker/id/420573371/">Mapzen</a> to hear all about how <a href="https://www.meetup.com/geonyc/events/239820070/">POIs are just interesting points</a>.</em></p>
+	</body>
+</html>

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Mapping with Bias</title>
+		<meta name="description" content="Who’s on First is a gazetteer of places.">
+		<link rel="apple-touch-icon" href="/images/favicons/apple-touch-icon.png" sizes="180x180">
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-16x16.png" sizes="16x16">
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-32x32.png" sizes="32x32">
+		<link rel="manifest" href="/images/favicons/manifest.json">
+		<link rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg" color="#2C1E3F">
+		<link rel="stylesheet" href="/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/css/mapzen.whosonfirst.css">
+		
+		<link rel="stylesheet" href="/css/styles/grayscale.css">
+
+		<meta property="og:type" content="article" />
+		<meta property="og:site_name" content="Who's On First" />
+		<meta property="og:title" content="Mapping with Bias" />
+		<meta property="og:description" content="I like that idea that there might be an instrument to measure the motion – the velocity – of people’s understanding of place" />
+		<meta property="og:image" content="images/mapping-with-bias/stickers.jpg" />
+		
+		<meta property="twitter:card" value="summary" />
+		<meta property="twitter:site" content="@alloftheplaces" />
+		<meta property="twitter:creator" content="@alloftheplaces" />
+		<meta property="twitter:url" content="/blog/2016/08/15/mapping-with-bias/" />
+		<meta property="twitter:title" content="Mapping with Bias" />
+		<meta property="twitter:description" content="I like that idea that there might be an instrument to measure the motion – the velocity – of people’s understanding of place" />
+		<meta property="twitter:image" content="/id/images/mapping-with-bias/stickers.jpg" />
+		
+		<style type="text/css">
+		  body {
+		  font-family: serif;
+		  margin:2em;
+		  margin-left: 10%;
+		  margin-right: 10%;
+		  font-size: 1.3em;
+		  line-height: 1.5em;
+		  }
+
+		  img {
+		  max-width: 640px !important;
+		  max-height: 480px !important;
+		  border: 1px dotted #ccc;
+		  padding: .5em;
+		  margin-bottom:1em;
+		  margin-top: 1em;
+		  }
+
+		  h2 small {
+		  display: block;
+		  margin-top:.10em;
+		  font-weight: 100;
+		  font-size: .5em;
+		  }
+
+		  .hey-look {
+		  font-weight: 700;
+		  }
+		</style>
+	</head>
+	<body>
+
+	  
+	  
+	  <h2>
+	    Mapping with Bias
+	    <small>This is a blog post by
+	      <span class="hey-look">thisisaaronland</span>
+	      on August 15, 2016 
+	       tagged <span class="hey-look">whosonfirst</span>, <span class="hey-look">wof</span> and <span class="hey-look">thisisaaronland</span></small>
+	  </h2>
+<p><a href="#intro"><img src="images/mapping-with-bias/mapping-with-bias.001.jpeg" alt="" /></a></p>
+
+<p><em>The following are the slides and notes for a talk I presented at the <a href="https://mapzen.com/blog/mapzen-sf-event-april-26/">Mapping With Perspective</a> event held at the <a href="https://whosonfirst.mapzen.com/spelunker/id/907212541/">Mapzen West</a> offices, in April 2016.</em></p>
+
+<p><em>If you&rsquo;ve read the first <a href="https://mapzen.com/blog/who-s-on-first/">introductory blog post</a> about Who&rsquo;s On First or <a href="https://mapzen.com/blog/spelunker-jumping-into-who-s-on-first">the talk I did at FOSS4G</a> introducing the Spelunker much of what follows will be familiar. It was a short talk so rather than get lost in the <a href="https://www.github.com/whosonfirst/whosonfirst-docs/">technical details</a> I tried instead to focus on some of the principles, and statements of bias, that influence the project. Why we&rsquo;re doing this, rather than how, particularly for people who might not have read those first two blog posts.</em></p>
+
+<p><em>My talk was titled &ldquo;Mapping with Bias&rdquo; and this is what I said.</em></p>
+
+<hr />
+
+<p><a name="intro"></a></p>
+
+<p>I had stickers made for the <a href="https://whosonfirst.mapzen.com/">Who’s On First</a> project recently. They look <a href="images/mapping-with-bias/stickers.jpg">like this.</a></p>
+
+<p>No one has any idea what they depict and that’s led to some hilarious speculation about what they &ldquo;are&rdquo; ranging from a hockey stick (I am from Canada) to the Lexus car logo to <a href="https://twitter.com/alloftheplaces/status/720359919749169152">an e-cigarette</a>.</p>
+
+<p>It’s actually a <a href="https://www.grc.nasa.gov/WWW/k-12/VirtualAero/BottleRocket/airplane/pitot.html">pitot tube</a>. Wikipedia <a href="https://en.wikipedia.org/wiki/Pitot_tube">describes a pitot tube</a> as:</p>
+
+<blockquote>
+<p>…a pressure measurement instrument used to measure fluid flow velocity.</p>
+</blockquote>
+
+<p>It goes on the describe &ldquo;flow velocity&rdquo; as:</p>
+
+<blockquote>
+<p>…a vector field which is used to mathematically describe the motion of a continuum.</p>
+</blockquote>
+
+<p><a href="https://whosonfirst.mapzen.com">Who’s On First</a> is <em>not really</em> a pitot tube but I like that idea that there might be an instrument to measure the motion – the velocity – of people’s understanding of place.</p>
+
+<p><a href="images/mapping-with-bias/stickers.jpg">Also, I like shiny things</a>.</p>
+
+<p><a name="theory"></a></p>
+
+<p><a href="#theory"><img src="images/mapping-with-bias/mapping-with-bias.002.jpeg" alt="" /></a></p>
+
+<p><a href="https://whosonfirst.mapzen.com">Who&rsquo;s On First</a> is a gazetteer. A gazetteer is a &ldquo;big bag of places&rdquo; in which every place has a stable and permanent identifier, supporting metadata and pointers to other IDs in the gazetteer for places with which it has a relationship.</p>
+
+<p>Over <a href="https://whosonfirst.mapzen.com/#theory">15, 000 words have written about Who&rsquo;s On First</a> so far because it turns out that gazetteers are a pretty complicated subject.</p>
+
+<p>Rather than trying to squeeze <a href="https://mapzen.com/tag/whosonfirst/">all the details</a> in to a 20-minute talk I am going to focus instead on some of the first principles motivating the project and governing our day-to-day work.</p>
+
+<p><a href="https://collection.cooperhewitt.org/objects/18297119/"><img src="images/mapping-with-bias/mapping-with-bias.003.jpeg" alt="" /></a></p>
+
+<p>The toxic trinity of &ldquo;geo&rdquo; has always been the unholy union of: <em>licensing and coverage and quality</em>.</p>
+
+<p>The aim of <a href="https://whosonfirst.mapzen.com">Who&rsquo;s On First</a> is to tackle all three at the same time.</p>
+
+<p>If and when we are forced to <a href="https://en.wikipedia.org/wiki/Project_management_triangle#.22Pick_any_two.22">&ldquo;pick two&rdquo;</a> we will choose licensing and coverage, so that in the end there is always something left over that people can improve as time and circumstances permit.</p>
+
+<p>These decisions make <a href="https://whosonfirst.mapzen.com">Who&rsquo;s On First</a> both ambitious and daunting so I have always felt that it is important for us to have a governing bias with which to negotiate the complexities and the quicksand that the project will inevitably yield.</p>
+
+<p>In many ways, these are principles to help us understand what the project is <em>not</em> and to help us understand how things <em>should be</em> even if the technology doesn&rsquo;t always work as well as we imagine it should, yet.</p>
+
+<p>A gazetteer is a pretty brainy project. Gazetteers are one of those things that don&rsquo;t seem important at all until they are, at which point they suddenly take on an outsized importance. This means we need to design things in such a way that our work can outlast people&rsquo;s reluctance.</p>
+
+<p>We need to build something with the patience and the stamina, conceptually and financially, to sit quietly in the corner and be ready to be of service when you are and not before.</p>
+
+<p>What follows are six &ldquo;umbrella&rdquo; ideas that we keep in mind as we work towards that goal.</p>
+
+<p><a name="consensual"></a></p>
+
+<p><a href="#consensual"><img src="images/mapping-with-bias/mapping-with-bias.004.jpeg" alt="" /></a></p>
+
+<p>The first is the idea that <a href="https://whosonfirst.mapzen.com/">Who’s On First</a> is <strong>a gazetteer of consensual hallucinations</strong>.</p>
+
+<p><a href="https://collection.cooperhewitt.org/objects/68775917/"><img src="images/mapping-with-bias/mapping-with-bias.005.jpeg" alt="" /></a></p>
+
+<p>The history of geospatial technologies has for most part been one of <a href="http://www.aaronland.info/weblog/2012/03/13/godhelpus/#sxaesthetic">force projection</a> and <a href="http://www.aaronland.info/weblog/2015/02/24/effort/#holodeck">tax collection</a>. Some people argue they are the same thing.</p>
+
+<p>But there is a good reason that, for example, California alone <a href="http://www.conservation.ca.gov/cgs/information/geologic_mapping/state_plane">has seven state planes</a>: There are actual tax dollars, and services like emergency responders, that depend on being able to precisely and accurately locate a thing in a world where latitude <a href="https://en.wikipedia.org/wiki/Geographic_coordinate_system#Complexity_of_the_problem">can not be neatly subdivided in to equal units</a> across the surface of the globe.</p>
+
+<p>It is worth remembering that coordinate space is one of the truly great abstractions. Being able to reduce the problem, in so many cases, to fit a Cartesian grid has made some pretty amazing things possible.</p>
+
+<p>On the other hand, I cut my teeth working on geo at Flickr where we learned over and over and over again that <a href="http://code.flickr.net/category/geo">no one thinks of place as coordinate data</a> at least not when it comes to <a href="https://www.flickr.com/places/">their photos</a>.</p>
+
+<p>It’s not just Flickr. There is a long and growing list of companies – really, <em>all</em> companies – whose services are implicitly built around social rather than administrative notions of place. And social notions of place are messy and an inexact and complicated. This is the space where <a href="https://whosonfirst.mapzen.com">Who&rsquo;s On First</a> sits.</p>
+
+<p><a href="https://whosonfirst.mapzen.com">Who&rsquo;s On First</a> is, by design, not a gazetteer of unitary perspective.</p>
+
+<p><a name="geometries"></a></p>
+
+<p><a href="#geometries"><img src="images/mapping-with-bias/mapping-with-bias.006.jpeg" alt="" /></a></p>
+
+<p>Or put another way, <a href="https://whosonfirst.mapzen.com/">Who’s On First</a> is <strong>not a gazetteer of geometries</strong>.</p>
+
+<p><a href="https://collection.cooperhewitt.org/objects/18643589/"><img src="images/mapping-with-bias/mapping-with-bias.007.jpeg" alt="" /></a></p>
+
+<p>One of our earliest decisions was on that each record in <a href="https://whosonfirst.mapzen.com">Who’s On First</a> would contain multiple geometries.</p>
+
+<p>As a rule every place in <a href="https://whosonfirst.mapzen.com">Who&rsquo;s On First</a> should contain a so-called &ldquo;ground truth&rdquo; geometry. A ground truth geometry is like Benoit Mandelbrot’s <a href="https://en.wikipedia.org/wiki/How_Long_Is_the_Coast_of_Britain%3F_Statistical_Self-Similarity_and_Fractional_Dimension">map of England</a> which, by definition, means it will always grow in size and detail.</p>
+
+<p>Some places might even have <em>two</em> ground truth geometries, one clipped to the coastline and another than includes territorial waters. These geometries are especially good <a href="https://github.com/whosonfirst-data/whosonfirst-data/issues/367">for reverse geocoding</a> but the salient point in all of this is that the geometries themselves, as often as not, enforce the biases of their use.</p>
+
+<p>There might also be &ldquo;folk&rdquo; geometries which encode <a href="https://github.com/whosonfirst-data/whosonfirst-data/blob/master/data/859/225/83/85922583-alt-mapzen.geojson">a common (or folk) understanding of a place</a> rather than an official designation. Think of Eric Fischer&rsquo;s <a href="http://www.moma.org/interactives/exhibitions/2011/talktome/objects/146200/">Locals and Tourists maps</a>.</p>
+
+<p>There will inevitably be disputed geometries. These are different from places that have been classified as <a href="https://whosonfirst.mapzen.com/spelunker/placetypes/disputed/">disputed</a>, places like Kashmir or the Golan Heights. These are places where the stakes are not so high. Places where even though their may be officially recognized boundaries people still bicker over the details. Effectively <a href="http://www.gowanusheights.info">all neighbourhoods</a>, everywhere.</p>
+
+<p>We may disagree on where <a href="https://whosonfirst.mapzen.com/spelunker/id/85865903/descendants/?exclude=nullisland&amp;placetype=microhood">The Tenderloin</a> starts and stops, for example, but we all agree that The Tenderloin <em>exists</em>.</p>
+
+<p>The purpose and the value of <a href="https://whosonfirst.mapzen.com">Who&rsquo;s On First</a> is in giving those <a href="https://whosonfirst.mapzen.com/spelunker/id/102112179/">notions of place</a> a collective proof. In giving them a mass and weight and a gravity in the universe that other people and products can orbit.</p>
+
+<p><a name="ancestors"></a></p>
+
+<p><a href="#ancestors"><img src="images/mapping-with-bias/mapping-with-bias.008.jpeg" alt="" /></a></p>
+
+<p>Another core principle of <a href="https://whosonfirst.mapzen.com">Who&rsquo;s On First</a> that is every record shares <strong>a common set of ancestors</strong>.</p>
+
+<p><a href="https://collection.cooperhewitt.org/objects/18643587/"><img src="images/mapping-with-bias/mapping-with-bias.009.jpeg" alt="" /></a></p>
+
+<p>Hierarchies, in particular administrative hierarchies, vary wildly from country to country. We used to say that all locations in <a href="https://whosonfirst.mapzen.com">Who&rsquo;s On First</a> share a common hierarchy but I think that was often more confusing than not.</p>
+
+<p>It is an articulation that lends itself to the idea, incorrectly, that there is a single comprehesive hierarchy which encodes all the relationships between places.  That is not what <a href="https://whosonfirst.mapzen.com">Who&rsquo;s On First</a> tries to do.</p>
+
+<p>Instead we have said that there are <a href="https://github.com/whosonfirst/whosonfirst-placetypes#here-is-a-pretty-picture">five common placetypes</a> – <em>continent, country, region, locality and neighbourhood</em> – and that every record in <a href="https://whosonfirst.mapzen.com">Who&rsquo;s On First</a>, regardless of its <a href="https://whosonfirst.mapzen.com/spelunker/placetypes/">specific placetype</a> has at least one of the common placetypes as an <em>ancestor</em>.</p>
+
+<p>This acts as a baseline for a global dataset, both on a conceptual and a practical level. It is important to us that, within reason, we not impose any single architectural approach or set of technical requirements in order to be able to use <a href="https://whosonfirst.mapzen.com">Who&rsquo;s On First</a>.</p>
+
+<p>Five &ldquo;database&rdquo; columns for encoding a global hierarchy seems like a reasonable trade-off in 2016. If you need to include <a href="https://whosonfirst.mapzen.com/spelunker/id/421205765/">Brooklyn, NY</a> (which is technically a <a href="https://whosonfirst.mapzen.com/spelunker/placetypes/borough">borough</a>) in your dataset then you&rsquo;ll need to add a sixth column but that&rsquo;s your business. Otherwise you can hopefully make do with <a href="https://whosonfirst.mapzen.com/spelunker/id/85977539/">New York City</a>.</p>
+
+<p>Importantly, unknown place types are not a fatal error. They are left to the needs and discretions of people using <a href="https://whosonfirst.mapzen.com">Who&rsquo;s On First</a> for whatever they need to use it for, without sacrificing a common ground where all of these projects can still comfortably hold hands.</p>
+
+<p>There is also a related discussion about places having <em>multiple</em> hierarchies but we don&rsquo;t have time for that tonight. Suffice it to say that places <a href="https://github.com/whosonfirst/whosonfirst-placetypes#hierarchies">can and do have multiple hierarchies</a> for much the same reasons that a place might have multiple geometries.</p>
+
+<p><a name="supersedes"></a></p>
+
+<p><a href="#supersedes"><img src="images/mapping-with-bias/mapping-with-bias.010.jpeg" alt="" /></a></p>
+
+<p><a href="https://whosonfirst.mapzen.com">Who’s On First</a> is <strong>not a linear scorched-earth view of the world</strong>.</p>
+
+<p><a href="https://collection.cooperhewitt.org/objects/18334353/"><img src="images/mapping-with-bias/mapping-with-bias.011.jpeg" alt="" /></a></p>
+
+<p>Places change. The physical boundaries of the USA <a href="https://github.com/whosonfirst-data/whosonfirst-data/issues/176">changed 141 times</a> between the years 1789 and 1959. The entire notion of what Yugoslavia <em>meant</em> changed three times in the 20th century before finally atomizing in to <a href="https://en.wikipedia.org/wiki/Yugoslavia#/media/File:Former_Yugoslavia_2008.PNG">seven countries</a>, by 2008.</p>
+
+<p>Ultimately there is a much larger question about how an individual, or worse a community, decides whether an event constitutes a simple update versus a fundamental change. This is the realm of hard philosophical questions and those are things we are not going to try to answer.</p>
+
+<p>We can provide breadcrumbs, though. Every record in <a href="https://whosonfirst.mapzen.com">Who&rsquo;s On First</a> has both a <code>superseded_by</code> and <code>supersedes</code> property that are used to signal that a change has occurred but <em>not necessarily why</em>. That part is left up to you.</p>
+
+<p>These properties act as a kind of <a href="https://en.wikipedia.org/wiki/Linked_list">linked-list for places</a> indicating, for example, that the Kingdom of Yugloslavia was superseded by the Federal People&rsquo;s Republic of Yugoslavia in 1946, and so on.</p>
+
+<p>This decision means two things:</p>
+
+<ol>
+<li>That there might be <a href="https://whosonfirst.mapzen.com/spelunker/search/?name=stamen design">multiple entries</a> for the &ldquo;same&rdquo; place in <a href="https://whosonfirst.mapzen.com">Who&rsquo;s On First</a> and consumers of the data need to account for this fact.</li>
+<li>That if you have been using the <a href="https://whosonfirst.mapzen.com/spelunker/id/571704337/">the first iteration</a> of a place in <a href="https://whosonfirst.mapzen.com">Who&rsquo;s On First</a> its <em>meaning and semantics</em> won&rsquo;t suddenly change when there is <a href="https://whosonfirst.mapzen.com/spelunker/search/?name=stamen design">a legimate reason</a> to create <a href="https://whosonfirst.mapzen.com/spelunker/id/907212647/">a second iteration</a>.</li>
+</ol>
+
+<p>We do this as a way to foster confidence in the robustness and durability of <a href="https://whosonfirst.mapzen.com">Who&rsquo;s On First</a> identifiers. The past is complicated territory and though it is not the focus of our daily work we want to try and make sure that it is always welcome.</p>
+
+<p><a name="signal"></a></p>
+
+<p><a href="#signal"><img src="images/mapping-with-bias/mapping-with-bias.012.jpeg" alt="" /></a></p>
+
+<p><a href="https://whosonfirst.mapzen.com">Who’s On First</a> is <strong>a gazetteer of signal fires</strong>.</p>
+
+<p><a href="https://collection.cooperhewitt.org/objects/18334351/"><img src="images/mapping-with-bias/mapping-with-bias.013.jpeg" alt="" /></a></p>
+
+<p>It&rsquo;s probably obviously by now but it bears repeating: The world is full of complex and contradictory opinions. We do not want to try and settle those debates. We can not settle those debates.</p>
+
+<p>For almost as long as we&rsquo;ve had the notion of place itself people have had the benefit of complete sentences and entire paragraphs and even book-length arguments to make sense of the nature and meaning and value of place.</p>
+
+<p><em>And still we don&rsquo;t agree</em> so I don&rsquo;t know why anyone can imagine that a bag of key/value pairs will do better at answering any of these questions.</p>
+
+<p>Obviously there are a few instances where <a href="https://whosonfirst.mapzen.com">Who&rsquo;s On First</a> needs to assert some degree of editorial opinion about but as a rule we try to do this as infrequently and as transparently as possible.</p>
+
+<p>When there is genuine debate about something we leave it to the consumers of the data to interpret. We want to signal that <em>there is debate</em> about something rather than try to gloss over the awkward bits.</p>
+
+<p><a name="database"></a></p>
+
+<p><a href="#database"><img src="images/mapping-with-bias/mapping-with-bias.014.jpeg" alt="" /></a></p>
+
+<p>Finally, <strong>the data is not the database.</strong></p>
+
+<p><a href="https://collection.cooperhewitt.org/objects/18616235/"><img src="images/mapping-with-bias/mapping-with-bias.015.jpeg" alt="" /></a></p>
+
+<p>I mentioned at the beginning that <a href="https://whosonfirst.mapzen.com">Who&rsquo;s On First</a> was designed to &ldquo;outlast people&rsquo;s reluctance&rdquo;.</p>
+
+<p>What this means is that <a href="https://whosonfirst.mapzen.com">Who&rsquo;s On First</a> is not optimized for any one application including <a href="https://www.mapzen.com/">Mapzen</a>, which makes for some awkward conversations around the office from time to time.</p>
+
+<p>What this means, in concrete terms, is that at its core <a href="https://whosonfirst.mapzen.com">Who&rsquo;s On First</a> is <a href="https://whosonfirst.mapzen.com/data/">a gigantic bag of plain-text files</a>. The failure scenario for updating a <a href="https://whosonfirst.mapzen.com">Who&rsquo;s On First</a> record should always be the ability to edit it using nothing more than a text editor. You shouldn&rsquo;t <em>have</em> to do that but when everything else breaks you still <em>can</em> do that.</p>
+
+<p>The point is not that <a href="https://whosonfirst.mapzen.com">Who&rsquo;s On First</a> doesn&rsquo;t play with databases but that it should be able to play nicely with <em>all</em> the databases. The point is that the demands <a href="https://whosonfirst.mapzen.com">Who&rsquo;s On First</a> places on its users should be as universal as possible across platforms and concerns.</p>
+
+<p>Sometimes this makes getting things set up a little harder than we&rsquo;d like but it&rsquo;s 2016 and we&rsquo;ve all gotten pretty good at <a href="https://dl.acm.org/citation.cfm?id=512948">processing text files at scale</a> and feeding them in to databases.</p>
+
+<p>Despite all the advances we&rsquo;ve made over the years it turns out that the simplest, most universal and accessible thing is still plain-old, plain-vanilla, plain-text files on disk.</p>
+
+<p>They have the added benefit of being (still) the most reliable way to archive things <a href="http://www.cooperhewitt.org/2013/08/26/planetary-collecting-and-preserving-code-as-a-living-object/">as the technological landscape shifts</a>, year over year. We can <a href="http://booktwo.org/notebook/wikipedia-historiography/">print them out</a>, if necessary.</p>
+
+<p>This focus – of demanding a high degree of portability and durability in our work - is very much influenced by <a href="https://www.princeton.edu/~hos/frs122/unixhist/finalhis.htm">the early systems designs</a> for the Unix, and Multics before it, operating system and more recently the <a href="http://unicode.org/">Unicode</a> project.</p>
+
+<p>These are <a href="https://www.bell-labs.com/usr/dmr/www/hist.html">subjects</a> that could occupy many, many more nights of presentations <a href="http://www.unicodeconference.org/">all on their own</a> and it remains to be seen whether we can accomplish our work as well as they did theirs.</p>
+
+<p>But that is the work.</p>
+
+<p><img src="images/mapping-with-bias/mapping-with-bias.016.jpeg" alt="" /></p>
+
+<p>Thank you. If you&rsquo;d like a sticker <a href="https://www.twitter.com/alloftheplaces">send up a flare</a>.</p>
+
+<hr />
+
+<div style="font-style:italic; font-size:small;">
+
+All of the images in this presentation are part of the collection of the <a href="https://collection.cooperhewitt.org/">Cooper Hewitt Smithsonian Design Museum</a>. They are:
+
+<ul style="margin-top:1em;">
+<li><a href="https://collection.cooperhewitt.org/objects/18297119">Bound Print (France); Purchased for the Museum by the Advisory Council; 1921-6-559-19</a></li>
+<li><a href="https://collection.cooperhewitt.org/objects/68775917">Paper Construction, Buck Rogers, 25th Century Featuring Buddy and Allura in "Strange adventures in the Spider Ship"; Attacked by the Giant Reptile, ca. 1935; Collection of Smithsonian Institution Libraries</a></li>
+<li><a href="https://collection.cooperhewitt.org/objects/18643589/">Figure, ca. 1960; porcelain, enamel; Gift of Ludmilla Shapiro; 1993-13-2</a></li>
+<li><a href="https://collection.cooperhewitt.org/objects/18643587/">cosmonauts and rocket Figure, 1960–70; Made by Gzhel Porcelain Factory ; porcelain, enamel.; Gift of Ludmilla Shapiro; 1993-13-1</a></li>
+<a href="https://collection.cooperhewitt.org/objects/18334353">Figure; biscuit; Gift of Eleanor and Sarah Hewitt; 1931-88-89-a/d</a></li>
+<a href="https://collection.cooperhewitt.org/objects/18334351/">Triton Figure, 19th century; Manufactured by Sèvres Porcelain Manufactory (France); France; biscuit porcelain; Gift of Eleanor and Sarah Hewitt; 1931-88-88-a/d</a></li>
+<a href="https://collection.cooperhewitt.org/objects/18616235/">Ink Plot; computer ink plot; 1981-19-1</a></li>
+</ul>
+
+</div>
+	</body>
+</html>

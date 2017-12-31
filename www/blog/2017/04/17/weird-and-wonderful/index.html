@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>&#34;The world is weird and wonderful!&#34;</title>
+		<meta name="description" content="Who’s on First is a gazetteer of places.">
+		<link rel="apple-touch-icon" href="/images/favicons/apple-touch-icon.png" sizes="180x180">
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-16x16.png" sizes="16x16">
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-32x32.png" sizes="32x32">
+		<link rel="manifest" href="/images/favicons/manifest.json">
+		<link rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg" color="#2C1E3F">
+		<link rel="stylesheet" href="/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/css/mapzen.whosonfirst.css">
+		
+		<link rel="stylesheet" href="/css/styles/grayscale.css">
+
+		<meta property="og:type" content="article" />
+		<meta property="og:site_name" content="Who's On First" />
+		<meta property="og:title" content="&#34;The world is weird and wonderful!&#34;" />
+		<meta property="og:description" content="&#34;The multifaceted maps we make simply reflect the weird and wonderful territory they represent. CSV and GeoJSON make it easier.&#34;" />
+		<meta property="og:image" content="&#34;images/mural1.jpg&#34;" />
+		
+		<meta property="twitter:card" value="summary" />
+		<meta property="twitter:site" content="@alloftheplaces" />
+		<meta property="twitter:creator" content="@alloftheplaces" />
+		<meta property="twitter:url" content="/blog/2017/04/17/weird-and-wonderful/" />
+		<meta property="twitter:title" content="&#34;The world is weird and wonderful!&#34;" />
+		<meta property="twitter:description" content="&#34;The multifaceted maps we make simply reflect the weird and wonderful territory they represent. CSV and GeoJSON make it easier.&#34;" />
+		<meta property="twitter:image" content="/id/&#34;images/mural1.jpg&#34;" />
+		
+		<style type="text/css">
+		  body {
+		  font-family: serif;
+		  margin:2em;
+		  margin-left: 10%;
+		  margin-right: 10%;
+		  font-size: 1.3em;
+		  line-height: 1.5em;
+		  }
+
+		  img {
+		  max-width: 640px !important;
+		  max-height: 480px !important;
+		  border: 1px dotted #ccc;
+		  padding: .5em;
+		  margin-bottom:1em;
+		  margin-top: 1em;
+		  }
+
+		  h2 small {
+		  display: block;
+		  margin-top:.10em;
+		  font-weight: 100;
+		  font-size: .5em;
+		  }
+
+		  .hey-look {
+		  font-weight: 700;
+		  }
+		</style>
+	</head>
+	<body>
+
+	  
+	  
+	  <h2>
+	    &#34;The world is weird and wonderful!&#34;
+	    <small>This is a blog post by
+	      <span class="hey-look">dphiffer</span>
+	      on April 17, 2017 
+	       tagged <span class="hey-look">boundaryissues</span>, <span class="hey-look">whosonfirst</span> and <span class="hey-look">data</span></small>
+	  </h2>
+<p><em>TL;DR: we&rsquo;ve added a CSV import feature to <a href="https://mapzen.com/blog/boundary-issues-properties/">Boundary Issues</a>! Our web-based GeoJSON editor for Who’s On First is not available for public use (yet), but we’re still publicly documenting our progress out in the open. The more technical stuff with screengrabs comes after a bit of introductory context.</em></p>
+
+<h2>The territory is itself weird</h2>
+
+<p>Like many New Yorkers who grew up on the west coast, the subway system is endlessly fascinating to me. Our sprawling 24-hour transit is a source of pride, the subject of gripes and strongly held opinions, and maybe the most interesting venue for <a href="http://gothamist.com/2015/06/29/two_showtime_dancers_give_us_the_lo.php">contemporary dance</a> in a city well known for its performing arts.</p>
+
+<p><img src="images/subway-feet.jpg" alt="" title="Plaque metadata" /></p>
+
+<p>Naturally, we love to map the subway here in NYC. There’s the familiar and practical <a href="http://web.mta.info/maps/submap.html">MTA official map</a> (whose <a href="http://gizmodo.com/18-subway-maps-that-trace-nycs-transit-history-1242514280">evolution</a> is also a subject of obsession) and its many <a href="http://www.citylab.com/design/2014/07/a-vignelli-inspired-map-designed-to-make-the-least-amount-of-people-mad/374680/">opinionated variations</a>. Two of my favorites are the <a href="http://www.urbandictionary.com/define.php?term=prewalking">prewalker</a>’s essential tool, <a href="http://gizmodo.com/5310818/nyc-exit-strategy-the-other-nyc-subway-app-you-need">ExitStrategy</a>, and <a href="https://medium.com/@anthonydenaro/mapping-nyc-transit-all-of-it-e16e76a95a0e">BulletMap</a>, a map optimized for transfers between the subway and bus networks.</p>
+
+<p>All of this is to say, the “subway map” means different things to different people. And that is because the subway itself means different things, depending on whether or not you’re <a href="https://www.dnainfo.com/new-york/20150608/bushwick/map-subway-map-showing-only-wheelchair-accessible-stations">able-bodied</a>, just looking to <a href="http://nypost.com/2014/04/17/nyc-buskers-too-many-zooz-become-latest-internet-sensation/">catch a show</a>, or stocking up on <a href="http://www.theverge.com/2017/2/20/14674604/mta-supreme-metro-cards-nyc-subway-resale">fashionionable collectables</a>.</p>
+
+<h2>Zooming in</h2>
+
+<p>Let’s isolate ourselves to just one subway station, let’s say the <a href="https://en.wikipedia.org/wiki/36th_Street_(BMT_Fourth_Avenue_Line">36th Street D/N/R/W stop</a>) in the historically working class neighborhood of Sunset Park. You can find this useful metadata embedded within the station itself.</p>
+
+<p><img src="images/station-info.jpg" alt="" title="Plaque metadata" /></p>
+
+<p>Let’s just stand back a little bit. Behold, there are restrooms here! (For those not familiar with NYC subway facilities, this is uncommon.)</p>
+
+<p><img src="images/restrooms.jpg" alt="" title="Don't turn into a pumpkin" /></p>
+
+<p>Also included are more valuable hours-of-operation metadata, especially useful if you find yourself returning home from a late night out, looking for relief. (Either rush home <em>before midnight</em> or take your time and wait until <em>after 5am</em>.)</p>
+
+<p>Let’s keep looking around this station. Oh man, check out these tile murals!</p>
+
+<div id="mural-designers"><img src="images/mural2.jpg"></div>
+<script>
+
+var div_id = 'mural-designers';
+var img_hover_src = 'images/mural2-hover.jpg';
+
+var div = document.getElementById(div_id);
+var img = div.querySelector('img');
+var img_hover = new Image();
+var img_normal = new Image();
+img_normal.src = img.src;
+img_hover.src = img_hover_src;
+
+div.addEventListener('mouseover', function() {
+	img.src = img_hover.src;
+});
+
+div.addEventListener('mouseout', function() {
+	img.src = img_normal.src;
+});
+
+div.addEventListener('touchstart', function() {
+	img.src = img_hover.src;
+});
+
+div.addEventListener('touchend', function() {
+	img.src = img_normal.src;
+});
+
+</script>
+
+<p class="caption">The designers. (Hover or tap on this if you want to <em>blow your mind</em>.)</p>
+
+<div><img src="images/mural3.jpg"></div>
+
+<p class="caption">The builders.</p>
+
+<div><img src="images/mural1.jpg"></div>
+
+<p class="caption">The riders.</p>
+
+<p>Like all of the public art in NYC subway stations, we’ve got more good metadata here. (Shout out to Peter Columbo, whose name is misspelled on the plaque, but whose mosaic handiwork is <a href="http://www.metmuseum.org/exhibitions/listings/2012/byzantium-and-islam/blog/cultural-connections/posts/byzantium-and-hip-hop">also at 110th St and Lexington</a>.)</p>
+
+<p><img src="images/mural-meta.jpg" alt="" title="Mmmm ... metadata" /></p>
+
+<p>Checking out the <a href="https://en.wikipedia.org/wiki/36th_Street_(BMT_Fourth_Avenue_Line">Wikipedia article</a>) for the station gives us an even denser picture of the station’s attributes. I am as fascinated by the train enthusiasts who obsessively compile this info, as I am by the train systems themselves. (n.b. I very much <a href="https://www.youtube.com/playlist?list=PL_WssN5hKWUY9exh9UonSJBO9ntpL137Y">count myself</a> as one of those weirdo train enthusiasts.)</p>
+
+<p><img src="images/wikipedia.png" alt="" title="Wikipedia metadata" /></p>
+
+<p>Despite the impressive diagram illustrating how the station’s unused tracks are positioned, Wikipedia does not mention restrooms or public art. That there are restrooms, that the mural here is a great example of Social Realism, are facts that are <em>just as valid</em> and frankly <em>more interesting</em> than the latitude and longitude for this place. Lots of the nuance that captures why we should even care about places tends to get ignored by datasets that are considered comprehensive.</p>
+
+<p>(There was once <a href="http://www.wnyc.org/story/286899-an-app-for-finding-nyc-subway-art/">an app for finding NYC subway art</a>, but it appears to have been discontinued.)</p>
+
+<h2>Zooming out</h2>
+
+<p>Taking our previous example at 36th Street, we could imagine systematically capturing the kinds and locations of public art in transit centers (we could also do the same for restrooms and other amenities).</p>
+
+<p>This being a post on the Mapzen blog, I’m interested in how that information can make its way into our open gazetteer, <a href="https://whosonfirst.mapzen.com/">Who’s On First</a>. It’s important to caveat that this type of transit information has <em>not yet</em> been gathered and associated with our place records, but it could be. We have all the tools in place, and an extensible structure that can capture new forms of place nuance.</p>
+
+<p>The trick is in how we encode the properties for each place record, and in particular how we keep those property names from conflicting with each other. As I wrote in my last blog post about <a href="https://mapzen.com/blog/boundary-issues-properties/">Boundary Issues and property editing</a>:</p>
+
+<blockquote>
+<p>Instead of specifying a <code>tags</code> property, we use <code>wof:tags</code>, meaning it’s a part of the Who’s On First namespace. This lets us keep things that are common to <em>all WOF records</em>, like <code>wof:name</code>, separate from from Mapzen <em>opinionated things</em> like <code>mz:categories</code></p>
+</blockquote>
+
+<p>The namespaces for WOF properties act as a cue about the nature of each property: is it “general purpose” or is it an “opinionated assertion?” It also serves another purpose: <em>where did this opinion originate from?</em> If you see a property with <code>sg:tags</code>, that <code>sg:</code> prefix lets you know that the data came from <a href="https://archive.org/details/2011-08-SimpleGeo-CC0-Public-Spaces">SimpleGeo</a>.</p>
+
+<p>This system allows us to keep a property like <code>wof:name</code> (the name of the place, “36th Street”) distinct from <code>public_art:name</code> (the mural’s title, “An Underground Movement: Designers, Builders, Riders”). The namespaces assigns a kind of credit/blame for where a given detail originated from. We maintain a GitHub repository, <a href="https://github.com/whosonfirst/whosonfirst-sources/">whosonfirst-sources</a>, that describes who is responsible for which properties.</p>
+
+<p>(Quick side note: just to be especially clear, <code>public_art:name</code> is a fictional property name chosen for the purpose of illustrating the logic of prefixes and sources. Who’s On First has <a href="https://whosonfirst.mapzen.com/spelunker/concordances/sfac/#10/37.8166/-122.5057">an existing convention</a> of treating public art as a <em>first-class place</em>, rather than a set of properties that decorate wherever an artwork physically manifests itself. A helpful test for answering the question “is it a place?” is: <em>can I ask someone to meet me there?</em> As in, “let’s meet over by <a href="https://gregfallis.com/2017/04/14/seriously-the-guy-has-a-point/">Fearless Girl</a>.”)</p>
+
+<pre><code class="language-json">{
+	&quot;id&quot;: 404734187,
+	&quot;fullname&quot;: &quot;Yahoo! GeoPlanet (formerly Where On Earth)&quot;,
+	&quot;name&quot;: &quot;whereonearth&quot;,
+	&quot;prefix&quot;: &quot;woe&quot;,
+	&quot;key&quot;:&quot;id&quot;,
+	&quot;url&quot;: &quot;http://developer.yahoo.com/geo/geoplanet/&quot;,
+	&quot;license&quot;: &quot;http://developer.yahoo.com/geo/geoplanet/data/&quot;
+}
+</code></pre>
+
+<p>A Who’s On First <em>source</em> is composed of a short list of attributes like <code>name</code>, <code>fullname</code>, <code>prefix</code>, <code>url</code> encoded into a publicly accessible JSON file.  We maintain a single <a href="https://github.com/whosonfirst/whosonfirst-sources/blob/master/sources/README.md#simplegeo">list of all the sources</a>, including <a href="https://github.com/whosonfirst/whosonfirst-sources/blob/master/sources/nytimes.json">The New York Times</a> (prefix <code>nyt</code>), <a href="https://github.com/whosonfirst/whosonfirst-sources/blob/master/sources/nytimes.json">United States Census Bureau</a> (prefix <code>uscensus</code>), and our own <a href="https://github.com/whosonfirst/whosonfirst-sources/blob/master/sources/burritojustice.json">Burrito Justice</a>, whose microhood, <a href="https://burritojustice.com/la-lengua/">La Lengua</a>, has gone on to become <a href="https://bernalwood.com/2015/02/05/extremely-graphic-infographic-visualizes-2014-bernal-heights-microhood-real-estate-trends/">standardized</a> in other mapping taxonomies.</p>
+
+<p>The range of ways we might describe a place will differ vastly depending on interests and needs. Using property prefixes gives us a useful way to group those needs, avoid naming conflicts, and let them all cohabitate within a single WOF record.</p>
+
+<h2>Who’s On First: it’s not just data</h2>
+
+<p>One of our self-imposed design constraints is that we don’t get to choose your dev stack. This is why we publish everything as GeoJSON flat files instead of, say, a PostgreSQL dump file. If you use PostgreSQL/PostGIS, you’ll find a way to get the data into your tables.</p>
+
+<p>For my work on <a href="https://github.com/whosonfirst/whosonfirst-www-boundaryissues">Boundary Issues</a>, our bespoke web-based content management system for WOF records, my Mapzen colleagues are the primary customer. However, they are not the only customer, and we are just starting to pull in outside contributors. (If you want to be a guinea pig, please <a href="boundaryissues@mapzen.com">get in touch</a>!). A lot of my recent focus working on Boundary Issues  has been about lowering the bar for contributing data.</p>
+
+<h2>WOF ❤️ CSV</h2>
+
+<p>While <a href="http://geojson.org/">GeoJSON</a> offers an amazing level of flexibility and compatibility for describing places, it turns out CSV is an <em>even better</em> format for expressing many places at once. First of all it’s just been around longer; <a href="https://en.wikipedia.org/wiki/Comma-separated_values#History">FORTRAN 77 supported it in 1978</a>. That longevity means it has support in a wide range of spreadsheet editors, from VisiCalc to Google Sheets.</p>
+
+<p><img src="images/icecream.png" alt="" /></p>
+
+<p>Unlike JSON (or XML), data encoded into CSV format doesn’t require that you read the entire file before you can start parsing it. That means CSV files can get <em>really really big</em>, and your software will still be able to read a single row efficiently. There are drawbacks to CSV as well, chiefly among them is it’s harder to express nested information inside its columnar structure. It’s all a trade-off, and choosing the right data format to encode stuff in has everything to do with the circumstances at hand.</p>
+
+<h2><em>Six sections into the post and…</em></h2>
+
+<p>That brings us to the lede, buried under quite a bit of context and exposition: <em>Boundary Issues now supports importing CSV files</em> 🎉. This is important and not just for the convenience of editing WOF data outside of specialized geo-software (<a href="http://www.qgis.org/en/site/forusers/download.html">QGIS</a> I love you, but your user interface is bringing me down). CSV support means Boundary Issues can now import more data into Who’s On First, from a wider range of sources. And more importantly, we can invite more people to edit within spreadsheet software they already have at hand, increasing the number of perspectives describing WOF places.</p>
+
+<h2>The world is wonderfully multifaceted</h2>
+
+<p>The territory means <a href="https://twitter.com/Walldo/status/852040146446831616">different things to different people</a>. Depending on your perspective, the kinds of data that are captured about places may be missing, insufficient, or downright hostile. Who’s On First is _opinionated_—like all datasets, no collection is truly unbiased—but we hope to be aware of when we’re asserting our own opinions about places and create a framework where a polyglot of <em>place-feels</em> will be welcome.</p>
+
+<p>The multifaceted maps we make simply reflect the weird and wonderful territory they represent.</p>
+
+<p>Like <a href="https://peoplecentered.net/the-internet-is-made-of-people/">the Internet</a>, Who’s On First data is <em>made of people</em>. Those who have the capability to edit our raw data necessarily reflect themselves in those edits. They are present in the data through choices about which places get edited, and the types of nuanced assertions they make about places.</p>
+
+<p>Throughout the development of the CSV import feature, I had the pleasure of working with Jeff Ferzoco’s dataset for his excellent historic mapping project, <a href="http://outgoingnyc.com/">OUTgoing</a>.</p>
+
+<blockquote>
+<p>OUTgoing: The Hidden History of New York&rsquo;s Gay Nightlife—is an effort to map documented historic locations of gay nightlife in New York City as far back and comprehensively as possible. We now have all 50 states with legalized gay marriage, and the LGBT experience is in the midst of a 21st century upshift. It&rsquo;s time to look back and get some perspective and data—in order to look forward. From historic records, we’ve gathered 969 nighttime spots—bars, clubs, bathhouses, coffee houses, cruising areas, late-night diners, etc.—from the 1800s to 2015. It is nowhere near complete.</p>
+</blockquote>
+
+<p><img src="images/outgoing-map.jpg" alt="" /></p>
+
+<p>Jeff was kind enough to share a CSV file of all his collected places, which is dense with excellent metadata like <code>year_opened</code>, <code>year_closed</code>, and <code>mafia_owned</code>.</p>
+
+<p><img src="images/outgoing-csv.jpg" alt="" /></p>
+
+<p>Here’s how we can start importing that data into Who’s On First: select the CSV file we want to upload.</p>
+
+<p><img src="images/csv-choose-file.gif" alt="" /></p>
+
+<p>The upload interface reveals some general options, allowing us to specify whether the CSV file has a column header row,  identify a <em>source</em> for the data (in this case, <a href="https://github.com/whosonfirst/whosonfirst-sources/tree/master/sources#outgoing"><code>outgoing</code></a>), and choose a <em>prefix</em> for the properties we are merging into Who’s On First.</p>
+
+<p><img src="images/csv-source-prefix.gif" alt="" /></p>
+
+<p>Next we will map <em>which columns</em> should be saved to <em>which properties</em>. Some columns map onto generic, well-known WOF properties like <code>wof:name</code>, <code>geom:latitude</code>, and <code>geom:longitude</code>, while others get saved as new properties with the <code>out:</code> prefix. The code detects predictable column headings like <code>latitude</code> and <code>longitude</code> and maps them automatically.</p>
+
+<p><img src="images/csv-properties.gif" alt="" /></p>
+
+<p>Once that property mapping is ready, we can click the “upload” button and begin stepping through each of the rows in the CSV file.</p>
+
+<p><img src="images/csv-add-venue.jpg" alt="" /></p>
+
+<p>This row-by-row process allows us to make any necessary adjustments to the record before we import it into the Who’s On First dataset. In some cases, we may need to choose which address is the correct one.</p>
+
+<p><img src="images/csv-address.gif" alt="" /></p>
+
+<p>We also want to avoid duplicating existing records, if possible.</p>
+
+<p><img src="images/csv-dupes.gif" alt="" /></p>
+
+<p>Once we complete the step-through import process, we can download a new CSV file modified to include a new <code>wof_id</code> column. This additional column allows us to round-trip our edits back into Who’s On First, effectively turning your spreadsheet editor into a new external interface to change properties en masse.</p>
+
+<p><img src="images/csv-download.gif" alt="" /></p>
+
+<p>Working with real data has been extremely helpful for shaping the CSV step-through feature. Huge thanks to <a href="https://twitter.com/zingbot">Jeff</a> for sharing his research and for being so generous with the underlying dataset. The OUTgoing data is quirky and opinionated, and was instrumental in identifying unexpected edge cases as I was writing the code.</p>
+
+<p>We <a href="mailto:boundaryissues@mapzen.com?subject=CSV%20FTW">look forward to meeting</a> your weird and wonderful CSVs!</p>
+
+<h2>Excuse me while I promote some things here</h2>
+
+<p>Plug #1: <em>This blog post was adapted into a talk at <a href="https://csvconf.com/">csv,conf</a> on May 3 in Portland, OR. Thanks for coming by! <a href="https://phiffer.org/etc/csvconf.pdf">Here are the slides</a>, and the <a href="https://phiffer.org/etc/csvconf.zip">slides + video</a> if you missed it.</em></p>
+
+<p>Plug #2: <em>We are extending the deadline for our <a href="https://whosonfirst.mapzen.com/interns/#2017">call for  internship applications</a>. Please apply if you found this discussion interesting, and want to help us improve how we we present Who’s On First to the world.</em></p>
+	</body>
+</html>

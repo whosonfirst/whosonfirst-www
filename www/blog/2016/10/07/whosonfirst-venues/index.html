@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Venues, Postal Codes... and All Those GitHub Repositories</title>
+		<meta name="description" content="Who’s on First is a gazetteer of places.">
+		<link rel="apple-touch-icon" href="/images/favicons/apple-touch-icon.png" sizes="180x180">
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-16x16.png" sizes="16x16">
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-32x32.png" sizes="32x32">
+		<link rel="manifest" href="/images/favicons/manifest.json">
+		<link rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg" color="#2C1E3F">
+		<link rel="stylesheet" href="/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/css/mapzen.whosonfirst.css">
+		
+		<link rel="stylesheet" href="/css/styles/grayscale.css">
+
+		<meta property="og:type" content="article" />
+		<meta property="og:site_name" content="Who's On First" />
+		<meta property="og:title" content="Venues, Postal Codes... and All Those GitHub Repositories" />
+		<meta property="og:description" content="Multiply &amp;quot;a lot of venues, even in the smallest of communities&amp;quot; by the &amp;quot;entire planet&amp;quot; and you&#39;ve got... well, a lot of venues." />
+		<meta property="og:image" content="images/whosonfirst-venues-splash.png" />
+		
+		<meta property="twitter:card" value="summary" />
+		<meta property="twitter:site" content="@alloftheplaces" />
+		<meta property="twitter:creator" content="@alloftheplaces" />
+		<meta property="twitter:url" content="/blog/2016/10/07/whosonfirst-venues/" />
+		<meta property="twitter:title" content="Venues, Postal Codes... and All Those GitHub Repositories" />
+		<meta property="twitter:description" content="Multiply &amp;quot;a lot of venues, even in the smallest of communities&amp;quot; by the &amp;quot;entire planet&amp;quot; and you&#39;ve got... well, a lot of venues." />
+		<meta property="twitter:image" content="/id/images/whosonfirst-venues-splash.png" />
+		
+		<style type="text/css">
+		  body {
+		  font-family: serif;
+		  margin:2em;
+		  margin-left: 10%;
+		  margin-right: 10%;
+		  font-size: 1.3em;
+		  line-height: 1.5em;
+		  }
+
+		  img {
+		  max-width: 640px !important;
+		  max-height: 480px !important;
+		  border: 1px dotted #ccc;
+		  padding: .5em;
+		  margin-bottom:1em;
+		  margin-top: 1em;
+		  }
+
+		  h2 small {
+		  display: block;
+		  margin-top:.10em;
+		  font-weight: 100;
+		  font-size: .5em;
+		  }
+
+		  .hey-look {
+		  font-weight: 700;
+		  }
+		</style>
+	</head>
+	<body>
+
+	  
+	  
+	  <h2>
+	    Venues, Postal Codes... and All Those GitHub Repositories
+	    <small>This is a blog post by
+	      <span class="hey-look">thisisaaronland</span>
+	      on October 07, 2016 
+	       tagged <span class="hey-look">whosonfirst</span> and <span class="hey-look">venues</span></small>
+	  </h2>
+<h2>Venues</h2>
+
+<p><img src="images/16356193176_02404fa0d1_z.jpg" alt="Entertaining guests at the California alligator farm, Los Angeles, by The California Historical Society" /></p>
+
+<p>tl;dr - <a href="https://whosonfirst.mapzen.com/spelunker/placetypes/venue">20 million openly licensed venues, all with full (or at least partial) Who&rsquo;s On First hierarchies</a>.</p>
+
+<h3>What is this thing you call &ldquo;venue&rdquo; ?</h3>
+
+<p>By default, Who&rsquo;s On First strives to group places in to <a href="https://github.com/whosonfirst/whosonfirst-placetypes">as few distinct place types as possible</a>. The goal is to gather places in to buckets where they have <em>more in common with other kinds of places</em> than not. Initially we defined venues as:</p>
+
+<blockquote>
+<p>Things with four walls and a ceiling.</p>
+</blockquote>
+
+<p>Then we remembered that we want to (eventually) add <a href="https://whosonfirst.mapzen.com/spelunker/tags/public_art/">all the landmarks in the world</a> to Who&rsquo;s On First. Rather than create a new placetype specific for landmarks we decided it made sense to classify them as venues, and to indicate their <a href="http://www.wikilovesmonuments.org/">landmark-iness</a> via a Mapzen-prefixed property.</p>
+
+<p>Which meant we needed to change the definition of a venue to reflect many landmarks lack of walls or ceilings. Now we define a venue as:</p>
+
+<blockquote>
+<p>Places that people might stand around, <em>together</em>.</p>
+</blockquote>
+
+<p>That may sound a little silly in the telling. You could find lots of fancier ways of saying the same thing but at the end of the day you&rsquo;d still be&hellip; saying the same thing and in a way that would probably sound like gibberish to non-experts and strip away both the ambiguity and the play inherent in the reality of things.</p>
+
+<p>So, that&rsquo;s what we think a venue <a href="https://www.youtube.com/watch?v=j4XT-l-_3y0">&amp;quot;is&amp;quot;</a>.</p>
+
+<p>Venues are still the holy grail of geo data, precisely because they are the psychic underwear to our daily lives. For good or bad, most people&rsquo;s entire lives are mediated through &ldquo;venues&rdquo; be they commercial, cultural or social. There are a lot of venues, even in the smallest of communities.</p>
+
+<p>Multiply <em>a lot of venues, even in the smallest of communities</em> by the <em>entire planet</em> and you&rsquo;ve got&hellip; well, a lot of venues.</p>
+
+<p>Which makes venues a hard problem. It&rsquo;s a hard problem collecting all those venues. It&rsquo;s a hard problem vetting them and to keeping them up to date. It&rsquo;s a hard problem to figure out where to <em>put</em> them all and harder still to figure out how to make that many things searchable. These are hard problems and that has meant only companies with an interest in reselling access to that data have endeavoured to take up the challenge. That&rsquo;s not very interesting to Who&rsquo;s On First.</p>
+
+<p><img src="images/14251596747_bc13128e8c_z.jpg" alt="Franzi and cable car, by Phil Gyford" /></p>
+
+<p>Historically, there haven&rsquo;t been a whole lot venue databases that don&rsquo;t impose constraints, of one kind or another, on their re-use. The goal for Who&rsquo;s On First is to have an openly licensed database of places that <em>may</em> be used in a commercial project, without any additional restrictions. Something akin to an <a href="https://en.wikipedia.org/wiki/MIT_License">MIT</a> or <a href="https://en.wikipedia.org/wiki/BSD_licenses">BSD</a> software license but for data. That is not everyone&rsquo;s definition of &ldquo;open&rdquo; and that&rsquo;s okay. There are different flavours of &ldquo;open&rdquo; and different reasons for choosing one over another.</p>
+
+<p>Who&rsquo;s On First <a href="https://mapzen.com/blog/mapping-with-bias/">has always been a wildly ambitious project</a> so rather than be discouraged by something as big and hairy and complicated as venues, we chose instead to jump in with both feet.</p>
+
+<h3>SimpleGeo (2009-2011)</h3>
+
+<p>In 2011, the now defunct geo-services company <a href="https://www.twitter.com/simplegeo">SimpleGeo</a> published their <a href="https://archive.org/details/2011-08-SimpleGeo-CC0-Public-Spaces">Public Spaces Collection</a>, 20 million business listings, as a <a href="https://creativecommons.org/publicdomain/zero/1.0/">Creative Commons Zero</a> (CC0) dataset. <a href="https://web.archive.org/web/20110424090705/http://blog.simplegeo.com/2011/04/20/open-places-data/">Thanks, SimpleGeo!</a></p>
+
+<p>Most venues are in the <a href="https://whosonfirst.mapzen.com/spelunker/placetype/venue?iso=us">USA</a> (approximately 12 million of them) but other countries with a not-insignificant number of venues include the <a href="https://whosonfirst.mapzen.com/spelunker/placetype/venue?iso=gb">UK</a>, <a href="https://whosonfirst.mapzen.com/spelunker/placetype/venue?iso=de">Germany</a>, <a href="https://whosonfirst.mapzen.com/spelunker/placetype/venue?iso=ca">Canada</a>, <a href="https://whosonfirst.mapzen.com/spelunker/placetype/venue?iso=es">Spain</a> and <a href="https://whosonfirst.mapzen.com/spelunker/placetype/venue?iso=au">Australia</a>. There are still <em>many, many</em> places in the world where the SimpleGeo dataset doesn&rsquo;t have any venue data so this is a just a beginning, and not a triumphal celebration on arrival. You can see a complete count of venues by country here:</p>
+
+<p><a href="https://github.com/whosonfirst-data/whosonfirst-data-venue/blob/master/DATA.md">https://github.com/whosonfirst-data/whosonfirst-data-venue/blob/master/DATA.md</a></p>
+
+<p>In 2015, we started importing those venues in to Who&rsquo;s On First. The import process has been a start-and-stop affair and adding a little over 8 million venues, last year, we put things on hold and didn&rsquo;t pick them up again until ealier this year. That work <a href="https://github.com/whosonfirst-data/whosonfirst-data-venue-us/issues/1">wrapped</a> <a href="https://github.com/whosonfirst-data/whosonfirst-data-venue/issues/1">up</a>, recently, meaning every one of those 20 millions venues has been assigned <a href="https://mapzen.com/blog/wof-lifecycle-documentation/">their very own Who&rsquo;s On First ID</a> and a full set of ancestors within <a href="https://github.com/whosonfirst/whosonfirst-placetypes#here-is-a-pretty-picture">Who&rsquo;s On First</a>.</p>
+
+<p>Aside from a general desire to add all those venues in to Who&rsquo;s On First the sheer volume of data was attractive as a way to test some of the assumptions and infrastructure we&rsquo;ve developed to manage <a href="https://mapzen.com/blog/who-s-on-first/">all these places</a> we&rsquo;ve taken under our wing. Any comprehensive database of venues in Who&rsquo;s On First, whether we seeded it using SimpleGeo or another source, would have all the same problems of scale so even though there were some initial concerns about the quality and the focus of the Public Spaces Collection we figured &ldquo;Why not at least use it to start testing things, now?&rdquo;</p>
+
+<p><img src="images/3177485572_5d75a01b79_z.jpg" alt="Postcard of the sea serpent, by The Nantucket Historical Association" /></p>
+
+<p>The SimpleGeo data was released in 2011 and it&rsquo;s 2016, today, so it&rsquo;s safe to assume that we will <em>not</em> have a venue record for that cool new bar which just opened in <a href="https://whosonfirst.mapzen.com/spelunker/ID/descendants&amp;placetype=venue">London</a> or <a href="https://whosonfirst.mapzen.com/spelunker/ID/descendants&amp;placetype=venue">Los Angeles</a> or <a href="https://whosonfirst.mapzen.com/spelunker/ID/descendants&amp;placetype=venue">Shanghai</a>. We aspire to have those venues, and aspire to have them in something approaching real-time, but today we do not.</p>
+
+<p><em>We might actually have some of those cool new bars in New York City or San Francisco but that is largely a function of choosing those two cities to start testing <a href="https://mapzen.com/blog/boundary-issues-properties">the Who&rsquo;s On First editorial stack</a> with, since that is where most of the Mapzen staff live. This coastal bias is not a feature of Who&rsquo;s On First, only reflective of the fact that it is still early days&hellip;</em></p>
+
+<p>On the other hand if you need a plumber or a notary in any of those cities, or places like rural Kansas, it&rsquo;s entirely possible <a href="https://whosonfirst.mapzen.com/spelunker/search/?q=plumber®ion_id=85688555">we have those listings</a>.</p>
+
+<p>That&rsquo;s the interesting thing about the term &ldquo;venues&rdquo;, in 2016: It has become short-hand for a very specific <em>subset</em> of venues, eclipsing everything else. Often when people say &ldquo;venues&rdquo; they&rsquo;re really talking about restaurants and bars in urban or metropolitain areas and shops where people arguably enjoy spending money on the things they&rsquo;re buying (as opposed to, say, picking up toilet paper at the drug store).</p>
+
+<p>These venues are also almost always <em>current</em> venues suggesting the thrill, however illusory, of something that <a href="http://www.aaronland.info/weblog/2014/10/06/interpretation/#brick">hasn&rsquo;t been discovered by everyone else yet</a> and aimed very specifically at what marketers refer to as &ldquo;the 18-35 year old&rdquo; demographic.</p>
+
+<p><img src="images/15485394421_aa931019bb_z.jpg" alt="Turtle club, caught between San Pedro &amp; Catalina Island, Cal., by The California Historical Society" /></p>
+
+<p>But let&rsquo;s stop for a moment and remember a few things: Let&rsquo;s remember the <a href="https://whosonfirst.mapzen.com/spelunker/id/572151977/">nearly 100-year old butcher shop</a> in your neighbourhood. Or the <a href="https://whosonfirst.mapzen.com/spelunker/id/572077043/">local bar</a> that closed last year <a href="https://en.wikipedia.org/wiki/The_Lexington_Club">whose history runs deeper</a> than a pint glass. Let&rsquo;s remember our new best friend <a href="https://whosonfirst.mapzen.com/spelunker/id/1008184051/">Poop Emoji Rock</a>.</p>
+
+<p>As important as it is, there is more to life than tomorrow&rsquo;s happy hour. Plus, sooner or later, everyone gets ejected from <a href="http://www.aaronland.net/old-club/">18-35 Year Old Club</a> and then what?</p>
+
+<p>As we&rsquo;ve been working with the SimpleGeo dataset it&rsquo;s become clear that despite some bunk data and some unfortunate absences if there was a venue that existed before 2011 which had any kind of following, or traffic, it&rsquo;s probably in there&hellip; <em>somewhere</em>.</p>
+
+<p>Now that we&rsquo;ve gotten over the initial hurdle of simply importing all those venues (more on that below) a big part of our work in the short-term is to think about how we can allow people to make sense of all that stuff. It&rsquo;s easy  to complain that there are no open venues in the world but then to be confronted by <a href="https://whosonfirst.mapzen.com/spelunker/placetypes/venue/?tag=accountant">86, 000 accountants in seven different countries</a> can be equally disorienting.</p>
+
+<p>Some of the work going forward will involve <a href="https://mapzen.com/blog/yesnofix">Yes-No-Fix style tools</a> allowing people to quickly flag venues as being still-open or long-since-closed and some of the work will involve <a href="https://github.com/whosonfirst/whosonfirst-categories">grouping venues in to categories</a> for directed searches and general browsing. Some of the work will simply be learning by building things and seeing what works and <a href="https://www.youtube.com/watch?v=XnoqLtJbjcI">what doesn&rsquo;t</a>.</p>
+
+<p>It&rsquo;s not going to be perfect right away but if we do the job well then, at the very least, things will be <em>better than they were yesterday</em>.</p>
+
+<p>In the meantime there are 20, 848, 132 (and counting) venues that have been <a href="https://whosonfirst.mapzen.com/spelunker/placetypes/venue">Who&rsquo;s On First -ifed</a>.</p>
+
+<h2>Postal Codes</h2>
+
+<p><img src="images/14889402267_8853eb04af_z.jpg" alt="Sitting with travel trailer at St. Petersburg Beach, by The State Library and Archives of Florida" /></p>
+
+<p>tl;dr - <a href="https://whosonfirst.mapzen.com/spelunker/placetypes/postalcode/?exclude=nullisland">3 million openly licensed postal codes with centroids or polygons</a> in 14 countries.</p>
+
+<p>In the same spirit as venues we&rsquo;ve also started to tackle adding postal codes to Who&rsquo;s On First. The initial import of postal codes came courtesy the 7.10.0 release of the <a href="https://archive.org/details/geoplanet_data_7.10.0.zip">Yahoo! GeoPlanet dataset</a>, which contains postal codes for most countries, even if they don&rsquo;t include geometries. That&rsquo;s okay because each postal code does have a <a href="https://whosonfirst.mapzen.com/spelunker/concordances/geoplanet/">parent ID</a> and that gives us enough information to group things by country and we can add geometries, opportunistically, one country at a time.</p>
+
+<p>There are more than 14 countries in the world so there is a lot of work left to do but here are some of the highlights, to date:</p>
+
+<h3>Thank you, Ordnance Survey!</h3>
+
+<p>We&rsquo;ve imported all of the UK Ordance Survey&rsquo;s <a href="https://www.ordnancesurvey.co.uk/business-and-government/products/code-point-open.html">Code-Point Open</a> dataset in to Who&rsquo;s On First and we&rsquo;re still trying to sort out why there are a healthy 300, 000 UK postal codes <em>without</em> geometries. On the other hand there <em>are</em> <a href="https://whosonfirst.mapzen.com/spelunker/placetypes/postalcode/?iso=gb&amp;exclude=nullisland">1.6 million postal codes with centroids</a> so that&rsquo;s progress.</p>
+
+<h3>Thank you, Hannes and Kevin!</h3>
+
+<p>Thanks to <a href="https://github.com/hannesj">Hannes Junnila</a> and Mapzen&rsquo;s own <a href="https://twitter.com/kevinkreiser">Kevin Kreiser</a> we have imported official postal codes for <a href="https://github.com/whosonfirst-data/whosonfirst-data-postalcode-fi/issues/1">Finland</a> and <a href="https://github.com/whosonfirst-data/whosonfirst-data-postalcode-at/issues/1">Austria</a> and <a href="https://github.com/whosonfirst-data/whosonfirst-data-postalcode-ch/issues/1">Switzerland</a>.</p>
+
+<h3>Thank you, America and Canadia!</h3>
+
+<p>Likewise we&rsquo;ve imported the <a href="https://www.census.gov/geo/reference/zctas.html">US Census ZIP Code Tabulation Areas</a> meaning we have geometries for around <a href="https://whosonfirst.mapzen.com/spelunker/placetypes/postalcode/?iso=us&amp;exclude=nullisland">75% of all the postal codes</a> in the USA.</p>
+
+<p>North of the US border, it turns out that Canada has about <a href="https://whosonfirst.mapzen.com/spelunker/placetypes/postalcode/?iso=ca">800, 000 six-character postal codes</a>. The licensing around their geometries <a href="http://www.michaelgeist.ca/2016/06/crowdsourcedpostalcodelawsuit/">has a long and tortured history</a>. Statistics Canada, however, has been nice enough to <a href="http://www12.statcan.gc.ca/census-recensement/2011/geo/bound-limit/bound-limit-2011-eng.cfm">publish shapefiles for the 1, 621 Forward Sortation Areas (FSA)</a> which are represented by the first three characters in a Canadian postal code.</p>
+
+<p>Using that information we generated <a href="https://whosonfirst.mapzen.com/spelunker/placetypes/postalcode/?iso=ca&amp;exclude=nullisland">approximate centroids for the all the six-character postal codes</a> derived from the geometric center of their parent FSA. This is not Perfect Data but it does scope the problem to about a square kilometer rather than an <a href="https://en.wikipedia.org/wiki/Postal_codes_in_Canada">entire province</a>.</p>
+
+<h3>Thank you, Open Addresses!</h3>
+
+<p>Using the <a href="https://github.com/whosonfirst/Clustr">Clustr</a> tool originally developed to <a href="http://code.flickr.net/2008/10/30/the-shape-of-alpha/">extract shapefiles from geotagged Flickr photos</a> we&rsquo;ve been able to generate approximate geometries for postal codes derived from <a href="http://openaddresses.io/">Open Addresses</a> data for <a href="https://github.com/whosonfirst-data/whosonfirst-data-postalcode-au/">Australia</a>, <a href="https://github.com/whosonfirst-data/whosonfirst-data-postalcode-nl/">the Netherlands</a> and <a href="https://github.com/whosonfirst-data/whosonfirst-data-postalcode-fr/">France</a>.</p>
+
+<p>These geometries are very much Weird Data so it is left up to you to decide whether you think they&rsquo;re better than no data at all. If nothing else we think having to option to make that choice is better than no data.</p>
+
+<h2>All Those GitHub Repositories</h2>
+
+<p><img src="images/9785396672_a6220b8421_z.jpg" alt="The Endless Staircase, by Ben Terrett" /></p>
+
+<p>tl;dr - We are betting on the future and <a href="https://github.com/whosonfirst-data">making do with the present</a>.</p>
+
+<p>Recently we created a second organization in GitHub for Who&rsquo;s On First related work. The first organization is called <a href="https://github.com/whosonfirst">whosonfirst</a> and houses all of the software we&rsquo;ve written to date as well as a growing body of theory and <a href="https://github.com/whosonfirst/whosonfirst-cookbook">documentation</a>.</p>
+
+<p>The second organization is called <a href="https://github.com/whosonfirst-data">whosonfirst-data</a> and it is where the millions and millions of GeoJSON files representing <a href="https://mapzen.com/blog/all-of-the-places/">all of the places</a> in Who&rsquo;s On First live. The decision for a second organization was spurred on by the work we&rsquo;ve been doing to import venues and postal codes.</p>
+
+<p>Work that has translated in to <em>24 million GeoJSON files spread across 488 GitHub repositories</em>. Before we go any further, let&rsquo;s be clear about one thing: This is not an ideal situation.</p>
+
+<p>Ultimately our goal is to have a single monolithic Who&rsquo;s On First repository that will contain <em>all 24 million</em> (and counting) records. In 2016 storing 24 million tiny files in a single Git repository is either technically impossible or so impractical as to &ldquo;play impossible on TV&rdquo;.</p>
+
+<p>Until that better day comes when a single &ldquo;mono-repo&rdquo; is possible we have been working instead to establish conventions for what repository a given file lives in and what that repository is called. The naming conventions for repositories at their <em>most granular</em> are as follows:</p>
+
+<p><code>&quot;whosonfirst-data-&quot; + WHOSONFIRST_PLACETYPE + &quot;-&quot; + WHOSONFIRST_COUNTRY_CODE + &quot;-&quot; + WHOSONFIRST_SUBDIVISION_CODE</code></p>
+
+<p>For example:</p>
+
+<ul>
+<li><a href="https://github.com/whosonfirst-data/whosonfirst-data">whosonfirst-data</a> — administrative data (<a href="https://github.com/whosonfirst/whosonfirst-placetypes">continents - microhoods</a>) for the world</li>
+<li><a href="https://github.com/whosonfirst-data/whosonfirst-data-venue-us-ca">whosonfirst-data-venue-us-ca</a> — venues in California, USA</li>
+<li><a href="https://github.com/whosonfirst-data/whosonfirst-venue-ca">whosonfirst-data-venue-ca</a> — venues in Canada</li>
+<li><a href="https://github.com/whosonfirst-data/whosonfirst-data-postalcode-fi">whosonfirst-data-postalcode-fi</a> — postalcodes in Finland</li>
+</ul>
+
+<p>The first thing to note is that not all repositories are as granular as the rules described above.</p>
+
+<p>Wherever feasible we try to bundle records with the <em>least amount</em> of granularity as possible. For example postalcodes are grouped by country as are venues unless there are so many of them, like in the USA, that it is not practical to keep them in a single parent repository.</p>
+
+<p>If a repository grows so much data that it is no longer practical to keep everything in one place then it may be subdivided in to a number of child repositories. Venues are a good example of this.</p>
+
+<p>We try to maintain a separate &ldquo;parent&rdquo; repository for things that have been broken out in to multiple child repositories. For example there is a <a href="https://github.com/whosonfirst-data/whosonfirst-data-postalcode">whosonfirst-data-postalcode</a> repository that contains no data but instead <a href="https://github.com/whosonfirst-data/whosonfirst-data-postalcode/blob/master/data.json">a pointer</a> to all the repositories that do have postalcode data. We also do the same for <a href="https://github.com/whosonfirst-data/whosonfirst-data-venue-us">venues in the USA</a>.</p>
+
+<p>The <a href="https://github.com/whosonfirst-data/whosonfirst-data">whosonfirst-data</a> repository is the obvious exception (or perfect example, depending on how you look at it) to the scenario described above. This repository contains all &ldquo;administrative&rdquo; placetypes (all the places between and inclusive of continents to microhoods) for the entire world. While it is possible to imagine that the sum total of all the neighbourhoods in the world will require putting them in a separate repository but we are going to hold off doing that for as long as we can.</p>
+
+<div style="padding-top:-24.5px;height:305px;">
+     <div style="margin-left:auto;margin-right:auto;width:408px;height:295px;">
+     	  <a href="http://www.nytimes.com/2016/07/14/world/what-in-the-world/in-new-zealand-lands-and-rivers-can-be-people-legally-speaking.html"><img src="images/nz_water_person.png" width="408" height="295" align="center" style="border: 1px #999 solid;" /></a>
+     </div>
+</div>
+
+<p><em>This practice is still in its early stages so we apologize in advance if it&rsquo;s bumpy, weird or incomplete.</em></p>
+
+<p>The goal is to provide a clear and reproducible template for subdividing a repository (that has grown too large) in such as way that all those repositories may eventually be merged in to a single collection without any conflicts. Who&rsquo;s On First documents are grouped by country and placetype as a convenience but, technically, they can live anywhere.</p>
+
+<p>Finally, Who&rsquo;s On First records should always have a <code>wof:repo</code> property indicating the repository to which they belong. If they don&rsquo;t that&rsquo;s a bug.</p>
+
+<p>Huzzah!</p>
+
+<div style="font-style:italic; font-size:small;">
+
+Images used in this blog post:
+
+<ul style="margin-top:1em;">
+<li><a href="https://www.flickr.com/photos/chs_commons/16356193176/">Entertaining guests at the California alligator farm, Los Angeles</a> <small>California Historical Society</small></li>
+<li><a href="https://www.flickr.com/photos/philgyford/14251596747/">Franzi and cable car</a> <small>Phil Gyford</small></li>
+<li><a href="https://www.flickr.com/photos/nantuckethistoricalassociation/3177485572/">Postcard of the sea serpent</a> <small>Nantucket Historical Association</small></li>
+<li><a href="https://www.flickr.com/photos/chs_commons/15485394421/">Turtle club, caught between San Pedro & Catalina Island, Cal.</a> <small>California Historical Society</small></li>
+<li><a href="https://www.flickr.com/photos/floridamemory/14889402267/">Sitting with travel trailer at St. Petersburg Beach</a> <small>State Library and Archives of Florida</small></li>
+<li><a href="https://www.flickr.com/photos/benterrett/9785396672/">The Endless Staircase</a> <small>Ben Terrett</small></li>
+</ul>
+
+</div>
+	</body>
+</html>

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>maîtres chez nous</title>
+		<meta name="description" content="Who’s on First is a gazetteer of places.">
+		<link rel="apple-touch-icon" href="/images/favicons/apple-touch-icon.png" sizes="180x180">
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-16x16.png" sizes="16x16">
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-32x32.png" sizes="32x32">
+		<link rel="manifest" href="/images/favicons/manifest.json">
+		<link rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg" color="#2C1E3F">
+		<link rel="stylesheet" href="/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/css/mapzen.whosonfirst.css">
+		
+		<link rel="stylesheet" href="/css/styles/grayscale.css">
+
+		<meta property="og:type" content="article" />
+		<meta property="og:site_name" content="Who's On First" />
+		<meta property="og:title" content="maîtres chez nous" />
+		<meta property="og:description" content="Perhaps we can stop teaching our tools the bad habits of the past." />
+		<meta property="og:image" content="images/whosonfirst-nacis-2017.018.jpg" />
+		
+		<meta property="twitter:card" value="summary" />
+		<meta property="twitter:site" content="@alloftheplaces" />
+		<meta property="twitter:creator" content="@alloftheplaces" />
+		<meta property="twitter:url" content="/blog/2017/10/17/whosonfirst-nacis-2017/" />
+		<meta property="twitter:title" content="maîtres chez nous" />
+		<meta property="twitter:description" content="Perhaps we can stop teaching our tools the bad habits of the past." />
+		<meta property="twitter:image" content="/id/images/whosonfirst-nacis-2017.018.jpg" />
+		
+		<style type="text/css">
+		  body {
+		  font-family: serif;
+		  margin:2em;
+		  margin-left: 10%;
+		  margin-right: 10%;
+		  font-size: 1.3em;
+		  line-height: 1.5em;
+		  }
+
+		  img {
+		  max-width: 640px !important;
+		  max-height: 480px !important;
+		  border: 1px dotted #ccc;
+		  padding: .5em;
+		  margin-bottom:1em;
+		  margin-top: 1em;
+		  }
+
+		  h2 small {
+		  display: block;
+		  margin-top:.10em;
+		  font-weight: 100;
+		  font-size: .5em;
+		  }
+
+		  .hey-look {
+		  font-weight: 700;
+		  }
+		</style>
+	</head>
+	<body>
+
+	  
+	  
+	  <h2>
+	    maîtres chez nous
+	    <small>This is a blog post by
+	      <span class="hey-look">thisisaaronland</span>
+	      on October 17, 2017 
+	       tagged <span class="hey-look">nacis</span> and <span class="hey-look">whosonfirst</span></small>
+	  </h2>
+<p><a name="intro"></a></p>
+
+<p><a href="#intro"><img src="images/whosonfirst-nacis-2017.001.jpg" alt="maîtres chez nous" /></a></p>
+
+<p><em>The following are the slides and notes for a talk about <a href="https://whosonfirst.mapzen.com">Who&rsquo;s On First</a> that I delivered at the <a href="http://nacis.org">2017 NACIS conference</a> in Montreal.</em></p>
+
+<p><em>From the beginning our goal with Who&rsquo;s On First has not been to create a canonical list of carefully selected, important or relevant places. It is not meant to act as the threshold by which places are measured but rather as a welcoming vessel for all the places and the raw material by which any number of thresholds might be crafted. This was not a talk about how we do that work but rather why it is important to do it, at all.</em></p>
+
+<p>Hello.</p>
+
+<p>It is a pleasure to be back with you at <a href="http://nacis.org/">NACIS</a>. The last time I was here <a href="http://www.aaronland.info/weblog/2011/10/14/pixelspace/#nacis">was in 2011</a>. It is also a treat for me that the conference is being held in <a href="https://places.mapzen.com/id/101736545/">Montreal</a> because this is where I grew up.</p>
+
+<p>Thank you for inviting me to speak.</p>
+
+<p><a name="past"></a></p>
+
+<p><a href="#past"><img src="images/whosonfirst-nacis-2017.002.jpg" alt="the past keeps changing because we keep asking different questions of it - margaret macmillan" /></a></p>
+
+<p>This is a talk about gazetteers and in particular the gazetteer that I work on, called <a href="https://whosonfirst.mapzen.com">Who&rsquo;s On First</a>. Who&rsquo;s On First has set itself the ambitious goal of global coverage from continents all the way down to venues.</p>
+
+<p>For anyone not familiar with the term a &ldquo;gazetteer&rdquo; is basically just a great big phone book, but a phone book of places rather than people.</p>
+
+<p><a href="http://www.iupress.indiana.edu/product_info.php?products_id=808056">Gazetteers have existed for as long as we&rsquo;ve been able to conceptualize the idea of place.</a> A gazetteer is so deceptively simple as to seem mundane and beyond effort but so complex, the moment you scratch the surface, as to overwhelm even the best intentions.</p>
+
+<p>This is not a talk about the mechanics of Who&rsquo;s On First. In the two and half years since the project began <a href="https://whosonfirst.mapzen.com/blog">something like forty to fifty thousand words have been written</a> about the architectural theory and the engineering choices and all the challenges we&rsquo;ve faced along the way.</p>
+
+<p>This is not a talk about how we work on a gazetteer like Who&rsquo;s On First but rather why we work on it, at all.</p>
+
+<p><a name="what"></a></p>
+
+<p><a href="#what"><img src="images/whosonfirst-nacis-2017.003.jpg" alt="what is who&rsquo;s on first" /></a></p>
+
+<p>If not how but instead why, we still need to start with what. What is the shape of the Who&rsquo;s On First gazetteer?</p>
+
+<ul>
+<li><p>To begin, Who&rsquo;s On First is an <a href="https://whosonfirst.mapzen.com/docs/licenses/">openly licensed</a> dataset. At its most restrictive, data is published under a Creative Commons By-Attribution license. Whenever possible, and this is true of our own day-to-day work, data is published under a Creative Commons Zero public domain license.</p></li>
+
+<li><p>Every record in Who&rsquo;s On First has <a href="https://whosonfirst.mapzen.com/data/principles/">a stable permanent and unique numeric identifier</a>. There are no semantics encoded in the IDs.</p></li>
+
+<li><p>At rest, each record is stored as a plain-text GeoJSON file. Our goal is to ensure that Who&rsquo;s On First embodies the principals of portability, durability and longevity. This led us to adopt plain-vanilla text files as the base unit of delivery.</p></li>
+
+<li><p>Files are stored in a nested hierarchy of directories derived from their IDs.</p></li>
+
+<li><p>There are <a href="https://whosonfirst.mapzen.com/docs/properties/">a common set of properties</a> applied to all records which may be supplemented by an arbitrary number of additional properties specific to that place.</p></li>
+
+<li><p>There are <a href="https://github.com/whosonfirst/whosonfirst-placetypes#here-is-a-pretty-picture">a finite number of place types</a> in Who&rsquo;s On First and all records share a common set of ancestors. As with properties, any given record may have <a href="https://whosonfirst.mapzen.com/docs/hierarchies/">as complex a hierarchy as the circumstances demand</a> but there is a shared baseline hierarchy across the entire dataset.</p></li>
+
+<li><p>Individual records may have multiple geometries or multiple hierarchies and sometimes both.</p></li>
+
+<li><p>Records may be updated or superseded, cessated or even deprecated. Once a record is created though it can never be removed or replaced.</p></li>
+
+<li><p>Lastly and most importantly Who&rsquo;s On First is meant, by design, to accommodate all of the places.</p></li>
+</ul>
+
+<p><strong>Who&rsquo;s On First is not a carefully selected list of important or relevant places. It is not meant to act as the threshold by which places are measured.</strong></p>
+
+<p><strong>Who&rsquo;s On First, instead, is meant to provide the raw material with which a multiplicity of thresholds might be created.</strong></p>
+
+<p>From Who&rsquo;s On First&rsquo;s perspective <a href="https://mapzen.com/blog/who-s-on-first/">the point is not that one place is more important or relevant than any other</a>. The point is not that a place may or may not exist anymore or that its legitimacy as a place is disputed. The point is, critically, that people <em>believe</em> them to exist or to have existed.</p>
+
+<p>This is why I often refer to Who&rsquo;s On First as <a href="https://mapzen.com/blog/mapping-with-bias/">&ldquo;a gazetteer of consensual hallucinations&rdquo;</a>.</p>
+
+<p><a name="leonard-cohen"></p>
+
+<p><a href="#leonard-cohen"><img src="images/whosonfirst-nacis-2017.004.jpg" alt="leonard cohen" /></a></p>
+
+<p>To explain why I&rsquo;m going to start with this guy.</p>
+
+<p>This is <a href="http://www.pbs.org/video/montreal-ladies-and-gentlemen-mr-leonard-cohen/">Leonard Cohen</a>, the poet and musician, who <a href="https://www.youtube.com/watch?v=jP7pN_3_JQI">died in November</a> of last year. Cohen was born and raised in Montreal and <a href="http://montrealgazette.com/news/local-news/leonard-cohen-looms-large-at-montreals-mural-international-public-art-festival">this mural</a> was <a href="http://www.kevinledo.com/">painted</a> on St. Laurent Boulevard, just <a href="https://www.nytimes.com/2017/02/10/travel/leonard-cohen-musician-montreal-canada.html">down the street</a> from where he kept a house in the city.</p>
+
+<p>St. Laurent Boulevard is often referred to by locals simply as &ldquo;The Main&rdquo;.</p>
+
+<p><a name="the-main"></a></p>
+
+<p><a href="#the-main"><img src="images/whosonfirst-nacis-2017.005.jpg" alt="the main" /></a></p>
+
+<p>The Main is so-called because it is one the city’s oldest streets running along a North-South axis, starting in Old Montreal at the bank of the <a href="https://places.mapzen.com/id/404529181/">St. Lawrence River</a>.</p>
+
+<p><a name="north-south"></a></p>
+
+<p><a href="#north-south"><img src="images/whosonfirst-nacis-2017.006.jpg" alt="north/south" /></a></p>
+
+<p>Like a lot of cities in the world, Montreal&rsquo;s North-South axis has no bearing in reality.</p>
+
+<p>If you&rsquo;re being precise St. Laurent Boulevard runs along a North-North-West to South-South-East axis.</p>
+
+<p>What&rsquo;s important about The Main is less its directionality than the fact that it acts as the border between the Eastern and Western halves of the city.</p>
+
+<p><a name="english-french"></a></p>
+
+<p><a href="#english-french"><img src="images/whosonfirst-nacis-2017.007.jpg" alt="english-french" /></a></p>
+
+<p>It is only in recent years that The Main has not served as the dividing line between the city&rsquo;s English and French speaking populations.</p>
+
+<p>This was famously described by the author <a href="http://www.hipmuseum.com/hugh.html">Hugh MacLennan</a> in the larger Canadian context as &ldquo;two solitudes&rdquo; living side by side <a href="http://archive.gg.ca/media/doc.asp?lang=e&amp;DocID=4574">with little or no common ground between them</a>.</p>
+
+<p><a name="golden-square-mile"></a></p>
+
+<p><a href="#golden-square-mile"><img src="images/whosonfirst-nacis-2017.008.jpg" alt="the golden square mile" /></a></p>
+
+<p>It is also not really possible to talk about that divide without talking about it as the border between the haves and the have-nots.</p>
+
+<p>This conference is being held on the Southern edge of what was once called <a href="https://places.mapzen.com/id/1108955947/">The Golden Square Mile</a>. This part of town is where what we now call &ldquo;the 1%&rdquo; lived.</p>
+
+<p>For a time this was the seat of all the wealth and power in Canada. It was very very English at a time when the contempt and disdain between the English and the French was barely contained and rarely disguised.</p>
+
+<p>This created a power dynamic that rippled down through every aspect of society, in a province that has always been 90% Francophone. It was a power dynamic that was not only allowed to <a href="https://www.urbandictionary.com/define.php?term=T%C3%AAte%20carr%C3%A9e">fester</a> but actively promoted.</p>
+
+<p>This continued to varying degrees until the 1950s and what is known as <a href="http://archives.radio-canada.ca/politique/provincial_territorial/dossiers/1732/">the Quiet Revolution</a> when the French Canadian population demanded, not for the first time, to be <a href="https://en.wikipedia.org/wiki/Quiet_Revolution">&ldquo;maîtres chez nous&rdquo;</a> or &ldquo;masters in our own home.&rdquo;</p>
+
+<p><a name="blvd-rene-levesque"></a></p>
+
+<p><a href="#blvd-rene-levesque"><img src="images/whosonfirst-nacis-2017.009.jpg" alt="boulevard rené lévesque" /></a></p>
+
+<p>You may have noticed that the conference hotel sits on a street named after a guy called <a href="https://en.wikipedia.org/wiki/Ren%C3%A9_L%C3%A9vesque">René Lévesque</a>.</p>
+
+<p>It is difficult to overstate Lévesque&rsquo;s role during <a href="http://www.banq.qc.ca/collections/collections_patrimoniales/bibliographies/revolution_tranquille.html">the Quiet Revolution</a> and in shaping contemporary life and the social contract in Québec.</p>
+
+<p>He would be elected Premier in 1976 as the head of the separatist Parti Québécois (PQ) and would lead <a href="https://www.youtube.com/watch?v=lru4grpq3Rc">an unsuccessful bid to secede from Canada in 1980</a>.</p>
+
+<p><em>Note: During the talk I incorrectedly stated that &ldquo;Among other things he gave Québec a Charter of Human Rights and Freedoms almost a decade before Canada <a href="http://laws-lois.justice.gc.ca/eng/Const/page-15.html">enacted its own</a> and language laws which are still being debated, to this day.&rdquo;</em></p>
+
+<p>_In fact, The <a href="https://en.wikipedia.org/wiki/Quebec_Charter_of_Human_Rights_and_Freedoms">Québec Charter of Human Rights and Freedoms</a> was passed by the provincial National Assembly the year before the PQ were elected. That is my bad so I will point out, instead, that Lévesque both championed and oversaw the final <a href="http://larevolutiontranquille.ca/en/the-nationalization-of-electricity.php">nationalization of hydroelectric power in Québec</a>. While not necessarily as inspiring as a Charter of Human Rights and Freedoms it would have an equal (probably greater) impact on the province._</p>
+
+<p>By the time he died in 1987 few would deny Lévesque, whatever they thought of his politics, his place as <a href="https://www.youtube.com/watch?v=BhbSp4cJZVY">the father of modern Québec</a>.</p>
+
+<p>So you would be forgiven for wondering why we have chosen to honour such a celebrated figure with such an unremarkable boulevard. The next time you go outside take a moment to marvel at its mediocrity.</p>
+
+<p>The answer lies in what Boulevard René Lévesque used to be called.</p>
+
+<p><a name="blvd-dorchester"></a></p>
+
+<p><a href="#blvd-dorchester"><img src="images/whosonfirst-nacis-2017.010.jpg" alt="boulevard dorchester" /></a></p>
+
+<p>Boulevard René Lévesque used to be called Dorchester Boulevard after the English Lord Dorchester, who was formerly known as Lord Durham.</p>
+
+<p>Lord Durham was sent over to Canada in 1838 to report on <a href="https://fr.wikipedia.org/wiki/R%C3%A9bellion_des_Patriotes">the Patriot Rebellions</a> of the previous year and more generally to determine why the Crown&rsquo;s French Canadian subjects were getting restless.</p>
+
+<p>Fun fact: The rebellions were led by <a href="https://web.archive.org/web/20170612175735/https://www.pc.gc.ca/en/lhn-nhs/qc/louisjosephpapineau">Louis-Joseph Papineau</a> who was also honoured with an equally drab and uninspiring avenue about 40 minutes walk from here.</p>
+
+<p><a name="sans-histoire"></a></p>
+
+<p><a href="#sans-histoire"><img src="images/whosonfirst-nacis-2017.011.jpg" alt="un peuple sans histoire" /></a></p>
+
+<p><a href="https://en.wikipedia.org/wiki/Report_on_the_Affairs_of_British_North_America">Lord Durham’s report</a> might have faded into historical obscurity had its author not offered the opinion that the French Canadians, who predated the first English settlers by a hundred years or more, were &ldquo;un peuple sans histoire&rdquo; or &ldquo;a people without history.&rdquo;</p>
+
+<p><a name="je-me-souviens"></a>
+<a href="#je-me-souviens"><img src="images/whosonfirst-nacis-2017.012.jpg" alt="je me souviens" /></a></p>
+
+<p>It is not for nothing that all the license plates in this province now read <a href="https://www.youtube.com/watch?v=2FZXQZJxZRk">&ldquo;je me souviens&rdquo;</a> or &ldquo;I remember&rdquo;.</p>
+
+<p>Nor is it surprising that Dorchester Boulevard was purposely renamed to honour René Lévesque.</p>
+
+<p><a name="westmount"></a></p>
+
+<p><a href="#westmount"><img src="images/whosonfirst-nacis-2017.013.jpg" alt="westmount remembers" /></a></p>
+
+<p>You know who else remembers, though? The city of <a href="https://places.mapzen.com/id/101736451/">Westmount</a> remembers.</p>
+
+<p>Westmount is <a href="https://westmount.org/en/the-city/history/">an autonomous municipality</a> on the island of Montreal and home to the remaining money and power that didn&rsquo;t immediately decamp to <a href="https://places.mapzen.com/id/101735835">Toronto</a> following the <a href="http://collections.musee-mccord.qc.ca/en/collection/artifacts/P090-A_50-1004/">election of René Lévesque</a>.</p>
+
+<p>Westmount is a sort of leftover bronze square mile of wealth and privilege and in 1987 it <a href="https://www.westmount.org/wp-content/publications/A_View_Of_Their_Own_the_Story_of_Westmount/files/assets/basic-html/page151.html">refused to rename Dorchester Boulevard</a> as the rest of the city had, and so it remains today.</p>
+
+<p><a name="cohen-westmount"></a></p>
+
+<p><a href="#cohen-westmount"><img src="images/whosonfirst-nacis-2017.014.jpg" alt="leonard cohen, b. westmount" /></a></p>
+
+<p>Fun fact: <a href="http://www.leonardcohenfiles.com/montreal.html">Leonard Cohen was born in Westmount</a>, in 1934.</p>
+
+<p><a name="cohen-la"></a></p>
+
+<p><a href="#cohen-la"><img src="images/whosonfirst-nacis-2017.015.jpg" alt="leonard cohen, angelino" /></a></p>
+
+<p>So, we&rsquo;re back to this guy.</p>
+
+<p>By the time Leonard Cohen died last year in Los Angeles <a href="http://www.cbc.ca/news/entertainment/leonard-cohen-la-home-1.3848347">he had lived there for decades</a>. This pesky fact has never prevented anyone in Montreal, English or French, from claiming him <a href="https://www.newyorker.com/culture/culture-desk/leonard-cohens-montreal">as one of their own</a>.</p>
+
+<p>In the minds of many people in this city Leonard Cohen is before all things <a href="https://www.youtube.com/watch?v=ibUKEwds4Ng">a Montrealer</a>.</p>
+
+<p><a name="blvd-leonard-cohen"></a></p>
+
+<p><a href="#blvd-leonard-cohen"><img src="images/whosonfirst-nacis-2017.016.jpg" alt="boulevard leonard cohen" /></a></p>
+
+<p>It is in all seriousness then that I would like to propose that the city of Montreal rename St. Laurent Boulevard after Leonard Cohen.</p>
+
+<p>The simple fact is that Montreal suffers from a surplus of streets and plazas and landmarks devoted to the religious and linguistic power struggles and score-settling of the past.</p>
+
+<p>We are overdue something that reflects the present. <a href="https://www.youtube.com/watch?v=2FpwjQLZTTs">We are overdue a celebration</a>.</p>
+
+<p><a name="blind"></a></p>
+
+<p><a href="#blind"><img src="images/whosonfirst-nacis-2017.017.jpg" alt="we have been blind" /></a></p>
+
+<p>I have told you these stories for two reasons:</p>
+
+<p>The first is that all of these things really happened and they are the stories that inform the city you&rsquo;ll be visiting during this conference.</p>
+
+<p>The second is to use the telling – and in particular the telling of a duality, of ”two solitudes&rdquo; and &ldquo;two founding nations&rdquo; – to highlight an uncomfortable fact about Canadian history, French and English both.</p>
+
+<p>Simply put, we have been blind to the fact that there has always been another story. We have been blind to the fact that the First Nations were already here living on these lands long before the European settlers arrived.</p>
+
+<p>It is important to recognize that we have not been passive in our blindness but brutally deliberate. First out of malice and then later out of negligence and more recently out of shame.</p>
+
+<p>We have closed our eyes to the fact that almost from the beginning we have systematically worked to erase the First Nations, hoping only to open them when the deed is done and there is nothing left to remember but the two solitudes.</p>
+
+<p><a name="place-is-history"></a></p>
+
+<p><a href="#place-is-history"><img src="images/whosonfirst-nacis-2017.018.jpg" alt="place is history" /></a></p>
+
+<p>In 2017 there is at least a nascent awareness, something approaching acknowledgement, among Canadians that <a href="https://gadebate.un.org/en/72/canada">these things happened and that we did them</a>.</p>
+
+<p>We are a long way from making amends and <a href="http://www.trc.ca/websites/trcinstitution/index.php?p=3">there is not time enough to catalog all the ways we have done wrong</a> by the First Nations but I want to touch on one story in particular.</p>
+
+<p>As late as the 1950s and the 1960s it was, as part of official government policy to assimilate the First Nations, our practice <a href="https://www.nytimes.com/2017/10/06/world/canada/indigenous-forced-adoption-sixties-scoop.html">to forcibly remove First Nations children from their families</a>.</p>
+
+<p>These children were placed in <a href="http://www.aadnc-aandc.gc.ca/eng/1100100015576/1100100015577">foster homes or residential schools</a> where in addition to widespread physical and sexual abuse they were actively prevented from learning or practicing or remembering their language, their culture, their histories and in many cases their own birth names.</p>
+
+<p>If you believe that place is history or that language is culture or that naming things is an important form of agency – <em>all things which are the very stuff that maps are made of</em> – it is difficult not to see those policies as anything but a sanctioned and pre-meditated erasure.</p>
+
+<p><a name="burden"></a></p>
+
+<p><a href="#burden"><img src="images/whosonfirst-nacis-2017.019.jpg" alt="the past is our burden" /></a></p>
+
+<p>I take the view that the sins of a mother or a father are not those of their sons or their daughters. We have enough evidence to suggest that things never end well when we assume they are. I do not believe however that this allows those same sons and daughters to abdicate their past.</p>
+
+<p>The past I am sorry to say is our burden.</p>
+
+<p>It is our burden because while the stories I&rsquo;ve told you today have taken place in a comparatively modest slice of geography to a comparatively minuscule population <em>they are the same story everywhere you go</em>.</p>
+
+<p>The details may change but the story is always the same.</p>
+
+<p>If there is one common thread that binds us all it is that we argue about what to call a place and the meaning of those names.</p>
+
+<p>If there is another common thread it has been to assume the argument is a zero-sum game.</p>
+
+<p><a name="better-than-yesterday"></a></p>
+
+<p><a href="#better-than-yesterday"><img src="images/whosonfirst-nacis-2017.020.jpg" alt="better than yesterday" /></a></p>
+
+<p>What if we stopped doing that?</p>
+
+<p>I have described to you a series of overlapping grievances and past injustices that <em>in no way</em> will a gazetteer remedy alone. A gazetteer is only a tool but perhaps we can stop teaching our tools the bad habits of the past.</p>
+
+<p>A gazetteer is fundamentally about the relationships between one place and all the others. In the past we have been limited by economics and by physics and by no shortage of myopia in the kinds of relationships a gazetteer might allow.</p>
+
+<p>The hope and the goal for <a href="https://whosonfirst.mapzen.com">Who&rsquo;s On First</a> is that the present has afforded us the opportunity to leap-frog many of those limitations. We live in a time when much of the technology around us has taken on a foul-smelling odor but I choose to believe that it is still possible to harness these tools in the service of a common good.</p>
+
+<p>The hope and the goal of Who&rsquo;s On First is not that everyone should have to, or even want to, add their names and stories to our gazetteer but that they <em>may be able do so</em> when they choose to.</p>
+
+<p>The hope and the goal is in the chance to allow people the agency to name the places that define their own stories, and in doing so to give them a shared weight and mass in the Universe, without needing to erase someone else&rsquo;s telling in the process.</p>
+
+<p>Thank you.</p>
+	</body>
+</html>

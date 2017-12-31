@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>&#34;Geotagging WOF venues&#34;</title>
+		<meta name="description" content="Who’s on First is a gazetteer of places.">
+		<link rel="apple-touch-icon" href="/images/favicons/apple-touch-icon.png" sizes="180x180">
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-16x16.png" sizes="16x16">
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-32x32.png" sizes="32x32">
+		<link rel="manifest" href="/images/favicons/manifest.json">
+		<link rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg" color="#2C1E3F">
+		<link rel="stylesheet" href="/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/css/mapzen.whosonfirst.css">
+		
+		<link rel="stylesheet" href="/css/styles/grayscale.css">
+
+		<meta property="og:type" content="article" />
+		<meta property="og:site_name" content="Who's On First" />
+		<meta property="og:title" content="&#34;Geotagging WOF venues&#34;" />
+		<meta property="og:description" content="&#34;Photography as data collection.&#34;" />
+		<meta property="og:image" content="&#34;images/yoonseoul-selfie.jpg&#34;" />
+		
+		<meta property="twitter:card" value="summary" />
+		<meta property="twitter:site" content="@alloftheplaces" />
+		<meta property="twitter:creator" content="@alloftheplaces" />
+		<meta property="twitter:url" content="/blog/2017/08/01/geotagging-wof-venues/" />
+		<meta property="twitter:title" content="&#34;Geotagging WOF venues&#34;" />
+		<meta property="twitter:description" content="&#34;Photography as data collection.&#34;" />
+		<meta property="twitter:image" content="/id/&#34;images/yoonseoul-selfie.jpg&#34;" />
+		
+		<style type="text/css">
+		  body {
+		  font-family: serif;
+		  margin:2em;
+		  margin-left: 10%;
+		  margin-right: 10%;
+		  font-size: 1.3em;
+		  line-height: 1.5em;
+		  }
+
+		  img {
+		  max-width: 640px !important;
+		  max-height: 480px !important;
+		  border: 1px dotted #ccc;
+		  padding: .5em;
+		  margin-bottom:1em;
+		  margin-top: 1em;
+		  }
+
+		  h2 small {
+		  display: block;
+		  margin-top:.10em;
+		  font-weight: 100;
+		  font-size: .5em;
+		  }
+
+		  .hey-look {
+		  font-weight: 700;
+		  }
+		</style>
+	</head>
+	<body>
+
+	  
+	  
+	  <h2>
+	    &#34;Geotagging WOF venues&#34;
+	    <small>This is a blog post by
+	      <span class="hey-look">dphiffer</span>
+	      on August 01, 2017 
+	       tagged <span class="hey-look">boundaryissues</span>, <span class="hey-look">whosonfirst</span> and <span class="hey-look">data</span></small>
+	  </h2>
+<p>For much of this summer I’ve been working remotely on Who’s On First. In early July I was in Korea giving <a href="http://seoulbiennale.org/en/public-programs/educational/read-write-offline-mapping">a workshop on offline mapping</a> as part of the <a href="http://seoulbiennale.org/en/">Seoul Biennale of Architecture and Urbanism</a>. From there I joined my wife <a href="https://ellieirons.com/">Ellie</a> at an <a href="http://bambooculture.com/en">artist residency in Taipei</a>, where I’ve been working 12 hours ahead of my <a href="https://whosonfirst.mapzen.com/spelunker/id/102047399/">EDT</a> colleagues. Along the way I’ve been collecting new places for WOF, since both <a href="https://github.com/whosonfirst-data/whosonfirst-data-venue-tw">Taiwan</a> and <a href="https://github.com/whosonfirst-data/whosonfirst-data-venue-kr">South Korea</a> are still rather sparsely populated with venues. This was my excuse to try using my software “in the field” and expand WOF’s venue coverage.</p>
+
+<p>This post includes a fair share of obscure technical details. Perhaps it might be useful for someone working on a similar application. (And shout-out to the NYPL’s <a href="http://bertspaan.nl/">Bert Spaan</a> who’s released a very interesting looking <a href="https://github.com/nypl-spacetime/Leaflet.GeotagPhoto">geotagging Leaflet plugin</a>.)</p>
+
+<h2>Start where you are</h2>
+
+<p>I started with what I already had running on <a href="https://github.com/whosonfirst/whosonfirst-www-boundaryissues/">Boundary Issues</a>, I just loaded it up on my phone. (Here is where I mention that the bespoke web-based editor I’m working on for Who’s On First is not quite ready for public use, but <a href="https://mapzen.com/tag/boundaryissues">I’m blogging about it</a> out in the open anyway. <a href="mailto:boundaryissues@mapzen.com">Drop us a line</a> if you think you have something to add.) In addition to the general purpose <a href="https://mapzen.com/blog/boundary-issues-properties/">WOF properties editor</a>, I’ve been working on a pared down <a href="https://mapzen.com/blog/simple-is-hard/">venue-specific interface</a>. I used that simpler venues UI to try adding some new places I’ve enjoyed during my travels.</p>
+
+<p>I am carrying two phones with me. One is an iPhone 5 with T-Mobile’s generous data roaming—a throttled, but functional, version of the mobile data service I get at home (at no extra cost). The other is a Samsung Galaxy S7 with Verizon service, which works great, but not outside the USA. I’ve been sticking to wifi hotspots on the Android phone while I’m traveling.</p>
+
+<h2>Slow bandwidth is very real</h2>
+
+<p>Instead of investing in a Korean or Taiwanese SIM card, I decided to embrace my slower bandwidth as a useful constraint. By sticking to my throttled roaming data, I’m getting a bit of a taste for what mobile bandwidth bottlenecks feel like day-to-day. My iPhone is limited to 3G networks even though everyone around me has fast LTE connectivity.</p>
+
+<p>I’ve gotten better at planning ahead, making a deliberate effort to cache the map data (and routing results) I know I’ll need to navigate the city. In NYC, my network experience alternates between fast cable, fast mobile data (with a subway break for reading a book), and then back to a fast fiber connection. It’s easy to forget about all the slow connectivity that’s out here.</p>
+
+<p>In testing out Boundary Issues, the first thing I learned is that mobile web slippy maps don’t really work so well on a bandwidth-constrained network. I would load up the “Add A Venue” page and just stare at the place where a map should appear. After waiting long enough, the screen would turn off to save battery and I’d mutter something rude under my breath.</p>
+
+<p><img src="images/3g-sadness.jpg" alt="3G network blues" /></p>
+
+<h2>The “headless” option</h2>
+
+<p>I decided to try a different approach. What if instead of relying on a mobile web page, I used the latitude/longitude metadata embedded in the photos I took?  I could just take pictures and then process them when I got back to a faster internet connection. This had the added benefit of making data collection more enjoyable. Instead of staring down at my pocket supercomputer all the time, I’d just take a quick photo from the lock screen shortcut, and it’d go right back into my pocket.</p>
+
+<p>I took a bunch of photos around Seoul with each of my phones. This method was so much faster, and felt less battery intensive compared to my mobile web interface. Once I got back to my laptop, I downloaded the photos and ran them through a <a href="https://github.com/whosonfirst/whosonfirst-www-boundaryissues/blob/master/bin/jpgs2csv.php">command-line script</a> to convert a folder of images into a CSV file containing a list of filenames and latitude/longitude coordinates.</p>
+
+<p><img src="images/csv-geotagging.jpg" alt="CSV geotagging" /></p>
+
+<p>I took that CSV file and imported it into Boundary Issues, using the <a href="https://mapzen.com/blog/weird-and-wonderful/">step-through venue importer</a>. And it worked! The one flaw in this setup was matching up each filename from the CSV with its corresponding photo in order to remember the place names.</p>
+
+<p>At first I opted for my S7’s higher quality camera. But then I noticed Android has a tendency to hold onto an outdated location compared to iOS. Now I prefer the lower-quality photos from my old iPhone, favoring its more consistently accurate geotags. (Perhaps there is some setting in Android to improve its accuracy that I’m missing.)</p>
+
+<h2>Skipping the CSV stage</h2>
+
+<p>After running a few CSV venue imports, I started to wonder if I could just put the visual cue I’d photographed <em>on the page</em> next to the extracted geotags. I continue to be astonished at the range of things JavaScript can do. As it turns out, you can <a href="https://gist.github.com/straup/0ee19019afd88c6dbd2d">import/cache JPEG binary data</a> and <a href="https://github.com/exif-js/exif-js">extract EXIF tags</a> without hitting any server-side code.</p>
+
+<p>The newest incarnation of the geotagged importer is basically an <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file">HTML file input</a> wired up to some fancy JavaScript that eventually uploads a GeoJSON WOF record into Boundary Issues. With some important caveats (discussed below), this approach lets you keep your geotagged photo on your own device(s). Boundary Issues inspects the geotags on the client-side, so it doesn’t need to store a copy of the photo itself.</p>
+
+<p>At some point we may offer an opportunity for users to opt into a Creative Commons license, and associate their photos with WOF records, but that opens up lots of questions we aren’t yet prepared to address. For now Boundary Issues cares very narrowly about geotag metadata, only keeping a photograph (in <code>localStorage</code>) long enough for you to remember which place it depicts.</p>
+
+<p><img src="images/yoonseoul.gif" alt="Geotagging Yoonseul" />
+<p class="caption"><a href="https://whosonfirst.mapzen.com/spelunker/id/1158786431/">윤슬 or Yoonseul</a> is a <a href="http://societyofarchitecture.com/soa/project/yoonsulmanridong-reflects-seoul/">public art/public space installation</a> in Seoul</a></p></p>
+
+<h2>EXIF tags contain multitudes</h2>
+
+<p>Working with photos straight off the camera has  some quirks. Upon reading an image from an <code>&lt;input type=&quot;file&quot;&gt;</code> you get a binary <code>Blob</code> (yes, that is the <a href="https://developer.mozilla.org/en/docs/Web/API/Blob">technical name</a>) that <a href="https://en.wikipedia.org/wiki/JPEG#Syntax_and_structure">contains</a>:</p>
+
+<ul>
+<li>Technical metadata like width, height, tables needed to decode the image.</li>
+<li>A sequence of compressed bits—a “scan”—that represent the image. (In the case of “progressive scan” JPEGs there are multiple scans of increasing quality.)</li>
+<li>“Application-specific” metadata, including Exchangeable Image File Format (EXIF), including lots of detailed context (where/when/how it was shot) about the photo.</li>
+</ul>
+
+<p>There are a great many things that EXIF tags can describe about a photo. The tags can tell you which model of camera produced the photo as well as details about the exposure settings like shutter speed and f-stop. In the case of (configured properly) smartphones, the EXIF tags also contain latitude/longitude/altitude metadata. I normally disable geotags on my phone camera <a href="https://www.eff.org/deeplinks/2012/04/picture-worth-thousand-words-including-your-location">for privacy reasons</a>, but they’ve been very useful for gathering venue data.</p>
+
+<p>Another important tag I inadvertently encountered is the <a href="https://www.daveperrett.com/articles/2012/07/28/exif-orientation-handling-is-a-ghetto/">EXIF Orientation mode</a>. If you’ve ever seen a photo that someone posted online that looked upside-down, it’s because the image scan was stored in the upside-down order that the camera captured it, and the EXIF tag instructing the computer how to display the image right-side-up was ignored. Web browsers are still not so great applying that EXIF orientation mode (see also: my <a href="https://phiffer.org/etc/exif-orientation-test/">EXIF orientation test page</a>).</p>
+
+<p>As it happens, there is a <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/image-orientation">CSS3 <code>image-orientation</code> property</a> for exactly this purpose. It even includes a magical sounding <code>from-image</code> setting, which sounds like it should fix things right up. Unfortunately <a href="http://caniuse.com/#search=image-orientation">nobody but Firefox</a> supports this approach. It’s up to us web developers to rotate EXIF-oriented photos ourselves.</p>
+
+<p><img src="images/caniuse-image-orientation.jpg" alt="plz caniuse?" /></p>
+
+<h2>Compatibility is (usually) better than correctness</h2>
+
+<p>But wait, it gets worse! One platform, iOS, behaves differently than every other operating system (at least, so far as I’ve gathered). iOS arguably does the “right thing” with these tags, but it is the <em>only case</em> I know of where the EXIF tags are taken into account. Everyone else seemingly ignores the EXIF orientation entirely.</p>
+
+<p>Let’s say you upload a photo you took in EXIF Orientation 3 (volume buttons up) from Mobile Safari on iOS. The resulting photo will look totally normal on your iPhone, because iOS decoded the EXIF Orientation and flipped the image around for you. Everyone else on <em>every other platform</em> (including Safari on macOS) will see an upside-down version. The best part is how it <em>looks totally normal</em> to the original poster, understandably baffled by the inevitable jokes in the comments about being in the opposite hemisphere.</p>
+
+<p>One additional caveat I discovered is that iOS <em>only</em> compensates for the EXIF Orientation with <code>&lt;img&gt;</code> tags, ignoring the EXIF orientation of background images, like non-iOS browsers. My geotagging interface switches between <code>&lt;img&gt;</code> and <code>background-image</code> CSS, so this detail was just one more mystery to untangle along the way.</p>
+
+<p><img src="images/taipei-101.jpg" alt="Taipei 101, as viewed from Xiangshan Trail" />
+<p class="caption"><a href="https://whosonfirst.mapzen.com/spelunker/id/1141959909/">Taipei 101</a> as viewed from the <a href="https://whosonfirst.mapzen.com/spelunker/id/1141959907/">象山 Xiangshan Trail</a> (aka Elephant Mountain).</p></p>
+
+<h2>Yep, CSS can fix it</h2>
+
+<p>The upshot of all this EXIF Orientation mode stuff is that working with photos that are upside-down or sideways is <em>really annoying</em>, making it hard to decipher whatever it was you were trying to photograph. It’s important for me to get this detail right, instead of holding my device sideways/upside-down to <em>see the dang photo</em> like a chump.</p>
+
+<p>After <a href="https://github.com/whosonfirst/whosonfirst-www-boundaryissues/blob/32dbe0cd63beba4ff3f7d3d40a092fb9c8af53fd/www/javascript/mapzen.whosonfirst.geotagged.js#L228-L247">detecting the EXIF Orientation mode</a> in JavaScript and <a href="https://github.com/whosonfirst/whosonfirst-www-boundaryissues/blob/32dbe0cd63beba4ff3f7d3d40a092fb9c8af53fd/www/javascript/mapzen.whosonfirst.geotagged.js#L26-L37">assigning a set of CSS classes</a>, I used a <a href="https://github.com/whosonfirst/whosonfirst-www-boundaryissues/blob/8e6f6444f0a88859e30aa7c5fcfb181cfedb1bd9/www/css/mapzen.boundaryissues.css#L894-L920"><code>transform</code> property</a> to rotate each image (or flip it) back into its intended position. Success! Except … in iOS, which earns a <a href="https://github.com/whosonfirst/whosonfirst-www-boundaryissues/commit/8e6f6444f0a88859e30aa7c5fcfb181cfedb1bd9#diff-14ab22632dd21f09bf0afcbd351b8d23R788">special browser sniff</a> for not conforming. Without that special case, my CSS transform would flip an image, only to have iOS helpfully <em>flip the photo back upside-down again</em> (and then I was like <code>(╯°□°）╯︵ ┻━┻</code>).</p>
+
+<p>If I was processing photos on the server-side, I would prefer rotating photos by rearranging the order of bits in the JPEG scan and stripping out the EXIF orientation tag altogether. Either <a href="http://www.sentex.net/~mwandel/jhead/usage.html"><code>jhead -autorot flipped.jpg</code></a> or <a href="https://www.kraxel.org/blog/linux/fbida/"><code>exiftran -ia rotated.jpg</code></a> would neatly avoid the problem of client-side photo orientation.</p>
+
+<h2>Mobile telephones are really, like, <em>a thing</em> now</h2>
+
+<p>You may have noticed lots of people enjoy taking pictures with their mobile phones. One might say they’re more like <a href="https://craigmod.com/journal/photography_hello/">network-connected <em>cameras</em></a> than <em>phones</em> at this point. This kind of had me wondering—what if I load up a Boundary Issues geotagging page on my camera/phone, and maybe press the <code>&lt;input type=&quot;file&quot;&gt;</code> to launch the camera app—capturing a geotagged photo right from the (tiny) web page?</p>
+
+<p>This is kind of getting back to where I started, except with a slightly different interaction than before. Instead of telling a map to gather my current location with the <a href="https://github.com/domoritz/leaflet-locatecontrol"><code>geolocation</code> API</a>, a photo could act both as a saved-for-later digital artifact and as a means to convey my current location into a WOF record.</p>
+
+<p>In iOS you can totally launch the camera from a web page, and the JavaScript gets the same data Blob, but the EXIF metadata is mysteriously lacking geotags. Even if you’ve enabled location services for Mobile Safari, Chrome, and the Camera. Android <em>does</em> include geotags with photos taken with its version of the Chrome browser, but I’ve found that it occasionally omits them.</p>
+
+<p>I’ve filed a <a href="images/geotags-bug-report.jpg">bug report with Apple</a> and created a <a href="https://phiffer.org/etc/file-input-geotags/">minimal test case</a>, but so far it’s hard to say <em>why</em> iOS omits geotags, or whether it’s likely to be fixed in a future release. I’ll update this post as I learn more.</p>
+
+<h2>Metadata is complicated</h2>
+
+<p>JPEG geotags, and the mixed salad of web technologies required to work with them, are tricky to get right. But the resulting user experience of capturing latitude/longitude coordinates via the camera is really seamless, once you get the settings right. This ease-of-use is burdened by the fact that geotagging metadata can be <a href="http://www.nytimes.com/2010/08/12/technology/personaltech/12basics.html">potentially</a> <a href="http://www.bbc.com/news/technology-17311702">dangerous</a> if you inadvertently share your location on the open web, especially for at-risk populations. (There are helpful guides online for <a href="https://forums.imore.com/guides-how-articles/271636-guide-how-enable-disable-geotagging.html">iOS</a> and <a href="https://www.youtube.com/watch?v=WeraN99NJ0U">Android</a>.)</p>
+
+<p>The inertia that comes with phone camera configurations makes it easy to accidentally leave geotags enabled outside of the narrow data-gathering context. The small choices that developers and designers make about these interfaces (what are the defaults? when do you get visual cues that geotagging is enabled?) are shifting norms around what we’re comfortable sharing, with whom, and in what contexts. Software that <a href="https://www.theverge.com/2017/6/23/15864552/snapchat-snap-map-privacy-threat">nudges us toward oversharing</a> will eventually exclude and endanger those of us who have reason to worry about our location privacy (I would argue that includes <em>everyone</em>, even if they don’t realize it yet).</p>
+
+<p>I want Boundary Issues to use geotagged photos responsibly, ideally reminding each user to reconfigure location services once they are done gathering venue locations. Until iOS and Android provide some explicit mechanism for this, it might make sense to send an email or Slack message reminder after each geotagging session.</p>
+
+<p>I’ve been struck by how hard it is to detect which photos carry geotagged metadata and how easy it is to accidentally share my precise location online. Both iOS and Android helpfully group photo albums by location, but lack safety features like <a href="https://en.wikipedia.org/wiki/Geo-fence">geofencing</a> or warning me when I’m about to share my location metadata. There are many opportunities for improving web-based applications as well. Us web developers need to call attention to users which of their photos carry geotags, especially <em>before</em> they upload them.</p>
+
+<h2>Onward</h2>
+
+<p>Despite some challenges working with EXIF metadata, it’s been fun to have a simpler mechanism for collecting new WOF venues. I now find myself photographing lots of signage, particularly those signs that include place names in both English and Korean/Chinese. I now explore the built environment thinking of which places I might want to capture for Who’s On First.</p>
+
+<p>I’ve also been doing some experiments with using the <a href="https://cordova.apache.org/">Cordova mobile app framework</a> to run a basic <a href="https://mapzen.com/documentation/tangram/">Tangram map</a>. This geotagging interface has me thinking about how an offline-friendly geotagging app might incorporate the work <a href="http://aaronland.info/">Aaron</a> has been doing on <a href="https://github.com/whosonfirst/electron-whosonfirst-bookmarks/">place bookmarking</a>. In due time all of this will be ready enough to invite more users to try it out. Please <a href="mailto:boundaryissues@mapzen.com">get in touch</a> if you’re interested!</p>
+	</body>
+</html>

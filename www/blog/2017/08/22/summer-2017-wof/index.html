@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Increasing Name Translations in Who&#39;s On First</title>
+		<meta name="description" content="Who’s on First is a gazetteer of places.">
+		<link rel="apple-touch-icon" href="/images/favicons/apple-touch-icon.png" sizes="180x180">
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-16x16.png" sizes="16x16">
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-32x32.png" sizes="32x32">
+		<link rel="manifest" href="/images/favicons/manifest.json">
+		<link rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg" color="#2C1E3F">
+		<link rel="stylesheet" href="/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/css/mapzen.whosonfirst.css">
+		
+		<link rel="stylesheet" href="/css/styles/grayscale.css">
+
+		<meta property="og:type" content="article" />
+		<meta property="og:site_name" content="Who's On First" />
+		<meta property="og:title" content="Increasing Name Translations in Who&#39;s On First" />
+		<meta property="og:description" content="Outlining and visualizing the work we&#39;ve done to increase name translations in the Who&#39;s On First gazetteer." />
+		<meta property="og:image" content="&#34;images/photo_main.jpg&#34;" />
+		
+		<meta property="twitter:card" value="summary" />
+		<meta property="twitter:site" content="@alloftheplaces" />
+		<meta property="twitter:creator" content="@alloftheplaces" />
+		<meta property="twitter:url" content="/blog/2017/08/22/summer-2017-wof/" />
+		<meta property="twitter:title" content="Increasing Name Translations in Who&#39;s On First" />
+		<meta property="twitter:description" content="Outlining and visualizing the work we&#39;ve done to increase name translations in the Who&#39;s On First gazetteer." />
+		<meta property="twitter:image" content="/id/&#34;images/photo_main.jpg&#34;" />
+		
+		<style type="text/css">
+		  body {
+		  font-family: serif;
+		  margin:2em;
+		  margin-left: 10%;
+		  margin-right: 10%;
+		  font-size: 1.3em;
+		  line-height: 1.5em;
+		  }
+
+		  img {
+		  max-width: 640px !important;
+		  max-height: 480px !important;
+		  border: 1px dotted #ccc;
+		  padding: .5em;
+		  margin-bottom:1em;
+		  margin-top: 1em;
+		  }
+
+		  h2 small {
+		  display: block;
+		  margin-top:.10em;
+		  font-weight: 100;
+		  font-size: .5em;
+		  }
+
+		  .hey-look {
+		  font-weight: 700;
+		  }
+		</style>
+	</head>
+	<body>
+
+	  
+	  
+	  <h2>
+	    Increasing Name Translations in Who&#39;s On First
+	    <small>This is a blog post by
+	      <span class="hey-look">ndcartography</span> and <span class="hey-look">stepps00</span>
+	      on August 22, 2017 
+	       tagged <span class="hey-look">whosonfirst</span>, <span class="hey-look">data</span> and <span class="hey-look">interns</span></small>
+	  </h2>
+<p>This summer, Mapzen embarked on a large project to quantify and visualize name translation coverage in <a href="https://whosonfirst.mapzen.com/">Who&rsquo;s On First</a>, and to add new translations from <a href="http://www.geonames.org">GeoNames</a> by walking the concordance between the two datasets. Much of the work was done by Nathaniel Douglass, our summer intern on the Data team.</p>
+
+<p>Who&rsquo;s On First is Mapzen&rsquo;s big list of places, each with a stable identifier and descriptive properties. These places represent various <a href="https://github.com/whosonfirst/whosonfirst-placetypes">placetypes</a> like <a href="https://whosonfirst.mapzen.com/spelunker/placetypes/country/"><code>country</code></a>, <a href="https://whosonfirst.mapzen.com/spelunker/placetypes/region/"><code>region</code></a>, <a href="https://whosonfirst.mapzen.com/spelunker/placetypes/locality/"><code>locality</code></a>, and even <a href="https://whosonfirst.mapzen.com/spelunker/placetypes/marinearea/"><code>marinearea</code></a>.</p>
+
+<p>In addition to having every place documented, an overarching goal for Who&rsquo;s On First is to catalogue all <a href="https://github.com/whosonfirst/whosonfirst-names">names</a> in all the  languages.</p>
+
+<p><img src="images/charts-after/total-by-UN.png" alt="" /></p>
+
+<p><em>Above: The number of new translations added this summer, for the six major world languages used by the United Nations. For example, English gained 23,115 new name translations, while Spanish gained 2,916 new name translations.</em></p>
+
+<h4>Previous work around names&hellip;</h4>
+
+<p>Last summer, <strong>Olga</strong> wrote about adding <a href="https://mapzen.com/blog/wikipedia-data/">name translations from Wikidata</a> to Who&rsquo;s On First. That Wikidata effort add nearly <strong>two million</strong> localized names for over <strong>135,000</strong> Who’s On First records, joining earlier names from <a href="http://developer.yahoo.com/geo/geoplanet/">Geoplanet</a>. <strong>Nathaniel Douglass</strong> has continued that work this summer. Now over to him!</p>
+
+<h2>Tackling the issues</h2>
+
+<p>Our goal, and specifically, my internship task, was to add <em>more</em> of these name labels for <em>more</em> places. But there are so many names!</p>
+
+<p>Not only do I want to ensure that Who&rsquo;s On First has new and accurate <code>name:</code> properties, but I also needed to ensure the following is true for Who&rsquo;s On First records:</p>
+
+<ul>
+<li>The <code>name:</code> properties are using correct ISO language codes.</li>
+<li>The <code>name:eng_x_preferred</code> property is present if the record has an existing English <code>wof:name</code>.</li>
+<li>Concordance values for GeoNames are set, which can yield new <code>name:</code> properties.</li>
+</ul>
+
+<h4>Where is my starting point?</h4>
+
+<p>It’s safe to say that adding all missing names is much too large of a task for one humble intern to accomplish within two and a half months. So, I needed to ask myself one question:</p>
+
+<blockquote>
+<p>&ldquo;Where do I start?&rdquo;</p>
+</blockquote>
+
+<p>Before running name import scripts and importing new data, it was important for me to visualize the amount of names present. I did this by programmatically creating charts using Python and Excel.</p>
+
+<h4>The nitty gritty&hellip;</h4>
+
+<p>The International Organization for Standardization (<a href="https://www.iso.org/about-us.html">ISO</a>) maintains standardized language codes called the &ldquo;<a href="https://en.wikipedia.org/wiki/ISO_639">ISO 639 Standard</a>&rdquo;. The <a href="https://en.wikipedia.org/wiki/ISO_639-2">ISO 639-2 language codes</a> are used for the principal language identifier in Who&rsquo;s On First&rsquo;s <code>name:</code> properties (for more information on our use of ISO language codes and <a href="http://www.rfc-editor.org/rfc/rfc5646.txt">RFC 5646</a>. See our  <a href="https://github.com/whosonfirst/whosonfirst-properties">properties</a> and <a href="https://github.com/whosonfirst/whosonfirst-names">names</a> repositories), for example:</p>
+
+<pre><code>&quot;name:eng_x_preferred:[
+    &quot;North America&quot;
+],
+&quot;name:lat_x_preferred:[
+    &quot;America Septentrionalis&quot;
+],
+&quot;name:sin_x_preferred:[
+    &quot;උතුරු ඇමෙරිකාව&quot;
+],
+&quot;name:spa_x_preferred:[
+    &quot;América del Norte&quot;
+],
+
+</code></pre>
+
+<p>The above <code>name:</code> properties show &ldquo;<a href="https://whosonfirst.mapzen.com/spelunker/id/102191575/">North America</a>&rdquo; in English, as well as the Latin, Sinhalese (Sinhala), and Spanish translations.</p>
+
+<p><img src="images/oceania-compare.gif" alt="" /></p>
+
+<p>Above, the <code>continent</code> of <a href="https://whosonfirst.mapzen.com/spelunker/id/85632793/">Australia</a>, is shown in Mapzen&rsquo;s  <a href="http://tangrams.github.io/bubble-wrap/#4/-28.73/144.62">Bubble Wrap</a> basemap style. You’ll notice the Australia label is set to the default language (in this case, English), and, when we switch the name label to Arabic, we see the label change to <code>أستراليا</code>. _(You can do this in Bubble Wrap by toggling the &ldquo;language&rdquo; drop-down in the Controls menu, or by <a href="https://mapzen.com/blog/languages-of-india/">defining</a> the <code>ux_language</code>  global in Tangram)_.</p>
+
+<h4>Less is more (at least when it comes to names)</h4>
+
+<p>While ISO 639-2 catalogues over 450 language codes, I am mostly interested in the most-spoken languages of the world. Lucky for me, <a href="https://github.com/tilezen/">Tilezen</a> (which powers Mapzen Vector Tiles) lists <a href="https://github.com/tilezen/vector-datasource/blob/master/SEMANTIC-VERSIONING.md#languages-are-not-versioned">20 common languages</a> based on the six official languages of the United Nations, as well as the most commonly referenced languages on <a href="https://en.wikipedia.org/">Wikipedia</a>. A breakdown of those languages, below:</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">Language (<em>ISO-639-2</em>)</th>
+<th align="center"></th>
+<th align="center"></th>
+<th align="center"></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">Arabic    (<em>ara</em>)</td>
+<td align="center">French    (<em>fra</em>/<em>fre</em>)</td>
+<td align="center">Italian   (<em>ita</em>)</td>
+<td align="center">Russian   (<em>rus</em>)</td>
+</tr>
+
+<tr>
+<td align="center">Bengali   (<em>ben</em>)</td>
+<td align="center">German    (<em>deu</em>/<em>ger</em>)</td>
+<td align="center">Japanese  (<em>jpn</em>)</td>
+<td align="center">Spanish   (<em>spa</em>)</td>
+</tr>
+
+<tr>
+<td align="center">Chinese   (<em>zho</em>/<em>chi</em>)</td>
+<td align="center">Greek     (<em>ell</em>)</td>
+<td align="center">Korean    (<em>kor</em>)</td>
+<td align="center">Swedish   (<em>swe</em>)</td>
+</tr>
+
+<tr>
+<td align="center">Dutch     (<em>nld</em>/<em>deu</em>)</td>
+<td align="center">Hindi     (<em>hin</em>)</td>
+<td align="center">Polish    (<em>pol</em>)</td>
+<td align="center">Turkish   (<em>tur</em>)</td>
+</tr>
+
+<tr>
+<td align="center">English   (<em>eng</em>)</td>
+<td align="center">Indonesian (<em>ind</em>)</td>
+<td align="center">Portuguese (<em>por</em>)</td>
+<td align="center">Vietnamese (<em>vie</em>)</td>
+</tr>
+</tbody>
+</table>
+<p>Who&rsquo;s On First provides names in more than 60 languages, but not all languages have equal coverage. There are 10 languages with great coverage (more than 50,000 features translated), and another 25 language with good coverage (at least 10,000 features translated).</p>
+
+<p>I want to ensure that the name translations are present in the above languages, but I also need to verify translations are available at different zoom levels in our map house styles. Zoom levels are present in Who&rsquo;s On First records as the <code>mz:min_zoom</code> and <code>mz:max_zoom</code> properties and indicate when a label appears on a map. By querying records by their <code>mz:min_zoom</code> and <code>mz:max</code> zoom property values, I will get a more comprehensive understanding of our name translation coverage.</p>
+
+<h4>Less is more (at least when it comes to features)</h4>
+
+<p>When I was looking at online map providers and print atlases at the beginning of my internship, I noticed that it&rsquo;s often just the low-zooms that are translated into all the languages, with native language names (and sometimes a romanized or &ldquo;English&rdquo; name) being dominant at mid- and high-zooms.</p>
+
+<p><a href="http://naturalearthdata.com/">Natural Earth</a> provides a curated list of a few thousand (instead of million!) important places tuned for low-zoom cartography. Using a pre-release version of the upcoming Natural Earth version 4 data (stored into <code>mz:min_zoom</code>, <code>mz:max_zoom</code> properties in Who&rsquo;s On First), I was able quantify the entire gazetteer <em>and</em> a smaller set of features to focus on the features used to label maps at low-zooms.</p>
+
+<p>Let&rsquo;s dive into all that&hellip;</p>
+
+<h4>Grouping records</h4>
+
+<p>I crawled through the <code>whosonfirst-data</code> repository to gather statistics about each record for specific placetypes and zoom levels. I then grouped records into the following categories:</p>
+
+<ul>
+<li>By placetype</li>
+<li>By placetype, then by language</li>
+<li>By placetype, then by zoom</li>
+<li>By placetype, then by zoom, then by language</li>
+</ul>
+
+<p>For this work, I focus only on the following placetypes: <code>country</code>, <code>dependency</code>, <code>disputed</code>, <code>region</code>, <code>locality</code>, <code>continent</code>, <code>ocean</code>, and <code>marinearea</code> - the features visible at low- and mid-zooms on a map and most useful for point-in-polygon lookups. Other placetypes like <code>county</code>, <code>neighbourhood</code>, and <code>venue</code> were left for another day.</p>
+
+<p>After obtaining the <code>wof:name</code>, <code>wof:placetype</code>, <code>mz:min_zoom</code>, <code>mz:max_zoom</code>, and the existing <code>name:</code> properties, I flagged and grouped records by the categories above. The output was a series of csv files, which I crafted into visualizations.</p>
+
+<h4>Maps!</h4>
+
+<p>Using <a href="https://www.qgis.org/">QGIS</a>, I was able to import and style featuress to show which had translations (dark purple labels) and which didn&rsquo;t (red labels). The map below is categorized by placetype and depicts Who&rsquo;s On First records that have  translations for the twenty languages of interest:</p>
+
+<p><strong>Continents</strong></p>
+
+<p><img src="images/maps/continent.gif" alt="" /></p>
+
+<p>Here are additional graphics for the <a href="images/maps/ocean.gif">ocean</a>, <a href="images/maps/disputed.gif">disputed</a>, <a href="images/maps/marinearea.gif">marinearea</a>, and <a href="images/maps/region.gif">region</a> placetypes.</p>
+
+<h2>Holding Hands with Open Data</h2>
+
+<p>While I was busy crunching numbers and charting, <strong>Stephen</strong> went prospecting for additional names.</p>
+
+<h4>Existing resources</h4>
+
+<p>Luckily, the open-source community has compiled many name translations. We can tap into these translations through concordances that exist in Who&rsquo;s On First records. Websites like <a href="http://www.geonames.org/">Geonames</a>, <a href="https://www.wikidata.org/">Wikidata</a>, <a href="http://developer.yahoo.com/geo/geoplanet/">Geoplanet</a>, and <a href="http://www.naturalearthdata.com/">Natural Earth</a>, have exactly what we are looking for.</p>
+
+<p>For each of these sources, a particular record will have a unique identifier that Who&rsquo;s On First holds hands with. This allows us to augment our existing name translations. An important caveat — just because Who&rsquo;s On First has a concordance value does not always mean we can extract data from that source. Often times, Who&rsquo;s On First already has a name translation, or the source may not have any new names (or any at all).</p>
+
+<p>Mapzen uses Who&rsquo;s On First data in several services including <a href="https://mapzen.com/projects/vector-tiles/">Vector Tiles</a> which powers parts of the Bubble Wrap map shown above (along with <a href="http://www.openstreetmap.org">OpenStreetMap</a> data) and in <a href="https://mapzen.com/products/search/">Search</a> for both name lookups and reverse geocoding.</p>
+
+<h4>GeoNames</h4>
+
+<p>GeoNames <a href="http://download.geonames.org/export/dump/">maintains an alternative names file</a> that contained roughly twelve million rows, each with data for a single unique and stable GeoNames identifier.</p>
+
+<p>Using the identifier crosswalk in the Who&rsquo;s On First concordance list, and after mapping the 2-character language codes used the GeoNames file to the 3-character ISO 639-2 codes used in Who&rsquo;s On First, Stephen was able to pull out any names (and abbreviations) that Who&rsquo;s On First did not already have.</p>
+
+<h2>Results</h2>
+
+<p>After Stephen added the new <code>name:</code> data to Who&rsquo;s On First (and I cleaned up some names manually), it was time for me to see what was gained! To do this, I re-ran the same script used to generate charts on the repository to update charts and visualize the translation gains.</p>
+
+<p>In total, over <strong>113,300</strong> records were updated to include over <strong>255,000</strong> new, unique name translations! While the majority of updated records gained one or two new name translations, this work filled large gaps in coverage for records that had zero name translations to begin with. For instance, a record for <a href="https://raw.githubusercontent.com/whosonfirst-data/whosonfirst-data/master/data/890/517/533/890517533.geojson">Easter Island</a> gained over <strong>100</strong> new name translations!</p>
+
+<p>From Occitan to Catalan to Persian, you&rsquo;re now able to browse our records through our <a href="https://whosonfirst.mapzen.com/spelunker/">Spelunker tool</a> to view these new names.</p>
+
+<p><strong>By placetype (overall)</strong></p>
+
+<p><img src="images/charts-after/by-placetype.png" alt="" /></p>
+
+<p>The chart above shows the total increase in translated names by each placetype. The light purple represents what I started with in the beginning of the summer, the darker purple is how many names were added, and the grey bar represents what is still missing. The numbers represent an average for all 20 languages.</p>
+
+<p><em>Note: You&rsquo;ll notice a discrepancy in the number of <code>country</code> records when comparing pre and post charts. The overseas insular regions of France (<a href="https://whosonfirst.mapzen.com/spelunker/id/85671199/">Reunion</a>, <a href="https://whosonfirst.mapzen.com/spelunker/id/85671209/">Guadalupe</a>, <a href="https://whosonfirst.mapzen.com/spelunker/id/85671191">Martinique</a>, <a href="https://whosonfirst.mapzen.com/spelunker/id/85671195/">French Guiana</a>, and <a href="https://whosonfirst.mapzen.com/spelunker/id/85671203/">Mayotte</a>) were reclassified from <code>country</code> records to <code>region</code> records in Who&rsquo;s On First this summer, but don&rsquo;t worry - these records gained new name translations, too!</em></p>
+
+<p><strong>By placetype, then by the six languages used by the United Nations (comparison)</strong></p>
+
+<p><img src="images/charts-after/all-UN.gif" alt="" /></p>
+
+<p><em>Above: The added translations, by placetype, for the six official UN languages. Work done for English translations resulted in 100% coverage across four placetype categories!</em></p>
+
+<p><strong>By placetype, then by zoom level (comparison)</strong></p>
+
+<p><img src="images/charts-after/by-placetype-zoom.gif" alt="" /></p>
+
+<p><em>Above: Added translations, by placetype, for zoom levels 0 to 8. There are fewer placetype categories and a higher percentage of translated names at the lower zoom levels. At the highest zoom levels, translation percentages drop as more features become present. (Other charts in this post are equivalent to zoom 16.)</em></p>
+
+<p><strong>By language (overall)</strong></p>
+
+<p><img src="images/charts-after/total-by-lang.png" alt="" /></p>
+
+<p><em>Above: This chart shows the total number of features with translations for all 20 languages we focused on. Dutch appeared to be the highest translated language before the summer, with an additional 3,800 name translations added, but was beat by English which saw larger gains.</em></p>
+
+<h2>What Did I learn?</h2>
+
+<p>Before beginning this internship, I hadn’t the slightest idea how I would translate millions of records into multiple languages. In fact, it was a rather stressful first week mauling over where to begin. However, with the help of some amazing colleagues I was able to narrow the problem down, and approach this more methodically. I learned first hand that the best way to eat a whale is one bite at a time!</p>
+
+<p>This summer I gained some valuable experience writing Python scripts, dealing with large datasets, and create meaningful charts to help the data team. Aside from a single Python course last semester, I had never used programming in this way and the real world application has opened my eyes to the possibility of making this a career. Even though it wasn&rsquo;t fancy, I spent ample time perfecting how to generate charts manually in Excel that would visualize the work. While there are many automated charting libraries out there, this allowed me to work closely with the data and fine tune how best to visualize it using a tool I was familiar with.</p>
+
+<p>Additionally, I was introduced to using GitHub in a professional setting, which has been a frustrating, yet rewarding experience. I have come to understand version management, pull requests, and how to deal with merge conflicts, without pulling out all of my hair (beard hair to be specific).</p>
+
+<p>I would like to thank my manager Nathaniel Vaughn Kelso for his vision regarding this project, as well as his confidence in my abilities. I also must thank Stephen Epps for his constant support and dedication towards my success. This project wouldn’t have been possible without their guidance and encouragement. For that, I am very grateful.</p>
+
+<h2>What&rsquo;s Next?</h2>
+
+<p>As you can see in the charts, we still have areas of improvement in Who&rsquo;s On First. We are now able to better visualize translations in Who&rsquo;s On First using these charts, as well as a new feature in our Spelunker to filter by translations (see: for example, see the translations filter in the sidebar to find descendants of Africa in our <a href="https://whosonfirst.mapzen.com/spelunker/search/?q=africa">Spelunker</a>).</p>
+
+<p>Mapzen has more concordance work, name imports, and one-off fixes planned, with an emphasis of increasing coverage by language, placetype, and zoom-level.</p>
+
+<p>If you have names you would like to add to a record, please feel free to file a new issue in the <a href="https://github.com/whosonfirst-data/whosonfirst-data/issues/new"><code>whosonfirst-data</code></a> repository or <a href="mailto:hello@mapzen.com">drop us a line</a>!</p>
+
+<p><em>Photo Credit: <a href="https://flic.kr/p/ewKKu">quiddle. (Flickr)</a></em></p>
+	</body>
+</html>

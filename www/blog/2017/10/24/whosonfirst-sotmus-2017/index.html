@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Who&#39;s On First ꞉fist-bump꞉  OpenStreetMap</title>
+		<meta name="description" content="Who’s on First is a gazetteer of places.">
+		<link rel="apple-touch-icon" href="/images/favicons/apple-touch-icon.png" sizes="180x180">
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-16x16.png" sizes="16x16">
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-32x32.png" sizes="32x32">
+		<link rel="manifest" href="/images/favicons/manifest.json">
+		<link rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg" color="#2C1E3F">
+		<link rel="stylesheet" href="/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/css/mapzen.whosonfirst.css">
+		
+		<link rel="stylesheet" href="/css/styles/grayscale.css">
+
+		<meta property="og:type" content="article" />
+		<meta property="og:site_name" content="Who's On First" />
+		<meta property="og:title" content="Who&#39;s On First ꞉fist-bump꞉  OpenStreetMap" />
+		<meta property="og:description" content="The 70s were weird like that in a way that we don’t have time to discuss today except to say that Who’s On First would like to be the bucket of water to OpenStreetMap’s giant eagle." />
+		<meta property="og:image" content="images/sotm-us-2017.004.jpg" />
+		
+		<meta property="twitter:card" value="summary" />
+		<meta property="twitter:site" content="@alloftheplaces" />
+		<meta property="twitter:creator" content="@alloftheplaces" />
+		<meta property="twitter:url" content="/blog/2017/10/24/whosonfirst-sotmus-2017/" />
+		<meta property="twitter:title" content="Who&#39;s On First ꞉fist-bump꞉  OpenStreetMap" />
+		<meta property="twitter:description" content="The 70s were weird like that in a way that we don’t have time to discuss today except to say that Who’s On First would like to be the bucket of water to OpenStreetMap’s giant eagle." />
+		<meta property="twitter:image" content="/id/images/sotm-us-2017.004.jpg" />
+		
+		<style type="text/css">
+		  body {
+		  font-family: serif;
+		  margin:2em;
+		  margin-left: 10%;
+		  margin-right: 10%;
+		  font-size: 1.3em;
+		  line-height: 1.5em;
+		  }
+
+		  img {
+		  max-width: 640px !important;
+		  max-height: 480px !important;
+		  border: 1px dotted #ccc;
+		  padding: .5em;
+		  margin-bottom:1em;
+		  margin-top: 1em;
+		  }
+
+		  h2 small {
+		  display: block;
+		  margin-top:.10em;
+		  font-weight: 100;
+		  font-size: .5em;
+		  }
+
+		  .hey-look {
+		  font-weight: 700;
+		  }
+		</style>
+	</head>
+	<body>
+
+	  
+	  
+	  <h2>
+	    Who&#39;s On First ꞉fist-bump꞉  OpenStreetMap
+	    <small>This is a blog post by
+	      <span class="hey-look">thisisaaronland</span>
+	      on October 24, 2017 
+	       tagged <span class="hey-look">osm</span>, <span class="hey-look">sotmus</span> and <span class="hey-look">whosonfirst</span></small>
+	  </h2>
+<p><a name="intro"></a>
+<a href="https://mapzen.com/blog/whosonfirst-sotmus-2017#intro"><img src="images/sotm-us-2017.001.jpg" alt="" /></a></p>
+
+<p>Hello. I haven’t been able to attend <a href="https://2017.stateofthemap.us">State of the Map</a> since <a href="https://2014.stateofthemap.us">2014</a> so it’s good to be back. Thank you for inviting me to speak.</p>
+
+<p>Before we get started I’d like to do a quick bit of house-keeping.</p>
+
+<p>The full title of this talk is “Who’s On First colon fist-bump colon OpenStreetMap&rdquo;. The &ldquo;colon fist-bump colon&rdquo; part is meant to be a mock <a href="http://www.webstock.org.nz/talks/emoji-fun-profit/">emoji shortcode</a>.</p>
+
+<p>There is not an emoji for <a href="https://www.flickr.com/photos/secret_canadian/galleries/72157623155364950/">&ldquo;fist-bump&rdquo;</a> yet but I’m hoping there will be soon. Now that the <a href="https://emojipedia.org/left-facing-fist/">LEFT-FACING FIST</a> and <a href="https://emojipedia.org/right-facing-fist/">RIGHT-FACING FIST</a> characters have been added to Unicode 10 all that is necessary to <a href="https://unicode.org/emoji/selection.html">create a FIST-BUMP emoji</a> is a combining character.</p>
+
+<p><a name="unicode"></a>
+<a href="https://mapzen.com/blog/whosonfirst-sotmus-2017#unicode"><img src="images/sotm-us-2017.002.jpg" alt="" /></a></p>
+
+<p>Not many operating systems have adopted <a href="https://www.unicode.org/versions/Unicode10.0.0/">Unicode 10</a> yet, which is why I included a fake emoji shortcode.</p>
+
+<p>For example, that last slide is actually an image. I prepared this talk on a different computer and the laptop I brought to the conference still <a href="https://emojipedia.org/unicode-10.0/">can’t display Unicode 10 characters</a>.</p>
+
+<p><em>Tangentially related the software used to publish this blog gets upset when you use the standard <a href="https://thisisaaronland.github.io/unicode-table/#58">COLON</a> character in a title which is why we&rsquo;ve used the less common <a href="https://thisisaaronland.github.io/unicode-table/#42889">MODIFIER LETTER COLON</a> character in it&rsquo;s place&hellip;</em></p>
+
+<p><a name="punching"></a>
+<a href="https://mapzen.com/blog/whosonfirst-sotmus-2017#punching"><img src="images/sotm-us-2017.003.jpg" alt="" /></a></p>
+
+<p>Somewhere between submitting this talk for consideration and its inclusion in the conference program the title was lost in translation.</p>
+
+<p>Instead of newly minted Unicode characters (which would almost certainly <a href="https://www.flickr.com/photos/bees/9458878023">not render</a> on a majority of people’s screens, never mind the computers used by the printers who made the conference schedule) or my fake emoji shortcode the decision was made to use the more readily available <a href="https://emojipedia.org/fisted-hand-sign/">ONCOMING FIST</a> character.</p>
+
+<p>I am not really bothered by this except to point out that the title takes on a slightly more threatening and hostile tone than I ever intended.</p>
+
+<p>For the record, punching <a href="https://openstreetmap.org">OpenSteetMap</a> (OSM) is not what I had in mind.</p>
+
+<p><a name="wondertwins"></a>
+<a href="https://mapzen.com/blog/whosonfirst-sotmus-2017#wondertwins"><img src="images/sotm-us-2017.004.jpg" alt="" /></a></p>
+
+<p>This is more what I had in mind.</p>
+
+<p>For anyone who doesn&rsquo;t understand what&rsquo;s going on here, it’s two people dressed up as <a href="https://en.wikipedia.org/wiki/Wonder_Twins">the Wonder Twins</a>.</p>
+
+<p>The Wonder Twins were Saturday morning cartoon characters, part of the Super Friends alongside more familiar characters like Batman and Wonder Woman.</p>
+
+<p>The Wonder Twins would &ldquo;activate&rdquo; their super powers by fist-bumping upon which the siblings would transform in to a pair of complimentary objects. Perhaps <a href="https://www.youtube.com/watch?v=FouDjI3GzEI">the most famous, and ridiculous, pairing</a> saw one of the twins become a giant eagle which carried the other who had transformed in to a bucket of water.</p>
+
+<p>The 70s were weird like that in a way that we don’t have time to discuss today except to say that Who’s On First would like to be the bucket of water to OpenStreetMap’s giant eagle.</p>
+
+<p><a name="whosonfirst"></a>
+<a href="https://mapzen.com/blog/whosonfirst-sotmus-2017#whosonfirst"><img src="images/sotm-us-2017.005.jpg" alt="" /></a></p>
+
+<p><a href="https://whosonfirst.mapzen.com">Who’s On First</a> (WOF) is a gazetteer. If you’ve never heard the term &ldquo;gazetteer&rdquo; before it&rsquo;s basically just a big phone book, but a phone book of places rather than people. I am going to spend most of this talk discussing venues but I want to start with a high-level overview of what Who’s On First is. The shape of the elephant so to speak.</p>
+
+<ul>
+<li><p>It is an <a href="https://whosonfirst.mapzen.com/docs/licenses/">openly licensed</a> dataset. At its most restrictive, data is published under a Creative Commons By-Attribution license. Whenever possible, and this is true of our own day-to-day work, data is published under a Creative Commons Zero public domain license.</p></li>
+
+<li><p>Every record in Who&rsquo;s On First has <a href="https://whosonfirst.mapzen.com/data/principles/">a stable permanent and unique numeric identifier</a>. There are no semantics encoded in the IDs.</p></li>
+
+<li><p>At rest, each record is stored as a plain-text <a href="https://tools.ietf.org/html/rfc7946">GeoJSON</a> file. Our goal is to ensure that Who&rsquo;s On First embodies the principals of portability, durability and longevity. This led us to adopt plain-vanilla text files as the base unit of delivery.</p></li>
+
+<li><p>Files are stored in a nested hierarchy of directories derived from their IDs.</p></li>
+
+<li><p>There are <a href="https://whosonfirst.mapzen.com/docs/properties/">a common set of properties</a> applied to all records which may be supplemented by an arbitrary number of additional properties specific to that place.</p></li>
+
+<li><p>There are <a href="https://github.com/whosonfirst/whosonfirst-placetypes#here-is-a-pretty-picture">a finite number of place types</a> in Who&rsquo;s On First and all records share a common set of ancestors. As with properties, any given record may have <a href="https://whosonfirst.mapzen.com/docs/hierarchies/">as complex a hierarchy as the circumstances demand</a> but there is a shared baseline hierarchy across the entire dataset.</p></li>
+
+<li><p>Individual records may have multiple geometries or multiple hierarchies and sometimes both.</p></li>
+
+<li><p>Records may be updated or superseded, cessated or even deprecated. Once a record is created though it can never be removed or replaced.</p></li>
+
+<li><p>Lastly and most importantly Who&rsquo;s On First is meant, by design, to accommodate all of the places.</p></li>
+</ul>
+
+<p>Who&rsquo;s On First is not a carefully selected list of important or relevant places. It is not meant to act as the threshold by which places are measured. Who&rsquo;s On First, instead, is meant to provide the raw material with which a multiplicity of thresholds might be created.</p>
+
+<p>From Who&rsquo;s On First&rsquo;s perspective <a href="https://mapzen.com/blog/who-s-on-first/">the point is not that one place is more important or relevant than any other</a>. The point is not that a place may or may not exist anymore or that its legitimacy as a place is disputed. The point is, critically, that people <em>believe</em> them to exist or to have existed.</p>
+
+<p>This is why I often refer to Who&rsquo;s On First as <a href="https://mapzen.com/blog/mapping-with-bias/">&ldquo;a gazetteer of consensual hallucinations&rdquo;</a>.</p>
+
+<p><a name="yugoslavia"></a>
+<a href="https://mapzen.com/blog/whosonfirst-sotmus-2017#yugoslavia"><img src="images/yugoslavia.gif" alt="" /></a></p>
+
+<p>Here’s an example.</p>
+
+<p>This is an animation of <a href="https://mapzen.com/blog/tackling-space-and-time-in-whosonfirst/">work that my colleague Stephen Epps did</a> earlier this year to create and link all the records representing the many ways that <a href="https://whosonfirst.mapzen.com/spelunker/search/?q=yugoslavia">the place we used to call &ldquo;Yugoslavia&rdquo;</a> has changed between the start of the 20th century and now.</p>
+
+<p>I’m going to let this run on a loop while I discuss a point some of you may have tweaked to in the last slide. Specifically that OpenStreetMap and Who&rsquo;s On First have sufficiently different licensing requirements that they prevent data exchange in both directions.</p>
+
+<p>I just said &ldquo;license&rdquo; which means somewhere, someone just won <a href="https://wiki.openstreetmap.org/wiki/Proposed_features/bingo_hall">&ldquo;OSM Bingo&rdquo;</a>.</p>
+
+<p>Seriously though I’d like to make one thing perfectly clear before I go any further: I am not here, either as an individual or an employee of Mapzen, to suggest <em>in any way</em> that the OpenStreetMap community revisit <a href="https://wiki.openstreetmap.org/wiki/Open_Database_License">the decision to adopt the ODbL</a>.</p>
+
+<p>My own personal feeling is that by virtue of having accomplished the impossible in creating OpenStreetMap, and having done so in thirteen short years, that the community has earned the right to do whatever it wants.</p>
+
+<p>At the same time I still need and want an openly licensed location database that can be used and adapted in both commercial and &ldquo;closed&rdquo; projects without any restrictions beyond attribution.</p>
+
+<p>This is the space that Who’s On First occupies and it is why we will not – can not – import data from OpenStreetMap.</p>
+
+<p><a name="ifnotosm"></a>
+<a href="https://mapzen.com/blog/whosonfirst-sotmus-2017#ifnotosm"><img src="images/sotm-us-2017.007.jpg" alt="" /></a></p>
+
+<p>About this time, two years ago, I had a little freak out at work.</p>
+
+<p>We had been discussing the availability and viability of open venue datasets. The reason I freaked out is that when you take OpenStreetMap off the table, for the reasons I’ve just outlined, there are effectively <em>no openly licensed venue databases</em> so I wasn’t sure what we were talking about.</p>
+
+<p>Accurate and up-to-date venue data is a difficult and daunting challenge. There are a few companies that have built successful businesses collecting and reselling that data under terms which can only be described as a Faustian bargain.</p>
+
+<p>Other companies like Facebook, we&rsquo;re told, have amassed similar and sometimes superior catalogs of data almost by accident as a by-product of their day-to-day work. So far, though, none of these companies has seen fit to share any of that data.</p>
+
+<p>Which really only leaves two alternatives. The first is the gaping void of nothingness that we’ve all come to know and love. The second is to embrace the idea that <em>something is better than nothing</em> and that something which can be improved upon over time is even better than that.</p>
+
+<p><a name="absence"></a>
+<a href="https://mapzen.com/blog/whosonfirst-sotmus-2017#absence"><img src="images/sotm-us-2017.008.jpg" alt="" /></a></p>
+
+<p>To embrace, or at least accept, that our burden in the near-term will be one of managing absence.</p>
+
+<p>That <em>in addition</em> to all the hard work of collecting, vetting and improving data we will also need to think about ways to talk to people about the data we don’t have and to develop interfaces for buffering and tempering that absence.</p>
+
+<p>This makes an already daunting project exhausting even to think about.</p>
+
+<p><a name="simplegeo"></a>
+<a href="https://mapzen.com/blog/whosonfirst-sotmus-2017#simplegeo"><img src="images/sotm-us-2017.009.jpg" alt="" /></a></p>
+
+<p>The good news is that there was in fact one open venue database, available for use, in 2015. In 2011 the geo-services company SimpleGeo <a href="https://web.archive.org/web/20110514083813/http://blog.simplegeo.com/2011/04/20/open-places-data/">published their Places database</a>, containing 21 million business listings, under a Creative Commons Zero public domain license.</p>
+
+<p>The company went out of business shortly after that but not before <a href="https://t.co/1f0N0IPkEt">Jason Scott</a> grabbed a copy of the data and <a href="https://archive.org/details/2011-08-SimpleGeo-CC0-Public-Spaces">put it on the Internet Archive</a>.</p>
+
+<p>The first thing to know about the SimpleGeo data is that it is a flawed dataset.</p>
+
+<p><a name="outofdate"></a>
+<a href="https://mapzen.com/blog/whosonfirst-sotmus-2017#outofdate"><img src="images/sotm-us-2017.010.jpg" alt="" /></a></p>
+
+<p>For starters it is almost 8 years &ldquo;out of date&rdquo;.</p>
+
+<p>That’s what we say but when we say &ldquo;out of date&rdquo; what we are often really saying is there is no <em>new</em> stuff.</p>
+
+<p>And when we say &ldquo;no new stuff&rdquo; what we’re often really saying is that there is no new stuff for a <em>particular kind</em> of business, typically those focused on snacking and grooming and nesting and aimed at a particular demographic: 18-35 year olds, with disposable income.</p>
+
+<p>The funny thing is that lots of businesses survive longer than 17 years. Think of <a href="http://places.mapzen.com/id/572151977">the butcher that’s been in your town</a> for 75 or 80 years now. If we&rsquo;re lucky, sooner or later we all get older and eventually need to call a plumber or an electrician or a notary.</p>
+
+<p>That’s the stuff the SimpleGeo dataset is made of so to say that it’s out of date seems inaccurate and unfair.</p>
+
+<p><a name="usa"></a>
+<a href="https://mapzen.com/blog/whosonfirst-sotmus-2017#usa"><img src="images/sotm-us-2017.011.jpg" alt="" /></a></p>
+
+<p>The data is <a href="https://whosonfirst.mapzen.com/spelunker/placetypes/venue/">heavily slanted towards the US</a>. SimpleGeo claimed the data covered 60 countries but that is disingenuous when you consider all but about a dozen countries have fewer than a hundred venues.</p>
+
+<p><a name="services"></a>
+<a href="https://mapzen.com/blog/whosonfirst-sotmus-2017#service"><img src="images/sotm-us-2017.012.jpg" alt="" /></a></p>
+
+<p>The data is also heavily weighted towards professional services. There are a lot of CPAs and lawyers and doctors and, to be honest, the sheer volume can make it difficult to see the trees for the forest.</p>
+
+<p><a name="data"></a>
+<a href="https://mapzen.com/blog/whosonfirst-sotmus-2017#data"><img src="images/sotm-us-2017.013.jpg" alt="" /></a></p>
+
+<p>There is some genuinely bad data. No surprises there and I doubt anyone here is ready to cast the first stone when it comes to bad data.</p>
+
+<p><a name="relational"></a>
+<a href="https://mapzen.com/blog/whosonfirst-sotmus-2017#relational"><img src="images/sotm-us-2017.014.jpg" alt="" /></a></p>
+
+<p>There is minimal structured relational data. For example, the only way to find all the records in a given a locality or neighbourhood is to load everything in to a database and perform spatial queries.</p>
+
+<p><a name="geojson"></a>
+<a href="https://mapzen.com/blog/whosonfirst-sotmus-2017#geojson"><img src="images/sotm-us-2017.015.jpg" alt="" /></a></p>
+
+<p>Everything was published as a single line-separated GeoJSON file. Had I been in SimpleGeo’s shoes at the time I might have made the same decision. As a consumer of that data, the decision has been nothing but 100% sad-making.</p>
+
+<p><a name="better"></a>
+<a href="https://mapzen.com/blog/whosonfirst-sotmus-2017#better"><img src="images/sotm-us-2017.016.jpg" alt="" /></a></p>
+
+<p>But it’s a good start and the first thing we did was to <a href="https://mapzen.com/blog/whosonfirst-venues">explode that 21 million line text file in to 21 million discrete records</a>, each with a new Who’s On First ID.</p>
+
+<p>If nothing else the data has proven its value in forcing us to think about how, from a purely operational point of view, we manage editing, storing and distributing that much data.</p>
+
+<p>Without getting in to all the details I’ll just say that <a href="https://github.com/whosonfirst-data">trying to put 21 million files in to a single Git repository</a> remains challenging enough to the point of being impossible.</p>
+
+<p>Simply having 21 million files on a single volume, in 2017, still causes people to <a href="https://www.ibm.com/developerworks/aix/library/au-speakingunix14/index.html">run out of inodes</a> and try explaining that to someone who doesn’t understand, or care, how filesystems work.</p>
+
+<p>But there are more than 21 million venues in the world and we’re going to have to figure these things out eventually so we might as well start now.</p>
+
+<p><a name="palace"></a>
+<a href="https://mapzen.com/blog/whosonfirst-sotmus-2017#palace"><img src="images/sotm-us-2017.017.jpg" alt="" /></a></p>
+
+<p>This is what that looks like and if all the venues in the world weren’t enough, we also want to be able to track historical venues.</p>
+
+<p>Let’s pretend that Who’s On First existed in 1985 and a writer has published a review of <a href="http://places.mapzen.com/id/572206999">The Palace Steak House</a>, associating its Who’s On First ID with their article.</p>
+
+<p>It is important that both the author and the readers of that article can rely on that ID with the confidence that its meaning won’t change even though the Palace went out of business in 2009 and that space has been occupied by <a href="https://places.mapzen.com/id/1108800487">three</a> <a href="https://places.mapzen.com/id/1108800489">different</a> <a href="https://places.mapzen.com/id/1126130035">restaurants</a> since then.</p>
+
+<p><a name="mission"></a>
+<a href="https://mapzen.com/blog/whosonfirst-sotmus-2017#mission"><img src="images/sotm-us-2017.018.jpg" alt="" /></a></p>
+
+<p>The second thing we did was assign each venue a hierarchy with pointers to all the other places in Who’s On First that venue holds hands with.</p>
+
+<p>If nothing else this reduces the problem of <a href="https://whosonfirst.mapzen.com/spelunker/id/1108830809/descendants/?exclude=nullisland&amp;placetype=venue">finding all the venues in the Mission</a> to a simple two-part key/value query.</p>
+
+<p><a name="brands"></a>
+<a href="https://mapzen.com/blog/whosonfirst-sotmus-2017#brands"><img src="images/sotm-us-2017.019.jpg" alt="" /></a></p>
+
+<p>It’s early days still but <a href="https://github.com/whosonfirst-data/whosonfirst-brands/">we are also starting to do the work to track brands</a>, assigning them each their own stable IDs and static records. It’s very primitive work right now and relies entirely on unsophisticated string-matching but it’s something to build on.</p>
+
+<p>One of the medium-term goals we have is to work with actual brands and to have them contribute and take responsibility for maintaining their venues inside of Who’s On First.</p>
+
+<p><a name="api"></a>
+<a href="https://mapzen.com/blog/whosonfirst-sotmus-2017#api"><img src="images/sotm-us-2017.020.jpg" alt="" /></a></p>
+
+<p>In addition to static downloads everything is available through the <a href="https://mapzen.com/documentation/places/">Mapzen Places API</a>.</p>
+
+<p>It takes about 5 minutes to <a href="https://github.com/whosonfirst/go-whosonfirst-api">grab all the venues in San Francisco</a> and dump them out as a GeoJSON FeatureCollection.</p>
+
+<p><a name="geotagging"></a>
+<a href="https://mapzen.com/blog/whosonfirst-sotmus-2017#geotagging"><img src="https://mapzen-assets.s3.amazonaws.com/images/geotagging-wof-venues/yoonseoul.gif" alt="" /></a></p>
+
+<p>I could have easily spent the entire talk discussing <a href="https://mapzen.com/blog/simple-is-hard">the UI and UX challenges</a> around editing the existing data and making it fast and easy to add new data. We are a small team so our biggest challenge is simply the short number of hours in the day.</p>
+
+<p>This is work by another colleague, <a href="https://phiffer.org/">Dan Phiffer</a>, to think about how we might <a href="https://mapzen.com/blog/geotagging-wof-venues/">use geotagged photos to add new venues</a>.</p>
+
+<p>Dan spent the summer in <a href="https://places.mapzen.com/id/85632231">South Korea</a> and <a href="https://places.mapzen.com/id/85632403">Taiwan</a>, places where we have (had) no venue data and where all the Mapzen services like tiles and web-based APIs grind to a halt and become unusable when you’re traveling on a throttled data plan.</p>
+
+<p>Dan’s tool allowed him to roam freely during the day quickly taking pictures of venues and points of interest and uploading them after the fact to create new records in Who’s On First.</p>
+
+<p><a name="lieu"></a>
+<a href="https://mapzen.com/blog/whosonfirst-sotmus-2017#lieu"><img src="images/sotm-us-2017.022.jpg" alt="" /></a></p>
+
+<p>Finally we’ve been working with <a href="https://twitter.com/albarrentine">Al Barrentine</a>, who wrote the <a href="https://mapzen.com/blog/inside-libpostal/">libpostal address parser</a>. Building on that work we’ve asked Al to take a first pass at address de-duplication.</p>
+
+<p>If address parsing is where you go to cry then address de-duplication is where you go to give up.</p>
+
+<p>As we go forward and start to import newer datasets it is clear that the first challenge will be reconciling what we already have in Who’s On First with whatever new offering is on the table.</p>
+
+<p>We don’t have the choice of giving up on this problem.</p>
+
+<p>Al’s remit was not to solve all the things but to build a viable &ldquo;1.0&rdquo; tool that demonstrated tangible results and can be improved upon going forward.</p>
+
+<p><a name="business"></a>
+<a href="https://mapzen.com/blog/whosonfirst-sotmus-2017#business"><img src="images/sotm-us-2017.023.jpg" alt="" /></a></p>
+
+<p>The tool is called <code>lieu</code> and, as with libpostal <a href="https://github.com/openvenues/lieu">it is available as open source software</a>.</p>
+
+<p>As Al has been working on things I’ve been testing address de-duplication against Who’s On First and publicly available business listings from the usual suspects: <a href="https://whosonfirst.mapzen.com/spelunker/concordances/nycgov_dca/">New York</a>, <a href="https://whosonfirst.mapzen.com/spelunker/concordances/sfgov_rbl/">San Francisco</a>, <a href="https://whosonfirst.mapzen.com/spelunker/concordances/lacity_oof/">Los Angeles</a> and <a href="https://whosonfirst.mapzen.com/spelunker/concordances/companieshouse/">London</a>.</p>
+
+<p>One of the benefits of Al’s software is that when we establish a match between of our venues and an official listing we can flag that venue as <a href="https://whosonfirst.mapzen.com/spelunker/placetypes/venue/?is_current=1">&ldquo;current&rdquo;</a> and remove some of the ambiguity that might surround it. We can add <a href="https://whosonfirst.mapzen.com/spelunker/concordances">concordances from Who’s On First</a> back to the city and their venue records.</p>
+
+<p>The next step as we get ready to finish up this phase of work and push it out the nest is to de-duplicate Who’s On First against itself.</p>
+
+<p><a name="fuzzy"></a>
+<a href="https://mapzen.com/blog/whosonfirst-sotmus-2017#fuzzy"><img src="images/sotm-us-2017.024.jpg" alt="" /></a></p>
+
+<p>The software is also able to work with fuzzy and approximate location data for venues.</p>
+
+<p>For example, it’s possible to use the latitude and longitude for the postal code associated with an address, in the absence of coordinate data for the address itself, and lieu will still find successful matches.</p>
+
+<p>This means that basically <a href="https://whosonfirst.mapzen.com/spelunker/concordances/nycgov_dohmh/">every health and safety inspection record ever published in the US</a> is fair-game for de-duping.</p>
+
+<p>We can validate records that we already have and import new ones with a high, if not perfect, degree of confidence and start chipping away at the &ldquo;no new stuff&rdquo; problem.</p>
+
+<p><a name="outro"></a>
+<a href="https://mapzen.com/blog/whosonfirst-sotmus-2017#outro"><img src="images/sotm-us-2017.025.jpg" alt="" /></a></p>
+
+<p>By now some of you may be wondering what this has to do with <a href="https://www.openstreetmap.org/">OpenStreetMap</a>? The answer is: I don’t know but something, I hope.</p>
+
+<p>If Who’s On First can’t use OpenStreetMap data then we would like to make sure that it’s easy for the OpenStreetMap community, if you choose, to use our data. Maybe that means all we do is establish and maintain concordances between the two projects and <a href="https://stevecoast.com/2015/09/30/license-ascent/">maybe it means more</a>.</p>
+
+<p>My hope, at the end of this talk, is that I will have raised enough interest and enough questions that we might find out together.</p>
+
+<p>Thank you.</p>
+
+<p><em>Aaron&rsquo;s talk is <a href="https://www.youtube.com/watch?v=GUizIw0LNjc?rel=0">now on YouTube</a>!</em></p>
+
+<div class="video-wrapper ratio-16-9">
+<iframe src="https://www.youtube.com/embed/GUizIw0LNjc" frameborder="0" "height=100%" width="100%" allowfullscreen></iframe>
+</div>
+
+<div style="font-style:italic; font-size:small;">
+Photo credits:
+
+<ul style="margin-top:1em;">
+<li><a href="https://commons.wikimedia.org/wiki/File:C2E2_2015_-_Wonder_Twins_(17118576890).jpg">https://commons.wikimedia.org/wiki/File:C2E2_2015_-_Wonder_Twins_(17118576890).jpg</a></li>
+</ul>
+
+</div>
+	</body>
+</html>

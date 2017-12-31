@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>The Who&#39;s On First API</title>
+		<meta name="description" content="Who’s on First is a gazetteer of places.">
+		<link rel="apple-touch-icon" href="/images/favicons/apple-touch-icon.png" sizes="180x180">
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-16x16.png" sizes="16x16">
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-32x32.png" sizes="32x32">
+		<link rel="manifest" href="/images/favicons/manifest.json">
+		<link rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg" color="#2C1E3F">
+		<link rel="stylesheet" href="/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/css/mapzen.whosonfirst.css">
+		
+		<link rel="stylesheet" href="/css/styles/grayscale.css">
+
+		<meta property="og:type" content="article" />
+		<meta property="og:site_name" content="Who's On First" />
+		<meta property="og:title" content="The Who&#39;s On First API" />
+		<meta property="og:description" content="Anything you can do by clicking around the Spelunker should be able to be automated using code." />
+		<meta property="og:image" content="images/splash-sq.png" />
+		
+		<meta property="twitter:card" value="summary" />
+		<meta property="twitter:site" content="@alloftheplaces" />
+		<meta property="twitter:creator" content="@alloftheplaces" />
+		<meta property="twitter:url" content="/blog/2017/04/04/whosonfirst-api/" />
+		<meta property="twitter:title" content="The Who&#39;s On First API" />
+		<meta property="twitter:description" content="Anything you can do by clicking around the Spelunker should be able to be automated using code." />
+		<meta property="twitter:image" content="/id/images/splash-sq.png" />
+		
+		<style type="text/css">
+		  body {
+		  font-family: serif;
+		  margin:2em;
+		  margin-left: 10%;
+		  margin-right: 10%;
+		  font-size: 1.3em;
+		  line-height: 1.5em;
+		  }
+
+		  img {
+		  max-width: 640px !important;
+		  max-height: 480px !important;
+		  border: 1px dotted #ccc;
+		  padding: .5em;
+		  margin-bottom:1em;
+		  margin-top: 1em;
+		  }
+
+		  h2 small {
+		  display: block;
+		  margin-top:.10em;
+		  font-weight: 100;
+		  font-size: .5em;
+		  }
+
+		  .hey-look {
+		  font-weight: 700;
+		  }
+		</style>
+	</head>
+	<body>
+
+	  
+	  
+	  <h2>
+	    The Who&#39;s On First API
+	    <small>This is a blog post by
+	      <span class="hey-look">thisisaaronland</span>
+	      on April 04, 2017 
+	       tagged <span class="hey-look">whosonfirst</span></small>
+	  </h2>
+<p><a href="https://en.wikipedia.org/wiki/Common_Gateway_Interface"><img width="600" height="200" src="images/splash.png"></a></p>
+
+<p>Today we are pleased to announce <a href="https://mapzen.com/documentation/wof/">the Who&rsquo;s On First API</a>. This is something that has been hiding in plain sight for a little while now and that a few people may have noticed if they &ldquo;looked under the hood&rdquo; of the <a href="https://github.com/whosonfirst/whosonfirst-www-spelunker/">Spelunker code</a> following the recent blog post about the <a href="https://mapzen.com/blog/bundler/">Who&rsquo;s On First bundler tool</a>.</p>
+
+<p>The API provides programmatic access for you and your robots to all the <a href="https://github.com/whosonfirst-data">Who&rsquo;s On First data</a>. You can query <a href="https://mapzen.com/documentation/wof/methods/#whosonfirstplaces">individual places</a> and their relations, look for <a href="https://mapzen.com/documentation/wof/methods/#whosonfirstconcordances">concordances</a> and perform <a href="https://mapzen.com/documentation/wof/methods/#whosonfirst.places.getIntersects">basic spatial queries</a>. You can also use the API to query things like all the different <a href="https://mapzen.com/documentation/wof/methods/#whosonfirstplacetypes">placetypes</a> or <a href="https://mapzen.com/documentation/wof/methods/#whosonfirstsources">sources</a> for data. It is not a &ldquo;complete&rdquo; API yet. The first goal for the API is to achieve parity with the <a href="https://whosonfirst.mapzen.com/spelunker/">Spelunker</a>: anything you can do by clicking around that website manually should be able to be automated using code.</p>
+
+<p>You should treat this API as though it were still in “beta”. Which is to say: the point is for <em>the thing to work</em> but there are probably still some rough edges and lingering gotchas so you should adjust your expectations and your code accordingly. In the meantime have at it and <a href="https://twitter.com/alloftheplaces">please let us know on Twitter</a> or <a href="mailto:hello@mapzen.com">contact us through email</a> if something is busted or just doesn’t feel right.</p>
+
+<p>If you want to dive in right away and come back for storytime later the documentation is here:</p>
+
+<div style="text-align:center;"><a href="https://mapzen.com/documentation/wof/">https://mapzen.com/documentation/wof/</a></div>
+
+<h2>&ldquo;Stuff over HTTP&rdquo;</h2>
+
+<p>The API uses a parameter-based <a href="http://www.aaronland.info/weblog/2014/02/10/36hours/#what">stuff over HTTP</a> style interface. Currently all API methods are read-only so everything is sent using <a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.3">the HTTP GET verb</a>. If the method is successful the result with be returned with an HTTP <code>200 OK</code> response. If there was a problem with the request then an error will be returned in <a href="https://mapzen.com/documentation/wof/errors/#client-side-errors">the HTTP 400-499 range</a>. If there was a problem generating a response then an error will be returned in <a href="https://mapzen.com/documentation/wof/errors/#server-side-errors">the HTTP 500-599 range</a>.</p>
+
+<p>Successful API responses can be returned in one of three possible formats: <a href="https://mapzen.com/documentation/wof/formats/#json">JSON</a>, <a href="https://mapzen.com/documentation/wof/formats/#csv">CSV</a> and Who&rsquo;s On First&rsquo;s own &ldquo;<a href="https://mapzen.com/documentation/wof/formats/#meta">meta</a>&rdquo; format (which is just a CSV file with fixed headers). JSON is the default response format and available for all methods. CSV is available for most methods. Meta responses are available for methods where it makes sense.</p>
+
+<p>Meta files are the CSV files included with every <a href="https://github.com/whosonfirst-data">Who&rsquo;s On First data repository</a>. The easiest way to think about meta files is that they canned indices or views in to the data; a way for people to grab or work with a slice of the data, say by placetype, without having to set up and load everything in to a database. As such, a lot of tooling has been built to consume meta files from the <a href="https://mapzen.com/blog/iamhere">I Am Here</a> tool, to the Who&rsquo;s On First <a href="https://github.com/whosonfirst/go-whosonfirst-pip/">point-in-polygon server</a>, to the tools we use to <a href="https://github.com/whosonfirst/go-whosonfirst-clone#example">generate bundles</a> (you can read more about bundles <a href="https://whosonfirst.mapzen.com/bundles/">over here</a>), to indexing WOF data in <a href="https://github.com/whosonfirst/go-whosonfirst-tile38#example-1">in third-party tools like Tile38</a> to <a href="https://github.com/whosonfirst/py-mapzen-whosonfirst-utils/blob/master/scripts/wof-csv-to-feature-collection">generating FeatureCollections</a>. Now rather than just consuming the <a href="https://github.com/whosonfirst-data/whosonfirst-data/tree/master/meta">default meta files</a> included with each repository all of those tools can be fed the output of whatever query you dream up using the <a href="https://mapzen.com/documentation/wof/methods/#whosonfirst.places.search">whosonfirst.places.search</a>, or similar, API methods.</p>
+
+<p><a href="https://collection.cooperhewitt.org/objects/18214745/"><img width="589" height="589" src="images/gate.jpg"></a></p>
+
+<p>Other API responses can and will be added as time and circumstance permit. We are interested in people <em>using</em> the Who&rsquo;s On First API in whatever format their software needs and with not in making our opinions about API responses someone else&rsquo;s problem. If there&rsquo;s a particular response format you need to start using the Who&rsquo;s On First API please send up a flare <a href="mailto:hello@mapzen.com">via email</a> or <a href="https://twitter.com/alloftheplaces">Twitter</a>.</p>
+
+<h2>Examples</h2>
+
+<h3><a href="https://mapzen.com/documentation/wof/methods/#whosonfirst.concordances.getById">whosonfirst.concordances.getById</a></h3>
+
+<p>Here are all the concordances in Who&rsquo;s On First for the <a href="https://whosonfirst.mapzen.com/spelunker/concordances/geoplanet/">GeoPlanet</a> ID for the city of <a href="https://whosonfirst.mapzen.com/spelunker/101736545">Montreal</a> or <code>gp:id=3534</code>:</p>
+
+<pre><code class="language-JSON">curl -s -X GET 'https://whosonfirst-api.mapzen.com?method=whosonfirst.concordances.getById&amp;api_key=mapzen-xxxxxx&amp;id=3534&amp;source=gp:id&amp;page=1&amp;per_page=100'
+{
+    &quot;concordances&quot;: [
+        {
+            &quot;dbp:id&quot;: &quot;Montreal&quot;,
+            &quot;fb:id&quot;: &quot;en.montreal&quot;,
+            &quot;fct:id&quot;: &quot;03c06bce-8f76-11e1-848f-cfd5bf3ef515&quot;,
+            &quot;gn:id&quot;: 6077243,
+            &quot;gp:id&quot;: 3534,
+            &quot;loc:id&quot;: &quot;n80132975&quot;,
+            &quot;nyt:id&quot;: &quot;N59179828586486930801&quot;,
+            &quot;qs:id&quot;: &quot;239659&quot;,
+            &quot;tgn:id&quot;: &quot;7013051&quot;,
+            &quot;wd:id&quot;: &quot;Q340&quot;,
+            &quot;wk:page&quot;: &quot;Montreal&quot;,
+            &quot;wof:id&quot;: 101736545
+        }
+    ],
+    &quot;cursor&quot;: null,
+    &quot;next_query&quot;: null,
+    &quot;page&quot;: 1,
+    &quot;pages&quot;: 1,
+    &quot;per_page&quot;: 100,
+    &quot;stat&quot;: &quot;ok&quot;,
+    &quot;total&quot;: 1
+}
+</code></pre>
+
+<h3><a href="https://mapzen.com/documentation/wof/methods/#whosonfirst.places.getByLatLon">whosonfirst.places.getByLatLon</a></h3>
+
+<p>Here are all the neighbourhoods (there&rsquo;s only one of them) at the corner of <a href="https://whosonfirst.mapzen.com/iamhere/#17/37.76494/-122.41944">16th and Mission</a> in San Francisco:</p>
+
+<pre><code class="language-JSON">curl -s -X GET 'https://whosonfirst-api.mapzen.com?method=whosonfirst.places.getByLatLon&amp;api_key=mapzen-xxxxxx&amp;latitude=37.766633&amp;longitude=-122.417693&amp;placetype=neighbourhood&amp;extras=mz:uri,geom:latitude,geom:longitude'
+{
+    &quot;places&quot;: [
+        {
+            &quot;geom:latitude&quot;: 37.758768,
+            &quot;geom:longitude&quot;: -122.413313,
+            &quot;mz:uri&quot;: &quot;https://whosonfirst.mapzen.com/data/858/874/43/85887443.geojson&quot;,
+            &quot;wof:country&quot;: &quot;US&quot;,
+            &quot;wof:id&quot;: 85887443,
+            &quot;wof:name&quot;: &quot;Mission District&quot;,
+            &quot;wof:parent_id&quot;: &quot;85922583&quot;,
+            &quot;wof:placetype&quot;: &quot;neighbourhood&quot;,
+            &quot;wof:repo&quot;: &quot;whosonfirst-data&quot;
+        }
+    ],
+    &quot;stat&quot;: &quot;ok&quot;
+}
+</code></pre>
+
+<p>There are a couple things to note about this API response. First, the &ldquo;<a href="http://code.flickr.net/2008/08/19/standard-photos-response-apis-for-civilized-age/">minimum response data</a>&rdquo; for a place and second the use of the <code>extras</code> parameter to include additional information about a place. We&rsquo;re still working out what the final &ldquo;minimum response&rdquo; data structure for a place should be but so far we&rsquo;ve settled on the following properties:</p>
+
+<pre><code class="language-JSON">{
+	&quot;wof:id&quot;: ...,
+	&quot;wof:name&quot;: &quot;...&quot;,
+	&quot;wof:parent_id&quot;: ...,
+	&quot;wof:placetype&quot;: &quot;...&quot;,
+	&quot;wof:repo&quot;: &quot;...&quot;
+}
+</code></pre>
+
+<p>Every API method that returns a &ldquo;place&rdquo; as part of its response will be guaranteed to include those properties. If you need or want additional properties you can list them in the <code>extras</code> parameter. Passing the <code>extras=geom:latitude,geom:longitude</code> parameter will cause the API to add the geographic center a place&rsquo;s geometry to its response. You can also request entire classes of properties by passing only a prefix.</p>
+
+<h3><a href="https://mapzen.com/documentation/wof/methods/#whosonfirst.places.getInfo">whosonfirst.places.getInfo</a></h3>
+
+<p>For example to fetch <a href="https://mapzen.com/blog/wikipedia-data/">all the names</a> for the city of Beijing you would pass <code>extras=name:</code>, like this:</p>
+
+<pre><code class="language-JSON">curl -s -X GET 'https://whosonfirst-api.mapzen.com?method=whosonfirst.places.getInfo&amp;api_key=mapzen-xxxxxx&amp;id=102027745&amp;extras=name:'
+{
+    &quot;place&quot;: {
+        &quot;name:ace_x_preferred&quot;: [
+            &quot;Beijing&quot;
+        ],
+        &quot;name:ady_x_preferred&quot;: [
+            &quot;\u041f\u0435\u043a\u0438\u043d&quot;
+        ],
+        &quot;name:afr_x_preferred&quot;: [
+            &quot;Beijing&quot;
+        ],
+        &quot;name:als_x_preferred&quot;: [
+            &quot;Peking&quot;
+        ],
+        &quot;name:amh_x_preferred&quot;: [
+            &quot;\u1264\u12ea\u1302\u1295\u130d&quot;
+        ],
+        &quot;name:ang_x_preferred&quot;: [
+            &quot;Beicing&quot;
+        ],
+
+	...truncated for brevity...
+
+	&quot;name:zho_x_preferred&quot;: [
+            &quot;\u5317\u4eac\u5e02&quot;
+        ],
+        &quot;name:zho_x_variant&quot;: [
+            &quot;\u5317\u4eac\u5e02&quot;
+        ],
+        &quot;name:zho_yue_x_preferred&quot;: [
+            &quot;\u5317\u4eac&quot;
+        ],
+        &quot;wof:country&quot;: &quot;CN&quot;,
+        &quot;wof:id&quot;: 102027745,
+        &quot;wof:name&quot;: &quot;Beijing&quot;,
+        &quot;wof:parent_id&quot;: &quot;85669727&quot;,
+        &quot;wof:placetype&quot;: &quot;locality&quot;,
+        &quot;wof:repo&quot;: &quot;whosonfirst-data&quot;
+    },
+    &quot;stat&quot;: &quot;ok&quot;
+}
+</code></pre>
+
+<p>You can request any fully-qualified property, or property prefix, in the <code>extras</code> parameter. The API will check to ensure that the prefix for an extras parameter is defined in the <a href="https://github.com/whosonfirst/whosonfirst-sources/tree/master/sources">whosonfirst-sources</a> list (there are <a href="https://mapzen.com/documentation/wof/methods/#whosonfirstsources">corresponding API methods for sources</a>). As of this writing if an unknown prefix is requested it is silently ignored. <em>That might become an error in time. We&rsquo;ll see&hellip;</em></p>
+
+<h3><a href="https://mapzen.com/documentation/wof/methods/#whosonfirst.places.search">whosonfirst.places.search</a></h3>
+
+<p>Here are all the <a href="https://whosonfirst.mapzen.com/spelunker/placetypes/microhood">microhoods</a> in Who&rsquo;s On First returned as a CSV document:</p>
+
+<pre><code class="language-bash">curl -s -i -X GET 'https://whosonfirst-api.mapzen.com?method=whosonfirst.places.search&amp;api_key=mapzen-xxxxxx&amp;placetype=microhood&amp;page=1&amp;per_page=10&amp;format=csv'
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+Content-Type: text/csv
+Date: Fri, 31 Mar 2017 21:41:50 GMT
+Server: nginx/1.4.6 (Ubuntu)
+Status: 200 OK
+X-api-format-csv-header: wof_country,wof_id,wof_name,wof_parent_id,wof_placetype,wof_repo
+X-api-pagination-cursor: cXV...c7MDs=
+X-api-pagination-next-query: method=whosonfirst.places.search&amp;amp;placetype=microhood&amp;amp;format=csv&amp;amp;per_page=10&amp;amp;cursor=cXV...c7MDs%3D
+X-api-pagination-page:
+X-api-pagination-pages: 60
+X-api-pagination-per-page: 10
+X-api-pagination-total: 595
+Content-Length: 746
+Connection: keep-alive
+
+wof_country,wof_id,wof_name,wof_parent_id,wof_placetype,wof_repo
+US,1108802091,&quot;Scripps Miramar Ranch&quot;,1108802089,microhood,whosonfirst-data
+US,1108561153,&quot;La Tuna Canyon&quot;,85865489,microhood,whosonfirst-data
+US,1108750019,&quot;Green Valley Ranch&quot;,420781629,microhood,whosonfirst-data
+US,1075806299,&quot;Northridge West&quot;,85838305,microhood,whosonfirst-data
+DE,1108810201,Biesdorf-Sud,-3,microhood,whosonfirst-data
+US,1108719769,&quot;Rivergate Industrial District&quot;,85846673,microhood,whosonfirst-data
+US,1108750017,Gateway,420781629,microhood,whosonfirst-data
+US,1108750051,&quot;Northeast Park Hill&quot;,85840547,microhood,whosonfirst-data
+US,1091648325,&quot;Hansen Dam&quot;,85865477,microhood,whosonfirst-data
+US,1041491317,&quot;Beverly Glen&quot;,85869119,microhood,whosonfirst-data
+</code></pre>
+
+<p>There are a couple of things to note about CSV formatted responses:</p>
+
+<ul>
+<li>The <code>:</code> character that normally separates a prefix from its value has been replaced by a <code>_</code>. For example <code>wof:id</code> becomes <code>wof_id</code> when it is encoded as a CSV column header. It&rsquo;s not awesome but lots of tools that consume CSV have problems with column headers containing colons so we just live with the inconsistency.</li>
+<li>Nested values (arrays and dictionaries) are returned as JSON-encoded strings. It is left up to consumers of the API to decode them as necessary.</li>
+</ul>
+
+<p>Also, did you notice the many different pagination properties in the JSON responses and the HTTP headers for the CSV response? Yeah&hellip;</p>
+
+<h2>A short miserable history of pagination</h2>
+
+<p><a href="https://collection.cooperhewitt.org/objects/18805295/"><img width="589" height="400" src="images/unicorn.jpg"></a></p>
+
+<p>Pagination, the practice of chunking a lot of results in to smaller sets, shouldn’t be complicated. But it is. Because databases, after all these years, are still complicated beasts.</p>
+
+<p>Databases have always been about trade-offs. No two databases are the same and so no two sets of trade-offs are the same either. The really short version is that some databases can’t tell you exactly how many results there are for a given query. Some databases can tell you how many results there are but can’t or won’t return results past a certain limit. Other databases can do both but only if you use something called a cursor for pagination rather than the traditional offset and limit model (as in “return the next 5 of 50 results starting from postion 20”).</p>
+
+<p>A long time ago, <a href="https://www.flickr.com/photos/paulhammond/2883048077/">I worked at the photo-sharing website Flickr</a>. One of the limits of the <a href="https://www.flickr.com/services/api">Flickr API</a> is that the <code>flickr.photos.search</code> method was, and still is, capped at 4,000 results for any single query. This was a limit of <a href="http://aaronland.info/talks/mw10_machinetags/#92">Flickr&rsquo;s search engine</a>, an early and proprietary version of applications like <a href="https://lucene.apache.org/solr/">Solr</a> and more recently <a href="https://www.elastic.co/guide/en/elasticsearch">Elasticsearch</a> which are often referred to as &ldquo;document stores&rdquo;.</p>
+
+<p>Document stores are similar to relational databases (think of the many different <code>something-SQL</code> databases people talk about) in that you can query them and get stuff back. Relational databases and document stores are very different in how they accomplish the same task and one of the limitations of the latter has always been that they aren&rsquo;t really designed to return the &ldquo;long tail&rdquo; of results for a query with lots of results.</p>
+
+<p>When I last checked the Flickr website it returns <a href="https://www.flickr.com/search/?text=kittens">1,844,154 photos when you search for kittens</a>. If you query the Flickr API for photos tagged &ldquo;kittens&rdquo; it says there are 429,203 photos. The disparity is because people are allowed to opt-out of including their photos in API results.</p>
+
+<p>Here is the first result at around the 4,000 mark (500 photos per request * page 8, out of a possible 859):</p>
+
+<pre><code class="language-JSON">https://api.flickr.com/services/rest/?method=flickr.photos.search&amp;api_key=*****&amp;tags=kittens&amp;per_page=500&amp;page=8&amp;format=json&amp;nojsoncallback=1&amp;api_sig=*****
+
+{ &quot;photos&quot;: { &quot;page&quot;: 8, &quot;pages&quot;: &quot;859&quot;, &quot;perpage&quot;: &quot;500&quot;, &quot;total&quot;: &quot;429203&quot;,
+    &quot;photo&quot;: [
+          { &quot;id&quot;: &quot;33746803785&quot;, &quot;owner&quot;: &quot;148036032@N07&quot;, &quot;secret&quot;: &quot;4f91e6622b&quot;, &quot;server&quot;: &quot;2809&quot;, &quot;farm&quot;: 3, &quot;title&quot;: &quot;Heineka’s “I’m ready for bed stare” - The Caturday&quot;, &quot;ispublic&quot;: 1, &quot;isfriend&quot;: 0, &quot;isfamily&quot;: 0 },
+</code></pre>
+
+<p>And here&rsquo;s the same query but at the 5,000 mark (500 photos per request * page 10):</p>
+
+<pre><code class="language-JSON">https://api.flickr.com/services/rest/?method=flickr.photos.search&amp;api_key=*****&amp;tags=kittens&amp;per_page=500&amp;page=10&amp;format=json&amp;nojsoncallback=1&amp;api_sig=*****
+
+{ &quot;photos&quot;: { &quot;page&quot;: 10, &quot;pages&quot;: &quot;859&quot;, &quot;perpage&quot;: &quot;500&quot;, &quot;total&quot;: &quot;429203&quot;,
+    &quot;photo&quot;: [
+          { &quot;id&quot;: &quot;33746803785&quot;, &quot;owner&quot;: &quot;148036032@N07&quot;, &quot;secret&quot;: &quot;4f91e6622b&quot;, &quot;server&quot;: &quot;2809&quot;, &quot;farm&quot;: 3, &quot;title&quot;: &quot;Heineka’s “I’m ready for bed stare” - The Caturday&quot;, &quot;ispublic&quot;: 1, &quot;isfriend&quot;: 0, &quot;isfamily&quot;: 0 },
+</code></pre>
+
+<p>See what&rsquo;s happening there? It&rsquo;s the same photo at the beginning of the list even though the results are a thousand photos apart. The search engine is configured to return the same results for every request over the 4,000 results limit. This is not a new thing. This is also not a Flickr thing. It&rsquo;s a document store thing. Even today, ten years, later the state of the art hasn&rsquo;t improved all that much: In 2017, Elasticsearch still has <a href="https://www.elastic.co/guide/en/elasticsearch/guide/current/pagination.html">a hard limit of 10,000 results</a> for a single query.</p>
+
+<p>The reason I mention all of this is not to pick on Flickr or Elasticsearch or anyone else working with document stores. The performance of &ldquo;traditional&rdquo; relational databases is also known to increasingly degrade as you offset further and further in to a large result set (the rule of thumb is that things start to get painful around the 500,000 record mark). The limits imposed by document stores are often worth it because they allow you perform complex queries that would otherwise be impossible or impractical in another database. I mention all of this for two reasons:</p>
+
+<p>First, there remains a lot of interesting and important work to do designing interfaces and models to account for the inability of databases to reliably (or efficiently) return all the results for a large query. The 4,000 results limit was <a href="https://www.flickr.com/groups/api/discuss/72157663968579450/">well-known by developers</a> using the Flickr API. We didn&rsquo;t hide that it happened but we also didn&rsquo;t see it as an opportunity to encourage developers to think about different ways to imagine what search should look like or how people should think about using it. The work that <a href="https://en.wikipedia.org/wiki/George_Oates">George Oates</a> did redesigning the search and subject pages for the <a href="https://archive.org/details/Kohacon2010OpenLibraryPresentation-GeorgeOates">Internet Archive&rsquo;s Open Library project</a> is a good example of how we might approach that problem, going forward.</p>
+
+<p>Second, the reason for telling you all of this &ldquo;exciting&rdquo; detail from the past is to help explain how and why we&rsquo;ve implemented pagination for the Who&rsquo;s On First API in the present. Who&rsquo;s On First is all about <a href="https://whosonfirst.mapzen.com/placetypes">the relationship between places</a> and sometimes a place (like a country) will have lots and lots of relationships (like all the venues in that country). We don&rsquo;t really have the luxury of &ldquo;ranking&rdquo; those relationships and only returning the top 4,000 (or 10,000) results. We need to find a way to return <a href="https://mapzen.com/blog/all-of-the-places">all the things</a>.</p>
+
+<p>Further, Who&rsquo;s On First uses multiple, different databases by design. We do this to ensure that the data and the overall data modeling is flexible enough to work with as many tools as possible. That&rsquo;s very important to the project because we want to make sure that the infrastructure burden required to <em>do</em> something with Who&rsquo;s On First data is as a light as possible and not a reflection of Mapzen&rsquo;s specific needs to operationalize things or the inertia of our own preferences.</p>
+
+<p>For example the <a href="https://whosonfirst.mapzen.com/spelunker">Spelunker</a> is built using Elasticsearch but has no spatial indices even though they are supported. We set things up this way to make sure, to prove, that it was possible to use the data without <em>requiring</em> a spatial database.</p>
+
+<p>Since there is no all-purpose database, the Who&rsquo;s On First API accounts for multiple different pagination models. We&rsquo;ve identified four overlapping models (<a href="#pagination-plain">plain</a>, <a href="#pagination-cursor">cursor</a>, <a href="#pagination-mixed">mixed</a> and <a href="#pagination-next-query">next-query</a>) each of which are described in detail below. If you don&rsquo;t really care and just want to get started <a href="#pagination-next-query">you should skip ahead to the discussion of next-query pagination</a>.</p>
+
+<p><a name="pagination-plain"></a></p>
+
+<h3>Plain pagination</h3>
+
+<p>Plain pagination assumes that we know how many results a query yields and that we can fetch any set of results at any given offset. For example, let&rsquo;s say you wanted to use the API to fetch all the places with a variant name containing the word <code>Paris</code> in sets of five. The API will respond with something like this:</p>
+
+<pre><code class="language-JSON">{
+	&quot;places&quot;: [ ... ],
+	&quot;next_query&quot;: &quot;method=whosonfirst.places.search&amp;alt=Paris&amp;per_page=5&amp;page=2&quot;,
+	&quot;total&quot;: 7,
+	&quot;page&quot;: 1,
+	&quot;per_page&quot;: 5,
+	&quot;pages&quot;: 2,
+	&quot;cursor&quot;: null,
+	&quot;stat&quot;: &quot;ok&quot;
+}
+</code></pre>
+
+<p>It&rsquo;s pretty straightforward. There are seven results (<code>total</code>) and this is the first of two pages worth of results (<code>page</code> and <code>pages</code>, respectively). You might already be wondering about the <code>next_query</code> property but <a href="#pagination-next-query">we&rsquo;ll get to that shortly</a>.</p>
+
+<p><a name="pagination-cursor"></a></p>
+
+<h3>Cursor-based pagination</h3>
+
+<p>Cursor-based pagination is necessary when a database can&rsquo;t or won&rsquo;t tell you how many results there are for a query. This means you will need to pass the same query to the database over and over again for as long as the database returns a <code>cursor</code> which is like a secret hint <em>that only the database understands</em> indicating where the next set of results live.</p>
+
+<p>For example, let&rsquo;s say you wanted to use the API to fetch all of the venues near the <a href="https://whosonfirst.mapzen.com/spelunker/id/420571601/">Smithsonian Cooper Hewitt Design Museum</a> in sets of ten. The API will respond with something like this:</p>
+
+<pre><code class="language-JSON">{
+	&quot;places&quot;: [ ... ],
+	&quot;next_query&quot;: &quot;method=whosonfirst.places.getNearby&amp;latitude=40.784165&amp;longitude=-73.958110&amp;placetype=venue&amp;per_page=10&amp;cursor={CURSOR}&quot;,
+	&quot;per_page&quot;: 10,
+	&quot;cursor&quot;: {CURSOR},
+	&quot;stat&quot;: &quot;ok&quot;
+}
+</code></pre>
+
+<p>In order to fetch the next set of results you would include a <code>cursor={CURSOR}</code> parameter in your request, rather than a <code>page={PAGE_NUMBER}</code> parameter like you would with plain pagination. Some databases yield time-sensitive cursors that expire after a number of seconds or minutes so the easiest way to think about cursors is that they are <em>all</em> time sensitive.</p>
+
+<p><em>Databases, amirite?</em></p>
+
+<p><a name="pagination-mixed"></a></p>
+
+<h3>Mixed pagination</h3>
+
+<p>This is where it gets fun. Sometimes an API method might use <em>both</em> plain and cursor-based pagination. That can happen when an underlying database is able to calculate the total number of results but only be able to fetch a fraction of them using plain pagination after which it needs to switch to cursor-based pagination. Which doesn&rsquo;t really make any sense when you think about it because cursors are magic database pixie-dust so there&rsquo;s no way to determine or calculate a corresponding cursor for a traditional page number. So in the end the API itself needs to perform an initial query just to see how many results there are and then adjust whether it is going to use plain or cursor-based pagination on the fly.</p>
+
+<p>For example, let&rsquo;s say you wanted to use the API to fetch all the <code>microhoods</code> in sets of five. The API will respond with something like this:</p>
+
+<pre><code class="language-JSON">{
+	&quot;places&quot;: [ ... ],
+	&quot;next_query&quot;: &quot;method=whosonfirst.places.search&amp;placetype=microhood&amp;page=2&amp;per_page=5&quot;,
+	&quot;total&quot;: 186,
+	&quot;page&quot;: 1,
+	&quot;per_page&quot;: 5,
+	&quot;pages&quot;: 38,
+	&quot;cursor&quot;: null,
+	&quot;stat&quot;: &quot;ok&quot;
+}
+</code></pre>
+
+<p>But if you then asked the API to fetch all of the <code>neighbourhoods</code>, again in sets of five, the API will respond with something like this:</p>
+
+<pre><code class="language-JSON">{
+	&quot;places&quot;: [ ... ],
+	&quot;next_query&quot;: &quot;method=whosonfirst.places.search&amp;placetype=neighbourhood&amp;per_page=5&amp;cursor={CURSOR}&quot;,
+	&quot;total&quot;: 81065,
+	&quot;page&quot;: null,
+	&quot;pages&quot;: 16213,
+	&quot;per_page&quot;: 5,
+	&quot;cursor&quot;: &quot;{CURSOR}&quot;,
+	&quot;stat&quot;: &quot;ok&quot;
+}
+</code></pre>
+
+<p>In both examples we know how many results there will be. In the first example we are able to use plain pagination so we know that this is page one of thirty-eight and thus the value of the <code>cursor</code> property is null. In the second example the API has returned a cursor so even though we know the total number of results and can calculate the number of &ldquo;pages&rdquo; we set the value of the <code>page</code> property to be null since the requirement on cursor-based pagination makes it moot.</p>
+
+<p>If you look carefully at the value of the <code>next_query</code> property in both examples you can probably figure out where this is going, next.</p>
+
+<p><a name="pagination-next-query"></a></p>
+
+<h3>Next-query-based pagination</h3>
+
+<p>Next-query based pagination is an attempt to hide most of the implentation details from API consumers and provide a simple &ldquo;here-do-this-next&rdquo; style pagination interface, instead.</p>
+
+<p>For example, let&rsquo;s say you wanted to use the API to fetch all the localities (there are over 200,000 of them) in sets of five. That will require more than 41,000 API requests but that&rsquo;s your business. The API will respond with a <code>next_query</code> parameter, something like this:</p>
+
+<pre><code class="language-JSON">{
+	&quot;places&quot;: [ ... ],
+	&quot;next_query&quot;: &quot;method=whosonfirst.places.search&amp;placetype=locality&amp;per_page=5&amp;cursor={CURSOR}&quot;,
+	&quot;total&quot;: 208214,
+	&quot;page&quot;: null,
+	&quot;pages&quot;: 41643,
+	&quot;per_page&quot;: 5,
+	&quot;cursor&quot;: &quot;{CURSOR}&quot;,
+	&quot;stat&quot;: &quot;ok&quot;
+}
+</code></pre>
+
+<p>There are a few things to note about the <code>next_query</code> property:</p>
+
+<ul>
+<li>It contains a URL-encoded query string with the parameters to pass to the API retrieve the <em>next</em> set of results for your query.</li>
+<li>When it is empty (or <code>null</code>) that means there are no more results.</li>
+<li>It <em>does not</em> contain any user-specific access tokens or API keys &amp;#8212; you will need to add those yourself.</li>
+<li>It <em>does not</em> contain any host or endpoint specific information  &amp;#8212; you will need to add that yourself.</li>
+<li>You may want or need to decode the query string in order to append additional parameters (like authentication) and to handle how those parameters are sent along to the API. For example, whether the method is invoked using HTTP&rsquo;s <code>GET</code> or <code>POST</code> method or whether parameters should be <code>multipart/mime</code> encoded or not. And so on.</li>
+</ul>
+
+<p>This type of pagination is not ideal but strives to be a reasonable middle-ground that is not too onerous to implement and easy to use.</p>
+
+<p><a name="pagination-headers"></a></p>
+
+<h3>Pagination and HTTP headers</h3>
+
+<p>Pagination properties are also returned as HTTP response headers. This is useful for any output format and necessary for output formats like plain old <a href="#formats-csv">CSV</a> or Who&rsquo;s On First&rsquo;s <a href="#formats-meta">meta</a> format. All of the pagination properties you&rsquo;ve come to know and love in the examples above are also returned as HTTP response header prefixed by <code>X-api-pagination-</code>.</p>
+
+<p>For example:</p>
+
+<pre><code class="language-bash">$&gt; curl -s -v -X GET 'https://whosonfirst-api.mapzen.com/?method=whosonfirst.places.search&amp;api_key=API_KEY&amp;q=poutine&amp;extras=geom:bbox&amp;page=1&amp;format=csv&amp;per_page=1'
+
+&lt; HTTP/1.1 200 OK
+&lt; Access-Control-Allow-Origin: *
+&lt; Content-Type: text/csv
+&lt; Date: Tue, 28 Feb 2017 21:13:37 GMT
+&lt; Status: 200 OK
+&lt; X-api-pagination-cursor:
+&lt; X-api-pagination-next-query: method=whosonfirst.places.search&amp;amp;q=poutine&amp;amp;extras=geom%3Abbox&amp;amp;per_page=1&amp;amp;page=2&amp;amp;format=csv
+&lt; X-api-pagination-page: 1
+&lt; X-api-pagination-pages: 13
+&lt; X-api-pagination-per-page: 1
+&lt; X-api-pagination-total: 13
+&lt; X-whosonfirst-csv-header: geom_bbox,wof_country,wof_id,wof_name,wof_parent_id,wof_placetype,wof_repo
+&lt; Content-Length: 208
+&lt; Connection: keep-alive
+&lt;
+geom_bbox,wof_country,wof_id,wof_name,wof_parent_id,wof_placetype,wof_repo
+&quot;-71.9399642944,46.0665283203,-71.9399642944,46.0665283203&quot;,CA,975139507,&quot;Poutine Restau-Bar Enr&quot;,-1,venue,whosonfirst-data-venue-ca
+</code></pre>
+
+<h2>Libraries</h2>
+
+<div style="width:451px; margin: 0 auto;">
+<a href="https://collection.cooperhewitt.org/objects/18612725/"><img width="451" height="600" src="images/kitten.jpg"></a>
+</div>
+
+<p>As of this writing there are two general-purpose software libraries for accessing the Who&rsquo;s On First API, one written in <a href="https://github.com/whosonfirst/py-mapzen-whosonfirst-api">Python</a> and another in <a href="https://github.com/whosonfirst/go-whosonfirst-api">Go</a>. We also have PHP and Javascript libraries that we use internally but they are still full of Mapzen-isms which we&rsquo;d like to clean up before releasing.</p>
+
+<p>The Python and Go libraries don&rsquo;t have feature parity and probably never will. They are each well-suited for different tasks and, as with databases, we use their respective strengths and weaknesses to test the decisions we make modeling the actual Who&rsquo;s On First data. We use both of these libraries on a day-to-day basis. <em>Most</em> of the kinks should be worked out by now but the documentation could be improved in places, notably in the <a href="https://github.com/whosonfirst/go-whosonfirst-api">Go</a> package which we&rsquo;re using <a href="https://github.com/whosonfirst/go-whosonfirst-api#interfaces">as a way to test</a> how a strictly typed language can work with less formal and semi-structured API responses.</p>
+
+<p>If you write your own library for the Who&rsquo;s On First API <a href="https://twitter.com/alloftheplaces">we&rsquo;d love to hear about it</a>.</p>
+
+<h3>py-mapzen-whosonfirst-api</h3>
+
+<p>The Python library is available on GitHub: <a href="https://github.com/whosonfirst/py-mapzen-whosonfirst-api">https://github.com/whosonfirst/py-mapzen-whosonfirst-api</a>. Here&rsquo;s a simple example of how you might use it:</p>
+
+<pre><code class="language-python">import mapzen.whosonfirst.api.client
+
+api = mapzen.whosonfirst.api.client.Mapzen(&quot;mapzen-xxxxxx&quot;)
+print api.execute_method(&quot;api.spec.formats&quot;, {})
+
+# prints:
+# {u'default_format': u'json', u'stat': u'ok', u'formats': [u'json', u'csv', u'meta']}
+</code></pre>
+
+<h3>go-whosonfirst-api</h3>
+
+<p>The Go library is available on GitHub: <a href="https://github.com/whosonfirst/go-whosonfirst-api">https://github.com/whosonfirst/go-whosonfirst-api</a>. Here&rsquo;s a simple example of how you might use it:</p>
+
+<pre><code class="language-Go">import (
+	&quot;github.com/whosonfirst/go-whosonfirst-api/client&quot;
+	&quot;github.com/whosonfirst/go-whosonfirst-api/endpoint&quot;
+	&quot;os&quot;
+	)
+
+func main() {
+
+	api_key := &quot;mapzen-xxxxxx&quot;
+
+	api_endpoint, _ := endpoint.NewMapzenAPIEndpoint(api_key)
+	api_client, _ := client.NewHTTPClient(api_endpoint)
+
+	method := &quot;whosonfirst.places.search&quot;
+
+	args := api_client.DefaultArgs()
+	args.Set(&quot;query&quot;, &quot;poutine&quot;)
+	args.Set(&quot;placetype&quot;, &quot;venue&quot;)
+
+	rsp, _ := api_client.ExecuteMethod(method, args)
+	os.Stdout.Write(rsp.Raw())
+
+	# prints (truncated for brevity)
+	# {&quot;places&quot;:[{&quot;wof:id&quot;:152777717,&quot;wof:parent_id&quot;:&quot;85874363&quot;,&quot;wof:name&quot;:&quot;Poutine LA Fleur&quot;,&quot;wof:placetype&quot;:&quot;venue&quot;,&quot;wof:country&quot;:&quot;CA&quot;,&quot;wof:repo&quot;:&quot;whosonfirst-data-venue-ca&quot;} ... ],&quot;next_query&quot;:null,&quot;total&quot;:13,&quot;page&quot;:1,&quot;per_page&quot;:100,&quot;pages&quot;:1,&quot;cursor&quot;:null,&quot;stat&quot;:&quot;ok&quot;}
+}
+</code></pre>
+
+<p>There is also a command line tool called <code>wof-api</code> for performing simple and batch operations with the API. For example, using the tool it&rsquo;s possible to <a href="https://github.com/whosonfirst/go-whosonfirst-api#example">fetch all 63,387 venues in San Francisco</a> as a single GeoJSON FeatureCollection. There are lots of ways to do this but the nice thing about the <code>wof-api</code> tool is that depending on your network connection this can be accomplished in as little as 5 minutes.</p>
+
+<p><img src="images/sf-venues.png" alt="" /></p>
+
+<p>All those dots in the image above were produced by typing <code>wof-api -param method=whosonfirst.places.search -param locality_id=85922583 -param api_key=mapzen-xxxxxx -param per_page=500 -param placetype=venue -paginated -geojson -output venues.geojson -timings -async</code></p>
+
+<p>Note the use of the <code>-paginated</code> flag which will instruct the tool to handle all the pagination nonsense described above for you. It&rsquo;s kind of like having your very own <a href="https://mapzen.com/blog/bundler/">Bundler</a> on the <a href="https://en.wikipedia.org/wiki/In_the_Beginning..._Was_the_Command_Line">command line</a>.</p>
+
+<h2>Inspirational conclusion</h2>
+
+<p><a href="https://collection.cooperhewitt.org/objects/18402495/"><img width="589" height="400" src="images/shadow.jpg"></a></p>
+
+<p>We hope you make awesome things with the API. Enjoy!</p>
+
+<hr />
+
+<p>Image credits:</p>
+
+<ul>
+<li><a href="https://collection.cooperhewitt.org/objects/18214745/">Model Of A Walled Entrance With Gate (Italy), ca. 1710; carved and painted pine, wrought iron gate and window grill; Gift of Mrs. James O. Green and Eleanor and Sarah Hewitt; 1921-17-16-a/d </a></li>
+<li><a href="https://collection.cooperhewitt.org/objects/18805295/">Label (USA), 1980–85; jacquard woven; 1985-39-60</a></li>
+<li><a href="https://collection.cooperhewitt.org/objects/18612725/">Sheet Music, The Kitten with the Big Green Eyes; 1949-106-3</a></li>
+<li><a href="https://collection.cooperhewitt.org/objects/18402495/">Panel (England), mid-19th century; cotton; Gift of Ruth Van Norman; 1955-119-1</a></li>
+</ul>
+	</body>
+</html>
