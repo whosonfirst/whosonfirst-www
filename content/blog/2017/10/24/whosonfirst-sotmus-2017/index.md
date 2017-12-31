@@ -83,7 +83,7 @@ From Who's On First's perspective [the point is not that one place is more impor
 This is why I often refer to Who's On First as ["a gazetteer of consensual hallucinations"](https://mapzen.com/blog/mapping-with-bias/).
 
 <a name="yugoslavia"></a>
-[![](https://s3.amazonaws.com/mapzen-assets/images/whosonfirst-edtf/geom/yugoslavia.gif)](https://mapzen.com/blog/whosonfirst-sotmus-2017#yugoslavia)
+[![](images/yugoslavia.gif)](https://mapzen.com/blog/whosonfirst-sotmus-2017#yugoslavia)
 
 Here’s an example.
 

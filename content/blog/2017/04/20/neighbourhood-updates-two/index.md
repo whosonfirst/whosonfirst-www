@@ -4,7 +4,7 @@ title: Updating Who's On First Neighbourhoods - Part II
 category: blog
 excerpt: We've been busy updating neighbourhood records in Who's On First - check them out!
 authors: [stepps00,zbsingleton]
-image: https://s3.amazonaws.com/mapzen-assets/images/neighbourhood-updates-II/blog_photo_main.png
+image: /imagesblog_photo_main.png
 tag: [whosonfirst, neighbourhoods, data]
 ---
 

@@ -1,16 +1,75 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-  <title>WOF in a Box (part 1)</title>
-  <meta name="GENERATOR" content="Blackfriday Markdown Processor v2.0" />
-  <meta charset="utf-8" />
-</head>
-<body>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>WOF in a Box (part 1)</title>
+		<meta name="description" content="Who’s on First is a gazetteer of places.">
+		<link rel="apple-touch-icon" href="/images/favicons/apple-touch-icon.png" sizes="180x180">
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-16x16.png" sizes="16x16">
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-32x32.png" sizes="32x32">
+		<link rel="manifest" href="/images/favicons/manifest.json">
+		<link rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg" color="#2C1E3F">
+		<link rel="stylesheet" href="/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/css/mapzen.whosonfirst.css">
+		
+		<link rel="stylesheet" href="/css/styles/grayscale.css">
 
-<style type="text/css">
-		body { font-family: serif; margin:2em; margin-left: 10%; margin-right: 10%; font-size: 1.3em; line-height: 1.5em; }
-		img { max-width: 640px !important; max-height: 480px !important; border: 1px dotted #ccc; padding: .5em; margin: 0 auto; margin-bottom:1em; margin-top: 1em; }
-	</style> <h2>WOF in a Box (part 1)</h2><p>One of central design constraints of Who’s On First is that we don’t pick your database for you. We publish our gazetteer in <a href="https://whosonfirst.mapzen.com/data">GeoJSON</a>, CSV, and <a href="https://whosonfirst.mapzen.com/sqlite">SQLite</a> and you can decide how you want to import into your software stack of choice. We aspire to support all programming languages, on whatever platform you happen to be using.</p>
+		<meta property="og:type" content="article" />
+		<meta property="og:site_name" content="Who's On First" />
+		<meta property="og:title" content="WOF in a Box (part 1)" />
+		<meta property="og:description" content="Run Who&#39;s On First on your own hardware." />
+		<meta property="og:image" content="&#34;images/inhand.jpg&#34;" />
+		
+		<meta property="twitter:card" value="summary" />
+		<meta property="twitter:site" content="@alloftheplaces" />
+		<meta property="twitter:creator" content="@alloftheplaces" />
+		<meta property="twitter:url" content="" />
+		<meta property="twitter:title" content="WOF in a Box (part 1)" />
+		<meta property="twitter:description" content="Run Who&#39;s On First on your own hardware." />
+		<meta property="twitter:image" content="/id/&#34;images/inhand.jpg&#34;" />
+		
+		<style type="text/css">
+		  body {
+		  font-family: serif;
+		  margin:2em;
+		  margin-left: 10%;
+		  margin-right: 10%;
+		  font-size: 1.3em;
+		  line-height: 1.5em;
+		  }
+
+		  img {
+		  max-width: 640px !important;
+		  max-height: 480px !important;
+		  border: 1px dotted #ccc;
+		  padding: .5em;
+		  margin-bottom:1em;
+		  margin-top: 1em;
+		  }
+
+		  h2 small {
+		  display: block;
+		  margin-top:.10em;
+		  font-weight: 100;
+		  font-size: .5em;
+		  }
+		  
+		</style>
+	</head>
+	<body>
+
+	  
+	  
+	  
+	  <h2>
+	    WOF in a Box (part 1)
+	    <small>This is a blog post by
+	      <a href="#">dphiffer</a>
+	       tagged <a href="#">whosonfirst</a></small>
+	  </h2>
+<p>One of central design constraints of Who’s On First is that we don’t pick your database for you. We publish our gazetteer in <a href="https://whosonfirst.mapzen.com/data">GeoJSON</a>, CSV, and <a href="https://whosonfirst.mapzen.com/sqlite">SQLite</a> and you can decide how you want to import into your software stack of choice. We aspire to support all programming languages, on whatever platform you happen to be using.</p>
 
 <p>We have written our own editorial tools and utility scripts in a variety of languages including <a href="https://github.com/whosonfirst?utf8=%E2%9C%93&amp;q=&amp;type=&amp;language=php">PHP</a>, <a href="https://github.com/whosonfirst?utf8=%E2%9C%93&amp;q=&amp;type=&amp;language=python">Python</a>, and <a href="https://github.com/whosonfirst?utf8=%E2%9C%93&amp;q=&amp;type=&amp;language=go">Go</a>. Some of these are general purpose libraries, like <a href="https://github.com/whosonfirst/py-mapzen-whosonfirst">py-mapzen-whosonfirst</a>, and some are narrowly scoped utilities like <a href="https://github.com/whosonfirst/go-whosonfirst-pip-v2">go-whosonfirst-pip-v2</a>.</p>
 
@@ -504,6 +563,5 @@ curl -I http://localhost/spelunker/
 <h2>Stay tuned for part two</h2>
 
 <p>That concludes the first part of the WOF in a Box guide. We have some WOF data and a Spelunker tool to explore it with. The second installment will add a <a href="https://github.com/whosonfirst/whosonfirst-www-api/">REST API</a> and a <a href="https://github.com/whosonfirst/whosonfirst-www-boundaryissues/">web-based CMS</a> to edit records with.</p>
-
-</body>
+	</body>
 </html>

@@ -1,16 +1,75 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-  <title>&ldquo;Geotagging WOF venues&rdquo;</title>
-  <meta name="GENERATOR" content="Blackfriday Markdown Processor v2.0" />
-  <meta charset="utf-8" />
-</head>
-<body>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>&#34;Geotagging WOF venues&#34;</title>
+		<meta name="description" content="Who’s on First is a gazetteer of places.">
+		<link rel="apple-touch-icon" href="/images/favicons/apple-touch-icon.png" sizes="180x180">
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-16x16.png" sizes="16x16">
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-32x32.png" sizes="32x32">
+		<link rel="manifest" href="/images/favicons/manifest.json">
+		<link rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg" color="#2C1E3F">
+		<link rel="stylesheet" href="/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/css/mapzen.whosonfirst.css">
+		
+		<link rel="stylesheet" href="/css/styles/grayscale.css">
 
-<style type="text/css">
-		body { font-family: serif; margin:2em; margin-left: 10%; margin-right: 10%; font-size: 1.3em; line-height: 1.5em; }
-		img { max-width: 640px !important; max-height: 480px !important; border: 1px dotted #ccc; padding: .5em; margin: 0 auto; margin-bottom:1em; margin-top: 1em; }
-	</style> <h2>"Geotagging WOF venues"</h2><p>For much of this summer I’ve been working remotely on Who’s On First. In early July I was in Korea giving <a href="http://seoulbiennale.org/en/public-programs/educational/read-write-offline-mapping">a workshop on offline mapping</a> as part of the <a href="http://seoulbiennale.org/en/">Seoul Biennale of Architecture and Urbanism</a>. From there I joined my wife <a href="https://ellieirons.com/">Ellie</a> at an <a href="http://bambooculture.com/en">artist residency in Taipei</a>, where I’ve been working 12 hours ahead of my <a href="https://whosonfirst.mapzen.com/spelunker/id/102047399/">EDT</a> colleagues. Along the way I’ve been collecting new places for WOF, since both <a href="https://github.com/whosonfirst-data/whosonfirst-data-venue-tw">Taiwan</a> and <a href="https://github.com/whosonfirst-data/whosonfirst-data-venue-kr">South Korea</a> are still rather sparsely populated with venues. This was my excuse to try using my software “in the field” and expand WOF’s venue coverage.</p>
+		<meta property="og:type" content="article" />
+		<meta property="og:site_name" content="Who's On First" />
+		<meta property="og:title" content="&#34;Geotagging WOF venues&#34;" />
+		<meta property="og:description" content="&#34;Photography as data collection.&#34;" />
+		<meta property="og:image" content="&#34;images/yoonseoul-selfie.jpg&#34;" />
+		
+		<meta property="twitter:card" value="summary" />
+		<meta property="twitter:site" content="@alloftheplaces" />
+		<meta property="twitter:creator" content="@alloftheplaces" />
+		<meta property="twitter:url" content="" />
+		<meta property="twitter:title" content="&#34;Geotagging WOF venues&#34;" />
+		<meta property="twitter:description" content="&#34;Photography as data collection.&#34;" />
+		<meta property="twitter:image" content="/id/&#34;images/yoonseoul-selfie.jpg&#34;" />
+		
+		<style type="text/css">
+		  body {
+		  font-family: serif;
+		  margin:2em;
+		  margin-left: 10%;
+		  margin-right: 10%;
+		  font-size: 1.3em;
+		  line-height: 1.5em;
+		  }
+
+		  img {
+		  max-width: 640px !important;
+		  max-height: 480px !important;
+		  border: 1px dotted #ccc;
+		  padding: .5em;
+		  margin-bottom:1em;
+		  margin-top: 1em;
+		  }
+
+		  h2 small {
+		  display: block;
+		  margin-top:.10em;
+		  font-weight: 100;
+		  font-size: .5em;
+		  }
+		  
+		</style>
+	</head>
+	<body>
+
+	  
+	  
+	  
+	  <h2>
+	    &#34;Geotagging WOF venues&#34;
+	    <small>This is a blog post by
+	      <a href="#">dphiffer</a>
+	       tagged <a href="#">boundaryissues</a>, <a href="#">whosonfirst</a> and <a href="#">data</a></small>
+	  </h2>
+<p>For much of this summer I’ve been working remotely on Who’s On First. In early July I was in Korea giving <a href="http://seoulbiennale.org/en/public-programs/educational/read-write-offline-mapping">a workshop on offline mapping</a> as part of the <a href="http://seoulbiennale.org/en/">Seoul Biennale of Architecture and Urbanism</a>. From there I joined my wife <a href="https://ellieirons.com/">Ellie</a> at an <a href="http://bambooculture.com/en">artist residency in Taipei</a>, where I’ve been working 12 hours ahead of my <a href="https://whosonfirst.mapzen.com/spelunker/id/102047399/">EDT</a> colleagues. Along the way I’ve been collecting new places for WOF, since both <a href="https://github.com/whosonfirst-data/whosonfirst-data-venue-tw">Taiwan</a> and <a href="https://github.com/whosonfirst-data/whosonfirst-data-venue-kr">South Korea</a> are still rather sparsely populated with venues. This was my excuse to try using my software “in the field” and expand WOF’s venue coverage.</p>
 
 <p>This post includes a fair share of obscure technical details. Perhaps it might be useful for someone working on a similar application. (And shout-out to the NYPL’s <a href="http://bertspaan.nl/">Bert Spaan</a> who’s released a very interesting looking <a href="https://github.com/nypl-spacetime/Leaflet.GeotagPhoto">geotagging Leaflet plugin</a>.)</p>
 
@@ -115,6 +174,5 @@
 <p>Despite some challenges working with EXIF metadata, it’s been fun to have a simpler mechanism for collecting new WOF venues. I now find myself photographing lots of signage, particularly those signs that include place names in both English and Korean/Chinese. I now explore the built environment thinking of which places I might want to capture for Who’s On First.</p>
 
 <p>I’ve also been doing some experiments with using the <a href="https://cordova.apache.org/">Cordova mobile app framework</a> to run a basic <a href="https://mapzen.com/documentation/tangram/">Tangram map</a>. This geotagging interface has me thinking about how an offline-friendly geotagging app might incorporate the work <a href="http://aaronland.info/">Aaron</a> has been doing on <a href="https://github.com/whosonfirst/electron-whosonfirst-bookmarks/">place bookmarking</a>. In due time all of this will be ready enough to invite more users to try it out. Please <a href="mailto:boundaryissues@mapzen.com">get in touch</a> if you’re interested!</p>
-
-</body>
+	</body>
 </html>

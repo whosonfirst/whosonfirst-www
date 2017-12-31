@@ -4,7 +4,7 @@ title: Updating Who's On First Neighbourhoods - Part III
 category: blog
 excerpt: Check out the most recent additions and updates to neighbourhoods in WOF!
 authors: [stepps00,zbsingleton]
-image: images/welcome_to_the_neighbourhood.jpg
+image: https://mapzen-assets.s3.amazonaws.com/images/neighbourhood-updates-III/welcome_to_the_neighbourhood.jpg
 tag: [whosonfirst, neighbourhoods, data]
 ---
 
@@ -73,9 +73,9 @@ Dive in and enjoy!
 
 <div class="demo-wrapper" id="refillcycle";">
 <div id=screenshot></div>
-<iframe src="https://tangrams.github.io/tangram-frame/?noscroll&url=https://mapzen-assets.s3.amazonaws.com/images/neighbourhood-updates-III/netherlands_admin.yaml#6.75/52.278/5.553"></iframe>
+<iframe src="https://tangrams.github.io/tangram-frame/?noscroll&url=images/netherlands_admin.yaml#6.75/52.278/5.553"></iframe>
 </div>
-<p style="text-align: center"  class='caption'><br><a style="font-weight:normal"href="https://tangrams.github.io/tangram-frame/?url=https://mapzen-assets.s3.amazonaws.com/images/neighbourhood-updates-III/netherlands_admin.yaml#6.75/52.278/5.553">Click to view the Netherlands in full screen ➹</a> <br></p>
+<p style="text-align: center"  class='caption'><br><a style="font-weight:normal"href="https://tangrams.github.io/tangram-frame/?url=images/netherlands_admin.yaml#6.75/52.278/5.553">Click to view the Netherlands in full screen ➹</a> <br></p>
 
 ##Property edit work
 

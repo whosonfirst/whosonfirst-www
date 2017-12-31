@@ -137,7 +137,7 @@ _* Note: Kosovo was in a disputed state between 2006~ and 2008~_
 
 Here is the dissolution of Yugoslavia in the form of a GIF, along with the WOF IDs and EDTF data:
 
-![](https://s3.amazonaws.com/mapzen-assets/images/whosonfirst-edtf/geom/yugoslavia.gif)
+![](images/yugoslavia.gif)
 
 You too can travel through time, space and politics by [superseding layers in Tangram Play](https://mapzen.com/tangram/view/?api=22/770#6.529/44.129/-341.711).
 

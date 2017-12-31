@@ -76,7 +76,7 @@ On a very high level the code asks a REST API endpoint for a list of WOF IDs of 
 
 Once we got the Descender working as-is, we started wiring in links from various pages in the Spelunker (for example, in the “Other Links” section of a record).
 
-![bundling canada](https://mapzen-assets.s3.amazonaws.com/images/descender/canada-bundler.png)
+![bundling canada](/imagescanada-bundler.png)
 
 ##What can you do with the Bundler?
 
@@ -129,7 +129,7 @@ function SwapDivsWithClick(div1,div2)
 <iframe id="demoframe" source="https://mapzen.com/tangram/view/?noscroll&minz=13&maxbounds=40.769,-74.031,40.803,-73.918&scene=https://s3.amazonaws.com/whosonfirst.mapzen.com/misc/_blogs/descender_four.yaml#15.825/40.7866/-73.9737"></iframe>
 </div>
 <div id="UpperWestSideImage" style="display:block;">
-<img src="https://mapzen-assets.s3.amazonaws.com/images/descender/UpperWestSideScreenshot.png"></img>
+<img src="/imagesUpperWestSideScreenshot.png"></img>
 </div>
 </a>
 </p>
