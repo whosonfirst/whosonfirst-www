@@ -3,20 +3,18 @@ OS := $(shell uname -s | tr '[:upper:]' '[:lower:]')
 PUP="utils/$(OS)/pup"
 WOF_CLONE_WEBSITE="utils/$(OS)/wof-clone-website"
 
-all: mapzen favicons js css home data docs tools blog getstarted
+all: mapzen favicons js css home data docs tools getstarted
 
 include pages/home.mk
 include pages/docs.mk
 include pages/data.mk
 include pages/tools.mk
-include pages/blog.mk
 include pages/getstarted.mk
 
 download: \
 	data-download-content \
 	docs-download-content \
 	tools-download-content \
-	blog-download-content \
 	getstarted-download-content
 
 build-pages: \
@@ -24,7 +22,6 @@ build-pages: \
 	data-build-pages \
 	docs-build-pages \
 	tools-build-pages \
-	blog-build-pages \
 	getstarted-build-pages
 
 setup: mk-tools
