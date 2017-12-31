@@ -2,6 +2,10 @@ OS := $(shell uname -s | tr '[:upper:]' '[:lower:]')
 
 PUP="utils/$(OS)/pup"
 WOF_CLONE_WEBSITE="utils/$(OS)/wof-clone-website"
+WOF_MD2HTML="utils/$(OS)/wof-markdown-to-html"
+
+render-blog:
+	$(WOF_MD2HTML) -header templates/blog/header.html -footer templates/blog/footer.html -mode directory www/blog/
 
 all: mapzen favicons js css home data docs tools getstarted
 
