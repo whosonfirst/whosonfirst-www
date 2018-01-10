@@ -16,7 +16,7 @@
 		<meta property="og:site_name" content="Who's On First" />
 		<meta property="og:title" content="Yes No Fix" />
 		<meta property="og:description" content="Yes No Fix is not a perfect solution but our hope is that it will at least make things a little better than they were yesterday." />
-		<meta property="og:image" content="https://www.whosonfirst.org/blog/2016/04/08/yesnofix/&#34;images/yesnofix-sanfran-no.png&#34;" />
+		<meta property="og:image" content="https://www.whosonfirst.org/blog/2016/04/08/yesnofix/images/yesnofix-sanfran-no.png" />
 		
 		<meta property="twitter:card" value="summary" />
 		<meta property="twitter:site" content="@alloftheplaces" />
@@ -24,7 +24,7 @@
 		<meta property="twitter:url" content="https://www.whosonfirst.org/blog/2016/04/08/yesnofix/" />
 		<meta property="twitter:title" content="Yes No Fix" />
 		<meta property="twitter:description" content="Yes No Fix is not a perfect solution but our hope is that it will at least make things a little better than they were yesterday." />
-		<meta property="twitter:image" content="https://www.whosonfirst.org/blog/2016/04/08/yesnofix/&#34;images/yesnofix-sanfran-no.png&#34;" />
+		<meta property="twitter:image" content="https://www.whosonfirst.org/blog/2016/04/08/yesnofix/images/yesnofix-sanfran-no.png" />
 		
 		<style type="text/css">
 		  body {
@@ -43,6 +43,9 @@
 		  padding: .5em;
 		  margin-bottom:1em;
 		  margin-top: 1em;
+		  display:block;
+		  min-width: 320px;
+		  margin: 0 auto;
 		  }
 
 		  h2 small {
@@ -60,7 +63,27 @@
 		  margin-top:2em;
 		  margin-bottom:5em;
 		  }
-		  
+
+		  @media (min-width: 320px) and (max-width: 400px) {
+
+		  ul {
+		  margin:0px;
+	  	  margin-left:15px;
+		  padding:0px;
+		  }
+
+		  pre {
+		  max-width:250px;
+		  overflow:scroll;
+		  }
+
+		  img {
+		  max-width: 250px !important;
+		  max-height: 200px !important;
+		  min-width: 225px;
+		  }
+		  }
+
 		</style>
 	</head>
 	<body>

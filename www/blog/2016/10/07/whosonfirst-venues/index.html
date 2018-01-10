@@ -43,6 +43,9 @@
 		  padding: .5em;
 		  margin-bottom:1em;
 		  margin-top: 1em;
+		  display:block;
+		  min-width: 320px;
+		  margin: 0 auto;
 		  }
 
 		  h2 small {
@@ -60,7 +63,27 @@
 		  margin-top:2em;
 		  margin-bottom:5em;
 		  }
-		  
+
+		  @media (min-width: 320px) and (max-width: 400px) {
+
+		  ul {
+		  margin:0px;
+	  	  margin-left:15px;
+		  padding:0px;
+		  }
+
+		  pre {
+		  max-width:250px;
+		  overflow:scroll;
+		  }
+
+		  img {
+		  max-width: 250px !important;
+		  max-height: 200px !important;
+		  min-width: 225px;
+		  }
+		  }
+
 		</style>
 	</head>
 	<body>
