@@ -1,6 +1,9 @@
 ---
 layout: page
 title: Who's On First, Chapter Two
+published: true
+date: 2018-01-02
+permalink: /blog/2018/01/02/chapter-two/
 category: blog
 excerpt: It means that while things are not literally "better than yesterday" – since yesterday you didn't have to read this blog post – it means that things are hopefully better than the yesterday of the last time a service you came to depend on had to shutter its doors.
 authors: [thisisaaronland]
