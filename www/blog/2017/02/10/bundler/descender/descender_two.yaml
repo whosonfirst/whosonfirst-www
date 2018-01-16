@@ -1,0 +1,42 @@
+global:
+  sdk_mapzen_api_key: mapzen-Nv28m8Y
+
+import:
+    - https://mapzen.com/carto/refill-style-no-labels/6/refill-style-no-labels.zip
+
+sources:
+    SA_regions:
+        type: TopoJSON
+        url: https://mapzen-assets.s3.amazonaws.com/images/descender/SA_regions.topojson
+        generate_label_centroids: true
+        
+    mapzen:
+        type: TopoJSON
+        url:  https://tile.mapzen.com/mapzen/vector/v1/all/{z}/{x}/{y}.topojson
+        url_params:
+            api_key: global.sdk_mapzen_api_key
+
+layers:
+    South_America:
+        data: { source: SA_regions}
+        draw:
+            lines:
+                order: global.sdk_order_over_everything_but_text_0
+                color: [0.153, 0.455, 0.800, 1.00]
+                width: [[5,1px],[10,2px]]
+        labels:
+            filter: { label_placement: true }
+            draw:
+                text-blend-order-overlay:
+                    text_source: "wof:name"
+                    font:
+                        fill: green
+                        size:  12px
+                        stroke:
+                            color: white
+                            width: 1
+
+styles:
+    text-blend-order-overlay:
+        base: text
+        blend_order: 2

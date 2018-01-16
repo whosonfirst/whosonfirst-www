@@ -1,0 +1,63 @@
+sources:
+    yugo_1:
+        type: GeoJSON
+        url: https://s3.amazonaws.com/mapzen-assets/images/whosonfirst-edtf/geom/yugo_1.geojson
+        generate_label_centroids: true
+    mapzen:
+        type: TopoJSON
+        url: https://tile.mapzen.com/mapzen/vector/v1/all/{z}/{x}/{y}.topojson
+        url_params:
+            api_key: mapzen-Nv28m8Y
+        max_zoom: 16
+
+scene:
+    background: 
+        color: lightblue
+
+layers:
+    yugo_1:
+        data: { source: yugo_1}
+        draw:
+            polygons:
+                order: 2000
+                color: [0.051, 0.416, 1.000, .7]
+                width: [[5,1px],[10,2px]]
+            lines:
+                order: 2001
+                color: [0.910, 0.494, 0.047, 1.00]
+                width: [[5,3px],[10,3px]]
+        label:
+            filter: { label_placement: true }
+            draw:
+                text-blend-order-overlay:
+                    text_source: "wof:name"
+                    font:
+                        fill: white
+                        size:  12px
+                        stroke:
+                            color: black
+                            width: 1px
+    earth:
+        data: { source: mapzen }
+        draw:
+            polygons:
+                order: 0
+                color: grey
+    water:
+        data: { source: mapzen }
+        draw:
+            polygons:
+                order: 10
+                color: lightblue
+
+styles:
+    text-blend-order-overlay:
+        base: text
+        blend_order: 2
+    polygons_transparent:
+        base: polygons
+        blend: overlay
+
+#2017 // https://github.com/stepps00
+
+

@@ -1,0 +1,212 @@
+import:
+    - https://mapzen.com/carto/refill-style-no-labels/6/refill-style-no-labels.zip
+    
+global:
+  sdk_mapzen_api_key: mapzen-Nv28m8Y
+
+sources:
+    locality:
+        type: TopoJSON
+        url: https://s3.amazonaws.com/mapzen-assets/images/neighbourhood-updates-III/netherlands_topojson/no_wof_locality2.topojson
+
+    locality_two:
+        type: TopoJSON
+        url: https://s3.amazonaws.com/mapzen-assets/images/neighbourhood-updates-III/netherlands_topojson/wof_locality2.topojson
+
+    borough:
+        type: TopoJSON
+        url: https://s3.amazonaws.com/mapzen-assets/images/neighbourhood-updates-III/netherlands_topojson/no_wof_boroughs2.topojson
+
+    macrohood:
+        type: TopoJSON
+        url: https://s3.amazonaws.com/mapzen-assets/images/neighbourhood-updates-III/netherlands_topojson/no_wof_macrohoods2.topojson
+
+    neighbourhood:
+        type: TopoJSON
+        url: https://s3.amazonaws.com/mapzen-assets/images/neighbourhood-updates-III/netherlands_topojson/no_wof_neighbourhoods2.topojson
+
+    neighbourhood_two:
+        type: TopoJSON
+        url: https://s3.amazonaws.com/mapzen-assets/images/neighbourhood-updates-III/netherlands_topojson/wof_neighbourhoods2.topojson
+
+    microhood:
+        type: TopoJSON
+        url: https://s3.amazonaws.com/mapzen-assets/images/neighbourhood-updates-III/netherlands_topojson/no_wof_microhoods2.topojson
+
+layers:
+    locality:
+        data: { source: locality}
+        draw:
+            polygons_transparent:
+                order: global.sdk_order_over_everything_but_text_0
+                color: [0.655, 0.792, 0.941, 0.50]
+                width: [[5,1px],[10,2px]]
+            lines:
+                order: global.sdk_order_over_everything_but_text_0
+                color: [0.196, 0.404, 0.800, 0.80]
+                width: [[5,1px],[10,2px]]
+        label:
+            filter: { label_placement: true }            
+            draw:
+                text-blend-order-overlay:
+                    #text_source: "name"
+                    font:
+                        fill: white
+                        size:  12px
+                        stroke:
+                            color: black
+                            width: 2
+        filter: { $zoom: {min: 6, max: 7} }
+
+    locality_two:
+        data: { source: locality_two}
+        draw:
+            polygons_transparent:
+                order: global.sdk_order_over_everything_but_text_0
+                color: [0.655, 0.792, 0.941, 0.50]
+                width: [[5,1px],[10,2px]]
+            lines:
+                order: global.sdk_order_over_everything_but_text_0
+                color: [0.196, 0.404, 0.800, 0.80]
+                width: [[5,1px],[10,2px]]
+        label:
+            filter: { label_placement: true }            
+            draw:
+                text-blend-order-overlay:
+                    #text_source: "name"
+                    font:
+                        fill: white
+                        size:  12px
+                        stroke:
+                            color: black
+                            width: 2
+        filter: { $zoom: {min: 6, max: 7} }
+ 
+    borough:
+        data: { source: borough}
+        draw:
+            polygons_transparent:
+                order: global.sdk_order_over_everything_but_text_0
+                color: [0.655, 0.792, 0.941, 0.50]
+                width: [[5,1px],[10,2px]]
+            lines:
+                order: global.sdk_order_over_everything_but_text_0
+                color: [0.196, 0.404, 0.800, 0.80]
+                width: [[5,1px],[10,2px]]
+        label:
+            filter: { label_placement: true }            
+            draw:
+                text-blend-order-overlay:
+                    #text_source: "name"
+                    font:
+                        fill: white
+                        size:  12px
+                        stroke:
+                            color: black
+                            width: 2
+        filter: { $zoom: {min: 7, max: 8} }
+
+    macrohood:
+        data: { source: macrohood}
+        draw:
+            polygons_transparent:
+                order: global.sdk_order_over_everything_but_text_0
+                color: [0.655, 0.792, 0.941, 0.50]
+                width: [[5,1px],[10,2px]]
+            lines:
+                order: global.sdk_order_over_everything_but_text_0
+                color: [0.196, 0.404, 0.800, 0.80]
+                width: [[5,1px],[10,2px]]
+        label:
+            filter: { label_placement: true }            
+            draw:
+                text-blend-order-overlay:
+                    #text_source: "name"
+                    font:
+                        fill: white
+                        size:  12px
+                        stroke:
+                            color: black
+                            width: 2
+        filter: { $zoom: {min: 8, max: 9} }
+
+    neighbourhood:
+        data: { source: neighbourhood}
+        draw:
+            polygons_transparent:
+                order: global.sdk_order_over_everything_but_text_0
+                color: [0.655, 0.792, 0.941, 0.50]
+                width: [[5,1px],[10,2px]]
+            lines:
+                order: global.sdk_order_over_everything_but_text_0
+                color: [0.196, 0.404, 0.800, 0.80]
+                width: [[5,1px],[10,2px]]
+        label:
+            filter: { label_placement: true }            
+            draw:
+                text-blend-order-overlay:
+                    #text_source: "name"
+                    font:
+                        fill: white
+                        size:  12px
+                        stroke:
+                            color: black
+                            width: 2
+        filter: { $zoom: {min: 9, max: 10} }
+
+    neighbourhood_two:
+        data: { source: neighbourhood_two}
+        draw:
+            polygons_transparent:
+                order: global.sdk_order_over_everything_but_text_0
+                color: [0.655, 0.792, 0.941, 0.50]
+                width: [[5,1px],[10,2px]]
+            lines:
+                order: global.sdk_order_over_everything_but_text_0
+                color: [0.196, 0.404, 0.800, 0.80]
+                width: [[5,1px],[10,2px]]
+        label:
+            filter: { label_placement: true }            
+            draw:
+                text-blend-order-overlay:
+                    #text_source: "name"
+                    font:
+                        fill: white
+                        size:  12px
+                        stroke:
+                            color: black
+                            width: 2
+        filter: { $zoom: {min: 9, max: 10} }
+
+    microhood:
+        data: { source: microhood}
+        draw:
+            polygons_transparent:
+                order: global.sdk_order_over_everything_but_text_0
+                color: [0.655, 0.792, 0.941, 0.50]
+                width: [[5,1px],[10,2px]]
+            lines:
+                order: global.sdk_order_over_everything_but_text_0
+                color: [0.196, 0.404, 0.800, 0.80]
+                width: [[5,1px],[10,2px]]
+        label:
+            filter: { label_placement: true }            
+            draw:
+                text-blend-order-overlay:
+                    #text_source: "name"
+                    font:
+                        fill: white
+                        size:  12px
+                        stroke:
+                            color: black
+                            width: 2
+        filter: { $zoom: {min: 10, max: 14} }
+styles:
+    text-blend-order-overlay:
+        base: text
+        blend_order: 2
+    polygons_transparent:
+        base: polygons
+        blend: overlay
+
+#2017 // https://github.com/stepps00 and https://github.com/zbsingleton

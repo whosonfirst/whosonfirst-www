@@ -1,0 +1,56 @@
+global:
+  sdk_mapzen_api_key: mapzen-Nv28m8Y
+
+import: https://mapzen.com/carto/refill-style/refill-style.yaml
+
+sources:
+    venues:
+        type: GeoJSON
+        url: https://s3.amazonaws.com/mapzen-assets/images/descender/wof_bundle_85853285_Upper_West_Side_NYC_neighbourhood-venue.geojson
+        
+    mapzen:
+        type: TopoJSON
+        url:  https://tile.mapzen.com/mapzen/vector/v1/all/{z}/{x}/{y}.topojson
+        url_params:
+            api_key: global.sdk_mapzen_api_key
+
+styles:
+    _tree_icons_style:
+        base: points
+        blend_order: 1
+        texture: https://s3.amazonaws.com/mapzen-assets/images/dot-mapping/tree_white.png
+
+layers:
+
+    _venues_layer:
+        data: { source: venues }
+        filter: { $zoom: { min: 12 } }
+        draw:
+            # lines:
+            #     color: green
+            #     width: 2px
+            #     order: 10000
+            points:
+                color: [[12, [0.290, 0.604, 0.290, 0.30]], [18, [0.165, 0.478, 0.165, 0.85]]] 
+                size: [[12, 1px], [15, 5px], [18, 14px], [18, 20px], [22, 52px]]
+                collide: false
+        _venues_icon_sublayer:
+            filter: { $zoom: { min: 18 } }
+            draw:
+                icons:
+                    # color: [[12, [0.290, 0.604, 0.290, 0.30]], [18, [0.165, 0.478, 0.165, 0.85]]] 
+                    size: [[12, 1px], [15, 5px], [18, 14px], [18, 20px], [22, 52px]]
+                    collide: false
+                    sprite: store
+                points:
+                    text:
+                        text_source: "wof:name"
+                        font:
+                            fill: forestgreen
+                            size: 10pt
+                            stroke:
+                                width: 5px
+                                color: white
+                        optional: true
+
+

@@ -1,0 +1,69 @@
+global:
+  sdk_mapzen_api_key: mapzen-Nv28m8Y
+  
+import:
+    - https://mapzen.com/carto/refill-style/6/refill-style.zip
+
+sources:
+    ireland_regions:
+        type: GeoJSON
+        url: https://mapzen-assets.s3.amazonaws.com/images/descender/Ireland_regions.geojson
+        generate_label_centroids: true
+
+    mapzen:
+        type: TopoJSON
+        url:  https://tile.mapzen.com/mapzen/vector/v1/all/{z}/{x}/{y}.topojson
+        url_params:
+            api_key: global.sdk_mapzen_api_key
+            
+layers:
+    ireland:
+        data: { source: ireland_regions}
+        draw:
+            _lines:
+                order: global.sdk_order_over_everything_but_text_0
+                color: orange
+                width: 2px
+            polygons:
+                color: green
+                order: sdk_order_under_roads_0
+        labels:
+            filter: { label_placement: true }
+            draw:
+                text-blend-order-overlay:
+                    text_source: "wof:name"
+                    font:
+                        fill: white
+                        size:  12px
+                        stroke:
+                            color: black
+                            width: 2
+
+    roads:
+        data: { source: mapzen, layer: roads }
+        filter: { not: { kind: rail } }
+        draw:
+            lines:
+                interactive: true
+                #color: black
+                width: 1px
+                order: global.feature_order
+                # but give them all the same outline
+                outline:
+                    style: _outline
+styles:
+    text-blend-order-overlay:
+        base: text
+        blend_order: 2
+    _text:
+        base: text
+        blend: overlay
+        blend_order: 5
+    _lines:
+        base: lines
+        blend: overlay
+        blend_order: 1
+    _polygons:
+        base: polygons
+        blend: overlay
+        blend_order: 0
