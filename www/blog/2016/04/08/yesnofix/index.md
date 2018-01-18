@@ -1,6 +1,8 @@
 ---
 layout: page
 published: true
+date: 2016-04-08
+permalink: /blog/2016/04/08/yesnofix/
 title: Yes No Fix
 category: blog
 excerpt: Yes No Fix is not a perfect solution but our hope is that it will at least make things a little better than they were yesterday.

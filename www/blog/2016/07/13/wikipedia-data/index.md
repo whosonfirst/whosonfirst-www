@@ -1,5 +1,8 @@
 ---
 layout: page
+published: true
+date: 2016-07-13
+permalink: /blog/2016/07/13/wikipedia-data/
 category: blog
 title: Concordances with Wikipedia data
 excerpt: Collecting and analyzing Wikipedia data to extract useful information.

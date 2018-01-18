@@ -1,5 +1,8 @@
 ---
 layout: page
+date: 2016-10-06
+published: true
+permalink: /blog/2016/10/06/wof-lifecycle-documentation/
 title: Who's On First Life Cycle Documentation
 category: blog
 excerpt: Documenting the life cycle and tracking rules of the Who's On First ID

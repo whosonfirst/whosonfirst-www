@@ -1,6 +1,8 @@
 ---
 layout: page
 published: true
+date: 2016-02-19
+permalink: /blog/2016/02/19/iamhere/
 title: I Am Here
 category: blog
 excerpt: Mapzen should always be Consumer Zero (of Mapzen services).

@@ -1,11 +1,14 @@
 ---
 layout: page
+published: true
+date: 2017-06-29
+permalink: /blog/2017/06/29/tackling-space-and-time-in-whosonfirst/
 title: Tackling Space and Time in Who's On First
 category: blog
 excerpt: Using the Extended Date/Time Format to track historical records in Who's On First.
 authors: [stepps00]
 image: "images/main_photo.jpg"
-tag: [whosonfirst, data]
+tag: [whosonfirst, data, yugoslavia]
 ---
 
 

@@ -1,5 +1,8 @@
 ---
 layout: page
+date: 2017-09-19
+published: true
+permalink: /blog/2017/09/19/introducing-statoids/
 title: Statoids, Mesoshapes, and Who's On First	
 category: blog
 excerpt: Check out our recent additions to the Who's On First gazetteer, including our partnership with Statoids!

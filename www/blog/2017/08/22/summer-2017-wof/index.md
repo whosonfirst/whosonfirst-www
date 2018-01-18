@@ -1,5 +1,8 @@
 ---
 layout: page
+date: 2017-08-22
+published: true
+permalink: /blog/2017/08/22/summer-2017-wof/
 title: Increasing Name Translations in Who's On First
 category: blog
 excerpt: Outlining and visualizing the work we've done to increase name translations in the Who's On First gazetteer.

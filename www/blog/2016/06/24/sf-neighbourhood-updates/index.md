@@ -1,5 +1,8 @@
 ---
 layout: page
+published: true
+date: 2016-06-24
+permalink: /blog/2016/06/24/sf-neighbourhood-updates/
 title: Updating Neighbourhood Records in Who's on First
 category: blog
 excerpt: A handy guide updating neighbourhood records in Who's On First!

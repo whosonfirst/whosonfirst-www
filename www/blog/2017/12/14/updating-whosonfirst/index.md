@@ -1,5 +1,8 @@
 ---
 layout: page
+date: 2017-12-14
+published: true
+permalink: /blog/2017/12/14/updating-whosonfirst/
 title: Whos On First Updates, 2017
 category: blog
 excerpt: Outlining a few one-offs, changes, and edits that were made to Who's On First in 2017

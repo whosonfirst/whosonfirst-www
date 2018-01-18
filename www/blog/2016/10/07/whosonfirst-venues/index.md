@@ -1,5 +1,8 @@
 ---
 layout: page
+published: true
+date: 2016-10-07
+permalink: /blog/2016/10/07/whosonfirst-venues/
 category: blog
 title: Venues, Postal Codes... and All Those GitHub Repositories
 excerpt: Multiply &quot;a lot of venues, even in the smallest of communities&quot; by the &quot;entire planet&quot; and you've got... well, a lot of venues.

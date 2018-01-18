@@ -1,5 +1,8 @@
 ---
 layout: page
+date: 2015-09-28
+published: true
+permalink: /blog/2015/09/28/spelunker-jumping-into-who-s-on-first/
 category: blog
 published: true
 title: Spelunker - Jumping into Who's On First

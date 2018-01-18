@@ -1,5 +1,7 @@
 ---
 layout: page
+date: 2017-10-24
+permalink: /blog/2017/10/24/whosonfirst-sotmus-2017/
 category: blog
 published: true
 title: Who's On First ꞉fist-bump꞉  OpenStreetMap

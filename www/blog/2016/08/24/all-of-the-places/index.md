@@ -1,5 +1,8 @@
 ---
 layout: page
+date: 2016-08-24
+published: true
+permalink: /blog/2016/08/24/all-of-the-places/
 title: All of the Places
 category: blog
 excerpt: A tiny website for sharing links to places.

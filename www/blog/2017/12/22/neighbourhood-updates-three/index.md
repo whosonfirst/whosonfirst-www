@@ -1,5 +1,8 @@
 ---
 layout: page
+date: 2017-12-22
+published: true
+permalink: /blog/2017/12/22/neighbourhood-updates-three/
 title: Updating Who's On First Neighbourhoods - Part III
 category: blog
 excerpt: Check out the most recent additions and updates to neighbourhoods in WOF!

@@ -2,6 +2,8 @@
 layout: page
 category: blog
 published: true
+date: 2017-10-17
+permalink: /blog/2017/10/17/whosonfirst-nacis-2017/
 title: maîtres chez nous
 excerpt: Perhaps we can stop teaching our tools the bad habits of the past.
 image: images/whosonfirst-nacis-2017.018.jpg

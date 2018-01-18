@@ -1,5 +1,8 @@
 ---
 layout: page
+date: 2017-04-04
+permalink: /blog/2017/04/04/whosonfirst-api/
+published: true
 title: The Who's On First API
 category: blog
 excerpt: Anything you can do by clicking around the Spelunker should be able to be automated using code.

@@ -1,5 +1,8 @@
 ---
 layout: page
+date: 2016-10-05
+published: true
+permalink: /blog/2016/10/05/boundary-issues-properties/
 title: "Boundary Issues: Editing Properties in Who's On First Records"
 category: blog
 excerpt: Introducing our bespoke web-based editor for Who's On First records—helping GeoJSON help you.

@@ -1,11 +1,14 @@
 ---
 layout: page
+published: true
+date: 2017-04-28
+permalink: /blog/2017/04/28/whosonofirst-api-explorer
 title: The Who's On First API Explorer
 category: blog
 excerpt: I like to think the WOF API Explorer is another illustration of the idea that "Mapzen should always be Consumer Zero (of Mapzen services)".
 authors: [thisisaaronland]
 image: images/light.jpg
-tag: [whosonfirst, electron]
+tag: [whosonfirst, electron, api]
 ---
 
 <div style="margin: 0 auto; width:341px;">

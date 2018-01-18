@@ -1,5 +1,8 @@
 ---
 layout: page
+published: true
+date: 2016-12-08
+permalink: /blog/2016/12/08/mesoshapes/
 title: Improving county coverage in Who's On First
 category: blog
 excerpt: We've doubled the number of counties in Who's On First by adding data sources and introducing mesoshapes to fill the gaps

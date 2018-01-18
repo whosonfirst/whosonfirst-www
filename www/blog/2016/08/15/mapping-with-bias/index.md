@@ -1,5 +1,8 @@
 ---
 layout: page
+date: 2016-08-15
+permalink: /blog/2016/08/15/mapping-with-bias/
+published: true
 category: blog
 title: Mapping with Bias
 excerpt: I like that idea that there might be an instrument to measure the motion – the velocity – of people’s understanding of place

@@ -1,6 +1,9 @@
 ---
 layout: page
 category: blog
+published: true
+date: 2017-02-10
+permalink: /blog/2017/02/10/bundler/
 title: Bundling up descendants into GeoJSON
 excerpt: We made a handy tool that lets you download the descendants of a place as GeoJSON.
 image: images/wof_canada-descender.gif

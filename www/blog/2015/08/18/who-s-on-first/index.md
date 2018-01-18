@@ -1,5 +1,8 @@
 ---
 layout: page
+date: 2015-08-18
+published: true
+permalink: /blog/2015/08/18/who-s-on-first/
 category: blog
 published: true
 title: Who’s On First

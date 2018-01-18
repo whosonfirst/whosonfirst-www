@@ -1,5 +1,8 @@
 ---
 layout: page
+published: true
+date: 2017-05-20
+permalink: /blog/2017/05/20/simple-is-hard/
 category: blog
 title: "Simple is hard"
 excerpt: "Making something less complicated is complicated."

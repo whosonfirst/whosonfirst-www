@@ -1,5 +1,8 @@
 ---
 layout: page
+date: 2017-04-17
+published: true
+permalink: /blog/2017/04/17/weird-and-wonderful/
 category: blog
 title: "The world is weird and wonderful!"
 excerpt: "The multifaceted maps we make simply reflect the weird and wonderful territory they represent. CSV and GeoJSON make it easier."

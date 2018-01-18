@@ -1,5 +1,8 @@
 ---
 layout: page
+published: true
+date: 2017-10-15
+permalink: /blog/2017/10/05/mapzen-places/
 category: blog
 title: Mapzen Places is here! And there! And everywhere. 
 excerpt: Get geometries, hierarchies, statistics and more with the Mapzen Places API.

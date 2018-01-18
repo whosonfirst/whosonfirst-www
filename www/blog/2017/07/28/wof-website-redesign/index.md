@@ -1,5 +1,8 @@
 ---
 layout: page
+published: true
+date: 2017-07-28
+permalink: /blog/2017/07/28/wof-website-redesign/
 title: Redesigning and Rebuilding the Who's On First website
 category: blog
 excerpt: How can we most effectively allow for understanding, visualizing, and interacting with Who's On First?
