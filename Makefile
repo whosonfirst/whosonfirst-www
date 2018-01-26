@@ -2,7 +2,7 @@ OS := $(shell uname -s | tr '[:upper:]' '[:lower:]')
 
 PUP="utils/$(OS)/pup"
 WOF_CLONE_WEBSITE="utils/$(OS)/wof-clone-website"
-WOF_MD2HTML="utils/$(OS)/wof-markdown-to-html"
+WOF_MD2HTML="utils/$(OS)/wof-md2html"
 
 debug:
 	utils/$(OS)/wof-fileserver -path ./www
