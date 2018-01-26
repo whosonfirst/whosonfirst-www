@@ -4,6 +4,9 @@ PUP="utils/$(OS)/pup"
 WOF_CLONE_WEBSITE="utils/$(OS)/wof-clone-website"
 WOF_MD2HTML="utils/$(OS)/wof-markdown-to-html"
 
+debug:
+	utils/$(OS)/wof-fileserver -path ./www
+
 render-blog:
 	$(WOF_MD2HTML) -header templates/blog/header.html -footer templates/blog/footer.html -mode directory www/blog/
 
@@ -102,7 +105,7 @@ build-page-title:
 build-page-cleanup:
 	@rm page-title.html
 	@rm page-content.html*
-	if test -f www/$(OUT)-e; then @rm www/$(OUT)-e; fi
+	if test -f www/$(OUT)-e; then rm www/$(OUT)-e; fi
 
 build-page-level0:
 	@echo "Build www/$(OUT)"
