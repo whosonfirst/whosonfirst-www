@@ -2,13 +2,26 @@ home: home-build-pages
 
 home-build-pages: \
 	home-page \
-	home-state \
 	home-bundles \
 	home-what \
 	home-download \
+	home-code \
+	home-api
 
 home-page:
 	@make CONTENT=home.html OUT=index.html build-page-level0
+
+home-api:
+	@make CONTENT=api/index.html \
+		OUT=api/index.html \
+		SUBNAV_DIR=api \
+		build-page-level1
+
+home-code:
+	@make CONTENT=code/index.html \
+	      OUT=code/index.html \
+	      SUBNAV_DIR=code \
+	      build-page-level1
 
 home-what:
 	@make CONTENT=what/index.html \
@@ -19,9 +32,9 @@ home-what:
 home-download:
 	@make CONTENT=download/index.html \
 	      OUT=download/index.html \
-	      SUBNAV_DIR=what \
+	      SUBNAV_DIR=download \
 	      build-page-level1
-	
+
 home-state:
 	@make CONTENT=state.html \
 	      OUT=state/index.html \
