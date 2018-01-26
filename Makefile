@@ -1,5 +1,9 @@
 OS := $(shell uname -s | tr '[:upper:]' '[:lower:]')
 
+ifeq ($(OSTYPE), android)
+	OS:= $(OSTYPE)
+endif
+
 PUP="utils/$(OS)/pup"
 WOF_CLONE_WEBSITE="utils/$(OS)/wof-clone-website"
 WOF_MD2HTML="utils/$(OS)/wof-md2html"
