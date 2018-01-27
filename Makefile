@@ -1,8 +1,8 @@
 OS := $(shell uname -s | tr '[:upper:]' '[:lower:]')
 
-ifeq ($(OSTYPE), android)
-	OS:= $(OSTYPE)
-endif
+# ifeq ($(OSTYPE), android)
+# 	OS:= $(OSTYPE)
+# endif
 
 PUP="utils/$(OS)/pup"
 WOF_CLONE_WEBSITE="utils/$(OS)/wof-clone-website"
@@ -120,7 +120,7 @@ build-page-level0:
 build-page-level1:
 	@echo "Build www/$(OUT)"
 	$(eval ROOT := $(shell dirname ./www/$(OUT)))
-	if ! -d $(ROOT); then mkdir -p $(ROOT); fi
+	if test ! -d $(ROOT); then mkdir -p $(ROOT); fi
 	@make build-page-content
 	@make build-page-title
 	@cat components/head.html \
