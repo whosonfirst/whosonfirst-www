@@ -9,7 +9,8 @@ mapzen.whosonfirst.chrome = (function(){
 
 			var host = location.host;
 
-			if (host == "whosonfirst.mapzen.com") {
+			if (host == "whosonfirst.mapzen.com" ||
+			    host == "places.mapzen.com") {
 				return;
 			}
 
