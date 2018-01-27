@@ -111,22 +111,85 @@ Code
 		</div>
 	</div>
 	<div class="whosonfirst-tabs-content">
+<style type="text/css">
+  .code-list {
+  margin-top: 1.5em !important;
+  margin-bottom: 1.5em !important;
+  }
+</style>
+
 
 
 <p>All of the code used to run Who's On First is published under an open source license, typically a <a href="">BSD-3</a> license, an available through the <a href="https://github.com/whosonfirst/">whosonfirst</a> GitHub organization:</p>
 
 <p style="font-size:2em; text-align:center;font-weight:700;"><a href="https://github.com/whosonfirst/">https://github.com/whosonfirst/</a></p>
 
-<p>Code ... four ... </p>
+<p>Software in Who's On First is typically developed in one of four languages: Go, JavaScript, PHP and Python. We do this for two reasons: 1) Because one language is a better fit than another for a specific task and 2) To try and ensure that we never let Who's On First become overly dependent on the quirks or biases of any of language.</p>
 
+<p>An explicit design goal of Who's On First is that it should be possible (easy, even) to work with our data in <em>any</em> programming language. It would be impractical to ensure portability across languages for every piece of Who's On First related functionality but we rely on the need to implement <em>core</em> libraries and methods across a variety of strictly and loosely typed languages, and the need to do so quickly and without constant refactoring, as a good benchmark and stress-test for our design decisions.</p>
 
-<ul>
-  <li><a href="https://github.com/whosonfirst?language=go">Go</a></li>
-  <li><a href="https://github.com/whosonfirst?language=javascript">JavaScript</a></li>
-  <li><a href="https://github.com/whosonfirst?language=php">PHP</a></li>
-  <li><a href="https://github.com/whosonfirst?language=python">Python</a></li>
+<ul class="code-list">
+  <li><a href="#go">Go</a></li>
+  <li><a href="#javascript">JavaScript</a></li>
+  <li><a href="#php">PHP</a></li>
+  <li><a href="#python">Python</a></li>
+  <li><a href="#www">Web applications</a></li>  
 </ul>  
-  
+
+<h2 id="go">Go</h2>
+
+<p>Go packages typically have a <code>go-</code> prefix and are well-suited for tasks that require heavy-lifting. We also use Go when we want to create tools that can distributed as pre-compiled platform specific binaries.</p>
+
+<p>Go packages are available from the <code>whosonfirst</code> organization on GitHub:</p>
+
+<ul class="code-list">
+  <li><a href="https://github.com/whosonfirst?language=go">https://github.com/whosonfirst?language=go</a></li>
+</ul>  
+
+<h2 id="go">JavaScript</h2>
+
+<p>Javascript packages typically have a <code>js-</code> prefix and are primarily designed for use in the client layer of the various Who's On First related <a href="#www">web applications</a>. At present most (all) of these packages are designed for use in a browser context but we would like to update them to work seamlessly in both a browser and <code>node.js</code> context.</p>
+
+<p>JavaScript packages are available from the <code>whosonfirst</code> organization on GitHub:</p>
+
+<ul class="code-list">
+  <li><a href="https://github.com/whosonfirst?language=javascript">https://github.com/whosonfirst?language=javascript</a></li>
+</ul>  
+
+<h2 id="go">PHP</h2>
+
+<p>PHP packages typically have a <code>php-</code> or a <code>flamework-</code>prefix and are primarily designed for use in the application layer of the many Who's On First related <a href="#www">web applications</a>. The <code>flamework-</code> prefix references the <a href="https://github.com/whosonfirst/flamework/">Flamework</a> anti-framework designed and built by grumpy ex-Flickr engineers.</p>
+
+<p>PHP packages are available from the <code>whosonfirst</code> organization on GitHub:</p>
+
+<ul class="code-list">
+  <li><a href="https://github.com/whosonfirst?language=php">https://github.com/whosonfirst?language=php</a></li>
+</ul>  
+
+<h2 id="go">Python</h2>
+
+<p>Python packages typically have a <code>py-mapzen-whosonfirst</code> prefix (which will need to updated in <a href="#">a post-Mapzen world</a>and are best-suited for manipulating individual Who's On First records. They are also required for certain operations, for example exporting records to disk with Who's On First specfic formatting.
+
+<p style="font-style:italic;">There are two important points to note about that last sentence: 1) WOF-specific formatting is <em>desirable</em> but not required and 2) the requirement to use Python (versus say Go or PHP) to achieve that end is not a feature and points to work we still need to do to ensure functionality across languages.</p>
+
+ <p>Python packages are written in Python 2 but we aim to migrate these all to Python 3 shortly.</p>
+
+<p>Python packages are available from the <code>whosonfirst</code> organization on GitHub:</p>
+
+<ul class="code-list">
+  <li><a href="https://github.com/whosonfirst?language=python">https://github.com/whosonfirst?language=python</a></li>
+</ul>  
+
+<h2 id="www">Web applications</h2>
+
+<p>Web applications are written in all of the languages listed above and typically have a <code>whosonfirst-www-</code> prefix (that may eventually be shortened to <code>www-</code>).</p>
+
+<p>Web applications are available from the <code>whosonfirst</code> organization on GitHub:</p>
+
+<ul class="code-list">
+  <li><a href="https://github.com/whosonfirst?q=whosonfirst-www">https://github.com/whosonfirst?q=whosonfirst-www</a></li>
+</ul>  
+
 
 					</div>
 				</div>
