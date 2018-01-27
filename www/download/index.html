@@ -93,8 +93,9 @@ Downloading Who&#39;s On First
 	</div>
 	<div class="whosonfirst-tabs-content">
 <style type="text/css">
-  ul .downloads-list {
-  margin-top: 2em !important;
+  .downloads-list {
+  margin-top: 1.5em !important;
+  margin-bottom: 1.5em !important;
   }
 </style>
 
@@ -114,22 +115,36 @@ Downloading Who&#39;s On First
 
 <h3 id="sqlite">SQLite databases</h3>
 
+<p>Who's On First data exported as a set of SQLite database tables: ancestors, concordances, geojson, geometries, names, spr (which is an acronym for "<a href="/docs/spr/">standard places response</a>").</p>
+
+<p>SQLite databases are available from:</p>
+
 <ul class="downloads-list">
   <li><a href="https://dist.whosonfirst.org/sqlite/">https://dist.whosonfirst.org/sqlite/</a></li>
 </ul>
 
+<small>SQLite databases are generated using the <a href="https://github.com/whosonfirst/go-whosonfirst-sqlite">go-whosonfirst-sqlite</a> package.</small>
+
 <h3 id="bundles">"Bundles"</h3>
 
+<p>"Bundles" are basically Who's On First Git repositories without the <code>.git</code> directories (because they often so large).</p>
+
+<p>Bundles are available from:</p>
+  
 <ul class="downloads-list">
   <li><a href="https://dist.whosonfirst.org/bundles/">https://dist.whosonfirst.org/bundles/</a></li>
 </ul>
 
+<small>Bundles are generated using the <a href="https://github.com/whosonfirst/go-whosonfirst-bundles">go-whosonfirst-bundles</a> package.</small>
+
 <h3 id="shapefiles">Shapefiles</h3>
 
-<p>Shapefile distributions are not yet available but will be soon.</p>
+<p style="font-style:italic;">Shapefile distributions are not yet available but will be soon.</p>
 
 <h2 id="github">Git(Hub)</h2>
 
+<p>All the Who's On First data and its complete edit history is available on GitHub:</p>
+  
 <ul class="downloads-list">
   <li><a href="https://github.com/whosonfirst-data/">https://github.com/whosonfirst-data/</a></li>
 </ul>
