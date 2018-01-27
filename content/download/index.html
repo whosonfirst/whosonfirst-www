@@ -1,3 +1,9 @@
+<style type="text/css">
+  ul .downloads-list {
+  margin-top: 2em !important;
+  }
+</style>
+
 <h1>Downloading Who's On First</h1>
 
 <p>At rest every Who's On First record is an atomic GeoJSON-encoded text file. This decision addresses concerns about the portability and longevity of the project but can make it a challenge to get started. For that reason we provide a variety of pre-packaged distributions, in a number of formats, of Who's On First data organized by placetype and country.</p>
@@ -14,11 +20,15 @@
 
 <h3 id="sqlite">SQLite databases</h3>
 
-<p><a href="https://dist.whosonfirst.org/sqlite/">https://dist.whosonfirst.org/sqlite/</a></p>
+<ul class="downloads-list">
+  <li><a href="https://dist.whosonfirst.org/sqlite/">https://dist.whosonfirst.org/sqlite/</a></li>
+</ul>
 
 <h3 id="bundles">"Bundles"</h3>
 
-<p><a href="https://dist.whosonfirst.org/bundles/">https://dist.whosonfirst.org/bundles/</a></p>
+<ul class="downloads-list">
+  <li><a href="https://dist.whosonfirst.org/bundles/">https://dist.whosonfirst.org/bundles/</a></li>
+</ul>
 
 <h3 id="shapefiles">Shapefiles</h3>
 
@@ -26,34 +36,36 @@
 
 <h2 id="github">Git(Hub)</h2>
 
-<p><a href="https://github.com/whosonfirst-data/">https://github.com/whosonfirst-data/</a></p>
+<ul class="downloads-list">
+  <li><a href="https://github.com/whosonfirst-data/">https://github.com/whosonfirst-data/</a></li>
+</ul>
 
 <h2 id="repos">How the Who's On First data repositories are organized</h2>
 
-<p>We use the <a href="">Git</a> version control system to manage Who's On First data. One of the present-day limits of Git is the number of atomic files you can store in a single Git "repository". We believe that eventually it will be possible to keep all 26 million records in a single Git repository but we are not there yet.</p>
+<p>We use the <a href="https://git-scm.com/">Git</a> version control system to manage Who's On First data. One of the present-day limits of Git is the number of atomic files you can store in a single Git "repository". We believe that eventually it will be possible to keep all 26 million records in a single Git repository but we are not there yet.</p>
 
 <p>Instead of a single monolithic repository we have grouped Who's On First data as follows:</p>
 
-<ul>
-<li><a href="#administrative-data">Administrative Data</a> - all administrative placetypes (all the places between and inclusive of continents to microhoods) for the entire world</li>
-<li><a href="#other-data">Everything else</a> - all other placetypes including venues, postalcodes, constituencies and intersections</li>
+<ul class="downloads-list">
+  <li><a href="#administrative-data">Administrative Data</a> - all administrative placetypes (all the places between and inclusive of continents to microhoods) for the entire world</li>
+  <li><a href="#other-data">Everything else</a> - all other placetypes including venues, postalcodes, constituencies and intersections</li>
 </ul>
 
 <p>The naming convention for Who's On First data reposiories at its <em>most granular</em> looks like this:</p>
 
 <pre>
-	<code>whosonfirst-data + "-" + WHOSONFIRST_PLACETYPE + "-" + WHOSONFIRST_ISO_COUNTRY + "-" + WHOSONFIRST_SUBDIVISION</code>
+	<code>whosonfirst-data + "-" + WHOSONFIRST_PLACETYPE + "-" + WHOSONFIRST_COUNTRY + "-" + WHOSONFIRST_SUBDIVISION</code>
 </pre>
 
 <p>There are some important points to keep in mind about these conventions:</p>
 
-<ol>
+<ul class="downloads-list">
   <li>All administrative data is stored in the <code>whosonfirst-data</code> repository. Administrative data is <em>not</em> subdivided by country or placetype.</li>
   <li>We try to use the shortest name whenever possible. The only reason for subdiving a placetype by country (or a country by subdivision) is to address operational concerns of working with the data in Git or GitHub.</li>
   <li>As a general rule every Who's On First document <em>should</em> have both an explicit <code>wof:repo</code> property containing the name of its parent repository.</li>
   <li>Who's On First documents should also contain all the necessary properties to reconstruct its <code>wof:repo</code> name allowing developers to validate that name by testing for the presence of a matching repository, starting with the most granular name and working backwards.</li>
   <li>The Who's On First data model allows for all of these repositories to be merged in to a single tree stucture without any collisions. If a Who's On First record is accidentally stored in or saved to an inappropriate repository that is considered an inconvenience (to be fixed) but not an error.</li>
-</ol>
+</ul>
 
 <h3 id="administrative-data">Administrative Data</h3>
 
@@ -61,38 +73,46 @@
 
 <p>You can find data for the following placetypes in the whosonfirst-data repository: continent, empire, country, macroregion, region, macrocounty, county, locality, macrohood, neighbourhood, microhood</p>
 
-<p><a href="https://github.com/whosonfirst-data/whosonfirst-data/">https://github.com/whosonfirst-data/whosonfirst-data/</a></p>
-
-<p>Find the whosonfirst-data-venue repo <a href="https://github.com/whosonfirst-data/whosonfirst-data-venue">here</a>.</p>
+<ul class="downloads-list">
+  <li><a href="https://github.com/whosonfirst-data/whosonfirst-data/">https://github.com/whosonfirst-data/whosonfirst-data/</a></li>
+</ul>
 
 <h3 id="other-data">Other Data</h3>
 
-<h4 id="venue">Venue data</h4>
+<h4 id="venue">Venues</h4>
 
-<p>...</p>
+<p>There are over 20 million venues in Who's On First, with about 60% in the USA. Venues in the USA are grouped in to <code>whosonfirst-data-venue-us-{WHOSONFIRST_SUBDIVISION}</code> repositories, while everything is grouped in to <code>whosonfirst-data-venue-{WHOSONFIRST_COUNTRY}</code> repositories.</p>
 
-<p><a href="https://github.com/whosonfirst-data/whosonfirst-data-venue/">https://github.com/whosonfirst-data/whosonfirst-data-venue</a></p>
+<p>There is also a general purpose <code>whosonfirst-data-venue</code> repository which contains no data but pointers to all the venue-related repositories that do:</p>
+
+<ul class="downloads-list">
+  <li><a href="https://github.com/whosonfirst-data/whosonfirst-data-venue/">https://github.com/whosonfirst-data/whosonfirst-data-venue</a></li>
+</ul>
 
 <h4 id="postalcode">Postal Codes</h4>
 
-<p>...</p>
+<p>Postal codes are grouped in to <code>whosonfirst-data-postalcode-{WHOSONFIRST_COUNTRY}</code> repositories.</p>
 
-<p><a href="https://github.com/whosonfirst-data/whosonfirst-data-postalcode">https://github.com/whosonfirst-data/whosonfirst-data-postalcode</a></p>
+<p>There is also a general purpose <code>whosonfirst-data-postalcode</code> repository which contains no data but pointers to all the postal code -related repositories that do:</p>
 
-	<h4 id="consituency">Constituencies</h4>
+<ul class="downloads-list">
+  <li><a href="https://github.com/whosonfirst-data/whosonfirst-data-postalcode">https://github.com/whosonfirst-data/whosonfirst-data-postalcode</a></li>
+</ul>
 
-<p>...</p>
+<h4 id="consituency">Constituencies</h4>
 
-	<ul>
-		<li><a href="https://github.com/whosonfirst-data/whosonfirst-data-constituency-ca">https://github.com/whosonfirst-data/whosonfirst-data-constituency-ca</a></li>
-		<li><a href="https://github.com/whosonfirst-data/whosonfirst-data-constituency-us">https://github.com/whosonfirst-data/whosonfirst-data-constituency-us</a></li>
-	</ul>
+<p>Constituencies are available for only a select number of countries (two to be exact: the USA and Canada) as we work through what it means to include constituencies in Who's On First. <em>If you have constituencies from other countries we'd love to include them too.</em></p>
 
-	<h4 id="intersections">Intersections</h4>
+<ul class="downloads-list">
+	<li><a href="https://github.com/whosonfirst-data/whosonfirst-data-constituency-ca">https://github.com/whosonfirst-data/whosonfirst-data-constituency-ca</a></li>
+	<li><a href="https://github.com/whosonfirst-data/whosonfirst-data-constituency-us">https://github.com/whosonfirst-data/whosonfirst-data-constituency-us</a></li>
+</ul>
 
-<p>...experimental</p>
+<h4 id="intersections">Intersections</h4>
 
-	<ul>
-	  <li><a href="https://github.com/whosonfirst-data/whosonfirst-data-intersection-us-ny">https://github.com/whosonfirst-data/whosonfirst-data-intersection-us-ny</a></li>
-	</ul>
+<p>Intersections are a still-experimental placetype in Who's On First, currently only available for New York City (and specifically Manhattan).</p>
+
+<ul class="downloads-list">
+  <li><a href="https://github.com/whosonfirst-data/whosonfirst-data-intersection-us-ny">https://github.com/whosonfirst-data/whosonfirst-data-intersection-us-ny</a></li>
+</ul>
 
