@@ -136,6 +136,8 @@ build-page-level1:
 
 build-page-level2:
 	@echo "Build www/$(OUT)"
+	$(eval ROOT := $(shell dirname ./www/$(OUT)))
+	if test ! -d $(ROOT); then mkdir -p $(ROOT); fi
 	@make build-page-title
 	@make build-page-content
 ifdef SUBSUBNAV

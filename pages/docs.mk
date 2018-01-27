@@ -43,6 +43,7 @@ docs-build-pages: \
 	docs-licenses \
 	docs-processes \
 	docs-keyterms
+	docs-spr \
 
 docs-download-properties:
 	@for prop in $(PROPERTY_LIST) ; do \
@@ -213,6 +214,13 @@ docs-concordances:
 	      OUT=docs/concordances/index.html \
 	      PAGE_TITLE='Concordances' \
 	      SUBNAV_LINK=concordances \
+	      docs-build-page-level2
+
+docs-spr:
+	@make CONTENT=docs/spr.html \
+	      OUT=docs/spr/index.html \
+	      PAGE_TITLE='Standard Places Response (SPR)' \
+	      SUBNAV_LINK=spr \
 	      docs-build-page-level2
 
 docs-placetypes:
