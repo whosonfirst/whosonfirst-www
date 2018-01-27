@@ -7,3 +7,4 @@ www/bundles/*.csv
 www/bundles/*.bz2
 nginx/whosonfirst-www
 nginx/whosonfirst-www.bak
+tmp

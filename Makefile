@@ -1,5 +1,7 @@
 OS := $(shell uname -s | tr '[:upper:]' '[:lower:]')
 
+# we don't need to do any android-specific compiling (for Go things) and can rely
+# on the default linux binaries but leaving these here just in case...
 # ifeq ($(OSTYPE), android)
 # 	OS:= $(OSTYPE)
 # endif
@@ -10,6 +12,14 @@ WOF_MD2HTML="utils/$(OS)/wof-md2html"
 
 debug:
 	utils/$(OS)/wof-fileserver -path ./www
+
+iamhere:
+	if test -d tmp; then rm -rf tmp; fi
+	if test -d www/iamhere; then rm -rf www/iamhere; fi
+	mkdir tmp
+	git clone git@github.com:whosonfirst/whosonfirst-www-iamhere.git ./tmp/iamhere
+	mv tmp/iamhere/www www/iamhere
+	rm -rf tmp
 
 render-blog:
 	$(WOF_MD2HTML) -header templates/blog/header.html -footer templates/blog/footer.html -mode directory www/blog/
