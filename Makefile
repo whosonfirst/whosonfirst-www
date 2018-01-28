@@ -153,20 +153,12 @@ ifdef SUBSUBNAV
 	@split -p '<!-- $(SUBSUBNAV) -->' components/subnav/$(SUBNAV_DIR)/subnav-top.html subnav-top-
 	@split -p '<!-- $(SUBSUBNAV) -->' components/subnav/$(SUBNAV_DIR)/subnav-bottom.html subnav-bottom-
 	@cat components/head.html \
-	     subnav-top-aa \
 	     components/subnav/$(SUBNAV_DIR)/$(SUBSUBNAV)-top.html \
-	     subnav-top-ab \
 	     page-title.html \
-	     subnav-bottom-aa \
 	     components/subnav/$(SUBNAV_DIR)/$(SUBSUBNAV)-bottom.html \
-	     subnav-bottom-ab \
 	     page-content.html \
 	     components/subnav/subnav-footer.html \
 	     components/footer.html > www/$(OUT)
-	@rm subnav-top-aa
-	@rm subnav-top-ab
-	@rm subnav-bottom-aa
-	@rm subnav-bottom-ab
 else
 	@cat components/head.html \
 	     components/subnav/$(SUBNAV_DIR)/subnav-top.html \
@@ -190,20 +182,13 @@ build-page-level3:
 	@split -p '<!-- $(SUBSUBNAV) -->' components/subnav/$(SUBNAV_DIR)/subnav-top.html subnav-top-
 	@split -p '<!-- $(SUBSUBNAV) -->' components/subnav/$(SUBNAV_DIR)/subnav-bottom.html subnav-bottom-
 	@cat components/head.html \
-	     subnav-top-aa \
 	     components/subnav/$(SUBNAV_DIR)/$(SUBSUBNAV)-top.html \
-	     subnav-top-ab \
 	     page-title.html \
 		 subnav-bottom-aa \
 	     components/subnav/$(SUBNAV_DIR)/$(SUBSUBNAV)-bottom.html \
-	     subnav-bottom-ab \
 	     page-content.html \
 	     components/subnav/subnav-footer.html \
 	     components/footer.html > www/$(OUT)
-	@rm subnav-top-aa
-	@rm subnav-top-ab
-	@rm subnav-bottom-aa
-	@rm subnav-bottom-ab
 	@sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>$(NAV_LINK)\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>$(NAV_LINK)\<\/a\>/' www/$(OUT)
 	@sed -i -e 's/whosonfirst\-sidenav\-link\"\>$(SUBNAV_LINK)/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>$(SUBNAV_LINK)/' www/$(OUT)
 	@sed -i -e 's/whosonfirst\-extrasmall\-nav\-link\-collapsed\"\>$(SUBNAV_LINK)/whosonfirst\-extrasmall\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>$(SUBNAV_LINK)/' www/$(OUT)

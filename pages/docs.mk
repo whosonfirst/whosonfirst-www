@@ -44,7 +44,7 @@ docs-build-pages: \
 	docs-processes \
 	docs-keyterms \
 	docs-spr \
-	docs-uri
+	docs-uris
 
 docs-download-properties:
 	@for prop in $(PROPERTY_LIST) ; do \
