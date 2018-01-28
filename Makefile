@@ -24,7 +24,7 @@ iamhere:
 render-blog:
 	$(WOF_MD2HTML) -header templates/blog/header.html -footer templates/blog/footer.html -mode directory www/blog/
 
-all: mapzen favicons js css home docs tools getstarted
+all: mapzen favicons js css home docs tools
 
 include pages/home.mk
 include pages/docs.mk
@@ -39,10 +39,8 @@ download: \
 
 build-pages: \
 	home-build-pages \
-	data-build-pages \
 	docs-build-pages \
-	tools-build-pages \
-	getstarted-build-pages
+	tools-build-pages 
 
 setup: mk-tools
 	ubuntu/setup-nginx.sh
