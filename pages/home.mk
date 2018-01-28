@@ -33,7 +33,7 @@ home-404:
 home-code:
 	@make CONTENT=code/index.html \
 	      OUT=code/index.html \
-	      SUBNAV_DIR=common \
+	      SUBNAV_DIR=code \
 	      build-page-level1
 
 home-what:
@@ -45,7 +45,7 @@ home-what:
 home-download:
 	@make CONTENT=download/index.html \
 	      OUT=download/index.html \
-	      SUBNAV_DIR=common \
+	      SUBNAV_DIR=download \
 	      build-page-level1
 
 home-interns:
