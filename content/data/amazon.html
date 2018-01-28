@@ -1,6 +1,0 @@
-<h1 id="amazon-s3" class="whosonfirst-subpage-header">Amazon S3</h1>
-<p>Our copy of the Who's On First data is stored in big-honking Amazon Web Services (AWS) S3 bucket called <code>whosonfirst.mapzen.com</code> in a sub-directory, or prefix in AWS-speak, called <code>data</code>.</p>
-<p>The details of <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html">fetching the entirety of all the contents of an S3 bucket</a> are outside the scope of this document but the fact that you can is one of the reasons we chose S3.</p>
-<p>We will eventually release our own tool for fetching the entirety of the S3 bucket but it's not ready yet.</p>
-<h3>Visiting https://s3.amazonaws.com/whosonfirst.mapzen.com/data/ in a browser</h3>
-<p>So, yeah. We probably should never have published this URL as-is. It's tricky because we need to share the URL with people who are going to try and download data using the AWS S3 API but the reality is that when you visit that URL in a web browser... you get unhelpful silence. Or more specifically your web browser tries to download an empty file. This is one of those unfortunate mismatches between the technology and people's expectations.</p>

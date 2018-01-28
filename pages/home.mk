@@ -2,7 +2,6 @@ home: home-build-pages
 
 home-build-pages: \
 	home-page \
-	home-bundles \
 	home-what \
 	home-download \
 	home-code \
@@ -53,16 +52,4 @@ home-interns:
 	@make CONTENT=interns.html \
 	      OUT=interns/index.html \
 	      SUBNAV_DIR=interns \
-	      build-page-level1
-
-home-bundles:
-	@make CONTENT=bundles.html \
-	      OUT=bundles/index.html \
-	      SUBNAV_DIR=bundles \
-	      build-page-level1
-
-home-sqlite:
-	@make CONTENT=sqlite.html \
-	      OUT=sqlite/index.html \
-	      SUBNAV_DIR=sqlite \
 	      build-page-level1

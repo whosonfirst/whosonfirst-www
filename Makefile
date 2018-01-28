@@ -24,11 +24,10 @@ iamhere:
 render-blog:
 	$(WOF_MD2HTML) -header templates/blog/header.html -footer templates/blog/footer.html -mode directory www/blog/
 
-all: mapzen favicons js css home data docs tools getstarted
+all: mapzen favicons js css home docs tools getstarted
 
 include pages/home.mk
 include pages/docs.mk
-include pages/data.mk
 include pages/tools.mk
 include pages/getstarted.mk
 
