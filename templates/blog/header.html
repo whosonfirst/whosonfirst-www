@@ -22,15 +22,15 @@
 		<meta property="og:site_name" content="Who's On First" />
 		<meta property="og:title" content="{{ .Title }}" />
 		<meta property="og:description" content="{{ .Excerpt }}" />
-		<meta property="og:image" content="https://www.whosonfirst.org{{ .URI }}{{ .Image }}" />
+		<meta property="og:image" content="https://www.whosonfirst.org{{ .Permalink }}{{ .Image }}" />
 		
 		<meta property="twitter:card" value="summary" />
 		<meta property="twitter:site" content="@alloftheplaces" />
 		<meta property="twitter:creator" content="@alloftheplaces" />
-		<meta property="twitter:url" content="https://www.whosonfirst.org{{ .URI }}" />
+		<meta property="twitter:url" content="https://www.whosonfirst.org{{ .Permalink }}" />
 		<meta property="twitter:title" content="{{ .Title }}" />
 		<meta property="twitter:description" content="{{ .Excerpt }}" />
-		<meta property="twitter:image" content="https://www.whosonfirst.org{{ .URI }}{{ .Image }}" />
+		<meta property="twitter:image" content="https://www.whosonfirst.org{{ .Permalink }}{{ .Image }}" />
 		
 		<style type="text/css">
 		  body {
@@ -100,7 +100,7 @@
 	    {{ .Title }}
 	    <small>This is a blog post by
 	      {{ range $ia, $a := .Authors }}{{ if gt $lena 1 }}{{if eq $ia 0}}{{else if eq (plus1 $ia) $lena}} and {{else}}, {{end}}{{ end }}<span class="hey-look">{{ $a }}</span>{{ end }}
-	      that was published on {{ .Date }} 
+	      that was published on <span class="pubdate"><a href="/blog/{{ .Date.Year }}/{{ .Date.Format "01" }}/">{{ .Date.Format "Jan" }}</a> <a href="/blog/{{ .Date.Year }}/{{ .Date.Format "01" }}/{{ .Date.Day }}">{{ .Date.Day}}</a>, <a href="/blog/{{ .Date.Year }}/">{{ .Date.Format "2006" }}</a></span>
 	      {{ if gt $lent 0 }} and tagged {{ range $it, $t := .Tags }}{{ if gt $lent 1 }}{{if eq $it 0}}{{else if eq (plus1 $it) $lent}} and {{else}}, {{end}}{{ end }}<span class="hey-look">{{ $t }}</span>{{ end }}</small>{{ end }}
 	  </h2>
 
