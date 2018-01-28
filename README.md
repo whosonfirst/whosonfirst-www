@@ -245,6 +245,8 @@ We are using a home-grown tool called `wof-clone-website` which is part of the [
 
 Thanks to 2017 summer intern [Scott Dombkowski](http://scottdombkowski.com/) for designing and building the new site.
 
+(debug)
+
 ## See also
 
 * https://github.com/whosonfirst/whosonfirst-data
