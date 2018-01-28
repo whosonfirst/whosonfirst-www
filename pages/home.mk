@@ -6,7 +6,7 @@ home-build-pages: \
 	home-download \
 	home-code \
 	home-api \
-	home-spelunker \
+	home-browse \
 	home-404 
 
 home-page:
@@ -18,10 +18,10 @@ home-api:
 		SUBNAV_DIR=common \
 		build-page-level1
 
-home-spelunker:
-	@make CONTENT=spelunker/index.html \
-		OUT=spelunker/index.html \
-		SUBNAV_DIR=common \
+home-browse:
+	@make CONTENT=browse/index.html \
+		OUT=browse/index.html \
+		SUBNAV_DIR=browse \
 		build-page-level1
 
 home-404:
