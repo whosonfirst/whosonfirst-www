@@ -5,6 +5,7 @@ www/bundles/*bundle.txt
 www/bundles/*sha1.txt
 www/bundles/*.csv
 www/bundles/*.bz2
+www/iamhere/javascript/*.config.js
 nginx/whosonfirst-www
 nginx/whosonfirst-www.bak
 tmp
