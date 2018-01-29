@@ -1,7 +1,7 @@
 ---
 layout: page
 date: 2016-04-14
-permalink: /blog/2016-04-14/
+permalink: /blog/2016/04/14/missing-the-point/
 published: true
 title: Missing the Point- GeoIP's, Points, Polygons, and a Precarious Farm in Kansas
 category: blog

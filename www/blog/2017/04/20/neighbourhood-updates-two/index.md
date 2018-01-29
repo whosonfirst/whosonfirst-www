@@ -2,7 +2,7 @@
 layout: page
 date: 2017-04-20
 published: true
-permalink: /blog/2017/04/20/neightbourhood-updates-two/
+permalink: /blog/2017/04/20/neighbourhood-updates-two/
 title: Updating Who's On First Neighbourhoods - Part II
 category: blog
 excerpt: We've been busy updating neighbourhood records in Who's On First - check them out!
