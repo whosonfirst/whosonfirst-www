@@ -1,0 +1,13 @@
+{{template "common_header"}}
+
+	  {{$lena := len .Authors }}
+	  {{$lent := len .Tags }}
+	  <h2>
+	    {{ .Title }}
+	    <small>This is a blog post by
+	      {{ range $ia, $a := .Authors }}{{ if gt $lena 1 }}{{if eq $ia 0}}{{else if eq (plus1 $ia) $lena}} and {{else}}, {{end}}{{ end }}<span class="hey-look">{{ $a }}</span>{{ end }}
+	      that was published on <span class="pubdate"><a href="/blog/{{ .Date.Year }}/{{ .Date.Format "01" }}/">{{ .Date.Format "Jan" }}</a> <a href="/blog/{{ .Date.Year }}/{{ .Date.Format "01" }}/{{ .Date.Format "02" }}">{{ .Date.Format "02" }}</a>, <a href="/blog/{{ .Date.Year }}/">{{ .Date.Format "2006" }}</a></span>
+	      {{ if gt $lent 0 }} and tagged {{ range $it, $t := .Tags }}{{ if gt $lent 1 }}{{if eq $it 0}}{{else if eq (plus1 $it) $lent}} and {{else}}, {{end}}{{ end }}<span class="hey-look">{{ $t }}</span>{{ end }}</small>{{ end }}
+	  </h2>
+
+	  <div id="blog-post">
