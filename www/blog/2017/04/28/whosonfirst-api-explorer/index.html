@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta http-equiv="x-ua-compatible" content="ie=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title></title>
+		<title>The Who&#39;s On First API Explorer</title>
 		<meta name="description" content="Who’s on First is a gazetteer of places.">
 		
 		<link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -14,17 +14,17 @@
 
 		<meta property="og:type" content="article" />
 		<meta property="og:site_name" content="Who's On First" />
-		<meta property="og:title" content="" />
-		<meta property="og:description" content="" />
-		<meta property="og:image" content="https://www.whosonfirst.org/2017/04/28/whosonfirst-api-explorer/" />
+		<meta property="og:title" content="The Who&#39;s On First API Explorer" />
+		<meta property="og:description" content="I like to think the WOF API Explorer is another illustration of the idea that &#34;Mapzen should always be Consumer Zero (of Mapzen services)&#34;." />
+		<meta property="og:image" content="https://www.whosonfirst.org/blog/2017/04/28/whosonfirst-api-explorer/images/light.jpg" />
 		
 		<meta property="twitter:card" value="summary" />
 		<meta property="twitter:site" content="@alloftheplaces" />
 		<meta property="twitter:creator" content="@alloftheplaces" />
-		<meta property="twitter:url" content="https://www.whosonfirst.org/2017/04/28/whosonfirst-api-explorer/" />
-		<meta property="twitter:title" content="" />
-		<meta property="twitter:description" content="" />
-		<meta property="twitter:image" content="https://www.whosonfirst.org/2017/04/28/whosonfirst-api-explorer/" />
+		<meta property="twitter:url" content="https://www.whosonfirst.org/blog/2017/04/28/whosonfirst-api-explorer/" />
+		<meta property="twitter:title" content="The Who&#39;s On First API Explorer" />
+		<meta property="twitter:description" content="I like to think the WOF API Explorer is another illustration of the idea that &#34;Mapzen should always be Consumer Zero (of Mapzen services)&#34;." />
+		<meta property="twitter:image" content="https://www.whosonfirst.org/blog/2017/04/28/whosonfirst-api-explorer/images/light.jpg" />
 		
 		<style type="text/css">
 		  body {
@@ -91,117 +91,14 @@
 	  
 	  
 	  <h2>
-	    
+	    The Who&#39;s On First API Explorer
 	    <small>This is a blog post by
-	      
+	      <span class="hey-look">thisisaaronland</span>
 	      that was published on <span class="pubdate"><a href="/blog/2017/04/">Apr</a> <a href="/blog/2017/04/28">28</a>, <a href="/blog/2017/">2017</a></span>
-	      
+	       and tagged <span class="hey-look">whosonfirst</span>, <span class="hey-look">electron</span> and <span class="hey-look">api</span></small>
 	  </h2>
 
 	  <div id="blog-post">
-<p>&lt;!DOCTYPE html&gt;
-<html>
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="x-ua-compatible" content="ie=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>The Who&amp;#39;s On First API Explorer</title>
-		<meta name="description" content="Who’s on First is a gazetteer of places."></p>
-
-<pre><code>	&lt;link rel=&quot;stylesheet&quot; href=&quot;/css/bootstrap.min.css&quot;&gt;
-	&lt;link rel=&quot;stylesheet&quot; href=&quot;/css/mapzen.whosonfirst.css&quot;&gt;
-
-	&lt;link rel=&quot;stylesheet&quot; href=&quot;/css/styles/grayscale.css&quot;&gt;
-
-	&lt;meta property=&quot;og:type&quot; content=&quot;article&quot; /&gt;
-	&lt;meta property=&quot;og:site_name&quot; content=&quot;Who's On First&quot; /&gt;
-	&lt;meta property=&quot;og:title&quot; content=&quot;The Who&amp;#39;s On First API Explorer&quot; /&gt;
-	&lt;meta property=&quot;og:description&quot; content=&quot;I like to think the WOF API Explorer is another illustration of the idea that &amp;#34;Mapzen should always be Consumer Zero (of Mapzen services)&amp;#34;.&quot; /&gt;
-	&lt;meta property=&quot;og:image&quot; content=&quot;https://www.whosonfirst.org/blog/2017/04/28/whosonfirst-api-explorer/images/light.jpg&quot; /&gt;
-
-	&lt;meta property=&quot;twitter:card&quot; value=&quot;summary&quot; /&gt;
-	&lt;meta property=&quot;twitter:site&quot; content=&quot;@alloftheplaces&quot; /&gt;
-	&lt;meta property=&quot;twitter:creator&quot; content=&quot;@alloftheplaces&quot; /&gt;
-	&lt;meta property=&quot;twitter:url&quot; content=&quot;https://www.whosonfirst.org/blog/2017/04/28/whosonfirst-api-explorer/&quot; /&gt;
-	&lt;meta property=&quot;twitter:title&quot; content=&quot;The Who&amp;#39;s On First API Explorer&quot; /&gt;
-	&lt;meta property=&quot;twitter:description&quot; content=&quot;I like to think the WOF API Explorer is another illustration of the idea that &amp;#34;Mapzen should always be Consumer Zero (of Mapzen services)&amp;#34;.&quot; /&gt;
-	&lt;meta property=&quot;twitter:image&quot; content=&quot;https://www.whosonfirst.org/blog/2017/04/28/whosonfirst-api-explorer/images/light.jpg&quot; /&gt;
-
-	&lt;style type=&quot;text/css&quot;&gt;
-	  body {
-	  font-family: serif;
-	  margin:2em;
-	  margin-left: 10%;
-	  margin-right: 10%;
-	  font-size: 1.3em;
-	  line-height: 1.5em;
-	  }
-
-	  img {
-	  max-width: 640px !important;
-	  max-height: 480px !important;
-	  border: 1px dotted #ccc;
-	  padding: .5em;
-	  margin-bottom:1em;
-	  margin-top: 1em;
-	  display:block;
-	  min-width: 320px;
-	  margin: 0 auto;
-	  }
-
-	  h2 small {
-	  display: block;
-	  margin-top:.10em;
-	  font-weight: 100;
-	  font-size: .5em;
-	  }
-
-	  .hey-look {
-	  font-weight: 700;
-	  }
-
-	  #blog-post {
-	  margin-top:2em;
-	  margin-bottom:5em;
-	  }
-
-	  @media (min-width: 320px) and (max-width: 400px) {
-
-	  ul {
-	  margin:0px;
-  	  margin-left:15px;
-	  padding:0px;
-	  }
-
-	  pre {
-	  max-width:250px;
-	  overflow:scroll;
-	  }
-
-	  img {
-	  max-width: 250px !important;
-	  max-height: 200px !important;
-	  min-width: 225px;
-	  }
-	  }
-
-	&lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-
-
-
-  &lt;h2&gt;
-    The Who&amp;#39;s On First API Explorer
-    &lt;small&gt;This is a blog post by
-      &lt;span class=&quot;hey-look&quot;&gt;thisisaaronland&lt;/span&gt;
-      that was published on April 28, 2017 
-       and tagged &lt;span class=&quot;hey-look&quot;&gt;whosonfirst&lt;/span&gt; and &lt;span class=&quot;hey-look&quot;&gt;electron&lt;/span&gt;&lt;/small&gt;
-  &lt;/h2&gt;
-
-  &lt;div id=&quot;blog-post&quot;&gt;
-</code></pre>
-
 <div style="margin: 0 auto; width:341px;">
 <a href="https://collection.cooperhewitt.org/objects/18419753/"><img src="images/light.jpg" height="480" width="341" /></a>
 </div>
@@ -293,12 +190,9 @@
 
 <p>Image credits:</p>
 
-<p><ul>
-<li><a href="https://collection.cooperhewitt.org/objects/18419753/">Drawing, To Explore by that Cheerless Illumination for Leaks, ca. 1904; Frank Walter Taylor ; USA; point of brush and black, gray wash, white goache, black crayon on bristol board; Sheet: 44.4 x 30.6 cm (17 <sup>1</sup>&amp;frasl;<sub>2</sub> x 12 <sup>1</sup>&amp;frasl;<sub>16</sub> in.); Gift of F. Elizabeth De Voy; 1957-58-15</a></li>
+<ul>
+<li><a href="https://collection.cooperhewitt.org/objects/18419753/">Drawing, To Explore by that Cheerless Illumination for Leaks, ca. 1904; Frank Walter Taylor ; USA; point of brush and black, gray wash, white goache, black crayon on bristol board; Sheet: 44.4 x 30.6 cm (17 <sup>1</sup>&frasl;<sub>2</sub> x 12 <sup>1</sup>&frasl;<sub>16</sub> in.); Gift of F. Elizabeth De Voy; 1957-58-15</a></li>
 </ul>
-</div>
-</body>
-</html></p>
 </div>
 </body>
 </html>
