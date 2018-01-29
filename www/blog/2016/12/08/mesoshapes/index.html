@@ -1,92 +1,79 @@
+
+
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="x-ua-compatible" content="ie=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Improving county coverage in Who&#39;s On First</title>
-		<meta name="description" content="Who’s on First is a gazetteer of places.">
-		
+		<title>Who’s On First</title>
+		<meta name="description" content="Who’s on First is a gazetteer of places." />
+		<link rel="apple-touch-icon" href="/images/favicons/apple-touch-icon.png" sizes="180x180">
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-16x16.png" sizes="16x16">
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-32x32.png" sizes="32x32">
+		<link rel="manifest" href="/images/favicons/manifest.json">
+		<link rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg" color="#2C1E3F">
 		<link rel="stylesheet" href="/css/bootstrap.min.css">
 		<link rel="stylesheet" href="/css/mapzen.whosonfirst.css">
 		
 		<link rel="stylesheet" href="/css/styles/grayscale.css">
-
-		<meta property="og:type" content="article" />
-		<meta property="og:site_name" content="Who's On First" />
-		<meta property="og:title" content="Improving county coverage in Who&#39;s On First" />
-		<meta property="og:description" content="We&#39;ve doubled the number of counties in Who&#39;s On First by adding data sources and introducing mesoshapes to fill the gaps" />
-		<meta property="og:image" content="https://www.whosonfirst.org/blog/2016/12/08/mesoshapes/images/mesohapes-import-1-2015-2016.gif" />
-		
-		<meta property="twitter:card" value="summary" />
-		<meta property="twitter:site" content="@alloftheplaces" />
-		<meta property="twitter:creator" content="@alloftheplaces" />
-		<meta property="twitter:url" content="https://www.whosonfirst.org/blog/2016/12/08/mesoshapes/" />
-		<meta property="twitter:title" content="Improving county coverage in Who&#39;s On First" />
-		<meta property="twitter:description" content="We&#39;ve doubled the number of counties in Who&#39;s On First by adding data sources and introducing mesoshapes to fill the gaps" />
-		<meta property="twitter:image" content="https://www.whosonfirst.org/blog/2016/12/08/mesoshapes/images/mesohapes-import-1-2015-2016.gif" />
-		
-		<style type="text/css">
-		  body {
-		  font-family: serif;
-		  margin:2em;
-		  margin-left: 10%;
-		  margin-right: 10%;
-		  font-size: 1.3em;
-		  line-height: 1.5em;
-		  }
-
-		  img {
-		  max-width: 640px !important;
-		  max-height: 480px !important;
-		  border: 1px dotted #ccc;
-		  padding: .5em;
-		  margin-bottom:1em;
-		  margin-top: 1em;
-		  display:block;
-		  min-width: 320px;
-		  margin: 0 auto;
-		  }
-
-		  h2 small {
-		  display: block;
-		  margin-top:.10em;
-		  font-weight: 100;
-		  font-size: .5em;
-		  }
-
-		  .hey-look {
-		  font-weight: 700;
-		  }
-
-		  #blog-post {
-		  margin-top:2em;
-		  margin-bottom:5em;
-		  }
-
-		  @media (min-width: 320px) and (max-width: 400px) {
-
-		  ul {
-		  margin:0px;
-	  	  margin-left:15px;
-		  padding:0px;
-		  }
-
-		  pre {
-		  max-width:250px;
-		  overflow:scroll;
-		  }
-
-		  img {
-		  max-width: 250px !important;
-		  max-height: 200px !important;
-		  min-width: 75px;
-		  }
-		  }
-
-		</style>
 	</head>
 	<body>
+		<div class="whosonfirst-wrapper">
+
+			<nav class="navbar navbar-default navbar-fixed-top whosonfirst-fixed-subpage-navbar">
+				<div class="container">
+
+					
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="/">Who’s On First</a>
+					</div>
+
+					
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					  <ul class="nav navbar-nav navbar-right">
+
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/browse/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">browse</a>
+							</li>
+					    
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/docs/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">documentation</a>
+							</li>
+							
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/code/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">code</a>
+							</li>
+
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/api/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">api</a>
+							</li>
+							
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/download/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">download</a>
+							</li>
+							
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/blog/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">blog</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+
+
+			<div class="container whosonfirst-subpage-container">
+			  <div class="row">
+			    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-0">
+ 			    </div>
+			    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+			      <article>
 
 	  
 	  
@@ -195,6 +182,40 @@ AF.AR.RT
 <p>And there you have it - new county polygons in Who&rsquo;s On First! Thanks for reading and stay tuned for the next rounds of new administrative polygons!</p>
 
 <p><em>Please <a href="mailto:hello@mapzen.com">let us know what you think</a>!</em></p>
-</div>
-</body>
+
+		</article>
+		</div>
+		</div>	
+		</div>	
+
+		<footer>
+			<nav class="navbar navbar-default navbar-bottom">
+				<div class="container">
+					
+					<ul class="nav navbar-nav navbar-right whosonfirst-footer">
+						<li><a href="/docs/contributing/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">contributing</a></li>
+						<li><a href="/docs/licensing/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">license</a></li>
+						<li><a href="https://twitter.com/alloftheplaces/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">twitter</a></li>
+					</ul>
+				</div>
+			</nav>
+		</footer>
+
+		
+		<script src="/javascript/jquery.min.js"></script>
+		
+		<script src="/javascript/bootstrap.min.js"></script>
+		<script src="/javascript/mapzen.whosonfirst.home.js"></script>
+		<script src="/javascript/mapzen.whosonfirst.subpage.js"></script>
+		
+		<script src="/javascript/highlightpack.js"></script>
+		<script>
+		  try {
+		  	hljs.initHighlightingOnLoad();
+		  } catch (e) {
+		  	console.log("HLJS", e);
+		  }
+		</script>
+	</body>
 </html>
+

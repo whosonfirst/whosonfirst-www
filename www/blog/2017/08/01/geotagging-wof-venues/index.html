@@ -1,92 +1,79 @@
+
+
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="x-ua-compatible" content="ie=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Geotagging WOF venues</title>
-		<meta name="description" content="Who’s on First is a gazetteer of places.">
-		
+		<title>Who’s On First</title>
+		<meta name="description" content="Who’s on First is a gazetteer of places." />
+		<link rel="apple-touch-icon" href="/images/favicons/apple-touch-icon.png" sizes="180x180">
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-16x16.png" sizes="16x16">
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-32x32.png" sizes="32x32">
+		<link rel="manifest" href="/images/favicons/manifest.json">
+		<link rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg" color="#2C1E3F">
 		<link rel="stylesheet" href="/css/bootstrap.min.css">
 		<link rel="stylesheet" href="/css/mapzen.whosonfirst.css">
 		
 		<link rel="stylesheet" href="/css/styles/grayscale.css">
-
-		<meta property="og:type" content="article" />
-		<meta property="og:site_name" content="Who's On First" />
-		<meta property="og:title" content="Geotagging WOF venues" />
-		<meta property="og:description" content="Photography as data collection." />
-		<meta property="og:image" content="https://www.whosonfirst.org/blog/2017/08/01/geotagging-wof-venues/images/yoonseoul-selfie.jpg" />
-		
-		<meta property="twitter:card" value="summary" />
-		<meta property="twitter:site" content="@alloftheplaces" />
-		<meta property="twitter:creator" content="@alloftheplaces" />
-		<meta property="twitter:url" content="https://www.whosonfirst.org/blog/2017/08/01/geotagging-wof-venues/" />
-		<meta property="twitter:title" content="Geotagging WOF venues" />
-		<meta property="twitter:description" content="Photography as data collection." />
-		<meta property="twitter:image" content="https://www.whosonfirst.org/blog/2017/08/01/geotagging-wof-venues/images/yoonseoul-selfie.jpg" />
-		
-		<style type="text/css">
-		  body {
-		  font-family: serif;
-		  margin:2em;
-		  margin-left: 10%;
-		  margin-right: 10%;
-		  font-size: 1.3em;
-		  line-height: 1.5em;
-		  }
-
-		  img {
-		  max-width: 640px !important;
-		  max-height: 480px !important;
-		  border: 1px dotted #ccc;
-		  padding: .5em;
-		  margin-bottom:1em;
-		  margin-top: 1em;
-		  display:block;
-		  min-width: 320px;
-		  margin: 0 auto;
-		  }
-
-		  h2 small {
-		  display: block;
-		  margin-top:.10em;
-		  font-weight: 100;
-		  font-size: .5em;
-		  }
-
-		  .hey-look {
-		  font-weight: 700;
-		  }
-
-		  #blog-post {
-		  margin-top:2em;
-		  margin-bottom:5em;
-		  }
-
-		  @media (min-width: 320px) and (max-width: 400px) {
-
-		  ul {
-		  margin:0px;
-	  	  margin-left:15px;
-		  padding:0px;
-		  }
-
-		  pre {
-		  max-width:250px;
-		  overflow:scroll;
-		  }
-
-		  img {
-		  max-width: 250px !important;
-		  max-height: 200px !important;
-		  min-width: 75px;
-		  }
-		  }
-
-		</style>
 	</head>
 	<body>
+		<div class="whosonfirst-wrapper">
+
+			<nav class="navbar navbar-default navbar-fixed-top whosonfirst-fixed-subpage-navbar">
+				<div class="container">
+
+					
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="/">Who’s On First</a>
+					</div>
+
+					
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					  <ul class="nav navbar-nav navbar-right">
+
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/browse/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">browse</a>
+							</li>
+					    
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/docs/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">documentation</a>
+							</li>
+							
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/code/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">code</a>
+							</li>
+
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/api/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">api</a>
+							</li>
+							
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/download/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">download</a>
+							</li>
+							
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/blog/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">blog</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+
+
+			<div class="container whosonfirst-subpage-container">
+			  <div class="row">
+			    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-0">
+ 			    </div>
+			    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+			      <article>
 
 	  
 	  
@@ -204,6 +191,40 @@
 <p>Despite some challenges working with EXIF metadata, it’s been fun to have a simpler mechanism for collecting new WOF venues. I now find myself photographing lots of signage, particularly those signs that include place names in both English and Korean/Chinese. I now explore the built environment thinking of which places I might want to capture for Who’s On First.</p>
 
 <p>I’ve also been doing some experiments with using the <a href="https://cordova.apache.org/">Cordova mobile app framework</a> to run a basic <a href="https://mapzen.com/documentation/tangram/">Tangram map</a>. This geotagging interface has me thinking about how an offline-friendly geotagging app might incorporate the work <a href="http://aaronland.info/">Aaron</a> has been doing on <a href="https://github.com/whosonfirst/electron-whosonfirst-bookmarks/">place bookmarking</a>. In due time all of this will be ready enough to invite more users to try it out. Please <a href="mailto:boundaryissues@mapzen.com">get in touch</a> if you’re interested!</p>
-</div>
-</body>
+
+		</article>
+		</div>
+		</div>	
+		</div>	
+
+		<footer>
+			<nav class="navbar navbar-default navbar-bottom">
+				<div class="container">
+					
+					<ul class="nav navbar-nav navbar-right whosonfirst-footer">
+						<li><a href="/docs/contributing/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">contributing</a></li>
+						<li><a href="/docs/licensing/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">license</a></li>
+						<li><a href="https://twitter.com/alloftheplaces/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">twitter</a></li>
+					</ul>
+				</div>
+			</nav>
+		</footer>
+
+		
+		<script src="/javascript/jquery.min.js"></script>
+		
+		<script src="/javascript/bootstrap.min.js"></script>
+		<script src="/javascript/mapzen.whosonfirst.home.js"></script>
+		<script src="/javascript/mapzen.whosonfirst.subpage.js"></script>
+		
+		<script src="/javascript/highlightpack.js"></script>
+		<script>
+		  try {
+		  	hljs.initHighlightingOnLoad();
+		  } catch (e) {
+		  	console.log("HLJS", e);
+		  }
+		</script>
+	</body>
 </html>
+
