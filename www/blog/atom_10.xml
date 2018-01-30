@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:h="http://www.w3.org/1999/xhtml">
+  <id>https://www.aaronland.info/weblog</id>
+  <title>Who's Of First</title>
+  <link href="https://www.whosonfirst.org/blog/" rel="alternate" title="Who's On First" type="text/html"/>
+  <link href="https://www.whosonfirst.org/blog/atom.xml" rel="self" title="Who's On First" type="application/atom+xml"/>
+  <updated>2018-01-30T05:16:30-08:00</updated>
+  <author>
+    <name>Who's On First</name>
+  </author>
+  <subtitle type="text">Who's On First is a gazetter of all the places.</subtitle>
+    
+  <entry>
+    <link type="text/html" href="https://www.whosonfirst.org/blog/2018/01/02/chapter-two/" rel="alternate"/>
+    <title>Who's On First, Chapter Two</title>
+    <id>https://www.whosonfirst.org/blog/2018/01/02/chapter-two/</id>
+    <published>2018-01-02</published>
+    <updated>2018-01-02</updated>
+    <content type="text">It means that while things are not literally "better than yesterday" – since yesterday you didn't have to read this blog post – it means that things are hopefully better than the yesterday of the last time a service you came to depend on had to shutter its doors.</content>
+  </entry>
+  
+  <entry>
+    <link type="text/html" href="https://www.whosonfirst.org/blog/2017/12/29/wof-in-a-box-part2/" rel="alternate"/>
+    <title>WOF in a Box (part 2)</title>
+    <id>https://www.whosonfirst.org/blog/2017/12/29/wof-in-a-box-part2/</id>
+    <published>2017-12-29</published>
+    <updated>2017-12-29</updated>
+    <content type="text">Run Who's On First on your own hardware.</content>
+  </entry>
+  
+  <entry>
+    <link type="text/html" href="https://www.whosonfirst.org/blog/2017/12/22/neighbourhood-updates-three/" rel="alternate"/>
+    <title>Updating Who's On First Neighbourhoods - Part III</title>
+    <id>https://www.whosonfirst.org/blog/2017/12/22/neighbourhood-updates-three/</id>
+    <published>2017-12-22</published>
+    <updated>2017-12-22</updated>
+    <content type="text">Check out the most recent additions and updates to neighbourhoods in WOF!</content>
+  </entry>
+  
+  <entry>
+    <link type="text/html" href="https://www.whosonfirst.org/blog/2017/12/21/wof-in-a-box/" rel="alternate"/>
+    <title>WOF in a Box (part 1)</title>
+    <id>https://www.whosonfirst.org/blog/2017/12/21/wof-in-a-box/</id>
+    <published>2017-12-21</published>
+    <updated>2017-12-21</updated>
+    <content type="text">Run Who's On First on your own hardware.</content>
+  </entry>
+  
+  <entry>
+    <link type="text/html" href="https://www.whosonfirst.org/blog/2017/12/14/updating-whosonfirst/" rel="alternate"/>
+    <title>Whos On First Updates, 2017</title>
+    <id>https://www.whosonfirst.org/blog/2017/12/14/updating-whosonfirst/</id>
+    <published>2017-12-14</published>
+    <updated>2017-12-14</updated>
+    <content type="text">Outlining a few one-offs, changes, and edits that were made to Who's On First in 2017</content>
+  </entry>
+  
+  <entry>
+    <link type="text/html" href="https://www.whosonfirst.org/blog/2017/10/24/whosonfirst-sotmus-2017/" rel="alternate"/>
+    <title>Who's On First ꞉fist-bump꞉  OpenStreetMap</title>
+    <id>https://www.whosonfirst.org/blog/2017/10/24/whosonfirst-sotmus-2017/</id>
+    <published>2017-10-24</published>
+    <updated>2017-10-24</updated>
+    <content type="text">The 70s were weird like that in a way that we don’t have time to discuss today except to say that Who’s On First would like to be the bucket of water to OpenStreetMap’s giant eagle.</content>
+  </entry>
+  
+  <entry>
+    <link type="text/html" href="https://www.whosonfirst.org/blog/2017/10/17/whosonfirst-nacis-2017/" rel="alternate"/>
+    <title>maîtres chez nous</title>
+    <id>https://www.whosonfirst.org/blog/2017/10/17/whosonfirst-nacis-2017/</id>
+    <published>2017-10-17</published>
+    <updated>2017-10-17</updated>
+    <content type="text">Perhaps we can stop teaching our tools the bad habits of the past.</content>
+  </entry>
+  
+  <entry>
+    <link type="text/html" href="https://www.whosonfirst.org/blog/2017/10/05/mapzen-places/" rel="alternate"/>
+    <title>Mapzen Places is here! And there! And everywhere.</title>
+    <id>https://www.whosonfirst.org/blog/2017/10/05/mapzen-places/</id>
+    <published>2017-10-15</published>
+    <updated>2017-10-15</updated>
+    <content type="text">Get geometries, hierarchies, statistics and more with the Mapzen Places API.</content>
+  </entry>
+  
+  <entry>
+    <link type="text/html" href="https://www.whosonfirst.org/blog/2017/09/19/introducing-statoids/" rel="alternate"/>
+    <title>Statoids, Mesoshapes, and Who's On First	</title>
+    <id>https://www.whosonfirst.org/blog/2017/09/19/introducing-statoids/</id>
+    <published>2017-09-19</published>
+    <updated>2017-09-19</updated>
+    <content type="text">Check out our recent additions to the Who's On First gazetteer, including our partnership with Statoids!</content>
+  </entry>
+  
+  <entry>
+    <link type="text/html" href="https://www.whosonfirst.org/blog/2017/08/22/summer-2017-wof/" rel="alternate"/>
+    <title>Increasing Name Translations in Who's On First</title>
+    <id>https://www.whosonfirst.org/blog/2017/08/22/summer-2017-wof/</id>
+    <published>2017-08-22</published>
+    <updated>2017-08-22</updated>
+    <content type="text">Outlining and visualizing the work we've done to increase name translations in the Who's On First gazetteer.</content>
+  </entry>
+  
+</feed>

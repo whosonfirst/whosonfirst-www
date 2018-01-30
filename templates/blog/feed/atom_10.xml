@@ -1,5 +1,4 @@
-{{ define "feed_atom_10" }}
-<?xml version="1.0" encoding="UTF-8"?>
+{{ define "feed_atom_10" }}<?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xmlns:h="http://www.w3.org/1999/xhtml">
   <id>https://www.aaronland.info/weblog</id>
   <title>Who's Of First</title>
@@ -20,5 +19,4 @@
     <content type="text">{{ $fm.Excerpt }}</content>
   </entry>
   {{ end }}
-</feed>
-{{ end }}
+</feed>{{ end }}

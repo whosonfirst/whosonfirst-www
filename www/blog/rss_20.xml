@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:h="http://www.w3.org/1999/xhtml" version="2.0">
+  <channel>
+    <title>Who's On First</title>
+    <link>https://www.whosonfirst.org/</link>
+    <lastBuildDate>Tue, 30 Jan 2018 05:16:21 PST</lastBuildDate>
+    <description>Who's On First is a gazetteer of all the places.</description>
+    
+    <item>
+      <link>https://whosonfirst.org/blog/2018/01/02/chapter-two/</link>
+      <title>Who's On First, Chapter Two</title>
+      <description>It means that while things are not literally "better than yesterday" – since yesterday you didn't have to read this blog post – it means that things are hopefully better than the yesterday of the last time a service you came to depend on had to shutter its doors.</description>
+    </item>
+    
+    <item>
+      <link>https://whosonfirst.org/blog/2017/12/29/wof-in-a-box-part2/</link>
+      <title>WOF in a Box (part 2)</title>
+      <description>Run Who's On First on your own hardware.</description>
+    </item>
+    
+    <item>
+      <link>https://whosonfirst.org/blog/2017/12/22/neighbourhood-updates-three/</link>
+      <title>Updating Who's On First Neighbourhoods - Part III</title>
+      <description>Check out the most recent additions and updates to neighbourhoods in WOF!</description>
+    </item>
+    
+    <item>
+      <link>https://whosonfirst.org/blog/2017/12/21/wof-in-a-box/</link>
+      <title>WOF in a Box (part 1)</title>
+      <description>Run Who's On First on your own hardware.</description>
+    </item>
+    
+    <item>
+      <link>https://whosonfirst.org/blog/2017/12/14/updating-whosonfirst/</link>
+      <title>Whos On First Updates, 2017</title>
+      <description>Outlining a few one-offs, changes, and edits that were made to Who's On First in 2017</description>
+    </item>
+    
+    <item>
+      <link>https://whosonfirst.org/blog/2017/10/24/whosonfirst-sotmus-2017/</link>
+      <title>Who's On First ꞉fist-bump꞉  OpenStreetMap</title>
+      <description>The 70s were weird like that in a way that we don’t have time to discuss today except to say that Who’s On First would like to be the bucket of water to OpenStreetMap’s giant eagle.</description>
+    </item>
+    
+    <item>
+      <link>https://whosonfirst.org/blog/2017/10/17/whosonfirst-nacis-2017/</link>
+      <title>maîtres chez nous</title>
+      <description>Perhaps we can stop teaching our tools the bad habits of the past.</description>
+    </item>
+    
+    <item>
+      <link>https://whosonfirst.org/blog/2017/10/05/mapzen-places/</link>
+      <title>Mapzen Places is here! And there! And everywhere.</title>
+      <description>Get geometries, hierarchies, statistics and more with the Mapzen Places API.</description>
+    </item>
+    
+    <item>
+      <link>https://whosonfirst.org/blog/2017/09/19/introducing-statoids/</link>
+      <title>Statoids, Mesoshapes, and Who's On First	</title>
+      <description>Check out our recent additions to the Who's On First gazetteer, including our partnership with Statoids!</description>
+    </item>
+    
+    <item>
+      <link>https://whosonfirst.org/blog/2017/08/22/summer-2017-wof/</link>
+      <title>Increasing Name Translations in Who's On First</title>
+      <description>Outlining and visualizing the work we've done to increase name translations in the Who's On First gazetteer.</description>
+    </item>
+    
+  </channel>
+</rss>

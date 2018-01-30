@@ -1,5 +1,4 @@
-{{ define "feed_rss_20" }}
-<?xml version="1.0" encoding="UTF-8"?>
+{{ define "feed_rss_20" }}<?xml version="1.0" encoding="UTF-8"?>
 <rss xmlns:h="http://www.w3.org/1999/xhtml" version="2.0">
   <channel>
     <title>Who's On First</title>
@@ -14,5 +13,4 @@
     </item>
     {{ end }}
   </channel>
-</rss>
-{{ end }}
+</rss>{{ end }}
