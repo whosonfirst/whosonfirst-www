@@ -249,5 +249,5 @@ Thanks to 2017 summer intern [Scott Dombkowski](http://scottdombkowski.com/) for
 
 ## See also
 
+* https://github.com/whosonfirst/whosonfirst
 * https://github.com/whosonfirst/whosonfirst-data
-* https://github.com/whosonfirst/go-whosonfirst-www

@@ -1,0 +1,29 @@
+<h1>What is Who's On First?</h1>
+
+<p><a href="https://whosonfirst.mapzen.com">Who’s On First</a> (WOF) is a gazetteer. If you’ve never heard the term &ldquo;gazetteer&rdquo; before it&rsquo;s basically just a big phone book, but a phone book of places rather than people. I am going to spend most of this talk discussing venues but I want to start with a high-level overview of what Who’s On First is. The shape of the elephant so to speak.</p>
+
+<ul>
+<li><p>It is an <a href="/docs/licenses/">openly licensed</a> dataset. At its most restrictive, data is published under a Creative Commons By-Attribution license. Whenever possible, and this is true of our own day-to-day work, data is published under a Creative Commons Zero public domain license.</p></li>
+
+<li><p>Every record in Who&rsquo;s On First has <a href="/data/principles/">a stable permanent and unique numeric identifier</a>. There are no semantics encoded in the IDs.</p></li>
+
+<li><p>At rest, each record is stored as a plain-text <a href="https://tools.ietf.org/html/rfc7946">GeoJSON</a> file. Our goal is to ensure that Who&rsquo;s On First embodies the principals of portability, durability and longevity. This led us to adopt plain-vanilla text files as the base unit of delivery.</p></li>
+
+<li><p>Files are stored in a nested hierarchy of directories derived from their IDs.</p></li>
+
+<li><p>There are <a href="/docs/properties/">a common set of properties</a> applied to all records which may be supplemented by an arbitrary number of additional properties specific to that place.</p></li>
+
+<li><p>There are <a href="https://github.com/whosonfirst/whosonfirst-placetypes#here-is-a-pretty-picture">a finite number of place types</a> in Who&rsquo;s On First and all records share a common set of ancestors. As with properties, any given record may have <a href="/docs/hierarchies/">as complex a hierarchy as the circumstances demand</a> but there is a shared baseline hierarchy across the entire dataset.</p></li>
+
+<li><p>Individual records may have multiple geometries or multiple hierarchies and sometimes both.</p></li>
+
+<li><p>Records may be updated or superseded, cessated or even deprecated. Once a record is created though it can never be removed or replaced.</p></li>
+
+<li><p>Lastly and most importantly Who&rsquo;s On First is meant, by design, to accommodate all of the places.</p></li>
+</ul>
+
+<p>Who&rsquo;s On First is not a carefully selected list of important or relevant places. It is not meant to act as the threshold by which places are measured. Who&rsquo;s On First, instead, is meant to provide <strong>the raw material with which a multiplicity of thresholds</strong> might be created.</p>
+
+<p>From Who&rsquo;s On First&rsquo;s perspective <a href="/blog/2015/08/18/who-s-on-first/">the point is not that one place is more important or relevant than any other</a>. The point is not that a place may or may not exist anymore or that its legitimacy as a place is disputed. The point is, critically, that people <em>believe</em> them to exist or to have existed.</p>
+
+<p>This is why we often refer to Who&rsquo;s On First as <a href="/blog/2016/08/15/mapping-with-bias/">&ldquo;a gazetteer of consensual hallucinations&rdquo;</a>.</p>

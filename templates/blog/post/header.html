@@ -1,0 +1,73 @@
+{{define "blog_post_header"}}
+{{template "common_header" . }}
+
+		<style type="text/css">
+		  body {
+		  font-family: serif;
+		  font-size: 1.3em;
+		  line-height: 1.5em;
+		  }
+
+		  h2 small {
+		  display: block;
+		  margin-top:.10em;
+		  font-weight: 100;
+		  font-size: .5em;
+		  }
+
+		  img {
+		  max-width: 640px !important;
+		  max-height: 480px !important;
+		  border: 1px dotted #ccc;
+		  padding: .5em;
+		  margin-bottom:1em;
+		  margin-top: 1em;
+		  display:block;
+		  min-width: 320px;
+		  margin: 0 auto;
+		  }
+
+		  .hey-look {
+		  font-weight: 700;
+		  }
+
+		  @media (min-width: 320px) and (max-width: 400px) {
+
+		  ul {
+		  margin:0px;
+	  	  margin-left:15px;
+		  padding:0px;
+		  }
+
+		  pre {
+		  max-width:250px;
+		  overflow:scroll;
+		  }
+
+		  img {
+		  max-width: 250px !important;
+		  max-height: 200px !important;
+		  min-width: 75px;
+		  }
+		  }
+
+		</style>
+
+			<div class="container whosonfirst-subpage-container">
+			  <div class="row">
+			    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-0">
+ 			    </div>
+			    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+			      <article>
+
+	  {{$lena := len .Authors }}
+	  {{$lent := len .Tags }}
+	  <h2>
+	    {{ .Title }}
+	    <small>This is a blog post by
+	      {{ range $ia, $a := .Authors }}{{ if gt $lena 1 }}{{if eq $ia 0}}{{else if eq (plus1 $ia) $lena}} and {{else}}, {{end}}{{ end }}<span class="hey-look">{{ $a }}</span>{{ end }}
+	      that was published on <span class="pubdate"><a href="/blog/{{ .Date.Year }}/{{ .Date.Format "01" }}/">{{ .Date.Format "Jan" }}</a> <a href="/blog/{{ .Date.Year }}/{{ .Date.Format "01" }}/{{ .Date.Format "02" }}">{{ .Date.Format "02" }}</a>, <a href="/blog/{{ .Date.Year }}/">{{ .Date.Format "2006" }}</a></span>
+	      {{ if gt $lent 0 }} and tagged {{ range $it, $t := .Tags }}{{ if gt $lent 1 }}{{if eq $it 0}}{{else if eq (plus1 $it) $lent}} and {{else}}, {{end}}{{ end }}<span class="hey-look">{{ $t }}</span>{{ end }}</small>{{ end }}
+	  </h2>
+
+{{end}}

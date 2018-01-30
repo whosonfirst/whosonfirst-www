@@ -1,17 +1,38 @@
 OS := $(shell uname -s | tr '[:upper:]' '[:lower:]')
 
+# we don't need to do any android-specific compiling (for Go things) and can rely
+# on the default linux binaries but leaving these here just in case...
+# ifeq ($(OSTYPE), android)
+# 	OS:= $(OSTYPE)
+# endif
+
 PUP="utils/$(OS)/pup"
 WOF_CLONE_WEBSITE="utils/$(OS)/wof-clone-website"
-WOF_MD2HTML="utils/$(OS)/wof-markdown-to-html"
+WOF_MD2HTML="utils/$(OS)/wof-md2html"
+WOF_MD2FEED="utils/$(OS)/wof-md2feed"
+WOF_MD2IDX="utils/$(OS)/wof-md2idx"
+
+debug:
+	utils/$(OS)/wof-fileserver -path ./www
+
+iamhere:
+	if test -d tmp; then rm -rf tmp; fi
+	if test -d www/iamhere; then rm -rf www/iamhere; fi
+	mkdir tmp
+	git clone git@github.com:whosonfirst/whosonfirst-www-iamhere.git ./tmp/iamhere
+	mv tmp/iamhere/www www/iamhere
+	rm -rf tmp
 
 render-blog:
-	$(WOF_MD2HTML) -header templates/blog/header.html -footer templates/blog/footer.html -mode directory www/blog/
+	$(WOF_MD2HTML) -templates templates/common -templates templates/blog/post -header blog_post_header -footer blog_post_footer -writer fs=./www -mode directory www/blog/
+	$(WOF_MD2IDX) -templates templates/common -templates templates/blog/index -header blog_index_header -footer blog_index_footer www/blog/
+	$(WOF_MD2FEED) -templates templates/blog/feed -format rss_20 www/blog/
+	$(WOF_MD2FEED) -templates templates/blog/feed -format atom_10 www/blog/
 
-all: mapzen favicons js css home data docs tools getstarted
+all: mapzen favicons js css home docs tools
 
 include pages/home.mk
 include pages/docs.mk
-include pages/data.mk
 include pages/tools.mk
 include pages/getstarted.mk
 
@@ -23,10 +44,8 @@ download: \
 
 build-pages: \
 	home-build-pages \
-	data-build-pages \
 	docs-build-pages \
-	tools-build-pages \
-	getstarted-build-pages
+	tools-build-pages 
 
 setup: mk-tools
 	ubuntu/setup-nginx.sh
@@ -102,7 +121,7 @@ build-page-title:
 build-page-cleanup:
 	@rm page-title.html
 	@rm page-content.html*
-	@rm www/$(OUT)-e
+	if test -f www/$(OUT)-e; then rm www/$(OUT)-e; fi
 
 build-page-level0:
 	@echo "Build www/$(OUT)"
@@ -112,6 +131,8 @@ build-page-level0:
 
 build-page-level1:
 	@echo "Build www/$(OUT)"
+	$(eval ROOT := $(shell dirname ./www/$(OUT)))
+	if test ! -d $(ROOT); then mkdir -p $(ROOT); fi
 	@make build-page-content
 	@make build-page-title
 	@cat components/head.html \
@@ -127,26 +148,20 @@ build-page-level1:
 
 build-page-level2:
 	@echo "Build www/$(OUT)"
+	$(eval ROOT := $(shell dirname ./www/$(OUT)))
+	if test ! -d $(ROOT); then mkdir -p $(ROOT); fi
 	@make build-page-title
 	@make build-page-content
 ifdef SUBSUBNAV
 	@split -p '<!-- $(SUBSUBNAV) -->' components/subnav/$(SUBNAV_DIR)/subnav-top.html subnav-top-
 	@split -p '<!-- $(SUBSUBNAV) -->' components/subnav/$(SUBNAV_DIR)/subnav-bottom.html subnav-bottom-
 	@cat components/head.html \
-	     subnav-top-aa \
 	     components/subnav/$(SUBNAV_DIR)/$(SUBSUBNAV)-top.html \
-	     subnav-top-ab \
 	     page-title.html \
-	     subnav-bottom-aa \
 	     components/subnav/$(SUBNAV_DIR)/$(SUBSUBNAV)-bottom.html \
-	     subnav-bottom-ab \
 	     page-content.html \
 	     components/subnav/subnav-footer.html \
 	     components/footer.html > www/$(OUT)
-	@rm subnav-top-aa
-	@rm subnav-top-ab
-	@rm subnav-bottom-aa
-	@rm subnav-bottom-ab
 else
 	@cat components/head.html \
 	     components/subnav/$(SUBNAV_DIR)/subnav-top.html \
@@ -170,20 +185,13 @@ build-page-level3:
 	@split -p '<!-- $(SUBSUBNAV) -->' components/subnav/$(SUBNAV_DIR)/subnav-top.html subnav-top-
 	@split -p '<!-- $(SUBSUBNAV) -->' components/subnav/$(SUBNAV_DIR)/subnav-bottom.html subnav-bottom-
 	@cat components/head.html \
-	     subnav-top-aa \
 	     components/subnav/$(SUBNAV_DIR)/$(SUBSUBNAV)-top.html \
-	     subnav-top-ab \
 	     page-title.html \
 		 subnav-bottom-aa \
 	     components/subnav/$(SUBNAV_DIR)/$(SUBSUBNAV)-bottom.html \
-	     subnav-bottom-ab \
 	     page-content.html \
 	     components/subnav/subnav-footer.html \
 	     components/footer.html > www/$(OUT)
-	@rm subnav-top-aa
-	@rm subnav-top-ab
-	@rm subnav-bottom-aa
-	@rm subnav-bottom-ab
 	@sed -i -e 's/whosonfirst\-nav\-link\-collapsed\"\>$(NAV_LINK)\<\/a\>/whosonfirst\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>$(NAV_LINK)\<\/a\>/' www/$(OUT)
 	@sed -i -e 's/whosonfirst\-sidenav\-link\"\>$(SUBNAV_LINK)/whosonfirst\-sidenav\-link whosonfirst\-nav\-active\"\>$(SUBNAV_LINK)/' www/$(OUT)
 	@sed -i -e 's/whosonfirst\-extrasmall\-nav\-link\-collapsed\"\>$(SUBNAV_LINK)/whosonfirst\-extrasmall\-nav\-link\-collapsed whosonfirst\-nav\-active\"\>$(SUBNAV_LINK)/' www/$(OUT)

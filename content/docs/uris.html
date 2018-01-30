@@ -1,0 +1,64 @@
+<style type="text/css">
+  .uri-list {
+  margin-top: 1.5em !important;
+  margin-bottom: 1.5em !important;
+  }
+</style>
+
+<h1 id="data-principles" class="whosonfirst-subpage-header">URIs</h1>
+
+<p>Identifiers in Who’s On First data are guided by two principles.</p>
+
+<ol class="uri-list">
+  <li>The canonical URL for any given Who's On First ID is relative. This might seem counter-intuitive to the point of even being contradictory.</li>
+  <li>Given any Who's On First ID it should be possible to generate a (relative) URL for that record using a simple and well-defined formula.</li>
+</ol>
+
+<p>Given a Who's On First ID its (relative) URI can be derived by splitting the
+  ID in to 3-number chunks representing nested subdirectories, followed by
+  filename consisting of the ID followed by <code>.geojson</code>.</p>
+
+<p>For example the ID
+  for <a href="https://places.whosonfirst.org/id/101736545/">Montréal</a>
+  is <code>101736545</code> which
+  becomes:</p>
+
+<p style="text-align:center;"><code style="font-size:2em;font-weight:700;">101/736/545/101736545.geojson</code></p>
+
+<p style="font-style:italic;">It is worth noting that because Who's On First
+  supports multiple (or "alternate") geometries for any given record there are
+  specific rules around naming them
+  but <a href="https://github.com/whosonfirst/whosonfirst-cookbook/blob/master/how_to/creating_alt_geometries.md">we'll
+  save that for later</a>.</p>
+
+<p>By definition this
+  means anything we do (to rewrite or redirect any existing URLs that people are
+  using) should be possible for anyone else hosting their own copy of the
+  data.</p>
+
+<p>And that's the important bit: It should be possible for <em>multiple groups</em> to
+  host their own copy of the Who's On First data while still maintaining stable
+  references to any place in the dataset.</p>
+
+<p>For example, consider two organizations each with their own domains:</p>
+
+<p>The URLs <code>http://foo.com/data/101/736/545/101736545.geojson</code>
+  and <code>http://bar.com/wof-data/101/736/545/101736545.geojson</code> may be
+  completely different but both refer to the city of Montréal, or Who's On First
+  ID <code>101736545</code>.</p>
+
+<p>Even though each organization hosts their own copy of the Who's On First
+  dataset — and the reasons for doing so are entirely their own business — they
+  still have a simple and unintrusive way to preserve parity when referring to
+  places.</p>
+
+<p>Who's On First's canonical root for Who's On First data
+  is:</p>
+
+<p style="font-size:2em; text-align:center;font-weight:700;"><a href="https://data.whosonfirst.org/">https://data.whosonfirst.org/</a></p>
+
+<p>We expect that these
+  URLs will become canonical for other people by virtue of our efforts around
+  the project but we've tried to design things in such a way that this doesn't
+  have to be the case for everyone.</p>
+

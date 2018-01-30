@@ -2,7 +2,7 @@
 layout: page
 published: true
 date: 2017-12-29
-permalink: /blog/2017/12/29/wof-in-a-box-part2
+permalink: /blog/2017/12/29/wof-in-a-box-part2/
 title: WOF in a Box (part 2)
 category: blog
 excerpt: Run Who's On First on your own hardware.

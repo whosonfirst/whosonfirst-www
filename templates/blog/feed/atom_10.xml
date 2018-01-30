@@ -1,0 +1,22 @@
+{{ define "feed_atom_10" }}<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:h="http://www.w3.org/1999/xhtml">
+  <id>https://www.aaronland.info/weblog</id>
+  <title>Who's Of First</title>
+  <link href="https://www.whosonfirst.org/blog/" rel="alternate" title="Who's On First" type="text/html"/>
+  <link href="https://www.whosonfirst.org/blog/atom.xml" rel="self" title="Who's On First" type="application/atom+xml"/>
+  <updated>{{ .BuildDate.Format "2006-01-02T15:04:05Z07:00" }}</updated>
+  <author>
+    <name>Who's On First</name>
+  </author>
+  <subtitle type="text">Who's On First is a gazetter of all the places.</subtitle>
+    {{ range $fm := .Posts }}
+  <entry>
+    <link type="text/html" href="https://www.whosonfirst.org{{ $fm.Permalink }}" rel="alternate"/>
+    <title>{{ $fm.Title }}</title>
+    <id>https://www.whosonfirst.org{{ $fm.Permalink }}</id>
+    <published>{{ $fm.Date.Format "2006-01-02" }}</published>
+    <updated>{{ $fm.Date.Format "2006-01-02" }}</updated>
+    <content type="text">{{ $fm.Excerpt }}</content>
+  </entry>
+  {{ end }}
+</feed>{{ end }}

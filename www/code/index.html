@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Who’s On First | </title>
+		<meta name="description" content="Who’s on First is a gazetteer of places." />
+		<link rel="apple-touch-icon" href="/images/favicons/apple-touch-icon.png" sizes="180x180">
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-16x16.png" sizes="16x16">
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-32x32.png" sizes="32x32">
+		<link rel="manifest" href="/images/favicons/manifest.json">
+		<link rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg" color="#2C1E3F">
+		<link rel="stylesheet" href="/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/css/mapzen.whosonfirst.css">
+		<!-- CSS for code styling from highlightpack.js -->
+		<link rel="stylesheet" href="/css/styles/grayscale.css">
+	</head>
+	<body>
+		<div class="whosonfirst-wrapper">
+
+			<nav class="navbar navbar-default navbar-fixed-top whosonfirst-fixed-subpage-navbar">
+				<div class="container">
+
+					<!-- Brand and toggle get grouped for better mobile display -->
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="/">Who’s On First</a>
+					</div>
+
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					  <ul class="nav navbar-nav navbar-right">
+
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/browse/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">browse</a>
+							</li>
+					    
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/docs/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">documentation</a>
+							</li>
+							
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/code/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">code</a>
+							</li>
+
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/api/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">api</a>
+							</li>
+							
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/download/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">download</a>
+							</li>
+							
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/blog/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">blog</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+<div class="container whosonfirst-subpage-container">
+	<div class="row">
+		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-0">
+			<aside>
+				<div class="whosonfirst-sidenav-container">
+
+					<ul class="whosonfirst-sidenav-list">
+
+						<li class="whosonfirst-sidenav-list-element">
+						  <a href="#go" class="whosonfirst-nav-link whosonfirst-sidenav-link">go</a>
+						</li>
+
+						<li class="whosonfirst-sidenav-list-element">
+						  <a href="#javascript" class="whosonfirst-nav-link whosonfirst-sidenav-link">javascript</a>
+						  </li>
+
+						<li class="whosonfirst-sidenav-list-element">						
+						  <a href="#php" class="whosonfirst-nav-link whosonfirst-sidenav-link">php</a>
+						</li>
+
+						<li class="whosonfirst-sidenav-list-element">						
+						  <a href="#python" class="whosonfirst-nav-link whosonfirst-sidenav-link">python</a>
+						</li>
+
+						<li class="whosonfirst-sidenav-list-element">
+						  <a href="#www" class="whosonfirst-nav-link whosonfirst-sidenav-link">web applications</a>
+						</li>
+					</ul>
+				</div>
+			</aside>
+		</div>
+		<div class="col-lg-7 col-md-9 col-sm-9 col-xs-12">
+			<article>
+<h1 class="whosonfirst-subpage-header">
+Code
+</h1>
+<div class="whosonfirst-fulltabs-container">
+	<div class="whosonfirst-extrasmall-tabs-menu">
+		<div class="whosonfirst-extrasmall-tabs-menu-content">
+			<div class="whosonfirst-extrasmall-tabs-menu-content-header">
+				<div class="whosonfirst-extrasmall-tab-selection">State</div>
+			</div>
+		</div>
+	</div>
+	<div class="whosonfirst-tabs-content"><style type="text/css">
+  .code-list {
+  margin-top: 1.5em !important;
+  margin-bottom: 1.5em !important;
+  }
+</style>
+
+
+
+<p>All of the code used to run Who's On First is published under an open source license, typically a <a href="https://en.wikipedia.org/wiki/BSD-3">BSD-3</a> license, an available through the <a href="https://github.com/whosonfirst/">whosonfirst</a> GitHub organization:</p>
+
+<p style="font-size:2em; text-align:center;font-weight:700;"><a href="https://github.com/whosonfirst/">https://github.com/whosonfirst/</a></p>
+
+<p>Software in Who's On First is typically developed in one of four languages: Go, JavaScript, PHP and Python. We do this for two reasons: 1) Because one language is a better fit than another for a specific task and 2) To try and ensure that we never let Who's On First become overly dependent on the quirks or biases of any of language.</p>
+
+<p>An explicit design goal of Who's On First is that it should be possible (easy, even) to work with our data in <em>any</em> programming language. It would be impractical to ensure portability across languages for every piece of Who's On First related functionality but we rely on the need to implement <em>core</em> libraries and methods across a variety of strictly and loosely typed languages, and the need to do so quickly and without constant refactoring, as a good benchmark and stress-test for our design decisions.</p>
+
+<ul class="code-list">
+  <li><a href="#go">Go</a></li>
+  <li><a href="#javascript">JavaScript</a></li>
+  <li><a href="#php">PHP</a></li>
+  <li><a href="#python">Python</a></li>
+  <li><a href="#www">Web applications</a></li>  
+</ul>  
+
+<h2 id="go">Go</h2>
+
+<p>Go packages typically have a <code>go-</code> prefix and are well-suited for tasks that require heavy-lifting. We also use Go when we want to create tools that can distributed as pre-compiled platform specific binaries.</p>
+
+<p>Go packages are available from the <code>whosonfirst</code> organization on GitHub:</p>
+
+<ul class="code-list">
+  <li><a href="https://github.com/whosonfirst?language=go">https://github.com/whosonfirst?language=go</a></li>
+</ul>  
+
+<h2 id="javascript">JavaScript</h2>
+
+<p>Javascript packages typically have a <code>js-</code> prefix and are primarily designed for use in the client layer of the various Who's On First related <a href="#www">web applications</a>. At present most (all) of these packages are designed for use in a browser context but we would like to update them to work seamlessly in both a browser and <code>node.js</code> context.</p>
+
+<p>JavaScript packages are available from the <code>whosonfirst</code> organization on GitHub:</p>
+
+<ul class="code-list">
+  <li><a href="https://github.com/whosonfirst?language=javascript">https://github.com/whosonfirst?language=javascript</a></li>
+</ul>  
+
+<h2 id="php">PHP</h2>
+
+<p>PHP packages typically have a <code>php-</code> or a <code>flamework-</code>prefix and are primarily designed for use in the application layer of the many Who's On First related <a href="#www">web applications</a>. The <code>flamework-</code> prefix references the <a href="https://github.com/whosonfirst/flamework/">Flamework</a> anti-framework designed and built by grumpy ex-Flickr engineers.</p>
+
+<p>PHP packages are available from the <code>whosonfirst</code> organization on GitHub:</p>
+
+<ul class="code-list">
+  <li><a href="https://github.com/whosonfirst?language=php">https://github.com/whosonfirst?language=php</a></li>
+</ul>  
+
+<h2 id="python">Python</h2>
+
+<p>Python packages typically have a <code>py-mapzen-whosonfirst</code> prefix (which will need to updated in <a href="#">a post-Mapzen world</a>and are best-suited for manipulating individual Who's On First records. They are also required for certain operations, for example exporting records to disk with Who's On First specfic formatting.
+
+<p style="font-style:italic;">There are two important points to note about that last sentence: 1) WOF-specific formatting is <em>desirable</em> but not required and 2) the requirement to use Python (versus say Go or PHP) to achieve that end is not a feature and points to work we still need to do to ensure functionality across languages.</p>
+
+ <p>Python packages are written in Python 2 but we aim to migrate these all to Python 3 shortly.</p>
+
+<p>Python packages are available from the <code>whosonfirst</code> organization on GitHub:</p>
+
+<ul class="code-list">
+  <li><a href="https://github.com/whosonfirst?language=python">https://github.com/whosonfirst?language=python</a></li>
+</ul>  
+
+<h2 id="www">Web applications</h2>
+
+<p>Web applications are written in all of the languages listed above and typically have a <code>whosonfirst-www-</code> prefix (that may eventually be shortened to <code>www-</code>).</p>
+
+<p>Web applications are available from the <code>whosonfirst</code> organization on GitHub:</p>
+
+<ul class="code-list">
+  <li><a href="https://github.com/whosonfirst?q=whosonfirst-www">https://github.com/whosonfirst?q=whosonfirst-www</a></li>
+</ul>  
+
+
+					</div>
+				</div>
+			</article>
+		</div>
+		<div class="col-lg-2 col-md-0 col-sm-0 col-xs-0"></div>
+	</div>
+</div>
+			<!-- START footer.html -->
+
+		</div>
+		<footer>
+			<nav class="navbar navbar-default navbar-bottom">
+				<div class="container">
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<ul class="nav navbar-nav navbar-right whosonfirst-footer">
+						<li><a href="/docs/contributing/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">contributing</a></li>
+						<li><a href="/docs/licensing/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">license</a></li>
+						<li><a href="https://twitter.com/alloftheplaces/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">twitter</a></li>
+					</ul>
+				</div>
+			</nav>
+		</footer>
+
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="/javascript/jquery.min.js"></script>
+		<!-- Include all compiled plugins (below), or include individual files as needed -->
+		<script src="/javascript/bootstrap.min.js"></script>
+		<script src="/javascript/mapzen.whosonfirst.home.js"></script>
+		<script src="/javascript/mapzen.whosonfirst.subpage.js"></script>
+		<!-- JavaScript for code styling from highlightpack.js -->
+		<script src="/javascript/highlightpack.js"></script>
+		<script>
+		  try {
+		  	hljs.initHighlightingOnLoad();
+		  } catch (e) {
+		  	console.log("HLJS", e);
+		  }
+		</script>
+	</body>
+</html>
+
+<!-- END footer.html -->

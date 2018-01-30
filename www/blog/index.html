@@ -1,20 +1,28 @@
+
+
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="x-ua-compatible" content="ie=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Who’s On First | Blog</title>
-		<meta name="description" content="Who’s on First is a gazetteer of places.">
-		<link rel="apple-touch-icon" href="/images/favicons/apple-touch-icon.png" sizes="180x180">
-		<link rel="icon" type="image/png" href="/images/favicons/favicon-16x16.png" sizes="16x16">
-		<link rel="icon" type="image/png" href="/images/favicons/favicon-32x32.png" sizes="32x32">
-		<link rel="manifest" href="/images/favicons/manifest.json">
-		<link rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg" color="#2C1E3F">
-		<link rel="stylesheet" href="/css/bootstrap.min.css">
-		<link rel="stylesheet" href="/css/mapzen.whosonfirst.css">
-		<!-- CSS for code styling from highlightpack.js -->
-		<link rel="stylesheet" href="/css/styles/grayscale.css">
+		<meta charset="utf-8" />
+		<meta http-equiv="x-ua-compatible" content="ie=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Who’s On First</title>
+		<meta name="description" content="Who’s on First is a gazetteer of places." />
+		<link rel="apple-touch-icon" href="/images/favicons/apple-touch-icon.png" sizes="180x180" />
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-16x16.png" sizes="16x16" />
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-32x32.png" sizes="32x32" />
+		<link rel="manifest" href="/images/favicons/manifest.json" />
+		<link rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg" color="#2C1E3F" />
+		<link rel="stylesheet" href="/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="/css/mapzen.whosonfirst.css" />
+		
+		<link rel="stylesheet" href="/css/styles/grayscale.css" />
+
+		<link rel="alternate" type="application/atom+xml" title="Who's On First Atom feed" href="/blog/atom_10.xml"/>		
+		<link rel="alternate" type="application/rss+xml" title="Who's On First RSS 2.0 feed" href="/blog/rss_20.xml"/>
+
+		
+
 	</head>
 	<body>
 		<div class="whosonfirst-wrapper">
@@ -22,7 +30,7 @@
 			<nav class="navbar navbar-default navbar-fixed-top whosonfirst-fixed-subpage-navbar">
 				<div class="container">
 
-					<!-- Brand and toggle get grouped for better mobile display -->
+					
 					<div class="navbar-header">
 						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
 							<span class="sr-only">Toggle navigation</span>
@@ -33,227 +41,477 @@
 						<a class="navbar-brand" href="/">Who’s On First</a>
 					</div>
 
-					<!-- Collect the nav links, forms, and other content for toggling -->
+					
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-						<ul class="nav navbar-nav navbar-right">
+					  <ul class="nav navbar-nav navbar-right">
+
 							<li class="whosonfirst-navbar-element-collapsed">
-								<a href="/data/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">data</a>
+								<a href="/browse/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">browse</a>
 							</li>
+					    
 							<li class="whosonfirst-navbar-element-collapsed">
-								<a href="/docs/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">docs</a>
+								<a href="/docs/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">documentation</a>
 							</li>
+							
 							<li class="whosonfirst-navbar-element-collapsed">
-								<a href="/tools/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">tools</a>
+								<a href="/code/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">code</a>
 							</li>
+
 							<li class="whosonfirst-navbar-element-collapsed">
-								<a href="/blog/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed whosonfirst-nav-active">blog</a>
+								<a href="/api/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">api</a>
 							</li>
+							
 							<li class="whosonfirst-navbar-element-collapsed">
-								<a href="/getstarted/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">get started</a>
+								<a href="/download/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">download</a>
+							</li>
+							
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/blog/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">blog</a>
 							</li>
 						</ul>
 					</div>
 				</div>
 			</nav>
-<div class="container whosonfirst-subpage-container">
-	<div class="row">
-		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-0">
-			<aside>
+
+			<div class="container whosonfirst-subpage-container">
+			  <div class="row">
+			    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-0">
+			      <aside>
 				<div class="whosonfirst-sidenav-container">
+					<ul class="whosonfirst-sidenav-list">
+
+					  <li class="whosonfirst-sidenav-list-element">
+					    <a href="/blog/2018/" class="whosonfirst-nav-link whosonfirst-sidenav-link">2018</a>
+					  </li>
+
+					  <li class="whosonfirst-sidenav-list-element">
+					    <a href="/blog/2017/" class="whosonfirst-nav-link whosonfirst-sidenav-link">2017</a>
+					  </li>
+
+					  <li class="whosonfirst-sidenav-list-element">
+					    <a href="/blog/2016/" class="whosonfirst-nav-link whosonfirst-sidenav-link">2016</a>
+					  </li>
+
+					  <li class="whosonfirst-sidenav-list-element">
+					    <a href="/blog/2015/" class="whosonfirst-nav-link whosonfirst-sidenav-link">2015</a>
+					  </li>
+					  
+					</ul>
+
 				</div>
-			</aside>
+			      </aside>
+			    </div>
+			    <div class="col-lg-7 col-md-9 col-sm-9 col-xs-12">
+			      <article>
+<h3><a href="/blog/2018/01/02/chapter-two/">Who&rsquo;s On First, Chapter Two</a></h3>
+
+<blockquote>
+<p>It means that while things are not literally &ldquo;better than yesterday&rdquo; – since yesterday you didn&rsquo;t have to read this blog post – it means that things are hopefully better than the yesterday of the last time a service you came to depend on had to shutter its doors.</p>
+</blockquote>
+
+<p><small style="font-style:italic;display:block;margin-bottom:2em;">This is a blog post by
+<a href="#" class="hey-look">thisisaaronland</a>
+ that is tagged <a href="#" class="hey-look">whosonfirst</a>.
+ It was published on <span class="pubdate"><a href="/blog/2018/01/">January</a> <a href="/blog/2018/01/02">02</a>, <a href="/blog/2018/">2018</a></span>.
+</small></p>
+
+<h3><a href="/blog/2017/12/29/wof-in-a-box-part2/">WOF in a Box (part 2)</a></h3>
+
+<blockquote>
+<p>Run Who&rsquo;s On First on your own hardware.</p>
+</blockquote>
+
+<p><small style="font-style:italic;display:block;margin-bottom:2em;">This is a blog post by
+<a href="#" class="hey-look">dphiffer</a>
+ that is tagged <a href="#" class="hey-look">whosonfirst</a>.
+ It was published on <span class="pubdate"><a href="/blog/2017/12/">December</a> <a href="/blog/2017/12/29">29</a>, <a href="/blog/2017/">2017</a></span>.
+</small></p>
+
+<h3><a href="/blog/2017/12/22/neighbourhood-updates-three/">Updating Who&rsquo;s On First Neighbourhoods - Part III</a></h3>
+
+<blockquote>
+<p>Check out the most recent additions and updates to neighbourhoods in WOF!</p>
+</blockquote>
+
+<p><small style="font-style:italic;display:block;margin-bottom:2em;">This is a blog post by
+<a href="#" class="hey-look">stepps00</a> and <a href="#" class="hey-look">zbsingleton</a>
+ that is tagged <a href="#" class="hey-look">whosonfirst</a>, <a href="#" class="hey-look">neighbourhoods</a> and <a href="#" class="hey-look">data</a>.
+ It was published on <span class="pubdate"><a href="/blog/2017/12/">December</a> <a href="/blog/2017/12/22">22</a>, <a href="/blog/2017/">2017</a></span>.
+</small></p>
+
+<h3><a href="/blog/2017/12/21/wof-in-a-box/">WOF in a Box (part 1)</a></h3>
+
+<blockquote>
+<p>Run Who&rsquo;s On First on your own hardware.</p>
+</blockquote>
+
+<p><small style="font-style:italic;display:block;margin-bottom:2em;">This is a blog post by
+<a href="#" class="hey-look">dphiffer</a>
+ that is tagged <a href="#" class="hey-look">whosonfirst</a>.
+ It was published on <span class="pubdate"><a href="/blog/2017/12/">December</a> <a href="/blog/2017/12/21">21</a>, <a href="/blog/2017/">2017</a></span>.
+</small></p>
+
+<h3><a href="/blog/2017/12/14/updating-whosonfirst/">Whos On First Updates, 2017</a></h3>
+
+<blockquote>
+<p>Outlining a few one-offs, changes, and edits that were made to Who&rsquo;s On First in 2017</p>
+</blockquote>
+
+<p><small style="font-style:italic;display:block;margin-bottom:2em;">This is a blog post by
+<a href="#" class="hey-look">stepps00</a>
+ that is tagged <a href="#" class="hey-look">whosonfirst</a> and <a href="#" class="hey-look">data</a>.
+ It was published on <span class="pubdate"><a href="/blog/2017/12/">December</a> <a href="/blog/2017/12/14">14</a>, <a href="/blog/2017/">2017</a></span>.
+</small></p>
+
+<h3><a href="/blog/2017/10/24/whosonfirst-sotmus-2017/">Who&rsquo;s On First ꞉fist-bump꞉  OpenStreetMap</a></h3>
+
+<blockquote>
+<p>The 70s were weird like that in a way that we don’t have time to discuss today except to say that Who’s On First would like to be the bucket of water to OpenStreetMap’s giant eagle.</p>
+</blockquote>
+
+<p><small style="font-style:italic;display:block;margin-bottom:2em;">This is a blog post by
+<a href="#" class="hey-look">thisisaaronland</a>
+ that is tagged <a href="#" class="hey-look">osm</a>, <a href="#" class="hey-look">sotmus</a> and <a href="#" class="hey-look">whosonfirst</a>.
+ It was published on <span class="pubdate"><a href="/blog/2017/10/">October</a> <a href="/blog/2017/10/24">24</a>, <a href="/blog/2017/">2017</a></span>.
+</small></p>
+
+<h3><a href="/blog/2017/10/17/whosonfirst-nacis-2017/">maîtres chez nous</a></h3>
+
+<blockquote>
+<p>Perhaps we can stop teaching our tools the bad habits of the past.</p>
+</blockquote>
+
+<p><small style="font-style:italic;display:block;margin-bottom:2em;">This is a blog post by
+<a href="#" class="hey-look">thisisaaronland</a>
+ that is tagged <a href="#" class="hey-look">nacis</a> and <a href="#" class="hey-look">whosonfirst</a>.
+ It was published on <span class="pubdate"><a href="/blog/2017/10/">October</a> <a href="/blog/2017/10/17">17</a>, <a href="/blog/2017/">2017</a></span>.
+</small></p>
+
+<h3><a href="/blog/2017/10/05/mapzen-places/">Mapzen Places is here! And there! And everywhere.</a></h3>
+
+<blockquote>
+<p>Get geometries, hierarchies, statistics and more with the Mapzen Places API.</p>
+</blockquote>
+
+<p><small style="font-style:italic;display:block;margin-bottom:2em;">This is a blog post by
+<a href="#" class="hey-look">mapzen</a>
+ that is tagged <a href="#" class="hey-look">places</a>, <a href="#" class="hey-look">flex</a>, <a href="#" class="hey-look">data</a> and <a href="#" class="hey-look">whosonfirst</a>.
+ It was published on <span class="pubdate"><a href="/blog/2017/10/">October</a> <a href="/blog/2017/10/15">15</a>, <a href="/blog/2017/">2017</a></span>.
+</small></p>
+
+<h3><a href="/blog/2017/09/19/introducing-statoids/">Statoids, Mesoshapes, and Who&rsquo;s On First	</a></h3>
+
+<blockquote>
+<p>Check out our recent additions to the Who&rsquo;s On First gazetteer, including our partnership with Statoids!</p>
+</blockquote>
+
+<p><small style="font-style:italic;display:block;margin-bottom:2em;">This is a blog post by
+<a href="#" class="hey-look">stepps00</a> and <a href="#" class="hey-look">nvkelso</a>
+ that is tagged <a href="#" class="hey-look">whosonfirst</a> and <a href="#" class="hey-look">data</a>.
+ It was published on <span class="pubdate"><a href="/blog/2017/09/">September</a> <a href="/blog/2017/09/19">19</a>, <a href="/blog/2017/">2017</a></span>.
+</small></p>
+
+<h3><a href="/blog/2017/08/22/summer-2017-wof/">Increasing Name Translations in Who&rsquo;s On First</a></h3>
+
+<blockquote>
+<p>Outlining and visualizing the work we&rsquo;ve done to increase name translations in the Who&rsquo;s On First gazetteer.</p>
+</blockquote>
+
+<p><small style="font-style:italic;display:block;margin-bottom:2em;">This is a blog post by
+<a href="#" class="hey-look">ndcartography</a> and <a href="#" class="hey-look">stepps00</a>
+ that is tagged <a href="#" class="hey-look">whosonfirst</a>, <a href="#" class="hey-look">data</a> and <a href="#" class="hey-look">interns</a>.
+ It was published on <span class="pubdate"><a href="/blog/2017/08/">August</a> <a href="/blog/2017/08/22">22</a>, <a href="/blog/2017/">2017</a></span>.
+</small></p>
+
+<h3><a href="/blog/2017/08/01/geotagging-wof-venues/">Geotagging WOF venues</a></h3>
+
+<blockquote>
+<p>Photography as data collection.</p>
+</blockquote>
+
+<p><small style="font-style:italic;display:block;margin-bottom:2em;">This is a blog post by
+<a href="#" class="hey-look">dphiffer</a>
+ that is tagged <a href="#" class="hey-look">boundaryissues</a>, <a href="#" class="hey-look">whosonfirst</a> and <a href="#" class="hey-look">data</a>.
+ It was published on <span class="pubdate"><a href="/blog/2017/08/">August</a> <a href="/blog/2017/08/01">01</a>, <a href="/blog/2017/">2017</a></span>.
+</small></p>
+
+<h3><a href="/blog/2017/07/28/wof-website-redesign/">Redesigning and Rebuilding the Who&rsquo;s On First website</a></h3>
+
+<blockquote>
+<p>How can we most effectively allow for understanding, visualizing, and interacting with Who&rsquo;s On First?</p>
+</blockquote>
+
+<p><small style="font-style:italic;display:block;margin-bottom:2em;">This is a blog post by
+<a href="#" class="hey-look">sdombkow</a>
+ that is tagged <a href="#" class="hey-look">whosonfirst</a>, <a href="#" class="hey-look">data</a>, <a href="#" class="hey-look">design</a> and <a href="#" class="hey-look">interns</a>.
+ It was published on <span class="pubdate"><a href="/blog/2017/07/">July</a> <a href="/blog/2017/07/28">28</a>, <a href="/blog/2017/">2017</a></span>.
+</small></p>
+
+<h3><a href="/blog/2017/06/29/tackling-space-and-time-in-whosonfirst/">Tackling Space and Time in Who&rsquo;s On First</a></h3>
+
+<blockquote>
+<p>Using the Extended Date/Time Format to track historical records in Who&rsquo;s On First.</p>
+</blockquote>
+
+<p><small style="font-style:italic;display:block;margin-bottom:2em;">This is a blog post by
+<a href="#" class="hey-look">stepps00</a>
+ that is tagged <a href="#" class="hey-look">whosonfirst</a>, <a href="#" class="hey-look">data</a> and <a href="#" class="hey-look">yugoslavia</a>.
+ It was published on <span class="pubdate"><a href="/blog/2017/06/">June</a> <a href="/blog/2017/06/29">29</a>, <a href="/blog/2017/">2017</a></span>.
+</small></p>
+
+<h3><a href="/blog/2017/05/10/simple-is-hard/">Simple is hard</a></h3>
+
+<blockquote>
+<p>Making something less complicated is complicated.</p>
+</blockquote>
+
+<p><small style="font-style:italic;display:block;margin-bottom:2em;">This is a blog post by
+<a href="#" class="hey-look">dphiffer</a>
+ that is tagged <a href="#" class="hey-look">boundaryissues</a>, <a href="#" class="hey-look">whosonfirst</a> and <a href="#" class="hey-look">data</a>.
+ It was published on <span class="pubdate"><a href="/blog/2017/05/">May</a> <a href="/blog/2017/05/20">20</a>, <a href="/blog/2017/">2017</a></span>.
+</small></p>
+
+<h3><a href="/blog/2017/04/28/whosonfirst-api-explorer/">The Who&rsquo;s On First API Explorer</a></h3>
+
+<blockquote>
+<p>I like to think the WOF API Explorer is another illustration of the idea that &ldquo;Mapzen should always be Consumer Zero (of Mapzen services)&rdquo;.</p>
+</blockquote>
+
+<p><small style="font-style:italic;display:block;margin-bottom:2em;">This is a blog post by
+<a href="#" class="hey-look">thisisaaronland</a>
+ that is tagged <a href="#" class="hey-look">whosonfirst</a>, <a href="#" class="hey-look">electron</a> and <a href="#" class="hey-look">api</a>.
+ It was published on <span class="pubdate"><a href="/blog/2017/04/">April</a> <a href="/blog/2017/04/28">28</a>, <a href="/blog/2017/">2017</a></span>.
+</small></p>
+
+<h3><a href="/blog/2017/04/20/neighbourhood-updates-two/">Updating Who&rsquo;s On First Neighbourhoods - Part II</a></h3>
+
+<blockquote>
+<p>We&rsquo;ve been busy updating neighbourhood records in Who&rsquo;s On First - check them out!</p>
+</blockquote>
+
+<p><small style="font-style:italic;display:block;margin-bottom:2em;">This is a blog post by
+<a href="#" class="hey-look">stepps00</a> and <a href="#" class="hey-look">zbsingleton</a>
+ that is tagged <a href="#" class="hey-look">whosonfirst</a>, <a href="#" class="hey-look">neighbourhoods</a> and <a href="#" class="hey-look">data</a>.
+ It was published on <span class="pubdate"><a href="/blog/2017/04/">April</a> <a href="/blog/2017/04/20">20</a>, <a href="/blog/2017/">2017</a></span>.
+</small></p>
+
+<h3><a href="/blog/2017/04/17/weird-and-wonderful/">The world is weird and wonderful!</a></h3>
+
+<blockquote>
+<p>The multifaceted maps we make simply reflect the weird and wonderful territory they represent. CSV and GeoJSON make it easier.</p>
+</blockquote>
+
+<p><small style="font-style:italic;display:block;margin-bottom:2em;">This is a blog post by
+<a href="#" class="hey-look">dphiffer</a>
+ that is tagged <a href="#" class="hey-look">boundaryissues</a>, <a href="#" class="hey-look">whosonfirst</a> and <a href="#" class="hey-look">data</a>.
+ It was published on <span class="pubdate"><a href="/blog/2017/04/">April</a> <a href="/blog/2017/04/17">17</a>, <a href="/blog/2017/">2017</a></span>.
+</small></p>
+
+<h3><a href="/blog/2017/04/04/whosonfirst-api/">The Who&rsquo;s On First API</a></h3>
+
+<blockquote>
+<p>Anything you can do by clicking around the Spelunker should be able to be automated using code.</p>
+</blockquote>
+
+<p><small style="font-style:italic;display:block;margin-bottom:2em;">This is a blog post by
+<a href="#" class="hey-look">thisisaaronland</a>
+ that is tagged <a href="#" class="hey-look">whosonfirst</a>.
+ It was published on <span class="pubdate"><a href="/blog/2017/04/">April</a> <a href="/blog/2017/04/04">04</a>, <a href="/blog/2017/">2017</a></span>.
+</small></p>
+
+<h3><a href="/blog/2017/02/10/bundler/">Bundling up descendants into GeoJSON</a></h3>
+
+<blockquote>
+<p>We made a handy tool that lets you download the descendants of a place as GeoJSON.</p>
+</blockquote>
+
+<p><small style="font-style:italic;display:block;margin-bottom:2em;">This is a blog post by
+<a href="#" class="hey-look">burritojustice</a>, <a href="#" class="hey-look">stepps00</a> and <a href="#" class="hey-look">dphiffer</a>
+ that is tagged <a href="#" class="hey-look">whosonfirst</a> and <a href="#" class="hey-look">data</a>.
+ It was published on <span class="pubdate"><a href="/blog/2017/02/">February</a> <a href="/blog/2017/02/10">10</a>, <a href="/blog/2017/">2017</a></span>.
+</small></p>
+
+<h3><a href="/blog/2016/12/08/mesoshapes/">Improving county coverage in Who&rsquo;s On First</a></h3>
+
+<blockquote>
+<p>We&rsquo;ve doubled the number of counties in Who&rsquo;s On First by adding data sources and introducing mesoshapes to fill the gaps</p>
+</blockquote>
+
+<p><small style="font-style:italic;display:block;margin-bottom:2em;">This is a blog post by
+<a href="#" class="hey-look">stepps00</a>, <a href="#" class="hey-look">nvkelso</a> and <a href="#" class="hey-look">martin-gamache</a>
+ that is tagged <a href="#" class="hey-look">WOF</a>, <a href="#" class="hey-look">county</a>, <a href="#" class="hey-look">whosonfirst</a>, <a href="#" class="hey-look">data</a>, <a href="#" class="hey-look">mesoshapes</a> and <a href="#" class="hey-look">Who&rsquo;s On First</a>.
+ It was published on <span class="pubdate"><a href="/blog/2016/12/">December</a> <a href="/blog/2016/12/08">08</a>, <a href="/blog/2016/">2016</a></span>.
+</small></p>
+
+<h3><a href="/blog/2016/10/07/whosonfirst-venues/">Venues, Postal Codes&hellip; and All Those GitHub Repositories</a></h3>
+
+<blockquote>
+<p>Multiply &amp;quot;a lot of venues, even in the smallest of communities&amp;quot; by the &amp;quot;entire planet&amp;quot; and you&rsquo;ve got&hellip; well, a lot of venues.</p>
+</blockquote>
+
+<p><small style="font-style:italic;display:block;margin-bottom:2em;">This is a blog post by
+<a href="#" class="hey-look">thisisaaronland</a>
+ that is tagged <a href="#" class="hey-look">whosonfirst</a> and <a href="#" class="hey-look">venues</a>.
+ It was published on <span class="pubdate"><a href="/blog/2016/10/">October</a> <a href="/blog/2016/10/07">07</a>, <a href="/blog/2016/">2016</a></span>.
+</small></p>
+
+<h3><a href="/blog/2016/10/06/wof-lifecycle-documentation/">Who&rsquo;s On First Life Cycle Documentation</a></h3>
+
+<blockquote>
+<p>Documenting the life cycle and tracking rules of the Who&rsquo;s On First ID</p>
+</blockquote>
+
+<p><small style="font-style:italic;display:block;margin-bottom:2em;">This is a blog post by
+<a href="#" class="hey-look">stepps00</a>
+ that is tagged <a href="#" class="hey-look">WOF</a>, <a href="#" class="hey-look">ID</a>, <a href="#" class="hey-look">whosonfirst</a>, <a href="#" class="hey-look">data</a>, <a href="#" class="hey-look">Who&rsquo;s On First</a> and <a href="#" class="hey-look">lifecycle</a>.
+ It was published on <span class="pubdate"><a href="/blog/2016/10/">October</a> <a href="/blog/2016/10/06">06</a>, <a href="/blog/2016/">2016</a></span>.
+</small></p>
+
+<h3><a href="/blog/2016/10/05/boundary-issues-properties/">Boundary Issues</a></h3>
+
+<blockquote>
+<p>Introducing our bespoke web-based editor for Who&rsquo;s On First records—helping GeoJSON help you.</p>
+</blockquote>
+
+<p><small style="font-style:italic;display:block;margin-bottom:2em;">This is a blog post by
+<a href="#" class="hey-look">dphiffer</a>
+ that is tagged <a href="#" class="hey-look">whosonfirst</a>, <a href="#" class="hey-look">boundaryissues</a> and <a href="#" class="hey-look">data</a>.
+ It was published on <span class="pubdate"><a href="/blog/2016/10/">October</a> <a href="/blog/2016/10/05">05</a>, <a href="/blog/2016/">2016</a></span>.
+</small></p>
+
+<h3><a href="/blog/2016/08/24/all-of-the-places/">All of the Places</a></h3>
+
+<blockquote>
+<p>A tiny website for sharing links to places.</p>
+</blockquote>
+
+<p><small style="font-style:italic;display:block;margin-bottom:2em;">This is a blog post by
+<a href="#" class="hey-look">dphiffer</a>
+ that is tagged <a href="#" class="hey-look">whosonfirst</a>, <a href="#" class="hey-look">data</a>, <a href="#" class="hey-look">wof</a> and <a href="#" class="hey-look">api</a>.
+ It was published on <span class="pubdate"><a href="/blog/2016/08/">August</a> <a href="/blog/2016/08/24">24</a>, <a href="/blog/2016/">2016</a></span>.
+</small></p>
+
+<h3><a href="/blog/2016/08/15/mapping-with-bias/">Mapping with Bias</a></h3>
+
+<blockquote>
+<p>I like that idea that there might be an instrument to measure the motion – the velocity – of people’s understanding of place</p>
+</blockquote>
+
+<p><small style="font-style:italic;display:block;margin-bottom:2em;">This is a blog post by
+<a href="#" class="hey-look">thisisaaronland</a>
+ that is tagged <a href="#" class="hey-look">whosonfirst</a>, <a href="#" class="hey-look">wof</a> and <a href="#" class="hey-look">thisisaaronland</a>.
+ It was published on <span class="pubdate"><a href="/blog/2016/08/">August</a> <a href="/blog/2016/08/15">15</a>, <a href="/blog/2016/">2016</a></span>.
+</small></p>
+
+<h3><a href="/blog/2016/07/13/wikipedia-data/">Concordances with Wikipedia data</a></h3>
+
+<blockquote>
+<p>Collecting and analyzing Wikipedia data to extract useful information.</p>
+</blockquote>
+
+<p><small style="font-style:italic;display:block;margin-bottom:2em;">This is a blog post by
+<a href="#" class="hey-look">okavvada</a>
+ that is tagged <a href="#" class="hey-look">data</a> and <a href="#" class="hey-look">whosonfirst</a>.
+ It was published on <span class="pubdate"><a href="/blog/2016/07/">July</a> <a href="/blog/2016/07/13">13</a>, <a href="/blog/2016/">2016</a></span>.
+</small></p>
+
+<h3><a href="/blog/2016/06/24/sf-neighbourhood-updates/">Updating Neighbourhood Records in Who&rsquo;s on First</a></h3>
+
+<blockquote>
+<p>A handy guide updating neighbourhood records in Who&rsquo;s On First!</p>
+</blockquote>
+
+<p><small style="font-style:italic;display:block;margin-bottom:2em;">This is a blog post by
+<a href="#" class="hey-look">stepps00</a>
+ that is tagged <a href="#" class="hey-look">whosonfirst</a>, <a href="#" class="hey-look">tutorial</a> and <a href="#" class="hey-look">data</a>.
+ It was published on <span class="pubdate"><a href="/blog/2016/06/">June</a> <a href="/blog/2016/06/24">24</a>, <a href="/blog/2016/">2016</a></span>.
+</small></p>
+
+<h3><a href="/blog/2016/04/14/missing-the-point/">Missing the Point- GeoIP&rsquo;s, Points, Polygons, and a Precarious Farm in Kansas</a></h3>
+
+<blockquote>
+<p>Investigating the consequences of ambiguity in geography has never been so terrifying.</p>
+</blockquote>
+
+<p><small style="font-style:italic;display:block;margin-bottom:2em;">This is a blog post by
+<a href="#" class="hey-look">riordan</a> and <a href="#" class="hey-look">thisisaaronland</a>
+ that is tagged <a href="#" class="hey-look">whosonfirst</a>.
+ It was published on <span class="pubdate"><a href="/blog/2016/04/">April</a> <a href="/blog/2016/04/14">14</a>, <a href="/blog/2016/">2016</a></span>.
+</small></p>
+
+<h3><a href="/blog/2016/04/08/yesnofix/">Yes No Fix</a></h3>
+
+<blockquote>
+<p>Yes No Fix is not a perfect solution but our hope is that it will at least make things a little better than they were yesterday.</p>
+</blockquote>
+
+<p><small style="font-style:italic;display:block;margin-bottom:2em;">This is a blog post by
+<a href="#" class="hey-look">thisisaaronland</a>
+ that is tagged <a href="#" class="hey-look">whosonfirst</a>.
+ It was published on <span class="pubdate"><a href="/blog/2016/04/">April</a> <a href="/blog/2016/04/08">08</a>, <a href="/blog/2016/">2016</a></span>.
+</small></p>
+
+<h3><a href="/blog/2016/02/19/iamhere/">I Am Here</a></h3>
+
+<blockquote>
+<p>Mapzen should always be Consumer Zero (of Mapzen services).</p>
+</blockquote>
+
+<p><small style="font-style:italic;display:block;margin-bottom:2em;">This is a blog post by
+<a href="#" class="hey-look">thisisaaronland</a>
+ that is tagged <a href="#" class="hey-look">whosonfirst</a>.
+ It was published on <span class="pubdate"><a href="/blog/2016/02/">February</a> <a href="/blog/2016/02/19">19</a>, <a href="/blog/2016/">2016</a></span>.
+</small></p>
+
+<h3><a href="/blog/2015/09/28/spelunker-jumping-into-who-s-on-first/">Spelunker - Jumping into Who&rsquo;s On First</a></h3>
+
+<blockquote>
+<p>If you’re not from New York you may not appreciate just how wrong the current data for the Gowanus Canal is. &hellip; This sort of discrepancy is exactly what the spelunker was built to uncover.</p>
+</blockquote>
+
+<p><small style="font-style:italic;display:block;margin-bottom:2em;">This is a blog post by
+<a href="#" class="hey-look">thisisaaronland</a>
+ that is tagged <a href="#" class="hey-look">data</a> and <a href="#" class="hey-look">whosonfirst</a>.
+ It was published on <span class="pubdate"><a href="/blog/2015/09/">September</a> <a href="/blog/2015/09/28">28</a>, <a href="/blog/2015/">2015</a></span>.
+</small></p>
+
+<h3><a href="/blog/2015/08/18/who-s-on-first/">Who’s On First</a></h3>
+
+<blockquote>
+<p>Mapzen is building a gazetteer of places. Not quite all the places in the world but a whole lot of them and, we hope, the kinds of places that we mostly share in common. You might want to get a cup of coffee or maybe a drink if you’ve been thinking about this sort of thing for as long as we have (or maybe longer).</p>
+</blockquote>
+
+<p><small style="font-style:italic;display:block;margin-bottom:2em;">This is a blog post by
+<a href="#" class="hey-look">thisisaaronland</a> and <a href="#" class="hey-look">nvkelso</a>
+ that is tagged <a href="#" class="hey-look">whosonfirst</a>.
+ It was published on <span class="pubdate"><a href="/blog/2015/08/">August</a> <a href="/blog/2015/08/18">18</a>, <a href="/blog/2015/">2015</a></span>.
+</small></p>
+
+		</article>
 		</div>
-		<div class="col-lg-7 col-md-9 col-sm-9 col-xs-12">
-			<article><h1 class="whosonfirst-subpage-header">
-Blog
-</h1>
-<div class="whosonfirst-fulltabs-container">
-	<div class="whosonfirst-extrasmall-tabs-menu">
-		<div class="whosonfirst-extrasmall-tabs-menu-content">
-			<div class="whosonfirst-extrasmall-tabs-menu-content-header">
-				<div class="whosonfirst-extrasmall-tab-selection">Blog</div>
-			</div>
-		</div>
-	</div>
-	<div class="whosonfirst-tabs-content">
-<p>If you're feeling like getting in to the details there is a very thorough and very long introductory blog post about Who's On First followed by another fifty-or-so thousand words (<span id="word-count">and counting</span>) of thinking about the project, as it evolves:</p>
-<h6 id="2015" class="whosonfirst-deemphasized-subpageheader">2015</h6>
-<ul class="whosonfirst-nonbullet-list whosonfirst-sole-links-container">
-	<li class="whosonfirst-nonbullet-list-item">
-		<a href="https://mapzen.com/blog/who-s-on-first" class="whosonfirst-sole-link whosonfirst-dynamically-generated-post blog-post" title="Who's On First" data-pubdate="2015-08-18" data-word-count="5435" data-au="1.00">Who's On First</a>
-	</li>
-	<li class="whosonfirst-nonbullet-list-item">
-		<a href="https://mapzen.com/blog/spelunker-jumping-into-who-s-on-first" class="whosonfirst-sole-link whosonfirst-dynamically-generated-post blog-post" data-pubdate="2015-09-28" title="Spelunker - Jumping into Who's On First
-" data-word-count="3813" data-au="0.70">Spelunker - Jumping into Who's On First</a>
-	</li>
-</ul>
-<h6 id="2016" class="whosonfirst-deemphasized-subpageheader">2016</h6>
-<ul class="whosonfirst-nonbullet-list whosonfirst-sole-links-container">
-	<li class="whosonfirst-nonbullet-list-item">
-		<a href="https://mapzen.com/blog/iamhere" class="whosonfirst-sole-link whosonfirst-dynamically-generated-post blog-post" title="I Am Here" data-pubdate="2016-02-19" data-word-count="2605" data-au="0.48">I Am Here</a>
-	</li>
-	<li class="whosonfirst-nonbullet-list-item">
-		<a href="https://mapzen.com/blog/yesnofix" class="whosonfirst-sole-link whosonfirst-dynamically-generated-post blog-post" title="Yes No Fix" data-pubdate="2016-04-08" data-word-count="2902" data-au="0.53">Yes No Fix</a>
-	</li>
-	<li class="whosonfirst-nonbullet-list-item">
-		<a href="https://mapzen.com/blog/missing-the-point" class="whosonfirst-sole-link whosonfirst-dynamically-generated-post blog-post" data-pubdate="2016-04-14" title="Missing the Point – GeoIP's, Points, Polygons, and a Precarious Farm in Kansas" data-word-count="946" data-au="0.17">Missing the Point - GeoIP's, Points, Polygons, and a Precarious Farm in Kansas</a>
-	</li>
-	<li class="whosonfirst-nonbullet-list-item">
-		<a href="https://mapzen.com/blog/sf-neighbourhood-updates" class="whosonfirst-sole-link whosonfirst-dynamically-generated-post blog-post" data-pubdate="2016-06-24" title="Updating Neighbourhood Records in Who's on First" data-word-count="705" data-au="0.13">Updating Neighbourhood Records in Who's on First</a>
-	</li>
-	<li class="whosonfirst-nonbullet-list-item">
-		<a href="https://mapzen.com/blog/wikipedia-data" class="whosonfirst-sole-link whosonfirst-dynamically-generated-post blog-post" data-pubdate="2016-07-13" title="Concordances with Wikipedia data" data-word-count="2124" data-au="0.39">Concordances with Wikipedia Data</a>
-	</li>
-	<li class="whosonfirst-nonbullet-list-item">
-		<a href="https://mapzen.com/blog/mapping-with-bias" class="whosonfirst-sole-link whosonfirst-dynamically-generated-post blog-post" title="Mapping with Bias" data-pubdate="2016-08-15" data-word-count="2374" data-au="0.44">Mapping with Bias</a>
-	</li>
-	<li class="whosonfirst-nonbullet-list-item">
-		<a href="https://mapzen.com/blog/all-of-the-places" class="whosonfirst-sole-link whosonfirst-dynamically-generated-post blog-post" title="All of the Places" data-pubdate="2016-08-24" data-word-count="1596" data-au="0.29">All of the Places</a>
-	</li>
-	<li class="whosonfirst-nonbullet-list-item">
-		<a href="https://mapzen.com/blog/boundary-issue-properties" class="whosonfirst-sole-link whosonfirst-dynamically-generated-post blog-post" title="Boundary Issues: Editing Properties in Who's On First Records" data-pubdate="2016-10-05" data-word-count="1235" data-au="0.23">Boundary Issues: Editing Properties in Who's On First Records</a>
-	</li>
-	<li class="whosonfirst-nonbullet-list-item">
-		<a href="https://mapzen.com/blog/wof-lifecycle-documentation" class="whosonfirst-sole-link whosonfirst-dynamically-generated-post blog-post" data-pubdate="2016-10-06" title="Who's On First Life Cycle Documentation" data-word-count="1111" data-au="0.20">Who's On First Life Cycle Documentation</a>
-	</li>
-	<li class="whosonfirst-nonbullet-list-item">
-		<a href="https://mapzen.com/blog/whosonfirst-venues" class="whosonfirst-sole-link whosonfirst-dynamically-generated-post blog-post" data-pubdate="2016-10-07" title="Venues, Postal Codes... and All Those GitHub Repositories" data-word-count="2559" data-au="0.47">Venues, Postal Codes... and All Those GitHub Repositories</a>
-	</li>
-	<li class="whosonfirst-nonbullet-list-item">
-		<a href="2016/martin_nacis_2016_wof.pdf" class="whosonfirst-sole-link whosonfirst-dynamically-generated-post blog-post" data-pubdate="2016-10" title="Who's on First: Administrative Boundaries & Localities" data-word-count="an unknown number of" data-au="∞">Who's on First: Administrative Boundaries & Localities (NACIS 2016)</a>
-	</li>
-	<li class="whosonfirst-nonbullet-list-item">
-		<a href="2016/nat_case_nacis_2016_wof.pdf" class="whosonfirst-sole-link whosonfirst-dynamically-generated-post blog-post" data-pubdate="2016-10" title="Who ARE the People in your Neighborhood? Developing Mapzen’s Neighborhood Database" data-word-count="an unknown number of" data-au="∞">Who ARE the People in your Neighborhood? Developing Mapzen's Neighborhood Database (NACIS 2016)</a>
-	</li>
-	<li class="whosonfirst-nonbullet-list-item">
-		<a href="https://mapzen.com/blog/mesoshapes" class="whosonfirst-sole-link whosonfirst-dynamically-generated-post blog-post" data-pubdate="2016-12-08" title="Improving county coverage in Who's On First" data-word-count="1145" data-au="0.21">Improving county coverage in Who's On First</a>
-	</li>
-</ul>
-<h6 id="2017" class="whosonfirst-deemphasized-subpageheader">2017</h6>
-<ul class="whosonfirst-nonbullet-list whosonfirst-sole-links-container">
-	<li class="whosonfirst-nonbullet-list-item">
-		<a href="https://mapzen.com/blog/bundler" class="whosonfirst-sole-link whosonfirst-dynamically-generated-post blog-post" data-pubdate="2017-02-10" title="Bundling up descendants into GeoJSON" data-word-count="1400" data-au="0.25">Bundling up descendants into GeoJSON</a>
-	</li>
-	<li class="whosonfirst-nonbullet-list-item">
-		<a href="https://mapzen.com/blog/whosonfirst-api" class="whosonfirst-sole-link whosonfirst-dynamically-generated-post blog-post" data-pubdate="2017-04-04" title="The Who's On First API" data-word-count="4177" data-au="0.77">The Who's On First API</a>
-	</li>
-	<li class="whosonfirst-nonbullet-list-item">
-		<a href="https://mapzen.com/blog/weird-and-wonderful" class="whosonfirst-sole-link whosonfirst-dynamically-generated-post blog-post" data-pubdate="2017-04-17" title="The world is weird and wonderful!" data-word-count="2156" data-au="0.39">The world is weird and wonderful!</a>
-	</li>
-	<li class="whosonfirst-nonbullet-list-item">
-		<a href="https://mapzen.com/blog/neighbourhood-updates-two" class="whosonfirst-sole-link whosonfirst-dynamically-generated-post blog-post" data-pubdate="2017-04-21" title="Updating Who's On First Neighbourhoods - Part II" data-word-count="842" data-au="0.15">Updating Who's On First Neighbourhoods - Part II</a>
-	</li>
-	<li class="whosonfirst-nonbullet-list-item">
-		<a href="https://mapzen.com/blog/whosonfirst-api-explorer" class="whosonfirst-sole-link whosonfirst-dynamically-generated-post blog-post" data-pubdate="2017-04-28" title="The Who's On First API Explorer" data-word-count="1354" data-au="0.25">The Who's On First API Explorer</a>
-	</li>
-	<li class="whosonfirst-nonbullet-list-item">
-		<a href="2017/csvconf_notes.pdf" class="whosonfirst-sole-link whosonfirst-dynamically-generated-post blog-post" data-pubdate="2017-05-03" title="The world is weird and wonderful!" data-word-count="an unknown number of " data-au="∞">The world is weird and wonderful! (csv,conf,v3)</a>
-	</li>
-	<li class="whosonfirst-nonbullet-list-item">
-		<a href="https://mapzen.com/blog/simple-is-hard" class="whosonfirst-sole-link whosonfirst-dynamically-generated-post blog-post" data-pubdate="2017-05-10" title="Simple is hard" data-au="0.30" data-word-count="1623">Simple is hard</a>
-	</li>
-	<li class="whosonfirst-nonbullet-list-item">
-		<a href="https://mapzen.com/blog/tackling-space-and-time-in-whosonfirst" class="whosonfirst-sole-link whosonfirst-dynamically-generated-post blog-post" data-pubdate="2017-06-29" title="Tackling Space and Time in Who's On First" data-au="0.22" data-word-count="1170">Tackling Space and Time in Who's On First</a>
-	</li>
-	<li class="whosonfirst-nonbullet-list-item">
-		<a href="https://mapzen.com/blog/wof-website-redesign/" class="whosonfirst-sole-link whosonfirst-dynamically-generated-post blog-post" data-pubdate="2017-07-28" title="Redesigning and Rebuilding the Who's On First website" data-au="0.40" data-word-count="2194">Redesigning and Rebuilding the Who's On First website</a>
-	</li>
-	<li class="whosonfirst-nonbullet-list-item">
-		<a href="https://mapzen.com/blog/geotagging-wof-venues/" class="whosonfirst-sole-link whosonfirst-dynamically-generated-post blog-post" data-pubdate="2017-08-01" title="Geotagging WOF venues" data-au="0.44" data-word-count="2392">Geotagging WOF venues</a>
-	</li>
-	<li class="whosonfirst-nonbullet-list-item">
-		<a href="https://mapzen.com/blog/summer-2017-wof" class="whosonfirst-sole-link whosonfirst-dynamically-generated-post blog-post" data-pubdate="2017-08-22" title="Increasing Name Translations in Who's On First" data-au="0.39" data-word-count="2111">Increasing Name Translations in Who's On First</a>
-	</li>
-	<li class="whosonfirst-nonbullet-list-item">
-		<a href="https://mapzen.com/blog/mapzen-places" class="whosonfirst-sole-link whosonfirst-dynamically-generated-post blog-post" data-pubdate="2017-09-14" title="Welcoming Mapzen Places and Libpostal to Mapzen Flex" data-au="0.13" data-word-count="710">Welcoming Mapzen Places and Libpostal to Mapzen Flex</a>
-	</li>
-	<li class="whosonfirst-nonbullet-list-item">
-		<a href="https://mapzen.com/blog/introducting-statoids" class="whosonfirst-sole-link whosonfirst-dynamically-generated-post blog-post" data-pubdate="2017-09-19" title="Statoids, Mesoshapes, and Who's On First" data-au="0.22" data-word-count="1181">Statoids, Mesoshapes, and Who's On First</a>
-	</li>
-	<li class="whosonfirst-nonbullet-list-item">
-		<a href="https://mapzen.com/blog/mapzen-places" class="whosonfirst-sole-link whosonfirst-dynamically-generated-post blog-post" data-pubdate="2017-09-19" title="Mapzen Places is here! And there! And everywhere." data-au="0.13" data-word-count="710">Mapzen Places is here! And there! And everywhere.</a>
-	</li>
-	<li class="whosonfirst-nonbullet-list-item">
-		<a href="https://mapzen.com/blog/whosonfirst-nacis-2017/" class="whosonfirst-sole-link whosonfirst-dynamically-generated-post blog-post" data-pubdate="2017-10-17" title="maîtres chez nous" data-au="0.48" data-word-count="2585">maîtres chez nous</a>
-	</li>	
-	<li class="whosonfirst-nonbullet-list-item">
-		<a href="https://mapzen.com/blog/whosonfirst-sotmus-2017/" class="whosonfirst-sole-link whosonfirst-dynamically-generated-post blog-post" data-pubdate="2017-10-24" title="Who's On First :fist-bump: OpenStreetMap" data-au="0.52" data-word-count="2829">Who's On First :fist-bump: OpenStreetMap</a>
-	</li>
+		</div>	
+		</div>	
 
-	<li class="whosonfirst-nonbullet-list-item">
-		<a href="https://mapzen.com/blog/updating-whosonfirst/" class="whosonfirst-sole-link whosonfirst-dynamically-generated-post blog-post" data-pubdate="2017-12-14" title="Whos On First Updates, 2017" data-au="0.13" data-word-count="680">Whos On First Updates, 2017</a>
-	</li>
-
-	<li class="whosonfirst-nonbullet-list-item">
-		<a href="https://mapzen.com/blog/wof-in-a-box/" class="whosonfirst-sole-link whosonfirst-dynamically-generated-post blog-post" data-pubdate="2017-12-21" title="WOF in a Box (part 1)" data-au="0.68" data-word-count="3691">WOF in a Box (part 1)</a>
-	</li>
-
-	<li class="whosonfirst-nonbullet-list-item">
-		<a href="https://mapzen.com/blog/neighbourhood-updates-three" class="whosonfirst-sole-link whosonfirst-dynamically-generated-post blog-post" data-pubdate="2017-12-22" title="Updating Who's On First Neighbourhoods - Part III" data-au="" data-word-count="">Updating Who's On First Neighbourhoods - Part III</a>
-	</li>
-
-	<li class="whosonfirst-nonbullet-list-item">
-		<a href="https://mapzen.com/blog/wof-in-a-box-part2/" class="whosonfirst-sole-link whosonfirst-dynamically-generated-post blog-post" data-pubdate="2017-12-29" title="WOF in a Box (part 2)" data-au="0.68" data-word-count="3691">WOF in a Box (part 2)</a>
-	</li>
-	
-</ul>
-
-<script type="text/javascript">
-	window.addEventListener("load", function load(event){
-  
-		var posts = document.getElementsByClassName("blog-post");
-		var count_posts = posts.length;
-
-		var wordcount = 0;
-
-		for (var i=0; i < count_posts; i++){
-
-			var el = posts[i];
-			var wc = el.getAttribute("data-word-count");
-			wc = parseInt(wc);
-
-			if (wc){
-				wordcount += wc;
-			}
-		}
-
-        	var el = document.getElementById("word-count");
-		el.innerText = wordcount.toLocaleString() + " to be exact";
-	});
-</script>
-					</div>
-				</div>
-			</article>
-		</div>
-		<div class="col-lg-2 col-md-0 col-sm-0 col-xs-0"></div>
-	</div>
-</div>
-			<!-- START footer.html -->
-
-		</div>
 		<footer>
 			<nav class="navbar navbar-default navbar-bottom">
 				<div class="container">
-					<!-- Collect the nav links, forms, and other content for toggling -->
+					
 					<ul class="nav navbar-nav navbar-right whosonfirst-footer">
-						<li class="whosonfirst-nav-link-nounderline whoosonfooter-gig">who's on first is a <a href="https://mapzen.com/" class="whosonfirst-nav-link whosonfirst-nav-link-innounderline">mapzen</a> gig</li>
 						<li><a href="/docs/contributing/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">contributing</a></li>
-						<li><a href="/docs/licensing/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">licensing</a></li>
-						<li><a href="https://github.com/whosonfirst" class="whosonfirst-nav-link whosonfirst-footer-nav-link">code github</a></li>
-						<li><a href="https://github.com/whosonfirst-data" class="whosonfirst-nav-link whosonfirst-footer-nav-link">data github</a></li>
+						<li><a href="/docs/licenses/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">license</a></li>
 						<li><a href="https://twitter.com/alloftheplaces/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">twitter</a></li>
 					</ul>
 				</div>
 			</nav>
 		</footer>
 
-		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		
 		<script src="/javascript/jquery.min.js"></script>
-		<!-- Include all compiled plugins (below), or include individual files as needed -->
+		
 		<script src="/javascript/bootstrap.min.js"></script>
 		<script src="/javascript/mapzen.whosonfirst.home.js"></script>
 		<script src="/javascript/mapzen.whosonfirst.subpage.js"></script>
-		<!-- JavaScript for code styling from highlightpack.js -->
+		
 		<script src="/javascript/highlightpack.js"></script>
 		<script>
 		  try {
@@ -265,4 +523,3 @@ Blog
 	</body>
 </html>
 
-<!-- END footer.html -->

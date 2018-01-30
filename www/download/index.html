@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Who’s On First | </title>
+		<meta name="description" content="Who’s on First is a gazetteer of places." />
+		<link rel="apple-touch-icon" href="/images/favicons/apple-touch-icon.png" sizes="180x180">
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-16x16.png" sizes="16x16">
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-32x32.png" sizes="32x32">
+		<link rel="manifest" href="/images/favicons/manifest.json">
+		<link rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg" color="#2C1E3F">
+		<link rel="stylesheet" href="/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/css/mapzen.whosonfirst.css">
+		<!-- CSS for code styling from highlightpack.js -->
+		<link rel="stylesheet" href="/css/styles/grayscale.css">
+	</head>
+	<body>
+		<div class="whosonfirst-wrapper">
+
+			<nav class="navbar navbar-default navbar-fixed-top whosonfirst-fixed-subpage-navbar">
+				<div class="container">
+
+					<!-- Brand and toggle get grouped for better mobile display -->
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="/">Who’s On First</a>
+					</div>
+
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					  <ul class="nav navbar-nav navbar-right">
+
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/browse/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">browse</a>
+							</li>
+					    
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/docs/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">documentation</a>
+							</li>
+							
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/code/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">code</a>
+							</li>
+
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/api/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">api</a>
+							</li>
+							
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/download/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">download</a>
+							</li>
+							
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/blog/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">blog</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+<div class="container whosonfirst-subpage-container">
+	<div class="row">
+		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-0">
+			<aside>
+				<div class="whosonfirst-sidenav-container">
+
+					<ul class="whosonfirst-sidenav-list">
+
+						<li class="whosonfirst-sidenav-list-element">
+						  <a href="#sqlite" class="whosonfirst-nav-link whosonfirst-sidenav-link">sqlite</a>
+						</li>
+
+						<li class="whosonfirst-sidenav-list-element">
+						  <a href="#bundles" class="whosonfirst-nav-link whosonfirst-sidenav-link">bundles</a>
+						  </li>
+
+						<li class="whosonfirst-sidenav-list-element">						
+						  <a href="#github" class="whosonfirst-nav-link whosonfirst-sidenav-link">github</a>
+						</li>
+
+						<!--
+						<li class="whosonfirst-sidenav-list-element">						
+						  <a href="#s3" class="whosonfirst-nav-link whosonfirst-sidenav-link">S3</a>
+						</li>
+						-->
+
+						<li class="whosonfirst-sidenav-list-element">
+						  <a href="#repos" class="whosonfirst-nav-link whosonfirst-sidenav-link">how that data is organized</a>
+						</li>
+					</ul>
+				</div>
+			</aside>
+		</div>
+		<div class="col-lg-7 col-md-9 col-sm-9 col-xs-12">
+			<article>
+<h1 class="whosonfirst-subpage-header">
+Downloading Who&#39;s On First
+</h1>
+<div class="whosonfirst-fulltabs-container">
+	<div class="whosonfirst-extrasmall-tabs-menu">
+		<div class="whosonfirst-extrasmall-tabs-menu-content">
+			<div class="whosonfirst-extrasmall-tabs-menu-content-header">
+				<div class="whosonfirst-extrasmall-tab-selection">State</div>
+			</div>
+		</div>
+	</div>
+	<div class="whosonfirst-tabs-content"><style type="text/css">
+  .downloads-list {
+  margin-top: 1.5em !important;
+  margin-bottom: 1.5em !important;
+  }
+</style>
+
+
+
+<p>At rest every Who's On First record is an atomic GeoJSON-encoded text file. This decision addresses concerns about the portability and longevity of the project but can make it a challenge to get started. For that reason we provide a variety of pre-packaged distributions, in a number of formats, of Who's On First data organized by placetype and country.</p>
+
+<p>All of these distributions are available from:</p>
+  
+<p style="font-size:2em; text-align:center;font-weight:700;"><a href="https://dist.whosonfirst.org/">https://dist.whosonfirst.org/</a></p>
+
+<h2 id="distributions">Distributions</h2>
+
+<p>In order to talk about distributions we need to take a moment to talk about how the raw data is stored and organized. <em>If you haven't already read the <a href="#repos">How the Who's On First data repositories are organized</a> section below, now would be a good time to take a look because its informs how we are currently building the distributions listed here. Go ahead, we'll wait...</em></p>
+
+<p>Eventually we will have a variety of smaller data distributions grouped by country and placetype and other properties, but as of this writing all distributions are derived from individual repositories in the <a href="">whosonfirst-data</a> GitHub organization.</p>
+
+<h3 id="sqlite">SQLite databases</h3>
+
+<p>Who's On First data exported as a set of SQLite database tables: ancestors, concordances, geojson, geometries, names, spr (which is an acronym for "<a href="/docs/spr/">standard places response</a>").</p>
+
+<p>SQLite databases are available from:</p>
+
+<ul class="downloads-list">
+  <li><a href="https://dist.whosonfirst.org/sqlite/">https://dist.whosonfirst.org/sqlite/</a></li>
+</ul>
+
+<small>SQLite databases are generated using the <a href="https://github.com/whosonfirst/go-whosonfirst-sqlite">go-whosonfirst-sqlite</a> package.</small>
+
+<h3 id="bundles">"Bundles"</h3>
+
+<p>"Bundles" are basically Who's On First Git repositories without the <code>.git</code> directories (because they often very large and of little use to people who just want to work with the raw data).</p>
+
+<p>Bundles are available from:</p>
+  
+<ul class="downloads-list">
+  <li><a href="https://dist.whosonfirst.org/bundles/">https://dist.whosonfirst.org/bundles/</a></li>
+</ul>
+
+<small>Bundles are generated using the <a href="https://github.com/whosonfirst/go-whosonfirst-bundles">go-whosonfirst-bundles</a> package.</small>
+
+<h3 id="shapefiles">Shapefiles</h3>
+
+<p style="font-style:italic;">Shapefile distributions are not yet available but will be soon.</p>
+
+<h2 id="github">Git(Hub)</h2>
+
+<p>All the Who's On First data and its complete edit history is available on GitHub:</p>
+  
+<ul class="downloads-list">
+  <li><a href="https://github.com/whosonfirst-data/">https://github.com/whosonfirst-data/</a></li>
+</ul>
+
+<h2 id="repos">How the Who's On First data repositories are organized</h2>
+
+<p>We use the <a href="https://git-scm.com/">Git</a> version control system to manage Who's On First data. One of the present-day limits of Git is the number of atomic files you can store in a single Git "repository". We believe that eventually it will be possible to keep all 26 million records in a single Git repository but we are not there yet.</p>
+
+<p>Instead of a single monolithic repository we have grouped Who's On First data as follows:</p>
+
+<ul class="downloads-list">
+  <li><a href="#administrative-data">Administrative Data</a> - all administrative placetypes (all the places between and inclusive of continents to microhoods) for the entire world</li>
+  <li><a href="#other-data">Everything else</a> - all other placetypes including venues, postalcodes, constituencies and intersections</li>
+</ul>
+
+<p>The naming convention for Who's On First data reposiories at its <em>most granular</em> looks like this:</p>
+
+<pre>
+	<code>whosonfirst-data + "-" + WHOSONFIRST_PLACETYPE + "-" + WHOSONFIRST_COUNTRY + "-" + WHOSONFIRST_SUBDIVISION</code>
+</pre>
+
+<p>There are some important points to keep in mind about these conventions:</p>
+
+<ul class="downloads-list">
+  <li>All administrative data is stored in the <code>whosonfirst-data</code> repository. Administrative data is <em>not</em> subdivided by country or placetype.</li>
+  <li>We try to use the shortest name whenever possible. The only reason for subdiving a placetype by country (or a country by subdivision) is to address operational concerns of working with the data in Git or GitHub.</li>
+  <li>As a general rule every Who's On First document <em>should</em> have both an explicit <code>wof:repo</code> property containing the name of its parent repository.</li>
+  <li>Who's On First documents should also contain all the necessary properties to reconstruct its <code>wof:repo</code> name allowing developers to validate that name by testing for the presence of a matching repository, starting with the most granular name and working backwards.</li>
+  <li>The Who's On First data model allows for all of these repositories to be merged in to a single tree stucture without any collisions. If a Who's On First record is accidentally stored in or saved to an inappropriate repository that is considered an inconvenience (to be fixed) but not an error.</li>
+</ul>
+
+<h3 id="administrative-data">Administrative Data</h3>
+
+<p>Administrative data is located in the whosonfirst-data repository. This repository contains all administrative placetypes (all the places between and inclusive of continents to microhoods) for the entire world.</p>
+
+<p>You can find data for the following placetypes in the whosonfirst-data repository: continent, empire, country, macroregion, region, macrocounty, county, locality, macrohood, neighbourhood, microhood</p>
+
+<ul class="downloads-list">
+  <li><a href="https://github.com/whosonfirst-data/whosonfirst-data/">https://github.com/whosonfirst-data/whosonfirst-data/</a></li>
+</ul>
+
+<h3 id="other-data">Other Data</h3>
+
+<h4 id="venue">Venues</h4>
+
+<p>There are over 20 million venues in Who's On First, with about 60% in the USA. Venues in the USA are grouped in to <code>whosonfirst-data-venue-us-{WHOSONFIRST_SUBDIVISION}</code> repositories, while everything is grouped in to <code>whosonfirst-data-venue-{WHOSONFIRST_COUNTRY}</code> repositories.</p>
+
+<p>There is also a general purpose <code>whosonfirst-data-venue</code> repository which contains no data but pointers to all the venue-related repositories that do:</p>
+
+<ul class="downloads-list">
+  <li><a href="https://github.com/whosonfirst-data/whosonfirst-data-venue/">https://github.com/whosonfirst-data/whosonfirst-data-venue</a></li>
+</ul>
+
+<h4 id="postalcode">Postal Codes</h4>
+
+<p>Postal codes are grouped in to <code>whosonfirst-data-postalcode-{WHOSONFIRST_COUNTRY}</code> repositories.</p>
+
+<p>There is also a general purpose <code>whosonfirst-data-postalcode</code> repository which contains no data but pointers to all the postal code -related repositories that do:</p>
+
+<ul class="downloads-list">
+  <li><a href="https://github.com/whosonfirst-data/whosonfirst-data-postalcode">https://github.com/whosonfirst-data/whosonfirst-data-postalcode</a></li>
+</ul>
+
+<h4 id="consituency">Constituencies</h4>
+
+<p>Constituencies are available for only a select number of countries (two to be exact: the USA and Canada) as we work through what it means to include constituencies in Who's On First. <em>If you have constituencies from other countries we'd love to include them too.</em></p>
+
+<ul class="downloads-list">
+	<li><a href="https://github.com/whosonfirst-data/whosonfirst-data-constituency-ca">https://github.com/whosonfirst-data/whosonfirst-data-constituency-ca</a></li>
+	<li><a href="https://github.com/whosonfirst-data/whosonfirst-data-constituency-us">https://github.com/whosonfirst-data/whosonfirst-data-constituency-us</a></li>
+</ul>
+
+<h4 id="intersections">Intersections</h4>
+
+<p>Intersections are a still-experimental placetype in Who's On First, currently only available for New York City (and specifically Manhattan).</p>
+
+<ul class="downloads-list">
+  <li><a href="https://github.com/whosonfirst-data/whosonfirst-data-intersection-us-ny">https://github.com/whosonfirst-data/whosonfirst-data-intersection-us-ny</a></li>
+</ul>
+
+					</div>
+				</div>
+			</article>
+		</div>
+		<div class="col-lg-2 col-md-0 col-sm-0 col-xs-0"></div>
+	</div>
+</div>
+			<!-- START footer.html -->
+
+		</div>
+		<footer>
+			<nav class="navbar navbar-default navbar-bottom">
+				<div class="container">
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<ul class="nav navbar-nav navbar-right whosonfirst-footer">
+						<li><a href="/docs/contributing/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">contributing</a></li>
+						<li><a href="/docs/licensing/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">license</a></li>
+						<li><a href="https://twitter.com/alloftheplaces/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">twitter</a></li>
+					</ul>
+				</div>
+			</nav>
+		</footer>
+
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="/javascript/jquery.min.js"></script>
+		<!-- Include all compiled plugins (below), or include individual files as needed -->
+		<script src="/javascript/bootstrap.min.js"></script>
+		<script src="/javascript/mapzen.whosonfirst.home.js"></script>
+		<script src="/javascript/mapzen.whosonfirst.subpage.js"></script>
+		<!-- JavaScript for code styling from highlightpack.js -->
+		<script src="/javascript/highlightpack.js"></script>
+		<script>
+		  try {
+		  	hljs.initHighlightingOnLoad();
+		  } catch (e) {
+		  	console.log("HLJS", e);
+		  }
+		</script>
+	</body>
+</html>
+
+<!-- END footer.html -->

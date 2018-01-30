@@ -1,0 +1,16 @@
+{{ define "feed_rss_20" }}<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:h="http://www.w3.org/1999/xhtml" version="2.0">
+  <channel>
+    <title>Who's On First</title>
+    <link>https://www.whosonfirst.org/</link>
+    <lastBuildDate>{{ .BuildDate.Format "Mon, 02 Jan 2006 15:04:05 MST" }}</lastBuildDate>
+    <description>Who's On First is a gazetteer of all the places.</description>
+    {{ range $fm := .Posts }}
+    <item>
+      <link>https://whosonfirst.org{{ $fm.Permalink }}</link>
+      <title>{{ $fm.Title }}</title>
+      <description>{{ $fm.Excerpt }}</description>
+    </item>
+    {{ end }}
+  </channel>
+</rss>{{ end }}

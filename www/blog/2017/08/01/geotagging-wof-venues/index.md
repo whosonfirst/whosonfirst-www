@@ -2,7 +2,7 @@
 layout: page
 date: 2017-08-01
 published: true
-permalink: /blog/2017/08/01/geotagging-wof-vneues/
+permalink: /blog/2017/08/01/geotagging-wof-venues/
 category: blog
 title: "Geotagging WOF venues"
 excerpt: "Photography as data collection."

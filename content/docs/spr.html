@@ -1,0 +1,66 @@
+<h1>Standard Places Response (SPR)</h1>
+
+<p>The "Standard Places Response" (or SPR) is an on-going effort to standardize on a <em>minimum</em> set of properties that Who's On First related services should return when queried.</p>
+
+<p>The SPR is being used by a lot of the software packages written in <a href="/code/">Go</a> and assumes an interface (contract) that looks like this:</p>
+  
+<pre>
+type StandardPlacesResult interface {
+	Id() string
+	ParentId() string
+	Name() string
+	Placetype() string
+	Country() string
+	Repo() string
+	Path() string
+	URI() string
+	Latitude() float64
+	Longitude() float64
+	MinLatitude() float64
+	MinLongitude() float64
+	MaxLatitude() float64
+	MaxLongitude() float64
+	IsCurrent() flags.ExistentialFlag
+	IsCeased() flags.ExistentialFlag
+	IsDeprecated() flags.ExistentialFlag
+	IsSuperseded() flags.ExistentialFlag
+	IsSuperseding() flags.ExistentialFlag
+	SupersededBy() []int64
+	Supersedes() []int64
+}
+</pre>
+
+<p>And this is what looks like to a user doing a point-in-polygon query against the <a href="">go-whosonfirst-pip-v2</a> tool:</p>
+
+<pre>
+curl -s 'http://localhost:8080/?latitude=37.787221&longitude=-122.400098&placetype=locality' | python -mjson.tool
+{
+    "places": [
+        {
+            "wof:id": 85922583,
+            "wof:parent_id": 102087579,
+            "wof:name": "San Francisco",
+            "wof:placetype": "locality",
+            "wof:country": "US",
+            "wof:repo": "whosonfirst-data",
+            "wof:path": "859/225/83/85922583.geojson",
+            "wof:superseded_by": [],
+            "wof:supersedes": [],
+            "mz:uri": "https://whosonfirst.mapzen.com/data/859/225/83/85922583.geojson",
+            "mz:latitude": 37.778008,
+            "mz:longitude": -122.43127200000001,
+            "mz:min_latitude": 37.639830000000003,
+            "mz:min_longitude": -123.17382499999999,
+            "mz:max_latitude": 37.929824000000004,
+            "mz:max_longitude": -122.28178,
+            "mz:is_current": 1,
+            "mz:is_ceased": -1,
+            "mz:is_deprecated": 0,
+            "mz:is_superseded": 0,
+            "mz:is_superseding": 0,
+            "wof:lastmodified": 1501271725
+        }
+    ]
+}
+</pre>
+  

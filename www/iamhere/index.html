@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" 🌐>
+<head>
+    <title>I am here</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="referrer" content="origin">
+    <meta http-equiv="X-UA-Compatible" content="IE=9" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="HandheldFriendly" content="true" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+
+    <!--
+    <link rel="stylesheet" type="text/css" href="./css/iamhere.deps.min.css" />
+    <link rel="stylesheet" type="text/css" href="./css/iamhere.app.min.css" />
+    <script type="text/javascript" src="./javascript/iamhere.deps.min.js"></script>
+    <script type="text/javascript" src="./javascript/tangram.min.js"></script>
+    <script type="text/javascript" src="./javascript/iamhere.app.min.js"></script>
+    -->
+
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="./css/leaflet.css" />
+    <link rel="stylesheet" type="text/css" href="./css/leaflet.label.css" />
+    <link rel="stylesheet" type="text/css" href="./css/mapzen.whosonfirst.iamhere.css" />
+    <link rel="stylesheet" type="text/css" href="./css/mapzen.whosonfirst.iamhere.mobile.css" />
+
+    <script type="text/javascript" src="./javascript/leaflet.js"></script>
+    <script type="text/javascript" src="./javascript/leaflet.label.js"></script>
+    <script type="text/javascript" src="./javascript/leaflet.hash.js"></script>
+    
+    <script type="text/javascript" src="./javascript/tangram.min.js?cb=123"></script>    
+    <!-- <script type="text/javascript" src="./javascript/tangram.debug.js?cb=123"></script> -->
+    
+    <script type="text/javascript" src="./javascript/mapzen.whosonfirst.leaflet.js"></script>
+    <script type="text/javascript" src="./javascript/mapzen.whosonfirst.leaflet.styles.js"></script>
+    <script type="text/javascript" src="./javascript/mapzen.whosonfirst.leaflet.handlers.js"></script>
+    <script type="text/javascript" src="./javascript/mapzen.whosonfirst.leaflet.tangram.js"></script>
+    <script type="text/javascript" src="./javascript/mapzen.whosonfirst.geojson.js"></script>
+    <script type="text/javascript" src="./javascript/mapzen.whosonfirst.php.js"></script>
+    <script type="text/javascript" src="./javascript/mapzen.whosonfirst.data.js"></script>
+    <script type="text/javascript" src="./javascript/mapzen.whosonfirst.net.js"></script>
+    <script type="text/javascript" src="./javascript/mapzen.whosonfirst.log.js"></script>
+    <script type="text/javascript" src="./javascript/mapzen.whosonfirst.enmapify.js"></script>
+    <script type="text/javascript" src="./javascript/mapzen.whosonfirst.pip.js"></script>
+    <script type="text/javascript" src="./javascript/mapzen.whosonfirst.pelias.js"></script>
+    <script type="text/javascript" src="./javascript/mapzen.whosonfirst.iplookup.js"></script>
+    <script type="text/javascript" src="./javascript/mapzen.whosonfirst.feedback.js"></script>
+    <script type="text/javascript" src="./javascript/mapzen.whosonfirst.iamhere.js"></script>
+    
+    <script type="text/javascript" src="./javascript/mapzen.whosonfirst.config.js"></script>
+
+</head>
+<body>
+
+<div class="whereami-controls whereami-search">
+<form id="search">
+<input type="text" name="q" id="q" placeholder="search for a place" />
+<button id="find">search</button>
+</form>
+
+<button id="findme" title="find my location">⌖</button>
+</div>
+
+<div id="map"><div id="crosshairs" style="background-color:#fff;"></div></div>
+
+<div class="whereami-controls">
+<ul id="whereami-info">
+<li id="whereami-latlon"></li>
+<li id="whereami-zoom"></li>
+<li id="whereami-reversegeo"></li>
+</ul>
+
+<div id="ip-lookups">
+  <div id="ip-lookups-enabled">You have automatic map positioning (using IP lookups) enabled. <button class="ip-lookups-button" id="ip-lookups-off">Disable?</button></div>
+  <div id="ip-lookups-disabled">You have automatic map positioning (using IP lookups) disabled. <button class="ip-lookups-button" id="ip-lookups-on">Enable?</button></div>      
+</div>
+</div>
+
+<div id="whereami-feedback"></div>
+
+<div id="wof-log-container"><div id="wof-log"></div></div>
+
+<script type="text/javascript">
+
+window.onload = function(e){
+	mapzen.whosonfirst.config.init();
+	mapzen.whosonfirst.iamhere.init();
+}
+
+</script>
+
+</body>
+</html>
