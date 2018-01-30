@@ -88,11 +88,15 @@
 		<style type="text/css">
 		  body {
 		  font-family: serif;
-		  margin:2em;
-		  margin-left: 10%;
-		  margin-right: 10%;
 		  font-size: 1.3em;
 		  line-height: 1.5em;
+		  }
+
+		  h2 small {
+		  display: block;
+		  margin-top:.10em;
+		  font-weight: 100;
+		  font-size: .5em;
 		  }
 
 		  img {
@@ -107,20 +111,8 @@
 		  margin: 0 auto;
 		  }
 
-		  h2 small {
-		  display: block;
-		  margin-top:.10em;
-		  font-weight: 100;
-		  font-size: .5em;
-		  }
-
 		  .hey-look {
 		  font-weight: 700;
-		  }
-
-		  #blog-post {
-		  margin-top:2em;
-		  margin-bottom:5em;
 		  }
 
 		  @media (min-width: 320px) and (max-width: 400px) {
@@ -162,7 +154,6 @@
 	       and tagged <span class="hey-look">whosonfirst</span> and <span class="hey-look">data</span></small>
 	  </h2>
 
-	  <div id="blog-post">
 <p>Every record in <a href="https://whosonfirst.mapzen.com/spelunker/">Who’s On First</a>, our gazetteer of places around the world, has two powerful properties &ndash; geometry and hierarchy. Since the raw data of any WOF record is a blob of GeoJSON, you can take the URL and draw it in any modern mapping application with minimal effort. We thought it would be nice to let you grab GeoJSON for a bunch of records at once, so we added a tool called the Bundler for you using the soon-to-be-released Who’s On First API.</p>
 
 <p>##Descending into Mapness</p>
@@ -335,7 +326,7 @@ frame.src = frame.getAttribute(&quot;source&quot;);
 					
 					<ul class="nav navbar-nav navbar-right whosonfirst-footer">
 						<li><a href="/docs/contributing/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">contributing</a></li>
-						<li><a href="/docs/licensing/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">license</a></li>
+						<li><a href="/docs/licenses/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">license</a></li>
 						<li><a href="https://twitter.com/alloftheplaces/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">twitter</a></li>
 					</ul>
 				</div>

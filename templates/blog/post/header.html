@@ -4,11 +4,15 @@
 		<style type="text/css">
 		  body {
 		  font-family: serif;
-		  margin:2em;
-		  margin-left: 10%;
-		  margin-right: 10%;
 		  font-size: 1.3em;
 		  line-height: 1.5em;
+		  }
+
+		  h2 small {
+		  display: block;
+		  margin-top:.10em;
+		  font-weight: 100;
+		  font-size: .5em;
 		  }
 
 		  img {
@@ -23,20 +27,8 @@
 		  margin: 0 auto;
 		  }
 
-		  h2 small {
-		  display: block;
-		  margin-top:.10em;
-		  font-weight: 100;
-		  font-size: .5em;
-		  }
-
 		  .hey-look {
 		  font-weight: 700;
-		  }
-
-		  #blog-post {
-		  margin-top:2em;
-		  margin-bottom:5em;
 		  }
 
 		  @media (min-width: 320px) and (max-width: 400px) {
@@ -78,5 +70,4 @@
 	      {{ if gt $lent 0 }} and tagged {{ range $it, $t := .Tags }}{{ if gt $lent 1 }}{{if eq $it 0}}{{else if eq (plus1 $it) $lent}} and {{else}}, {{end}}{{ end }}<span class="hey-look">{{ $t }}</span>{{ end }}</small>{{ end }}
 	  </h2>
 
-	  <div id="blog-post">
 {{end}}

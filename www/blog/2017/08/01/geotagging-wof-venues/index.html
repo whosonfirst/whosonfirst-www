@@ -88,11 +88,15 @@
 		<style type="text/css">
 		  body {
 		  font-family: serif;
-		  margin:2em;
-		  margin-left: 10%;
-		  margin-right: 10%;
 		  font-size: 1.3em;
 		  line-height: 1.5em;
+		  }
+
+		  h2 small {
+		  display: block;
+		  margin-top:.10em;
+		  font-weight: 100;
+		  font-size: .5em;
 		  }
 
 		  img {
@@ -107,20 +111,8 @@
 		  margin: 0 auto;
 		  }
 
-		  h2 small {
-		  display: block;
-		  margin-top:.10em;
-		  font-weight: 100;
-		  font-size: .5em;
-		  }
-
 		  .hey-look {
 		  font-weight: 700;
-		  }
-
-		  #blog-post {
-		  margin-top:2em;
-		  margin-bottom:5em;
 		  }
 
 		  @media (min-width: 320px) and (max-width: 400px) {
@@ -162,7 +154,6 @@
 	       and tagged <span class="hey-look">boundaryissues</span>, <span class="hey-look">whosonfirst</span> and <span class="hey-look">data</span></small>
 	  </h2>
 
-	  <div id="blog-post">
 <p>For much of this summer I’ve been working remotely on Who’s On First. In early July I was in Korea giving <a href="http://seoulbiennale.org/en/public-programs/educational/read-write-offline-mapping">a workshop on offline mapping</a> as part of the <a href="http://seoulbiennale.org/en/">Seoul Biennale of Architecture and Urbanism</a>. From there I joined my wife <a href="https://ellieirons.com/">Ellie</a> at an <a href="http://bambooculture.com/en">artist residency in Taipei</a>, where I’ve been working 12 hours ahead of my <a href="https://whosonfirst.mapzen.com/spelunker/id/102047399/">EDT</a> colleagues. Along the way I’ve been collecting new places for WOF, since both <a href="https://github.com/whosonfirst-data/whosonfirst-data-venue-tw">Taiwan</a> and <a href="https://github.com/whosonfirst-data/whosonfirst-data-venue-kr">South Korea</a> are still rather sparsely populated with venues. This was my excuse to try using my software “in the field” and expand WOF’s venue coverage.</p>
 
 <p>This post includes a fair share of obscure technical details. Perhaps it might be useful for someone working on a similar application. (And shout-out to the NYPL’s <a href="http://bertspaan.nl/">Bert Spaan</a> who’s released a very interesting looking <a href="https://github.com/nypl-spacetime/Leaflet.GeotagPhoto">geotagging Leaflet plugin</a>.)</p>
@@ -280,7 +271,7 @@
 					
 					<ul class="nav navbar-nav navbar-right whosonfirst-footer">
 						<li><a href="/docs/contributing/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">contributing</a></li>
-						<li><a href="/docs/licensing/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">license</a></li>
+						<li><a href="/docs/licenses/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">license</a></li>
 						<li><a href="https://twitter.com/alloftheplaces/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">twitter</a></li>
 					</ul>
 				</div>

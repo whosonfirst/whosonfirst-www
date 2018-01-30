@@ -88,11 +88,15 @@
 		<style type="text/css">
 		  body {
 		  font-family: serif;
-		  margin:2em;
-		  margin-left: 10%;
-		  margin-right: 10%;
 		  font-size: 1.3em;
 		  line-height: 1.5em;
+		  }
+
+		  h2 small {
+		  display: block;
+		  margin-top:.10em;
+		  font-weight: 100;
+		  font-size: .5em;
 		  }
 
 		  img {
@@ -107,20 +111,8 @@
 		  margin: 0 auto;
 		  }
 
-		  h2 small {
-		  display: block;
-		  margin-top:.10em;
-		  font-weight: 100;
-		  font-size: .5em;
-		  }
-
 		  .hey-look {
 		  font-weight: 700;
-		  }
-
-		  #blog-post {
-		  margin-top:2em;
-		  margin-bottom:5em;
 		  }
 
 		  @media (min-width: 320px) and (max-width: 400px) {
@@ -162,7 +154,6 @@
 	       and tagged <span class="hey-look">whosonfirst</span></small>
 	  </h2>
 
-	  <div id="blog-post">
 <p><em>This is the second of the two part guide to running <a href="https://whosonfirst.mapzen.com">Who&rsquo;s On First</a> tools on your own hardware. You may want to read <a href="https://mapzen.com/blog/wof-in-a-box/">part 1</a> first.</em></p>
 
 <p>Before we jump into installing the Who&rsquo;s On First <a href="https://github.com/whosonfirst/whosonfirst-www-api">REST API</a> and <a href="https://github.com/whosonfirst/whosonfirst-www-boundaryissues">editor</a>, let&rsquo;s briefly take stock of what we have running from the <a href="https://mapzen.com/blog/wof-in-a-box/">first part</a> of this guide.</p>
@@ -755,7 +746,7 @@ nano mapzen.whosonfirst.config.js
 					
 					<ul class="nav navbar-nav navbar-right whosonfirst-footer">
 						<li><a href="/docs/contributing/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">contributing</a></li>
-						<li><a href="/docs/licensing/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">license</a></li>
+						<li><a href="/docs/licenses/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">license</a></li>
 						<li><a href="https://twitter.com/alloftheplaces/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">twitter</a></li>
 					</ul>
 				</div>

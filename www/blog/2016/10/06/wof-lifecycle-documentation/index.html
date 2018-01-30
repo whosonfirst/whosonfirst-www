@@ -88,11 +88,15 @@
 		<style type="text/css">
 		  body {
 		  font-family: serif;
-		  margin:2em;
-		  margin-left: 10%;
-		  margin-right: 10%;
 		  font-size: 1.3em;
 		  line-height: 1.5em;
+		  }
+
+		  h2 small {
+		  display: block;
+		  margin-top:.10em;
+		  font-weight: 100;
+		  font-size: .5em;
 		  }
 
 		  img {
@@ -107,20 +111,8 @@
 		  margin: 0 auto;
 		  }
 
-		  h2 small {
-		  display: block;
-		  margin-top:.10em;
-		  font-weight: 100;
-		  font-size: .5em;
-		  }
-
 		  .hey-look {
 		  font-weight: 700;
-		  }
-
-		  #blog-post {
-		  margin-top:2em;
-		  margin-bottom:5em;
 		  }
 
 		  @media (min-width: 320px) and (max-width: 400px) {
@@ -162,7 +154,6 @@
 	       and tagged <span class="hey-look">WOF</span>, <span class="hey-look">ID</span>, <span class="hey-look">whosonfirst</span>, <span class="hey-look">data</span>, <span class="hey-look">Who&#39;s On First</span> and <span class="hey-look">lifecycle</span></small>
 	  </h2>
 
-	  <div id="blog-post">
 <p><img src="images/new_growth.jpg" alt="WOF is growing, up" /></p>
 
 <p><a href="https://whosonfirst.mapzen.com">Who&rsquo;s On First</a> is Mapzen&rsquo;s gazatteer of places. Within Who&rsquo;s On First, each place is represented as a record with a unique and stable identifier that we call the <strong>wof:id</strong>. Because our gazetteer tracks changes to places over time we create new records when places experience significant events (and point the old record forward to the new record&rsquo;s <strong>wof:id</strong>).</p>
@@ -299,7 +290,7 @@
 					
 					<ul class="nav navbar-nav navbar-right whosonfirst-footer">
 						<li><a href="/docs/contributing/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">contributing</a></li>
-						<li><a href="/docs/licensing/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">license</a></li>
+						<li><a href="/docs/licenses/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">license</a></li>
 						<li><a href="https://twitter.com/alloftheplaces/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">twitter</a></li>
 					</ul>
 				</div>
