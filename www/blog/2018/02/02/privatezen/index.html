@@ -5,7 +5,7 @@
 		<meta charset="utf-8" />
 		<meta http-equiv="x-ua-compatible" content="ie=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<title>Who’s On First | privatezen</title>
+		<title>Who’s On First | Privatezen</title>
 		<meta name="description" content="Who’s on First is a gazetteer of places." />
 		<link rel="apple-touch-icon" href="/images/favicons/apple-touch-icon.png" sizes="180x180" />
 		<link rel="icon" type="image/png" href="/images/favicons/favicon-16x16.png" sizes="16x16" />
@@ -23,17 +23,17 @@
 		
 		<meta property="og:type" content="article" />
 		<meta property="og:site_name" content="Who's On First" />
-		<meta property="og:title" content="privatezen" />
-		<meta property="og:description" content="The first week I started at Mapzen, in 2015, I remembering thinking" />
-		<meta property="og:image" content="https://www.whosonfirst.org/blog/2018/02/02/privatezen/images/cube.jpg" />
+		<meta property="og:title" content="Privatezen" />
+		<meta property="og:description" content="The first week I started at Mapzen, in 2015, I remembering thinking I wonder if I can swap out each one of third-party services used by Privatesquare with an equivalent Mapzen service? The answer, at the time, was “No”. It was a useful reminder of the work we had set out for ourselves." />
+		<meta property="og:image" content="https://www.whosonfirst.org/blog/2018/02/02/privatezen/images/againagain.png" />
 		
 		<meta property="twitter:card" value="summary" />
 		<meta property="twitter:site" content="@alloftheplaces" />
 		<meta property="twitter:creator" content="@alloftheplaces" />
 		<meta property="twitter:url" content="https://www.whosonfirst.org/blog/2018/02/02/privatezen/" />
-		<meta property="twitter:title" content="privatezen" />
-		<meta property="twitter:description" content="The first week I started at Mapzen, in 2015, I remembering thinking" />
-		<meta property="twitter:image" content="https://www.whosonfirst.org/blog/2018/02/02/privatezen/images/cube.jpg" />
+		<meta property="twitter:title" content="Privatezen" />
+		<meta property="twitter:description" content="The first week I started at Mapzen, in 2015, I remembering thinking I wonder if I can swap out each one of third-party services used by Privatesquare with an equivalent Mapzen service? The answer, at the time, was “No”. It was a useful reminder of the work we had set out for ourselves." />
+		<meta property="twitter:image" content="https://www.whosonfirst.org/blog/2018/02/02/privatezen/images/againagain.png" />
 		
 
 	</head>
@@ -149,37 +149,40 @@
 	  
 	  
 	  <h2>
-	    privatezen
+	    Privatezen
 	    <small>This is a blog post by
 	      <span class="hey-look">thisisaaronland</span>
 	      that was published on <span class="pubdate"><a href="/blog/2018/02/">Feb</a> <a href="/blog/2018/02/02">02</a>, <a href="/blog/2018/">2018</a></span>
 	       and tagged <span class="hey-look">electron</span>, <span class="hey-look">mapzen</span>, <span class="hey-look">privacy</span>, <span class="hey-look">privatesquare</span>, <span class="hey-look">sqlite</span>, <span class="hey-look">venues</span> and <span class="hey-look">whosonfirst</span></small>
 	  </h2>
 
-<p>Way back in 2012 I started working on a project called <a href="https://straup.github.io/privatesquare/">Privatesquare</a>. At the
-same I was doing a lot of work around the idea of <a href="https://www.aaronland.info/weblog/2012/02/14/incentivize/#pda2012">personal archiving</a> and
-Privatesquare was originally conceived as a simple archive of my Foursquare
-check-ins.</p>
+<p>Way back in 2012 I started working on a project called <a href="https://straup.github.io/privatesquare/">Privatesquare</a>. At the time I was doing a lot of work around the idea of <a href="https://www.aaronland.info/weblog/2012/02/14/incentivize/#pda2012">personal archiving</a> and
+Privatesquare was originally conceived as a simple backup of my Foursquare check-ins.</p>
 
 <p>At one point I started thinking: I don&rsquo;t care if Foursquare knows I went
 to the bar around the corner, but maybe I&rsquo;m not so keen on them knowing I
 went to the drug store. At the same time maybe I am interested in having a
 record of that. So what began as a simple unidirectional archiving project
-morphed in to a tool where I would <em>first</em> check-in to Privatesquare and then
+morphed in to a tool where I would check-in to Privatesquare <em>first</em> and then
 optionally tell Foursquare.</p>
+
+<p><em>Fun fact: Without Privatesquare the IDs in Who&rsquo;s On First might have been
+completely different but that is <a href="https://www.aaronland.info/weblog/2012/12/01/coffee-and-wifi/#timepixels">an entirely other
+story</a>,
+for another day.</em></p>
 
 <p><img src="images/stateofmind.png" alt="" /></p>
 
 <p>Privatesquare eventually grew more sophisicated allowing you to &ldquo;check-in&rdquo; to
-places not defined in Foursquare (old buildings in New York City courtesy the
-<a href="https://github.com/NYPL/gazetteer/wiki/ApiDocs">New York Public Library</a> or so-called &ldquo;states of mind&rdquo;). It also added the ability to record travel
+places not defined in Foursquare. For example, old buildings in New York City courtesy the
+<a href="https://github.com/NYPL/gazetteer/wiki/ApiDocs">New York Public Library</a> and so-called &ldquo;states of mind&rdquo;. It also added the ability to record travel
 and to record things you liked or didn&rsquo;t like in the <a href="http://nearfuturelaboratory.com/2012/09/04/the-atlas-of-desire/">Atlas of Desire</a>.</p>
 
 <p>Privatesquare was always a mornings-and-weekends project and used a variety of
-services to get thing done: <a href="https://developer.foursquare.com/">Foursquare</a> for venues and search; <a href="http://maps.stamen.com/">Stamen</a> for map
+external services to get thing done: <a href="https://developer.foursquare.com/">Foursquare</a> for venues and search; <a href="http://maps.stamen.com/">Stamen</a> for map
 tiles; The <a href="https://www.flickr.com/services/api">Flickr API</a> for geocoding cities.</p>
 
-<p>The first week I started at Mapzen, in 2015, I remembering thinking: I wonder if I can
+<p>The first week I started at <a href="https://en.wikipedia.org/wiki/Mapzen">Mapzen</a>, in 2015, I remembering thinking: I wonder if I can
 swap out each one of third-party services used by Privatesquare with an equivalent
 Mapzen service? The answer, at the time, was &ldquo;No&rdquo;.</p>
 
@@ -197,7 +200,7 @@ application, across different platforms, without a lot of the boring grunt-work 
 comes with writing native applications.</p>
 
 <p>After I finished the <a href="/blog/2017/04/28/whosonfirst-api-explorer/">Who&rsquo;s On First API Explorer</a> application I remember thinking
-back to 2015 and wondering, again, if I could finally swap out all of the
+back to 2015 and wondering if I could finally swap out all of the
 third-party services in Privatesqure with an equivalent Mapzen service.</p>
 
 <p>The answer this time was &ldquo;Yeah, probably&hellip;&rdquo;</p>
@@ -222,17 +225,18 @@ purpose-built UI but all of which shared the same underlying data model, in
 this case a simple SQLite database.</p></li>
 </ul>
 
-<p>Everything in Privatesquare is private to an individual. There was (is) no way
+<p>Everything in Privatesquare is private to an individual. There is no way
 to &ldquo;share&rdquo; a place or a list or really anything you do in the application. That
-was by design but even though you could run your own copy of Privatesquare (and
-a few people did) if you used my instance everyone&rsquo;s data was stored together in
-a shared database that someone else (me) controlled. So it was &ldquo;private&rdquo; in as
-much as you trust me.</p>
+is by design but even though you could run your own copy of Privatesquare (and
+a few people did) if you used my instance then your data was stored alonside
+everyone&rsquo;s else data in a shared database that someone else (me) controlled. So
+it is &ldquo;private&rdquo; in as much as you trust me.</p>
 
 <p>That&rsquo;s a truism bordering on a platitude but in 2018 <a href="https://www.aaronland.info/weblog/2012/10/08/signs/#stories">trust in systems, if not
-individuals, feels like it is sometimes in short supply</a>. Every day seems to
-bring news of some previously unknown existential flaw in the fundamental
-principles of computers and computer networks – aka &ldquo;the cloud&rdquo; – so that even if you
+individuals</a>,
+increasingly seems
+like it is in short supply. Every day bring news of some previously unknown <a href="https://www.raspberrypi.org/blog/why-raspberry-pi-isnt-vulnerable-to-spectre-or-meltdown/">existential flaw in the fundamental
+principles of computers</a> and computer networks – aka &ldquo;the cloud&rdquo; – so that even if you
 implicitly trust an operator or a service the guarantee of that trust feels like
 it is called in to question.</p>
 
@@ -240,8 +244,8 @@ it is called in to question.</p>
 
 <p>So what does it mean to <em>not</em> store sensitive data (whether it <em>is</em> sensitive or
 just <em>feels</em> sensitive amounts to the same thing) on a remote server? The
-problem of course is that people now have multiple computers – aka &ldquo;devices&rdquo; –
-and there is an expectation that they can synchronize data between one another.</p>
+problem of course is that people now have multiple computers, big and small, and have come to
+expect that all those &ldquo;devices&rdquo; can and will can in sync with one another.</p>
 
 <p>One approach to mitigating this problem is simply encrypting the data in
 transit, and at rest, between devices. <a href="https://github.com/mozilla/fxa-auth-server/wiki/onepw-protocol">This is how Firefox synchronizes things</a>
@@ -255,22 +259,28 @@ and there is a lot of math and cryptography and there are still user accounts
 and a bunch of ways you can shoot yourself in the foot and never be able to
 decrypt your data (that&rsquo;s what&rsquo;s going on in the scary screenshot above) but the
 thing you get in return for all that hoop-jumping is that Mozilla, the parent
-company of Firefox, doesn&rsquo;t know what&rsquo;s in your bookmarks.</p>
+company of Firefox, doesn&rsquo;t know what you&rsquo;re bookmarking.</p>
 
-<p>It&rsquo;s not a perfect solution but it feels like forward motion and better than yesterday.</p>
+<p>I don&rsquo;t belive what Firefox is doing is a perfect solution, by any means, but it
+feels like forward motion and is at least &ldquo;better than yesterday&rdquo;. In as much as
+&ldquo;check-ins&rdquo; are just &ldquo;bookmarks&rdquo; by another name, maybe there&rsquo;s something to
+learn from people already working on this problem.</p>
 
 <hr />
 
-<p>It&rsquo;s also worth at least mentioning <a href="https://en.wikipedia.org/wiki/Differential_privacy">differential
+<p>It&rsquo;s also worth a quick tangent to mention <a href="https://en.wikipedia.org/wiki/Differential_privacy">differential
 privacy</a> and Google&rsquo;s
 <a href="https://research.googleblog.com/2017/04/federated-learning-collaborative.html">federated
 learning</a>
-here. Where user data is encrypted at the service provider level is
-problematic for companies that rely on aggregating that data (and hence be
-unencrypted) in to something
-they can resell, whether its advertising or genuinely useful secondary services.</p>
+here.</p>
 
-<p>What I like about projects like differential privacy and federated learning is
+<p>When user data is encrypted at the service provider level it is problematic for
+companies that rely on aggregating that data (and hence be unencrypted) in to
+something they can resell, whether its advertising or genuinely useful secondary
+services. Nevermind the former but I choose to believe there&rsquo;s an argument to be made
+in favour of the latter.</p>
+
+<p>What I think is valuable about projects like differential privacy and federated learning is
 the idea there might be a way to say to people: We care intensively about
 whatever it is you&rsquo;re &ldquo;doing&rdquo; but we don&rsquo;t actually care about you, personally
 or individually. This is interesting to me for projects like Who&rsquo;s On First and
@@ -281,7 +291,7 @@ collaborative efforts with some measure of ambiguity, if not anonimity.</p>
 <p>Simson Garfinkel&rsquo;s presentation on <a href="https://youtu.be/G3voy0MuoN0?t=1h54m20">Modernizing the Disclosure Avoidance System
 for the 2020 Census</a> for the Census
 Scientific Advisory Committee (CSAC), last year, is a good discussion of
-benefits and trade-offs in all of this.</p>
+some of the benefits and trade-offs in this approach.</p>
 
 <hr />
 
@@ -294,73 +304,73 @@ things possible&rdquo;.</p>
 
 <p>Even before that, though, SQLite has been used under the hood for years by a
 wide array of applications and services. SQLite databases and small and portable
-and self-contained (a single text file) and while they still require a user to
-install software to manipulate those tools are readily available in 2018.</p>
+and self-contained (a single file on disk that you could send to someone as an
+email attachment) and while they still require a user to
+install dedicated software to work with the data those tools are readily available in 2018.</p>
 
 <p>And lots of different tools can read and write SQLite databases. Aside from
 the mechanical considerations for using SQLite (only one file to encrypt and
 decrypt and send across the wire) I like the fact that the <em>raw data</em> that makes
-the application unique and useful to an individual is something that is
+the application unique and useful to an individual is something which is also
 accessible to browse, manipulate or do whatever someone wants with <em>outside</em> of
 that application.</p>
 
-<p>It is useful check and a separation of concerns that forces an application to
-succeed on its merits and not because it has the key all your data.</p>
+<p>It provides a useful check and a separation of concerns that forces an application to
+succeed on its own merits and not because it has the key to all your data.</p>
 
 <hr />
 
 <p>One day, after showing some work-in-progress of my new Mapzen-enabled
-Privatesquare – aka &ldquo;Privatezen&rdquo; – during a staff all-hands a colleague asked if
+Privatesquare – aka &ldquo;Privatezen&rdquo; – at the office a colleague asked if
 this was an official Mapzen project. It was not and never was. I would have
 enjoyed making it one but we already had million other things on the go so it
 was a thing that I would poke at in 45-minute increments over coffee in the
 morning before going to do the &ldquo;real work&rdquo; of Who&rsquo;s On First.</p>
 
-<p>It was, and has remained for now, a tool uniquely tailored to me because I
+<p>It was and has remained, for now, a tool uniquely tailored to me because I
 assume I am the only one who can see past all the short-cuts and gotchas to
 bother using the thing.</p>
 
-<p>It is a thing I&rsquo;ve always missed since I stopped running a hosted version of
-Privatesquare and I&rsquo;ve always felt that there was no point in doing Who&rsquo;s On
-First unless you could actually <em>do</em> something with the data so this was a good
-way to kick the tires.</p>
+<p>It (bookmarking places or &ldquo;check-ins&rdquo; or whatever you want to call it) is a
+thing I&rsquo;ve always missed since I stopped running a hosted version of
+Privatesquare. At the same time, I&rsquo;ve always felt that there was no point in
+doing Who&rsquo;s On First unless you could actually <em>do</em> something with the data so
+this project was a good way to kick the tires.</p>
 
-<p>Briefly, the application is organized around six categories: Visits, Neighbourhoods,
-Cities, Lists, #feelings and Trips.</p>
-
-<p><em>&rdquo;#feelings&rdquo; used to be &ldquo;desires&rdquo; (as in Privatesquare&rsquo;s <a href="http://nearfuturelaboratory.com/2012/09/04/the-atlas-of-desire/">Atlas of Desire</a>)
-but a hashtag felt more in keeping with the times&hellip;</em></p>
-
-<p>All of these categories hold hands with each other meaning you
+<p>&ldquo;Privatezen&rdquo;, the application, is organized around six categories: Visits, Neighbourhoods,
+Cities, Lists, #feelings and Trips. All of these categories hold hands with each other meaning you
 should be able to look for all the visits in a particular neighbourhood or all
 of the lists that have visits in a particular city or #feelings associated with
 trips and so on.</p>
+
+<p><em>&rdquo;#feelings&rdquo; used to be &ldquo;desires&rdquo; (as in Privatesquare&rsquo;s <a href="http://nearfuturelaboratory.com/2012/09/04/the-atlas-of-desire/">Atlas of Desire</a>)
+but a hashtag felt more in keeping with the times&hellip;</em></p>
 
 <p>Here&rsquo;s what a &ldquo;visit&rdquo; looks like:</p>
 
 <p><img src="images/huts.png" alt="" /></p>
 
-<p>Chief among the long list of short-cuts and gotchas is that search has never worked very well, for three
+<p>Chief among the long list of short-cuts and gotchas is the fact that search has never worked very well, for three
 reasons.</p>
 
 <p>First lots of venues (in Who&rsquo;s On First) hadn&rsquo;t been indexed in Mapzen
-Search. Second, we were using the <a href="https://github.com/nextzen/mapzen.js">mapzen.js</a> library for map display and the
+Search yet. Second, we were using the <a href="https://github.com/nextzen/mapzen.js">mapzen.js</a> library for map display and the
 <a href="https://github.com/pelias/pelias-doc/blob/master/search.md">Pelias API</a> for search. Although the Who&rsquo;s On First API implemented a
-<a href="https://github.com/whosonfirst/whosonfirst-www-api/blob/master/www/include/lib_api_whosonfirst_pelias.php">Pelias-API compliant API</a> it was always buggy and those fixes just never made it
+<a href="https://github.com/whosonfirst/whosonfirst-www-api/blob/master/www/include/lib_api_whosonfirst_pelias.php">Pelias-API compliant endpoint</a> it was always buggy and those fixes just never made it
 to the top of the stack. Third, I just never got
 around to implementing a good generic list view interface for things like search
 results.</p>
 
 <p>Instead, because I was the only person ever using this tool, I suffered the
 hassle of looking up a venue ID (usually from the <a href="/spelunker/">Spelunker</a>) and
-then, using the special syntax <code>id:{WHOSONFIRST_ID}</code>,  pasting it to the search
+then, using the special syntax <code>id:{WHOSONFIRST_ID}</code>, would paste it to the search
 box on the top right.</p>
 
 <p>From there the application would look up the venue details and display them with
 a handy map at which point you could save your &ldquo;visit&rdquo; by saying nothing more specific
 than &ldquo;I&rsquo;ve been there&rdquo; and the UI would update itself accordingly.</p>
 
-<p>There are couple things to note here: There was nothing venue specific about
+<p>There are couple things to note: There was nothing venue specific about
 this interface. You could have saved any place in Who&rsquo;s On First. There was also
 nothing specific about signaling <em>when</em> a visit took place.</p>
 
@@ -379,44 +389,45 @@ nothing specific about signaling <em>when</em> a visit took place.</p>
 
 <p>Although there is a timestamp indicating when a visit was <em>added</em> to the database the
 application doesn&rsquo;t assume that you are recording things in the moment. In fact
-you can use the application to signal places that haven&rsquo;t even been to yet.</p>
+you can use the application to signal places that you <em>want</em> to visit.</p>
 
 <p><img src="images/transit.png" alt="" /></p>
 
-<p>I mentioned that I was trying to integrate as many of the various Mapzen services, not
+<p>I was also trying to integrate as many of the various Mapzen services, not
 so much for the sake of it but because they were all useful and to understand
 how they fit together and where the stress points remained.</p>
 
 <p>Once a Who&rsquo;s On First place was loaded on to the map we would call the
-<a href="https://transit.land/">Transitland API</a> for nearby transit stops.</p>
+<a href="https://transit.land/">Transitland API</a> for nearby transit stops. Like a lot of
+features this never moved beyond the basic prove-it-works-with-a-list-view stage on
+to a more refined and useful user interface.</p>
 
-<p>Like a lot of features this never moved beyond the basic prove-it-works-with-a-list stage on to a more refined and
-useful user interface.</p>
+<p>Routing, and something like Dan&rsquo;s <a href="/blog/2016/08/24/all-of-the-places/">All of the
+Places</a> experiments from 2016, were also on
+the list but there was never enough time for all of the things&hellip;</p>
 
 <p><img src="images/visits.png" alt="" /></p>
 
 <p>The default view when you launch the application is to show your most recent
 visits in reverse chronological order with a handy map. Generally the rule of
-thumb was to add &ldquo;a handy map&rdquo; to almost every view, whenever possible.</p>
+thumb was to add &ldquo;a handy map&rdquo; whenever possible.</p>
 
 <p><img src="images/nyc.png" alt="" /></p>
 
 <p>The other rule was to make every &ldquo;first class object&rdquo; in every view
 clickable. Here&rsquo;s what I would see when I clicked <a href="https://places.whosonfirst.org/id/ 85977539/">New York
-City</a>. As you can
-see from the many dots on the map and only three visible &ldquo;visits&rdquo; another of the
+City</a>.</p>
+
+<p>As you can
+see from the many dots on the map and only three visible &ldquo;visits&rdquo;, on the right, another of the
 many neglected UI details included how best to fit everything in to a finite
 amount of space and signaling when a given element overflowed the viewport.</p>
-
-<p>Careful readers may also notice that this is an older screenshot from a time when the
-search box was in the bottom right, instead of the top, and &ldquo;#feelings&rdquo; were
-still called &ldquo;desires&rdquo;.</p>
 
 <p><img src="images/places.png" alt="" /></p>
 
 <p>Here are the top cities that I had recorded visits for. These were grouped again
-by #feelings about places that I had visited in a city. We also did the same
-thing for neighbourhoods which was often very useful when trying to figure out
+by #feelings about the places that I had visited in that city. There are
+likewise views for neighbourhoods which was often very useful when trying to figure out
 where to meet someone for dinner and then immediately drawing a complete blank
 when asked to pick a spot.</p>
 
@@ -427,13 +438,15 @@ when asked to pick a spot.</p>
 
 <p><img src="images/lists.png" alt="" /></p>
 
-<p>It was also possible to create lists and like the transit work, above, these
+<p>It is possible to create lists and like the transit work, above, they
 never matured much beyond the &ldquo;prove it&rsquo;s possible with a list of items&rdquo; stage.</p>
 
 <p><img src="images/trips.png" alt="" /></p>
 
 <p>You can add trips to places which is useful when combined with the &ldquo;I want to
-go there&rdquo; #feeling. This is a straight clone of <a href="https://www.aaronland.info/weblog/2014/04/21/mirrors/#trips">the trips functionality in
+go there&rdquo; #feeling.</p>
+
+<p>This is a straight clone of <a href="https://www.aaronland.info/weblog/2014/04/21/mirrors/#trips">the trips functionality in
 Privatesquare</a> which cloned the idea from the old social-travel website called
 <a href="https://en.wikipedia.org/wiki/Dopplr">Dopplr</a>.</p>
 
@@ -457,28 +470,29 @@ draw features on the map and the built-in ability of <a href="https://github.com
 an image of the current map to include in the PDF file.</p>
 
 <p>The problem being that because the features displayed on the map are being drawn
-by a completely different map &ldquo;layer&rdquo; managed by <a href="http://leafletjs.com/">Leaflet</a> and the <code>tangram.js</code> code
-doesn&rsquo;t even know that those features exist to draw them.</p>
+by a completely different map &ldquo;layer&rdquo; managed by
+<a href="http://leafletjs.com/">Leaflet</a> that the <code>tangram.js</code> code doesn&rsquo;t even know
+about, from <code>tangram.js</code> &rsquo;s perspective there are no features to draw in screenshot-mode.</p>
 
 <p><img src="images/browse.png" alt="" /></p>
 
 <p>I mentioned earlier that there&rsquo;s never been a proper interface for list
-views. Browsing nearby all the venues surrounding a point is a good example of that.</p>
+views. Browsing all the nearby venues surrounding a point is a good example of that.</p>
 
 <p><img src="images/yesnofix.png" alt="" /></p>
 
-<p>Here&rsquo;s a screenshot of some work that I started to to do to a generic view (or
-what are sometimes referred to as &ldquo;cards&rdquo;) for any given place. This included
-developing a range of colour-codings to apply to things like dots on the help,
-to help indicate whether a venue was open or closed.</p>
+<p>Here&rsquo;s a screenshot of some work that I started to to do to develop a generic
+view (or &ldquo;card&rdquo;) for any given place. This included
+developing a range of colour-codings to apply to things like dots on the map,
+to signal properties about a venue like whether it was open or closed.</p>
 
-<p>We also thought that these &ldquo;browse&rdquo; views could do double-duty as a place where
+<p>I always imagined that these views, or cards, could do double-duty as a place where
 people could <a href="/blog/2016/04/08/yesnofix/">help improve</a> the underlying Who&rsquo;s On First data.</p>
 
 <p><img src="images/current.png" alt="" /></p>
 
 <p>Here&rsquo;s a tangible illustration of the the Who&rsquo;s On First <code>supersedes</code>
-and <code>superseded_by</code> properties in action. These two restaurants have occupy the same
+and <code>superseded_by</code> properties in action. These two restaurants &ldquo;occupy&rdquo; the same
 building: First <a href="https://places.whosonfirst.org/id/571507099">Suriya Thai</a> until early-2009 and then <a href="https://places.whosonfirst.org/id/957732581">Pi Bar</a> following that.</p>
 
 <p><img src="images/classifier.png" alt="" /></p>
@@ -489,7 +503,9 @@ that <a href="https://burritojustice.com/">John Oram</a> did to display and filt
 <p><img src="images/classifier-2.png" alt="" /></p>
 
 <p>This isn&rsquo;t work that&rsquo;s part of &ldquo;Privatezen&rdquo; today but there a bunch of useful
-tricks that could be applied from John&rsquo;s work. If nothing else John is drawing all
+tricks that could be applied from John&rsquo;s work.</p>
+
+<p>If nothing else John is drawing all
 those dots in <code>tangram.js</code> rather than using the Leaflet GeoJSON plugin which
 means if we did the same in &ldquo;Privatezen&rdquo; then we wouldn&rsquo;t have the
 dotless-screenshots-for-use-in-PDF-files problems described above.</p>
@@ -499,12 +515,13 @@ dotless-screenshots-for-use-in-PDF-files problems described above.</p>
 <hr />
 
 <p>The application does a few other things that aren&rsquo;t as easy to screenshot, or
-even if they were make for <em>really boring</em> screenshots. Most importantly the goal
-is to work offline.</p>
+even if they were make for <em>really boring</em> screenshots. For example,
+&ldquo;Privatezen&rdquo; is designed to work offline.</p>
 
 <p>It works offline in the sense that because the SQLite database is sitting on
 your computer you don&rsquo;t need to fetch everything from a remote server so pretty
-much everything except search and maps (discussed below) work as expected.</p>
+much everything except search and maps (discussed below) will work as expected,
+regardless of your internet connection.</p>
 
 <p>It <em>sort of</em> works offline in that the application will keep a local cache of
 Mapzen tiles that it&rsquo;s used to display maps and once a map has loaded for a
@@ -512,22 +529,26 @@ specific place (a neighbourhood, a venue, etc.) then it will ask <code>tangram.j
 <a href="https://github.com/tangrams/tangram/blob/ca798f7972ddfaa20997b261f07cbfd515caf165/src/scene.js#L1212-L1218">take a screenshot</a> of the map and <a href="https://github.com/whosonfirst/electron-whosonfirst-bookmarks/blob/master/javascript/mapzen.whosonfirst.bookmarks.screenshots.js">store it on disk</a>.</p>
 
 <p>The next time you visit that place in the application the first that will happen
-is that the screenshot will be loaded <em>underneath</em> the map. If you&rsquo;re online or
+is the the screenshot will be loaded <em>underneath</em> the map. If you&rsquo;re online or
 if you have cached map tiles the screenshot will be covered up but if not you
 still have a visual representation of the place you&rsquo;re &ldquo;looking&rdquo; at.</p>
 
 <p>It <em>doesn&rsquo;t</em> work  offline when it comes to adding new things. As mentioned
-search doesn&rsquo;t work but even you happen to know the Who&rsquo;s On First ID of the
+search doesn&rsquo;t work but even if you happen to know the Who&rsquo;s On First ID of the
 place you&rsquo;re trying to add the application needs to fetch the details for that
-place over the wire. Now that we&rsquo;ve started building <a href="/download/#sqlite">bundled SQLite databases
-of Who&rsquo;s On First data</a> it&rsquo;s easy to imagine a scenario where
-you can download one or more &ldquo;bundles&rdquo; specific to your interests, say just the
-venues in Berlin, and those are used for lookups if the API isn&rsquo;t available.</p>
+place over the wire.</p>
+
+<p>Now that we&rsquo;ve started building <a href="/download/#sqlite">bundled SQLite databases
+of Who&rsquo;s On First data</a> I can imagine a scenario where
+you download one or more &ldquo;bundles&rdquo; specific to your interests, say just the
+venues in one or two cities, and those are used for lookups if the API isn&rsquo;t available.</p>
 
 <hr />
 
-<p>The other place where it doesn&rsquo;t &ldquo;work&rdquo; is adding new venues that aren&rsquo;t already
-in Who&rsquo;s On First. It would be really useful for people to have a mechanism that
+<p>The other notable place where &ldquo;Privatezen&rdquo; doesn&rsquo;t work is adding new venues
+that don&rsquo;t already exist in Who&rsquo;s On First.</p>
+
+<p>I 100% agree with everyone who thinks it would be really useful for people to have a mechanism that
 allows them to create new places in the application, even if they&rsquo;re only stored
 locally.</p>
 
@@ -547,8 +568,8 @@ and muttering something about &ldquo;mornings and weekends&rdquo;&hellip;</p>
 <hr />
 
 <p>Nor are there any &ldquo;clients&rdquo; beyond the desktop application. All the fancy talk
-about encrypting and decrypting SQLite databases over the network is just that
-for now. There are the beginnings of <a href="https://github.com/whosonfirst/cordova-whosonfirst-bookmarks">a
+about encrypting and decrypting SQLite databases over the network is just fancy
+talk at the moment. There are the beginnings of <a href="https://github.com/whosonfirst/cordova-whosonfirst-bookmarks">a
 Cordova-based
 application</a> to do just that but so far it&rsquo;s mostly just been a reminder of why
 programming native/non-web applications is&hellip; challenging.</p>
@@ -562,25 +583,25 @@ JavaScript and CSS and a tiny amount of HTML. It&rsquo;s mostly a lot of boilerp
 JavaScript.</p>
 
 <p>I think you&rsquo;re supposed to use something fancy like <a href="https://github.com/facebook/react">React</a> to build applications
-like this, these days, and if I had to do this sort of thing all I probably
-would have invented something like React too. I didn&rsquo;t though so it&rsquo;s just a
-whole lot of JavaScript libraries that load and call one another and I would be
-willing to accept that I&rsquo;m &ldquo;doing it wrong&rdquo;.</p>
+like this, these days, and if I had to do this sort of thing 40-hours a week I probably
+would have invented something like React too. Instead it&rsquo;s just a lot of
+JavaScript libraries that load and call one another and, aside from the part
+where &ldquo;Privatezen&rdquo; works, I am willing to accept that I&rsquo;m &ldquo;doing it wrong&rdquo;.</p>
 
-<p>Part of building this tool became an exercise in trying to refactor or write all
+<p>At one point, building &ldquo;Privatezen&rdquo; became an exercise in trying to refactor or write all
 of the <a href="https://github.com/whosonfirst/js-mapzen-whosonfirst">Who&rsquo;s On First Javascript libraries</a> to work in both a browser context and
-a <a href="https://nodejs.org/">nodejs</a> context. They don&rsquo;t yet, or it some of them do then not all of them
-do and probably not well, but that is the goal.</p>
+a <a href="https://nodejs.org/">nodejs</a> context. They don&rsquo;t yet, or at least not all of
+them, and I doubt any of them do it well. But that is the goal.</p>
 
-<p>I&rsquo;ve been loosely calling the project &ldquo;Privatezen&rdquo; in this blog but the actual
-code is stored in a repository with the admittedly dull name of <a href="https://github.com/whosonfirst/electron-whosonfirst-bookmarks">electron-whosonfirst-bookmarks</a>.</p>
+<p>I&rsquo;ve been referring to the project as &ldquo;Privatezen&rdquo; in this blog post but the actual code is
+stored in a repository with the very dull name of:</p>
 
 <p><span style="display:block;text-align:center;"><a href="https://github.com/whosonfirst/electron-whosonfirst-bookmarks">https://github.com/whosonfirst/electron-whosonfirst-bookmarks</a></span></p>
 
 <p>There are build instructions for the applications (eventually there will
 OS-specific binary versions) but that&rsquo;s about it as far as documentation goes
 right now. Honestly, this blog post will probably serve as the best piece of
-documentation for the time being.</p>
+documentation about the project for the time being.</p>
 
 <p>There is also the awkward reality of <a href="https://whosonfirst.org/blog/2018/01/02/chapter-two/">Mapzen itself shutting down</a> along with all of the
 services the application uses, including the Who&rsquo;s On First API. That was never
@@ -600,15 +621,25 @@ Mapzen shutting down?</p>
 
 <p>At State of the Map US, last year, I <a href="http://localhost:8080/blog/2017/10/24/whosonfirst-sotmus-2017/">told the
 story</a> of the
-minor freak out I had during a meeting, early on at Mapzen, asking people to
+minor freak out I had during a meeting, early on at Mapzen, and asking people to
 accept that there were <em>no open venue datasets</em> for us to piggy back off of. The
 consequence of that fact is that a lot of our work would be trying to find
-ways to have people contribute data, a lot of it data that many people had
+<em>new ways</em> to have people contribute data, a lot of it data that many people had
 already gone to the trouble of adding to services like Foursquare.</p>
 
-<p>The gem that fell out of that meeting was the idea for a brain-dead simple mobile
+<p>The gem that fell out of that meeting, for me, was an idea for a brain-dead simple mobile
 application that allowed people to talk about <em>what kind</em> of place you were in and
 <em>what sort</em> of thing you were doing, rather than a hyper-specific narrative.</p>
+
+<p>What if instead of saying you were at a specific place with a specific address,
+which we didn&rsquo;t know about and which you didn&rsquo;t want to waste time pecking in to
+a mobile UI, you could just record that you were &ldquo;at a bar&rdquo; ? And what if the
+way to add meaning and nuance to that fact was to add a
+&ldquo;feeling&rdquo; to the signal.</p>
+
+<p>For example, what if you could say &ldquo;I&rsquo;m at a bar, crying&rdquo; or &ldquo;I&rsquo;m in a telco,
+hulking out&rdquo;. The list goes on. Those two statements (category plus emotion) combined with a latitude
+and longitude, multiplied by a lot of people, start to fill in a lot of gaps.</p>
 
 <p><img src="images/maplibs.png" alt="" /></p>
 
@@ -618,7 +649,7 @@ interested in your phone than you were in them. It was meant to be something
 that could convey just enough information in the moment, with enough wiggle room
 for people to play with.</p>
 
-<p>Ideally we would have wanted for people to go back and fill the names and
+<p>Ideally we would have wanted for people to go back and fill in the names and
 addresses for all the <a href="https://github.com/whosonfirst/maplibs-meta/blob/master/data/buckets.json">&ldquo;bars&rdquo; and &ldquo;restaurants&rdquo;</a> where they were <a href="https://github.com/whosonfirst/maplibs-meta/blob/master/data/feels.json">&ldquo;drinking&rdquo; and
 &ldquo;crying&rdquo;</a> but even if they didn&rsquo;t it would be enough signal for us to start
 working with and using to prioritize future-work.</p>
@@ -655,19 +686,24 @@ working with and using to prioritize future-work.</p>
 </code></pre>
 
 <p>Sadly, it&rsquo;s not a project that ever went anywhere. The database schema that I
-scribbled out on the whiteboard that afternoon wasn&rsquo;t erased for 18 months
+scribbled out on the whiteboard that afternoon sat there untouched for 18 months
 (maybe more) but point of telling this story is not to bemoan our inability to ship the
 simplest and dumbest of user-facing applications. Instead it is to celebrate the silliness,
-and the usefulness in the silliness, of those framing devices.</p>
+and the usefulness in the silliness, of the framing devices we imagined for what
+was little more than a &ldquo;check-in&rdquo; application.</p>
+
+<p>On the surface recording a lot of people &ldquo;crying, in bars&rdquo; or &ldquo;monetizing like
+crazy, in offices&rdquo; doesn&rsquo;t seem like it would be useful but I don&rsquo;t buy that argument.</p>
 
 <p><img src="images/maplibs-2.png" alt="" /></p>
 
 <p>I remain convinced that if we&rsquo;d be been able to devote a little more time than
 we had to polishing the rough edges off of this idea we could have not only made
 short work of the &ldquo;no open data venues&rdquo; problem but also had <em>fun</em> doing it at
-the same time.</p>
+the same time. Fun, it turns out is&hellip; well, fun.</p>
 
-<p>It&rsquo;s something I&rsquo;ve tried to remember while building &ldquo;Privatezen&rdquo;.</p>
+<p>It&rsquo;s something I try to remember while building &ldquo;Privatezen&rdquo; and why the
+application has #feelings.</p>
 
 		</article>
 		</div>

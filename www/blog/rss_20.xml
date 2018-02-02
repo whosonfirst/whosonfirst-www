@@ -3,13 +3,13 @@
   <channel>
     <title>Who's On First</title>
     <link>https://www.whosonfirst.org/</link>
-    <lastBuildDate>Thu, 01 Feb 2018 23:50:35 PST</lastBuildDate>
+    <lastBuildDate>Fri, 02 Feb 2018 08:18:10 PST</lastBuildDate>
     <description>Who's On First is a gazetteer of all the places.</description>
     
     <item>
       <link>https://whosonfirst.org/blog/2018/02/02/privatezen/</link>
-      <title>privatezen</title>
-      <description>The first week I started at Mapzen, in 2015, I remembering thinking</description>
+      <title>Privatezen</title>
+      <description>The first week I started at Mapzen, in 2015, I remembering thinking I wonder if I can swap out each one of third-party services used by Privatesquare with an equivalent Mapzen service? The answer, at the time, was “No”. It was a useful reminder of the work we had set out for ourselves.</description>
     </item>
     
     <item>
