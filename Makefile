@@ -15,6 +15,9 @@ WOF_MD2IDX="utils/$(OS)/wof-md2idx"
 sync:
 	aws --profile whosonfirst-www s3 sync --acl public-read --exclude '*~' www s3://www.whosonfirst.org/
 
+sync-blog:
+	aws --profile whosonfirst-www s3 sync --acl public-read --exclude '*~' www/blog s3://www.whosonfirst.org/blog/
+
 debug:
 	utils/$(OS)/wof-fileserver -path ./www
 
