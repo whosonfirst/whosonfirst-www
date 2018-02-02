@@ -3,8 +3,14 @@
   <channel>
     <title>Who's On First</title>
     <link>https://www.whosonfirst.org/</link>
-    <lastBuildDate>Tue, 30 Jan 2018 12:47:53 PST</lastBuildDate>
+    <lastBuildDate>Thu, 01 Feb 2018 23:50:35 PST</lastBuildDate>
     <description>Who's On First is a gazetteer of all the places.</description>
+    
+    <item>
+      <link>https://whosonfirst.org/blog/2018/02/02/privatezen/</link>
+      <title>privatezen</title>
+      <description>The first week I started at Mapzen, in 2015, I remembering thinking</description>
+    </item>
     
     <item>
       <link>https://whosonfirst.org/blog/2018/01/02/chapter-two/</link>
@@ -58,12 +64,6 @@
       <link>https://whosonfirst.org/blog/2017/09/19/introducing-statoids/</link>
       <title>Statoids, Mesoshapes, and Who's On First	</title>
       <description>Check out our recent additions to the Who's On First gazetteer, including our partnership with Statoids!</description>
-    </item>
-    
-    <item>
-      <link>https://whosonfirst.org/blog/2017/08/22/summer-2017-wof/</link>
-      <title>Increasing Name Translations in Who's On First</title>
-      <description>Outlining and visualizing the work we've done to increase name translations in the Who's On First gazetteer.</description>
     </item>
     
   </channel>
