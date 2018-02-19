@@ -3,8 +3,14 @@
   <channel>
     <title>Who's On First</title>
     <link>https://www.whosonfirst.org/</link>
-    <lastBuildDate>Fri, 02 Feb 2018 08:18:10 PST</lastBuildDate>
+    <lastBuildDate>Mon, 19 Feb 2018 14:33:42 PST</lastBuildDate>
     <description>Who's On First is a gazetteer of all the places.</description>
+    
+    <item>
+      <link>https://whosonfirst.org/blog/2018/02/20/wof-in-a-box-part3/</link>
+      <title>WOF in a Box, Part 3</title>
+      <description></description>
+    </item>
     
     <item>
       <link>https://whosonfirst.org/blog/2018/02/02/privatezen/</link>
@@ -58,12 +64,6 @@
       <link>https://whosonfirst.org/blog/2017/10/05/mapzen-places/</link>
       <title>Mapzen Places is here! And there! And everywhere.</title>
       <description>Get geometries, hierarchies, statistics and more with the Mapzen Places API.</description>
-    </item>
-    
-    <item>
-      <link>https://whosonfirst.org/blog/2017/09/19/introducing-statoids/</link>
-      <title>Statoids, Mesoshapes, and Who's On First	</title>
-      <description>Check out our recent additions to the Who's On First gazetteer, including our partnership with Statoids!</description>
     </item>
     
   </channel>

@@ -274,6 +274,8 @@ sudo chown $USER /usr/local/data
 
 <p>You can choose to install stuff elsewhere if you prefer, but the default configurations will expect things to exist in those base directories.</p>
 
+<p><a name="download"></a></p>
+
 <h2>Download some data</h2>
 
 <p>Now we are getting to the good part: downloading WOF data! The Who&rsquo;s On First data repos are split up <a href="https://github.com/whosonfirst-data/">by placetype</a>. The data repository we&rsquo;ll be working with is <code>whosonfirst-data</code>, which only includes administrative placetypes. That includes records for cities, countries, neighbourhoods, etc. We&rsquo;ve split other placetypes like venues, constituencies and postalcodes into their own separate repositories, but everything contained in this guide should work the same with them.</p>
@@ -446,6 +448,8 @@ curl -X POST http://localhost:9200/_aliases -d '{ &quot;actions&quot;: [ { &quot
   }
 }
 </code></pre>
+
+<p><a name="index"></a></p>
 
 <h2>Index the data</h2>
 

@@ -122,6 +122,7 @@ sudo chown $USER /usr/local/data
 
 You can choose to install stuff elsewhere if you prefer, but the default configurations will expect things to exist in those base directories.
 
+<a name="download"></a>
 ## Download some data
 
 Now we are getting to the good part: downloading WOF data! The Who's On First data repos are split up [by placetype](https://github.com/whosonfirst-data/). The data repository we'll be working with is `whosonfirst-data`, which only includes administrative placetypes. That includes records for cities, countries, neighbourhoods, etc. We've split other placetypes like venues, constituencies and postalcodes into their own separate repositories, but everything contained in this guide should work the same with them.
@@ -310,6 +311,7 @@ You should see a response like:
 }
 ```
 
+<a name="index"></a>
 ## Index the data
 
 The next logical step is to index the data into Elasticsearch, but there is a chance you may still be waiting on the `git clone` command to finish. This might be a good time to check on the download we had running in a `screen` session from earlier: `screen -x download`. Remember, to detach from the session press `ctrl-A` then `D`.
