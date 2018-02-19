@@ -5,7 +5,7 @@
 		<meta charset="utf-8" />
 		<meta http-equiv="x-ua-compatible" content="ie=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<title>Who’s On First | WOF in a Box, Part 3</title>
+		<title>Who’s On First | WOF in a Box (part 3)</title>
 		<meta name="description" content="Who’s on First is a gazetteer of places." />
 		<link rel="apple-touch-icon" href="/images/favicons/apple-touch-icon.png" sizes="180x180" />
 		<link rel="icon" type="image/png" href="/images/favicons/favicon-16x16.png" sizes="16x16" />
@@ -135,7 +135,7 @@
 	  
 	  
 	  <h2>
-	    WOF in a Box, Part 3
+	    WOF in a Box (part 3)
 	    <small>This is a blog post by
 	      <span class="hey-look">thisisaaronland</span>
 	      that was published on <span class="pubdate"><a href="/blog/2018/02/">Feb</a> <a href="/blog/2018/02/20">20</a>, <a href="/blog/2018/">2018</a></span>
@@ -166,7 +166,7 @@
 
 <p>The Spelunker was rebuilt on a bare <a href="https://wiki.ubuntu.com/XenialXerus/ReleaseNotes">Ubuntu
 16.04</a> Linux server, following
-Dan&rsquo;s <a href="/blog/2017/12/21/wof-in-a-box/">WOF in a Box</a> instructions which and
+Dan&rsquo;s <a href="/blog/2017/12/21/wof-in-a-box/">WOF in a Box</a> instructions and
 everything worked without a hitch. Along the way, I made some updates to the
 &ldquo;fetching and indexing data&rdquo; piece specifically to make things &ldquo;faster and
 easier&rdquo; for people who just want to work with the data as-is and don&rsquo;t need to
@@ -197,10 +197,10 @@ inventory files accordingly.</p>
 ask the tool to fetch <em>every</em> database listed in the inventory file, and
 store them in a folder called <code>/usr/local/data</code>:</p>
 
-<pre><code>$&gt; wof-dist-fetch -inventory https://dist.whosonfirst.org/sqlite/inventory.json -dest /usr/local/data
+<pre><code>&gt; wof-dist-fetch -inventory https://dist.whosonfirst.org/sqlite/inventory.json -dest /usr/local/data
 ...time passes...
 
-$&gt; ls -d /usr/local/data/whosonfirst-data*
+&gt; ls -d /usr/local/data/whosonfirst-data*
 /usr/local/data/whosonfirst-data-constituency-ca.db
 /usr/local/data/whosonfirst-data-constituency-ca-latest.db
 /usr/local/data/whosonfirst-data-constituency-us-latest.db
@@ -230,24 +230,116 @@ On First Spelunker [Elasticsearch index]().</p>
 databases we&rsquo;re generating. In <a href="/blog/2017/12/21/wof-in-a-box/#index">Dan&rsquo;s original blog
 post</a> you would index the Spelunker like this:</p>
 
-<pre><code>$&gt; cd /usr/local/data/whosonfirst-data
-$&gt; wof-es-index -s . --index=spelunker -b
+<pre><code>&gt; cd /usr/local/data/whosonfirst-data
+&gt; wof-es-index -s . --index=spelunker -b
 </code></pre>
 
 <p>And now you can do this:</p>
 
-<pre><code>$&gt; wof-es-index -b -m sqlite /usr/local/data/whosonfirst-data-*-latest.db
+<pre><code>&gt; wof-es-index -b -m sqlite /usr/local/data/whosonfirst-data-*-latest.db
 </code></pre>
 
 <p>The <code>-s(ource)</code> flag has been deprecated and replaced with the <code>-m(ode)</code> flag
-which can index a number of different data sources (Git repositories, SQLite
-databases, one or more GeoJSON files and so on). It is also no longer necessary
+which can <a href="https://github.com/whosonfirst/py-mapzen-whosonfirst-index">index a number of different data sources</a>: Git repositories, SQLite
+databases, one or more GeoJSON files and so on. It is also no longer necessary
 to pass the <code>-i(ndex)</code> flag since it defaults to &ldquo;spelunker&rdquo; now. The trusty
 <code>-b(ulk)</code> flags remains unchanged for speeding up indexing.</p>
 
-<p>&hellip;[go-whosonfirst-index]()&hellip;</p>
-
 <hr />
+
+<p>There&rsquo;s been a lot of work on the SQLite databases adding full-text and spatial
+functionality as well as refactoring the code in to re-usable components so that
+it can be used for other kinds of data, specifically <a href="https://github.com/whosonfirst-data/whosonfirst-brands">Who&rsquo;s On First
+brands</a> and Markdown files.</p>
+
+<ul>
+<li><p><a href="https://github.com/whosonfirst/go-whosonfirst-sqlite#interfaces">https://github.com/whosonfirst/go-whosonfirst-sqlite#interfaces</a></p></li>
+
+<li><p><a href="https://github.com/whosonfirst/go-whosonfirst-sqlite-features">https://github.com/whosonfirst/go-whosonfirst-sqlite-features</a></p></li>
+
+<li><p><a href="https://github.com/whosonfirst/go-whosonfirst-sqlite-brands">https://github.com/whosonfirst/go-whosonfirst-sqlite-brands</a></p></li>
+
+<li><p><a href="https://github.com/whosonfirst/go-whosonfirst-sqlite-markdown">https://github.com/whosonfirst/go-whosonfirst-sqlite-markdown</a></p></li>
+</ul>
+
+<p>The support for Markdown files is not as much of a non-sequitur as it might
+seem. Part of living in a <a href="blog/2018/01/02/chapter-two/">post-Mapzen world</a> has involved moving all the
+Who&rsquo;s On First blog posts (from the Mapzen website) <a href="/blog">over here</a>. That&rsquo;s
+meant writing <a href="https://github.com/whosonfirst/go-whosonfirst-markdown">our own suite of tools</a> to render the Jekyll-flavoured Markdown
+files that we&rsquo;ve always used for blog posts.</p>
+
+<p>We launched <a href="/blog/2017/07/28/wof-website-redesign/">&ldquo;version 2&rdquo;</a> of the Who&rsquo;s
+On First website last summer, the result of <a href="http://scottdombkowski.com/">Scott
+Dombrowski</a> &rsquo;s internship with Mapzen. It has been
+a huge UI and UX improvement and helped corral all the many different sources of
+documentation in to one place.</p>
+
+<p>On the other hand the website still requires more work than it should in order to update or
+add new pages so &ldquo;version 3&rdquo; will essentially be Markdown files written by hand or derived
+from machine readable data that will be rendered as HTML with the same tools
+that I wrote for the blog.</p>
+
+<p>The value of being able to index Markdown files in SQLite is that we are now able to do full-text search, first for the blog but ultimately for all the WOF related
+documentation, once <a href="https://github.com/whosonfirst/whosonfirst-www/milestone/3">the &ldquo;version 3&rdquo; work</a> is completed:</p>
+
+<pre><code>&gt; ./bin/wof-sqlite-query-markdown -dsn test.db montreal
+15:49:12.499695 [wof-sqlite-query-markdown] STATUS montreal - /blog/2015/08/18/who-s-on-first/
+15:49:12.499856 [wof-sqlite-query-markdown] STATUS montreal - /blog/2017/04/04/whosonfirst-api/
+15:49:12.499906 [wof-sqlite-query-markdown] STATUS montreal - /blog/2017/10/17/whosonfirst-nacis-2017/
+15:49:12.499936 [wof-sqlite-query-markdown] STATUS montreal - /blog/2017/12/22/neighbourhood-updates-three/
+15:49:12.500024 [wof-sqlite-query-markdown] STATUS montreal - /blog/2015/08/18/who-s-on-first/
+</code></pre>
+
+<p>We used the blog as a testing and proving ground for how full-text search should
+work and then applied those lessons to the tools we use to index brands:</p>
+
+<pre><code>&gt; ./bin/wof-sqlite-query-brands -dsn test.db 'car* bank'
+17:23:40.459620 [wof-sqlite-query-brands] STATUS car* bank - 1125154403 Carolina First Bank
+17:23:40.459746 [wof-sqlite-query-brands] STATUS car* bank - 1125153083 Central Carolina Bank
+</code></pre>
+
+<p>And then finally for actual <a href="https://github.com/whosonfirst/go-whosonfirst-sqlite-features#wof-sqlite-query-features">Who&rsquo;s On First documents</a>:</p>
+
+<pre><code>&gt; ./bin/wof-sqlite-query-features -dsn test2.db JFK
+102534365,John F Kennedy Int'l Airport
+
+./bin/wof-sqlite-query-features -dsn test2.db -column names_colloquial Paris
+85922583,San Francisco
+102027181,Shanghai
+102030585,Kolkata
+101751929,Tromsø
+</code></pre>
+
+<p>&hellip;Spatialite!</p>
+
+<pre><code>&gt; ./bin/wof-sqlite-index-features -timings -live-hard-die-fast -spr -geometries -driver spatialite -mode repo -dsn test.db /usr/local/data/whosonfirst-data-constituency-ca/
+10:09:46.534281 [wof-sqlite-index-features] STATUS time to index geometries (87) : 21.251828704s
+10:09:46.534379 [wof-sqlite-index-features] STATUS time to index spr (87) : 3.206930799s
+10:09:46.534385 [wof-sqlite-index-features] STATUS time to index all (87) : 24.48004637s
+
+&gt; sqlite3 test.db
+SQLite version 3.21.0 2017-10-24 18:55:49
+Enter &quot;.help&quot; for usage hints.
+
+sqlite&gt; SELECT load_extension('mod_spatialite.dylib');
+sqlite&gt; SELECT s.id, s.name FROM spr s, geometries g WHERE ST_Intersects(g.geom, GeomFromText('POINT(-122.229137 49.450129)', 4326)) AND g.id = s.id;
+1108962831|Maple Ridge-Pitt Meadows
+</code></pre>
+
+<p>There is also a <code>spatialite</code> branch of the <a href="https://github.com/whosonfirst/go-whosonfirst-pip-v2/">Who&rsquo;s On First point-in-polygon
+(PIP) server</a>. The idea
+is to speed up indexing time and memory usage (and maybe even query time) by teaching
+the code to use the newer SQLite databases instead of an <a href="/blog/2016/02/19/iamhere/">in-memory RTree</a>:</p>
+
+<ul>
+<li><a href="https://github.com/whosonfirst/go-whosonfirst-pip-v2/tree/spatialite">https://github.com/whosonfirst/go-whosonfirst-pip-v2/tree/spatialite</a></li>
+</ul>
+
+<p>This is code that <em>does not work</em> yet and I am going to kick the tires using
+another <a href="https://github.com/aaronland/go-marc">unrelated project</a> that I started working on for the New South Wales
+library last year that will allow them to upload a CSV file full of MARC 034
+fields and get back a CSV file of WOF IDs which intersect that bounding box (034
+field).</p>
 
 		</article>
 		</div>
