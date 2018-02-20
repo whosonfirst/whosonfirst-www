@@ -19,12 +19,12 @@ The Who's On First Spelunker lives again! It's new home is:
      <a href="https://spelunker.whosonfirst.org/">https://spelunker.whosonfirst.org/</a>
 </div>
 
-All the old URLs should work as before once you update the root, replacing
+Any old Spelunker URLs should continue to work as-is once you update the root, replacing
 `whosonfirst.mapzen.com/spelunker` with `spelunker.whosonfirst.org`. For example, the URL for the Who's On First record for
 [Tokyo](https://spelunker.whosonfirst.org/id/102031307/) used to be:
 
 <div style="font-size:2em; text-align:center; margin-top:1em;">
-     <a href="#" style="color:#666 !important;">https://whosonfirst.mapzen.com/spelunker/id/102031307/</a>
+     <a href="#" style="color:#666 !important;"); return false;">https://whosonfirst.mapzen.com/spelunker/id/102031307/</a>
 </div>
 
 And now it is:
@@ -36,8 +36,8 @@ And now it is:
 Yay!
 
 The rest of this blog post is divided up in to two parts, one nerdier than the
-next. The first section will describe a couple of mechanical changes we made to
-speed up rebuilding the Spelunker (the so-called "part 3" of WOF in a Box).
+next. The first section describes a couple of mechanical changes we made to
+speed up rebuilding the Spelunker ("part 3" of WOF in a Box).
 
 > In my mind everything up to and including the Spelunker is “near-term”, the
 API and the spatial services are “medium-term” and the editorial stuff is
@@ -60,8 +60,8 @@ The Spelunker was rebuilt on a bare [Ubuntu
 16.04](https://wiki.ubuntu.com/XenialXerus/ReleaseNotes) Linux server, following
 Dan's [WOF in a Box](/blog/2017/12/21/wof-in-a-box/) instructions and
 everything worked without a hitch. Along the way, I made some updates to the
-"fetching and indexing data" piece specifically to make things "faster and
-easier" for people who just want to work with the data as-is and don't need to
+"fetching and indexing data" pieces specifically to make things faster and
+easier for people who just want to work with the data as-is and don't need to
 make updates.
 
 _These updates actually introduced some "hitches" in Dan's guide but with [Gary
@@ -75,14 +75,14 @@ it can be unnecessarily fiddly for a lot of people.
 
 We've been doing a lot of work recently to distribute Who's On First data [as
 SQLite databases](https://sqlite.org/). SQLite databases have the advantage of being self-contained
-and widespread support in a variety of tools and programming languages. They
-don't currently include "alternate geometry" WOF records but those
-aren't necessary (yet) for most things people want to do with WOF related tools.
+with widespread support in a variety of tools and programming languages. They
+don't currently include [alternate geometry](https://github.com/whosonfirst/whosonfirst-cookbook/blob/master/how_to/creating_alt_geometries.md) WOF records but those
+aren't necessary for most of the things that people want to do with WOF related tools.
 
 The first tool that we wrote is a simple command-line tool to fetch all of the
-databases defined in an `inventory.json` file. These `inventory.json` files are still a work in progress and currently only
+databases defined in an `inventory.json` file. These `inventory.json` files are still [a work in progress](https://dist.whosonfirst.org/sqlite/inventory.json) and currently only
 published for SQLite databases. As we chip away at the remaining work to
-generate other Who's On First distributions the plan is to adopt and adapt the
+generate other [Who's On First distributions](/download/#distributions) the plan is to adopt and adapt the
 inventory files accordingly. More on that below.
 
 Here's how to the [wof-dist-fetch](https://github.com/whosonfirst/go-whosonfirst-dist#wof-dist-fetch) tool works. In this example we're going to
@@ -118,12 +118,11 @@ smaller and easier to work with than the Git repositories and don't require
 setting up additional tools like [Git LFS](https://github.com/whosonfirst-data/whosonfirst-data#git-and-large-files).
 
 The `wof-dist-fetch` tool is part of the [go-whosonfirst-dist](https://github.com/whosonfirst/go-whosonfirst-dist) package which will also be used
-to _generate_ those SQLite files (and other distributions) but it still being
-actively developed so you probably shouldn't try using it yet, unless you are
+to _generate_ those SQLite files and other distributions. The package contains different tools to fetch and build distributions but the latter are still being actively developed so you probably shouldn't try using those yet, unless you are
 feeling adventurous.
 
 The second tool is actually just an update to one of the very
-first tools we ever wrote: The [wof-es-index](https://github.com/whosonfirst/py-mapzen-whosonfirst-search#wof-es-index) tool which is used to crawl a
+first tools we ever wrote. The [wof-es-index](https://github.com/whosonfirst/py-mapzen-whosonfirst-search#wof-es-index) tool is used to crawl a
 directory full of Who's On First GeoJSON data files and index them in the Who's
 On First Spelunker [Elasticsearch
 index](https://github.com/whosonfirst/es-whosonfirst-schema). It has been updated to also read and index WOF data stored in the SQLite
@@ -147,7 +146,7 @@ databases, one or more GeoJSON files and so on. It is also no longer necessary
 to pass the `-i(ndex)` flag since it defaults to "spelunker" now. The trusty
 `-b(ulk)` flags remains unchanged for speeding up indexing.
 
-So, just a small tweak to Dan's instructions but hopefully a useful one.
+So, it's only a pair of small tweaks to Dan's instructions but hopefully they are useful ones.
 
 ![](images/wof-phone.jpg)
 
@@ -158,8 +157,8 @@ it can be used for other kinds of data, specifically [Who's On First
 brands](https://github.com/whosonfirst-data/whosonfirst-brands) and Markdown
 files.
 
-In all there are three distinct packages, for Who's On First features and
-brands and generic Markdown files, and a fourth shared by all the others:
+In all there are three distinct packages, two of them for Who's On First features and
+brands and another for generic Markdown files, and a fourth shared by all the others:
 
 * [https://github.com/whosonfirst/go-whosonfirst-sqlite#interfaces](https://github.com/whosonfirst/go-whosonfirst-sqlite#interfaces)
 
@@ -169,14 +168,16 @@ brands and generic Markdown files, and a fourth shared by all the others:
 
 * [https://github.com/whosonfirst/go-whosonfirst-sqlite-markdown](https://github.com/whosonfirst/go-whosonfirst-sqlite-markdown)
 
+_There is even an experimental `go-whosonfirst-sqlite` package for working with [Privatezen](/blog/2018/02/02/privatezen/) databases but it's still too soon to discuss that yet._
+
 The support for Markdown files is not as much of a non-sequitur as it might
 seem. Part of living in a [post-Mapzen world](blog/2018/01/02/chapter-two/) has involved moving all the
 Who's On First blog posts (from the Mapzen website) [over here](/blog). That's
 meant writing [our own suite of tools](https://github.com/whosonfirst/go-whosonfirst-markdown) to render the Jekyll-flavoured Markdown
 files that we've always used for blog posts.
 
-We launched ["version 2"](/blog/2017/07/28/wof-website-redesign/) of the Who's
-On First website last summer, the result of [Scott
+Last summer we launched ["version 2"](/blog/2017/07/28/wof-website-redesign/) of the Who's
+On First website, the result of [Scott
 Dombrowski](http://scottdombkowski.com/) 's internship with Mapzen. It has been
 a huge UI and UX improvement and helped corral all the many different sources of
 documentation in to one place. 
@@ -198,8 +199,8 @@ documentation, once [the "version 3" work](https://github.com/whosonfirst/whoson
 15:49:12.500024 [wof-sqlite-query-markdown] STATUS montreal - /blog/2015/08/18/who-s-on-first/
 ``` 
 
-_Careful readers will note that it's still not possible to search the weblog. It
-will be (possible) just not today..._ 
+_Careful readers will note that it's still not possible to search the weblog on the weblog itself. It
+will become possible, I promise, just not today..._ 
 
 We used the blog as a testing and proving ground for how full-text search should
 work and then applied those lessons to the tools we use to index brands:
@@ -241,7 +242,7 @@ sqlite> SELECT s.id, s.name FROM spr s, geometries g WHERE ST_Intersects(g.geom,
 1108962831|Maple Ridge-Pitt Meadows
 ```
 
-So now that we've sorted out how to index and query spatial properties in the
+Now that we've sorted out how to index and query spatial properties in the
 SQLite databases we've also begun work on a `spatialite` branch of the [Who's On First point-in-polygon
 (PIP)
 server](https://github.com/whosonfirst/go-whosonfirst-pip-v2/tree/spatialite).
@@ -259,8 +260,7 @@ Who's On First applications, like the Spelunker or the
 [API](/blog/2017/04/04/whosonfirst-api/), to provide an abbreviated set of features – a sort of "Who's On First Lite" – for people who aren't in a position to set up more
 complicated databases like Elasticsearch.
 
-There's still some heavy-lifting and hoop-jumping to complete before it's
-possible but that is the goal.
+There's still some heavy-lifting and hoop-jumping to complete before any of this is possible but that is the goal.
 
 ![](images/wof-jetway-2.jpg)
 
