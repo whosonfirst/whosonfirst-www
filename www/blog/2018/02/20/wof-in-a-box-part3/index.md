@@ -50,7 +50,7 @@ discusses what we've been up to [post-Mapzen](/blog/2018/01/02/chapter-two/) and
 where things are going next. This is the "medium-term" work outlined in the blog
 post that [followed the announcement](/blog/2018/01/02/chapter-two/) that Mapzen was shutting down.
 
-It's pretty technical so if that's not your jam you can skip it in good
+It's pretty technical so if that's not your jam you can skip it all in good
 conscience and head over the to [the
 Spelunker](https://spelunker.whosonfirst.org/) and start spelunking away again.
 
