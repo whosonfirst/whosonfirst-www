@@ -147,12 +147,19 @@ databases, one or more GeoJSON files and so on. It is also no longer necessary
 to pass the `-i(ndex)` flag since it defaults to "spelunker" now. The trusty
 `-b(ulk)` flags remains unchanged for speeding up indexing.
 
+So, just a small tweak to Dan's instructions but hopefully a useful one.
+
 ![](images/wof-phone.jpg)
 
-There's been a lot of work on the SQLite databases adding full-text and spatial
-functionality as well as refactoring the code in to re-usable components so that
+There's been a lot of work on the SQLite databases leading up to those tweaks
+including adding full-text and spatial
+indexing as well as refactoring the code in to re-usable components so that
 it can be used for other kinds of data, specifically [Who's On First
-brands](https://github.com/whosonfirst-data/whosonfirst-brands) and Markdown files.
+brands](https://github.com/whosonfirst-data/whosonfirst-brands) and Markdown
+files.
+
+In all there are three distinct packages, for Who's On First features and
+brands and generic Markdown files, and a fourth shared by all the others:
 
 * [https://github.com/whosonfirst/go-whosonfirst-sqlite#interfaces](https://github.com/whosonfirst/go-whosonfirst-sqlite#interfaces)
 
