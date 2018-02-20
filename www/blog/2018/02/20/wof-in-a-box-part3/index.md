@@ -274,7 +274,7 @@ lent itself to more concentrated work.
 3. I have a hunch that we can use these SQLite databases to more effeciently
 update all the _other_ tools and services whether it's the Spelunker, the API, the raw
 [data.whosonfirst.org](https://data.whosonfirst.org) files or [other bulk
-distributions](http://localhost:8080/download/) that people might want to
+distributions](/download/) that people might want to
 download.
 
 But that means _building_ those SQLite databases first and doing so in a timely
@@ -284,8 +284,8 @@ through those details and figuring out how to improve on [the bubble-gum and duc
 tape solutions](https://github.com/whosonfirst/go-whosonfirst-updated#go-whosonfirst-updated) that got us this far. 
 
 The goal for the next phase of work is to set up a reliable workflow for
-generating both [bundles](http://localhost:8080/download/#bundles) and
-[SQLite](http://localhost:8080/download/#sqlite) databases for each of the
+generating both [bundles](/download/#bundles) and
+[SQLite](/download/#sqlite) databases for each of the
 [whosonfirst-data](https://github.com/whosonfirst-data) repositories, along with
 a standardized "inventory" file for both formats that can be consumed by the
 `wof-dist-fetch` tool, and then to use those distributions to update the
