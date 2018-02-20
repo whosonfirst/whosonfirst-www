@@ -3,13 +3,13 @@
   <channel>
     <title>Who's On First</title>
     <link>https://www.whosonfirst.org/</link>
-    <lastBuildDate>Mon, 19 Feb 2018 17:15:53 PST</lastBuildDate>
+    <lastBuildDate>Mon, 19 Feb 2018 17:20:17 PST</lastBuildDate>
     <description>Who's On First is a gazetteer of all the places.</description>
     
     <item>
       <link>https://whosonfirst.org/blog/2018/02/20/wof-in-a-box-part3/</link>
       <title>WOF in a Box (part 3)</title>
-      <description></description>
+      <description>The Spelunker was rebuilt on a bare Ubuntu 16.04 Linux server, following Dan’s WOF in a Box instructions and everything worked without a hitch. Along the way, I made some updates to the “fetching and indexing data” piece specifically to make things “faster and easier” for people who just want to work with the data as-is and don’t need to make updates.</description>
     </item>
     
     <item>
