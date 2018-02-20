@@ -8,7 +8,7 @@ category: blog
 excerpt: Run Who's On First on your own hardware.
 authors: [dphiffer]
 image: "images/inhand.jpg"
-tag: [whosonfirst]
+tag: [whosonfirst,wof-in-a-box]
 ---
 
 One of central design constraints of Who’s On First is that we don’t pick your database for you. We publish our gazetteer in [GeoJSON](https://whosonfirst.mapzen.com/data), CSV, and [SQLite](https://whosonfirst.mapzen.com/sqlite) and you can decide how you want to import into your software stack of choice. We aspire to support all programming languages, on whatever platform you happen to be using.

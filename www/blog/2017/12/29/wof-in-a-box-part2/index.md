@@ -8,7 +8,7 @@ category: blog
 excerpt: Run Who's On First on your own hardware.
 authors: [dphiffer]
 image: "images/cats-in-boxes.jpg"
-tag: [whosonfirst]
+tag: [whosonfirst,wof-in-a-box]
 ---
 
 *This is the second of the two part guide to running [Who's On First](https://whosonfirst.mapzen.com) tools on your own hardware. You may want to read [part 1](https://mapzen.com/blog/wof-in-a-box/) first.*
