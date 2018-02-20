@@ -13,7 +13,7 @@ tag: [spelunker,sqlite,whosonfirst]
 
 ![](images/wof-on-off.jpg)
 
-The Who's On First Spelunker lives again! It's new home is:
+The Who's On First Spelunker lives again! Its new home is:
 
 <div style="font-size:2em; text-align:center; margin-top:1em;">
      <a href="https://spelunker.whosonfirst.org/">https://spelunker.whosonfirst.org/</a>
