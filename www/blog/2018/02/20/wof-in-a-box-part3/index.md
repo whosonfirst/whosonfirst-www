@@ -5,7 +5,7 @@ published: true
 date: 2018-02-20
 permalink: /blog/2018/02/20/wof-in-a-box-part3/
 category: blog
-excerpt: The Spelunker was rebuilt on a bare Ubuntu 16.04 Linux server, following Dan’s WOF in a Box instructions and everything worked without a hitch. Along the way, I made some updates to the “fetching and indexing data” piece specifically to make things “faster and easier” for people who just want to work with the data as-is and don’t need to make updates.
+excerpt: The Spelunker was rebuilt on a bare Ubuntu 16.04 Linux server, following Dan’s WOF in a Box instructions and everything worked without a hitch. Along the way, I made some updates to the “fetching and indexing data” piece specifically to make things faster and easier for people who just want to work with the data as-is and don’t need to make updates.
 authors: [thisisaaronland]
 image: "images/wof-on-off.jpg"
 tag: [spelunker,sqlite,whosonfirst]
