@@ -8,7 +8,7 @@ category: blog
 excerpt: 
 authors: [thisisaaronland]
 image: "images/cube.jpg"
-tag: [spelunker,whosonfirst]
+tag: [spelunker,sqlite,whosonfirst]
 ---
 
 The Who's On First Spelunker lives again! It's new home is:
@@ -33,6 +33,27 @@ And now it is:
 
 ---
 
+The rest of this blog post is divided up in to two parts, one nerdier than the
+next. The first section will describe a couple of mechanical changes we made to
+speed up rebuilding the Spelunker (the so-called "part 3" of WOF in a Box).
+
+> In my mind everything up to and including the Spelunker is “near-term”, the
+API and the spatial services are “medium-term” and the editorial stuff is
+“longer-term”. It’s not ideal but it seems the most realistic given whatever
+world of new everyone involved in the project will be negotiating during the
+coming year.
+
+The second section builds on the first and
+discusses what we've been up to [post-Mapzen](/blog/2018/01/02/chapter-two/) and
+where things are going next. This is the "medium-term" work outlined in the blog
+post that [followed the announcement](/blog/2018/01/02/chapter-two/) that Mapzen was shutting down.
+
+It's pretty technical so if that's not your jam you can skip it in good
+conscience and head over the to [the
+Spelunker](https://spelunker.whosonfirst.org/) and start spelunking away again.
+
+---
+
 The Spelunker was rebuilt on a bare [Ubuntu
 16.04](https://wiki.ubuntu.com/XenialXerus/ReleaseNotes) Linux server, following
 Dan's [WOF in a Box](/blog/2017/12/21/wof-in-a-box/) instructions and
@@ -45,13 +66,13 @@ _These updates actually introduced some "hitches" in Dan's guide but with [Gary
 Gale](https://www.vicchi.org/) 's help we were able to make short work of those
 bugs and everything should work as advertised again..._
 
-Historically all the Who's On First tools have been designed to work with the
-raw (plain-text GeoJSON) data contained in the GitHub repositories. It's
+Historically all the Who's On First tools have been designed to work with [the
+raw (plain-text GeoJSON) data](/blog/2016/08/15/mapping-with-bias/#database) contained in the GitHub repositories. It's
 important that there always be tooling to work with the raw "at rest" data but
 it can be unnecessarily fiddly for a lot of people.
 
-We've been doing a lot of work recently to distribute Who's On First data as
-SQLite databases. SQLite databases have the advantage of being self-contained
+We've been doing a lot of work recently to distribute Who's On First data [as
+SQLite databases](https://sqlite.org/). SQLite databases have the advantage of being self-contained
 and widespread support in a variety of tools and programming languages. They
 don't currently include "alternate geometry" WOF records but those
 aren't necessary (yet) for most things people want to do with WOF related tools.
@@ -59,8 +80,8 @@ aren't necessary (yet) for most things people want to do with WOF related tools.
 The first tool that we wrote is a simple command-line tool to fetch all of the
 databases defined in an `inventory.json` file. These `inventory.json` files are still a work in progress and currently only
 published for SQLite databases. As we chip away at the remaining work to
-generate other Who's On First distributions the plan is to adopt (and adapt) the
-inventory files accordingly.
+generate other Who's On First distributions the plan is to adopt and adapt the
+inventory files accordingly. More on that below.
 
 Here's how to the [wof-dist-fetch](https://github.com/whosonfirst/go-whosonfirst-dist#wof-dist-fetch) tool works. In this example we're going to
 ask the tool to fetch _every_ database listed in the inventory file, and
@@ -80,23 +101,30 @@ store them in a folder called `/usr/local/data`:
 /usr/local/data/whosonfirst-data-venue-za-latest.db
 ```
 
-This replaces the steps described in the [Download some
+You can also filter specific databases by passing one or more `-include` or
+`-exclude` flags. For example if we only wanted to download postal code
+databases we would do this:
+
+```
+> wof-dist-fetch -inventory https://dist.whosonfirst.org/sqlite/inventory.json -dest /usr/local/data -include 'whosonfirst-data-postalcode-*-latest.db'
+```
+
+The `wof-dist-fetch` tool replaces the steps described in the [Download some
 data](/blog/2017/12/21/wof-in-a-box/#download) section of Dan's post. It will
 still take a while to download all the SQLite databases but they are generally
 smaller and easier to work with than the Git repositories and don't require
 setting up additional tools like [Git LFS](https://github.com/whosonfirst-data/whosonfirst-data#git-and-large-files).
 
-This tool is part of the [go-whosonfirst-dist](https://github.com/whosonfirst/go-whosonfirst-dist) package which will also be used
+The `wof-dist-fetch` tool is part of the [go-whosonfirst-dist](https://github.com/whosonfirst/go-whosonfirst-dist) package which will also be used
 to _generate_ those SQLite files (and other distributions) but it still being
 actively developed so you probably shouldn't try using it yet, unless you are
 feeling adventurous.
 
-The second tool that we wrote was actually just an update to one of the very
-first tools we ever wrote: The [wof-es-index]() tool which is used to crawl a
+The second tool is actually just an update to one of the very
+first tools we ever wrote: The [wof-es-index](https://github.com/whosonfirst/py-mapzen-whosonfirst-search#wof-es-index) tool which is used to crawl a
 directory full of Who's On First GeoJSON data files and index them in the Who's
-On First Spelunker [Elasticsearch index]().
-
-The tool has been updated to also read and index WOF data stored in the SQLite
+On First Spelunker [Elasticsearch
+index](https://github.com/whosonfirst/es-whosonfirst-schema). It has been updated to also read and index WOF data stored in the SQLite
 databases we're generating. In [Dan's original blog
 post](/blog/2017/12/21/wof-in-a-box/#index) you would index the Spelunker like this:
 
@@ -161,6 +189,9 @@ documentation, once [the "version 3" work](https://github.com/whosonfirst/whoson
 15:49:12.500024 [wof-sqlite-query-markdown] STATUS montreal - /blog/2015/08/18/who-s-on-first/
 ``` 
 
+_Careful readers will note that it's still not possible to search the weblog. It
+will be (possible) just not today..._ 
+
 We used the blog as a testing and proving ground for how full-text search should
 work and then applied those lessons to the tools we use to index brands:
 
@@ -183,7 +214,8 @@ And then finally for actual [Who's On First documents](https://github.com/whoson
 101751929,Tromsø
 ```
 
-...Spatialite!
+We've also added the ability to index and query Who's On First geometries for
+people who have the [Spatialite](https://www.gaia-gis.it/fossil/libspatialite/index) extension installed on their computers.
 
 ```
 > ./bin/wof-sqlite-index-features -timings -live-hard-die-fast -spr -geometries -driver spatialite -mode repo -dsn test.db /usr/local/data/whosonfirst-data-constituency-ca/
@@ -200,15 +232,66 @@ sqlite> SELECT s.id, s.name FROM spr s, geometries g WHERE ST_Intersects(g.geom,
 1108962831|Maple Ridge-Pitt Meadows
 ```
 
-There is also a `spatialite` branch of the [Who's On First point-in-polygon
-(PIP) server](https://github.com/whosonfirst/go-whosonfirst-pip-v2/). The idea
+So now that we've sorted out how to index and query spatial properties in the
+SQLite databases we've also begun work on a `spatialite` branch of the [Who's On First point-in-polygon
+(PIP)
+server](https://github.com/whosonfirst/go-whosonfirst-pip-v2/tree/spatialite).
+
+The idea
 is to speed up indexing time and memory usage (and maybe even query time) by teaching
-the code to use the newer SQLite databases instead of an [in-memory RTree](/blog/2016/02/19/iamhere/):
+the code to use the newer SQLite databases instead of an [in-memory
+RTree](/blog/2016/02/19/iamhere/). Our hope is people can simply download one or
+more of the SQLite databases using the `wof-dist-fetch` tool described above,
+point the PIP server at those databases and having a working services in a
+matter of minutes.
 
-* [https://github.com/whosonfirst/go-whosonfirst-pip-v2/tree/spatialite](https://github.com/whosonfirst/go-whosonfirst-pip-v2/tree/spatialite)
+The other hope is that these SQLite databases can be integrated with existing
+Who's On First applications, like the Spelunker or the
+[API](/blog/2017/04/04/whosonfirst-api/), to provide an abbreviated set of features – a sort of "Who's On First Lite" – for people who aren't in a position to set up more
+complicated databases like Elasticsearch.
 
-This is code that _does not work_ yet and I am going to kick the tires using
-another [unrelated project](https://github.com/aaronland/go-marc) that I started working on for the New South Wales
-library last year that will allow them to upload a CSV file full of MARC 034
-fields and get back a CSV file of WOF IDs which intersect that bounding box (034
-field).
+There's still some heavy-lifting and hoop-jumping to complete before it's
+possible but that is the goal.
+
+---
+
+There are three reasons we've been focusing on the SQLite databases:
+
+1. They are super cool and super useful in their own right.
+
+2. Life has been mostly interupt-driven since the Mapzen shutdown and hasn't
+lent itself to more concentrated work.
+
+3. I have a hunch that we can use these SQLite databases to more effeciently
+update all the _other_ tools and services whether it's the Spelunker, the API, the raw
+[data.whosonfirst.org](https://data.whosonfirst.org) files or [other bulk
+distributions](http://localhost:8080/download/) that people might want to
+download.
+
+But that means _building_ those SQLite databases first and doing so in a timely
+and automated fashion when changes are pushed to the [actual Who's On First
+data](https://github.com/whosonfirst-data). That's where we're at today: Working
+through those details and figuring out how to improve on [the bubble-gum and duct
+tape solutions](https://github.com/whosonfirst/go-whosonfirst-updated#go-whosonfirst-updated) that got us this far. 
+
+The goal for the next phase of work is to set up a reliable workflow for
+generating both [bundles](http://localhost:8080/download/#bundles) and
+[SQLite](http://localhost:8080/download/#sqlite) databases for each of the
+[whosonfirst-data](https://github.com/whosonfirst-data) repositories, along with
+a standardized "inventory" file for both formats that can be consumed by the
+`wof-dist-fetch` tool, and then to use those distributions to update the
+[Spelunker](https://spelunker.whosonfirst.org/) and the
+[places.whosonfirst.org](https://places.whosonfirst.org/) endpoint.
+
+_If you're curious you can follow along in
+the [sqlite](https://github.com/whosonfirst/go-whosonfirst-dist/blob/sqlite/cmd/wof-dist-build.go)
+and [bundles](https://github.com/whosonfirst/go-whosonfirst-dist/blob/bundles/cmd/wof-dist-build.go)
+branches of the
+[go-whosonfirst-dist](https://github.com/whosonfirst/go-whosonfirst-dist)
+package._
+
+Once that's working then we'll turn our attention to spinning up the [Who's On
+First API](/blog/2017/04/04/whosonfirst-api/) again. No one is working on this "40 hours a week" anymore so it
+may take a bit longer than we'd like but hopefully not too much longer.
+
+In the meantime, [the Spelunker is back!](https://spelunker.whosonfirst.org/)
