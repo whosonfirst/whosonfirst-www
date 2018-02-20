@@ -7,9 +7,11 @@ permalink: /blog/2018/02/20/wof-in-a-box-part3/
 category: blog
 excerpt: 
 authors: [thisisaaronland]
-image: "images/cube.jpg"
+image: "images/wof-on-off.jpg"
 tag: [spelunker,sqlite,whosonfirst]
 ---
+
+![](images/wof-on-off.jpg)
 
 The Who's On First Spelunker lives again! It's new home is:
 
@@ -31,7 +33,7 @@ And now it is:
      <a href="https://spelunker.whosonfirst.org/id/102031307/">https://spelunker.whosonfirst.org/id/102031307/</a>
 </div>
 
----
+Yay!
 
 The rest of this blog post is divided up in to two parts, one nerdier than the
 next. The first section will describe a couple of mechanical changes we made to
@@ -52,7 +54,7 @@ It's pretty technical so if that's not your jam you can skip it in good
 conscience and head over the to [the
 Spelunker](https://spelunker.whosonfirst.org/) and start spelunking away again.
 
----
+![](images/wof-wall.jpg)
 
 The Spelunker was rebuilt on a bare [Ubuntu
 16.04](https://wiki.ubuntu.com/XenialXerus/ReleaseNotes) Linux server, following
@@ -145,7 +147,7 @@ databases, one or more GeoJSON files and so on. It is also no longer necessary
 to pass the `-i(ndex)` flag since it defaults to "spelunker" now. The trusty
 `-b(ulk)` flags remains unchanged for speeding up indexing.
 
----
+![](images/wof-phone.jpg)
 
 There's been a lot of work on the SQLite databases adding full-text and spatial
 functionality as well as refactoring the code in to re-usable components so that
@@ -253,9 +255,9 @@ complicated databases like Elasticsearch.
 There's still some heavy-lifting and hoop-jumping to complete before it's
 possible but that is the goal.
 
----
+![](images/wof-jetway-2.jpg)
 
-There are three reasons we've been focusing on the SQLite databases:
+There are three reasons we've been spending so much time on the SQLite databases:
 
 1. They are super cool and super useful in their own right.
 
