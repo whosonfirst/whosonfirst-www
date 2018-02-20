@@ -203,7 +203,7 @@ _Careful readers will note that it's still not possible to search the weblog on 
 will become possible, I promise, just not today..._ 
 
 We used the blog as a testing and proving ground for how full-text search should
-work and then applied those lessons to the tools we use to index brands:
+work and then applied those lessons to the tools we use to [index and query brands](https://github.com/whosonfirst/go-whosonfirst-sqlite-brands#tools):
 
 ```
 > ./bin/wof-sqlite-query-brands -dsn test.db 'car* bank'
