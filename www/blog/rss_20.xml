@@ -3,8 +3,14 @@
   <channel>
     <title>Who's On First</title>
     <link>https://www.whosonfirst.org/</link>
-    <lastBuildDate>Tue, 20 Feb 2018 14:41:42 PST</lastBuildDate>
+    <lastBuildDate>Sat, 24 Feb 2018 10:51:27 PST</lastBuildDate>
     <description>Who's On First is a gazetteer of all the places.</description>
+    
+    <item>
+      <link>https://whosonfirst.org/blog/2018/02/27/why-of-the-how/</link>
+      <title>The Why of the How</title>
+      <description>One of the things I've taken to saying in recent years is that</description>
+    </item>
     
     <item>
       <link>https://whosonfirst.org/blog/2018/02/20/wof-in-a-box-part3/</link>
@@ -58,12 +64,6 @@
       <link>https://whosonfirst.org/blog/2017/10/17/whosonfirst-nacis-2017/</link>
       <title>maîtres chez nous</title>
       <description>Perhaps we can stop teaching our tools the bad habits of the past.</description>
-    </item>
-    
-    <item>
-      <link>https://whosonfirst.org/blog/2017/10/05/mapzen-places/</link>
-      <title>Mapzen Places is here! And there! And everywhere.</title>
-      <description>Get geometries, hierarchies, statistics and more with the Mapzen Places API.</description>
     </item>
     
   </channel>

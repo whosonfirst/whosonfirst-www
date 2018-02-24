@@ -1,0 +1,440 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="x-ua-compatible" content="ie=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Who’s On First | The Why of the How</title>
+		<meta name="description" content="Who’s on First is a gazetteer of places." />
+		<link rel="apple-touch-icon" href="/images/favicons/apple-touch-icon.png" sizes="180x180" />
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-16x16.png" sizes="16x16" />
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-32x32.png" sizes="32x32" />
+		<link rel="manifest" href="/images/favicons/manifest.json" />
+		<link rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg" color="#2C1E3F" />
+		<link rel="stylesheet" href="/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="/css/mapzen.whosonfirst.css" />
+		
+		<link rel="stylesheet" href="/css/styles/grayscale.css" />
+
+		<link rel="alternate" type="application/atom+xml" title="Who's On First Atom feed" href="/blog/atom_10.xml"/>		
+		<link rel="alternate" type="application/rss+xml" title="Who's On First RSS 2.0 feed" href="/blog/rss_20.xml"/>
+
+		
+		<meta property="og:type" content="article" />
+		<meta property="og:site_name" content="Who's On First" />
+		<meta property="og:title" content="The Why of the How" />
+		<meta property="og:description" content="One of the things I&#39;ve taken to saying in recent years is that" />
+		<meta property="og:image" content="https://www.whosonfirst.org/blog/2018/02/27/why-of-the-how/images/wof-on-off.jpg" />
+		
+		<meta property="twitter:card" value="summary" />
+		<meta property="twitter:site" content="@alloftheplaces" />
+		<meta property="twitter:creator" content="@alloftheplaces" />
+		<meta property="twitter:url" content="https://www.whosonfirst.org/blog/2018/02/27/why-of-the-how/" />
+		<meta property="twitter:title" content="The Why of the How" />
+		<meta property="twitter:description" content="One of the things I&#39;ve taken to saying in recent years is that" />
+		<meta property="twitter:image" content="https://www.whosonfirst.org/blog/2018/02/27/why-of-the-how/images/wof-on-off.jpg" />
+		
+
+	</head>
+	<body>
+		<div class="whosonfirst-wrapper">
+
+			<nav class="navbar navbar-default navbar-fixed-top whosonfirst-fixed-subpage-navbar">
+				<div class="container">
+
+					
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="/">Who’s On First</a>
+					</div>
+
+					
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					  <ul class="nav navbar-nav navbar-right">
+
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/browse/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">browse</a>
+							</li>
+					    
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/docs/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">documentation</a>
+							</li>
+							
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/code/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">code</a>
+							</li>
+
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/api/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">api</a>
+							</li>
+							
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/download/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">download</a>
+							</li>
+							
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/blog/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">blog</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+
+
+		<style type="text/css">
+		  body {
+		  font-family: serif;
+		  font-size: 1.3em;
+		  line-height: 1.5em;
+		  }
+
+		  h2 small {
+		  display: block;
+		  margin-top:.10em;
+		  font-weight: 100;
+		  font-size: .5em;
+		  }
+
+		  img {
+		  max-width: 640px !important;
+		  max-height: 480px !important;
+		  border: 1px dotted #ccc;
+		  padding: .5em;
+		  margin-bottom:1em;
+		  margin-top: 1em;
+		  display:block;
+		  min-width: 320px;
+		  margin: 0 auto;
+		  }
+
+		  blockquote {
+		  background-color:#ededed;
+		  margin-top:1em;
+		  padding-top:.05em !important;
+		  padding-bottom:1.75em !important;
+		  }
+
+		  .hey-look {
+		  font-weight: 700;
+		  }
+
+		  @media (min-width: 320px) and (max-width: 400px) {
+
+		  ul {
+		  margin:0px;
+	  	  margin-left:15px;
+		  padding:0px;
+		  }
+
+		  pre {
+		  max-width:250px;
+		  overflow:scroll;
+		  }
+
+		  img {
+		  max-width: 250px !important;
+		  max-height: 200px !important;
+		  min-width: 75px;
+		  }
+		  }
+
+		</style>
+
+			<div class="container whosonfirst-subpage-container">
+			  <div class="row">
+			    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-0">
+ 			    </div>
+			    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+			      <article>
+
+	  
+	  
+	  <h2>
+	    The Why of the How
+	    <small>This is a blog post by
+	      <span class="hey-look">thisisaaronland</span>
+	      that was published on <span class="pubdate"><a href="/blog/2018/02/">Feb</a> <a href="/blog/2018/02/27">27</a>, <a href="/blog/2018/">2018</a></span>
+	       and tagged <span class="hey-look">elasticsearch</span>, <span class="hey-look">go</span>, <span class="hey-look">python</span>, <span class="hey-look">spelunker</span>, <span class="hey-look">whosonfirst</span> and <span class="hey-look">why-of-the-how</span></small>
+	  </h2>
+
+<p><em>This is a bit of an accidental blog post. I mentioned <a href="https://vicchi.org/">Gary Gale</a> briefly in <a href="/blog/2018/02/20/wof-in-a-box-part3/">the last blog
+post</a>. Gary and I go back to Flickr /
+Y!Geo / GeoPlanet (née Where On Earth) days and lately he&rsquo;s been spending some
+time poking at all the tools and data that make up Who&rsquo;s On First.</em></p>
+
+<p><em>What I love about Gary is that he has the diligence and the
+patience to find all the outstanding questions and gotchas in a project. Gary
+has been setting up a local instance of the Spelunker and he sent me a long list
+of questions about how the Spelunker does and doesn&rsquo;t work with newer versions
+of Elasticsearch. The gist of his email being:</em></p>
+
+<blockquote>
+<p>The WOF Spelunker is currently based on ES 2.4.6 and there’s been a <em>lot</em> of changes that I’ve had to accommodate</p>
+
+<p>I still can’t get the punctuation filter working properly. Creating a new index with this in the schema dies with this &hellip;</p>
+
+<p>One thing that’s caused significant headaches is that there’s a lot of type inconsistencies in the WOF GeoJSON, with fields that /should/ be numeric being specified as strings. As I’m bulk indexing, 1000 at a tome, there’s no guaranteed order (or shard guarantee) for the documents to be processed in so I was getting a lot of mapping mismatches.</p>
+
+<p>For now I’ve fixed this by coercing the problematic fields into their integer values so the mappings are dynamically created consistently. Specifically this bites when processing the properties.wk:count, properties.qs:id and properties.wof:concordances.qs:id fields. Also oddly, properties.qs:id always seems to be zero whereas properties.wof:concordances.qs:id isn’t?</p>
+
+<p>I did check in <a href="https://github.com/whosonfirst/whosonfirst-json-schema">https://github.com/whosonfirst/whosonfirst-json-schema</a> but it looks like these documents only cover the minimum viable WOF schema and not all the fields available. Either that or it’s just out of date.</p>
+</blockquote>
+
+<p><em>I have included an abbreviated version of my reply below because aside from
+answering some of Gary&rsquo;s immediate questions it ended up touching on a lot of
+other interelated decisions and trade-offs in Who&rsquo;s On First that probably haven&rsquo;t been discussed
+or documented as well as they should be.</em></p>
+
+<p><em>One of the things I&rsquo;ve taken to saying in recent years is that: &ldquo;Sometimes we
+make mistakes because of circumstance and sometimes we make bad decisions
+because of reasons&hellip; so please just write those reasons down somewhere.&rdquo;</em></p>
+
+<p><em>I&rsquo;d like to believe we&rsquo;ve done a pretty good job of that in the Who&rsquo;s On First
+codebase itself but in as much as a large number of people are never going to
+read those comments it seems like it a useful practice to do pursue, here on the
+blog, as well. If other people have similar questions <a href="https://www.twitter.com/alloftheplaces/">we&rsquo;d be happy to answer them</a> and
+maybe we will start a general &ldquo;why of the how&rdquo; series of posts. In the
+meantime, here&rsquo;s what I said to Gary:</em></p>
+
+<hr />
+
+<p>Did I mention I have #feelings about Elasticsearch (ES) ?</p>
+
+<p>Everything you&rsquo;ve just described is one
+reason we&rsquo;re still using 2.4. It was enough of a time-sink just migrating from
+1.x to 2.x that there&rsquo;s never been a compelling reason to upgrade again beyond
+&ldquo;5 is bigger than 2&rdquo;.</p>
+
+<p>Worse, I began to have little confidence that updating from version <code>x</code> to
+version <code>y</code> wasn&rsquo;t just going to be time wasted because I soon as I was done I would
+have to upgrade to version <code>z</code>. I realize this is pretty much the defining
+characteristic of &ldquo;modern software development&rdquo; but that doesn&rsquo;t make it right.</p>
+
+<p>I suppose if Elastic are already talking about &ldquo;version 8&rdquo; it might be worth the
+effort but it&rsquo;s hard not to feel grumpy about it all. Anyway, all the ES stuff is kept here:</p>
+
+<ul>
+<li><a href="https://github.com/whosonfirst/es-whosonfirst-schema">https://github.com/whosonfirst/es-whosonfirst-schema</a></li>
+</ul>
+
+<p>The first thing I would suggest are branches and PRs. Even just creating a
+milestone and outlining all the migration issues would be useful.</p>
+
+<p>All of the code to index ES is kept here:</p>
+
+<ul>
+<li><a href="https://github.com/whosonfirst/py-mapzen-whosonfirst-search/blob/master/mapzen/whosonfirst/search/__init__.py">https://github.com/whosonfirst/py-mapzen-whosonfirst-search/blob/master/mapzen/whosonfirst/search/__init__.py</a></li>
+</ul>
+
+<p>And here, which is just a thin non-WOF/Spelunker-specific base class which wraps
+the handful of HTTP requests we make to ES, because every ES wrapper library out
+there tries to do all the things and quickly becomes more trouble than it&rsquo;s worth:</p>
+
+<ul>
+<li><a href="https://github.com/whosonfirst/py-mapzen-whosonfirst-elasticsearch/blob/master/mapzen/whosonfirst/elasticsearch/__init__.py">https://github.com/whosonfirst/py-mapzen-whosonfirst-elasticsearch/blob/master/mapzen/whosonfirst/elasticsearch/__init__.py</a></li>
+</ul>
+
+<p>In the beginning we relied on the supposed &ldquo;schemaless magic&rdquo; of ES to index
+heterogeneous documents but very quickly bumped in to the thing where ES tries to
+be clever and then shoots itself in the face when it comes to strings versus ints and of course EDTF date
+strings. Because there was never time to go on a prolonged ES vision quest I
+just handled it all in code.</p>
+
+<ul>
+<li><a href="https://github.com/whosonfirst/py-mapzen-whosonfirst-search/blob/master/mapzen/whosonfirst/search/__init__.py#L62-L480">https://github.com/whosonfirst/py-mapzen-whosonfirst-search/blob/master/mapzen/whosonfirst/search/__init__.py#L62-L480</a></li>
+<li><a href="https://github.com/whosonfirst/py-mapzen-whosonfirst-search/blob/master/scripts/wof-es-prepare">https://github.com/whosonfirst/py-mapzen-whosonfirst-search/blob/master/scripts/wof-es-prepare</a></li>
+</ul>
+
+<p>Eventually we made some of that code redundant with better schema definitions:</p>
+
+<ul>
+<li><a href="https://github.com/whosonfirst/es-whosonfirst-schema/blob/master/schema/2.4/mappings.spelunker.json">https://github.com/whosonfirst/es-whosonfirst-schema/blob/master/schema/2.4/mappings.spelunker.json</a></li>
+</ul>
+
+<p>The fact that all the indexing code is <a href="https://github.com/whosonfirst?language=python">in Python</a> is largely an historical
+artifact of having started in Python (the correct choice). I do not love having
+to &ldquo;prepare&rdquo; documents and in some ideal world we could just throw the
+properties dictionary at an ES index and get on with more exciting things.</p>
+
+<p>I would also like to be able to <a href="https://github.com/whosonfirst?language=go">use Go</a> to index ES because it is simply faster
+and we could distribute pre-compiled binary tools, because Python&rsquo;s dependency
+hoohah is reliably sad-making. The combination of <em>constructing</em> free-form JSON
+documents in Go, in writing all the scaffolding code to deal with ES
+requests/responses in Go and just limited time means it hasn&rsquo;t happened yet.</p>
+
+<p>This is what I meant when I said we use Go as much to test decisions/assumptions
+around the code, with a strictly typed language, as we do for its speed and
+muscle.</p>
+
+<p><strong>I see this inability to write a WOF -&gt; ES thingy in Go, quickly and with
+only a manageable amount of burden, as a short-coming and something to be
+addressed going forward. We have <a href="https://github.com/whosonfirst/py-mapzen-whosonfirst-export">a couple other places</a> where we&rsquo;ve painted
+ourselves in to a language corner (Python) and it&rsquo;s useful only in that it
+illustrates how <em>not</em> to do things in the future.</strong></p>
+
+<p>WOF can&rsquo;t support all the
+languages itself but it definitely shouldn&rsquo;t make [ insert language here ] a
+requirement for common things&hellip; like indexing a database. Today it does.</p>
+
+<p>The <a href="https://github.com/whosonfirst/whosonfirst-json-schema">JSON Schema stuff</a> was an early attempt to see if we could enforce a certain
+amount of consistency and quality control around document types without making
+the mistakes that XHTML 2.0 made around strict-iness (who remembers XHTML 2.0
+right&hellip;) It was also an attempt to see if it could be used to automate some
+parts of <a href="http://localhost:8080/blog/2016/10/05/boundary-issues-properties/">Boundary Issues</a> (the editorial tools) which are written in
+<a href="https://github.com/whosonfirst?language=php">PHP/Flamework</a> and <a href="https://github.com/whosonfirst?language=javascript">Javascript</a> without going <a href="https://en.wikipedia.org/wiki/XForms">Full Metal XForms</a> (no offense to <a href="http://dubinko.info/blog/tags/standards/xforms/">Micah</a>) about
+everything.</p>
+
+<p>There&rsquo;s <a href="http://localhost:8080/blog/2017/05/10/simple-is-hard/">a whole other discussion</a> about how Boundary Issues has to wrangle and round-trip
+documents and forms and UI/UX behaviour based on property types and ACLs but
+that&rsquo;s a conversation for another day.</p>
+
+<p>I think actually, as I write this, that I had faint hopes of being to generate
+the ES schemas from the JSON schemas, or at least use the latter as a starter
+kit for the former. In the end <a href="https://www.tbray.org/ongoing/When/201x/2016/04/30/JSON-Schema-funnies">the JSON Schema stuff never warranted the time</a> to
+prove or disprove or, more specifically, <em>it was going to take too long prove or
+disprove itself either way</em> and we didn&rsquo;t have the luxury of shaving those
+particular yaks.</p>
+
+<p>I am totally open to the idea that we might be able to revisit JSON Schema with
+more success now but it does point out one of the built-in tensions around a
+dataset like WOF: Namely that outside of a handful of <a href="https://github.com/whosonfirst/whosonfirst-properties">core/common/required
+properties</a> which should enforce strict-iness in any dataset as large as ours
+there <em>will</em> be type inconsistencies. It&rsquo;s not ideal but it is also entirely
+realistic to expect and it&rsquo;s not clear to me that a random <code>qs:whatever</code>
+property should cause a fatal error that prevents the casual user from getting
+started.</p>
+
+<p>A good example of this is <a href="https://github.com/whosonfirst-data/whosonfirst-data#git-and-large-files">the nightmare around LFS and large geometries</a> (hello,
+New Zealand) which is why we&rsquo;re talking about making the default/common
+geometries in records a max of 2-10 MB and moving all the &ldquo;ground truth&rdquo;
+geometries in to dedicated &ldquo;you will need to use LFS&rdquo; repos.</p>
+
+<p>It&rsquo;s also the motivating factor behind the &ldquo;standard places response&rdquo; to try and
+identify <em>what</em> the strictly enforced properties in a record are and, by
+extension, what we and consumers should &ldquo;be liberal&rdquo; about:</p>
+
+<ul>
+<li><a href="https://github.com/whosonfirst/go-whosonfirst-spr#interface">https://github.com/whosonfirst/go-whosonfirst-spr#interface</a></li>
+</ul>
+
+<p><em>See the way the definition for <code>Id()</code> return a string instead of an integer? Yeah&hellip; something something something other data sources something something something&hellip;</em></p>
+
+<p>To answer your immediate question of &ldquo;is this stuff all documented somewhere&rdquo; the answer is yes, here:</p>
+
+<ul>
+<li><a href="https://github.com/whosonfirst/whosonfirst-properties/tree/master/properties">https://github.com/whosonfirst/whosonfirst-properties/tree/master/properties</a></li>
+</ul>
+
+<p>Some of those records are incomplete but there should at least be <a href="https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties_template.json">a placeholder</a>
+for all the properties. Ultimately I would like for all those machine readable
+documents to be used to generate human-readable documentation and code-level
+sanity checking (like we already do for placetypes and sources) but that is not
+the case today:</p>
+
+<ul>
+<li><a href="https://github.com/whosonfirst/whosonfirst-sources/tree/master/bin">https://github.com/whosonfirst/whosonfirst-sources/tree/master/bin</a></li>
+<li><a href="https://github.com/whosonfirst/py-mapzen-whosonfirst-sources/blob/master/utils/mk-spec.py">https://github.com/whosonfirst/py-mapzen-whosonfirst-sources/blob/master/utils/mk-spec.py</a></li>
+<li><a href="https://github.com/whosonfirst/go-whosonfirst-sources/blob/master/sources/spec.go">https://github.com/whosonfirst/go-whosonfirst-sources/blob/master/sources/spec.go</a></li>
+<li><a href="https://github.com/whosonfirst/whosonfirst-www-api/blob/master/www/include/lib_whosonfirst_placetypes_spec.php">https://github.com/whosonfirst/whosonfirst-www-api/blob/master/www/include/lib_whosonfirst_placetypes_spec.php</a></li>
+</ul>
+
+<p>On top of all this, I am just going to assume that all the query syntax for ES
+6-8 has changed as well? Which means both the Spelunker and the API will need to updated.</p>
+
+<ul>
+<li><a href="https://github.com/whosonfirst/whosonfirst-www-spelunker/blob/master/www/server.py">https://github.com/whosonfirst/whosonfirst-www-spelunker/blob/master/www/server.py</a></li>
+<li><a href="https://github.com/whosonfirst/whosonfirst-www-api/blob/master/www/include/lib_whosonfirst_places.php">https://github.com/whosonfirst/whosonfirst-www-api/blob/master/www/include/lib_whosonfirst_places.php</a></li>
+</ul>
+
+<p>In case you&rsquo;re wondering I do periodically question whether or not we should just define all
+our ES queries as language-agnostic templates but after a few moments of hating
+myself move on to other things.</p>
+
+<p>So. That&rsquo;s maybe more than you were hoping for, by way of answers but welcome to my
+world ;-)</p>
+
+<p>It seems like it&rsquo;s time to spend some energy on ES 7. Presumably there is no
+point in stopping at 6 if 8 is already being discussed? I would start by making
+a new branch and version-specific folders in:</p>
+
+<ul>
+<li><a href="https://github.com/whosonfirst/es-whosonfirst-schema/tree/master/schema">https://github.com/whosonfirst/es-whosonfirst-schema/tree/master/schema</a></li>
+</ul>
+
+<p>And then updating the Python libraries accordingly. There is nothing precious in
+them so most things are fair game, short of embarking on a wholesale Python 2 -&gt;
+3 rewrite (which is in the cards, but not right now&hellip;) Removing as much of the
+type-checking hoohah from the Python code and in to the schema would be a good
+thing but I have a feeling expediency will dictate keeping some of them.</p>
+
+<p><strong>The subtext here is that I too would like to have a dataset where we can enforce
+type-ish consistency across the board and where the penalty for stopping and
+fixing one bad record isn&rsquo;t the potential of having to repeat the process ad infinitum. Our
+burden, I think, will be to live in the interim working towards that better
+world&hellip;</strong></p>
+
+<p>The first step should just be &ldquo;indexing the data&rdquo; and adjusting the schemas and
+&ldquo;prepare&rdquo; code as the circumstances demand. After that we can sort out / update
+all the query nonsense. If we need to sacrifice the emoji support in the
+short-term then that&rsquo;s probably the right thing, although it is pretty cool to
+be able to do this:</p>
+
+<ul>
+<li><a href="https://spelunker.whosonfirst.org/search/?alt=%F0%9F%92%A9">https://spelunker.whosonfirst.org/search/?alt=</a></li>
+</ul>
+
+<hr />
+
+<p><em>One immediate side-effect of the email thread with Gary is that there are now
+<a href="https://github.com/whosonfirst/go-whosonfirst-properties#tools">tools to crawl all the Who&rsquo;s On First records</a> and ensure that each of their
+properties has a corresponding record in the
+<a href="https://github.com/whosonfirst/whosonfirst-properties">whosonfirst-properties</a>
+repo.</em></p>
+
+<p><em>Each of those records still needs to have descriptive metadata added and
+some of the records will be bunk and in need of being superseded or deprecated
+but at least its progress. Tiny steps may be tiny but they are still forward momentum so &ldquo;Onwards!&rdquo; and
+all that good stuff&hellip;</em></p>
+
+		</article>
+		</div>
+		</div>	
+		</div>	
+
+		<footer>
+			<nav class="navbar navbar-default navbar-bottom">
+				<div class="container">
+					
+					<ul class="nav navbar-nav navbar-right whosonfirst-footer">
+						<li><a href="/docs/contributing/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">contributing</a></li>
+						<li><a href="/docs/licenses/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">license</a></li>
+						<li><a href="https://twitter.com/alloftheplaces/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">twitter</a></li>
+					</ul>
+				</div>
+			</nav>
+		</footer>
+
+		
+		<script src="/javascript/jquery.min.js"></script>
+		
+		<script src="/javascript/bootstrap.min.js"></script>
+		<script src="/javascript/mapzen.whosonfirst.home.js"></script>
+		<script src="/javascript/mapzen.whosonfirst.subpage.js"></script>
+		
+		<script src="/javascript/highlightpack.js"></script>
+		<script>
+		  try {
+		  	hljs.initHighlightingOnLoad();
+		  } catch (e) {
+		  	console.log("HLJS", e);
+		  }
+		</script>
+	</body>
+</html>
+

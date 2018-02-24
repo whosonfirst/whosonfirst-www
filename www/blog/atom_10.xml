@@ -4,12 +4,21 @@
   <title>Who's Of First</title>
   <link href="https://www.whosonfirst.org/blog/" rel="alternate" title="Who's On First" type="text/html"/>
   <link href="https://www.whosonfirst.org/blog/atom.xml" rel="self" title="Who's On First" type="application/atom+xml"/>
-  <updated>2018-02-20T14:41:42-08:00</updated>
+  <updated>2018-02-24T10:51:27-08:00</updated>
   <author>
     <name>Who's On First</name>
   </author>
   <subtitle type="text">Who's On First is a gazetter of all the places.</subtitle>
     
+  <entry>
+    <link type="text/html" href="https://www.whosonfirst.org/blog/2018/02/27/why-of-the-how/" rel="alternate"/>
+    <title>The Why of the How</title>
+    <id>https://www.whosonfirst.org/blog/2018/02/27/why-of-the-how/</id>
+    <published>2018-02-27</published>
+    <updated>2018-02-27</updated>
+    <content type="text">One of the things I've taken to saying in recent years is that</content>
+  </entry>
+  
   <entry>
     <link type="text/html" href="https://www.whosonfirst.org/blog/2018/02/20/wof-in-a-box-part3/" rel="alternate"/>
     <title>WOF in a Box (part 3)</title>
@@ -89,15 +98,6 @@
     <published>2017-10-17</published>
     <updated>2017-10-17</updated>
     <content type="text">Perhaps we can stop teaching our tools the bad habits of the past.</content>
-  </entry>
-  
-  <entry>
-    <link type="text/html" href="https://www.whosonfirst.org/blog/2017/10/05/mapzen-places/" rel="alternate"/>
-    <title>Mapzen Places is here! And there! And everywhere.</title>
-    <id>https://www.whosonfirst.org/blog/2017/10/05/mapzen-places/</id>
-    <published>2017-10-15</published>
-    <updated>2017-10-15</updated>
-    <content type="text">Get geometries, hierarchies, statistics and more with the Mapzen Places API.</content>
   </entry>
   
 </feed>
