@@ -11,6 +11,8 @@ image: "images/wof-on-off.jpg"
 tag: [elasticsearch,go,python,spelunker,whosonfirst,why-of-the-how]
 ---
 
+![](images/mushrooms-risotto.jpg)
+
 _This is a bit of an accidental blog post. I mentioned [Gary Gale](https://vicchi.org/) briefly in [the last blog
 post](/blog/2018/02/20/wof-in-a-box-part3/). Gary and I go back to Flickr /
 Y!Geo / GeoPlanet (née Where On Earth) days and lately he's been spending some
@@ -62,6 +64,8 @@ version `y` wasn't just going to be time wasted because I soon as I was done I w
 have to upgrade to version `z`. I realize this is pretty much the defining
 characteristic of "modern software development" but that doesn't make it right. 
 
+![](images/mushrooms-bowl.jpg)
+
 I suppose if Elastic are already talking about "version 8" it might be worth the
 effort but it's hard not to feel grumpy about it all. Anyway, all the ES stuff is kept here:
 
@@ -98,6 +102,8 @@ artifact of having started in Python (the correct choice). I do not love having
 to "prepare" documents and in some ideal world we could just throw the
 properties dictionary at an ES index and get on with more exciting things.
 
+![](images/mushrooms-wh.jpg)
+
 I would also like to be able to [use Go](https://github.com/whosonfirst?language=go) to index ES because it is simply faster
 and we could distribute pre-compiled binary tools, because Python's dependency
 hoohah is reliably sad-making. The combination of _constructing_ free-form JSON
@@ -130,6 +136,8 @@ There's [a whole other discussion](http://localhost:8080/blog/2017/05/10/simple-
 documents and forms and UI/UX behaviour based on property types and ACLs but
 that's a conversation for another day.
 
+![](images/mushrooms-caps.jpg)
+
 I think actually, as I write this, that I had faint hopes of being to generate
 the ES schemas from the JSON schemas, or at least use the latter as a starter
 kit for the former. In the end [the JSON Schema stuff never warranted the time](https://www.tbray.org/ongoing/When/201x/2016/04/30/JSON-Schema-funnies) to
@@ -158,6 +166,8 @@ extension, what we and consumers should "be liberal" about:
 * https://github.com/whosonfirst/go-whosonfirst-spr#interface
 
 _See the way the definition for `Id()` return a string instead of an integer? Yeah... something something something other data sources something something something..._
+
+![](images/mushrooms-peas.jpg)
 
 To answer your immediate question of "is this stuff all documented somewhere" the answer is yes, here:
 
@@ -213,7 +223,7 @@ be able to do this:
 
 * [https://spelunker.whosonfirst.org/search/?alt=](https://spelunker.whosonfirst.org/search/?alt=%F0%9F%92%A9)
 
----
+![](images/mushrooms-egg.jpg)
 
 _One immediate side-effect of the email thread with Gary is that there are now
 [tools to crawl all the Who's On First records](https://github.com/whosonfirst/go-whosonfirst-properties#tools) and ensure that each of their
