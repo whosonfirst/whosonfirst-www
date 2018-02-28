@@ -16,8 +16,8 @@ tag: [elasticsearch,go,python,spelunker,whosonfirst,why-of-the-how]
 _This is a bit of an accidental blog post._
 
 _I mentioned [Gary Gale](https://vicchi.org/) briefly in [the last blog
-post](/blog/2018/02/20/wof-in-a-box-part3/). Gary and I go back to Flickr /
-Y!Geo / GeoPlanet (née Where On Earth) days and lately he's been spending some
+post](/blog/2018/02/20/wof-in-a-box-part3/). Gary and I go back to [Flickr /
+Y!Geo / GeoPlanet (née Where On Earth) days](https://www.aaronland.info/weblog/2009/12/21/redacted/#woelr) and lately he's been spending some
 time poking at all the tools and data that make up Who's On First._
 
 _What I love about Gary is that he has the diligence and the
