@@ -208,7 +208,7 @@ And then updating the Python libraries accordingly. There is nothing precious in
 them so most things are fair game, short of embarking on a wholesale Python 2 ->
 3 rewrite (which is in the cards, but not right now...) Removing as much of the
 type-checking hoohah from the Python code and in to the schema would be a good
-thing but I have a feeling expediency will dictate keeping some of them. 
+thing but I have a feeling expediency will dictate keeping some of the former. 
 
 **The subtext here is that I too would like to have a dataset where we can enforce
 type-ish consistency across the board and where the penalty for stopping and
@@ -223,6 +223,8 @@ short-term then that's probably the right thing, although it is pretty cool to
 be able to do this:
 
 * [https://spelunker.whosonfirst.org/search/?alt=💩](https://spelunker.whosonfirst.org/search/?alt=💩)
+
+Good times...
 
 ---
 
