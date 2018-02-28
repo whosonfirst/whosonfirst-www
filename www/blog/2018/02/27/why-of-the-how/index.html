@@ -199,7 +199,7 @@ of <a href="https://www.elastic.co/products/elasticsearch">Elasticsearch</a>. Th
 
 <p>I still can’t get the punctuation filter working properly. Creating a new index with this in the schema dies with this &hellip;</p>
 
-<p>One thing that’s caused significant headaches is that there’s a lot of type inconsistencies in the WOF GeoJSON, with fields that /should/ be numeric being specified as strings. As I’m bulk indexing, 1000 at a tome, there’s no guaranteed order (or shard guarantee) for the documents to be processed in so I was getting a lot of mapping mismatches.</p>
+<p>One thing that’s caused significant headaches is that there’s a lot of type inconsistencies in the WOF GeoJSON, with fields that /should/ be numeric being specified as strings. As I’m bulk indexing, 1000 at a time, there’s no guaranteed order (or shard guarantee) for the documents to be processed in so I was getting a lot of mapping mismatches.</p>
 
 <p>For now I’ve fixed this by coercing the problematic fields into their integer values so the mappings are dynamically created consistently. Specifically this bites when processing the properties.wk:count, properties.qs:id and properties.wof:concordances.qs:id fields. Also oddly, properties.qs:id always seems to be zero whereas properties.wof:concordances.qs:id isn’t?</p>
 
