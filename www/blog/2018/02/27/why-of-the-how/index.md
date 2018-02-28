@@ -7,7 +7,7 @@ permalink: /blog/2018/02/27/why-of-the-how/
 category: blog
 excerpt: One of the things I've taken to saying in recent years is that: Sometimes we make mistakes because of circumstance and sometimes we make bad decisions because of reasons... so please just write those reasons down somewhere.
 authors: [thisisaaronland]
-image: "images/wof-on-off.jpg"
+image: "images/mushrooms-bowl.jpg"
 tag: [elasticsearch,go,python,spelunker,whosonfirst,why-of-the-how]
 ---
 
