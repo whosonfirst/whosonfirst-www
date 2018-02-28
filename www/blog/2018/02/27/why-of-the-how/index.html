@@ -99,6 +99,22 @@
 		  margin-top:.10em;
 		  font-weight: 100;
 		  font-size: .5em;
+		  line-height: 1.3em;
+		  }
+
+		  p {
+		  line-height: 1.5em !important;
+		  }
+
+		  ul {
+		  font-size:1.3em;
+		  line-height:1.5em;
+		  margin-top:1em !important;
+		  }
+
+		  li {
+		  list-style-type: circle;
+		  margin-bottom: .5em;
 		  }
 
 		  img {
@@ -165,16 +181,18 @@
 
 <p><img src="images/mushrooms-risotto.jpg" alt="" /></p>
 
-<p><em>This is a bit of an accidental blog post. I mentioned <a href="https://vicchi.org/">Gary Gale</a> briefly in <a href="/blog/2018/02/20/wof-in-a-box-part3/">the last blog
+<p><em>This is a bit of an accidental blog post.</em></p>
+
+<p><em>I mentioned <a href="https://vicchi.org/">Gary Gale</a> briefly in <a href="/blog/2018/02/20/wof-in-a-box-part3/">the last blog
 post</a>. Gary and I go back to Flickr /
 Y!Geo / GeoPlanet (née Where On Earth) days and lately he&rsquo;s been spending some
 time poking at all the tools and data that make up Who&rsquo;s On First.</em></p>
 
 <p><em>What I love about Gary is that he has the diligence and the
 patience to find all the outstanding questions and gotchas in a project. Gary
-has been setting up a local instance of the Spelunker and he sent me a long list
+has been setting up a local instance of the <a href="https://spelunker.whosonfirst.org/">Spelunker</a> and he sent me a long list
 of questions about how the Spelunker does and doesn&rsquo;t work with newer versions
-of Elasticsearch. The gist of his email being:</em></p>
+of <a href="https://www.elastic.co/products/elasticsearch">Elasticsearch</a>. The gist of his email being:</em></p>
 
 <blockquote>
 <p>The WOF Spelunker is currently based on ES 2.4.6 and there’s been a <em>lot</em> of changes that I’ve had to accommodate</p>
@@ -190,7 +208,7 @@ of Elasticsearch. The gist of his email being:</em></p>
 
 <p><em>I have included an abbreviated version of my reply below because aside from
 answering some of Gary&rsquo;s immediate questions it ended up touching on a lot of
-other interelated decisions and trade-offs in Who&rsquo;s On First that probably haven&rsquo;t been discussed
+other interelated decisions and trade-offs in both the design and the implementation of Who&rsquo;s On First that probably haven&rsquo;t been discussed
 or documented as well as they should be.</em></p>
 
 <p><em>One of the things I&rsquo;ve taken to saying in recent years is that: &ldquo;Sometimes we
@@ -201,36 +219,36 @@ because of reasons&hellip; so please just write those reasons down somewhere.&rd
 codebase itself but in as much as a large number of people are never going to
 read those comments it seems like it a useful practice to do pursue, here on the
 blog, as well. If other people have similar questions <a href="https://www.twitter.com/alloftheplaces/">we&rsquo;d be happy to answer them</a> and
-maybe we will start a general &ldquo;why of the how&rdquo; series of posts. In the
-meantime, here&rsquo;s what I said to Gary:</em></p>
+maybe we will start a general &ldquo;why of the how&rdquo; series of posts.</em></p>
+
+<p><em>In the meantime, here&rsquo;s what I said to Gary:</em></p>
 
 <hr />
 
-<p>Did I mention I have #feelings about Elasticsearch (ES) ?</p>
+<p>Did I mention I have <em>#feelings</em> about Elasticsearch (ES) ?</p>
 
 <p>Everything you&rsquo;ve just described is one
 reason we&rsquo;re still using 2.4. It was enough of a time-sink just migrating from
 1.x to 2.x that there&rsquo;s never been a compelling reason to upgrade again beyond
-&ldquo;5 is bigger than 2&rdquo;.</p>
+&ldquo;3 (or 5 in the case of Elasticsearch, which skipped versions 3 and 4) is bigger than 2&rdquo;.</p>
 
 <p>Worse, I began to have little confidence that updating from version <code>x</code> to
 version <code>y</code> wasn&rsquo;t just going to be time wasted because I soon as I was done I would
-have to upgrade to version <code>z</code>. I realize this is pretty much the defining
-characteristic of &ldquo;modern software development&rdquo; but that doesn&rsquo;t make it right.</p>
+have to upgrade to version <code>z</code>.</p>
+
+<p>I realize this is pretty much the defining characteristic of &ldquo;modern software development&rdquo; but that doesn&rsquo;t make it right.</p>
 
 <p><img src="images/mushrooms-bowl.jpg" alt="" /></p>
 
-<p>I suppose if Elastic are already talking about &ldquo;version 8&rdquo; it might be worth the
-effort but it&rsquo;s hard not to feel grumpy about it all. Anyway, all the ES stuff is kept here:</p>
+<p>I suppose if Elastic are already talking about &ldquo;version 8&rdquo; <a href="https://readwrite.com/2011/02/10/pinboard-creator-maciej-ceglow/">it might be worth the
+effort</a> but it&rsquo;s hard not to feel grumpy about it all. Anyway, all the ES stuff is kept here:</p>
 
 <ul>
 <li><a href="https://github.com/whosonfirst/es-whosonfirst-schema">https://github.com/whosonfirst/es-whosonfirst-schema</a></li>
 </ul>
 
 <p>The first thing I would suggest are branches and PRs. Even just creating a
-milestone and outlining all the migration issues would be useful.</p>
-
-<p>All of the code to index ES is kept here:</p>
+milestone and outlining all the migration issues would be useful. All of the code to index ES is kept here:</p>
 
 <ul>
 <li><a href="https://github.com/whosonfirst/py-mapzen-whosonfirst-search/blob/master/mapzen/whosonfirst/search/__init__.py">https://github.com/whosonfirst/py-mapzen-whosonfirst-search/blob/master/mapzen/whosonfirst/search/__init__.py</a></li>
@@ -246,8 +264,8 @@ there tries to do all the things and quickly becomes more trouble than it&rsquo;
 
 <p>In the beginning we relied on the supposed &ldquo;schemaless magic&rdquo; of ES to index
 heterogeneous documents but very quickly bumped in to the thing where ES tries to
-be clever and then shoots itself in the face when it comes to strings versus ints and of course EDTF date
-strings. Because there was never time to go on a prolonged ES vision quest I
+be clever and then shoots itself in the face when it comes to strings versus ints and of course <a href="/blog/2017/06/29/tackling-space-and-time-in-whosonfirst/">EDTF date
+strings</a>. Because there was never time to go on a prolonged ES vision quest I
 just handled it all in code.</p>
 
 <ul>
@@ -290,8 +308,8 @@ requirement for common things&hellip; like indexing a database. Today it does.</
 
 <p>The <a href="https://github.com/whosonfirst/whosonfirst-json-schema">JSON Schema stuff</a> was an early attempt to see if we could enforce a certain
 amount of consistency and quality control around document types without making
-the mistakes that XHTML 2.0 made around strict-iness (who remembers XHTML 2.0
-right&hellip;) It was also an attempt to see if it could be used to automate some
+<a href="https://www.wired.com/2009/07/the_w3c_buries_xhtml_2dot0_html_5_is_the_future_of_the_web/">the mistakes that XHTML 2.0 made</a> around strict-iness (who remembers XHTML 2.0
+right&hellip;?) It was also an attempt to see if it could be used to automate some
 parts of <a href="http://localhost:8080/blog/2016/10/05/boundary-issues-properties/">Boundary Issues</a> (the editorial tools) which are written in
 <a href="https://github.com/whosonfirst?language=php">PHP/Flamework</a> and <a href="https://github.com/whosonfirst?language=javascript">Javascript</a> without going <a href="https://en.wikipedia.org/wiki/XForms">Full Metal XForms</a> (no offense to <a href="http://dubinko.info/blog/tags/standards/xforms/">Micah</a>) about
 everything.</p>
@@ -302,12 +320,11 @@ that&rsquo;s a conversation for another day.</p>
 
 <p><img src="images/mushrooms-caps.jpg" alt="" /></p>
 
-<p>I think actually, as I write this, that I had faint hopes of being to generate
+<p>I think, as I write this now, that I had faint hopes of being able to generate
 the ES schemas from the JSON schemas, or at least use the latter as a starter
 kit for the former. In the end <a href="https://www.tbray.org/ongoing/When/201x/2016/04/30/JSON-Schema-funnies">the JSON Schema stuff never warranted the time</a> to
 prove or disprove or, more specifically, <em>it was going to take too long prove or
-disprove itself either way</em> and we didn&rsquo;t have the luxury of shaving those
-particular yaks.</p>
+disprove itself either way</em> and we didn&rsquo;t have the luxury of finding out.</p>
 
 <p>I am totally open to the idea that we might be able to revisit JSON Schema with
 more success now but it does point out one of the built-in tensions around a
@@ -323,7 +340,7 @@ New Zealand) which is why we&rsquo;re talking about making the default/common
 geometries in records a max of 2-10 MB and moving all the &ldquo;ground truth&rdquo;
 geometries in to dedicated &ldquo;you will need to use LFS&rdquo; repos.</p>
 
-<p>It&rsquo;s also the motivating factor behind the &ldquo;standard places response&rdquo; to try and
+<p>It&rsquo;s also the motivating factor behind the &ldquo;standard places response&rdquo; (modeled after Flickr&rsquo;s <a href="https://code.flickr.net/2008/08/19/standard-photos-response-apis-for-civilized-age/">standard photo response</a>) to try and
 identify <em>what</em> the strictly enforced properties in a record are and, by
 extension, what we and consumers should &ldquo;be liberal&rdquo; about:</p>
 
@@ -367,7 +384,7 @@ our ES queries as language-agnostic templates but after a few moments of hating
 myself move on to other things.</p>
 
 <p>So. That&rsquo;s maybe more than you were hoping for, by way of answers but welcome to my
-world ;-)</p>
+world.</p>
 
 <p>It seems like it&rsquo;s time to spend some energy on ES 7. Presumably there is no
 point in stopping at 6 if 8 is already being discussed? I would start by making
@@ -391,21 +408,23 @@ world&hellip;</strong></p>
 
 <p>The first step should just be &ldquo;indexing the data&rdquo; and adjusting the schemas and
 &ldquo;prepare&rdquo; code as the circumstances demand. After that we can sort out / update
-all the query nonsense. If we need to sacrifice the emoji support in the
+all the query nonsense. If we need to sacrifice <a href="https://github.com/whosonfirst/es-whosonfirst-schema/tree/master/synonyms#emoji-synonyms">the emoji support</a> in the
 short-term then that&rsquo;s probably the right thing, although it is pretty cool to
 be able to do this:</p>
 
 <ul>
-<li><a href="https://spelunker.whosonfirst.org/search/?alt=%F0%9F%92%A9">https://spelunker.whosonfirst.org/search/?alt=</a></li>
+<li><a href="https://spelunker.whosonfirst.org/search/?alt=💩">https://spelunker.whosonfirst.org/search/?alt=💩</a></li>
 </ul>
 
-<p><img src="images/mushrooms-egg.jpg" alt="" /></p>
+<hr />
 
 <p><em>One immediate side-effect of the email thread with Gary is that there are now
 <a href="https://github.com/whosonfirst/go-whosonfirst-properties#tools">tools to crawl all the Who&rsquo;s On First records</a> and ensure that each of their
 properties has a corresponding record in the
 <a href="https://github.com/whosonfirst/whosonfirst-properties">whosonfirst-properties</a>
-repo.</em></p>
+repo and Gary is writing <a href="https://github.com/vicchi/php-whosonfirst-properties">code to test those files</a>.</em></p>
+
+<p><img src="images/mushrooms-egg.jpg" alt="" /></p>
 
 <p><em>Each of those records still needs to have descriptive metadata added and
 some of the records will be bunk and in need of being superseded or deprecated

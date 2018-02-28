@@ -11,47 +11,39 @@ image: "images/main_photo.jpg"
 tag: [whosonfirst, data, yugoslavia]
 ---
 
-
-
-##Let's start with Yugoslavia
+## Let's start with Yugoslavia
 
 Creating historical records in the [Who's On First](https://whosonfirst.mapzen.com/) gazetteer for Yugoslavia is an excellent test case in helping us answer the following question:
 
 _How can Who's On First catalogue and preserve records for Yugoslavia, the former Soviet republics, and everything in between?_
 
-
-
-##Introducing EDTF
+## Introducing EDTF
 
 The Library of Congress developed the [**Extended Date/Time Format (EDTF)**](https://www.loc.gov/standards/datetime/pre-submission.html), and is in the process of adding it as an extension to [**ISO 8601**](http://dotat.at/tmp/ISO_8601-2004_E.pdf). This date/time string is used to express the concept of a fixed or known date (`YYYY-MM-DD`, `YYYY-MM` or `YYYY`), as well as other semantic qualifiers like _"approximately the year 2017"_ (`YYYY~`) and _"approximately 2003, but that is uncertain"_ (`2003?~`).
 
 This format is perfectly suited to tracking historical administrative records, specifically "places" in [dispute and contention](https://whosonfirst.mapzen.com/spelunker/placetypes/disputed/#4/-1.32/112.73). Being able to catalogue a place with as many moving pieces as Yugoslavia allows us to use "soft" beginning and end dates. 
 
-
-
-##The how
+## The how
 
 Who's On First uses this format for several [properties](https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/edtf.md), including:
 
-####edtf:inception:
+#### edtf:inception:
 
 > _Indicates the date when a place was first created or established._
 
-####edtf:cessation:
+#### edtf:cessation:
 
 > _Indicates when a place stopped being a "going concern". The semantics for something ceasing may vary from placetype to placetype. For example, a venue may cease operations or a country may split in to multiple countries._
 
-####edtf:deprecated:
+#### edtf:deprecated:
 
 > _Indicates the date when a place was determined to be invalid (was never a "going concern")._
 
-####edtf:superseded:
+#### edtf:superseded:
 
 > _Indicates the date when a record was superseded by another record._
 
-
-
-##The why
+## The why
 
 The Extended Date/Time Format is a useful method to categorize "soft dates" for Who's On First, one example being the record for the country of Croatia as it relates to Yugoslavia. At the start of 1990, Croatia was a socialist republic within Yugoslavia. That same year, the government was dissolved in favor of a multi-party democracy and, soon after, an independence referendum was held. Independence from Yugoslavia was favored and within a month, Croatia declared independence. 
 
@@ -63,9 +55,7 @@ We can use _both_ the date of the independence vote and the date of declared ind
 
 That flexibility let's Who's On First to note the times around both dates related to Croatia's independence.
 
-
-
-##Let's take a stroll through history
+## Let's take a stroll through history
 
 ## 1918-12~ to 1945-11-29
 
@@ -144,11 +134,11 @@ Here is the dissolution of Yugoslavia in the form of a GIF, along with the WOF I
 
 You too can travel through time, space and politics by [superseding layers in Tangram Play](https://mapzen.com/tangram/view/?api=22/770#6.529/44.129/-341.711).
 
-##How does this relate to other records?
+## How does this relate to other records?
 
 Great question!
 
-###Constituency records
+### Constituency records
 
 We've recently imported constituency data for the 115th U.S. Congress ([take a look!](https://github.com/whosonfirst-data/whosonfirst-data-constituency-us)) and have the scaffolding in place to import additional constituency data from previous sessions of Congress, as well as constituency data for other countries. While each Congress has a "hard" end date, the `edtf:*` properties will still be used signify dates in historical constituency records.
 
@@ -160,9 +150,7 @@ The [Manifest Destiny project](http://michaelporath.com/projects/manifest-destin
 
 We've done something similar with a smaller batch of records in San Francisco. Follow the `supersedes` links for two venues in San Francisco: [Rock Bar](https://whosonfirst.mapzen.com/spelunker/id/890535433/#14/37.7458/-122.4211) and [Francisca's (neé The Palace)](https://whosonfirst.mapzen.com/spelunker/id/1126130035/#13/37.7604/-122.4143). 
 
-
-
-##Caveats...
+## Caveats...
 
 If it isn't obvious by now, tackling these types of issues can be challenging. We're doing our best to catalogue historical places, but that comes with caveats. Using dates and superseding properties is helpful in creating a timeline of a "place", but it is difficult to manage every edge case with the Extended Date/Time Format and other Who's On First properties. Yugoslavia was an area with relative agreement when creating records and adding dates, but other places in long-term conflict will not be as easy to catalogue.
 

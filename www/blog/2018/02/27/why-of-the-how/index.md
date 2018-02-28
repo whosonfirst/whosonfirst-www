@@ -13,16 +13,18 @@ tag: [elasticsearch,go,python,spelunker,whosonfirst,why-of-the-how]
 
 ![](images/mushrooms-risotto.jpg)
 
-_This is a bit of an accidental blog post. I mentioned [Gary Gale](https://vicchi.org/) briefly in [the last blog
+_This is a bit of an accidental blog post._
+
+_I mentioned [Gary Gale](https://vicchi.org/) briefly in [the last blog
 post](/blog/2018/02/20/wof-in-a-box-part3/). Gary and I go back to Flickr /
 Y!Geo / GeoPlanet (née Where On Earth) days and lately he's been spending some
 time poking at all the tools and data that make up Who's On First._
 
 _What I love about Gary is that he has the diligence and the
 patience to find all the outstanding questions and gotchas in a project. Gary
-has been setting up a local instance of the Spelunker and he sent me a long list
+has been setting up a local instance of the [Spelunker](https://spelunker.whosonfirst.org/) and he sent me a long list
 of questions about how the Spelunker does and doesn't work with newer versions
-of Elasticsearch. The gist of his email being:_
+of [Elasticsearch](https://www.elastic.co/products/elasticsearch). The gist of his email being:_
 
 > The WOF Spelunker is currently based on ES 2.4.6 and there’s been a *lot* of changes that I’ve had to accommodate 
 
@@ -36,7 +38,7 @@ of Elasticsearch. The gist of his email being:_
 
 _I have included an abbreviated version of my reply below because aside from
 answering some of Gary's immediate questions it ended up touching on a lot of
-other interelated decisions and trade-offs in Who's On First that probably haven't been discussed
+other interelated decisions and trade-offs in both the design and the implementation of Who's On First that probably haven't been discussed
 or documented as well as they should be._
 
 _One of the things I've taken to saying in recent years is that: "Sometimes we
@@ -47,34 +49,34 @@ _I'd like to believe we've done a pretty good job of that in the Who's On First
 codebase itself but in as much as a large number of people are never going to
 read those comments it seems like it a useful practice to do pursue, here on the
 blog, as well. If other people have similar questions [we'd be happy to answer them](https://www.twitter.com/alloftheplaces/) and
-maybe we will start a general "why of the how" series of posts. In the
-meantime, here's what I said to Gary:_
+maybe we will start a general "why of the how" series of posts._
+
+_In the meantime, here's what I said to Gary:_
 
 ---
 
-Did I mention I have #feelings about Elasticsearch (ES) ?
+Did I mention I have _#feelings_ about Elasticsearch (ES) ?
 
 Everything you've just described is one
 reason we're still using 2.4. It was enough of a time-sink just migrating from
 1.x to 2.x that there's never been a compelling reason to upgrade again beyond
-"5 is bigger than 2".
+"3 (or 5 in the case of Elasticsearch, which skipped versions 3 and 4) is bigger than 2".
 
 Worse, I began to have little confidence that updating from version `x` to
 version `y` wasn't just going to be time wasted because I soon as I was done I would
-have to upgrade to version `z`. I realize this is pretty much the defining
-characteristic of "modern software development" but that doesn't make it right. 
+have to upgrade to version `z`.
+
+I realize this is pretty much the defining characteristic of "modern software development" but that doesn't make it right. 
 
 ![](images/mushrooms-bowl.jpg)
 
-I suppose if Elastic are already talking about "version 8" it might be worth the
-effort but it's hard not to feel grumpy about it all. Anyway, all the ES stuff is kept here:
+I suppose if Elastic are already talking about "version 8" [it might be worth the
+effort](https://readwrite.com/2011/02/10/pinboard-creator-maciej-ceglow/) but it's hard not to feel grumpy about it all. Anyway, all the ES stuff is kept here:
 
 * https://github.com/whosonfirst/es-whosonfirst-schema
 
 The first thing I would suggest are branches and PRs. Even just creating a
-milestone and outlining all the migration issues would be useful.
-
-All of the code to index ES is kept here:
+milestone and outlining all the migration issues would be useful. All of the code to index ES is kept here: 
 
 * https://github.com/whosonfirst/py-mapzen-whosonfirst-search/blob/master/mapzen/whosonfirst/search/__init__.py
 
@@ -86,8 +88,8 @@ there tries to do all the things and quickly becomes more trouble than it's wort
 
 In the beginning we relied on the supposed "schemaless magic" of ES to index
 heterogeneous documents but very quickly bumped in to the thing where ES tries to
-be clever and then shoots itself in the face when it comes to strings versus ints and of course EDTF date
-strings. Because there was never time to go on a prolonged ES vision quest I
+be clever and then shoots itself in the face when it comes to strings versus ints and of course [EDTF date
+strings](/blog/2017/06/29/tackling-space-and-time-in-whosonfirst/). Because there was never time to go on a prolonged ES vision quest I
 just handled it all in code.
 
 * https://github.com/whosonfirst/py-mapzen-whosonfirst-search/blob/master/mapzen/whosonfirst/search/__init__.py#L62-L480
@@ -126,8 +128,8 @@ requirement for common things... like indexing a database. Today it does.
 
 The [JSON Schema stuff](https://github.com/whosonfirst/whosonfirst-json-schema) was an early attempt to see if we could enforce a certain
 amount of consistency and quality control around document types without making
-the mistakes that XHTML 2.0 made around strict-iness (who remembers XHTML 2.0
-right...) It was also an attempt to see if it could be used to automate some
+[the mistakes that XHTML 2.0 made](https://www.wired.com/2009/07/the_w3c_buries_xhtml_2dot0_html_5_is_the_future_of_the_web/) around strict-iness (who remembers XHTML 2.0
+right...?) It was also an attempt to see if it could be used to automate some
 parts of [Boundary Issues](http://localhost:8080/blog/2016/10/05/boundary-issues-properties/) (the editorial tools) which are written in
 [PHP/Flamework](https://github.com/whosonfirst?language=php) and [Javascript](https://github.com/whosonfirst?language=javascript) without going [Full Metal XForms](https://en.wikipedia.org/wiki/XForms) (no offense to [Micah](http://dubinko.info/blog/tags/standards/xforms/)) about
 everything.
@@ -138,12 +140,11 @@ that's a conversation for another day.
 
 ![](images/mushrooms-caps.jpg)
 
-I think actually, as I write this, that I had faint hopes of being to generate
+I think, as I write this now, that I had faint hopes of being able to generate
 the ES schemas from the JSON schemas, or at least use the latter as a starter
 kit for the former. In the end [the JSON Schema stuff never warranted the time](https://www.tbray.org/ongoing/When/201x/2016/04/30/JSON-Schema-funnies) to
 prove or disprove or, more specifically, _it was going to take too long prove or
-disprove itself either way_ and we didn't have the luxury of shaving those
-particular yaks.
+disprove itself either way_ and we didn't have the luxury of finding out.
 
 I am totally open to the idea that we might be able to revisit JSON Schema with
 more success now but it does point out one of the built-in tensions around a
@@ -159,7 +160,7 @@ New Zealand) which is why we're talking about making the default/common
 geometries in records a max of 2-10 MB and moving all the "ground truth"
 geometries in to dedicated "you will need to use LFS" repos.
 
-It's also the motivating factor behind the "standard places response" to try and
+It's also the motivating factor behind the "standard places response" (modeled after Flickr's [standard photo response](https://code.flickr.net/2008/08/19/standard-photos-response-apis-for-civilized-age/)) to try and
 identify _what_ the strictly enforced properties in a record are and, by
 extension, what we and consumers should "be liberal" about:
 
@@ -195,7 +196,7 @@ our ES queries as language-agnostic templates but after a few moments of hating
 myself move on to other things.
 
 So. That's maybe more than you were hoping for, by way of answers but welcome to my
-world ;-)
+world.
 
 It seems like it's time to spend some energy on ES 7. Presumably there is no
 point in stopping at 6 if 8 is already being discussed? I would start by making
@@ -217,22 +218,23 @@ world...**
 
 The first step should just be "indexing the data" and adjusting the schemas and
 "prepare" code as the circumstances demand. After that we can sort out / update
-all the query nonsense. If we need to sacrifice the emoji support in the
+all the query nonsense. If we need to sacrifice [the emoji support](https://github.com/whosonfirst/es-whosonfirst-schema/tree/master/synonyms#emoji-synonyms) in the
 short-term then that's probably the right thing, although it is pretty cool to
 be able to do this:
 
-* [https://spelunker.whosonfirst.org/search/?alt=](https://spelunker.whosonfirst.org/search/?alt=%F0%9F%92%A9)
+* [https://spelunker.whosonfirst.org/search/?alt=💩](https://spelunker.whosonfirst.org/search/?alt=💩)
 
-![](images/mushrooms-egg.jpg)
+---
 
 _One immediate side-effect of the email thread with Gary is that there are now
 [tools to crawl all the Who's On First records](https://github.com/whosonfirst/go-whosonfirst-properties#tools) and ensure that each of their
 properties has a corresponding record in the
 [whosonfirst-properties](https://github.com/whosonfirst/whosonfirst-properties)
-repo._
+repo and Gary is writing [code to test those files](https://github.com/vicchi/php-whosonfirst-properties)._
+
+![](images/mushrooms-egg.jpg)
 
 _Each of those records still needs to have descriptive metadata added and
 some of the records will be bunk and in need of being superseded or deprecated
 but at least its progress. Tiny steps may be tiny but they are still forward momentum so "Onwards!" and
 all that good stuff..._
-

@@ -99,6 +99,22 @@
 		  margin-top:.10em;
 		  font-weight: 100;
 		  font-size: .5em;
+		  line-height: 1.3em;
+		  }
+
+		  p {
+		  line-height: 1.5em !important;
+		  }
+
+		  ul {
+		  font-size:1.3em;
+		  line-height:1.5em;
+		  margin-top:1em !important;
+		  }
+
+		  li {
+		  list-style-type: circle;
+		  margin-bottom: .5em;
 		  }
 
 		  img {
@@ -163,47 +179,47 @@
 	       and tagged <span class="hey-look">whosonfirst</span>, <span class="hey-look">data</span> and <span class="hey-look">yugoslavia</span></small>
 	  </h2>
 
-<p>##Let&rsquo;s start with Yugoslavia</p>
+<h2>Let&rsquo;s start with Yugoslavia</h2>
 
 <p>Creating historical records in the <a href="https://whosonfirst.mapzen.com/">Who&rsquo;s On First</a> gazetteer for Yugoslavia is an excellent test case in helping us answer the following question:</p>
 
 <p><em>How can Who&rsquo;s On First catalogue and preserve records for Yugoslavia, the former Soviet republics, and everything in between?</em></p>
 
-<p>##Introducing EDTF</p>
+<h2>Introducing EDTF</h2>
 
 <p>The Library of Congress developed the <a href="https://www.loc.gov/standards/datetime/pre-submission.html"><strong>Extended Date/Time Format (EDTF)</strong></a>, and is in the process of adding it as an extension to <a href="http://dotat.at/tmp/ISO_8601-2004_E.pdf"><strong>ISO 8601</strong></a>. This date/time string is used to express the concept of a fixed or known date (<code>YYYY-MM-DD</code>, <code>YYYY-MM</code> or <code>YYYY</code>), as well as other semantic qualifiers like <em>&ldquo;approximately the year 2017&rdquo;</em> (<code>YYYY~</code>) and <em>&ldquo;approximately 2003, but that is uncertain&rdquo;</em> (<code>2003?~</code>).</p>
 
 <p>This format is perfectly suited to tracking historical administrative records, specifically &ldquo;places&rdquo; in <a href="https://whosonfirst.mapzen.com/spelunker/placetypes/disputed/#4/-1.32/112.73">dispute and contention</a>. Being able to catalogue a place with as many moving pieces as Yugoslavia allows us to use &ldquo;soft&rdquo; beginning and end dates.</p>
 
-<p>##The how</p>
+<h2>The how</h2>
 
 <p>Who&rsquo;s On First uses this format for several <a href="https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/edtf.md">properties</a>, including:</p>
 
-<p>####edtf:inception:</p>
+<h4>edtf:inception:</h4>
 
 <blockquote>
 <p><em>Indicates the date when a place was first created or established.</em></p>
 </blockquote>
 
-<p>####edtf:cessation:</p>
+<h4>edtf:cessation:</h4>
 
 <blockquote>
 <p><em>Indicates when a place stopped being a &ldquo;going concern&rdquo;. The semantics for something ceasing may vary from placetype to placetype. For example, a venue may cease operations or a country may split in to multiple countries.</em></p>
 </blockquote>
 
-<p>####edtf:deprecated:</p>
+<h4>edtf:deprecated:</h4>
 
 <blockquote>
 <p><em>Indicates the date when a place was determined to be invalid (was never a &ldquo;going concern&rdquo;).</em></p>
 </blockquote>
 
-<p>####edtf:superseded:</p>
+<h4>edtf:superseded:</h4>
 
 <blockquote>
 <p><em>Indicates the date when a record was superseded by another record.</em></p>
 </blockquote>
 
-<p>##The why</p>
+<h2>The why</h2>
 
 <p>The Extended Date/Time Format is a useful method to categorize &ldquo;soft dates&rdquo; for Who&rsquo;s On First, one example being the record for the country of Croatia as it relates to Yugoslavia. At the start of 1990, Croatia was a socialist republic within Yugoslavia. That same year, the government was dissolved in favor of a multi-party democracy and, soon after, an independence referendum was held. Independence from Yugoslavia was favored and within a month, Croatia declared independence.</p>
 
@@ -215,7 +231,7 @@
 
 <p>That flexibility let&rsquo;s Who&rsquo;s On First to note the times around both dates related to Croatia&rsquo;s independence.</p>
 
-<p>##Let&rsquo;s take a stroll through history</p>
+<h2>Let&rsquo;s take a stroll through history</h2>
 
 <h2>1918-12~ to 1945-11-29</h2>
 
@@ -288,11 +304,11 @@
 
 <p>You too can travel through time, space and politics by <a href="https://mapzen.com/tangram/view/?api=22/770#6.529/44.129/-341.711">superseding layers in Tangram Play</a>.</p>
 
-<p>##How does this relate to other records?</p>
+<h2>How does this relate to other records?</h2>
 
 <p>Great question!</p>
 
-<p>###Constituency records</p>
+<h3>Constituency records</h3>
 
 <p>We&rsquo;ve recently imported constituency data for the 115th U.S. Congress (<a href="https://github.com/whosonfirst-data/whosonfirst-data-constituency-us">take a look!</a>) and have the scaffolding in place to import additional constituency data from previous sessions of Congress, as well as constituency data for other countries. While each Congress has a &ldquo;hard&rdquo; end date, the <code>edtf:*</code> properties will still be used signify dates in historical constituency records.</p>
 
@@ -304,7 +320,7 @@
 
 <p>We&rsquo;ve done something similar with a smaller batch of records in San Francisco. Follow the <code>supersedes</code> links for two venues in San Francisco: <a href="https://whosonfirst.mapzen.com/spelunker/id/890535433/#14/37.7458/-122.4211">Rock Bar</a> and <a href="https://whosonfirst.mapzen.com/spelunker/id/1126130035/#13/37.7604/-122.4143">Francisca&rsquo;s (neé The Palace)</a>.</p>
 
-<p>##Caveats&hellip;</p>
+<h2>Caveats&hellip;</h2>
 
 <p>If it isn&rsquo;t obvious by now, tackling these types of issues can be challenging. We&rsquo;re doing our best to catalogue historical places, but that comes with caveats. Using dates and superseding properties is helpful in creating a timeline of a &ldquo;place&rdquo;, but it is difficult to manage every edge case with the Extended Date/Time Format and other Who&rsquo;s On First properties. Yugoslavia was an area with relative agreement when creating records and adding dates, but other places in long-term conflict will not be as easy to catalogue.</p>
 
