@@ -119,7 +119,7 @@ muscle.
 **I see this inability to write a WOF -> ES thingy in Go, quickly and with
 only a manageable amount of burden, as a short-coming and something to be
 addressed going forward. We have [a couple other places](https://github.com/whosonfirst/py-mapzen-whosonfirst-export) where we've painted
-ourselves in to a language corner (Python) and it's useful only in that it
+ourselves in to a language-specific corner (Python) and it's useful only in that it
 illustrates how _not_ to do things in the future.**
 
 WOF can't support all the
