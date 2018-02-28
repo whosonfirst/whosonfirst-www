@@ -166,11 +166,11 @@ extension, what we and consumers should "be liberal" about:
 
 * https://github.com/whosonfirst/go-whosonfirst-spr#interface
 
-_See the way the definition for `Id()` return a string instead of an integer? Yeah... something something something other data sources something something something..._
+_See the way the definition for the `Id()` method returns a string instead of an integer? Yeah... something something something other data sources something something something..._
 
 ![](images/mushrooms-peas.jpg)
 
-To answer your immediate question of "is this stuff all documented somewhere" the answer is yes, here:
+To answer your immediate question of _"Is this stuff all documented somewhere?"_ the answer is yes, here:
 
 * https://github.com/whosonfirst/whosonfirst-properties/tree/master/properties
 
@@ -195,7 +195,7 @@ In case you're wondering I do periodically question whether or not we should jus
 our ES queries as language-agnostic templates but after a few moments of hating
 myself move on to other things.
 
-So. That's maybe more than you were hoping for, by way of answers but welcome to my
+So. That's maybe more than you were hoping for, by way of answers, but welcome to my
 world.
 
 It seems like it's time to spend some energy on ES 7. Presumably there is no
@@ -236,5 +236,7 @@ repo and Gary is writing [code to test those files](https://github.com/vicchi/ph
 
 _Each of those records still needs to have descriptive metadata added and
 some of the records will be bunk and in need of being superseded or deprecated
-but at least its progress. Tiny steps may be tiny but they are still forward momentum so "Onwards!" and
+but at least its progress._
+
+_Tiny steps may be tiny but they are still forward momentum so "Onwards!" and
 all that good stuff..._
