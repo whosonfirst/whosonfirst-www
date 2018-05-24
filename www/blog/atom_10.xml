@@ -4,18 +4,18 @@
   <title>Who's Of First</title>
   <link href="https://www.whosonfirst.org/blog/" rel="alternate" title="Who's On First" type="text/html"/>
   <link href="https://www.whosonfirst.org/blog/atom.xml" rel="self" title="Who's On First" type="application/atom+xml"/>
-  <updated>2018-05-24T16:54:34+01:00</updated>
+  <updated>2018-05-24T18:15:20+01:00</updated>
   <author>
     <name>Who's On First</name>
   </author>
   <subtitle type="text">Who's On First is a gazetter of all the places.</subtitle>
     
   <entry>
-    <link type="text/html" href="https://www.whosonfirst.org/blog/2018/05/29/three-steps-backwards/" rel="alternate"/>
+    <link type="text/html" href="https://www.whosonfirst.org/blog/2018/05/25/three-steps-backwards/" rel="alternate"/>
     <title>Three Steps Backwards, One Step Forwards; a Tale of Data Consistency and JSON Schema</title>
-    <id>https://www.whosonfirst.org/blog/2018/05/29/three-steps-backwards/</id>
-    <published>2018-05-29</published>
-    <updated>2018-05-29</updated>
+    <id>https://www.whosonfirst.org/blog/2018/05/25/three-steps-backwards/</id>
+    <published>2018-05-25</published>
+    <updated>2018-05-25</updated>
     <content type="text">Learning to use [JSON Schema] by reading its specification is like learning to drive a car by looking at its blueprints.</content>
   </entry>
   

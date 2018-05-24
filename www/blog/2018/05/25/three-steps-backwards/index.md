@@ -2,8 +2,8 @@
 layout: page
 title: Three Steps Backwards, One Step Forwards; a Tale of Data Consistency and JSON Schema
 published: true
-date: 2018-05-29
-permalink: /blog/2018/05/29/three-steps-backwards/
+date: 2018-05-25
+permalink: /blog/2018/05/25/three-steps-backwards/
 category: blog
 excerpt: Learning to use [JSON Schema] by reading its specification is like learning to drive a car by looking at its blueprints.
 authors: [vicchi]

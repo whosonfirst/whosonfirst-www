@@ -3,11 +3,11 @@
   <channel>
     <title>Who's On First</title>
     <link>https://www.whosonfirst.org/</link>
-    <lastBuildDate>Thu, 24 May 2018 16:54:34 BST</lastBuildDate>
+    <lastBuildDate>Thu, 24 May 2018 18:15:20 BST</lastBuildDate>
     <description>Who's On First is a gazetteer of all the places.</description>
     
     <item>
-      <link>https://whosonfirst.org/blog/2018/05/29/three-steps-backwards/</link>
+      <link>https://whosonfirst.org/blog/2018/05/25/three-steps-backwards/</link>
       <title>Three Steps Backwards, One Step Forwards; a Tale of Data Consistency and JSON Schema</title>
       <description>Learning to use [JSON Schema] by reading its specification is like learning to drive a car by looking at its blueprints.</description>
     </item>
