@@ -1,0 +1,453 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="x-ua-compatible" content="ie=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Who’s On First | Three Steps Backwards, One Step Forwards; a Tale of Data Consistency and JSON Schema</title>
+		<meta name="description" content="Who’s on First is a gazetteer of places." />
+		<link rel="apple-touch-icon" href="/images/favicons/apple-touch-icon.png" sizes="180x180" />
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-16x16.png" sizes="16x16" />
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-32x32.png" sizes="32x32" />
+		<link rel="manifest" href="/images/favicons/manifest.json" />
+		<link rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg" color="#2C1E3F" />
+		<link rel="stylesheet" href="/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="/css/mapzen.whosonfirst.css" />
+		
+		<link rel="stylesheet" href="/css/styles/grayscale.css" />
+
+		<link rel="alternate" type="application/atom+xml" title="Who's On First Atom feed" href="/blog/atom_10.xml"/>		
+		<link rel="alternate" type="application/rss+xml" title="Who's On First RSS 2.0 feed" href="/blog/rss_20.xml"/>
+
+		
+		<meta property="og:type" content="article" />
+		<meta property="og:site_name" content="Who's On First" />
+		<meta property="og:title" content="Three Steps Backwards, One Step Forwards; a Tale of Data Consistency and JSON Schema" />
+		<meta property="og:description" content="Learning to use [JSON Schema] by reading its specification is like learning to drive a car by looking at its blueprints." />
+		<meta property="og:image" content="https://www.whosonfirst.org/blog/2018/05/29/three-steps-backwards/images/bug-dominoes.jpg" />
+		
+		<meta property="twitter:card" value="summary" />
+		<meta property="twitter:site" content="@alloftheplaces" />
+		<meta property="twitter:creator" content="@alloftheplaces" />
+		<meta property="twitter:url" content="https://www.whosonfirst.org/blog/2018/05/29/three-steps-backwards/" />
+		<meta property="twitter:title" content="Three Steps Backwards, One Step Forwards; a Tale of Data Consistency and JSON Schema" />
+		<meta property="twitter:description" content="Learning to use [JSON Schema] by reading its specification is like learning to drive a car by looking at its blueprints." />
+		<meta property="twitter:image" content="https://www.whosonfirst.org/blog/2018/05/29/three-steps-backwards/images/bug-dominoes.jpg" />
+		
+
+	</head>
+	<body>
+		<div class="whosonfirst-wrapper">
+
+			<nav class="navbar navbar-default navbar-fixed-top whosonfirst-fixed-subpage-navbar">
+				<div class="container">
+
+					
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="/">Who’s On First</a>
+					</div>
+
+					
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					  <ul class="nav navbar-nav navbar-right">
+
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/browse/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">browse</a>
+							</li>
+					    
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/docs/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">documentation</a>
+							</li>
+							
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/code/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">code</a>
+							</li>
+
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/api/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">api</a>
+							</li>
+							
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/download/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">download</a>
+							</li>
+							
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/blog/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">blog</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+
+
+		<style type="text/css">
+		  body {
+		  font-family: serif;
+		  font-size: 1.3em;
+		  line-height: 1.5em;
+		  }
+
+		  h2 small {
+		  display: block;
+		  margin-top:.10em;
+		  font-weight: 100;
+		  font-size: .5em;
+		  line-height: 1.3em;
+		  }
+
+		  p {
+		  line-height: 1.5em !important;
+		  }
+
+		  ul {
+		  font-size:1.3em;
+		  line-height:1.5em;
+		  margin-top:1em !important;
+		  }
+
+		  li {
+		  list-style-type: circle;
+		  margin-bottom: .5em;
+		  }
+
+		  img {
+		  max-width: 640px !important;
+		  max-height: 480px !important;
+		  border: 1px dotted #ccc;
+		  padding: .5em;
+		  margin-bottom:1em;
+		  margin-top: 1em;
+		  display:block;
+		  min-width: 320px;
+		  margin: 0 auto;
+		  }
+
+		  blockquote {
+		  background-color:#ededed;
+		  margin-top:1em;
+		  padding-top:.05em !important;
+		  padding-bottom:1.75em !important;
+		  }
+
+		  .hey-look {
+		  font-weight: 700;
+		  }
+
+		  @media (min-width: 320px) and (max-width: 400px) {
+
+		  ul {
+		  margin:0px;
+	  	  margin-left:15px;
+		  padding:0px;
+		  }
+
+		  pre {
+		  max-width:250px;
+		  overflow:scroll;
+		  }
+
+		  img {
+		  max-width: 250px !important;
+		  max-height: 200px !important;
+		  min-width: 75px;
+		  }
+		  }
+
+		</style>
+
+			<div class="container whosonfirst-subpage-container">
+			  <div class="row">
+			    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-0">
+ 			    </div>
+			    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+			      <article>
+
+	  
+	  
+	  <h2>
+	    Three Steps Backwards, One Step Forwards; a Tale of Data Consistency and JSON Schema
+	    <small>This is a blog post by
+	      <span class="hey-look">vicchi</span>
+	      that was published on <span class="pubdate"><a href="/blog/2018/05/">May</a> <a href="/blog/2018/05/29">29</a>, <a href="/blog/2018/">2018</a></span>
+	       and tagged <span class="hey-look">elasticsearch</span>, <span class="hey-look">json</span>, <span class="hey-look">node</span>, <span class="hey-look">js</span>, <span class="hey-look">whosonfirst</span>, <span class="hey-look">schema</span>, <span class="hey-look">wof</span>, <span class="hey-look">validation</span>, <span class="hey-look">data type</span>, <span class="hey-look">consistency</span> and <span class="hey-look">python</span></small>
+	  </h2>
+
+<p><img src="images/bug-dominoes.jpg" alt="" /></p>
+
+<p>If you&rsquo;ve done any digging into Who&rsquo;s On First you&rsquo;ll probably know that each <em>place</em>
+has a GeoJSON document and all of these GeoJSON documents are fed into Elasticsearch
+to allow you to ask the <a href="https://spelunker.whosonfirst.org/">Spelunker</a> questions about these places.</p>
+
+<p>For historical reasons, the Spelunker runs on an old version of Elasticsearch, 2.4.6 to be precise and the 2.4.x series of releases stopped being supported in <a href="https://www.elastic.co/support/eol">February of 2018</a>. Which means it&rsquo;s a good time to start looking at not only upgrading the Spelunker to the most recent
+version of Elasticsearch but also to look at what&rsquo;s coming up in future releases to try
+and make the upgrade as future proofed as it can be.</p>
+
+<p>This was going to be a post about how the migration and upgrade of Elasticsearch happened.
+But that hasn&rsquo;t happened quite yet. Instead this has ended up as a post about data type
+consistency and about wrestling with JSON Schema instead. This is a post about the <em>fun</em> that ensued. It&rsquo;s also a post about the <em>reverse domino effect</em>, where to take one step forwards
+you end up having to take multiple steps back at first.</p>
+
+<h3>First Step Backwards - &ldquo;schema-less document indexing and other false statements&rdquo;</h3>
+
+<p><img src="images/scrabble-false.jpg" alt="" /></p>
+
+<p>Elasticsearch is a great tool and my first choice for when I have a data set in JSON that I
+want to poke around in. If I don&rsquo;t have a data set in JSON I convert it <em>to</em> JSON and then
+poke around in it with Elasticsearch. One day I will find a data set that can&rsquo;t be converted to JSON. That&rsquo;s not to say Elasticsearch is perfect. The
+<a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/dynamic-mapping.html">documentation</a> makes it all sound very easy &hellip;</p>
+
+<blockquote>
+<p>One of the most important features of Elasticsearch is that it tries to get out of your way and let you start exploring your data as quickly as possible. To index a document, you don’t have to first create an index, define a mapping type, and define your fields — you can just index a document and the index, type, and fields will spring to life automatically:</p>
+</blockquote>
+
+<p>Which is <em>kind</em> of true; <em>if</em> you have a relatively small data set and <em>if</em> that data set
+has consistent data types. Who&rsquo;s On First isn&rsquo;t small and, until recently, had some
+data type inconsistencies. This was a problem.</p>
+
+<p>It was a problem because unless you&rsquo;ve defined the mappings for all your JSON document&rsquo;s
+properties, the first time Elasticsearch comes across a JSON property
+it doesn&rsquo;t know about, it tries to work out the property&rsquo;s data type automagically and
+then uses that data type from that point on. So <code>&quot;foo&quot;: &quot;bar&quot;</code> will be <em>dynamically mapped</em>
+so a string, <code>&quot;bar&quot;: 1234</code> will be mapped to an <code>integer</code> and so on. If Elasticsearch then encounters another
+document with the same property but a different data type, if you&rsquo;re lucky it will
+complain. If you&rsquo;re unlucky it will do it&rsquo;s best to coerce the new data type into the
+one it&rsquo;s already seen, with the potential for much fun and games when you discover your
+documents aren&rsquo;t indexed in quite the way you thought they&rsquo;d be.</p>
+
+<h3>Second Step Backwards - Learning Python through trial and (lots of) error</h3>
+
+<p><img src="images/python-rocks.jpg" alt="" /></p>
+
+<p>So how best to identify which properties are inconsistent and what should the data type
+of all the Who&rsquo;s On First properties be in the first place? And how many documents need
+to be checked anyway?</p>
+
+<pre><code>$ cd whosonfirst-data/data
+$ find . -name '*.geojson' | wc -l
+  951540
+</code></pre>
+
+<p><em>Lots</em> of documents. Most of the <code>whosonfirst</code> scripts are written in either Python or Go. As I knew a little Python and no Go whatsoever, Python it was.</p>
+
+<p>With some trial and a lot of error I was able to write a <a href="https://github.com/whosonfirst/py-mapzen-whosonfirst-geojson/blob/master/scripts/wof-find-property">script</a> that dumped out <em>all</em> of the properties in <em>all</em> of the <a href="https://github.com/whosonfirst-data/whosonfirst-data"><code>whosonfirst-data</code></a> repo  together with their corresponding data types.</p>
+
+<p>I was then able to compare this against the list of what data types the properties <em>should</em> be according to the definitions in the <a href="https://github.com/whosonfirst/whosonfirst-properties"><code>whosonfirst-properties</code></a> repo, which helpfully has one JSON definition per property.</p>
+
+<p>In most cases the <code>whosonfirst-properties</code> definitions agreed with the data types in the WOF documents. Where they didn&rsquo;t I could take an educated guess, based on the property values and in the worst case, fall back on <code>string</code> as a default.</p>
+
+<p>I could then write <em>another</em> <a href="https://github.com/whosonfirst/py-mapzen-whosonfirst-geojson/blob/master/scripts/wof-fix-props">script</a> to fix these inconsistencies. Now to validate that everything was consistent.</p>
+
+<h3>Third Step Backwards - &ldquo;learning to drive a car by looking at its blueprints&rdquo;</h3>
+
+<p><img src="images/imdb-json.jpg" alt="" /></p>
+
+<p>Maybe JSON Schema will help here? After all it&rsquo;s <a href="http://json-schema.org/"><em>a vocabulary that allows you to <strong>annotate</strong> and <strong>validate</strong> JSON documents</em></a>. <a href="https://www.tbray.org/ongoing/">Tim Bray</a> has this <a href="https://www.tbray.org/ongoing/When/201x/2016/04/30/JSON-Schema-funnies">helpful advice</a> &hellip;</p>
+
+<blockquote>
+<p>If you find yourself needing to use it (JSON Schema), run don’t walk over to Understanding JSON Schema, which has lots of examples and reasonably human-readable narrative; a nice piece of work.</p>
+
+<p>In its first paragraph, it says “learning to use [JSON Schema] by reading its specification is like learning to drive a car by looking at its blueprints.”</p>
+
+<p>They’re being tactful; the JSON Schema spec is really not very good at all. I don’t think this is a controversial thing to say, but let me offer some evidence anyhow.</p>
+
+<p>Most obvious: There are multiple pieces of software out there that claim to implement JSON Schema, and their behavior is really inconsistent, in my experience.</p>
+</blockquote>
+
+<p>There&rsquo;s already the <a href="https://github.com/whosonfirst/whosonfirst-json-schema"><code>whosonfirst-json-schema</code></a> repo that contains a JSON schema implementation for <em>some</em> of the properties that could be present in a WOF document but not <em>all</em> of them. In other words, this allowed me to validate that a WOF document was both valid GeoJSON <em>and</em> that is contained a minimal set of <code>properties</code>. But I wanted to validate <em>all</em> the properties and to ensure that for each property, the data type of the property&rsquo;s value was both sane <em>and</em> consistent. And as Tim mentioned in his post, Michael Droettboom&rsquo;s <a href="https://spacetelescope.github.io/understanding-json-schema/index.html">Understanding JSON Schema</a> is <em>insanely</em> useful.</p>
+
+<p>With the help of Michael&rsquo;s guide I was able to bring together what was at least a good start at a full WOF JSON Schema implementation. Now to actually validate it and the WOF data itself.</p>
+
+<p>Looking at the list of <a href="http://json-schema.org/implementations.html">JSON Schema implementations</a>, there&rsquo;s, ahem, quite a few, not all of which support the latest (still in draft) version of the spec. By a process of more trial and a whole lot more error I was able to (<em>finally</em>) find a validator that didn&rsquo;t die horribly on install and that actually did what it claimed to do, which was  <a href="https://github.com/epoberezkin/ajv"><code>ajv</code></a> (Another JSON Validator, ho ho).</p>
+
+<p>Of course, once I&rsquo;d written a <a href="https://github.com/whosonfirst/whosonfirst-json-schema/blob/master/scripts/wof-validate">script</a> to iterate over all the WOF documents in a directory tree
+and to validate each document against the JSON Schema not everything was valid and consistent.
+But by using an iterative process of checking the WOF documents, taking the validation failures,
+re-editing the WOF documents and the schema and checking everything against the applicable
+property definitions I finally had a version of <a href="https://github.com/whosonfirst-data/whosonfirst-data"><code>whosonfirst-data</code></a> that validated cleanly and
+consistently.</p>
+
+<p>This was good but not great. Three things stuck out as being far from optimal.</p>
+
+<p>Firstly the resulting Who&rsquo;s on First JSON schema definition, which defined every single property that lived in the <code>whosonfirst-properties</code> repo, that&rsquo;s 1012 of them at the time of writing, was one big, monolithic, JSON file. To paraphrase <a href="http://hhgproject.org/entries/infinite.html">Douglas Adams</a> &hellip;</p>
+
+<blockquote>
+<p>Bigger than the biggest thing ever and then some. Much bigger than that in fact, really amazingly immense, a totally stunning size, real &ldquo;wow that&rsquo;s big,&rdquo; time. (The WOF JSON schema) is just so big that, by comparison, bigness itself looks really titchy. Gigantic multiplied by colossal multiplied by staggeringly huge is the sort of concept we&rsquo;re trying to get across here.</p>
+</blockquote>
+
+<p>From reading the JSON Schema specification it seemed that splitting the WOF schema into parts and linking/including the parts together using the <a href="http://json-schema.org/latest/json-schema-core.html#rfc.section.8.3"><code>$ref</code> keyword</a> was theoretically possible. But it took (more) trial and error and the help of Michael&rsquo;s aforementioned <a href="https://spacetelescope.github.io/understanding-json-schema/structuring.html"><em>JSON schema for humans</em> guide</a> to put this into practice. I was able to define JSON schema fragments that defined an overall GeoJSON document, a GeoJSON <code>bbox</code> object, a GeoJSON <code>geometry</code> object, the <code>wof:hierarchy</code> object and the WOF specific GeoJSON <code>properties</code> object, which still ran to almost three and a half thousand lines of JSON. But more about the <code>properties</code> object in a moment.</p>
+
+<p>The second suboptimal thing was that the validation script is <em>slow</em>. Despite being written in asynchronous Node (due to <code>ajv</code> being a Node library), the iteration over each candidate WOF document is sequential. There&rsquo;s grounds for much optimisation there in the future, but for now and in the spirit of <em>it works and it&rsquo;s good enough</em> I&rsquo;ve left that there for the time being.</p>
+
+<p>The third and final less than ideal thing is that I had ended up with two distinct and functionally identical sources of truth of what should be in a WOF document. This had to change.</p>
+
+<h3>Fourth Step Backwards - &ldquo;so we now have multiple places that say what should be in a WOF document?&rdquo;</h3>
+
+<p><img src="images/feet-truth.jpg" alt="" /></p>
+
+<p>As an unlovely side effect of getting JSON Schema up and running I now had a source of truth for what should live in the <code>properties</code> object of a WOF document defined in JSON Schema format. But there was also <em>another</em> source of truth for what should live in the <code>properties</code> object, defined on a per-property basis in the <a href="https://github.com/whosonfirst/whosonfirst-properties"><code>whosonfirst-properties</code></a> repo. I could have left this as is for the time being but something that Aaron wrote in a <a href="https://www.whosonfirst.org/blog/2018/02/27/why-of-the-how/">recent post</a> struck me &hellip;</p>
+
+<blockquote>
+<p>I think, as I write this now, that I had faint hopes of being able to generate the ES schemas from the JSON schemas, or at least use the latter as a starter kit for the former.</p>
+</blockquote>
+
+<p>Can I enhance each property definition in the <code>whosonfirst-properties</code> repo, such that they
+can be used to <em>build</em> the JSON schema for any WOF document&rsquo;s <code>properties</code> object? It turns out
+that you can. By way of example, here&rsquo;s the original property definition for <code>wof:country</code> &hellip;</p>
+
+<pre><code>{
+    &quot;id&quot;: 1158807947,
+    &quot;name&quot;: &quot;country&quot;,
+    &quot;prefix&quot;: &quot;wof&quot;,
+    &quot;description&quot;: &quot;A two-letter country code from ISO 3166.&quot;,
+    &quot;type&quot;: &quot;string&quot;
+}
+</code></pre>
+
+<p>And here&rsquo;s the original property definition for <code>name:{lang}_x_preferred</code> &hellip;</p>
+
+<pre><code>{
+    &quot;id&quot;: 1158804557,
+    &quot;name&quot;: &quot;{lang}_x_preferred&quot;,
+    &quot;prefix&quot;: &quot;name&quot;,
+    &quot;description&quot;: &quot;The preferred name for a place. Used in Pelias and to generate language-specific map labels.&quot;,
+    &quot;type&quot;: &quot;list&quot;
+}
+</code></pre>
+
+<p>Amongst other things, I augmented the property definitions to perform additional validation on
+the property&rsquo;s value with a regex as well as handling property names which have a range of values encoded in their name, such as <code>{lang}_x_preferred</code> so as not to have to explicitly define what is effectively the same definition for each ISO 639-3 language code.</p>
+
+<p>So the updated versions of <code>whosonfirst-properties/properties/wof/country.json</code> and <code>whosonfirst-properties/properties/name/preferred.json</code> now look like this &hellip;</p>
+
+<pre><code>{
+    &quot;id&quot;: 1158807947,
+    &quot;name&quot;: &quot;country&quot;,
+    &quot;prefix&quot;: &quot;wof&quot;,
+    &quot;description&quot;: &quot;A two-letter country code from ISO 3166.&quot;,
+    &quot;type&quot;: &quot;string&quot;,
+    &quot;patterns&quot;: {
+        &quot;value&quot;: &quot;^$|^[A-Za-z]{2}$|-99|-1&quot;
+    }
+}
+</code></pre>
+
+<pre><code>{
+    &quot;id&quot;: 1158804557,
+    &quot;name&quot;: &quot;{lang}_x_preferred&quot;,
+    &quot;prefix&quot;: &quot;name&quot;,
+    &quot;description&quot;: &quot;The preferred name for a place. Used in Pelias and to generate language-specific map labels.&quot;,
+    &quot;type&quot;: &quot;list&quot;,
+    &quot;items&quot;: {
+        &quot;type&quot;: &quot;string&quot;
+    },
+    &quot;patterns&quot;: {
+        &quot;name&quot;: &quot;*_x_preferred&quot;
+    }
+}
+</code></pre>
+
+<p>This isn&rsquo;t <em>quite</em> JSON schema syntax, so there&rsquo;s a <a href="https://github.com/whosonfirst/py-whosonfirst-json-schema">new script</a> that iterates over the <code>whosonfirst-properties/properties</code> directory tree and transforms the pseudo JSON schema syntax into <em>proper</em> JSON schema syntax, which builds the contents of <code>whosonfirst-json-schema/schema/properties.json</code>, which in turn is <em>included</em> into the overall WOF JSON schema to work it&rsquo;s validation magic. Which, running with the example of the <code>wof:country</code> and <code>name:{lang}_x_preferred</code> properties, means their JSON schema definitions now look like this &hellip;</p>
+
+<pre><code>{
+  &quot;$schema&quot;: &quot;http://json-schema.org/draft-06/schema#&quot;,
+  &quot;$id&quot;: &quot;properties.json&quot;,
+  &quot;definitions&quot;: {
+    &quot;properties&quot;: {
+      &quot;description&quot;: &quot;The properties that can exist in a WOF document&quot;,
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;properties&quot;: {
+        &quot;wof:country&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;pattern&quot;: &quot;^$|^[A-Za-z]{2}$|-99|-1&quot;
+        },
+        ...
+      }
+      &quot;patternProperties&quot;: {
+        &quot;^name:*_x_preferred$&quot;: {
+          &quot;type&quot;: &quot;array&quot;,
+          &quot;items&quot;: {
+            &quot;type&quot;: &quot;string&quot;
+          }
+        },
+        ...
+      }
+    }
+  }
+}
+</code></pre>
+
+<p>&hellip; plus all of the other 1010 properties as well.</p>
+
+<p>And after three steps back, 97 commits and 77,620 changed files, Who&rsquo;s On First now has data type consistency across the <code>whosonfirst-data</code> repo, a way of consistently validating the contents of each WOF document, a single source of truth for each WOF document&rsquo;s property definitions and a way of autogenerating the <code>properties</code> object JSON schema definitions from the <code>whosonfirst-properties</code> repo.</p>
+
+<p>Which is surely cause for <em>some</em> rejoicing.</p>
+
+<h3>First Step Forwards - &ldquo;So, about that Elasticsearch upgrade&rdquo;</h3>
+
+<p><img src="images/much-rejoicing.gif" alt="" /></p>
+
+<p>And so, some two thousand words of blog post later, I&rsquo;m back where I originally started and can now start to look at migrating to the latest version of Elasticsearch and hopefully autogenerate the mappings from the <code>whosonfirst-properties</code> repo as well. But that will need some more work and will be the topic of an entirely different post as well.</p>
+
+<hr />
+
+<div style="font-style:italic; font-size:small;">
+Images used in this blog post:
+
+    <ul style="margin-top:1em;">
+        <li><a href="https://www.flickr.com/photos/mkream/6645260569/">Dominoes</a> <small>Mary-Katherine Ream, CC-BY-NC</small></li>
+        <li><a href="https://www.flickr.com/photos/132826082@N06/32639557764/">False</a>
+        <small>Kevin Simmons, CC-BY</small></li>
+        <li><a href="https://www.flickr.com/photos/kushaldas/989250288/">Python rocks!!</a>
+        <small>Kushal Das, CC-BY</small></li>
+        <li><a href="https://www.flickr.com/photos/morgner/40233336425">imdb</a>
+        <small>Manfred Morgner, CC-BY-SA</small></li>
+        <li><a href="https://www.flickr.com/photos/jasoneppink/50360115">truth</a>
+        <small>Jason Eppink, CC-BY</small></li>
+        <li><a href="http://toamke.tumblr.com/post/119417007773">And there was much rejoicing</a>
+        <small>toamke</small></li>
+    </ul>
+</div>
+
+		</article>
+		</div>
+		</div>	
+		</div>	
+
+		<footer>
+			<nav class="navbar navbar-default navbar-bottom">
+				<div class="container">
+					
+					<ul class="nav navbar-nav navbar-right whosonfirst-footer">
+						<li><a href="/docs/contributing/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">contributing</a></li>
+						<li><a href="/docs/licenses/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">license</a></li>
+						<li><a href="https://twitter.com/alloftheplaces/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">twitter</a></li>
+					</ul>
+				</div>
+			</nav>
+		</footer>
+
+		
+		<script src="/javascript/jquery.min.js"></script>
+		
+		<script src="/javascript/bootstrap.min.js"></script>
+		<script src="/javascript/mapzen.whosonfirst.home.js"></script>
+		<script src="/javascript/mapzen.whosonfirst.subpage.js"></script>
+		
+		<script src="/javascript/highlightpack.js"></script>
+		<script>
+		  try {
+		  	hljs.initHighlightingOnLoad();
+		  } catch (e) {
+		  	console.log("HLJS", e);
+		  }
+		</script>
+	</body>
+</html>
+
