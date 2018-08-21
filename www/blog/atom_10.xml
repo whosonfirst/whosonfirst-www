@@ -4,12 +4,21 @@
   <title>Who's Of First</title>
   <link href="https://www.whosonfirst.org/blog/" rel="alternate" title="Who's On First" type="text/html"/>
   <link href="https://www.whosonfirst.org/blog/atom.xml" rel="self" title="Who's On First" type="application/atom+xml"/>
-  <updated>2018-05-24T18:15:20+01:00</updated>
+  <updated>2018-08-21T06:53:39-07:00</updated>
   <author>
     <name>Who's On First</name>
   </author>
   <subtitle type="text">Who's On First is a gazetter of all the places.</subtitle>
     
+  <entry>
+    <link type="text/html" href="https://www.whosonfirst.org/blog/2018/08/21/license-change/" rel="alternate"/>
+    <title>Proposed change to the Who's On First data license</title>
+    <id>https://www.whosonfirst.org/blog/2018/08/21/license-change/</id>
+    <published>2018-08-21</published>
+    <updated>2018-08-21</updated>
+    <content type="text">Who’s On First is becoming a Linux Foundation project and proposes to change to the Community Data License Agreement – Permissive, Version 1.0 data license</content>
+  </entry>
+  
   <entry>
     <link type="text/html" href="https://www.whosonfirst.org/blog/2018/05/25/three-steps-backwards/" rel="alternate"/>
     <title>Three Steps Backwards, One Step Forwards; a Tale of Data Consistency and JSON Schema</title>
@@ -89,15 +98,6 @@
     <published>2017-12-14</published>
     <updated>2017-12-14</updated>
     <content type="text">Outlining a few one-offs, changes, and edits that were made to Who's On First in 2017</content>
-  </entry>
-  
-  <entry>
-    <link type="text/html" href="https://www.whosonfirst.org/blog/2017/10/24/whosonfirst-sotmus-2017/" rel="alternate"/>
-    <title>Who's On First ꞉fist-bump꞉  OpenStreetMap</title>
-    <id>https://www.whosonfirst.org/blog/2017/10/24/whosonfirst-sotmus-2017/</id>
-    <published>2017-10-24</published>
-    <updated>2017-10-24</updated>
-    <content type="text">The 70s were weird like that in a way that we don’t have time to discuss today except to say that Who’s On First would like to be the bucket of water to OpenStreetMap’s giant eagle.</content>
   </entry>
   
 </feed>
