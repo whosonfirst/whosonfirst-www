@@ -8,7 +8,7 @@ category: blog
 excerpt: Who’s On First is becoming a Linux Foundation project and proposes to change to the Community Data License Agreement – Permissive, Version 1.0 data license
 authors: [nvkelso]
 image: "images/64071_8a0968341778dd8a_b.jpg"
-tag: [whosonfirst,wof,license]
+tag: [whosonfirst,wof,license,linuxfoundation,cdla]
 ---
 
 ![](images/64071_8a0968341778dd8a_b.jpg)
@@ -19,7 +19,7 @@ Our mission at Who’s On First has always to collect great content about places
 
 Because of the mix of licenses from Who’s On First [sources](https://github.com/whosonfirst/whosonfirst-sources/blob/master/sources/README.md), the minimum common license type for the project needs to be attribution based and we launched with the Creative Commons CC-BY license. An **attribution license also shows respect** for the other open data projects & communities that Who’s On First hold hands with.
 
-After [Mapzen shutdown](https://mapzen.com/blog/shutdown/) we began searching for a new home and new sponsor for the Who’s On First project. We are grateful to have received grant money support from Amazon AWS to keep the data and related cloud machines available in 2018. **Mapzen expats** have landed a variety of places, including at [Snapchat](https://www.snapchat.com/) and at [SFO Museum](https://www.flysfo.com/museum), where we continue to actively contribute to the project. 
+After [Mapzen shutdown](https://web.archive.org/web/20180102171848/https://mapzen.com/blog/shutdown/) we began searching for a new home and new sponsor for the Who’s On First project. We are grateful to have received grant money support from Amazon AWS to keep the data and related cloud machines available in 2018. **Mapzen expats** have landed a variety of places, including at [Snapchat](https://www.snapchat.com/) and at [SFO Museum](https://millsfield.sfomuseum.org/), where we continue to actively contribute to the project. 
 
 ### We’re pleased to announce that Who’s On First is in the process of become a [Linux Foundation](https://www.linuxfoundation.org/) project!
 
@@ -35,8 +35,7 @@ This Linux Foundation authored license was [released in 2017](https://www.linuxf
 
 There are several [benefits](https://cdla.io/faq/) to using **CDLA-Permissive 1.0**:
 
-- CDLA is an attribution based license, meeting our obligations to our sources. The basic attribution statement and license link for the project would remain unchanged:
-    -  > Data from Who's On First. [License](https://github.com/whosonfirst-data/whosonfirst-data/blob/master/LICENSE.md).
+- CDLA is an attribution based license, meeting our obligations to our sources. The basic attribution statement and license link for the project – <span style="background-color:#ededed;padding:.3rem;padding-left:.6rem;padding-right:.6rem;">Data from Who's On First. [License](https://github.com/whosonfirst-data/whosonfirst-data/blob/master/LICENSE.md).</span> – would remain unchanged.
 - CDLA covers the dataset as a whole and individual records, while CC-BY is not optimized for data or databases.
 - CDLA unambiguously covers the rights to use and publish the data permissively.
 - CDLA establishes the “enhanced data” is not considered a joint authorship. This clearly establishes that mixing our data with data under other licenses is okay, encourages wider circulation of our data, and avoids discussion of collective versus derivative databases.
@@ -47,7 +46,7 @@ There are several [benefits](https://cdla.io/faq/) to using **CDLA-Permissive 1.
 
 We also plan on enabling the [DCO](https://github.com/apps/dco) **Github app** in all Who’s On First repos to enforce the [Developer Certificate of Origin](https://developercertificate.org/) (DCO) on Pull Requests that change the code, data, and/or documentation. This app requires all commit messages to contain the “Signed-off-by” line with an email address that matches the commit author.
 
-We’d love to hear your feedback on these changes by September 14th either as comments on the [Github issue](https://github.com/whosonfirst-data/whosonfirst-data/issues/1292) or by email to nvkelso@gmail.com.
+We’d love to hear your feedback on these changes by September 14th either as comments on the [Github issue](https://github.com/whosonfirst-data/whosonfirst-data/issues/1292) we've created for this proposal.
 
 <hr />
 
