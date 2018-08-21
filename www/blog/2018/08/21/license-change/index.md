@@ -13,13 +13,13 @@ tag: [whosonfirst,wof,license,linuxfoundation,cdla]
 
 ![](images/64071_8a0968341778dd8a_b.jpg)
 
-When we originally [released](https://whosonfirst.org/blog/2015/08/18/who-s-on-first/) **Who’s On First**, our gazetteer of all the places in the world from continents to neighbourhoods and venues, we published the open data with the [CC-BY](https://creativecommons.org/licenses/by/4.0/) license. Today we’re providing public notice and requesting comments on a license change to the [CDLA-Permissive 1.0](https://cdla.io/permissive-1-0/) license. 
+When we originally [released](https://whosonfirst.org/blog/2015/08/18/who-s-on-first/) **Who’s On First**, our gazetteer of all the places in the world, from continents to neighbourhoods and venues, we published the open data under the [Creative Commons Attribution (CC-BY)](https://creativecommons.org/licenses/by/4.0/) license. Today we’re providing public notice and requesting comments on a license change to the [Community Data License Agreement - Permissive 1.0 (CDLA)](https://cdla.io/permissive-1-0/) license. 
 
-Our mission at Who’s On First has always to collect great content about places and release it as liberally licensed open data. **We believe that licenses which  encourage data circulation promote a wider range of uses.** Mapzen’s original contributions were added as [CC0](https://creativecommons.org/share-your-work/public-domain/cc0/) and most of our other data sources require attribution or are in the public domain.
+Our mission at Who’s On First has always to collect great content about places and release it as liberally licensed open data. **We believe that licenses which  encourage data circulation promote a wider range of uses.** Mapzen’s original contributions were added under the [Creative Commons "No Rights Reserved" (CC0)](https://creativecommons.org/share-your-work/public-domain/cc0/) license and most of our other data sources require attribution or are in the public domain.
 
-Because of the mix of licenses from Who’s On First [sources](https://github.com/whosonfirst/whosonfirst-sources/blob/master/sources/README.md), the minimum common license type for the project needs to be attribution based and we launched with the Creative Commons CC-BY license. An **attribution license also shows respect** for the other open data projects & communities that Who’s On First hold hands with.
+Because of the mix of licenses from Who’s On First [sources](https://github.com/whosonfirst/whosonfirst-sources/blob/master/sources/README.md), the minimum common license type for the project needs to be attribution based which is why we opted to use the CC-BY license. An **attribution license also shows respect** for the other open data projects & communities that Who’s On First hold hands with.
 
-After [Mapzen shutdown](https://web.archive.org/web/20180102171848/https://mapzen.com/blog/shutdown/) we began searching for a new home and new sponsor for the Who’s On First project. We are grateful to have received grant money support from Amazon AWS to keep the data and related cloud machines available in 2018. **Mapzen expats** have landed a variety of places, including at [Snapchat](https://www.snapchat.com/) and at [SFO Museum](https://millsfield.sfomuseum.org/), where we continue to actively contribute to the project. 
+After [Mapzen shutdown](https://web.archive.org/web/20180102171848/https://mapzen.com/blog/shutdown/) we began searching for a new home and new sponsor for the Who’s On First project. We are grateful to have received grant money support from Amazon AWS to keep the data and related server infrastructure available throughout 2018. **Mapzen expats** have landed a variety of places, including at [Snapchat](https://www.snapchat.com/) and at [SFO Museum](https://millsfield.sfomuseum.org/), where we continue to actively contribute to the project. 
 
 ### We’re pleased to announce that Who’s On First is in the process of become a [Linux Foundation](https://www.linuxfoundation.org/) project!
 
@@ -46,7 +46,7 @@ There are several [benefits](https://cdla.io/faq/) to using **CDLA-Permissive 1.
 
 We also plan on enabling the [DCO](https://github.com/apps/dco) **Github app** in all Who’s On First repos to enforce the [Developer Certificate of Origin](https://developercertificate.org/) (DCO) on Pull Requests that change the code, data, and/or documentation. This app requires all commit messages to contain the “Signed-off-by” line with an email address that matches the commit author.
 
-We’d love to hear your feedback on these changes by September 14th either as comments on the [Github issue](https://github.com/whosonfirst-data/whosonfirst-data/issues/1292) we've created for this proposal.
+We’d love to hear your feedback on these changes by September 14th as comments on the [Github issue](https://github.com/whosonfirst-data/whosonfirst-data/issues/1292) we've created for this proposal.
 
 <hr />
 
