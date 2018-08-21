@@ -18,7 +18,7 @@ sync:
 sync-blog:
 	aws --profile whosonfirst-www s3 sync --acl public-read --exclude '*~' www/blog s3://www.whosonfirst.org/blog/
 
-debug:
+local:
 	utils/$(OS)/wof-fileserver -path ./www
 
 iamhere:
