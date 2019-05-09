@@ -20,7 +20,7 @@ everything ranging from continents (and empires) to neighbourhoods (and
 microhoods). Historically we have included all of these things in a single
 comprehensive repository spanning the planet and that approach has had a lot of
 benefits. It also means that over time and as we've improved the data and added
-records for missing places that repository has gotten... well, pretty
+records for missing places the repository has gotten... well, pretty
 big.
 
 So big that the Git history file is now larger than the sum total of the
