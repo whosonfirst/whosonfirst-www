@@ -96,12 +96,13 @@ problem. For example, Microsoft quickly discovered that Git had problems
 handling twenty-plus years of Windows source code and since then they've been working on
 developing improvements. We're just not there yet.
 
-Similarly, faceted repos are already a reality in WOF. We already have
-per-country and in some cases per-region repositories for postal codes and
-venues. What we have lacked is the tooling for making these facetings
-transparent (or at least easier) to end-users. So, maybe the silver lining in
-all of this is that the changes to the administrative data will be the catalyst
-for developing and improving these tools.
+Similarly, faceted repos are already a reality in WOF. We have had per-country
+and in some cases per-region repositories for postal codes and venues almost
+from beginning. What we
+have lacked is the tooling for making these facetings transparent (or at least
+easier) to end-users. So, maybe the silver lining in all of this is that the
+changes to the administrative data will be the catalyst for developing and
+improving these tools. 
 
 We apologize for the unfortunate bumpiness ahead and if its any consolation
 we'll be dealing it too and with any luck it will be short-lived and we can all
