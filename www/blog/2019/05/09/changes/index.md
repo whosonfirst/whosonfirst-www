@@ -60,7 +60,7 @@ So, here's what's going to happen:
 * The `whosonfirst-data` repository will be purged and replaced with
   documentation and pointers to the new data. The Git history (between
   2015-2019) will be archived on the Who's On First servers for anyone who wants
-  that data or who needs a known-difficult problem set to use for improving
+  that data or who needs a known-difficult [problem set](https://en.wikipedia.org/wiki/Problem_set) to use for improving
   Git.
 
 All of this will happen next week, on or around May 15th. In fact, the first two
