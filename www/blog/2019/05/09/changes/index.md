@@ -36,8 +36,8 @@ data. Almost any Git operation takes forever on a local machine and probably
 sets off alarms on the GitHub servers.
 
 Earlier this year WOF and people who had forked the original `whosonfirst-data`
-repository received notices from GitHub saying that the repo (and its fork) were
-way too big and starting to place an undue burden on their infrastructure. Oh,
+repository received notices from GitHub saying that the repo (and its forks) were
+way too big and were placing an undue burden on their infrastructure. Oh,
 and would everyone please delete their copies of the repository.
 
 Before we go any further this is a good time to say that **GitHub have been
