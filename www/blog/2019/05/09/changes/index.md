@@ -69,11 +69,6 @@ the per-country repos. What will happen next week is the purging of the original
 `whosonfirst-data` repo so that GitHub (and everyone else) can stop thinking
 about this.
 
-It's worth repeating that GitHub have been entirely gratious throughout this
-process and if people want to be cross about things they should be cross with us
-(WOF) for not communicating these changes sooner. They don't call them "growing
-pains" for nothing, I guess.
-
 There are some follow-on consequences to these decisions that will, in the
 short-term, affect how Who's On First distributions (bundles, SQLite databases,
 etc.) are built.
@@ -87,6 +82,28 @@ distribution](https://github.com/whosonfirst/go-whosonfirst-dist/compare/combine
 but it's not complete yet. Unfortunately, right now I can't say when it will be
 finished beyond "real soon now".
 
+It's worth repeating that GitHub have been entirely gratious throughout this
+process and if people want to be cross about things they should be cross with us
+(WOF) for not communicating these changes sooner. They don't call them "growing
+pains" for nothing, I guess.
 
+WOF has been designed from the beginning with the idea that _one day_ it will be
+possible to merge all the data in the different `whosonfirst-data-*` repos in to
+a single monolithic repository. That would be good for a bunch of reasons but
+the reality, in 2019, is that it's still beyond the limits of what Git (and by
+extension GitHub) can tolerate. We are not the only people with this
+problem. For example, Microsoft quickly discovered that Git had problems
+handling twenty-plus years of Windows source code and they've been working on
+developing improvements. We're just not there yet.
 
+Similarly, faceted repos are already a reality in WOF. We already have
+per-country and in some cases per-region repositories for postal codes and
+venues. What we have lacked is the tooling for making these facetings
+transparent (or at least easier) to end-users. So, maybe the silver lining in
+all of this is that the changes to the administrative data will be the catalyst
+for developing and improving these tools.
+
+We apologize for the unfortunate bumpiness ahead and if its any consolation
+we'll be dealing it too and with any luck it will be short-lived and we can all
+get back to doing other things.
 
