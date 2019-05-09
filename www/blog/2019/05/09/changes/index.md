@@ -74,7 +74,7 @@ short-term, affect how Who's On First distributions (bundles, SQLite databases,
 etc.) are built.
 
 The most notable is that for some amount of time there will not be a single "all
-the administrative data" distribution of WOF data. Instead, there will be a
+the administrative data" distribution for Who's On First. Instead, there will be a
 SQLite distribution for each country, as well as the `-admin-xy` repository, and
 it will be the responsibility of consumers to fetch each one individually. This
 is not ideal and there is [on-going work to generate a single combined
