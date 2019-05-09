@@ -104,7 +104,7 @@ easier) to end-users. So, maybe the silver lining in all of this is that the
 changes to the administrative data will be the catalyst for developing and
 improving these tools. 
 
-We apologize for the unfortunate bumpiness ahead and if it's any consolation
+We apologize for the unfortunate bumpiness ahead. If it's any consolation
 we'll be dealing it too and with any luck it will be short-lived and we can all
 get back to doing other things.
 
