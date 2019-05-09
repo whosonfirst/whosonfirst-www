@@ -41,7 +41,7 @@ way too big and starting to place an undue burden on their infrastructure. Oh,
 and would everyone please delete their copies of the repository.
 
 Before we go any further this is a good time to say that **GitHub have been
-basically awesome** about all of this. They have been patient and understanding as
+basically awesome about all of this**. They have been patient and understanding as
 we've tried to find an alternative solution (as in not just deleting all the
 data) that addresses everyone's concerns. WOF is the beneficiary of GitHub's
 decision to offer free hosting for projects and frankly we feel kind of bad that
@@ -82,8 +82,8 @@ distribution](https://github.com/whosonfirst/go-whosonfirst-dist/compare/combine
 but it's not complete yet. Unfortunately, right now I can't say when it will be
 finished beyond "real soon now".
 
-It's worth repeating that GitHub have been entirely gratious throughout this
-process and if people want to be cross about things they should be cross with us
+It's worth repeating that **GitHub have been entirely gratious throughout this
+process** and if people want to be cross about things they should be cross with us
 (WOF) for not communicating these changes sooner. They don't call them "growing
 pains" for nothing, I guess.
 
