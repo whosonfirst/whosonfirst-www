@@ -27,7 +27,7 @@ So big that the Git history file is now larger than the sum total of the
 data which is already pretty big (and which grew substantially after we finished
 importing 4M localities from Geonames). The history file is also impossibly big
 because of some unfortunate decisions we made to include overly-large "meta"
-files with the raw data.
+files with the raw data in the past.
 
 You might say that the `whosonfirst-data` repository was "comically big" if it
 weren't for the fact that it's also become impractically big both for
