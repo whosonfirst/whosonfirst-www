@@ -69,6 +69,11 @@ the per-country repos. What will happen next week is the purging of the original
 `whosonfirst-data` repo so that GitHub (and everyone else) can stop thinking
 about this.
 
+It's worth repeating that **GitHub have been entirely gracious throughout this
+process** and if people want to be cross about things they should be cross with us
+(WOF) for not communicating these changes sooner. They don't call them "growing
+pains" for nothing, I guess.
+
 There are some follow-on consequences to these decisions that will, in the
 short-term, affect how Who's On First distributions (bundles, SQLite databases,
 etc.) are built.
@@ -81,11 +86,6 @@ is not ideal and there is [on-going work to generate a single combined
 distribution](https://github.com/whosonfirst/go-whosonfirst-dist/compare/combined)
 but it's not complete yet. Unfortunately, as of this writing, I can't say when it will be
 finished beyond "real soon now".
-
-It's worth repeating that **GitHub have been entirely gracious throughout this
-process** and if people want to be cross about things they should be cross with us
-(WOF) for not communicating these changes sooner. They don't call them "growing
-pains" for nothing, I guess.
 
 WOF has been designed from the beginning with the idea that _one day_ it will be
 possible to merge all the data in the different `whosonfirst-data-*` repos in to
