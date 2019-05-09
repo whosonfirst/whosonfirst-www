@@ -79,7 +79,7 @@ SQLite distribution for each country, as well as the `-admin-xy` repository, and
 it will be the responsibility of consumers to fetch each one individually. This
 is not ideal and there is [on-going work to generate a single combined
 distribution](https://github.com/whosonfirst/go-whosonfirst-dist/compare/combined)
-but it's not complete yet. Unfortunately, right now I can't say when it will be
+but it's not complete yet. Unfortunately, as of this writing, I can't say when it will be
 finished beyond "real soon now".
 
 It's worth repeating that **GitHub have been entirely gracious throughout this
