@@ -82,7 +82,7 @@ distribution](https://github.com/whosonfirst/go-whosonfirst-dist/compare/combine
 but it's not complete yet. Unfortunately, right now I can't say when it will be
 finished beyond "real soon now".
 
-It's worth repeating that **GitHub have been entirely gratious throughout this
+It's worth repeating that **GitHub have been entirely gracious throughout this
 process** and if people want to be cross about things they should be cross with us
 (WOF) for not communicating these changes sooner. They don't call them "growing
 pains" for nothing, I guess.
