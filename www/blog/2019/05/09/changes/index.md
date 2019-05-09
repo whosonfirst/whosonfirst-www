@@ -44,7 +44,7 @@ Before we go any further this is a good time to say that **GitHub have been
 basically awesome about all of this**. They have been patient and understanding as
 we've tried to find an alternative solution (as in not just deleting all the
 data) that addresses everyone's concerns. WOF is the beneficiary of GitHub's
-decision to offer free hosting for projects and frankly we feel kind of bad that
+decision to offer free hosting for projects and frankly we feel pretty bad that
 we have ended up being the project that has become a hassle for them.
 
 So, here's what's going to happen:
