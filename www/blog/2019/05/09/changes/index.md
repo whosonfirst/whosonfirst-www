@@ -93,7 +93,7 @@ a single monolithic repository. That would be good for a bunch of reasons but
 the reality, in 2019, is that it's still beyond the limits of what Git (and by
 extension GitHub) can tolerate. We are not the only people with this
 problem. For example, Microsoft quickly discovered that Git had problems
-handling twenty-plus years of Windows source code and they've been working on
+handling twenty-plus years of Windows source code and since then they've been working on
 developing improvements. We're just not there yet.
 
 Similarly, faceted repos are already a reality in WOF. We already have
