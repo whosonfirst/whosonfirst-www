@@ -10,9 +10,9 @@ PUP="utils/$(OS)/pup"
 WOF_CLONE_WEBSITE="utils/$(OS)/wof-clone-website"
 WOF_MD2HTML="utils/$(OS)/wof-md2html"
 WOF_MD2FEED="utils/$(OS)/wof-md2feed"
-# WOF_MD2IDX="utils/$(OS)/wof-md2idx"
+WOF_MD2IDX="utils/$(OS)/wof-md2idx"
 
-WOF_MD2IDX="$(HOME)/whosonfirst/go-whosonfirst-markdown/bin/wof-md2idx"
+# WOF_MD2IDX="$(HOME)/whosonfirst/go-whosonfirst-markdown/bin/wof-md2idx"
 
 sync:
 	aws --profile whosonfirst-www s3 sync --acl public-read --exclude '*~' www s3://www.whosonfirst.org/

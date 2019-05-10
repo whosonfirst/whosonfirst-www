@@ -13,10 +13,10 @@ tag: [whosonfirst,wof,github]
 ![](images/eye.jpg)
 
 There are some pretty substantial changes coming to the way we will publish
-administrative data in Who's On First (WOF) and from the perspective of people
+[administrative data in Who's On First](https://github.com/whosonfirst-data/whosonfirst-data) (WOF) and from the perspective of people
 not actively working on WOF they will be coming fast, like next week.
 
-Administrative data means everything in the `whosonfirst-data` repository, or
+Administrative data means everything in the [whosonfirst-data repository](https://github.com/whosonfirst-data/whosonfirst-data), or
 everything ranging from continents (and empires) to neighbourhoods (and
 microhoods). Historically we have included all of these things in a single
 comprehensive repository spanning the planet and that approach has had a lot of
@@ -105,7 +105,7 @@ easier) to end-users. So, maybe the silver lining in all of this is that the
 changes to the administrative data will be the catalyst for developing and
 improving these tools. 
 
-We apologize for the unfortunate bumpiness ahead. If it's any consolation
+We apologize for the [unfortunate bumpiness ahead](https://github.com/whosonfirst-data). If it's any consolation
 we'll be dealing it too and with any luck it will be short-lived and we can all
 get back to doing other things.
 
