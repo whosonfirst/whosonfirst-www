@@ -1,0 +1,318 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="x-ua-compatible" content="ie=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Who’s On First | Upcoming changes to Who&#39;s On First administrative data</title>
+		<meta name="description" content="Who’s on First is a gazetteer of places." />
+		<link rel="apple-touch-icon" href="/images/favicons/apple-touch-icon.png" sizes="180x180" />
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-16x16.png" sizes="16x16" />
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-32x32.png" sizes="32x32" />
+		<link rel="manifest" href="/images/favicons/manifest.json" />
+		<link rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg" color="#2C1E3F" />
+		<link rel="stylesheet" href="/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="/css/mapzen.whosonfirst.css" />
+		
+		<link rel="stylesheet" href="/css/styles/grayscale.css" />
+
+		<link rel="alternate" type="application/atom+xml" title="Who's On First Atom feed" href="/blog/atom_10.xml"/>		
+		<link rel="alternate" type="application/rss+xml" title="Who's On First RSS 2.0 feed" href="/blog/rss_20.xml"/>
+
+		
+		<meta property="og:type" content="article" />
+		<meta property="og:site_name" content="Who's On First" />
+		<meta property="og:title" content="Upcoming changes to Who&#39;s On First administrative data" />
+		<meta property="og:description" content="There are some pretty substantial changes coming to the way we will publish administrative data in Who&#39;s On First (WOF) and from the perspective of people not actively working on WOF they will be coming fast, like next week." />
+		<meta property="og:image" content="https://www.whosonfirst.org/blog/2019/05/09/changes/images/eye.jpg" />
+		
+		<meta property="twitter:card" value="summary" />
+		<meta property="twitter:site" content="@alloftheplaces" />
+		<meta property="twitter:creator" content="@alloftheplaces" />
+		<meta property="twitter:url" content="https://www.whosonfirst.org/blog/2019/05/09/changes/" />
+		<meta property="twitter:title" content="Upcoming changes to Who&#39;s On First administrative data" />
+		<meta property="twitter:description" content="There are some pretty substantial changes coming to the way we will publish administrative data in Who&#39;s On First (WOF) and from the perspective of people not actively working on WOF they will be coming fast, like next week." />
+		<meta property="twitter:image" content="https://www.whosonfirst.org/blog/2019/05/09/changes/images/eye.jpg" />
+		
+
+	</head>
+	<body>
+		<div class="whosonfirst-wrapper">
+
+			<nav class="navbar navbar-default navbar-fixed-top whosonfirst-fixed-subpage-navbar">
+				<div class="container">
+
+					
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="/">Who’s On First</a>
+					</div>
+
+					
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					  <ul class="nav navbar-nav navbar-right">
+
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/browse/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">browse</a>
+							</li>
+					    
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/docs/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">documentation</a>
+							</li>
+							
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/code/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">code</a>
+							</li>
+
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/api/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">api</a>
+							</li>
+							
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/download/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">download</a>
+							</li>
+							
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/blog/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">blog</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+
+
+		<style type="text/css">
+		  body {
+		  font-family: serif;
+		  font-size: 1.3em;
+		  line-height: 1.5em;
+		  }
+
+		  h2 small {
+		  display: block;
+		  margin-top:.10em;
+		  font-weight: 100;
+		  font-size: .5em;
+		  line-height: 1.3em;
+		  }
+
+		  p {
+		  line-height: 1.5em !important;
+		  }
+
+		  ul {
+		  font-size:1.3em;
+		  line-height:1.5em;
+		  margin-top:1em !important;
+		  }
+
+		  li {
+		  list-style-type: circle;
+		  margin-bottom: .5em;
+		  }
+
+		  img {
+		  max-width: 640px !important;
+		  max-height: 480px !important;
+		  border: 1px dotted #ccc;
+		  padding: .5em;
+		  margin-bottom:1em;
+		  margin-top: 1em;
+		  display:block;
+		  min-width: 320px;
+		  margin: 0 auto;
+		  }
+
+		  blockquote {
+		  background-color:#ededed;
+		  margin-top:1em;
+		  padding-top:.05em !important;
+		  padding-bottom:1.75em !important;
+		  }
+
+		  .hey-look {
+		  font-weight: 700;
+		  }
+
+		  @media (min-width: 320px) and (max-width: 400px) {
+
+		  ul {
+		  margin:0px;
+	  	  margin-left:15px;
+		  padding:0px;
+		  }
+
+		  pre {
+		  max-width:250px;
+		  overflow:scroll;
+		  }
+
+		  img {
+		  max-width: 250px !important;
+		  max-height: 200px !important;
+		  min-width: 75px;
+		  }
+		  }
+
+		</style>
+
+			<div class="container whosonfirst-subpage-container">
+			  <div class="row">
+			    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-0">
+ 			    </div>
+			    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+			      <article>
+
+	  
+	  
+	  <h2>
+	    Upcoming changes to Who&#39;s On First administrative data
+	    <small>This is a blog post by
+	      <span class="hey-look">thisisaaronland</span>
+	      that was published on <span class="pubdate"><a href="/blog/2019/05/">May</a> <a href="/blog/2019/05/09">09</a>, <a href="/blog/2019/">2019</a></span>
+	       and tagged <span class="hey-look">whosonfirst</span>, <span class="hey-look">wof</span> and <span class="hey-look">github</span></small>
+	  </h2>
+
+<p><img src="images/eye.jpg" alt="" /></p>
+
+<p>There are some pretty substantial changes coming to the way we will publish
+administrative data in Who&rsquo;s On First (WOF) and from the perspective of people
+not actively working on WOF they will be coming fast, like next week.</p>
+
+<p>Administrative data means everything in the <code>whosonfirst-data</code> repository, or
+everything ranging from continents (and empires) to neighbourhoods (and
+microhoods). Historically we have included all of these things in a single
+comprehensive repository spanning the planet and that approach has had a lot of
+benefits. It also means that over time and as we&rsquo;ve improved the data and added
+records for missing places the repository has gotten&hellip; well, pretty
+big.</p>
+
+<p>So big that the Git history file is now larger than the sum total of the
+data which is already pretty big (and which grew substantially after we finished
+importing 4M localities from Geonames). The history file is also impossibly big
+because of some unfortunate decisions we made to include overly-large &ldquo;meta&rdquo;
+files with the raw data in the past.</p>
+
+<p>You might say that the <code>whosonfirst-data</code> repository was &ldquo;comically big&rdquo; if it
+weren&rsquo;t for the fact that it&rsquo;s also become impractically big both for
+individuals working with WOF data and especially for GitHub who host the
+data. Almost any Git operation takes forever on a local machine and probably
+sets off alarms on the GitHub servers.</p>
+
+<p>Earlier this year WOF and people who had forked the original <code>whosonfirst-data</code>
+repository received notices from GitHub saying that the repo (and its forks) were
+way too big and were placing an undue burden on their infrastructure. Oh,
+and would everyone please delete their copies of the repository.</p>
+
+<p>Before we go any further this is a good time to say that <strong>GitHub have been
+basically awesome about all of this</strong>. They have been patient and understanding as
+we&rsquo;ve tried to find an alternative solution (as in not just deleting all the
+data) that addresses everyone&rsquo;s concerns. WOF is the beneficiary of GitHub&rsquo;s
+decision to offer free hosting for projects and frankly we feel pretty bad that
+we have ended up being the project that has become a hassle for them.</p>
+
+<p>So, here&rsquo;s what&rsquo;s going to happen:</p>
+
+<ul>
+<li><p>All the data files in the original <code>whosonfirst-data</code> repository have been
+migrated in to per-country repositories. The naming convention for these
+repositories is <code>whosonfirst-data-admin-{TWO_LETTER_WOF_COUNTRY_CODE}</code>.</p></li>
+
+<li><p>Any data that isn&rsquo;t associated with a country will be migrated to the
+`<code>whosonfirst-data-admin-xy</code> repository. This includes things like continents,
+empires and of course <a href="https://spelunker.whosonfirst.org/id/1">Null Island</a>.</p></li>
+
+<li><p>The <code>whosonfirst-data</code> repository will be purged and replaced with
+documentation and pointers to the new data. The Git history (between
+2015 and 2019) will be archived on the Who&rsquo;s On First servers for anyone who wants
+that data or who needs a known-difficult <a href="https://en.wikipedia.org/wiki/Problem_set">problem set</a> to use for improving
+Git.</p></li>
+</ul>
+
+<p>All of this will happen next week, on or around May 15th. In fact, the first two
+things have already happened and all new data and updates are being applied to
+the per-country repos. What will happen next week is the purging of the original
+<code>whosonfirst-data</code> repo so that GitHub (and everyone else) can stop thinking
+about this.</p>
+
+<p>It&rsquo;s worth repeating that <strong>GitHub have been entirely gracious throughout this
+process</strong> and if people want to be cross about things they should be cross with us
+(WOF) for not communicating these changes sooner. They don&rsquo;t call them &ldquo;growing
+pains&rdquo; for nothing, I guess.</p>
+
+<p>There are some follow-on consequences to these decisions that will, in the
+short-term, affect how Who&rsquo;s On First distributions (bundles, SQLite databases,
+etc.) are built.</p>
+
+<p>The most notable is that for some amount of time there will not be a single &ldquo;all
+the administrative data&rdquo; distribution for Who&rsquo;s On First. Instead, there will be a
+SQLite distribution for each country, as well as the <code>-admin-xy</code> repository, and
+it will be the responsibility of consumers to fetch each one individually. This
+is not ideal and there is <a href="https://github.com/whosonfirst/go-whosonfirst-dist/compare/combined">on-going work to generate a single combined
+distribution</a>
+but it&rsquo;s not complete yet. Unfortunately, as of this writing, I can&rsquo;t say when it will be
+finished beyond &ldquo;real soon now&rdquo;.</p>
+
+<p>WOF has been designed from the beginning with the idea that <em>one day</em> it will be
+possible to merge all the data in the different <code>whosonfirst-data-*</code> repos in to
+a single monolithic repository. That would be good for a bunch of reasons but
+the reality, in 2019, is that it&rsquo;s still beyond the limits of what Git (and by
+extension GitHub) can tolerate. We are not the only people with this
+problem. For example, Microsoft quickly discovered that Git had problems
+handling twenty-plus years of Windows source code and since then they&rsquo;ve been working on
+developing improvements. We&rsquo;re just not there yet.</p>
+
+<p>Similarly, faceted repos are already a reality in WOF. We have had per-country
+and in some cases per-region repositories for postal codes and venues almost
+from beginning. What we
+have lacked is the tooling for making these facetings transparent (or at least
+easier) to end-users. So, maybe the silver lining in all of this is that the
+changes to the administrative data will be the catalyst for developing and
+improving these tools.</p>
+
+<p>We apologize for the unfortunate bumpiness ahead. If it&rsquo;s any consolation
+we&rsquo;ll be dealing it too and with any luck it will be short-lived and we can all
+get back to doing other things.</p>
+
+		</article>
+		</div>
+		</div>	
+		</div>	
+
+		<footer>
+			<nav class="navbar navbar-default navbar-bottom">
+				<div class="container">
+					
+					<ul class="nav navbar-nav navbar-right whosonfirst-footer">
+						<li><a href="/docs/contributing/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">contributing</a></li>
+						<li><a href="/docs/licenses/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">license</a></li>
+						<li><a href="https://twitter.com/alloftheplaces/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">twitter</a></li>
+					</ul>
+				</div>
+			</nav>
+		</footer>
+
+		
+		<script src="/javascript/jquery.min.js"></script>
+		
+		<script src="/javascript/bootstrap.min.js"></script>
+		<script src="/javascript/mapzen.whosonfirst.home.js"></script>
+		<script src="/javascript/mapzen.whosonfirst.subpage.js"></script>
+		
+		<script src="/javascript/highlightpack.js"></script>
+		<script>
+		  try {
+		  	hljs.initHighlightingOnLoad();
+		  } catch (e) {
+		  	console.log("HLJS", e);
+		  }
+		</script>
+	</body>
+</html>
+

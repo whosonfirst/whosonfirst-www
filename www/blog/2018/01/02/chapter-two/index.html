@@ -298,12 +298,12 @@
 
 <li><p><a href="https://data.whosonfirst.org">https://data.whosonfirst.org</a> and <a href="https://dist.whosonfirst.org">https://dist.whosonfirst.org</a> are also a thing that exists, too. These are the new homes for Who&rsquo;s On First data. The former is where individual Who&rsquo;s On First records live and the latter is where bundled versions of that data, like the <a href="https://www.whosonfirst.org/sqlite/">SQLite databases</a> or the original &ldquo;<a href="https://www.whosonfirst.org/bundles/">bundles</a>&rdquo;, will live from now on.</p></li>
 
-<li><p><a href="https://id.whosonfirst.org">https://id.whosonfirst.org</a> is a first attempt at re-thinking the various &ldquo;read-only&rdquo; services to run as <a href="https://github.com/whosonfirst/go-whosonfirst-roundhouse#docker">containers</a>. <code>id.whosonfirst.org</code> is a simple HTTP-based service that takes a Who&rsquo;s On First ID as its path argument and redirects you to the fully-qualified URL for that record on <code>data.whosonfirst.org</code>. For example:</p></li>
-</ul>
+<li><p><a href="https://id.whosonfirst.org">https://id.whosonfirst.org</a> is a first attempt at re-thinking the various &ldquo;read-only&rdquo; services to run as <a href="https://github.com/whosonfirst/go-whosonfirst-roundhouse#docker">containers</a>. <code>id.whosonfirst.org</code> is a simple HTTP-based service that takes a Who&rsquo;s On First ID as its path argument and redirects you to the fully-qualified URL for that record on <code>data.whosonfirst.org</code>. For example:</p>
 
 <pre><code>curl -s -I https://id.whosonfirst.org/101736545 | grep Location
 Location: https://data.whosonfirst.org/101/736/545/101736545.geojson
-</code></pre>
+</code></pre></li>
+</ul>
 
 <p>This is simultaneously an effort to reduce costs, minimize maintenance and overhead and generally make sure that Who&rsquo;s On First plays nicely with all the tools and services. In the same way that Who&rsquo;s On First tries to actively not-care about what sort of database you want to use we try equally to have no opinion about what sort of infrastructure stack you&rsquo;re using. It is early days so it remains to be seen how many of those goals are actually met.</p>
 

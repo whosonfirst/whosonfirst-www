@@ -364,47 +364,57 @@ documentation, once <a href="https://github.com/whosonfirst/whosonfirst-www/mile
 15:49:12.499906 [wof-sqlite-query-markdown] STATUS montreal - /blog/2017/10/17/whosonfirst-nacis-2017/
 15:49:12.499936 [wof-sqlite-query-markdown] STATUS montreal - /blog/2017/12/22/neighbourhood-updates-three/
 15:49:12.500024 [wof-sqlite-query-markdown] STATUS montreal - /blog/2015/08/18/who-s-on-first/
+``` 
+
+_Careful readers will note that it's still not possible to search the weblog on the weblog itself. It
+will become possible, I promise, just not today..._ 
+
+We used the blog as a testing and proving ground for how full-text search should
+work and then applied those lessons to the tools we use to [index and query brands](https://github.com/whosonfirst/go-whosonfirst-sqlite-brands#tools):
+
 </code></pre>
 
-<p><em>Careful readers will note that it&rsquo;s still not possible to search the weblog on the weblog itself. It
-will become possible, I promise, just not today&hellip;</em></p>
-
-<p>We used the blog as a testing and proving ground for how full-text search should
-work and then applied those lessons to the tools we use to <a href="https://github.com/whosonfirst/go-whosonfirst-sqlite-brands#tools">index and query brands</a>:</p>
-
-<pre><code>&gt; ./bin/wof-sqlite-query-brands -dsn test.db 'car* bank'
+<blockquote>
+<p>./bin/wof-sqlite-query-brands -dsn test.db &lsquo;car* bank&rsquo;
 17:23:40.459620 [wof-sqlite-query-brands] STATUS car* bank - 1125154403 Carolina First Bank
-17:23:40.459746 [wof-sqlite-query-brands] STATUS car* bank - 1125153083 Central Carolina Bank
+17:23:40.459746 [wof-sqlite-query-brands] STATUS car* bank - 1125153083 Central Carolina Bank</p>
+
+<pre><code>
+And then finally for actual [Who's On First documents](https://github.com/whosonfirst/go-whosonfirst-sqlite-features#wof-sqlite-query-features):
+
 </code></pre>
 
-<p>And then finally for actual <a href="https://github.com/whosonfirst/go-whosonfirst-sqlite-features#wof-sqlite-query-features">Who&rsquo;s On First documents</a>:</p>
+<p>./bin/wof-sqlite-query-features -dsn test2.db JFK
+102534365,John F Kennedy Int&rsquo;l Airport</p>
+</blockquote>
 
-<pre><code>&gt; ./bin/wof-sqlite-query-features -dsn test2.db JFK
-102534365,John F Kennedy Int'l Airport
-
-./bin/wof-sqlite-query-features -dsn test2.db -column names_colloquial Paris
+<p>./bin/wof-sqlite-query-features -dsn test2.db -column names_colloquial Paris
 85922583,San Francisco
 102027181,Shanghai
 102030585,Kolkata
-101751929,Tromsø
+101751929,Tromsø</p>
+
+<pre><code>
+We've also added the ability to index and query Who's On First geometries for
+people who have the [Spatialite](https://www.gaia-gis.it/fossil/libspatialite/index) extension installed on their computers.
+
 </code></pre>
 
-<p>We&rsquo;ve also added the ability to index and query Who&rsquo;s On First geometries for
-people who have the <a href="https://www.gaia-gis.it/fossil/libspatialite/index">Spatialite</a> extension installed on their computers.</p>
-
-<pre><code>&gt; ./bin/wof-sqlite-index-features -timings -live-hard-die-fast -spr -geometries -driver spatialite -mode repo -dsn test.db /usr/local/data/whosonfirst-data-constituency-ca/
+<blockquote>
+<p>./bin/wof-sqlite-index-features -timings -live-hard-die-fast -spr -geometries -driver spatialite -mode repo -dsn test.db /usr/local/data/whosonfirst-data-constituency-ca/
 10:09:46.534281 [wof-sqlite-index-features] STATUS time to index geometries (87) : 21.251828704s
 10:09:46.534379 [wof-sqlite-index-features] STATUS time to index spr (87) : 3.206930799s
-10:09:46.534385 [wof-sqlite-index-features] STATUS time to index all (87) : 24.48004637s
+10:09:46.534385 [wof-sqlite-index-features] STATUS time to index all (87) : 24.48004637s</p>
 
-&gt; sqlite3 test.db
+<p>sqlite3 test.db
 SQLite version 3.21.0 2017-10-24 18:55:49
-Enter &quot;.help&quot; for usage hints.
+Enter &ldquo;.help&rdquo; for usage hints.</p>
+</blockquote>
 
-sqlite&gt; SELECT load_extension('mod_spatialite.dylib');
-sqlite&gt; SELECT s.id, s.name FROM spr s, geometries g WHERE ST_Intersects(g.geom, GeomFromText('POINT(-122.229137 49.450129)', 4326)) AND g.id = s.id;
+<p>sqlite&gt; SELECT load_extension(&lsquo;mod_spatialite.dylib&rsquo;);
+sqlite&gt; SELECT s.id, s.name FROM spr s, geometries g WHERE ST_Intersects(g.geom, GeomFromText(&lsquo;POINT(-122.229137 49.450129)&rsquo;, 4326)) AND g.id = s.id;
 1108962831|Maple Ridge-Pitt Meadows
-</code></pre>
+&ldquo;`</p>
 
 <p>Now that we&rsquo;ve sorted out how to index and query spatial properties in the
 SQLite databases we&rsquo;ve also begun work on a <code>spatialite</code> branch of the <a href="https://github.com/whosonfirst/go-whosonfirst-pip-v2/tree/spatialite">Who&rsquo;s On First point-in-polygon

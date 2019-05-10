@@ -1,15 +1,16 @@
 ---
 layout: page
-title: Change to the Who's On First administrative data
+title: Upcoming changes to Who's On First administrative data
 published: false
 date: 2019-05-09
 permalink: /blog/2019/05/09/changes/
 category: blog
-excerpt: 
+excerpt: "There are some pretty substantial changes coming to the way we will publish administrative data in Who's On First (WOF) and from the perspective of people not actively working on WOF they will be coming fast, like next week." 
 authors: [thisisaaronland]
-image: ""
+image: "images/eye.jpg"
 tag: [whosonfirst,wof,github]
 ---
+![](images/eye.jpg)
 
 There are some pretty substantial changes coming to the way we will publish
 administrative data in Who's On First (WOF) and from the perspective of people
@@ -55,11 +56,11 @@ So, here's what's going to happen:
 
 * Any data that isn't associated with a country will be migrated to the
   ``whosonfirst-data-admin-xy` repository. This includes things like continents,
-  empires and of course Null Island.
+  empires and of course [Null Island](https://spelunker.whosonfirst.org/id/1).
 
 * The `whosonfirst-data` repository will be purged and replaced with
   documentation and pointers to the new data. The Git history (between
-  2015-2019) will be archived on the Who's On First servers for anyone who wants
+  2015 and 2019) will be archived on the Who's On First servers for anyone who wants
   that data or who needs a known-difficult [problem set](https://en.wikipedia.org/wiki/Problem_set) to use for improving
   Git.
 

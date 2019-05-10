@@ -209,12 +209,12 @@
 <li>Clone the <a href="https://github.com/whosonfirst-data/whosonfirst-data">whosonfirst-data repository</a> (tens of GB of data)</li>
 <li>Clone the <a href="https://github.com/whosonfirst/py-mapzen-whosonfirst-utils">py-mapzen-whosonfirst-utils repository</a></li>
 <li>Gather a list of <code>wof:id</code> values in a single CSV file</li>
-<li>Run the following command, invoking the <a href="https://github.com/whosonfirst/py-mapzen-whosonfirst-utils/blob/master/scripts/wof-csv-to-feature-collection"><code>csv-to-feature-collection</code> script</a> in the py-mapzen-whosonfirst-utils repository:</li>
-</ul>
-
-<pre><code>python wof-csv-to-feature-collection -p /usr/local/mapzen/whosonfirst-data/data
+<li>Run the following command, invoking the <a href="https://github.com/whosonfirst/py-mapzen-whosonfirst-utils/blob/master/scripts/wof-csv-to-feature-collection"><code>csv-to-feature-collection</code> script</a> in the py-mapzen-whosonfirst-utils repository:
+<code>
+python wof-csv-to-feature-collection -p /usr/local/mapzen/whosonfirst-data/data
 -c ~/Desktop/list_of_wofids.csv -o ~/Desktop/featurecollection.geojson full -i
-</code></pre>
+</code></li>
+</ul>
 
 <p>Even after cloning the repo, the method of locally gathering a feature collection took a long time - a typical bundle of a few dozen descendants would take 2 to 3 minutes to get ready, and then another 3 minutes to generate, so we needed 5 to 6 minutes per bundle. This process was more time consuming than it needed to be and made us, well, sad; hence the birth of the Descender.</p>
 

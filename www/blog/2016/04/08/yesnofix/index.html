@@ -241,243 +241,266 @@
     ],
 
     // and so on
+```    
+
+And the rendered version looks like this:
+
+![screenshot](images/yesnofix-sf.png)
+
+When you mouse over a value - in this case the English colloquial name of **The City** - you'll see an `edit` control.
+
+![screenshot](images/yesnofix-sf-hover.png)
+
+If you click on it then a series of controls (yes, no and fix) will appear next to that value. Like this:
+
+### Yes
+
+The first is **yes** which means that you agree with the value (and its parent nesting).
+
+![screenshot](images/yesnofix-sf-yes.png)
+
+### No
+
+The second is **no**. [No means no.](https://en.wikipedia.org/wiki/Nomeansno) San Francisco is not called _Frisco_.
+
+
+![screenshot](images/yesnofix-sf-no.png)
+
+*\[Ed. Some of us think `Frisco` [is](https://www.thrillist.com/entertainment/san-francisco/san-francisco-nickname-frisco-sf) actually [OK](http://www.buzzfeed.com/burritojustice/frisco-24wct). Which kind of proves the point of Yes No Fix. `San Fran` on the other hand...\]*
+
+![screenshot](images/yesnofix-sanfran-no.png)
+
+### Fix
+
+The third value is **fix** which means broadly _this is weird data_. If that seems a little vague and ambiguous that is because it's meant to be. &quot;Fix&quot; is a shorthand for things that are sort of correct and but still incorrect or vice versa. Life is complicated that way.
+
+![screenshot](images/yesnofix-sf-fix.png)
+
+### Locked
+
+Sometimes a value might be &quot;locked&quot; or &quot;excluded&quot; which means that it is not possible to make a `yesnofix` style assertion about it. The reasons why something might be excluded are defined by individual applications. We'll explain how that's done, below. In this example the `edtf:inception` and `edtf:cessation` dates are locked because they already have a default value of &quot;unknown&quot; so there's not a lot of use in collecting opinions about them.
+
+![screenshot](images/yesnofix-sf-lock.png)
+
+### Reports
+
+In the screenshot above there is a `show report` button. When clicked it will display three more elements: A comma-separated value (CSV) rendering of all the assertions that have been made so far and another button for submitting the report (and a button to hide everything).
+
+![screenshot](images/yesnofix-sf-report.png)
+
+By default, Yes No Fix will &quot;submit&quot; the report to a new browser window because that's all it knows how to do. Here's a plain-text version of the report shown in the screenshot above:
+
 </code></pre>
 
-<p>And the rendered version looks like this:</p>
-
-<p><img src="images/yesnofix-sf.png" alt="screenshot" /></p>
-
-<p>When you mouse over a value - in this case the English colloquial name of <strong>The City</strong> - you&rsquo;ll see an <code>edit</code> control.</p>
-
-<p><img src="images/yesnofix-sf-hover.png" alt="screenshot" /></p>
-
-<p>If you click on it then a series of controls (yes, no and fix) will appear next to that value. Like this:</p>
-
-<h3>Yes</h3>
-
-<p>The first is <strong>yes</strong> which means that you agree with the value (and its parent nesting).</p>
-
-<p><img src="images/yesnofix-sf-yes.png" alt="screenshot" /></p>
-
-<h3>No</h3>
-
-<p>The second is <strong>no</strong>. <a href="https://en.wikipedia.org/wiki/Nomeansno">No means no.</a> San Francisco is not called <em>Frisco</em>.</p>
-
-<p><img src="images/yesnofix-sf-no.png" alt="screenshot" /></p>
-
-<p><em>[Ed. Some of us think <code>Frisco</code> <a href="https://www.thrillist.com/entertainment/san-francisco/san-francisco-nickname-frisco-sf">is</a> actually <a href="http://www.buzzfeed.com/burritojustice/frisco-24wct">OK</a>. Which kind of proves the point of Yes No Fix. <code>San Fran</code> on the other hand&hellip;]</em></p>
-
-<p><img src="images/yesnofix-sanfran-no.png" alt="screenshot" /></p>
-
-<h3>Fix</h3>
-
-<p>The third value is <strong>fix</strong> which means broadly <em>this is weird data</em>. If that seems a little vague and ambiguous that is because it&rsquo;s meant to be. &ldquo;Fix&rdquo; is a shorthand for things that are sort of correct and but still incorrect or vice versa. Life is complicated that way.</p>
-
-<p><img src="images/yesnofix-sf-fix.png" alt="screenshot" /></p>
-
-<h3>Locked</h3>
-
-<p>Sometimes a value might be &ldquo;locked&rdquo; or &ldquo;excluded&rdquo; which means that it is not possible to make a <code>yesnofix</code> style assertion about it. The reasons why something might be excluded are defined by individual applications. We&rsquo;ll explain how that&rsquo;s done, below. In this example the <code>edtf:inception</code> and <code>edtf:cessation</code> dates are locked because they already have a default value of &ldquo;unknown&rdquo; so there&rsquo;s not a lot of use in collecting opinions about them.</p>
-
-<p><img src="images/yesnofix-sf-lock.png" alt="screenshot" /></p>
-
-<h3>Reports</h3>
-
-<p>In the screenshot above there is a <code>show report</code> button. When clicked it will display three more elements: A comma-separated value (CSV) rendering of all the assertions that have been made so far and another button for submitting the report (and a button to hide everything).</p>
-
-<p><img src="images/yesnofix-sf-report.png" alt="screenshot" /></p>
-
-<p>By default, Yes No Fix will &ldquo;submit&rdquo; the report to a new browser window because that&rsquo;s all it knows how to do. Here&rsquo;s a plain-text version of the report shown in the screenshot above:</p>
-
-<pre><code>path,value,assertion,date
+<p>path,value,assertion,date
 name.eng_x_colloquial#10,S.F.,1,2016-04-02T17:55:36.335Z
 name.eng_x_colloquial#9,The City,1,2016-04-02T17:55:50.767Z
 name.eng_x_colloquial#4,Frisco,0,2016-04-02T17:56:17.137Z
-name.eng_x_colloquial#16,Ess Eff,-1,2016-04-02T17:57:38.917Z
+name.eng_x_colloquial#16,Ess Eff,-1,2016-04-02T17:57:38.917Z</p>
+
+<pre><code>
+Reports are formatted as CSV documents, with four columns:
+
+1. `path` represents the nested keys from your data structure (in this case the `properties` dictionary from the underlying [GeoJSON file for San Francisco]() collapsed in to a string using a `.` notation as a delimiter.
+2. `value` is the raw value that someone is commenting on.
+3. `assertion` is a (signed) integer; `1` means yes, `0` means no and `-1` means fix.
+4. `date` is an ISO-8601 date string indicating when the assertion was made
+
+A couple things to note about paths:
+
+* As of this writing there are still some explicit Who's On First -isms left in the Yes No Fix code. Specifically the expectation that keys have a colon-separated prefix (for example `name:eng_x_colloquial`) that is parsed and used to group things in to buckets. Keys that don't have a prefix are automatically grouped in to bucket called `_global_`, so if you had a key simply called `date` it would be encoded as `_global_.date` in the final CSV report.
+* Array values in a path are denoted using a `#&lt;OFFSET&gt;` syntax. For example `name.eng_x_colloquial#16` is the 16th element in the `properties['name:eng_x_colloquial']` array.
+
+## How to use `yesnofix.js`
+
+First grab a copy of the code from the [js-mapzen-whosonfirst-yesnofix GitHub repository](https://github.com/whosonfirst/js-mapzen-whosonfirst-yesnofix). Then add it to your webpages, like this:
+
 </code></pre>
 
-<p>Reports are formatted as CSV documents, with four columns:</p>
+<p><link rel="stylesheet" type="text/css" href="mapzen.whosonfirst.yesnofix.css" />
+<script type="text/javascript" src="mapzen.whosonfirst.yesnofix.js"></script></p>
 
-<ol>
-<li><code>path</code> represents the nested keys from your data structure (in this case the <code>properties</code> dictionary from the underlying [GeoJSON file for San Francisco]() collapsed in to a string using a <code>.</code> notation as a delimiter.</li>
-<li><code>value</code> is the raw value that someone is commenting on.</li>
-<li><code>assertion</code> is a (signed) integer; <code>1</code> means yes, <code>0</code> means no and <code>-1</code> means fix.</li>
-<li><code>date</code> is an ISO-8601 date string indicating when the assertion was made</li>
-</ol>
+<pre><code>
+The simplest way to use `yesnofix.js` is to call the `apply` method with a target HTML element and a data structure. This will generate a pretty HTML table complete with Yes No Fix style controls for each value and insert it in to the DOM as a child of the target HTML element you've defined.
 
-<p>A couple things to note about paths:</p>
-
-<ul>
-<li>As of this writing there are still some explicit Who&rsquo;s On First -isms left in the Yes No Fix code. Specifically the expectation that keys have a colon-separated prefix (for example <code>name:eng_x_colloquial</code>) that is parsed and used to group things in to buckets. Keys that don&rsquo;t have a prefix are automatically grouped in to bucket called <code>_global_</code>, so if you had a key simply called <code>date</code> it would be encoded as <code>_global_.date</code> in the final CSV report.</li>
-<li>Array values in a path are denoted using a <code>#&lt;OFFSET&gt;</code> syntax. For example <code>name.eng_x_colloquial#16</code> is the 16th element in the <code>properties['name:eng_x_colloquial']</code> array.</li>
-</ul>
-
-<h2>How to use <code>yesnofix.js</code></h2>
-
-<p>First grab a copy of the code from the <a href="https://github.com/whosonfirst/js-mapzen-whosonfirst-yesnofix">js-mapzen-whosonfirst-yesnofix GitHub repository</a>. Then add it to your webpages, like this:</p>
-
-<pre><code>&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;mapzen.whosonfirst.yesnofix.css&quot; /&gt;
-&lt;script type=&quot;text/javascript&quot; src=&quot;mapzen.whosonfirst.yesnofix.js&quot;&gt;&lt;/script&gt;
 </code></pre>
 
-<p>The simplest way to use <code>yesnofix.js</code> is to call the <code>apply</code> method with a target HTML element and a data structure. This will generate a pretty HTML table complete with Yes No Fix style controls for each value and insert it in to the DOM as a child of the target HTML element you&rsquo;ve defined.</p>
+<p>mapzen.whosonfirst.yesnofix.apply(data, target_el);</p>
 
-<pre><code>mapzen.whosonfirst.yesnofix.apply(data, target_el);
+<pre><code>
+If you just want to render a data structure but delay or defer adding it to the DOM you can call the `render` method.
+
 </code></pre>
 
-<p>If you just want to render a data structure but delay or defer adding it to the DOM you can call the <code>render</code> method.</p>
+<p>var pretty = mapzen.whosonfirst.yesnofix.render(data);</p>
 
-<pre><code>var pretty = mapzen.whosonfirst.yesnofix.render(data);
+<pre><code>
+That's it. By default every element in your data structure will be made Yes No Fix -able.
+
+### Customizing things
+
+_Warning: This is the part where things start to get a bit nerdy. Where &quot;a bit nerdy&quot; really means **VERY VERY NERDY**. If you're not in to the nerdy bits you should have enough information to get started and can just [jump to the bottom of the post](#spelunker)._
+
+One of the things that quickly became apparent integrating `yesnofix.js` with the Who's On First spelunker is that many things needed to be customized. The whole point of a spelunker is to be able to [jump around between documents](https://mapzen.com/blog/spelunker-jumping-into-who-s-on-first/) so at a minimum we would need a way to teach the `yesnofix.js` rendering code to display certain things (like IDs) as links.
+
+#### Customing things - Values
+
+To do this for values you need to invoke the `set_custom_renderers` method passing &quot;text&quot; as the first argument and a custom function as the second argument. This function will be invoked for each value that the `yesnofix.js` code tries to render.
+
+Your custom function will be invoked with two arguments: `data` which is the actual value in question and `ctx` which is the nested path in dot notation (described above) that contains `data`. Your custom function is expected to either return a function (that itself returns an HTML DOM element) or `null`. If your callback's response is `null` then the code will simply include the raw value as-is.
+
+The `yesnofix.js` code defines some handy helper methods for common tasks (like `render_code` or `render_link`) but in the example below you can see how we are also defining some custom methods, like `render_wof_id`.
+
 </code></pre>
 
-<p>That&rsquo;s it. By default every element in your data structure will be made Yes No Fix -able.</p>
+<p>var possible_wof = [
+	&lsquo;wof.belongsto&rsquo;,
+	&lsquo;wof.parent_id&rsquo;, &lsquo;wof.children&rsquo;,
+	// as so on&hellip;
+];</p>
 
-<h3>Customizing things</h3>
+<p>var text_callbacks = {
+	&lsquo;wof.id&rsquo;: mapzen.whosonfirst.yesnofix.render_code,
+	// and so on&hellip;
+};</p>
 
-<p><em>Warning: This is the part where things start to get a bit nerdy. Where &ldquo;a bit nerdy&rdquo; really means <strong>VERY VERY NERDY</strong>. If you&rsquo;re not in to the nerdy bits you should have enough information to get started and can just <a href="#spelunker">jump to the bottom of the post</a>.</em></p>
+<p>var text_renderers = function(d, ctx){</p>
 
-<p>One of the things that quickly became apparent integrating <code>yesnofix.js</code> with the Who&rsquo;s On First spelunker is that many things needed to be customized. The whole point of a spelunker is to be able to <a href="https://mapzen.com/blog/spelunker-jumping-into-who-s-on-first/">jump around between documents</a> so at a minimum we would need a way to teach the <code>yesnofix.js</code> rendering code to display certain things (like IDs) as links.</p>
+<pre><code>if ((possible_wof.indexOf(ctx) != -1) &amp;&amp; (d &gt; 0)){
+    return self.render_wof_id;
+}
 
-<h4>Customing things - Values</h4>
+else if (text_callbacks[ctx]){
+    return text_callbacks[ctx];
+}
 
-<p>To do this for values you need to invoke the <code>set_custom_renderers</code> method passing &ldquo;text&rdquo; as the first argument and a custom function as the second argument. This function will be invoked for each value that the <code>yesnofix.js</code> code tries to render.</p>
+// and so on...
 
-<p>Your custom function will be invoked with two arguments: <code>data</code> which is the actual value in question and <code>ctx</code> which is the nested path in dot notation (described above) that contains <code>data</code>. Your custom function is expected to either return a function (that itself returns an HTML DOM element) or <code>null</code>. If your callback&rsquo;s response is <code>null</code> then the code will simply include the raw value as-is.</p>
-
-<p>The <code>yesnofix.js</code> code defines some handy helper methods for common tasks (like <code>render_code</code> or <code>render_link</code>) but in the example below you can see how we are also defining some custom methods, like <code>render_wof_id</code>.</p>
-
-<pre><code>var possible_wof = [
-	'wof.belongsto',
-	'wof.parent_id', 'wof.children',
-	// as so on...
-];
-
-var text_callbacks = {
-	'wof.id': mapzen.whosonfirst.yesnofix.render_code,
-	// and so on...
-};
-
-var text_renderers = function(d, ctx){
-
-	if ((possible_wof.indexOf(ctx) != -1) &amp;&amp; (d &gt; 0)){
-	    return self.render_wof_id;
-	}
-
-	else if (text_callbacks[ctx]){
-	    return text_callbacks[ctx];
-	}
-
-	// and so on...
-
-	else {
-	    return null;
-	}
-};
-
-'render_wof_id': function(d, ctx){
-
-    var root = mapzen.whosonfirst.spelunker.abs_root_url();
-    var link = root + &quot;id/&quot; + encodeURIComponent(d) + &quot;/&quot;;
-    var el = mapzen.whosonfirst.yesnofix.render_link(link, d, ctx);
-
-    var text = el.children[0];
-    text.setAttribute(&quot;data-value&quot;, mapzen.whosonfirst.php.htmlspecialchars(d));
-    text.setAttribute(&quot;class&quot;, &quot;props-uoc props-uoc-name props-uoc-name_&quot; + mapzen.whosonfirst.php.htmlspecialchars(d));
-
-    return el;
-}    
-
-mapzen.whosonfirst.yesnofix.set_custom_renderers('text', text_renderers);
+else {
+    return null;
+}
 </code></pre>
 
-<p><em>In this example we are rendering things that are WOF IDs (<code>wof.parent_id</code>, <code>wof.belongs_to</code>, and so on) as links but we aren&rsquo;t rendering <code>wof.id</code> as a link since there is no point in linking to the webpage we are already looking at.</em></p>
+<p>};</p>
 
-<h4>Customizing things - Dictionaries</h4>
+<p>&lsquo;render_wof_id&rsquo;: function(d, ctx){</p>
 
-<p>The second thing we needed to customize were the value of keys themselves. For example, we define concordances in Who&rsquo;s On First using short prefixes for other sources. A <a href="http://geonames.org">Geonames</a> ID becomes <code>gn:id</code>, a <a href="http://loc.gov/">Library of Congress</a> ID becomes <code>loc:id</code> and so on. That&rsquo;s useful and efficient for encoding data but not very satisfying to look at.</p>
+<pre><code>var root = mapzen.whosonfirst.spelunker.abs_root_url();
+var link = root + &quot;id/&quot; + encodeURIComponent(d) + &quot;/&quot;;
+var el = mapzen.whosonfirst.yesnofix.render_link(link, d, ctx);
 
-<p>Just like text renderers, dictionary renderers are defined by invoking the <code>set_custom_renderers</code> method with &ldquo;dict&rdquo; as the first value and a custom function that returns a function (that returns a string) or <code>null</code>.</p>
+var text = el.children[0];
+text.setAttribute(&quot;data-value&quot;, mapzen.whosonfirst.php.htmlspecialchars(d));
+text.setAttribute(&quot;class&quot;, &quot;props-uoc props-uoc-name props-uoc-name_&quot; + mapzen.whosonfirst.php.htmlspecialchars(d));
 
-<pre><code>var dict_mappings = {
-	'wof.concordances.gn:id': 'geonames',
-	'wof.concordances.gp:id': 'geoplanet',
-	'wof.concordances.loc:id': 'library of congress',
-	// and so on...
-];
-
-var dict_renderers = function(d, ctx){
-
-	if (dict_mappings[ctx]){
-		return function(){
-			return dict_mappings[ctx];
-		};
-	}
-
-	return null;
-};
-
-mapzen.whosonfirst.yesnofix.set_custom_renderers('dict', dict_renderers);
+return el;
 </code></pre>
 
-<p><span style="font-style:italic;">In this example <code>loc:id</code> becomes &ldquo;library of congress&rdquo; and so on. You may noticed in the screenshots above that we haven&rsquo;t yet defined custom handlers for the <code>name:</code> properties so they all still get rendered with names like &ldquo;eng_x_variant&rdquo; or &ldquo;chi_x_preferred&rdquo;. We should fix that.</span></p>
+<p>}</p>
 
-<h4>Customizing things - Exclusions (or locking things)</h4>
+<p>mapzen.whosonfirst.yesnofix.set_custom_renderers(&lsquo;text&rsquo;, text_renderers);</p>
 
-<p>Finally some things just aren&rsquo;t up for debate. The reasons why an application may not want solicit feedback on certain bits are data are many and varied so we&rsquo;ll just leave it at at. The point is that you may <em>need</em> to prevent certain properties from being Yes No Fix -able, so you can.</p>
+<pre><code>
+_In this example we are rendering things that are WOF IDs (`wof.parent_id`, `wof.belongs_to`, and so on) as links but we aren't rendering `wof.id` as a link since there is no point in linking to the webpage we are already looking at._
 
-<p>You do this by invoking the <code>set_custom_exclusions</code> method padding &ldquo;text&rdquo; as the first argument and a custom function that returns a function (that return a boolean value). Like all the others, your custom function will be invoked with a <code>data</code> (the value) property and a <code>ctx</code> (the context or path) property. You might be starting to see a pattern by now.</p>
+#### Customizing things - Dictionaries
 
-<pre><code>var text_exclusions = function(d, ctx){
+The second thing we needed to customize were the value of keys themselves. For example, we define concordances in Who's On First using short prefixes for other sources. A [Geonames](http://geonames.org) ID becomes `gn:id`, a [Library of Congress](http://loc.gov/) ID becomes `loc:id` and so on. That's useful and efficient for encoding data but not very satisfying to look at.
 
+Just like text renderers, dictionary renderers are defined by invoking the `set_custom_renderers` method with &quot;dict&quot; as the first value and a custom function that returns a function (that returns a string) or `null`.
+
+</code></pre>
+
+<p>var dict_mappings = {
+	&lsquo;wof.concordances.gn:id&rsquo;: &lsquo;geonames&rsquo;,
+	&lsquo;wof.concordances.gp:id&rsquo;: &lsquo;geoplanet&rsquo;,
+	&lsquo;wof.concordances.loc:id&rsquo;: &lsquo;library of congress&rsquo;,
+	// and so on&hellip;
+];</p>
+
+<p>var dict_renderers = function(d, ctx){</p>
+
+<pre><code>if (dict_mappings[ctx]){
 	return function(){
-
-	    if (ctx.match(/^geom/)){
-		return true;
-	    }
-
-	    else if ((ctx.match(/^edtf/)) &amp;&amp; (d == &quot;uuuu&quot;)){
-		return true;
-            }
-
-	    // and so on...
-
-	    else {
-		return false;
-	    }
+		return dict_mappings[ctx];
 	};
-};
+}
 
-mapzen.whosonfirst.yesnofix.set_custom_exclusions('text', text_exclusions);
+return null;
 </code></pre>
 
-<p><em>In this example we are locking things prefixed with <code>geom</code> because their values are derived from <a href="https://pypi.python.org/pypi/Shapely">Sean Gilles</a>&hellip; I mean, math. We are also locking things prefixed <code>edtf</code> (for the Library of Congress&rsquo; <a href="https://loc.gov/standards/datetime/">Extended Date/Time Format</a>) whose value is already <code>uuuu</code> which is the shorthand for &ldquo;unknown&rdquo;.</em></p>
+<p>};</p>
 
-<h4>Customizing things - Report handlers</h4>
+<p>mapzen.whosonfirst.yesnofix.set_custom_renderers(&lsquo;dict&rsquo;, dict_renderers);</p>
 
-<p>Yes No Fix doesn&rsquo;t concern itself with what <em>happens</em> to a report, by design.</p>
+<pre><code>
+&lt;span style=&quot;font-style:italic;&quot;&gt;In this example `loc:id` becomes &quot;library of congress&quot; and so on. You may noticed in the screenshots above that we haven't yet defined custom handlers for the `name:` properties so they all still get rendered with names like &quot;eng_x_variant&quot; or &quot;chi_x_preferred&quot;. We should fix that.&lt;/span&gt;
 
-<p>Its only concern is with the user controls for collecting assertions and finally rendering them in to a blob of CSV text. After that it is left up to individual applications using <code>yesnofix.js</code> to tell it what to do. An application might post the data to a remote server using an API, send the report somewhere via email, try to analyze the data locally and perform an action. Whatever.</p>
+#### Customizing things - Exclusions (or locking things)
 
-<p>Custom report handlers are just plain old Javascript functions that accept a string (the CSV text of the report) as their only argument, like this:</p>
+Finally some things just aren't up for debate. The reasons why an application may not want solicit feedback on certain bits are data are many and varied so we'll just leave it at at. The point is that you may _need_ to prevent certain properties from being Yes No Fix -able, so you can.
 
-<pre><code>var submit_handler = function(report){
+You do this by invoking the `set_custom_exclusions` method padding &quot;text&quot; as the first argument and a custom function that returns a function (that return a boolean value). Like all the others, your custom function will be invoked with a `data` (the value) property and a `ctx` (the context or path) property. You might be starting to see a pattern by now.
+
+</code></pre>
+
+<p>var text_exclusions = function(d, ctx){</p>
+
+<pre><code>return function(){
+
+    if (ctx.match(/^geom/)){
+	return true;
+    }
+
+    else if ((ctx.match(/^edtf/)) &amp;&amp; (d == &quot;uuuu&quot;)){
+	return true;
+        }
+
+    // and so on...
+
+    else {
+	return false;
+    }
+};
+</code></pre>
+
+<p>};</p>
+
+<p>mapzen.whosonfirst.yesnofix.set_custom_exclusions(&lsquo;text&rsquo;, text_exclusions);</p>
+
+<pre><code>
+_In this example we are locking things prefixed with `geom` because their values are derived from [Sean Gilles](https://pypi.python.org/pypi/Shapely)... I mean, math. We are also locking things prefixed `edtf` (for the Library of Congress' [Extended Date/Time Format](https://loc.gov/standards/datetime/)) whose value is already `uuuu` which is the shorthand for &quot;unknown&quot;._
+
+#### Customizing things - Report handlers
+
+Yes No Fix doesn't concern itself with what _happens_ to a report, by design.
+
+Its only concern is with the user controls for collecting assertions and finally rendering them in to a blob of CSV text. After that it is left up to individual applications using `yesnofix.js` to tell it what to do. An application might post the data to a remote server using an API, send the report somewhere via email, try to analyze the data locally and perform an action. Whatever.
+
+Custom report handlers are just plain old Javascript functions that accept a string (the CSV text of the report) as their only argument, like this:
+
+</code></pre>
+
+<p>var submit_handler = function(report){
 	// do something with report here - the point is
 	// that yesnofix.js is agnostic about the meaning
-	// of &quot;do something&quot;
-};
+	// of &ldquo;do something&rdquo;
+};</p>
 
-mapzen.whosonfirst.yesnofix.set_submit_handler(submit_handler);
-mapzen.whosonfirst.yesnofix.apply(data, target_el);      
+<p>mapzen.whosonfirst.yesnofix.set_submit_handler(submit_handler);
+mapzen.whosonfirst.yesnofix.apply(data, target_el);</p>
+
+<pre><code>
+That's it. If your application has defined a custom submit handler it will be invoked when a user presses the `submit report` button. If you haven't defined a custom handler then the default behaviour is display the CSV text of the report in a new browser window.
+
+#### Customizing things - enabling or disabling editing controls
+
+For a little over a month now `yesnofix.js` has been running quietly on the Who's On First [Spelunker](https://whosonfirst.mapzen.com/spelunker/), but disabled. What that means is that the properties displayed for a place are being rendered by `yesnofix.js` but the editorial controls have been turned off. We did that with a handy `enabled` method that accepts a boolean as its only argument.
+
 </code></pre>
 
-<p>That&rsquo;s it. If your application has defined a custom submit handler it will be invoked when a user presses the <code>submit report</code> button. If you haven&rsquo;t defined a custom handler then the default behaviour is display the CSV text of the report in a new browser window.</p>
-
-<h4>Customizing things - enabling or disabling editing controls</h4>
-
-<p>For a little over a month now <code>yesnofix.js</code> has been running quietly on the Who&rsquo;s On First <a href="https://whosonfirst.mapzen.com/spelunker/">Spelunker</a>, but disabled. What that means is that the properties displayed for a place are being rendered by <code>yesnofix.js</code> but the editorial controls have been turned off. We did that with a handy <code>enabled</code> method that accepts a boolean as its only argument.</p>
-
-<pre><code>mapzen.whosonfirst.yesnofix.enabled(false);
-</code></pre>
+<p>mapzen.whosonfirst.yesnofix.enabled(false);
+&ldquo;`</p>
 
 <p>As we got ready for this blog post we simply removed that method call. For the technically minded, the Spelunker&rsquo;s <a href="https://github.com/whosonfirst/whosonfirst-www-spelunker/blob/master/www/static/javascript/mapzen.whosonfirst.properties.js">mapzen.whosonfirst.properties.js</a> files offers a concrete example of all the customizations described so far.</p>
 

@@ -10,7 +10,9 @@ PUP="utils/$(OS)/pup"
 WOF_CLONE_WEBSITE="utils/$(OS)/wof-clone-website"
 WOF_MD2HTML="utils/$(OS)/wof-md2html"
 WOF_MD2FEED="utils/$(OS)/wof-md2feed"
-WOF_MD2IDX="utils/$(OS)/wof-md2idx"
+# WOF_MD2IDX="utils/$(OS)/wof-md2idx"
+
+WOF_MD2IDX="$(HOME)/whosonfirst/go-whosonfirst-markdown/bin/wof-md2idx"
 
 sync:
 	aws --profile whosonfirst-www s3 sync --acl public-read --exclude '*~' www s3://www.whosonfirst.org/
@@ -31,9 +33,13 @@ iamhere:
 
 blog:
 	$(WOF_MD2HTML) -templates templates/common -templates templates/blog/post -header blog_post_header -footer blog_post_footer -writer fs=./www -mode directory www/blog/
-	$(WOF_MD2IDX) -templates templates/common -templates templates/blog/index -header blog_index_header -footer blog_index_footer www/blog/
+	$(WOF_MD2IDX) -templates templates/common -templates templates/blog/index -header blog_index_header -footer blog_index_footer -writer fs=. www/blog/
+	$(WOF_MD2IDX) -templates templates/common -templates templates/blog/index -header blog_index_header -footer blog_index_footer -writer fs=. -mode authors www/blog/
+	$(WOF_MD2IDX) -templates templates/common -templates templates/blog/index -header blog_index_header -footer blog_index_footer -writer fs=. -mode tags www/blog/
 	$(WOF_MD2FEED) -templates templates/blog/feed -format rss_20 www/blog/
 	$(WOF_MD2FEED) -templates templates/blog/feed -format atom_10 www/blog/
+
+debug: blog local
 
 all: mapzen favicons js css home docs tools
 
