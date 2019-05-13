@@ -203,7 +203,7 @@ This work is not limited to Chile, like the Ahinco example above. Other examples
 In fact, prior to the GeoNames work, Who's On First maintained zero records at the locality placetype within Metekel, Ethiopia. This work added forty seven new locality records - like [Debre Zeyit](https://spelunker.whosonfirst.org/id/1210052931/)
  and [Dibate](https://spelunker.whosonfirst.org/id/1277019105/). Here are the new locality descendants of Metekel, Ethiopia, visualized:
 
-![](https://user-images.githubusercontent.com/18567700/51141067-01732980-17fd-11e9-9b9d-286132692d67.png?raw=true)
+![](images/display.png)
 
 ## Next steps
 
