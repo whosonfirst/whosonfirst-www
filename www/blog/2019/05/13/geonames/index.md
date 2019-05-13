@@ -11,11 +11,11 @@ image: "images/village.jpg"
 tag: [whosonfirst,wof,geonames,data]
 ---
 
-We've spent a great deal of time importing and assessing data quality of new [Who's On First](https://whosonfirst.org/) locality records. More specifically, we've recently imported new locality records sourced from the [GeoNames](https://www.geonames.org/) database.
+We are happy to announce that [Who's On First](https://whosonfirst.org/) now has comprehensive global coverage at the [locality](https://github.com/whosonfirst/whosonfirst-placetypes/blob/master/placetypes/locality.json) placetype. Before this work began, the locality record count in Who's On First was just over 345,000. At the completion of this import, the locality record count increased more than ten-fold, to just over 4.4 million records. This locality import increased the total number of administrative records in the [whosonfirst-data repository](https://github.com/whosonfirst-data/whosonfirst-data) to 4.8 million. This detailed coverage at the locality level, in addition to the other placetype updates we've completed, give millions of detailed administrative hierarchies for cities, poplulated places, villages, and towns around the world.
 
-Prior to this work, we've imported tens of thousands of new county records in Who's On First via [Mesoshapes](https://whosonfirst.org/blog/2016/12/08/mesoshapes/), added properties from [Statoids](https://whosonfirst.org/blog/2017/09/19/introducing-statoids/), and imported smaller amounts of locality records via the Quattroshapes point gazetteer, but we are happy to announce that Who's On First now has comprehensive global coverage at the locality placetype .
+More specifically, the new locality records are sourced from the [GeoNames](https://www.geonames.org/) database; we've spent a great deal of time importing and assessing data quality of these new Who's On First locality records.
 
-Before this work began, the locality record count in Who's On First was just over 345,000. At the completion of this import, the locality record count increased more than ten-fold, to just over 4.4 million records. This locality import increased the total number of administrative records in the [whosonfirst-data repository](https://github.com/whosonfirst-data/whosonfirst-data) to 4.8 million. This detailed coverage at the locality level, in addition to the other placetype updates we've completed, give millions of detailed administrative hierarchies for cities, poplulated places, villages, and towns around the world.
+Prior to this work, tens of thousands of new county records were added to Who's On First via [Mesoshapes](https://whosonfirst.org/blog/2016/12/08/mesoshapes/), various properties were added from [Statoids](https://whosonfirst.org/blog/2017/09/19/introducing-statoids/), and smaller amounts of locality records were added via the Quattroshapes point gazetteer.
 
 #### Pre-GeoNames import locality coverage visualized:
 
