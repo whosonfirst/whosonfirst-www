@@ -19,11 +19,11 @@ Before this work began, the locality record count in Who's On First was just ove
 
 #### Pre-GeoNames import locality coverage visualized:
 
-[](https://user-images.githubusercontent.com/18567700/51141065-01732980-17fd-11e9-82f5-425983346a93.png?raw=true)
+![](images/pre-gn.png)
 
 #### Post-GeoNames import locality coverage visualized:
 
-[](https://user-images.githubusercontent.com/18567700/51141066-01732980-17fd-11e9-8c35-94aac6373cb4.png?raw=true)
+![](images/post-gn.png)
 
 I'd like to take a few minutes to describe how the GeoNames records were created, show off a few examples of new locality records that were added to Who's On First, and let you know what's next.
 
