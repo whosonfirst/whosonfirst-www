@@ -30,7 +30,7 @@ I'd like to take a few minutes to describe how the GeoNames records were created
 
 ## Creating records
 
-For those unfamiliar, the GeoNames database provides various place data under the [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/) license. Of interest to Who's On First are the [free gazetteer data](http://download.geonames.org/export/dump/) files, specifically the `allCountries.zip` file and the `alternateNames.zip` file, which cover "all countries and contains over eleven million placenames", according to their website. These files contain location, placetype, name translation, and concordance data that we harvested to create new locality records (though we first needed to convert these text files to CSV files). View the [readme file](http://download.geonames.org/export/dump/readme.txt) for a full list of property descriptions.
+For those unfamiliar, the GeoNames database provides various place data under the [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/) license. Of interest to Who's On First are the [free gazetteer data](http://download.geonames.org/export/dump/) files, specifically the `allCountries.zip` file and the `alternateNames.zip` file, which cover "all countries and contains over eleven million placenames", according to the GeoNames website. These files contain location, placetype, name translation, and concordance data that we harvested to create new locality records (though we first needed to convert these text files to CSV files). View the [readme file](http://download.geonames.org/export/dump/readme.txt) for a full list of property descriptions.
 
 ### Example contents:
 
@@ -120,8 +120,8 @@ Not only did we try to remove any potential duplicate records prior to import, b
 As you can see in the key/value pairing above, there are twenty two placetype mappings from GeoNames to Who's On First (not all map to localities). This was the first step to identifying relevant records and filtering out places that we did not want to import new records.
 
 #### Historical placetypes
-```
 
+```
     placetype_historical = {
         "ADM1H",
         "ADM2H",
@@ -135,7 +135,7 @@ As you can see in the key/value pairing above, there are twenty two placetype ma
     }
 ```
 
-Next, we created a lookup table to identify historical localities. This is important, as both GeoNames and Who's On First have a concept a historical places; identifying localities that have been deprecated, ceased to exist, or "historical" for another reason, let's us tag these records as such during our import.
+Next, we created a lookup table to identify historical localities. This is important, as both GeoNames and Who's On First have a concept a historical places; identifying localities that have been deprecated, ceased to exist, or have a "historical" designation, let's us tag these records as such during our import.
 
 After filtering out non-locality placetypes and comparing the remaining records with existing records (through existing concordances and various spatial join methods), we iterated through the two import files to craft new GeoJSON-formatted records for Who's On First.
 
@@ -194,6 +194,8 @@ In the case of Ahinco, Chile, this allows Who's On First to store a full adminis
     ...
     "wof:parent_id":102063135,
 ```
+
+Click [here](https://raw.githubusercontent.com/whosonfirst-data/whosonfirst-data/master/data/122/631/382/1/1226313821.geojson) to see the full record for Ahinco, Chile in GeoJSON format.
 
 ### Other examples
 
