@@ -30,7 +30,7 @@ I'd like to take a few minutes to describe how the GeoNames records were created
 
 ## Creating records
 
-For those unfamiliar, the GeoNames database provides various place data under the [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/) license. Of interest to Who's On First are the [free gazetteer data](http://download.geonames.org/export/dump/) files, specifically the `allCountries.zip` file and the `alternateNames.zip` file, which cover "all countries and contains over eleven million placenames", according to their website. These files contain location, placetype, name translation, and concordance data that we harvested to create new locality records (though we first needed scrub these text files and convert them to CSV files). View the [readme file](http://download.geonames.org/export/dump/readme.txt) for a full list of property descriptions.
+For those unfamiliar, the GeoNames database provides various place data under the [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/) license. Of interest to Who's On First are the [free gazetteer data](http://download.geonames.org/export/dump/) files, specifically the `allCountries.zip` file and the `alternateNames.zip` file, which cover "all countries and contains over eleven million placenames", according to their website. These files contain location, placetype, name translation, and concordance data that we harvested to create new locality records (though we first needed to convert these text files to CSV files). View the [readme file](http://download.geonames.org/export/dump/readme.txt) for a full list of property descriptions.
 
 ### Example contents:
 
@@ -47,7 +47,7 @@ alternateNameId,geonameid,isolanguage,alternate_name,isPreferredName,isShortName
 
 ```
 geonameid,name,asciiname,alternatenames,latitude,longitude,feature_class,feature_code,country_code,cc2,admin1_code,admin2_code,admin3_code,admin4_code,population,elevation,dem,timezone,modification_date
-3038832,Vila,Vila,Casas Vila,Vila,42.53176,1.56654,P,PPL,AD,,03,,,,0,,1318,Europe/Andorra,2012-04-13
+3900358,Ahinco,Ahinco,Ahinco,Ainco,Auco,Aucó,-41.78234,-73.51487,P,PPL,CL,,14,101,10102,,0,,3,America/Santiago,2018-06-19
 ```
 
 The text snippets above are what GeoNames stores in these two files for the place of  Ahinco, Chile. A new locality record in Who's On First for [Ahinco, Chile](https://spelunker.whosonfirst.org/id/1226313821/) was created using these same values. A list of these values below, with descriptions from the [GeoNames website](http://download.geonames.org/export/dump/):
@@ -86,7 +86,7 @@ The record for Ahinco, for example, contains three name translations we imported
 
 Ahinco is just one of the millions of locality records now in Who's On First. Valuable data for other localities can be found in these files, though not all data in the GeoNames source files is relevant to Who's On First's interests.
 
-Not only did we try to remove any potential duplicate records prior to import, but we needed to filter out non-locality placetypes and ensure we are only introducing new places (not previously known) into Who's On First. A full list of placetype mappings, below:
+Not only did we try to remove any potential duplicate records prior to import, but we needed to filter out non-locality placetypes and ensure we are only introducing new places (not previously known) into Who's On First. A full list of GeoNames feature [codes](https://www.geonames.org/export/codes.html) to WOF placetype mappings, below:
 
 #### Placetypes
 
@@ -117,7 +117,7 @@ Not only did we try to remove any potential duplicate records prior to import, b
     }
 ```
 
-As you can see in the key/value pairing above, there are twenty two placetype mappings from GeoNames to Who's On First (not all map to localities). This was the first step to identifying relevant records and filtering out places that we did not want to import new records for.
+As you can see in the key/value pairing above, there are twenty two placetype mappings from GeoNames to Who's On First (not all map to localities). This was the first step to identifying relevant records and filtering out places that we did not want to import new records.
 
 #### Historical placetypes
 ```
@@ -143,7 +143,7 @@ These records need a few additional properties before being imported, though. Th
 
 - **A new, unique [`wof:id`](https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/wof/id.json) (we minted roughly four million new identifiers from [Brooklyn Integers](https://www.brooklynintegers.com/))**
 - **A [`wof:parent_id`](https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/wof/parent_id.json) property**
-  - _This was defaulted to a `-1` value as a placeholder, though this value will change as updates to records occur._
+  - _This was defaulted to a `-1` value as a placeholder, though this value will change as updates to records occur through [point-in-polygon (PIP)](https://github.com/whosonfirst/py-mapzen-whosonfirst-hierarchy/) work updates parent ids._
 - **A ['mz:is_current'](https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/mz/is_current.json) property**
 - **A ['wof:name'](https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/wof/name.json) property, sourced from the GeoNames `asciiname` value**
 - **Country code values**
@@ -179,7 +179,7 @@ These properties (along with the GeoNames-sourced properties) gave us the buildi
 
 Since Who's On First bakes the idea of a place's hierarchy into a record's property, we used a point-in-polygon (PIP) service (some notes about that [here](https://github.com/whosonfirst/whosonfirst-cookbook/blob/master/how_to/setting_up_pip_service.md)) to update each new record's hierarchy.
 
-In the case of Ahinco, Chile, this allows Who's On First to store a full administrative hierarchy for this locality (see below).
+In the case of Ahinco, Chile, this allows Who's On First to store a full administrative hierarchy and the parent_id value for this locality (see below).
 
 ```
     "wof:hierarchy":[
@@ -191,6 +191,8 @@ In the case of Ahinco, Chile, this allows Who's On First to store a full adminis
             "locality_id":1226313821 (Ahinco)
         }
     ],
+    ...
+    "wof:parent_id":102063135,
 ```
 
 ### Other examples
@@ -207,9 +209,9 @@ In fact, prior to the GeoNames work, Who's On First maintained zero records at t
 
 While this import of new locality records added a tremendous amount of new data to Who's On First, there is additional work to be completed. In some cases, GeoNames has a property flag that has been used inconsistently or a record has been misclassified as a locality when in Who's On First it should actually be stored at the neighbourhood placetype.
 
-Additionally, the `gn:` properties in many of these records will be scrubbed to ensure Who's On First correctly stores source values. Eventually, the concordance values in any new locality record will be used to add more information about each place as possible (adding more names from Wikipedia, for example).
+Additionally, the `gn:` properties in some of the new locality records will be verified and updated to ensure Who's On First correctly stores source values; for example, we want to ensure integer value types are not stored as string values. Eventually, the concordance values in any new locality record will be used to add more information about each place as possible (adding more names from Wikipedia, for example).
 
-Lastly, as mentioned in [our recent blog post](), the Who's On First data gazetteer has now been split into per-country repositories and distribution files because of the repository's size and scale. The GeoNames locality records are still present in these per-country repositories and distribution files.
+Lastly, as mentioned in [our recent blog post](https://whosonfirst.org/blog/2019/05/09/changes/), the Who's On First data gazetteer has now been split into per-country repositories and distribution files because of the repository's size and scale. The GeoNames locality records are still present in these per-country repositories and distribution files.
 
 If you have any suggestions on how to improve data quality, please feel free to [drop us a line](https://github.com/whosonfirst-data/whosonfirst-data/issues).
 
@@ -217,7 +219,7 @@ If you have any suggestions on how to improve data quality, please feel free to 
 
 By importing the millions of locality records from GeoNames into Who's On First, we've added the most detailed and comprehensive locality coverage available to Who's On First.
 
-Although there were various constraints along the way to importing such a large dataset, the end result as been a increase in detail at the locality level. Our goal is to provide this coverage to users of Who's On First; coupled with the previous work at other placetypes, we hope that you're able to enjoy the new additions.
+Although there were various constraints along the way to importing such a large dataset, the end result has been an increase in detail at the locality level. Our goal is to provide this coverage to users of Who's On First; coupled with the previous work at other placetypes, we hope that you're able to enjoy the new additions.
 
 
 _Photo Credit: [Paul Sableman, flickr](https://www.flickr.com/photos/pasa/15891216909/in/photolist-qdfD9r-7EXjUH-6jT6jo-fD5xU7-8fEErJ-9ADygi-4YsWRt-rTmN-7UxFvd-brxPcD-f682yx-6CVHMS-4YsX8M-2vBtmc-oiZ7Qr-fD5zx3-qouxiV-6umM3w-fD5vHy-59M6Q7-2V4DEg-afXdPv-27BgvcM-9TGSQY-27TSkdM-brxLa4-a1jVAW-Qj7nax-2frphda-qx7M9q-qouwev-5WHZMm-tW7FY-brxM8g-7mU5AB-URGwB6-htZry4-V8budP-r3QJ26-e9YHw-broUxe-62hjSC-tW7B6-8K1Pht-f682Ai-5sDZek-8N5z8H-bt428R-gnUFB9-fD5nBL)_
