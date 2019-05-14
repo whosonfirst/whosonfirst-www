@@ -1,0 +1,428 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="x-ua-compatible" content="ie=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Who’s On First | New GeoNames-sourced locality records</title>
+		<meta name="description" content="Who’s on First is a gazetteer of places." />
+		<link rel="apple-touch-icon" href="/images/favicons/apple-touch-icon.png" sizes="180x180" />
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-16x16.png" sizes="16x16" />
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-32x32.png" sizes="32x32" />
+		<link rel="manifest" href="/images/favicons/manifest.json" />
+		<link rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg" color="#2C1E3F" />
+		<link rel="stylesheet" href="/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="/css/mapzen.whosonfirst.css" />
+		
+		<link rel="stylesheet" href="/css/styles/grayscale.css" />
+
+		<link rel="alternate" type="application/atom+xml" title="Who's On First Atom feed" href="/blog/atom_10.xml"/>		
+		<link rel="alternate" type="application/rss+xml" title="Who's On First RSS 2.0 feed" href="/blog/rss_20.xml"/>
+
+		
+		<meta property="og:type" content="article" />
+		<meta property="og:site_name" content="Who's On First" />
+		<meta property="og:title" content="New GeoNames-sourced locality records" />
+		<meta property="og:description" content="We&#39;ve recently added millions of records sourced from GeoNames, bringing global locality coverage to Who&#39;s On First." />
+		<meta property="og:image" content="https://www.whosonfirst.org/blog/2019/05/13/geonames/images/village.jpg" />
+		
+		<meta property="twitter:card" value="summary" />
+		<meta property="twitter:site" content="@alloftheplaces" />
+		<meta property="twitter:creator" content="@alloftheplaces" />
+		<meta property="twitter:url" content="https://www.whosonfirst.org/blog/2019/05/13/geonames/" />
+		<meta property="twitter:title" content="New GeoNames-sourced locality records" />
+		<meta property="twitter:description" content="We&#39;ve recently added millions of records sourced from GeoNames, bringing global locality coverage to Who&#39;s On First." />
+		<meta property="twitter:image" content="https://www.whosonfirst.org/blog/2019/05/13/geonames/images/village.jpg" />
+		
+
+	</head>
+	<body>
+		<div class="whosonfirst-wrapper">
+
+			<nav class="navbar navbar-default navbar-fixed-top whosonfirst-fixed-subpage-navbar">
+				<div class="container">
+
+					
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="/">Who’s On First</a>
+					</div>
+
+					
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					  <ul class="nav navbar-nav navbar-right">
+
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/browse/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">browse</a>
+							</li>
+					    
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/docs/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">documentation</a>
+							</li>
+							
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/code/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">code</a>
+							</li>
+
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/api/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">api</a>
+							</li>
+							
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/download/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">download</a>
+							</li>
+							
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/blog/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">blog</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+
+
+		<style type="text/css">
+		  body {
+		  font-family: serif;
+		  font-size: 1.3em;
+		  line-height: 1.5em;
+		  }
+
+		  h2 small {
+		  display: block;
+		  margin-top:.10em;
+		  font-weight: 100;
+		  font-size: .5em;
+		  line-height: 1.3em;
+		  }
+
+		  p {
+		  line-height: 1.5em !important;
+		  }
+
+		  ul {
+		  font-size:1.3em;
+		  line-height:1.5em;
+		  margin-top:1em !important;
+		  }
+
+		  li {
+		  list-style-type: circle;
+		  margin-bottom: .5em;
+		  }
+
+		  img {
+		  max-width: 640px !important;
+		  max-height: 480px !important;
+		  border: 1px dotted #ccc;
+		  padding: .5em;
+		  margin-bottom:1em;
+		  margin-top: 1em;
+		  display:block;
+		  min-width: 320px;
+		  margin: 0 auto;
+		  }
+
+		  blockquote {
+		  background-color:#ededed;
+		  margin-top:1em;
+		  padding-top:.05em !important;
+		  padding-bottom:1.75em !important;
+		  }
+
+		  .hey-look {
+		  font-weight: 700;
+		  }
+
+		  @media (min-width: 320px) and (max-width: 400px) {
+
+		  ul {
+		  margin:0px;
+	  	  margin-left:15px;
+		  padding:0px;
+		  }
+
+		  pre {
+		  max-width:250px;
+		  overflow:scroll;
+		  }
+
+		  img {
+		  max-width: 250px !important;
+		  max-height: 200px !important;
+		  min-width: 75px;
+		  }
+		  }
+
+		</style>
+
+			<div class="container whosonfirst-subpage-container">
+			  <div class="row">
+			    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-0">
+ 			    </div>
+			    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+			      <article>
+
+	  
+	  
+	  <h2>
+	    New GeoNames-sourced locality records
+	    <small>This is a blog post by
+	      <span class="hey-look">stepps00</span>
+	      that was published on <span class="pubdate"><a href="/blog/2019/05/">May</a> <a href="/blog/2019/05/13">13</a>, <a href="/blog/2019/">2019</a></span>
+	       and tagged <span class="hey-look">whosonfirst</span>, <span class="hey-look">wof</span>, <span class="hey-look">geonames</span> and <span class="hey-look">data</span></small>
+	  </h2>
+
+<p>We are happy to announce that <a href="https://whosonfirst.org/">Who&rsquo;s On First</a> now has comprehensive global coverage at the <a href="https://github.com/whosonfirst/whosonfirst-placetypes/blob/master/placetypes/locality.json">locality</a> placetype. Before this work began, the locality record count in Who&rsquo;s On First was just over 345,000. At the completion of this import, the locality record count increased more than ten-fold, to just over 4.4 million records. This locality import increased the total number of administrative records in the <a href="https://github.com/whosonfirst-data/whosonfirst-data">whosonfirst-data repository</a> to 4.8 million. This detailed coverage at the locality level, in addition to the other placetype updates we&rsquo;ve completed, give millions of detailed administrative hierarchies for cities, poplulated places, villages, and towns around the world.</p>
+
+<p>More specifically, the new locality records are sourced from the <a href="https://www.geonames.org/">GeoNames</a> database; we&rsquo;ve spent a great deal of time importing and assessing data quality of these new Who&rsquo;s On First locality records. While the new locality additions were a customer-requested feature, we&rsquo;ve added the GeoNames data in a format that is more accessible to new and existing users of Who&rsquo;s On First.</p>
+
+<p>Prior to this work, tens of thousands of new county records were added to Who&rsquo;s On First via <a href="https://whosonfirst.org/blog/2016/12/08/mesoshapes/">Mesoshapes</a>, various properties were added from <a href="https://whosonfirst.org/blog/2017/09/19/introducing-statoids/">Statoids</a>, and smaller amounts of locality records were added via the Quattroshapes point gazetteer.  On top of these data additions and the recent import from GeoNames, we have previously increased name translations to Who&rsquo;s On First records; read about those changes <a href="https://whosonfirst.org/blog/2017/08/22/summer-2017-wof/">here</a> and <a href="https://whosonfirst.org/blog/2016/07/13/wikipedia-data/">here</a>.</p>
+
+<h4>Pre-GeoNames import locality coverage visualized:</h4>
+
+<p><img src="images/pre-gn.png" alt="" /></p>
+
+<h4>Post-GeoNames import locality coverage visualized:</h4>
+
+<p><img src="images/post-gn.png" alt="" /></p>
+
+<p>I&rsquo;d like to take a few minutes to describe how the GeoNames records were created, show off a few examples of new locality records that were added to Who&rsquo;s On First, and let you know what&rsquo;s next.</p>
+
+<h2>Creating records</h2>
+
+<p>For those unfamiliar, the GeoNames database provides various place data under the <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a> license. Of interest to Who&rsquo;s On First are the <a href="http://download.geonames.org/export/dump/">free gazetteer data</a> files, specifically the <code>allCountries.zip</code> file and the <code>alternateNames.zip</code> file, which cover &ldquo;all countries and contains over eleven million placenames&rdquo;, according to the GeoNames website. These files contain location, placetype, name translation, and concordance data that we harvested to create new locality records (though we first needed to convert these text files to CSV files). View the <a href="http://download.geonames.org/export/dump/readme.txt">readme file</a> for a full list of property descriptions.</p>
+
+<h3>Example contents:</h3>
+
+<p><code>alternateNames.csv</code> file:</p>
+
+<pre><code>alternateNameId,geonameid,isolanguage,alternate_name,isPreferredName,isShortName,isColloquial,isHistoric
+1520975,3900358,,Ainco,,,,
+1520976,3900358,,Aucó,,,,
+6715191,3900358,,Ahinco,,,,
+</code></pre>
+
+<p><code>allCountries.csv</code> file:</p>
+
+<pre><code>geonameid,name,asciiname,alternatenames,latitude,longitude,feature_class,feature_code,country_code,cc2,admin1_code,admin2_code,admin3_code,admin4_code,population,elevation,dem,timezone,modification_date
+3900358,Ahinco,Ahinco,Ahinco,Ainco,Auco,Aucó,-41.78234,-73.51487,P,PPL,CL,,14,101,10102,,0,,3,America/Santiago,2018-06-19
+</code></pre>
+
+<p>The text snippets above are what GeoNames stores in these two files for the place of  Ahinco, Chile. A new locality record in Who&rsquo;s On First for <a href="https://spelunker.whosonfirst.org/id/1226313821/">Ahinco, Chile</a> was created using these same values. A list of these values below, with descriptions from the <a href="http://download.geonames.org/export/dump/">GeoNames website</a>:</p>
+
+<pre><code>geonameid         : integer id of record in geonames database
+name              : name of geographical point (utf8) varchar(200)
+asciiname         : name of geographical point in plain ascii characters, varchar(200)
+alternatenames    : alternatenames, comma separated, ascii names automatically transliterated, convenience attribute from alternatename table, varchar(10000)
+latitude          : latitude in decimal degrees (wgs84)
+longitude         : longitude in decimal degrees (wgs84)
+feature class     : see http://www.geonames.org/export/codes.html, char(1)
+feature code      : see http://www.geonames.org/export/codes.html, varchar(10)
+country code      : ISO-3166 2-letter country code, 2 characters
+cc2               : alternate country codes, comma separated, ISO-3166 2-letter country code, 200 characters
+admin1 code       : fipscode (subject to change to iso code), see exceptions below, see file admin1Codes.txt for display names of this code; varchar(20)
+admin2 code       : code for the second administrative division, a county in the US, see file admin2Codes.txt; varchar(80) 
+admin3 code       : code for third level administrative division, varchar(20)
+admin4 code       : code for fourth level administrative division, varchar(20)
+population        : bigint (8 byte int) 
+elevation         : in meters, integer
+dem               : digital elevation model, srtm3 or gtopo30, average elevation of 3''x3'' (ca 90mx90m) or 30''x30'' (ca 900mx900m) area in meters, integer. srtm processed by cgiar/ciat.
+timezone          : the iana timezone id (see file timeZone.txt) varchar(40)
+modification date : date of last modification in yyyy-MM-dd format
+alternateNameId   : the id of this alternate name, int
+geonameid         : geonameId referring to id in table 'geoname', int
+isolanguage       : iso 639 language code 2- or 3-characters; 4-characters 'post' for postal codes and 'iata','icao' and faac for airport codes, fr_1793 for French Revolution names,  abbr for abbreviation, link to a website (mostly to wikipedia), wkdt for the wikidataid, varchar(7)
+alternate name    : alternate name or name variant, varchar(400)
+isPreferredName   : '1', if this alternate name is an official/preferred name
+isShortName       : '1', if this is a short name like 'California' for 'State of California'
+isColloquial      : '1', if this alternate name is a colloquial or slang term. Example: 'Big Apple' for 'New York'.
+isHistoric        : '1', if this alternate name is historic and was used in the past. Example 'Bombay' for 'Mumbai'.
+</code></pre>
+
+<p>The record for Ahinco, for example, contains three name translations we imported from the GeoNames <code>alternateNames</code> file and a latitude and longitude pair that were used to create the record&rsquo;s geometry in the <code>allCountries</code> file.</p>
+
+<p>Ahinco is just one of the millions of locality records now in Who&rsquo;s On First. Valuable data for other localities can be found in these files, though not all data in the GeoNames source files is relevant to Who&rsquo;s On First&rsquo;s interests.</p>
+
+<p>Not only did we try to remove any potential duplicate records prior to import, but we needed to filter out non-locality placetypes and ensure we are only introducing new places (not previously known) into Who&rsquo;s On First. A full list of GeoNames feature <a href="https://www.geonames.org/export/codes.html">codes</a> to WOF placetype mappings, below:</p>
+
+<h4>Placetypes</h4>
+
+<pre><code>    placetype_mapping = {
+        &quot;PCL&quot;   : &quot;country&quot;,           # political entity
+        &quot;PCLD&quot;  : &quot;dependency&quot;,        # dependent political entity
+        &quot;PCLF&quot;  : &quot;dependency&quot;,        # freely associated state
+        &quot;PCLH&quot;  : &quot;country&quot;,           # historical political entity, CESSATION DATE with today's date, and MZ:IS_CURRENT = 0
+        &quot;PCLI&quot;  : &quot;country&quot;,           # independent political entity
+        &quot;PCLIX&quot; : &quot;region&quot;,            # section of independent political entity
+        &quot;PCLS&quot;  : &quot;dependency&quot;,        # semi-independent political entity
+        &quot;PPL&quot;   : &quot;locality&quot;,          # basic locality
+        &quot;PPLA&quot;  : &quot;locality&quot;,          # region capital
+        &quot;PPLA2&quot; : &quot;locality&quot;,          # county capital
+        &quot;PPLA3&quot; : &quot;locality&quot;,          # localadmin capital
+        &quot;PPLA4&quot; : &quot;locality&quot;,          # localadmin capital
+        &quot;PPLC&quot;  : &quot;locality&quot;,          # country capital
+        &quot;PPLF&quot;  : &quot;locality&quot;,          # farm village
+        &quot;PPLG&quot;  : &quot;locality&quot;,          # seat of government of a political entity
+        &quot;PPLH&quot;  : &quot;locality&quot;,          # historical populated place, CESSATION DATE with today's date, and MZ:IS_CURRENT = 0
+        &quot;PPLL&quot;  : &quot;locality&quot;,          # populated locality
+        &quot;PPLQ&quot;  : &quot;locality&quot;,          # abandoned populated place, CESSATION DATE with today's date, and MZ:IS_CURRENT = 0
+        &quot;PPLR&quot;  : &quot;locality&quot;,          # religious populated place
+        &quot;PPLS&quot;  : &quot;locality&quot;,          # populated places
+        &quot;PPLW&quot;  : &quot;locality&quot;,          # destroyed populated place, CESSATION DATE with today's date, and MZ:IS_CURRENT = 0
+        &quot;PPLX&quot;  : &quot;neighbourhood&quot;
+    }
+</code></pre>
+
+<p>As you can see in the key/value pairing above, there are twenty two placetype mappings from GeoNames to Who&rsquo;s On First (not all map to localities). This was the first step to identifying relevant records and filtering out places that we did not want to import new records.</p>
+
+<h4>Historical placetypes</h4>
+
+<pre><code>    placetype_historical = {
+        &quot;ADM1H&quot;,
+        &quot;ADM2H&quot;,
+        &quot;ADM3H&quot;,
+        &quot;ADM4H&quot;,
+        &quot;ADMDH&quot;,
+        &quot;PCLH&quot;,
+        &quot;PPLH&quot;,
+        &quot;PPLQ&quot;,
+        &quot;PPLW&quot;
+    }
+</code></pre>
+
+<p>Next, we created a lookup table to identify historical localities. This is important, as both GeoNames and Who&rsquo;s On First have a concept a historical places; identifying localities that have been deprecated, ceased to exist, or have a &ldquo;historical&rdquo; designation, let&rsquo;s us tag these records as such during our import.</p>
+
+<p>After filtering out non-locality placetypes and comparing the remaining records with existing records (through existing concordances and various spatial join methods), we iterated through the two import files to craft new GeoJSON-formatted records for Who&rsquo;s On First.</p>
+
+<p>These records need a few additional properties before being imported, though. These properties include:</p>
+
+<ul>
+<li><strong>A new, unique <a href="https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/wof/id.json"><code>wof:id</code></a> (we minted roughly four million new identifiers from <a href="https://www.brooklynintegers.com/">Brooklyn Integers</a>)</strong></li>
+<li><strong>A <a href="https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/wof/parent_id.json"><code>wof:parent_id</code></a> property</strong>
+
+<ul>
+<li><em>This was defaulted to a <code>-1</code> value as a placeholder, though this value will change as updates to records occur through <a href="https://github.com/whosonfirst/py-mapzen-whosonfirst-hierarchy/">point-in-polygon (PIP)</a> work updates parent ids.</em></li>
+</ul></li>
+<li><strong>A <a href="https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/mz/is_current.json">&lsquo;mz:is_current&rsquo;</a> property</strong></li>
+<li><strong>A <a href="https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/wof/name.json">&lsquo;wof:name&rsquo;</a> property, sourced from the GeoNames <code>asciiname</code> value</strong></li>
+<li><strong>Country code values</strong></li>
+<li><strong>A <a href="https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/src/geom.json"><code>src:geom</code></a> property to indicate these geometries are sourced from GeoNames</strong></li>
+<li><strong>Any new concordance values</strong></li>
+<li><strong>Any <a href="https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/edtf"><code>edtf</code></a> properties, as necessary</strong></li>
+<li><strong>Various population indicators, if GeoNames maintains population data for a given place</strong></li>
+<li><strong>And finally, top-level <a href="https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/gn">GeoNames</a> properties</strong>
+<code>
+- _wof property_ = _gn property_
+- `gn:geonameid` = geonameid
+- `gn:name` = name
+- `gn:asciiname` = asciiname
+- `gn:latitude` = latitude
+- `gn:longitude` = longitude
+- `gn:feature_class` = feature_class
+- `gn:feature_code` = feature_code
+- `gn:country_code` = country_code
+- `gn:cc2` = cc2
+- `gn:admin1_code` = admin1_code
+- `gn:admin2_code` = admin2_code
+- `gn:admin3_code` = admin3_code
+- `gn:admin4_code` = admin4_code
+- `gn:population` = population
+- `gn:elevation` = elevation
+- `gn:dem` = dem
+- `gn:timezone` = timezone
+- `gn:modification_date` = modification_date
+</code></li>
+</ul>
+
+<p>These properties (along with the GeoNames-sourced properties) gave us the building blocks to then export this GeoJSON file using the handy <a href="https://github.com/whosonfirst/py-mapzen-whosonfirst-export/blob/master/scripts/wof-exportify">exportify tool</a> to create and validate a Who&rsquo;s On First record with the minimum viable properties.</p>
+
+<p>Since Who&rsquo;s On First bakes the idea of a place&rsquo;s hierarchy into a record&rsquo;s property, we used a point-in-polygon (PIP) service (some notes about that <a href="https://github.com/whosonfirst/whosonfirst-cookbook/blob/master/how_to/setting_up_pip_service.md">here</a>) to update each new record&rsquo;s hierarchy.</p>
+
+<p>In the case of Ahinco, Chile, this allows Who&rsquo;s On First to store a full administrative hierarchy and the parent_id value for this locality (see below).</p>
+
+<pre><code>    &quot;wof:hierarchy&quot;:[
+        {
+            &quot;continent_id&quot;:102191577, (South America)
+            &quot;country_id&quot;:85633057, (Chile)
+            &quot;region_id&quot;:85682233, (De Los Lagos)
+            &quot;county_id&quot;:102063135, (Llanquihue)
+            &quot;locality_id&quot;:1226313821 (Ahinco)
+        }
+    ],
+    ...
+    &quot;wof:parent_id&quot;:102063135,
+</code></pre>
+
+<p>Click <a href="https://raw.githubusercontent.com/whosonfirst-data/whosonfirst-data/master/data/122/631/382/1/1226313821.geojson">here</a> to see the full record for Ahinco, Chile in GeoJSON format.</p>
+
+<h3>Other examples</h3>
+
+<p>This work is not limited to Chile, like the Ahinco example above. Other examples of new locality records include <a href="https://spelunker.whosonfirst.org/id/1225865875/">Abeikeng</a>, a locality in <a href="https://spelunker.whosonfirst.org/id/85669735/">Fujian</a>, <a href="https://spelunker.whosonfirst.org/id/85632695/">China</a> and
+<a href="https://spelunker.whosonfirst.org/id/1360321381/">Zela</a>, a locality in <a href="https://spelunker.whosonfirst.org/id/1108695191/">Metekel</a>, <a href="https://spelunker.whosonfirst.org/id/85632257/">Ethiopia</a>.</p>
+
+<p>In fact, prior to the GeoNames work, Who&rsquo;s On First maintained zero records at the locality placetype within Metekel, Ethiopia. This work added forty seven new locality records - like <a href="https://spelunker.whosonfirst.org/id/1210052931/">Debre Zeyit</a>
+ and <a href="https://spelunker.whosonfirst.org/id/1277019105/">Dibate</a>. Here are the new locality descendants of Metekel, Ethiopia, visualized:</p>
+
+<p><img src="images/display.png" alt="" /></p>
+
+<h2>Next steps</h2>
+
+<p>While this import of new locality records added a tremendous amount of new data to Who&rsquo;s On First, there is additional work to be completed. In some cases, GeoNames has a property flag that has been used inconsistently or a record has been misclassified as a locality when in Who&rsquo;s On First it should actually be stored at the neighbourhood placetype.</p>
+
+<p>Additionally, the <code>gn:</code> properties in some of the new locality records will be verified and updated to ensure Who&rsquo;s On First correctly stores source values; for example, we want to ensure integer value types are not stored as string values. Eventually, the concordance values in any new locality record will be used to add more information about each place as possible (adding more names from Wikipedia, for example).</p>
+
+<p>Lastly, as mentioned in <a href="https://whosonfirst.org/blog/2019/05/09/changes/">our recent blog post</a>, the Who&rsquo;s On First data gazetteer has now been split into per-country repositories and distribution files because of the repository&rsquo;s size and scale. The GeoNames locality records are still present in these per-country repositories and distribution files.</p>
+
+<p>If you have any suggestions on how to improve data quality, please feel free to <a href="https://github.com/whosonfirst-data/whosonfirst-data/issues">drop us a line</a>.</p>
+
+<h2>Conclusion</h2>
+
+<p>By importing the millions of locality records from GeoNames into Who&rsquo;s On First, we&rsquo;ve added the most detailed and comprehensive locality coverage available to Who&rsquo;s On First.</p>
+
+<p>Although there were various constraints along the way to importing such a large dataset, the end result has been an increase in detail at the locality level. Our goal is to provide this coverage to users of Who&rsquo;s On First; coupled with the previous work at other placetypes, we hope that you&rsquo;re able to enjoy the new additions.</p>
+
+<p><em>Photo Credit: <a href="https://www.flickr.com/photos/pasa/15891216909/in/photolist-qdfD9r-7EXjUH-6jT6jo-fD5xU7-8fEErJ-9ADygi-4YsWRt-rTmN-7UxFvd-brxPcD-f682yx-6CVHMS-4YsX8M-2vBtmc-oiZ7Qr-fD5zx3-qouxiV-6umM3w-fD5vHy-59M6Q7-2V4DEg-afXdPv-27BgvcM-9TGSQY-27TSkdM-brxLa4-a1jVAW-Qj7nax-2frphda-qx7M9q-qouwev-5WHZMm-tW7FY-brxM8g-7mU5AB-URGwB6-htZry4-V8budP-r3QJ26-e9YHw-broUxe-62hjSC-tW7B6-8K1Pht-f682Ai-5sDZek-8N5z8H-bt428R-gnUFB9-fD5nBL">Paul Sableman, flickr</a></em></p>
+
+		</article>
+		</div>
+		</div>	
+		</div>	
+
+		<footer>
+			<nav class="navbar navbar-default navbar-bottom">
+				<div class="container">
+					
+					<ul class="nav navbar-nav navbar-right whosonfirst-footer">
+						<li><a href="/docs/contributing/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">contributing</a></li>
+						<li><a href="/docs/licenses/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">license</a></li>
+						<li><a href="https://twitter.com/alloftheplaces/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">twitter</a></li>
+					</ul>
+				</div>
+			</nav>
+		</footer>
+
+		
+		<script src="/javascript/jquery.min.js"></script>
+		
+		<script src="/javascript/bootstrap.min.js"></script>
+		<script src="/javascript/mapzen.whosonfirst.home.js"></script>
+		<script src="/javascript/mapzen.whosonfirst.subpage.js"></script>
+		
+		<script src="/javascript/highlightpack.js"></script>
+		<script>
+		  try {
+		  	hljs.initHighlightingOnLoad();
+		  } catch (e) {
+		  	console.log("HLJS", e);
+		  }
+		</script>
+	</body>
+</html>
+
