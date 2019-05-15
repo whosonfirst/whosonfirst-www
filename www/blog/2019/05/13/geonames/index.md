@@ -11,6 +11,8 @@ image: "images/village.jpg"
 tag: [whosonfirst,wof,geonames,data]
 ---
 
+![](images/village.png)
+
 We are happy to announce that [Who's On First](https://whosonfirst.org/) now has comprehensive global coverage at the [locality](https://github.com/whosonfirst/whosonfirst-placetypes/blob/master/placetypes/locality.json) placetype. Before this work began, the locality record count in Who's On First was just over 345,000. At the completion of this import, the locality record count increased more than ten-fold, to just over 4.4 million records. This locality import increased the total number of administrative records in the [whosonfirst-data repository](https://github.com/whosonfirst-data/whosonfirst-data) to 4.8 million. This detailed coverage at the locality level, in addition to the other placetype updates we've completed, give millions of detailed administrative hierarchies for cities, poplulated places, villages, and towns around the world.
 
 More specifically, the new locality records are sourced from the [GeoNames](https://www.geonames.org/) database; we've spent a great deal of time importing and assessing data quality of these new Who's On First locality records. While the new locality additions were a customer-requested feature, we've added the GeoNames data in a format that is more accessible to new and existing users of Who's On First.
@@ -142,8 +144,7 @@ After filtering out non-locality placetypes and comparing the remaining records 
 These records need a few additional properties before being imported, though. These properties include:
 
 - **A new, unique [`wof:id`](https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/wof/id.json) (we minted roughly four million new identifiers from [Brooklyn Integers](https://www.brooklynintegers.com/))**
-- **A [`wof:parent_id`](https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/wof/parent_id.json) property**
-  - _This was defaulted to a `-1` value as a placeholder, though this value will change as updates to records occur through [point-in-polygon (PIP)](https://github.com/whosonfirst/py-mapzen-whosonfirst-hierarchy/) work updates parent ids._
+- **A [`wof:parent_id`](https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/wof/parent_id.json) property** (This was defaulted to a `-1` value as a placeholder, though this value will change as updates to records occur through [point-in-polygon (PIP)](https://github.com/whosonfirst/py-mapzen-whosonfirst-hierarchy/) work updates parent ids.)_
 - **A ['mz:is_current'](https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/mz/is_current.json) property**
 - **A ['wof:name'](https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/wof/name.json) property, sourced from the GeoNames `asciiname` value**
 - **Country code values**
@@ -151,28 +152,28 @@ These records need a few additional properties before being imported, though. Th
 - **Any new concordance values**
 - **Any [`edtf`](https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/edtf) properties, as necessary**
 - **Various population indicators, if GeoNames maintains population data for a given place**
-- **And finally, top-level [GeoNames](https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/gn) properties**
+- **And finally, top-level [GeoNames](https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/gn) properties:**
 
 ```
-  - _wof property_ = _gn property_
-  - `gn:geonameid` = geonameid
-  - `gn:name` = name
-  - `gn:asciiname` = asciiname
-  - `gn:latitude` = latitude
-  - `gn:longitude` = longitude
-  - `gn:feature_class` = feature_class
-  - `gn:feature_code` = feature_code
-  - `gn:country_code` = country_code
-  - `gn:cc2` = cc2
-  - `gn:admin1_code` = admin1_code
-  - `gn:admin2_code` = admin2_code
-  - `gn:admin3_code` = admin3_code
-  - `gn:admin4_code` = admin4_code
-  - `gn:population` = population
-  - `gn:elevation` = elevation
-  - `gn:dem` = dem
-  - `gn:timezone` = timezone
-  - `gn:modification_date` = modification_date
+_wof property_ = _gn property_
+`gn:geonameid` = geonameid
+`gn:name` = name
+`gn:asciiname` = asciiname
+`gn:latitude` = latitude
+`gn:longitude` = longitude
+`gn:feature_class` = feature_class
+`gn:feature_code` = feature_code
+`gn:country_code` = country_code
+`gn:cc2` = cc2
+`gn:admin1_code` = admin1_code
+`gn:admin2_code` = admin2_code
+`gn:admin3_code` = admin3_code
+`gn:admin4_code` = admin4_code
+`gn:population` = population
+`gn:elevation` = elevation
+`gn:dem` = dem
+`gn:timezone` = timezone
+`gn:modification_date` = modification_date
 ```
 
 These properties (along with the GeoNames-sourced properties) gave us the building blocks to then export this GeoJSON file using the handy [exportify tool](https://github.com/whosonfirst/py-mapzen-whosonfirst-export/blob/master/scripts/wof-exportify) to create and validate a Who's On First record with the minimum viable properties.
