@@ -11,7 +11,7 @@ image: "images/village.jpg"
 tag: [whosonfirst,wof,geonames,data]
 ---
 
-![](images/village.png)
+![](images/village.jpg)
 
 We are happy to announce that [Who's On First](https://whosonfirst.org/) now has comprehensive global coverage at the [locality](https://github.com/whosonfirst/whosonfirst-placetypes/blob/master/placetypes/locality.json) placetype. Before this work began, the locality record count in Who's On First was just over 345,000. At the completion of this import, the locality record count increased more than ten-fold, to just over 4.4 million records. This locality import increased the total number of administrative records in the [whosonfirst-data repository](https://github.com/whosonfirst-data/whosonfirst-data) to 4.8 million. This detailed coverage at the locality level, in addition to the other placetype updates we've completed, give millions of detailed administrative hierarchies for cities, poplulated places, villages, and towns around the world.
 

@@ -179,6 +179,8 @@
 	       and tagged <span class="hey-look">whosonfirst</span>, <span class="hey-look">wof</span>, <span class="hey-look">geonames</span> and <span class="hey-look">data</span></small>
 	  </h2>
 
+<p><img src="images/village.jpg" alt="" /></p>
+
 <p>We are happy to announce that <a href="https://whosonfirst.org/">Who&rsquo;s On First</a> now has comprehensive global coverage at the <a href="https://github.com/whosonfirst/whosonfirst-placetypes/blob/master/placetypes/locality.json">locality</a> placetype. Before this work began, the locality record count in Who&rsquo;s On First was just over 345,000. At the completion of this import, the locality record count increased more than ten-fold, to just over 4.4 million records. This locality import increased the total number of administrative records in the <a href="https://github.com/whosonfirst-data/whosonfirst-data">whosonfirst-data repository</a> to 4.8 million. This detailed coverage at the locality level, in addition to the other placetype updates we&rsquo;ve completed, give millions of detailed administrative hierarchies for cities, poplulated places, villages, and towns around the world.</p>
 
 <p>More specifically, the new locality records are sourced from the <a href="https://www.geonames.org/">GeoNames</a> database; we&rsquo;ve spent a great deal of time importing and assessing data quality of these new Who&rsquo;s On First locality records. While the new locality additions were a customer-requested feature, we&rsquo;ve added the GeoNames data in a format that is more accessible to new and existing users of Who&rsquo;s On First.</p>
@@ -305,11 +307,7 @@ isHistoric        : '1', if this alternate name is historic and was used in the 
 
 <ul>
 <li><strong>A new, unique <a href="https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/wof/id.json"><code>wof:id</code></a> (we minted roughly four million new identifiers from <a href="https://www.brooklynintegers.com/">Brooklyn Integers</a>)</strong></li>
-<li><strong>A <a href="https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/wof/parent_id.json"><code>wof:parent_id</code></a> property</strong>
-
-<ul>
-<li><em>This was defaulted to a <code>-1</code> value as a placeholder, though this value will change as updates to records occur through <a href="https://github.com/whosonfirst/py-mapzen-whosonfirst-hierarchy/">point-in-polygon (PIP)</a> work updates parent ids.</em></li>
-</ul></li>
+<li><strong>A <a href="https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/wof/parent_id.json"><code>wof:parent_id</code></a> property</strong> (This was defaulted to a <code>-1</code> value as a placeholder, though this value will change as updates to records occur through <a href="https://github.com/whosonfirst/py-mapzen-whosonfirst-hierarchy/">point-in-polygon (PIP)</a> work updates parent ids.)_</li>
 <li><strong>A <a href="https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/mz/is_current.json">&lsquo;mz:is_current&rsquo;</a> property</strong></li>
 <li><strong>A <a href="https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/wof/name.json">&lsquo;wof:name&rsquo;</a> property, sourced from the GeoNames <code>asciiname</code> value</strong></li>
 <li><strong>Country code values</strong></li>
@@ -317,27 +315,27 @@ isHistoric        : '1', if this alternate name is historic and was used in the 
 <li><strong>Any new concordance values</strong></li>
 <li><strong>Any <a href="https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/edtf"><code>edtf</code></a> properties, as necessary</strong></li>
 <li><strong>Various population indicators, if GeoNames maintains population data for a given place</strong></li>
-<li><strong>And finally, top-level <a href="https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/gn">GeoNames</a> properties</strong>
+<li><strong>And finally, top-level <a href="https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/gn">GeoNames</a> properties:</strong>
 <code>
-- _wof property_ = _gn property_
-- `gn:geonameid` = geonameid
-- `gn:name` = name
-- `gn:asciiname` = asciiname
-- `gn:latitude` = latitude
-- `gn:longitude` = longitude
-- `gn:feature_class` = feature_class
-- `gn:feature_code` = feature_code
-- `gn:country_code` = country_code
-- `gn:cc2` = cc2
-- `gn:admin1_code` = admin1_code
-- `gn:admin2_code` = admin2_code
-- `gn:admin3_code` = admin3_code
-- `gn:admin4_code` = admin4_code
-- `gn:population` = population
-- `gn:elevation` = elevation
-- `gn:dem` = dem
-- `gn:timezone` = timezone
-- `gn:modification_date` = modification_date
+_wof property_ = _gn property_
+`gn:geonameid` = geonameid
+`gn:name` = name
+`gn:asciiname` = asciiname
+`gn:latitude` = latitude
+`gn:longitude` = longitude
+`gn:feature_class` = feature_class
+`gn:feature_code` = feature_code
+`gn:country_code` = country_code
+`gn:cc2` = cc2
+`gn:admin1_code` = admin1_code
+`gn:admin2_code` = admin2_code
+`gn:admin3_code` = admin3_code
+`gn:admin4_code` = admin4_code
+`gn:population` = population
+`gn:elevation` = elevation
+`gn:dem` = dem
+`gn:timezone` = timezone
+`gn:modification_date` = modification_date
 </code></li>
 </ul>
 
