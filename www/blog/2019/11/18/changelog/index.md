@@ -15,7 +15,7 @@ tag: [whosonfirst,wof,data]
 
 We've been busy updating Who's On First and, to outline the recent changes, have created a [changelog](https://github.com/whosonfirst-data/whosonfirst-data/blob/master/CHANGELOG.md). Going forward, this changelog will be updated monthly and give a simplified, bullet-point style description of updates and new additions to Who's On First for a given month.
 
-October changes are listed below, which include administrative updates to Norway, France, and Poland, as well as updates to **postalcode*** records in France.
+October changes are listed below, which include administrative updates to Norway, France, and Poland, as well as updates to **postalcode** records in France.
 
 A special thanks to all of our contributors - enjoy!
 
