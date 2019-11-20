@@ -1,0 +1,306 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="x-ua-compatible" content="ie=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Who’s On First | Who&#39;s On First - Changelog</title>
+		<meta name="description" content="Who’s on First is a gazetteer of places." />
+		<link rel="apple-touch-icon" href="/images/favicons/apple-touch-icon.png" sizes="180x180" />
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-16x16.png" sizes="16x16" />
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-32x32.png" sizes="32x32" />
+		<link rel="manifest" href="/images/favicons/manifest.json" />
+		<link rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg" color="#2C1E3F" />
+		<link rel="stylesheet" href="/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="/css/mapzen.whosonfirst.css" />
+		
+		<link rel="stylesheet" href="/css/styles/grayscale.css" />
+
+		<link rel="alternate" type="application/atom+xml" title="Who's On First Atom feed" href="/blog/atom_10.xml"/>		
+		<link rel="alternate" type="application/rss+xml" title="Who's On First RSS 2.0 feed" href="/blog/rss_20.xml"/>
+
+		
+		<meta property="og:type" content="article" />
+		<meta property="og:site_name" content="Who's On First" />
+		<meta property="og:title" content="Who&#39;s On First - Changelog" />
+		<meta property="og:description" content="We&#39;ve been busy updating Who&#39;s On First; now you can read about the updates in our changelog." />
+		<meta property="og:image" content="https://www.whosonfirst.org/blog/2019/11/18/changelog/images/globe.jpg" />
+		
+		<meta property="twitter:card" value="summary" />
+		<meta property="twitter:site" content="@alloftheplaces" />
+		<meta property="twitter:creator" content="@alloftheplaces" />
+		<meta property="twitter:url" content="https://www.whosonfirst.org/blog/2019/11/18/changelog/" />
+		<meta property="twitter:title" content="Who&#39;s On First - Changelog" />
+		<meta property="twitter:description" content="We&#39;ve been busy updating Who&#39;s On First; now you can read about the updates in our changelog." />
+		<meta property="twitter:image" content="https://www.whosonfirst.org/blog/2019/11/18/changelog/images/globe.jpg" />
+		
+
+	</head>
+	<body>
+		<div class="whosonfirst-wrapper">
+
+			<nav class="navbar navbar-default navbar-fixed-top whosonfirst-fixed-subpage-navbar">
+				<div class="container">
+
+					
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="/">Who’s On First</a>
+					</div>
+
+					
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					  <ul class="nav navbar-nav navbar-right">
+
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/browse/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">browse</a>
+							</li>
+					    
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/docs/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">documentation</a>
+							</li>
+							
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/code/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">code</a>
+							</li>
+
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/api/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">api</a>
+							</li>
+							
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/download/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">download</a>
+							</li>
+							
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/blog/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">blog</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+
+
+		<style type="text/css">
+		  body {
+		  font-family: serif;
+		  font-size: 1.3em;
+		  line-height: 1.5em;
+		  }
+
+		  h2 small {
+		  display: block;
+		  margin-top:.10em;
+		  font-weight: 100;
+		  font-size: .5em;
+		  line-height: 1.3em;
+		  }
+
+		  p {
+		  line-height: 1.5em !important;
+		  }
+
+		  ul {
+		  font-size:1.3em;
+		  line-height:1.5em;
+		  margin-top:1em !important;
+		  }
+
+		  li {
+		  list-style-type: circle;
+		  margin-bottom: .5em;
+		  }
+
+		  img {
+		  max-width: 640px !important;
+		  max-height: 480px !important;
+		  border: 1px dotted #ccc;
+		  padding: .5em;
+		  margin-bottom:1em;
+		  margin-top: 1em;
+		  display:block;
+		  min-width: 320px;
+		  margin: 0 auto;
+		  }
+
+		  blockquote {
+		  background-color:#ededed;
+		  margin-top:1em;
+		  padding-top:.05em !important;
+		  padding-bottom:1.75em !important;
+		  }
+
+		  .hey-look {
+		  font-weight: 700;
+		  }
+
+		  @media (min-width: 320px) and (max-width: 400px) {
+
+		  ul {
+		  margin:0px;
+	  	  margin-left:15px;
+		  padding:0px;
+		  }
+
+		  pre {
+		  max-width:250px;
+		  overflow:scroll;
+		  }
+
+		  img {
+		  max-width: 250px !important;
+		  max-height: 200px !important;
+		  min-width: 75px;
+		  }
+		  }
+
+		</style>
+
+			<div class="container whosonfirst-subpage-container">
+			  <div class="row">
+			    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-0">
+ 			    </div>
+			    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+			      <article>
+
+	  
+	  
+	  <h2>
+	    Who&#39;s On First - Changelog
+	    <small>This is a blog post by
+	      <span class="hey-look">stepps00</span>
+	      that was published on <span class="pubdate"><a href="/blog/2019/11/">Nov</a> <a href="/blog/2019/11/18">18</a>, <a href="/blog/2019/">2019</a></span>
+	       and tagged <span class="hey-look">whosonfirst</span>, <span class="hey-look">wof</span> and <span class="hey-look">data</span></small>
+	  </h2>
+
+<h1>Introducing the Who&rsquo;s On First Changlog</h1>
+
+<p>We&rsquo;ve been busy updating Who&rsquo;s On First and, to outline the recent changes, have created a <a href="https://github.com/whosonfirst-data/whosonfirst-data/blob/master/CHANGELOG.md">changelog</a>. Going forward, this changelog will be updated monthly and give a simplified, bullet-point style description of updates and new additions to Who&rsquo;s On First for a given month.</p>
+
+<p>October changes are listed below, which include administrative updates to Norway, France, and Poland, as well as updates to <strong>postalcode</strong> records in France.</p>
+
+<p>A special thanks to all of our contributors - enjoy!</p>
+
+<h2>Who&rsquo;s On First Changelog</h2>
+
+<p><em>This is a human generated overview of significant changes to Who&rsquo;s On First place data
+across all repos. More recent changes are at the top, oldest changes at the bottom.</em></p>
+
+<h3>2019 October</h3>
+
+<h4>NORWAY</h4>
+
+<ul>
+<li>Updated <strong>locality</strong> and <strong>neighbourhood</strong> records in Norway (<a href="https://github.com/whosonfirst-data/whosonfirst-data/issues/298">issue</a>)</li>
+<li>Fixed by: <a href="https://github.com/whosonfirst-data/whosonfirst-data-admin-no/pull/6">https://github.com/whosonfirst-data/whosonfirst-data-admin-no/pull/6</a></li>
+<li>This pull request includes changes at the <strong>locality</strong> and <strong>neighbourhood</strong> placetypes in Norway. In summary, each <strong>locality</strong> record was updated with new geometries, property flags, and name translations. In addition, other administrative placetypes were updated as needed.</li>
+<li>Specific work included:
+
+<ul>
+<li>Updating geometries for two records at the <strong>region</strong> placetype, ensuring Who&rsquo;s On First has the most recent admin1 boundaries in Norway</li>
+<li>Updating geometries for many records at the <strong>locality</strong> placetype, clipping geometries along parent boundaries</li>
+<li>Updating <strong>neighbourhood</strong> records, converting some existing <strong>locality</strong> records to <strong>neighbourhood</strong> records, and curating new neighbouhrood geometries in a handful of cases</li>
+<li>Resetting all <code>lbl:bbox</code> values for records that received new Polygon or MultiPolygon geometries</li>
+<li>Validating all geometries using osgeo, validating all records using Who&rsquo;s On First&rsquo;s <code>go-whosonfirst-validate</code> tool</li>
+<li>Adding Wikipedia and Wikidata-sourced name translations to any record without a name translation</li>
+<li>Completing PIP work to updating or confirming all <code>wof:hierarchy</code> properties for all records in the Poland admin repository</li>
+</ul></li>
+</ul>
+
+<h4>FRANCE</h4>
+
+<ul>
+<li>Corrected <strong>postalcode</strong> hierarchies in France (<a href="https://github.com/whosonfirst-data/whosonfirst-data/issues/1713">issue</a>)</li>
+<li>Fixed by: <a href="https://github.com/whosonfirst-data/whosonfirst-data-postalcode-fr/pull/2">https://github.com/whosonfirst-data/whosonfirst-data-postalcode-fr/pull/2</a>
+
+<ul>
+<li>Updating &ldquo;county_id&rdquo; and &ldquo;localadmin_id&rdquo; values in dozens of <strong>postalcode</strong> records&rsquo; <code>wof:hierarchy</code> properties, also updating <code>wof:belongsto</code> and <code>wof:parent_id</code> values</li>
+<li>New <strong>postalcode</strong> hierarchies in France now maintain the appropriate, current parent administrative records</li>
+</ul></li>
+</ul>
+
+<h4>ALTERNATE GEOMETRIES</h4>
+
+<ul>
+<li>Addition of <code>src:alt_label</code> property to each alt file (<a href="https://github.com/whosonfirst-data/whosonfirst-data/issues/1714">issue</a>)</li>
+<li>Fixed by: Multiple, example: <a href="https://github.com/whosonfirst-data/whosonfirst-data-admin-ro/pull/9">https://github.com/whosonfirst-data/whosonfirst-data-admin-ro/pull/9</a>
+
+<ul>
+<li>In order for Who&rsquo;s On First to property publish public SQLite distribution files, each &ldquo;alt&rdquo; file in Who&rsquo;s On First needed a <code>src:alt_label</code> property added.</li>
+<li>Alt files in each of the 260 per-country Who&rsquo;s On First repositories were given this property in a series of pull requests.</li>
+</ul></li>
+</ul>
+
+<h4>POLAND</h4>
+
+<ul>
+<li>Updated <strong>county</strong>, <strong>localadmin</strong>, <strong>locality</strong>, <strong>borough</strong>, and <strong>neighbourhood</strong> records in Poland (<a href="https://github.com/whosonfirst-data/whosonfirst-data/issues/1131">issue</a>)</li>
+<li>Fixed by: <a href="https://github.com/whosonfirst-data/whosonfirst-data-admin-pl/pull/11">https://github.com/whosonfirst-data/whosonfirst-data-admin-pl/pull/11</a></li>
+<li>This pull request includes various changes at five placetypes in Poland. In summary, each <strong>localadmin</strong> and <strong>locality</strong> record was updated with updated geometries, property flags, and name translations.</li>
+<li>Specific work included:
+
+<ul>
+<li>Adding new source geometries to each <strong>localadmin</strong> record</li>
+<li>Adding new source geometries to some <strong>locality</strong> records, storing some source geometries as &ldquo;alt&rdquo; files</li>
+<li>Adding source concordances to <strong>region</strong>, <strong>county</strong>, <strong>localadmin</strong> records</li>
+<li>Flagging <strong>localadmin</strong> and <strong>locality</strong> as coterminous using the <code>wof:coterminous</code> property, as necessary</li>
+<li>Demoting some <strong>locality</strong> records to the <strong>neighbourhood</strong> placetype, as needed</li>
+<li>Adding new <strong>borough</strong> records to two localities in Poland - Krakow and Warsaw</li>
+<li>Adding concordances to the <code>wof:concordances</code> propert</li>
+<li>Validating all geometries using osgeo, validating all records using Who&rsquo;s On First&rsquo;s <code>go-whosonfirst-validate</code> tool</li>
+<li>Adding Wikipedia and Wikidata-sourced name translations to any record without a name translation</li>
+<li>Completing PIP work to updating or confirming all <code>wof:hierarchy</code> properties for all records in the Poland admin repository</li>
+</ul></li>
+</ul>
+
+<p><em>NOTE: This document was created 2019 November. Earlier changes have not been
+retroactively cataloged.</em></p>
+
+<h4>Contributing</h4>
+
+<p>If you&rsquo;d like to contribute to Who&rsquo;s On First or suggest a change, please <a href="https://github.com/whosonfirst-data/whosonfirst-data/issues/new">file an issue</a> in our public data repository.</p>
+
+<p><em>Photo Credit: <a href="https://www.flickr.com/photos/mlinksva/6117780887/in/photolist-ajBe7P-83KJEU-2ejsaLr-X6yNPo-22geH2d-C1j3WJ-C1Jhyw-2hpBDzR-5tRxQr-EeS51N-ieaMC7-hUdRX6-8v5Je2-hYEKWU-hPNmUu-Ssd8i7-VMho85-VMho97-ie4ru2-i7noZg-YgktBh-VAzC3C-RewTfh-Tcdio4-Wm9ZR4-mZYi5a-WvMyEt-ie2UwS-ie4Kmq-hVWAoG-oeZGW9-ouFUaw-ie4vLs-7Diy6S-id5hMp-wqNqnK-fm9u5i-8n1Zsd-i7eM3b-hPKmNF-EHhydv-7ZAfHB-idZ3jk-i8Pz3Y-oddVKH-f5LW4C-KnSWTe-7ebsgq-hPB2ei-i3h3gE/">Mike Linksvayer, flickr</a></em></p>
+
+		</article>
+		</div>
+		</div>	
+		</div>	
+
+		<footer>
+			<nav class="navbar navbar-default navbar-bottom">
+				<div class="container">
+					
+					<ul class="nav navbar-nav navbar-right whosonfirst-footer">
+						<li><a href="/docs/contributing/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">contributing</a></li>
+						<li><a href="/docs/licenses/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">license</a></li>
+						<li><a href="https://twitter.com/alloftheplaces/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">twitter</a></li>
+					</ul>
+				</div>
+			</nav>
+		</footer>
+
+		
+		<script src="/javascript/jquery.min.js"></script>
+		
+		<script src="/javascript/bootstrap.min.js"></script>
+		<script src="/javascript/mapzen.whosonfirst.home.js"></script>
+		<script src="/javascript/mapzen.whosonfirst.subpage.js"></script>
+		
+		<script src="/javascript/highlightpack.js"></script>
+		<script>
+		  try {
+		  	hljs.initHighlightingOnLoad();
+		  } catch (e) {
+		  	console.log("HLJS", e);
+		  }
+		</script>
+	</body>
+</html>
+
