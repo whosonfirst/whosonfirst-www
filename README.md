@@ -1,6 +1,14 @@
 # whosonfirst-www
 
-whosonfirst.mapzen.com – it's a website.
+whosonfirst.org – it's a website.
+
+## Important
+
+Outside of the blog the way this website is structured and built is _weird_.
+
+It is due an overhaul but please don't exhaust yourself getting worked up about how weird and often confusing and sometimes frustrating it is to use. It just _is_ and more importantly it's gotten us this far, allowing us to work on other things.
+
+What you're seeing here is the output of a summer of work with Scott (Dubrowski) who did fantastic work to update the design and site architecture and Dan (Phiffer) who helped Scott along the way building an as-you-go toolset to facilitate Scott's work. It's not perfect but it does work. It just requires pressing a lot of buttons in a lot of files sometimes. So it goes.
 
 ## What is going on in here?
 
