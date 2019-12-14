@@ -8,7 +8,7 @@ category: blog
 excerpt: "Who's On First Changelog - November 2019"
 authors: [stepps00]
 image: "images/globe.jpg"
-tag: [whosonfirst,wof,data]
+tag: [changelog,whosonfirst,wof,data]
 ---
 
 ![](images/globe.jpg)

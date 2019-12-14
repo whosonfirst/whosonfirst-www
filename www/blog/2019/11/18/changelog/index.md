@@ -8,7 +8,7 @@ category: blog
 excerpt: "We've been busy updating Who's On First; now you can read about the updates in our changelog."
 authors: [stepps00]
 image: "images/globe.jpg"
-tag: [whosonfirst,wof,data]
+tag: [changelog,whosonfirst,wof,data]
 ---
 
 # Introducing the Who's On First Changlog
