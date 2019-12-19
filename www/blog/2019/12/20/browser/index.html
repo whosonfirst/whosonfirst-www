@@ -1,0 +1,481 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="x-ua-compatible" content="ie=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Who’s On First | Who&#39;s On First Browser (v2)</title>
+		<meta name="description" content="Who’s on First is a gazetteer of places." />
+		<link rel="apple-touch-icon" href="/images/favicons/apple-touch-icon.png" sizes="180x180" />
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-16x16.png" sizes="16x16" />
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-32x32.png" sizes="32x32" />
+		<link rel="manifest" href="/images/favicons/manifest.json" />
+		<link rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg" color="#2C1E3F" />
+		<link rel="stylesheet" href="/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="/css/mapzen.whosonfirst.css" />
+		
+		<link rel="stylesheet" href="/css/styles/grayscale.css" />
+
+		<link rel="alternate" type="application/atom+xml" title="Who's On First Atom feed" href="/blog/atom_10.xml"/>		
+		<link rel="alternate" type="application/rss+xml" title="Who's On First RSS 2.0 feed" href="/blog/rss_20.xml"/>
+
+		
+		<meta property="og:type" content="article" />
+		<meta property="og:site_name" content="Who's On First" />
+		<meta property="og:title" content="Who&#39;s On First Browser (v2)" />
+		<meta property="og:description" content="Who&#39;s On First Changelog - November 2019" />
+		<meta property="og:image" content="https://www.whosonfirst.org/blog/2019/12/20/browser/images/globe.jpg" />
+		
+		<meta property="twitter:card" value="summary" />
+		<meta property="twitter:site" content="@alloftheplaces" />
+		<meta property="twitter:creator" content="@alloftheplaces" />
+		<meta property="twitter:url" content="https://www.whosonfirst.org/blog/2019/12/20/browser/" />
+		<meta property="twitter:title" content="Who&#39;s On First Browser (v2)" />
+		<meta property="twitter:description" content="Who&#39;s On First Changelog - November 2019" />
+		<meta property="twitter:image" content="https://www.whosonfirst.org/blog/2019/12/20/browser/images/globe.jpg" />
+		
+
+	</head>
+	<body>
+		<div class="whosonfirst-wrapper">
+
+			<nav class="navbar navbar-default navbar-fixed-top whosonfirst-fixed-subpage-navbar">
+				<div class="container">
+
+					
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="/">Who’s On First</a>
+					</div>
+
+					
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					  <ul class="nav navbar-nav navbar-right">
+
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/browse/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">browse</a>
+							</li>
+					    
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/docs/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">documentation</a>
+							</li>
+							
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/code/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">code</a>
+							</li>
+
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/api/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">api</a>
+							</li>
+							
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/download/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">download</a>
+							</li>
+							
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/blog/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">blog</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+
+
+		<style type="text/css">
+		  body {
+		  font-family: serif;
+		  font-size: 1.3em;
+		  line-height: 1.5em;
+		  }
+
+		  h2 small {
+		  display: block;
+		  margin-top:.10em;
+		  font-weight: 100;
+		  font-size: .5em;
+		  line-height: 1.3em;
+		  }
+
+		  p {
+		  line-height: 1.5em !important;
+		  }
+
+		  ul {
+		  font-size:1.3em;
+		  line-height:1.5em;
+		  margin-top:1em !important;
+		  }
+
+		  li {
+		  list-style-type: circle;
+		  margin-bottom: .5em;
+		  }
+
+		  img {
+		  max-width: 640px !important;
+		  max-height: 480px !important;
+		  border: 1px dotted #ccc;
+		  padding: .5em;
+		  margin-bottom:1em;
+		  margin-top: 1em;
+		  display:block;
+		  min-width: 320px;
+		  margin: 0 auto;
+		  }
+
+		  blockquote {
+		  background-color:#ededed;
+		  margin-top:1em;
+		  padding-top:.05em !important;
+		  padding-bottom:1.75em !important;
+		  }
+
+		  .hey-look {
+		  font-weight: 700;
+		  }
+
+		  @media (min-width: 320px) and (max-width: 400px) {
+
+		  ul {
+		  margin:0px;
+	  	  margin-left:15px;
+		  padding:0px;
+		  }
+
+		  pre {
+		  max-width:250px;
+		  overflow:scroll;
+		  }
+
+		  img {
+		  max-width: 250px !important;
+		  max-height: 200px !important;
+		  min-width: 75px;
+		  }
+		  }
+
+		</style>
+
+			<div class="container whosonfirst-subpage-container">
+			  <div class="row">
+			    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-0">
+ 			    </div>
+			    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+			      <article>
+
+	  
+	  
+	  <h2>
+	    Who&#39;s On First Browser (v2)
+	    <small>This is a blog post by
+	      <span class="hey-look">thisisaaronland</span>
+	      that was published on <span class="pubdate"><a href="/blog/2019/12/">Dec</a> <a href="/blog/2019/12/20">20</a>, <a href="/blog/2019/">2019</a></span>
+	       and tagged <span class="hey-look">golang</span>, <span class="hey-look">whosonfirst</span>, <span class="hey-look">wof</span> and <span class="hey-look">data</span></small>
+	  </h2>
+
+<p>In late 2017 when it became clear that <a href="https://whosonfirst.org/blog/2018/01/02/chapter-two/">Mapzen would shut down</a>&hellip;</p>
+
+<p><a href="https://github.com/whosonfirst/go-whosonfirst-browser">go-whosonfirst-browser</a> is version two of the previously name <code>go-whosonfirst-static</code> package that we published in 2018. It is a tool written in the <a href="https://golang.org">Go programming language</a> for rendering known <a href="https://whosonfirst.org/">Who&rsquo;s On First</a> (WOF) IDs in a number of formats including HTML, SVG, PNG and GeoJSON.</p>
+
+<p><img src="images/wof-browser-montreal.png" alt="" /></p>
+
+<p>It uses <a href="https://getbootstrap.com/">Bootstrap</a> for HTML layouts and <a href="https://leafletjs.com/">Leaflet</a>, <a href="https://github.com/tangrams/tangram">Tangram.js</a> and <a href="https://nextzen.org">Nextzen</a> vector tiles for rendering maps. All of these dependencies are bundled with the tool and served locally. With the exception of the vector tiles (which can be cached) and a configurable data source there are no external dependencies.</p>
+
+<p>Some things this tool is <em>not</em>:</p>
+
+<h3>It is not a replacement for the <a href="https://spelunker.whosonfirst.org/">Who&rsquo;s On First Spelunker</a>.</h3>
+
+<p>At least not yet.</p>
+
+<p><code>go-whosonfirst-browser</code> was designed to be a simple display tool for known Who&rsquo;s On First (WOF) IDs and records. That constitutes a third to half of <a href="https://github.com/whosonfirst/whosonfirst-www-spelunker">what the Spelunker does</a> (the remainder being list views and facets) so in principle it would be easy enough to add the same functionality here. Except for the part where the Spelunker is backed by a real search engine (Elasticsearch).</p>
+
+<p>The principle advantage of migrating Spelunker functionality to this package is that it does not have any external dependencies and has support for multiple data sources and caches and can be pre-compiled in to a standalone binary tool. The principle disadvantage would be that experimenting and developing code and functionality in Python (used by the existing Spelunker) has a lower barrier to entry than doing the same in Go (used by this package).</p>
+
+<p>For the time being though they are separate beasts.</p>
+
+<h3>It is not a search engine.</h3>
+
+<p>This is a tool that is primarily geared towards displaying <em>known</em> Who&rsquo;s On First IDs. It does not maintain an index, or a list of known records, before it displays them.</p>
+
+<p>It would be easy enough to add flags to use an external instance of the <a href="https://millsfield.sfomuseum.org/blog/2019/11/04/placeholder/">Pelias Placeholder API</a> for basic search functionality so we&rsquo;ll add that to the list of features for a &ldquo;2.x&rdquo; release.</p>
+
+<p>It might also be easy enough to preload a <a href="https://github.com/blevesearch/bleve">Bleve</a> index, or generate one at runtime depending on the data source and its size, but that is currently out of scope for the project.</p>
+
+<h3>It is not a tool for editing Who&rsquo;s On First documents.</h3>
+
+<p>At least not yet.</p>
+
+<p>Interestingly the code that renders Who&rsquo;s On First (WOF) property dictionaries in to pretty HTML tables is the same code used for the experimental Mapzen &ldquo;<a href="https://whosonfirst.org/blog/2016/04/08/yesnofix/">Yes No Fix</a> project&rdquo;. That functionality has not been enabled or tested with this tool yet.</p>
+
+<p>On the other hand editing anything besides simple key-value pairs means identifying all the complex types, defining rules for how and when they can be updated (or added) and then maintaining all the code to do that. These are all worthwhile efforts but they are equally complex and not things this tool aims to tackle right now.</p>
+
+<p>If you&rsquo;d like to read more about the subject of editing Who&rsquo;s On First documents have a look at:</p>
+
+<ul>
+<li>Dan Phiffer&rsquo;s blog posts about the <a href="https://whosonfirst.org/blog/tags/boundaryissues/">Boundary Issues editing tool</a>.</li>
+<li>Gary Gale&rsquo;s <a href="https://whosonfirst.org/blog/2018/05/25/three-steps-backwards/">Three Steps Backwards, One Step Forwards; a Tale of Data Consistency and JSON Schema</a>.</li>
+</ul>
+
+<h3>It does not retrieve, render or display &ldquo;alternate&rdquo; geometries</h3>
+
+<p>It really should but today it does not. Hopefully it will, soon.</p>
+
+<h2>For example</h2>
+
+<pre><code>$&gt; bin/browser -enable-all -nextzen-api-key {NEXTZEN_APIKEY}
+2019/12/14 18:22:16 Listening on http://localhost:8080
+</code></pre>
+
+<p>[WORDS ABOUT DEFAULTS]</p>
+
+<p>Then if you visited <code>http://localhost:8080/id/101736545</code> in your web browser you would see this:</p>
+
+<p><img src="images/wof-browser-montreal-props.png" alt="" /></p>
+
+<p>By default Who&rsquo;s On First (WOF) properties are rendered as nested (and collapsed) trees but there is are handy <code>show raw</code> and <code>show pretty</code> toggles for viewing the raw WOF GeoJSON data.</p>
+
+<h2>Output formats</h2>
+
+<p>The following output formats are available.</p>
+
+<h3>GeoJSON</h3>
+
+<p>A raw Who&rsquo;s On First (WOF) GeoJSON document. For example:</p>
+
+<p><img src="images/wof-browser-montreal-geojson.png" alt="" /></p>
+
+<p><code>http://localhost:8080/geojson/101736545</code></p>
+
+<h3>HTML</h3>
+
+<p>A responsive HTML table and map for a given WOF ID. For example:</p>
+
+<p><img src="images/wof-browser-montreal-html.png" alt="" /></p>
+
+<p><code>http://localhost:8080/id/101736545</code></p>
+
+<h3>PNG</h3>
+
+<p>A PNG-encoded representation of the geometry for a given WOF ID. For example:</p>
+
+<p><img src="images/wof-browser-montreal-png.png" alt="" /></p>
+
+<p><code>http://localhost:8080/png/101736545</code></p>
+
+<h3>&ldquo;select&rdquo;</h3>
+
+<p>A JSON-encoded slice of a Who&rsquo;s On First (WOF) GeoJSON document matching a query pattern. For example:</p>
+
+<p><img src="images/wof-browser-montreal-select.png" alt="" /></p>
+
+<p><code>http://localhost:8080/select/101736545?select=properties.wof:concordances</code></p>
+
+<p><code>select</code> parameters should conform to the <a href="https://github.com/tidwall/gjson/blob/master/SYNTAX.md">GJSON path syntax</a>.</p>
+
+<p>As of this writing multiple <code>select</code> parameters are not supported. <code>select</code> parameters that do not match the regular expression defined in the <code>-select-pattern</code> flag (at startup) will trigger an error.</p>
+
+<h3>SPR (Standard Places Response)</h3>
+
+<p>A JSON-encoded &ldquo;standard places response&rdquo; for a given WOF ID. For example:</p>
+
+<p><img src="images/wof-browser-montreal-spr.png" alt="" /></p>
+
+<p><code>http://localhost:8080/spr/101736545</code></p>
+
+<h3>SVG</h3>
+
+<p>An XML-encoded SVG representation of the geometry for a given WOF ID.  For example:</p>
+
+<p><img src="images/wof-browser-montreal-svg.png" alt="" /></p>
+
+<p><code>http://localhost:8080/svg/101736545</code></p>
+
+<h2>Tiles</h2>
+
+<p><code>go-whosonfirst-browser</code> uses <a href="https://nextzen.org/">Nextzen</a> vector data tiles and the <a href="https://github.com/tangrams/tangram">Tangram.js</a> rendering library for displaying maps. The Tangram code and styling assets are bundled with this tool and served directly but, by default, tile data is retrieved from the Nextzen servers.</p>
+
+<p>It is possible to cache those tiles locally using the <code>-proxy-tiles</code> flag at start up. The default cache for proxying tiles is an ephemiral in-memory cache but you can also specify an alternative <a href="https://github.com/whosonfirst/go-cache">go-cache</a> <code>cache.Cache</code> source using the <code>-proxy-tiles-cache</code> flag. Caches are discussed in detail below.</p>
+
+<p>You will need a <a href="https://developers.nextzen.org/">valid Nextzen API key</a> in order for map tiles to work. If no API key is present then the browser tool will display the SVG rendering for a place&rsquo;s geometry. For example:</p>
+
+<p><img src="images/wof-browser-montreal-map-svg.png" alt="" /></p>
+
+<h2>Data sources and Caches</h2>
+
+<p><code>go-whosonfirst-browser</code> uses the <a href="https://github.com/whosonfirst/go-reader">go-reader</a> <code>reader.Reader</code> and <a href="https://github.com/whosonfirst/go-cache">go-cache</a> <code>cache.Cache</code> interfaces for reading and caching data respectively. This enables the &ldquo;guts&rdquo; of the code to be developed and operate independently of any individual data source or cache.</p>
+
+<p>Readers and caches alike are instantiated using the <code>reader.NewReader</code> or <code>cache.NewCache</code> methods respectively. In both case the methods are passed a URI string indicating the type of instance to create. For example, to create a local filesystem based reader, you would write:</p>
+
+<pre><code>import (
+       &quot;github.com/whosonfirst/go-reader&quot;
+)
+
+r, _ := reader.NewReader(&quot;fs:///usr/local/data&quot;)
+fh, _ := r.Read(&quot;/123/456/78/12345678.geojson&quot;)
+</code></pre>
+
+<p>The base <code>go-reader</code> package defines a small number of default &ldquo;readers&rdquo;. Others types of readers are kept in separate packages and loaded as-need. Similar to the way the Go language <code>database/sql</code> package works these readers announce themselves to the <code>go-reader</code> package when they are initialized.</p>
+
+<p>For example, if you wanted to use a <a href="https://gocloud.dev/howto/blob/">Go Cloud</a> <code>Blob</code> reader you would do something like this:</p>
+
+<pre><code>import (
+       &quot;github.com/whosonfirst/go-reader&quot;
+       _ &quot;github.com/whosonfirst/go-reader-blob&quot;       
+)
+
+r, _ := reader.NewReader(&quot;s3://{S3_BUCKET}?region={S3_REGION}&amp;prefix=data&quot;)
+fh, _ := r.Read(&quot;/123/456/78/12345678.geojson&quot;)
+</code></pre>
+
+<p>The same principles appy to caches.</p>
+
+<p>The default <code>whosonfirst-browser</code> tool allows data sources to be specified as a localfile system or a remote HTTP(S) endpoint and caching sources as a local filesystem or an ephemiral in-memory lookup.</p>
+
+<p>This is what the code for default <code>whosonfirst-browser</code> tool looks like, with error handling omitted for the sake of brevity:</p>
+
+<pre><code>package main
+
+import (
+	&quot;context&quot;
+	_ &quot;github.com/whosonfirst/go-reader-http&quot;
+	&quot;github.com/whosonfirst/go-whosonfirst-browser&quot;
+)
+
+func main() {
+	ctx := context.Background()
+	browser.Start(ctx)
+}
+</code></pre>
+
+<p>The default settings for <code>go-whosonfirst-browser</code> are to fetch data from the <code>https://data.whosonfirst.org</code> servers and to cache those records in an ephemeral in-memory <a href="https://github.com/patrickmn/go-cache">go-cache</a> cache.</p>
+
+<p>If you wanted, instead, to read data from the local filesystem you would start the browser like this:</p>
+
+<pre><code>$&gt; bin/whosonfirst-browser -enable-all \
+	-reader-source 'fs:///usr/local/data/whosonfirst-data-admin-us/data' \
+	-nextzen-api-key {NEXTZEN_APIKEY}	
+</code></pre>
+
+<p>Or if you wanted to cache WOF records to the local filesystem you would start the browser like this:</p>
+
+<pre><code>$&gt; bin/whosonfirst-browser -enable-all \
+	-cache-source 'fs:///usr/local/cache/whosonfirst' \
+	-nextzen-api-key {NEXTZEN_APIKEY}	
+</code></pre>
+
+<p>The browser tool will work with any WOF-like data including records outside of the &ldquo;<a href="https://github.com/whosonfirst-data">core</a>&rdquo; dataset. For example this is how you might use the browser tool with the <a href="https://millsfield.sfomuseum.org/blog/2018/08/28/whosonfirst/">SFO Museum architecture dataset</a>:</p>
+
+<pre><code>$&gt; bin/whosonfirst-browser -enable-all \
+	-reader-source 'fs:///usr/local/data/sfomuseum-data-architecture/data' \
+	-nextzen-api-key {NEXTZEN_APIKEY}	
+</code></pre>
+
+<p>And then if you went to <code>http://localhost:8080/id/1159554801</code> in your browser you would see:</p>
+
+<p><img src="images/wof-browser-sfo.png" alt="" /></p>
+
+<p>The &ldquo;guts&rdquo; of the application live in the <code>browser.go</code> package. This is by design to make it easy (or easier, at least) to create derivative browser tools that use custom readers or caches.</p>
+
+<p>For example if you wanted to create a browser that read files using the <a href="https://gocloud.dev/howto/blob/">Go Cloud Blob package</a> you would write:</p>
+
+<pre><code>// cmd/blob-browser/main.go
+package main
+
+import (
+	&quot;context&quot;
+	_ &quot;github.com/whosonfirst/go-reader-blob&quot;
+	&quot;github.com/whosonfirst/go-whosonfirst-browser&quot;
+)
+
+func main() {
+	ctx := context.Background()
+	browser.Start(ctx)
+}
+</code></pre>
+
+<p>And then you would start the browser tool like this:</p>
+
+<pre><code>$&gt; bin/blob-browser -enable-all \
+	-reader-source 's3://{BUCKET}?region={REGION}' \
+	-nextzen-api-key {NEXTZEN_APIKEY}
+
+2019/12/18 08:44:15 Listening on http://localhost:8080
+</code></pre>
+
+<p>Or if you wanted to read data from a specific GitHub repository:</p>
+
+<pre><code>// cmd/github-browser/main.go
+package main
+
+import (
+	&quot;context&quot;
+	_ &quot;github.com/whosonfirst/go-reader-github&quot;
+	&quot;github.com/whosonfirst/go-whosonfirst-browser&quot;
+)
+
+func main() {
+	ctx := context.Background()
+	browser.Start(ctx)
+}
+</code></pre>
+
+<p>And then:</p>
+
+<pre><code>$&gt; bin/github-browser -enable-all \
+	-reader-source 'github://whosonfirst-data/whosonfirst-data-admin-ca'
+	-nextzen-api-key {NEXTZEN_APIKEY}
+	
+2019/12/18 08:44:15 Listening on http://localhost:8080
+</code></pre>
+
+<p>As of this writing the <code>browser.go</code> packages does everything <em>including</em> parsing command line flags. This is not ideal and flag parsing will be moved in to a separate method and be made extensible.</p>
+
+<h3>See also</h3>
+
+<ul>
+<li><a href="https://github.com/whosonfirst/go-reader#available-readers">List of available go-reader.Reader implementations</a></li>
+<li><a href="https://github.com/whosonfirst/go-cache#available-caches">List of available go-cache.Cache implementations</a></li>
+</ul>
+
+		</article>
+		</div>
+		</div>	
+		</div>	
+
+		<footer>
+			<nav class="navbar navbar-default navbar-bottom">
+				<div class="container">
+					
+					<ul class="nav navbar-nav navbar-right whosonfirst-footer">
+						<li><a href="/docs/contributing/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">contributing</a></li>
+						<li><a href="/docs/licenses/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">license</a></li>
+						<li><a href="https://twitter.com/alloftheplaces/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">twitter</a></li>
+					</ul>
+				</div>
+			</nav>
+		</footer>
+
+		
+		<script src="/javascript/jquery.min.js"></script>
+		
+		<script src="/javascript/bootstrap.min.js"></script>
+		<script src="/javascript/mapzen.whosonfirst.home.js"></script>
+		<script src="/javascript/mapzen.whosonfirst.subpage.js"></script>
+		
+		<script src="/javascript/highlightpack.js"></script>
+		<script>
+		  try {
+		  	hljs.initHighlightingOnLoad();
+		  } catch (e) {
+		  	console.log("HLJS", e);
+		  }
+		</script>
+	</body>
+</html>
+
