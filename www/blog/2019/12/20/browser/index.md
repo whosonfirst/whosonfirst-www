@@ -277,7 +277,28 @@ $> bin/github-browser -enable-all \
 
 As of this writing the `browser.go` packages does everything _including_ parsing command line flags. This is not ideal and flag parsing will be moved in to a separate method and be made extensible.
 
-### See also
+### go-whosonfirst-browser-sqlite
 
-* [List of available go-reader.Reader implementations](https://github.com/whosonfirst/go-reader#available-readers)
-* [List of available go-cache.Cache implementations](https://github.com/whosonfirst/go-cache#available-caches)
+* https://github.com/whosonfirst/go-whosonfirst-sqlite-features-index
+* https://github.com/whosonfirst/go-whosonfirst-browser-sqlite
+
+<pre>
+$> cd /usr/local/go-whosonfirst-sqlite-features-index
+$> go run -mod vendor cmd/wof-sqlite-index-features/main.go -all \
+	-dsn /usr/local/data/fr.db \
+	-mode 'git://' \
+	https://github.com/whosonfirst-data/whosonfirst-data-admin-fr.git
+
+...time passes
+</pre>
+
+<pre>
+$> cd /usr/local/go-whosonfirst-browser-sqlite
+$> go run cmd/whosonfirst-browser/main.go -enable-all \
+	-reader-source 'sql://sqlite3/geojson/id/body?dsn=/usr/local/data/fr.db' \
+	-nextzen-api-key {NEXTZEN_APIKEY}
+
+2019/12/19 13:12:26 Listening on http://localhost:8080
+</pre>
+
+![](images/wof-browser-sqlite-seine-et-marne.jpg)
