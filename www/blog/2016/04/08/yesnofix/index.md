@@ -43,7 +43,7 @@ Yes No Fix is a single Javascript library with a pair of public API methods. Eac
 
 Here's an example using the `names` section for [the city of San Francisco](https://whosonfirst.mapzen.com/spelunker/id/85922583/) from the Who's On First [Spelunker](https://whosonfirst.mapzen.com/spelunker/). The raw data looks like this:
 
-```
+<pre>
   "properties": {
     "name:chi_x_preferred":[
         "\u65e7\u91d1\u5c71"
@@ -72,9 +72,7 @@ Here's an example using the `names` section for [the city of San Francisco](http
         "SFC",
         "San Francisco City"
     ],
-
-    // and so on
-```    
+</pre>
 
 And the rendered version looks like this:
 
