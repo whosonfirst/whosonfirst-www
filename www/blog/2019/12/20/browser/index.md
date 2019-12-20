@@ -268,7 +268,7 @@ As of this writing the `browser.go` packages does everything _including_ parsing
 
 ### go-whosonfirst-browser-sqlite
 
-To make this idea a little more concrete we've created a separate [go-whosonfirst-browser-sqlite](https://github.com/whosonfirst/go-whosonfirst-browser-sqlite) package which is an instance of the Who's On First browser that reads all of its data from a [SQLite](https://sqlite.org/index.html) database.
+To make these ideas a little more concrete we've created a separate [go-whosonfirst-browser-sqlite](https://github.com/whosonfirst/go-whosonfirst-browser-sqlite) package which is an instance of the Who's On First browser that reads all of its data from a [SQLite](https://sqlite.org/index.html) database.
 
 This browser uses the still experimental [go-reader-database-sql](https://github.com/whosonfirst/go-reader-database-sql) reader package which is designed to work with anything that implements the Go languages [database/sql](https://golang.org/pkg/database/sql/) `DB` interface.
 

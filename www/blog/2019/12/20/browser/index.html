@@ -224,9 +224,15 @@
 
 <h2>For example</h2>
 
-<p>The default data source for the browser tool is to fetch records from the <code>data.whosonfirst.org</code> servers so all valid WOF records are available. The default caching source for the browser tool is an in-memory data structure that last only as long as the application is running. Other more persistent caching strategies, like local files on disk or to a remote host, are discussed below. To start the Who&rsquo;s On First browser you simply type:</p>
+<p>The default data source for the browser tool is to fetch records from the <code>data.whosonfirst.org</code> servers so all valid WOF records are available. The default caching source for the browser tool is an in-memory data structure that last only as long as the application is running. Other more persistent caching strategies, like local files on disk or to a remote host, are discussed below.</p>
 
-<pre><code>$&gt; bin/whosonfirst-browser -enable-all -nextzen-api-key {NEXTZEN_APIKEY}
+<p>To start the Who&rsquo;s On First browser you simply type:</p>
+
+<pre><code>$&gt; cd go-whosonfirst-browser
+
+$&gt; go build -mod vendor -o bin/whosonfirst-browser cmd/whosonfirst-browser/main.go
+
+$&gt; bin/whosonfirst-browser -enable-all -nextzen-api-key {NEXTZEN_APIKEY}
 
 2019/12/14 18:22:16 Listening on http://localhost:8080
 </code></pre>
@@ -421,7 +427,7 @@ func main() {
 
 <h3>go-whosonfirst-browser-sqlite</h3>
 
-<p>To make this idea a little more concrete we&rsquo;ve created a separate <a href="https://github.com/whosonfirst/go-whosonfirst-browser-sqlite">go-whosonfirst-browser-sqlite</a> package which is an instance of the Who&rsquo;s On First browser that reads all of its data from a <a href="https://sqlite.org/index.html">SQLite</a> database.</p>
+<p>To make these ideas a little more concrete we&rsquo;ve created a separate <a href="https://github.com/whosonfirst/go-whosonfirst-browser-sqlite">go-whosonfirst-browser-sqlite</a> package which is an instance of the Who&rsquo;s On First browser that reads all of its data from a <a href="https://sqlite.org/index.html">SQLite</a> database.</p>
 
 <p>This browser uses the still experimental <a href="https://github.com/whosonfirst/go-reader-database-sql">go-reader-database-sql</a> reader package which is designed to work with anything that implements the Go languages <a href="https://golang.org/pkg/database/sql/">database/sql</a> <code>DB</code> interface.</p>
 
