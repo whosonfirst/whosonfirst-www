@@ -224,13 +224,14 @@
 
 <h2>For example</h2>
 
+<p>The default data source for the browser tool is to fetch records from the <code>data.whosonfirst.org</code> servers so all valid WOF records are available. The default caching source for the browser tool is an in-memory data structure that last only as long as the application is running. Other more persistent caching strategies, like local files on disk or to a remote host, are discussed below. To start the Who&rsquo;s On First browser you simply type:</p>
+
 <pre><code>$&gt; bin/whosonfirst-browser -enable-all -nextzen-api-key {NEXTZEN_APIKEY}
+
 2019/12/14 18:22:16 Listening on http://localhost:8080
 </code></pre>
 
-<p>The default data source for the browser tool is to fetch records from the <code>data.whosonfirst.org</code> servers so all valid WOF records are available. The default caching source for the browser tool is an in-memory data structure that last only as long as the application is running. Other more persistent caching strategies, like local files on disk or to a remote host, are discussed below.</p>
-
-<p>Then if you visited <code>http://localhost:8080/id/101736545</code> in your web browser you would see this:</p>
+<p>And then when you visited <code>http://localhost:8080/id/101736545</code> in your web browser you would see this:</p>
 
 <p><img src="images/wof-browser-montreal-props.png" style="max-height:none !important" /></p>
 

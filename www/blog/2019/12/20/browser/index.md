@@ -54,14 +54,21 @@ It really should but today it does not. Hopefully it will, soon.
 
 ## For example
 
+The default data source for the browser tool is to fetch records from the `data.whosonfirst.org` servers so all valid WOF records are available. The default caching source for the browser tool is an in-memory data structure that last only as long as the application is running. Other more persistent caching strategies, like local files on disk or to a remote host, are discussed below.
+
+To start the Who's On First browser you simply type:
+
 ```
+$> cd go-whosonfirst-browser
+
+$> go build -mod vendor -o bin/whosonfirst-browser cmd/whosonfirst-browser/main.go
+
 $> bin/whosonfirst-browser -enable-all -nextzen-api-key {NEXTZEN_APIKEY}
+
 2019/12/14 18:22:16 Listening on http://localhost:8080
 ```
 
-The default data source for the browser tool is to fetch records from the `data.whosonfirst.org` servers so all valid WOF records are available. The default caching source for the browser tool is an in-memory data structure that last only as long as the application is running. Other more persistent caching strategies, like local files on disk or to a remote host, are discussed below.
-
-Then if you visited `http://localhost:8080/id/101736545` in your web browser you would see this:
+And then when you visited `http://localhost:8080/id/101736545` in your web browser you would see this:
 
 <img src="images/wof-browser-montreal-props.png" style="max-height:none !important" />
 
