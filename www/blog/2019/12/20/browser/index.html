@@ -179,13 +179,9 @@
 	       and tagged <span class="hey-look">golang</span>, <span class="hey-look">whosonfirst</span>, <span class="hey-look">wof</span> and <span class="hey-look">data</span></small>
 	  </h2>
 
-<p>In late 2017 when it became clear that <a href="https://whosonfirst.org/blog/2018/01/02/chapter-two/">Mapzen would shut down</a>&hellip;</p>
+<p><img src="images/wof-browser-montreal.png" style="max-height:none !important;" /></p>
 
-<p><a href="https://github.com/whosonfirst/go-whosonfirst-browser">go-whosonfirst-browser</a> is version two of the previously name <code>go-whosonfirst-static</code> package that we published in 2018. It is a tool written in the <a href="https://golang.org">Go programming language</a> for rendering known <a href="https://whosonfirst.org/">Who&rsquo;s On First</a> (WOF) IDs in a number of formats including HTML, SVG, PNG and GeoJSON.</p>
-
-<p><img src="images/wof-browser-montreal.png" alt="" /></p>
-
-<p>It uses <a href="https://getbootstrap.com/">Bootstrap</a> for HTML layouts and <a href="https://leafletjs.com/">Leaflet</a>, <a href="https://github.com/tangrams/tangram">Tangram.js</a> and <a href="https://nextzen.org">Nextzen</a> vector tiles for rendering maps. All of these dependencies are bundled with the tool and served locally. With the exception of the vector tiles (which can be cached) and a configurable data source there are no external dependencies.</p>
+<p><code>go-whosonfirst-browser</code> is a web application written in the <a href="https://golang.org">Go programming language</a> for rendering known <a href="https://whosonfirst.org/">Who&rsquo;s On First</a> (WOF) IDs in a number of formats including HTML, SVG, PNG and GeoJSON. It uses <a href="https://getbootstrap.com/">Bootstrap</a> for HTML layouts and <a href="https://leafletjs.com/">Leaflet</a>, <a href="https://github.com/tangrams/tangram">Tangram.js</a> and <a href="https://nextzen.org">Nextzen</a> vector tiles for rendering maps. All of these dependencies are bundled with the tool and served locally. With the exception of the vector tiles (which can be cached) and a configurable data source there are no external dependencies. It is designed to work locally and remotely, including other people&rsquo;s cloud services, with a variety of Who&rsquo;s On First datasources.</p>
 
 <p>Some things this tool is <em>not</em>:</p>
 
@@ -228,15 +224,15 @@
 
 <h2>For example</h2>
 
-<pre><code>$&gt; bin/browser -enable-all -nextzen-api-key {NEXTZEN_APIKEY}
+<pre><code>$&gt; bin/whosonfirst-browser -enable-all -nextzen-api-key {NEXTZEN_APIKEY}
 2019/12/14 18:22:16 Listening on http://localhost:8080
 </code></pre>
 
-<p>[WORDS ABOUT DEFAULTS]</p>
+<p>The default data source for the browser tool is to fetch records from the <code>data.whosonfirst.org</code> servers so all valid WOF records are available. The default caching source for the browser tool is an in-memory data structure that last only as long as the application is running. Other more persistent caching strategies, like local files on disk or to a remote host, are discussed below.</p>
 
 <p>Then if you visited <code>http://localhost:8080/id/101736545</code> in your web browser you would see this:</p>
 
-<p><img src="images/wof-browser-montreal-props.png" alt="" /></p>
+<p><img src="images/wof-browser-montreal-props.png" style="max-height:none !important" /></p>
 
 <p>By default Who&rsquo;s On First (WOF) properties are rendered as nested (and collapsed) trees but there is are handy <code>show raw</code> and <code>show pretty</code> toggles for viewing the raw WOF GeoJSON data.</p>
 
@@ -246,55 +242,41 @@
 
 <h3>GeoJSON</h3>
 
-<p>A raw Who&rsquo;s On First (WOF) GeoJSON document. For example:</p>
+<p>A raw Who&rsquo;s On First (WOF) GeoJSON document. For example if you visited <code>http://localhost:8080/geojson/101736545</code> you would see this:</p>
 
 <p><img src="images/wof-browser-montreal-geojson.png" alt="" /></p>
 
-<p><code>http://localhost:8080/geojson/101736545</code></p>
-
 <h3>HTML</h3>
 
-<p>A responsive HTML table and map for a given WOF ID. For example:</p>
+<p>A responsive HTML table and map for a given WOF ID. For example if you visited <code>http://localhost:8080/id/101736545</code> you would see this:</p>
 
 <p><img src="images/wof-browser-montreal-html.png" alt="" /></p>
 
-<p><code>http://localhost:8080/id/101736545</code></p>
-
 <h3>PNG</h3>
 
-<p>A PNG-encoded representation of the geometry for a given WOF ID. For example:</p>
+<p>A PNG-encoded representation of the geometry for a given WOF ID. For example if you visited <code>http://localhost:8080/png/101736545</code> you would see this:</p>
 
 <p><img src="images/wof-browser-montreal-png.png" alt="" /></p>
 
-<p><code>http://localhost:8080/png/101736545</code></p>
-
 <h3>&ldquo;select&rdquo;</h3>
 
-<p>A JSON-encoded slice of a Who&rsquo;s On First (WOF) GeoJSON document matching a query pattern. For example:</p>
+<p>A JSON-encoded slice of a Who&rsquo;s On First (WOF) GeoJSON document matching a query pattern. For example if you visited <code>http://localhost:8080/select/101736545?select=properties.wof:concordances</code> you would see this:</p>
 
 <p><img src="images/wof-browser-montreal-select.png" alt="" /></p>
-
-<p><code>http://localhost:8080/select/101736545?select=properties.wof:concordances</code></p>
-
-<p><code>select</code> parameters should conform to the <a href="https://github.com/tidwall/gjson/blob/master/SYNTAX.md">GJSON path syntax</a>.</p>
 
 <p>As of this writing multiple <code>select</code> parameters are not supported. <code>select</code> parameters that do not match the regular expression defined in the <code>-select-pattern</code> flag (at startup) will trigger an error.</p>
 
 <h3>SPR (Standard Places Response)</h3>
 
-<p>A JSON-encoded &ldquo;standard places response&rdquo; for a given WOF ID. For example:</p>
+<p>A JSON-encoded &ldquo;standard places response&rdquo; for a given WOF ID. For example if you visited <code>http://localhost:8080/spr/101736545</code> you would see this:</p>
 
 <p><img src="images/wof-browser-montreal-spr.png" alt="" /></p>
 
-<p><code>http://localhost:8080/spr/101736545</code></p>
-
 <h3>SVG</h3>
 
-<p>An XML-encoded SVG representation of the geometry for a given WOF ID.  For example:</p>
+<p>An XML-encoded SVG representation of the geometry for a given WOF ID.  For example if you visited <code>http://localhost:8080/svg/101736545</code> you would see this:</p>
 
 <p><img src="images/wof-browser-montreal-svg.png" alt="" /></p>
-
-<p><code>http://localhost:8080/svg/101736545</code></p>
 
 <h2>Tiles</h2>
 
@@ -317,25 +299,25 @@
 )
 
 r, _ := reader.NewReader(&quot;fs:///usr/local/data&quot;)
-fh, _ := r.Read(&quot;/123/456/78/12345678.geojson&quot;)
+fh, _ := r.Read(&quot;123/456/78/12345678.geojson&quot;)
 </code></pre>
 
-<p>The base <code>go-reader</code> package defines a small number of default &ldquo;readers&rdquo;. Others types of readers are kept in separate packages and loaded as-need. Similar to the way the Go language <code>database/sql</code> package works these readers announce themselves to the <code>go-reader</code> package when they are initialized.</p>
+<p>The base <code>go-reader</code> package defines a small number of built-in &ldquo;readers&rdquo; like the one for reading from the local filesystem. Others types of readers are kept in separate packages and loaded as-need. Similar to the way the Go language <code>database/sql</code> package works these readers announce themselves to the <code>go-reader</code> package when they are initialized.</p>
 
-<p>For example, if you wanted to use a <a href="https://gocloud.dev/howto/blob/">Go Cloud</a> <code>Blob</code> reader you would do something like this:</p>
+<p>For example, if you wanted to use a <a href="https://gocloud.dev/howto/blob/">Go Cloud</a> <code>Blob</code> reader, to fetch data from a cloud provider&rsquo;s storage system, you would do something like this:</p>
 
 <pre><code>import (
        &quot;github.com/whosonfirst/go-reader&quot;
        _ &quot;github.com/whosonfirst/go-reader-blob&quot;       
 )
 
-r, _ := reader.NewReader(&quot;s3://{S3_BUCKET}?region={S3_REGION}&amp;prefix=data&quot;)
-fh, _ := r.Read(&quot;/123/456/78/12345678.geojson&quot;)
+r, _ := reader.NewReader(&quot;s3://{S3_BUCKET}?region={S3_REGION}&quot;)
+fh, _ := r.Read(&quot;123/456/78/12345678.geojson&quot;)
 </code></pre>
 
 <p>The same principles appy to caches.</p>
 
-<p>The default <code>whosonfirst-browser</code> tool allows data sources to be specified as a localfile system or a remote HTTP(S) endpoint and caching sources as a local filesystem or an ephemiral in-memory lookup.</p>
+<p>The default <code>whosonfirst-browser</code> tool allows data sources to be specified as a local filesystem or a remote HTTP(S) endpoint and caching sources as a local filesystem or an ephemiral in-memory lookup table.</p>
 
 <p>This is what the code for default <code>whosonfirst-browser</code> tool looks like, with error handling omitted for the sake of brevity:</p>
 
@@ -438,13 +420,30 @@ func main() {
 
 <h3>go-whosonfirst-browser-sqlite</h3>
 
-<ul>
-<li><a href="https://github.com/whosonfirst/go-whosonfirst-sqlite-features-index">https://github.com/whosonfirst/go-whosonfirst-sqlite-features-index</a></li>
-<li><a href="https://github.com/whosonfirst/go-whosonfirst-browser-sqlite">https://github.com/whosonfirst/go-whosonfirst-browser-sqlite</a></li>
-</ul>
+<p>To make this idea a little more concrete we&rsquo;ve created a separate <a href="https://github.com/whosonfirst/go-whosonfirst-browser-sqlite">go-whosonfirst-browser-sqlite</a> package which is an instance of the Who&rsquo;s On First browser that reads all of its data from a <a href="https://sqlite.org/index.html">SQLite</a> database.</p>
+
+<p>This browser uses the still experimental <a href="https://github.com/whosonfirst/go-reader-database-sql">go-reader-database-sql</a> reader package which is designed to work with anything that implements the Go languages <a href="https://golang.org/pkg/database/sql/">database/sql</a> <code>DB</code> interface.</p>
+
+<p>The instantiate a <code>database-sql</code> reader you pass it a URI string in the form of:</p>
+
+<pre><code>&quot;sql://&quot; + {DATABASE_DRIVER} + &quot;/&quot; + {DATABASE_TABLE} + &quot;/&quot; + {DATABASE_KEY} + &quot;/&quot; {DATABASE_VALUE} + &quot;?dsn=&quot; + {DATABASE_DSN}
+</code></pre>
+
+<p>Or:</p>
+
+<pre><code>sql://sqlite/geojson/id/body?dsn=/usr/local/data/fr.db
+</code></pre>
+
+<p>Which is interpreted by the reader as:</p>
+
+<pre><code>&quot;SELECT body FROM geojson WHERE id = {WOF_ID}&quot; WITH sqlite DATABASE /usr/local/data/fr.db
+</code></pre>
+
+<p>The <code>database-sql</code> reader is designed to be agnostic about databases and database tables but to complete the example let&rsquo;s try using it with a SQLite database produced by the <a href="https://github.com/whosonfirst/go-whosonfirst-sqlite-features-index">go-whosonfirst-sqlite-features-index</a> package. The following commands will produce a <a href="https://dist.whosonfirst.org/sqlite/">WOF SQLite distribution</a> database for administrative data in France using the <a href="https://github.com/whosonfirst-data/whosonfirst-data-admin-fr">whosonfirst-data-admin-fr</a> GitHub repository as its data source:</p>
 
 <pre>
 $> cd /usr/local/go-whosonfirst-sqlite-features-index
+
 $> go run -mod vendor cmd/wof-sqlite-index-features/main.go -all \
 	-dsn /usr/local/data/fr.db \
 	-mode 'git://' \
@@ -453,8 +452,11 @@ $> go run -mod vendor cmd/wof-sqlite-index-features/main.go -all \
 ...time passes
 </pre>
 
+<p>This creates a new SQLite database in <code>/usr/local/data/fr.db</code> which you can then use as a database for your SQLite-enabled Who&rsquo;s On First browser like this:</p>
+
 <pre>
 $> cd /usr/local/go-whosonfirst-browser-sqlite
+
 $> go run cmd/whosonfirst-browser/main.go -enable-all \
 	-reader-source 'sql://sqlite3/geojson/id/body?dsn=/usr/local/data/fr.db' \
 	-nextzen-api-key {NEXTZEN_APIKEY}
@@ -462,7 +464,15 @@ $> go run cmd/whosonfirst-browser/main.go -enable-all \
 2019/12/19 13:12:26 Listening on http://localhost:8080
 </pre>
 
-<p><img src="images/wof-browser-sqlite-seine-et-marne.jpg" alt="" /></p>
+<p>And then when you visit <code>http://localhost:8080/id/85683385</code> you should see this:</p>
+
+<p><img src="images/wof-browser-sqlite-seine-et-marne.jpg" style="max-height: none !important;" /></p>
+
+<p>As of this writing the Who&rsquo;s On First browser only supports a single &ldquo;reader&rdquo; source and &ldquo;combined&rdquo; SQLite distributions for WOF data (for example <em>all</em> administrative in a single database rather per-country databases) are not available. If you want to create your own combined databases <a href="https://whosonfirst.org/blog/authors/stepps00/">Stephen Epps</a> has written a handy <a href="https://github.com/whosonfirst/whosonfirst-cookbook/blob/master/how_to/building_a_combined_distribution.md">Bundling &ldquo;combined&rdquo; SQLite distribution files</a> guide.</p>
+
+<p>In late 2017 when it became clear that <a href="https://whosonfirst.org/blog/2018/01/02/chapter-two/">Mapzen would shut down</a>&hellip;</p>
+
+<p><a href="https://github.com/whosonfirst/go-whosonfirst-browser">go-whosonfirst-browser</a> is version two of the previously name <code>go-whosonfirst-static</code> package that we published in 2018.</p>
 
 		</article>
 		</div>
