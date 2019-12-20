@@ -5,7 +5,7 @@ published: false
 date: 2019-12-20
 permalink: /blog/2019/12/20/browser/
 category: blog
-excerpt: "I've started joking that a big part of my work, these days, is figuring out <q>how to invite cloud providers over for dinner but not let them stay the night</q>. You can see some of the results of those efforts in version two of the Who's On First browser."
+excerpt: "go-whosonfirst-browser is a web application written in the Go programming language for rendering known Who’s On First (WOF) IDs in a number of formats including HTML, SVG, PNG and GeoJSON. It uses Bootstrap for HTML layouts and Leaflet, Tangram.js and Nextzen vector tiles for rendering maps. All of these dependencies are bundled with the tool and served locally. With the exception of the vector tiles (which can be cached) and a configurable data source there are no external dependencies. It is designed to work locally and remotely with a variety of Who’s On First datasources."
 authors: [thisisaaronland]
 image: "images/globe.jpg"
 tag: [golang,whosonfirst,wof,data]
