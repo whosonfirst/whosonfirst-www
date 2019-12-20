@@ -24,7 +24,7 @@
 		<meta property="og:type" content="article" />
 		<meta property="og:site_name" content="Who's On First" />
 		<meta property="og:title" content="Who&#39;s On First Browser (v2)" />
-		<meta property="og:description" content="Who&#39;s On First Changelog - November 2019" />
+		<meta property="og:description" content="I&#39;ve started joking that a big part of my work, these days, is figuring out &lt;q&gt;how to invite cloud providers over for dinner but not let them stay the night&lt;/q&gt;. You can see some of the results of those efforts in version two of the Who&#39;s On First browser." />
 		<meta property="og:image" content="https://www.whosonfirst.org/blog/2019/12/20/browser/images/globe.jpg" />
 		
 		<meta property="twitter:card" value="summary" />
@@ -32,7 +32,7 @@
 		<meta property="twitter:creator" content="@alloftheplaces" />
 		<meta property="twitter:url" content="https://www.whosonfirst.org/blog/2019/12/20/browser/" />
 		<meta property="twitter:title" content="Who&#39;s On First Browser (v2)" />
-		<meta property="twitter:description" content="Who&#39;s On First Changelog - November 2019" />
+		<meta property="twitter:description" content="I&#39;ve started joking that a big part of my work, these days, is figuring out &lt;q&gt;how to invite cloud providers over for dinner but not let them stay the night&lt;/q&gt;. You can see some of the results of those efforts in version two of the Who&#39;s On First browser." />
 		<meta property="twitter:image" content="https://www.whosonfirst.org/blog/2019/12/20/browser/images/globe.jpg" />
 		
 
@@ -470,9 +470,25 @@ $> go run cmd/whosonfirst-browser/main.go -enable-all \
 
 <p>As of this writing the Who&rsquo;s On First browser only supports a single &ldquo;reader&rdquo; source and &ldquo;combined&rdquo; SQLite distributions for WOF data (for example <em>all</em> administrative in a single database rather per-country databases) are not available. If you want to create your own combined databases <a href="https://whosonfirst.org/blog/authors/stepps00/">Stephen Epps</a> has written a handy <a href="https://github.com/whosonfirst/whosonfirst-cookbook/blob/master/how_to/building_a_combined_distribution.md">Bundling &ldquo;combined&rdquo; SQLite distribution files</a> guide.</p>
 
-<p>In late 2017 when it became clear that <a href="https://whosonfirst.org/blog/2018/01/02/chapter-two/">Mapzen would shut down</a>&hellip;</p>
+<hr />
 
-<p><a href="https://github.com/whosonfirst/go-whosonfirst-browser">go-whosonfirst-browser</a> is version two of the previously name <code>go-whosonfirst-static</code> package that we published in 2018.</p>
+<p>At the top of this blog post I mentioned that <a href="https://github.com/whosonfirst/go-whosonfirst-browser">go-whosonfirst-browser</a> is version two of the previously named <code>go-whosonfirst-static</code> package that we first published in 2018. In late 2017 when it became clear that <a href="https://whosonfirst.org/blog/2018/01/02/chapter-two/">Mapzen would shut down</a> everyone began to think about how and where the various projects they worked on would survive. At the time I wrote:</p>
+
+<blockquote>
+<p>There is also in-progress work to build an on-demand service for publishing static renderings of Who’s On First documents. These include HTML, SVG and “standard place response” (or SPR) JSON responses. These static renderings are meant to serve as a bridge between the raw data files and services like the Spelunker or the API and live under the places.whosonfirst.org domain.</p>
+</blockquote>
+
+<p>The <code>places.whosonfirst.org</code> service isn&rsquo;t running as I write this because we stood up a new instance of the <a href="https://spelunker.whosonfirst.org">Who&rsquo;s On First Spelunker</a> and partly because I was a little traumatized by all the simple-but-not-really-simple hoop-jumping needed to get a web service, with no external dependencies, running using AWS&rsquo;s Lambda service.</p>
+
+<p>I had the opportunity to revist some of these ideas recently which are documented in the <a href="https://millsfield.sfomuseum.org/blog/2019/11/04/placeholder/">Using the Placeholder Geocoder at SFO Museum </a> blog post and I decided to see whether that lesson could be applied to Who&rsquo;s On First. In that blog post I wrote:</p>
+
+<blockquote>
+<p>There’s a longer discussion that needs to be had sector-wide about &hellip; “vendor lock-in” and the inability of an institution to wiggle free of vendor lock-in once it happens. Our goal is to understand the ways we need develop and deploy the technical scaffolding to service our specific efforts without letting the nuances of any given service provider become a finger trap.</p>
+</blockquote>
+
+<p>I&rsquo;ve started joking that a big part of my work, these days, is figuring out <q>how to invite cloud providers over for dinner but not let them stay the night</q>. You can see some of the results of those efforts in version two of the Who&rsquo;s On First browser.</p>
+
+<p>We aren&rsquo;t running the browser as a public-facing tool right but we might and we could but more importantly you can too. The absence of search or any kind of table of contents limits the tool&rsquo;s immediate usefulness but the functionality it provides now – stable representations for identifiers in a number of formats with links to all the other identifiers – is a good place to start.</p>
 
 		</article>
 		</div>

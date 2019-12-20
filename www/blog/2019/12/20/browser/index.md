@@ -5,7 +5,7 @@ published: false
 date: 2019-12-20
 permalink: /blog/2019/12/20/browser/
 category: blog
-excerpt: "Who's On First Changelog - November 2019"
+excerpt: "I've started joking that a big part of my work, these days, is figuring out <q>how to invite cloud providers over for dinner but not let them stay the night</q>. You can see some of the results of those efforts in version two of the Who's On First browser."
 authors: [thisisaaronland]
 image: "images/globe.jpg"
 tag: [golang,whosonfirst,wof,data]
@@ -317,6 +317,16 @@ As of this writing the Who's On First browser only supports a single "reader" so
 
 ---
 
-In late 2017 when it became clear that [Mapzen would shut down](https://whosonfirst.org/blog/2018/01/02/chapter-two/)...
+At the top of this blog post I mentioned that [go-whosonfirst-browser](https://github.com/whosonfirst/go-whosonfirst-browser) is version two of the previously named `go-whosonfirst-static` package that we first published in 2018. In late 2017 when it became clear that [Mapzen would shut down](https://whosonfirst.org/blog/2018/01/02/chapter-two/) everyone began to think about how and where the various projects they worked on would survive. At the time I wrote:
 
-[go-whosonfirst-browser](https://github.com/whosonfirst/go-whosonfirst-browser) is version two of the previously name `go-whosonfirst-static` package that we published in 2018. 
+> There is also in-progress work to build an on-demand service for publishing static renderings of Who’s On First documents. These include HTML, SVG and “standard place response” (or SPR) JSON responses. These static renderings are meant to serve as a bridge between the raw data files and services like the Spelunker or the API and live under the places.whosonfirst.org domain.
+
+The `places.whosonfirst.org` service isn't running as I write this because we stood up a new instance of the [Who's On First Spelunker](https://spelunker.whosonfirst.org) and partly because I was a little traumatized by all the simple-but-not-really-simple hoop-jumping needed to get a web service, with no external dependencies, running using AWS's Lambda service.
+
+I had the opportunity to revist some of these ideas recently which are documented in the [Using the Placeholder Geocoder at SFO Museum ](https://millsfield.sfomuseum.org/blog/2019/11/04/placeholder/) blog post and I decided to see whether that lesson could be applied to Who's On First. In that blog post I wrote:
+
+> There’s a longer discussion that needs to be had sector-wide about ... “vendor lock-in” and the inability of an institution to wiggle free of vendor lock-in once it happens. Our goal is to understand the ways we need develop and deploy the technical scaffolding to service our specific efforts without letting the nuances of any given service provider become a finger trap.
+
+I've started joking that a big part of my work, these days, is figuring out <q>how to invite cloud providers over for dinner but not let them stay the night</q>. You can see some of the results of those efforts in version two of the Who's On First browser.
+
+We aren't running the browser as a public-facing tool right but we might and we could but more importantly you can too. The absence of search or any kind of table of contents limits the tool's immediate usefulness but the functionality it provides now – stable representations for identifiers in a number of formats with links to all the other identifiers – is a good place to start.
