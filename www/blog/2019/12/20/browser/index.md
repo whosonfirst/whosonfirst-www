@@ -24,7 +24,7 @@ At least not yet.
 
 The principle advantage of migrating Spelunker functionality to this package is that it does not have any external dependencies and has support for multiple data sources and caches and can be pre-compiled in to a standalone binary tool. The principle disadvantage would be that experimenting and developing code and functionality in Python (used by the existing Spelunker) has a lower barrier to entry than doing the same in Go (used by this package).
 
-For the time being though they are separate beasts.
+For the time being they are separate beasts.
 
 ### It is not a search engine.
 
