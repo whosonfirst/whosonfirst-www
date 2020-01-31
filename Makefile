@@ -119,7 +119,7 @@ download-content:
 	@sed -E 's/<h([1-9])><a id="user-content-([^"]+)[^>]*><\/a>/<h\1 id="\2">/g' temp_article.html > temp_content.html
 	@sed -i -e -E 's/".+\/master\/images\//"\/images\//' temp_content.html
 	@cp temp_content.html content/$(OUT)
-	@rm temp*
+	@rm temp_*.html
 
 build-page-content:
 	@cp content/$(CONTENT) page-content.html
