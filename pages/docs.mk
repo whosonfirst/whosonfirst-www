@@ -109,7 +109,7 @@ docs-download-contributing:
 	      download-content
 
 docs-download-licenses:
-	@make URL=$(COOKBOOK_REPO)definition/data_licenses.md \
+	@make URL=$(SOURCES_REPO)LICENSE.md \
 	      OUT=docs/licenses.html \
 	      download-content
 
