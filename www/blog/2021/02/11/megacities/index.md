@@ -11,6 +11,8 @@ image: "images/jakarta.jpg"
 tag: [megacity,locality,whosonfirst,wof,data]
 ---
 
+<img src="images/jakarta.jpg" style="max-height:none !important;" />
+
 ## Updating our Megacity Localities
 
 In 2019, Who's On First announced the addition of comprehensive global coverage at the locality placetype; read more about that work [here](https://www.whosonfirst.org/blog/2019/05/13/geonames/). Building on this locality work, we've recently reviewed some of these more populous localities, adding hand-curated geometries, new name translations, and concordances.
@@ -19,7 +21,7 @@ In 2019, Who's On First announced the addition of comprehensive global coverage 
 
 Represented by the [`wof:megacity`](https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/wof/megacity.json) property, these Who’s On First records represent the world's most populated cities. According to [Wikipedia](https://en.wikipedia.org/wiki/Megacity), a "megacity is a very large city, typically with a population of more than 10 million people." Other sources suggest megacities are defined as having populations lower, around 5 million. While Who's On First does not have a population cut-off for how these megacities are defined, we have relied on Natural Earth's [Populated Places](http://www.naturalearthdata.com/downloads/10m-cultural-vectors/) file for this work. Natural Earth identifies 590 global populated places, each identified with a `MEGACITY` attribute, name translations, and concordances.
 
-Megacities are important to Who’s On First because these densely populated, global cities have particular significance in urbanization; according to the [World Bank](https://data.worldbank.org/indicator/EN.URB.MCTY.TL.ZS), 1 in 4 people now live in cities with populations over one million. Maintaining accurate, localized names and detailed geometries for these places will not only help our end users, but also help geocoding and map services that rely on Who’s On First data.
+These large megacities are important to Who’s On First because these densely populated, global cities have particular significance in urbanization; according to the United Nations, nearly 60% of the world's population lives in urban areas today, growing to nearly 70% in 2050 ([source](https://web.archive.org/web/20210129003633/https://www.un.org/development/desa/en/news/population/2018-revision-of-world-urbanization-prospects.html)); nearly 25% of the world's population lives in cities with populations over one million ([source](https://web.archive.org/web/20210210102954/https://www.un.org/en/events/citiesday/assets/pdf/the_worlds_cities_in_2018_data_booklet.pdf)). Maintaining accurate, localized names and detailed geometries for populous localities will not only help our end users, but also help geocoding and map services that rely on Who’s On First data.
 
 Some examples of these megacities, displayed in Who’s On First’s Spelunker tool:
 
@@ -78,6 +80,6 @@ You can browse the megacity records via Who's On First's [Spelunker tool](https:
 
 ## What’s Next
 
-While we’ve taken time to update administrative records with new geometries, properties, and concordances, we’ve also been quite busy updating and iterating on Who’s On First’s spatial tools. Take a look at our [go-whosonfirst-spatial](https://github.com/whosonfirst/go-whosonfirst-spatial] and [go-whosonfirst-spatial-sqlite](https://github.com/whosonfirst/go-whosonfirst-spatial-sqlite] repositories for details.
+While we’ve taken time to update administrative records with new geometries, properties, and concordances, we’ve also been quite busy updating and iterating on Who’s On First’s spatial tools. Take a look at our [go-whosonfirst-spatial](https://github.com/whosonfirst/go-whosonfirst-spatial] and [go-whosonfirst-spatial-sqlite](https://github.com/whosonfirst/go-whosonfirst-spatial-sqlite] repositories for details. The new megacity geometries we've added will be excellent candidates for these new spatial tools.
 
 _Photo Credit: [Stenly Lam, flickr](https://www.flickr.com/photos/stenlylam/5635983463/in/photolist-9A2TwF-5VmgKL-5RXnLp-7Ez8om-7bFLvz-8hhYce-7bKynJ-7bFLWH-7bFKT6-7bFLpi-7bFLLi-7bKzPj-7bKyNj-7bKAp9-7bFLc6-5WU1in-6hNwpM-6H8Viw-6hSEp1-vdpmMA-aDeQNG-9RkctE-9Rkbvu-Cs2BPJ-8acvrv-8acwpe-7qNjDw-8acxh6-9RkbX9-8acw7c-8acwue-bX2T26-bX2U6D-bX2Tht-bX2QS6-bX2Ump-8afLmm-bX2TYk-5Y8yM1-bX2Rfc-bX2UcH-cepdjo-bX2QMH-7ditKg-8afNUq-qMtQvP-8aczgB-cepeCh-cepesC-8afJCL)_
