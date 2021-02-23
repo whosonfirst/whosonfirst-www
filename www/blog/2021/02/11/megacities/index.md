@@ -49,7 +49,7 @@ Once these populated places were matched to current Who's On First records, a si
 
 In cases where Who's On First only maintained a `Point` geometry for one of these populated places, we were interested in creating a new `Polygon` geometry. Because many of these localities are represented at more than one placetype in Who's On First - Toronto, for example, is represented as both a [`county`](https://spelunker.whosonfirst.org/id/890457465/), and [`locality`](https://spelunker.whosonfirst.org/id/101735835/) - we were able to use existing "parent" geometries of some of these localities to create (or re-use as) new megacity geometries. In other cases, we hand-curated new geometries using QGIS software.
 
-Because megacities often spread over a larger metropolitan area, we are creating polygons for the “core” cities (which can sometimes be a handful of cities), but we’re exploring creating metropolitan area polygons, too. Please reach out to us if you're interested in those.
+Because megacities often spread over a larger metropolitan area, we are creating polygons for the “core” cities (which can sometimes be a handful of cities), but we’re exploring creating metropolitan area polygons, too. Please reach out to us via [a new issue](https://github.com/whosonfirst-data/whosonfirst-data/issues/new) if you are interested in this work.
 
 ## A few examples of these new geometries:
 
@@ -84,6 +84,6 @@ You can browse the megacity records via Who's On First's [Spelunker tool](https:
 
 ## What’s Next
 
-While we’ve taken time to update administrative records with new geometries, properties, and concordances, we’ve also been quite busy updating and iterating on Who’s On First’s  various tools. Take a look at our [go-whosonfirst-spatial](https://github.com/whosonfirst/go-whosonfirst-spatial] and [go-whosonfirst-spatial-sqlite](https://github.com/whosonfirst/go-whosonfirst-spatial-sqlite] repositories for details. The new megacity geometries we've added will be excellent candidates for new and in-progress spatial tools.
+While we’ve taken time to update administrative records with new geometries, properties, and concordances, we’ve also been quite busy updating and iterating on Who’s On First’s  various tools. Take a look at our [go-whosonfirst-spatial](https://github.com/whosonfirst/go-whosonfirst-spatial) and [go-whosonfirst-spatial-sqlite](https://github.com/whosonfirst/go-whosonfirst-spatial-sqlite) repositories for details. The new megacity geometries we've added will be excellent candidates for new and in-progress spatial tools.
 
 _Photo Credit: [Stenly Lam, flickr](https://www.flickr.com/photos/stenlylam/5635983463/in/photolist-9A2TwF-5VmgKL-5RXnLp-7Ez8om-7bFLvz-8hhYce-7bKynJ-7bFLWH-7bFKT6-7bFLpi-7bFLLi-7bKzPj-7bKyNj-7bKAp9-7bFLc6-5WU1in-6hNwpM-6H8Viw-6hSEp1-vdpmMA-aDeQNG-9RkctE-9Rkbvu-Cs2BPJ-8acvrv-8acwpe-7qNjDw-8acxh6-9RkbX9-8acw7c-8acwue-bX2T26-bX2U6D-bX2Tht-bX2QS6-bX2Ump-8afLmm-bX2TYk-5Y8yM1-bX2Rfc-bX2UcH-cepdjo-bX2QMH-7ditKg-8afNUq-qMtQvP-8aczgB-cepeCh-cepesC-8afJCL)_
