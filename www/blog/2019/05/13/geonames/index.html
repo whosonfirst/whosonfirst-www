@@ -315,9 +315,10 @@ isHistoric        : '1', if this alternate name is historic and was used in the 
 <li><strong>Any new concordance values</strong></li>
 <li><strong>Any <a href="https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/edtf"><code>edtf</code></a> properties, as necessary</strong></li>
 <li><strong>Various population indicators, if GeoNames maintains population data for a given place</strong></li>
-<li><strong>And finally, top-level <a href="https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/gn">GeoNames</a> properties:</strong>
-<code>
-_wof property_ = _gn property_
+<li><strong>And finally, top-level <a href="https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/gn">GeoNames</a> properties:</strong></li>
+</ul>
+
+<pre><code>_wof property_ = _gn property_
 `gn:geonameid` = geonameid
 `gn:name` = name
 `gn:asciiname` = asciiname
@@ -336,8 +337,7 @@ _wof property_ = _gn property_
 `gn:dem` = dem
 `gn:timezone` = timezone
 `gn:modification_date` = modification_date
-</code></li>
-</ul>
+</code></pre>
 
 <p>These properties (along with the GeoNames-sourced properties) gave us the building blocks to then export this GeoJSON file using the handy <a href="https://github.com/whosonfirst/py-mapzen-whosonfirst-export/blob/master/scripts/wof-exportify">exportify tool</a> to create and validate a Who&rsquo;s On First record with the minimum viable properties.</p>
 

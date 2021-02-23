@@ -1,0 +1,294 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="x-ua-compatible" content="ie=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Who’s On First | Megacities</title>
+		<meta name="description" content="Who’s on First is a gazetteer of places." />
+		<link rel="apple-touch-icon" href="/images/favicons/apple-touch-icon.png" sizes="180x180" />
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-16x16.png" sizes="16x16" />
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-32x32.png" sizes="32x32" />
+		<link rel="manifest" href="/images/favicons/manifest.json" />
+		<link rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg" color="#2C1E3F" />
+		<link rel="stylesheet" href="/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="/css/mapzen.whosonfirst.css" />
+		
+		<link rel="stylesheet" href="/css/styles/grayscale.css" />
+
+		<link rel="alternate" type="application/atom+xml" title="Who's On First Atom feed" href="/blog/atom_10.xml"/>		
+		<link rel="alternate" type="application/rss+xml" title="Who's On First RSS 2.0 feed" href="/blog/rss_20.xml"/>
+
+		
+		<meta property="og:type" content="article" />
+		<meta property="og:site_name" content="Who's On First" />
+		<meta property="og:title" content="Megacities" />
+		<meta property="og:description" content="Building on the global locality coverage in Who&#39;s On, we&#39;ve updated our megacities." />
+		<meta property="og:image" content="https://www.whosonfirst.org/blog/2021/02/11/megacities/images/jakarta.jpg" />
+		
+		<meta property="twitter:card" value="summary" />
+		<meta property="twitter:site" content="@alloftheplaces" />
+		<meta property="twitter:creator" content="@alloftheplaces" />
+		<meta property="twitter:url" content="https://www.whosonfirst.org/blog/2021/02/11/megacities/" />
+		<meta property="twitter:title" content="Megacities" />
+		<meta property="twitter:description" content="Building on the global locality coverage in Who&#39;s On, we&#39;ve updated our megacities." />
+		<meta property="twitter:image" content="https://www.whosonfirst.org/blog/2021/02/11/megacities/images/jakarta.jpg" />
+		
+
+	</head>
+	<body>
+		<div class="whosonfirst-wrapper">
+
+			<nav class="navbar navbar-default navbar-fixed-top whosonfirst-fixed-subpage-navbar">
+				<div class="container">
+
+					
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="/">Who’s On First</a>
+					</div>
+
+					
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					  <ul class="nav navbar-nav navbar-right">
+
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/browse/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">browse</a>
+							</li>
+					    
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/docs/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">documentation</a>
+							</li>
+							
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/code/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">code</a>
+							</li>
+
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/api/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">api</a>
+							</li>
+							
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/download/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">download</a>
+							</li>
+							
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/blog/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">blog</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+
+
+		<style type="text/css">
+		  body {
+		  font-family: serif;
+		  font-size: 1.3em;
+		  line-height: 1.5em;
+		  }
+
+		  h2 small {
+		  display: block;
+		  margin-top:.10em;
+		  font-weight: 100;
+		  font-size: .5em;
+		  line-height: 1.3em;
+		  }
+
+		  p {
+		  line-height: 1.5em !important;
+		  }
+
+		  ul {
+		  font-size:1.3em;
+		  line-height:1.5em;
+		  margin-top:1em !important;
+		  }
+
+		  li {
+		  list-style-type: circle;
+		  margin-bottom: .5em;
+		  }
+
+		  img {
+		  max-width: 640px !important;
+		  max-height: 480px !important;
+		  border: 1px dotted #ccc;
+		  padding: .5em;
+		  margin-bottom:1em;
+		  margin-top: 1em;
+		  display:block;
+		  min-width: 320px;
+		  margin: 0 auto;
+		  }
+
+		  blockquote {
+		  background-color:#ededed;
+		  margin-top:1em;
+		  padding-top:.05em !important;
+		  padding-bottom:1.75em !important;
+		  }
+
+		  .hey-look {
+		  font-weight: 700;
+		  }
+
+		  @media (min-width: 320px) and (max-width: 400px) {
+
+		  ul {
+		  margin:0px;
+	  	  margin-left:15px;
+		  padding:0px;
+		  }
+
+		  pre {
+		  max-width:250px;
+		  overflow:scroll;
+		  }
+
+		  img {
+		  max-width: 250px !important;
+		  max-height: 200px !important;
+		  min-width: 75px;
+		  }
+		  }
+
+		</style>
+
+			<div class="container whosonfirst-subpage-container">
+			  <div class="row">
+			    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-0">
+ 			    </div>
+			    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+			      <article>
+
+	  
+	  
+	  <h2>
+	    Megacities
+	    <small>This is a blog post by
+	      <span class="hey-look">stepps00</span>
+	      that was published on <span class="pubdate"><a href="/blog/2021/02/">Feb</a> <a href="/blog/2021/02/11">11</a>, <a href="/blog/2021/">2021</a></span>
+	       and tagged <span class="hey-look">megacity</span>, <span class="hey-look">locality</span>, <span class="hey-look">whosonfirst</span>, <span class="hey-look">wof</span> and <span class="hey-look">data</span></small>
+	  </h2>
+
+<p><img src="images/jakarta.jpg" style="max-height:none !important;" /></p>
+
+<h2>Updating our Megacity Localities</h2>
+
+<p>In 2019, Who&rsquo;s On First announced the addition of comprehensive global coverage at the locality placetype; read more about that work <a href="https://www.whosonfirst.org/blog/2019/05/13/geonames/">here</a>. Building on this locality work, we&rsquo;ve recently reviewed some of these more populous localities, adding hand-curated geometries, new name translations, and concordances.</p>
+
+<h2>Megacities</h2>
+
+<p>In Who&rsquo;s On First, the world&rsquo;s most populous cities are represented using the <a href="https://github.com/whosonfirst/whosonfirst-properties/blob/master/properties/wof/megacity.json"><code>wof:megacity</code></a> property. According to <a href="https://en.wikipedia.org/wiki/Megacity">Wikipedia</a>, a &ldquo;megacity is a very large city, typically with a population of more than 10 million people.&rdquo; Other sources suggest megacities are defined as having populations lower, closer to five million. While Who&rsquo;s On First does not have a population cut-off for how these megacities are defined, we have relied on Natural Earth&rsquo;s <a href="http://www.naturalearthdata.com/downloads/10m-cultural-vectors/">Populated Places</a> file for this work. Natural Earth identifies 590 global populated places, each identified with a <code>MEGACITY</code> attribute (actual or emergent), name translations, and concordances, for urban agglomerations with a population of 750,000 or more in 2010.</p>
+
+<p>These large megacities are important to Who’s On First because these densely populated, global cities have particular significance in urbanization; according to the United Nations, nearly 60% of the world&rsquo;s population lives in urban areas today, growing to nearly 70% in 2050 (<a href="https://web.archive.org/web/20210129003633/https://www.un.org/development/desa/en/news/population/2018-revision-of-world-urbanization-prospects.html">source</a>); nearly 25% of the world&rsquo;s population lives in cities with populations over one million (<a href="https://web.archive.org/web/20210210102954/https://www.un.org/en/events/citiesday/assets/pdf/the_worlds_cities_in_2018_data_booklet.pdf">source</a>). Maintaining accurate, localized names and detailed geometries for populous localities will not only help our users, but also help geocoding and map services that rely on Who’s On First data.</p>
+
+<p>Some examples of these megacities, displayed in Who’s On First’s Spelunker tool:</p>
+
+<ul>
+<li><a href="https://spelunker.whosonfirst.org/id/101750367/">London</a></li>
+<li><a href="https://spelunker.whosonfirst.org/id/85923517/">Los Angeles</a></li>
+<li><a href="https://spelunker.whosonfirst.org/id/421186805/">Lima</a></li>
+<li><a href="https://spelunker.whosonfirst.org/id/102029537/">Chennai</a></li>
+<li><a href="https://spelunker.whosonfirst.org/id/102026641/">Taipei</a></li>
+</ul>
+
+<h2>What was updated?</h2>
+
+<p>In total, Who’s On First now has 590 locality records that maintain a <code>wof:megacity</code> property.</p>
+
+<p>To begin this work, the Populated Places file from Natural Earth was used to identify locality records in Who&rsquo;s On First that should be flagged with a <code>wof:megacity</code> property. Once identified, we confirmed the presence or added the <code>wof:megacity</code> property on these records maintained in the <a href="https://github.com/whosonfirst-data"><code>whosonfirst-data</code></a> administrative repositories.</p>
+
+<p>Once these populated places were matched to current Who&rsquo;s On First records, a simple Python script was used to automate the import of the Populated Places’ attributes into new properties on each Who’s On First records. These properties include:</p>
+
+<ul>
+<li>Name translations</li>
+<li>Label centroid locations</li>
+<li>Concordances to Natural Earth and Wikidata, when available</li>
+</ul>
+
+<p><a href="https://github.com/whosonfirst-data/whosonfirst-data-admin-ir/pull/11/files">Here</a> is an example of these updates in a GitHub pull request for records in Iran.</p>
+
+<h4>Updating Geometries</h4>
+
+<p>In cases where Who&rsquo;s On First only maintained a <code>Point</code> geometry for one of these populated places, we were interested in creating a new <code>Polygon</code> geometry. Because many of these localities are represented at more than one placetype in Who&rsquo;s On First - Toronto, for example, is represented as both a <a href="https://spelunker.whosonfirst.org/id/890457465/"><code>county</code></a>, and <a href="https://spelunker.whosonfirst.org/id/101735835/"><code>locality</code></a> - we were able to use existing &ldquo;parent&rdquo; geometries of some of these localities to create (or re-use as) new megacity geometries. In other cases, we hand-curated new geometries using QGIS software.</p>
+
+<p>Because megacities often spread over a larger metropolitan area, we are creating polygons for the “core” cities (which can sometimes be a handful of cities), but we’re exploring creating metropolitan area polygons, too. Please reach out to us via <a href="https://github.com/whosonfirst-data/whosonfirst-data/issues/new">a new issue</a> if you are interested in this work.</p>
+
+<h2>A few examples of these new geometries:</h2>
+
+<p><img src="images/barquisimeto.png" alt="" />
+<em>Barquisimeto, Venezuela</em></p>
+
+<p><img src="images/isfahan.png" alt="" />
+<em>Isfahan, Iran</em></p>
+
+<p><img src="images/oran.png" alt="" />
+<em>Oran, Algeria</em></p>
+
+<p><img src="images/santacruz.png" alt="" />
+<em>Santa Cruz, Bolivia</em></p>
+
+<p><img src="images/daressalaam.png" alt="" />
+<em>Dar es Salaam, Tanzania</em></p>
+
+<h2>Benefits</h2>
+
+<p>Aside from our goal to maintain accurate place data in Who&rsquo;s On First, this work is helpful for two use cases worth calling out.</p>
+
+<p>First, the <code>wof:megacity</code> property is helpful to geocoding service by identifying &ldquo;big name&rdquo; geocoding targets. The <code>wof:megacity</code> properties can be used by geocoding services like <a href="https://github.com/pelias/pelias">Pelias</a> to decorate search results for these major localities.</p>
+
+<p>Second, this work curated more accurate name and zoom properties. The <code>mz:min_zoom</code> and <code>mz:max_zoom</code> properties for these places were updated using Natural Earth&rsquo;s <a href="http://www.naturalearthdata.com/downloads/10m-cultural-vectors/">Populated Places file</a> file. Name translations for megacities were also updated. Combined, these new properties help display map labels for large, global cities at the correct zoom levels.</p>
+
+<p>You can browse the megacity records via Who&rsquo;s On First&rsquo;s <a href="https://spelunker.whosonfirst.org/megacities/">Spelunker tool</a>.</p>
+
+<h2>What’s Next</h2>
+
+<p>While we’ve taken time to update administrative records with new geometries, properties, and concordances, we’ve also been quite busy updating and iterating on Who’s On First’s  various tools. Take a look at our <a href="https://github.com/whosonfirst/go-whosonfirst-spatial">go-whosonfirst-spatial</a> and <a href="https://github.com/whosonfirst/go-whosonfirst-spatial-sqlite">go-whosonfirst-spatial-sqlite</a> repositories for details. The new megacity geometries we&rsquo;ve added will be excellent candidates for new and in-progress spatial tools.</p>
+
+<p><em>Photo Credit: <a href="https://www.flickr.com/photos/stenlylam/5635983463/in/photolist-9A2TwF-5VmgKL-5RXnLp-7Ez8om-7bFLvz-8hhYce-7bKynJ-7bFLWH-7bFKT6-7bFLpi-7bFLLi-7bKzPj-7bKyNj-7bKAp9-7bFLc6-5WU1in-6hNwpM-6H8Viw-6hSEp1-vdpmMA-aDeQNG-9RkctE-9Rkbvu-Cs2BPJ-8acvrv-8acwpe-7qNjDw-8acxh6-9RkbX9-8acw7c-8acwue-bX2T26-bX2U6D-bX2Tht-bX2QS6-bX2Ump-8afLmm-bX2TYk-5Y8yM1-bX2Rfc-bX2UcH-cepdjo-bX2QMH-7ditKg-8afNUq-qMtQvP-8aczgB-cepeCh-cepesC-8afJCL">Stenly Lam, flickr</a></em></p>
+
+		</article>
+		</div>
+		</div>	
+		</div>	
+
+		<footer>
+			<nav class="navbar navbar-default navbar-bottom">
+				<div class="container">
+					
+					<ul class="nav navbar-nav navbar-right whosonfirst-footer">
+						<li><a href="/docs/contributing/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">contributing</a></li>
+						<li><a href="/docs/licenses/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">license</a></li>
+						<li><a href="https://twitter.com/alloftheplaces/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">twitter</a></li>
+					</ul>
+				</div>
+			</nav>
+		</footer>
+
+		
+		<script src="/javascript/jquery.min.js"></script>
+		
+		<script src="/javascript/bootstrap.min.js"></script>
+		<script src="/javascript/mapzen.whosonfirst.home.js"></script>
+		<script src="/javascript/mapzen.whosonfirst.subpage.js"></script>
+		
+		<script src="/javascript/highlightpack.js"></script>
+		<script>
+		  try {
+		  	hljs.initHighlightingOnLoad();
+		  } catch (e) {
+		  	console.log("HLJS", e);
+		  }
+		</script>
+	</body>
+</html>
+
