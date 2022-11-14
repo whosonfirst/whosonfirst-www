@@ -1,0 +1,296 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="x-ua-compatible" content="ie=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Who’s On First | Updating the Who&#39;s On First Browser to hold hands with Tailscale and Protomaps</title>
+		<meta name="description" content="Who’s on First is a gazetteer of places." />
+		<link rel="apple-touch-icon" href="/images/favicons/apple-touch-icon.png" sizes="180x180" />
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-16x16.png" sizes="16x16" />
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-32x32.png" sizes="32x32" />
+		<link rel="manifest" href="/images/favicons/manifest.json" />
+		<link rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg" color="#2C1E3F" />
+		<link rel="stylesheet" href="/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="/css/mapzen.whosonfirst.css" />
+		
+		<link rel="stylesheet" href="/css/styles/grayscale.css" />
+
+		<link rel="alternate" type="application/atom+xml" title="Who's On First Atom feed" href="/blog/atom_10.xml"/>		
+		<link rel="alternate" type="application/rss+xml" title="Who's On First RSS 2.0 feed" href="/blog/rss_20.xml"/>
+
+		
+
+	</head>
+	<body>
+		<div class="whosonfirst-wrapper">
+
+			<nav class="navbar navbar-default navbar-fixed-top whosonfirst-fixed-subpage-navbar">
+				<div class="container">
+
+					
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="/">Who’s On First</a>
+					</div>
+
+					
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					  <ul class="nav navbar-nav navbar-right">
+
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/browse/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">browse</a>
+							</li>
+					    
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/docs/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">documentation</a>
+							</li>
+							
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/code/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">code</a>
+							</li>
+
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/api/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">api</a>
+							</li>
+							
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/download/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">download</a>
+							</li>
+							
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/blog/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">blog</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+
+
+		<style type="text/css">
+		  body {
+		  font-family: serif;
+		  font-size: 1.3em;
+		  line-height: 1.5em;
+		  }
+
+		  h2 small {
+		  display: block;
+		  margin-top:.10em;
+		  font-weight: 100;
+		  font-size: .5em;
+		  line-height: 1.3em;
+		  }
+
+		  p {
+		  line-height: 1.5em !important;
+		  }
+
+		  ul {
+		  font-size:1.3em;
+		  line-height:1.5em;
+		  margin-top:1em !important;
+		  }
+
+		  li {
+		  list-style-type: circle;
+		  margin-bottom: .5em;
+		  }
+
+		  img {
+		  max-width: 640px !important;
+		  max-height: 480px !important;
+		  border: 1px dotted #ccc;
+		  padding: .5em;
+		  margin-bottom:1em;
+		  margin-top: 1em;
+		  display:block;
+		  min-width: 320px;
+		  margin: 0 auto;
+		  }
+
+		  blockquote {
+		  background-color:#ededed;
+		  margin-top:1em;
+		  padding-top:.05em !important;
+		  padding-bottom:1.75em !important;
+		  }
+
+		  .hey-look {
+		  font-weight: 700;
+		  }
+
+		  @media (min-width: 320px) and (max-width: 400px) {
+
+		  ul {
+		  margin:0px;
+	  	  margin-left:15px;
+		  padding:0px;
+		  }
+
+		  pre {
+		  max-width:250px;
+		  overflow:scroll;
+		  }
+
+		  img {
+		  max-width: 250px !important;
+		  max-height: 200px !important;
+		  min-width: 75px;
+		  }
+		  }
+
+		</style>
+
+			<div class="container whosonfirst-subpage-container">
+			  <div class="row">
+			    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-0">
+ 			    </div>
+			    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+			      <article>
+
+	  
+	  
+	  <h2>
+	    Updating the Who&#39;s On First Browser to hold hands with Tailscale and Protomaps
+	    <small>This is a blog post by
+	      <span class="hey-look">thisisaaronland</span>
+	      that was published on <span class="pubdate"><a href="/blog/2022/11/">Nov</a> <a href="/blog/2022/11/14">14</a>, <a href="/blog/2022/">2022</a></span>
+	      
+	  </h2>
+
+<p>The <a href="https://github.com/whosonfirst/go-whosonfirst-browser">Who&rsquo;s On First Browser</a> project was a by-product of the <a href="https://www.whosonfirst.org/blog/2018/01/02/chapter-two/">Great Mapzen Shutdown</a> of 2018. At the time there was some question about whether we&rsquo;d be able to keep the <a href="https://spelunker.whosonfirst.org">Spelunker</a> running without the support of Mapzen. We did but it highlighted the importance of having an inexpensive and easy-to-maintain service that, absent a searchable index, made sure there were still <a href="https://whosonfirst.org/blog/2019/12/20/browser/">human, machine readable and graphical representations</a> for every Who&rsquo;s On First ID available on the web.</p>
+
+<h3>A quick recap</h3>
+
+<p>The basic requirements for that service for the service were three-fold. 1) It would be written in Go. 2) It could be run as a standalone web server or as an AWS Lambda function attached to an AWS API Gateway instance. 3) It would read and render individual records from any valid &ldquo;reader&rdquo; source, typically the local file system or something like an AWS S3 bucket. For example:</p>
+
+<pre><code>$&gt; bin/whosonfirst-browser \
+	-reader-uri repo:///usr/local/data/sfomuseum-data-architecture \
+	-enable-all -nextzen-api-key {NEXTZEN_APIKEY}
+</code></pre>
+
+<p>And then when I visit <code>http://localhost:8080/id/1477855657</code>, which is the ID for <a href="https://millsfield.sfomuseum.org/terminals/1477855657/">Harvey Milk Terminal 1 building</a> at the San Francisco International Airport, I&rsquo;ll see this:</p>
+
+<p><img src="images/wof-browser-harvey-milk-1.png" style="max-height: none !important;" /></p>
+
+<p>If you look closely at that screenshot you&rsquo;ll see that most of the other places that terminal building is associated with don&rsquo;t have names. The exceptions are the terminal complex and the airport itself. That&rsquo;s because both of those records are part of the <a href="https://github.com/sfomuseum-data/sfomuseum-data-architecture">sfomuseum-data-architecture</a> repository which we&rsquo;ve referenced in the <code>-reader-uri</code> flag at startup.</p>
+
+<p><img src="images/wof-browser-without-names.png" alt="" /></p>
+
+<p>It&rsquo;s possible to specify multiple &ldquo;reader&rdquo; sources so if I restart the server telling it to read data from both the <a href="https://github.com/sfomuseum-data/sfomuseum-data-architecture">sfomuseum-data-architecture</a> and <a href="https://github.com/sfomuseum-data/sfomuseum-data-whosonfirst">sfomuseum-data-whosonfirst</a> repositories, like this:</p>
+
+<pre><code>$&gt; bin/whosonfirst-browser \
+	-reader-uri repo:///usr/local/data/sfomuseum-data-architecture \
+	-reader-uri repo:///usr/local/data/sfomuseum-data-whosonfirst \	
+	-enable-all -nextzen-api-key {NEXTZEN_APIKEY}
+</code></pre>
+
+<p>I&rsquo;ll see the same thing but all those pointers to other places referenced by the Harvey Milk Terminal have names:</p>
+
+<p><img src="images/wof-browser-with-names.png" alt="" /></p>
+
+<p>There are a number of <a href="https://github.com/whosonfirst/?q=go-reader">different &ldquo;readers&rdquo; for consuming Who&rsquo;s On First data from a variety of sources</a> and we&rsquo;ll write more about in the detail future blog posts.</p>
+
+<p>Under the hood the Who&rsquo;s On First Browser uses a library called <a href="https://github.com/aaronland/go-http-server">go-http-server</a> to abstract away the details of how it is configured to serve requuests. Specific server implementations are defined using URIs. For example to start the server as a standalone web server you would specify the following command-line flag:</p>
+
+<pre><code>-server-uri http://localhost:8080
+</code></pre>
+
+<p>And to start the server as a Lambda function you would specify:</p>
+
+<pre><code>-server-uri lambda://
+</code></pre>
+
+<p>In point of fact, to start the server as a Lambda function you would actually set the <code>BROWSER_SERVER_URI=lambda://</code> environment variable which is then used to assign the <code>-server-uri</code> flag behind the scenes. But the idea is still the same: It should be easy to switch between deployment environments simply by changing the <code>-server-uri</code> flag.</p>
+
+<p>And that&rsquo;s pretty much the story of the Who&rsquo;s On First Browser for the last few years. Every once in a while a new &ldquo;representation&rdquo; endpoint is added to the server, like the ability to produce <a href="https://github.com/whosonfirst/go-whosonfirst-browser#iiif-navplace">IIIF navPlace</a> records so you can reference Who&rsquo;s On First IDs in all your <a href="https://preview.iiif.io/api/navplace_extension/api/extension/navplace/">IIIF manifests</a>, but otherwise there hasn&rsquo;t been the need to change anything.</p>
+
+<h3>Tailscale</h3>
+
+<p>At the beginning of November, 2022 the <a href="https://tailscale.com/">Tailscale</a> group published a blog post titled <a href="https://tailscale.com/blog/tsnet-virtual-private-services/">Virtual private services with tsnet</a>. In that post they wrote:</p>
+
+<blockquote>
+<p>Tailscale lets you connect to your computers from anywhere in the world. We call this setup a virtual private network. Any device on the tailnet (our term for a Tailscale network) can connect directly to any other device on the tailnet. This isn’t limited to your computers, phones, and servers, though. You can use Tailscale as a library in Go programs to allow them to connect to your tailnet as though it were a separate computer. You can also use Tailscale to run multiple services with different confidentiality levels on the same machine. Today I’m going to explain more about how you can use tsnet to make your internal services easier to run, access, and secure by transforming them into virtual private services on your tailnet.</p>
+</blockquote>
+
+<p>Basically what all of this means it that it&rsquo;s possible to write an implementation of the <code>go-http-server</code> interfaces which would allow web services to be started as standalone web servers, Lambda functions or Tailscale virtual private services. Instead of starting an instance of the Who&rsquo;s On First Browser like this:</p>
+
+<pre><code>-server-uri http://localhost:8080/
+</code></pre>
+
+<p>It could be started like this:</p>
+
+<pre><code>-server-uri tsnet://whosonfirst:80?auth-key={TAILSCALE_AUTH_KEY}
+</code></pre>
+
+<p>And that instance of the Who&rsquo;s On First Browser would be available in any web browser at <code>http://whosonfirst</code> but only to people logged in to the Tailscale VPN associated with <code>{TAILSCALE_AUTH_KEY}</code>. Importantly the computer running the machine running the Who&rsquo;s On First Browser doesn&rsquo;t need to be publicly available, or reachable, on the internet at large.</p>
+
+<p>With all of that in mind, <a href="https://github.com/aaronland/go-http-server-tsnet">go-http-server-tsnet</a> was written and has since been added to the <a href="https://github.com/whosonfirst/go-whosonfirst-browser">go-whosonfirst-browser</a> codebase. But why is this important?</p>
+
+<p>It&rsquo;s important because not everyone using Who&rsquo;s On First, or a complimentary project like the <a href="https://millsfield.sfomuseum.org/blog/tags/whosonfirst">SFO Museum&rsquo;s Who&rsquo;s On First compatible dataset</a>, may not want to be as open or transparent as the Who&rsquo;s On First project in their own work. It&rsquo;s as simple as that. There are lots of different reasons why the access control and security that functionality like Tailscale virtual private services provide may be desirable so we&rsquo;re happy to start making it part of the Who&rsquo;s On First tooling.</p>
+
+<p>And then, running the Who&rsquo;s On First browser on one computer and loading <code>http://whosonfirst</code> from a separate mobile device, connected to Tailscale, I noticed this:</p>
+
+<p><img src="images/wof-browser-tsnet-nextzen.jpg" alt="" /></p>
+
+<p>What happened to the <a href="https://nextzen.org">Nextzen</a> map tiles? Were they not being displayed because the mobile device in question had <a href="https://support.apple.com/en-us/HT212650">Lockdown Mode</a> enabled and wouldn&rsquo;t enable WebGL (required to render Nextzen tiles using <a href="https://github.com/tangrams/tangram">Tangram.js</a>)? Were they not being displayed of networking or DNS issues in Tailscale?</p>
+
+<p>Or was this, instead, an opportunity to solve a completely different problem like adding support for <a href="https://protomaps.com">Protomaps</a> map tiles to the Who&rsquo;s On First Browser? Yes!</p>
+
+<h3>Protomaps</h3>
+
+<pre><code>$&gt; bin/whosonfirst-browser/main.go \
+	-enable-all \
+	-reader-uri repo:///usr/local/data/sfomuseum-data-architecture \
+	-reader-uri repo:///usr/local/data/sfomuseum-data-whosonfirst \
+	-map-provider protomaps \
+	-protomaps-bucket-uri file:///usr/local/data/ \
+	-protomaps-tiles-database sfo
+	-server-uri 'tsnet://whosonfirst:80?auth-key={TAILSCALE_AUTH_KEY}'
+
+2022/11/11 22:25:47 Listening on http://whosonfirst:80
+</code></pre>
+
+		</article>
+		</div>
+		</div>	
+		</div>	
+
+		<footer>
+			<nav class="navbar navbar-default navbar-bottom">
+				<div class="container">
+					
+					<ul class="nav navbar-nav navbar-right whosonfirst-footer">
+						<li><a href="/docs/contributing/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">contributing</a></li>
+						<li><a href="/docs/licenses/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">license</a></li>
+						<li><a href="https://twitter.com/alloftheplaces/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">twitter</a></li>
+					</ul>
+				</div>
+			</nav>
+		</footer>
+
+		
+		<script src="/javascript/jquery.min.js"></script>
+		
+		<script src="/javascript/bootstrap.min.js"></script>
+		<script src="/javascript/mapzen.whosonfirst.home.js"></script>
+		<script src="/javascript/mapzen.whosonfirst.subpage.js"></script>
+		
+		<script src="/javascript/highlightpack.js"></script>
+		<script>
+		  try {
+		  	hljs.initHighlightingOnLoad();
+		  } catch (e) {
+		  	console.log("HLJS", e);
+		  }
+		</script>
+	</body>
+</html>
+
