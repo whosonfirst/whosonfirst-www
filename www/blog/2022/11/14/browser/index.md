@@ -5,9 +5,9 @@ published: true
 date: 2022-11-14
 permalink: /blog/2022/11/14/browser/
 category: blog
-excerpt: ""
+excerpt: "The Who's On First Spelunker is still running, today, but the experience highlighted the importance of having a ready alternative on hand. Something inexpensive and easy-to-maintain which, absent a searchable index, made sure there were still human, machine readable and graphical representations for every Who’s On First ID, with links to their relations, available on the web. That tool was the Who's On First Browser. This post is about some recent, optional, features we’ve added to that tool: The ability to run it as a Tailscale virtual private service and to use Protomaps for display maps."
 authors: [thisisaaronland]
-image: ""
+image: "images/1527852859_LFfdzGSIqfJVdMVgBsyYITpcVkFXswn7_b.jpg)"
 tag: []
 ---
 [![](images/1527852859_LFfdzGSIqfJVdMVgBsyYITpcVkFXswn7_b.jpg)](https://collection.sfomuseum.org/objects/1511941919/#1527852859)
@@ -16,9 +16,9 @@ tag: []
 Catalog: John S. Cox & Son, aeronautical supplies c. 1934. Purchase. <a href="https://collection.sfomuseum.org/objects/1511941919">Collection of SFO Museum</a>. 2002.064.041 a e
 </div>
 
-The [Who's On First Browser](https://github.com/whosonfirst/go-whosonfirst-browser) project was a by-product of the [Great Mapzen Shutdown](https://www.whosonfirst.org/blog/2018/01/02/chapter-two/) of 2018. At the time there was some question about whether we'd be able to keep the [Who's On First Spelunker](https://spelunker.whosonfirst.org) running without the support of Mapzen. In the end everything worked out.
+The [Who's On First Browser](https://github.com/whosonfirst/go-whosonfirst-browser) project was a by-product of the [Great Mapzen Shutdown](https://www.whosonfirst.org/blog/2018/01/02/chapter-two/) of 2018. At the time there was some question about whether we'd be able to keep the [Who's On First Spelunker](https://spelunker.whosonfirst.org) running without the support of Mapzen.
 
-The Spelunker is still running, today, but the experience highlighted the importance of having a ready alternative on hand. Something inexpensive and easy-to-maintain which, absent a searchable index, made sure there were still [human, machine readable and graphical representations](https://whosonfirst.org/blog/2019/12/20/browser/) for every Who's On First ID, with links to their relations, available on the web.
+In the end everything worked out. The Spelunker is still running, today, but the experience highlighted the importance of having a ready alternative on hand. Something inexpensive and easy-to-maintain which, absent a searchable index, made sure there were still [human, machine readable and graphical representations](https://whosonfirst.org/blog/2019/12/20/browser/) for every Who's On First ID, with links to their relations, available on the web. That tool was the Who's On First Browser.
 
 This post is about some recent, optional, features we've added to that tool: The ability to run it as a [Tailscale virtual private service](https://tailscale.com/blog/tsnet-virtual-private-services/) and to use [Protomaps](https://protomaps.com) for display maps.
 
