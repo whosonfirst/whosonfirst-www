@@ -10,23 +10,38 @@ authors: [thisisaaronland]
 image: ""
 tag: []
 ---
-The [Who's On First Browser](https://github.com/whosonfirst/go-whosonfirst-browser) project was a by-product of the [Great Mapzen Shutdown](https://www.whosonfirst.org/blog/2018/01/02/chapter-two/) of 2018. At the time there was some question about whether we'd be able to keep the [Spelunker](https://spelunker.whosonfirst.org) running without the support of Mapzen. We did but it highlighted the importance of having an inexpensive and easy-to-maintain service that, absent a searchable index, made sure there were still [human, machine readable and graphical representations](https://whosonfirst.org/blog/2019/12/20/browser/) for every Who's On First ID available on the web.
+The [Who's On First Browser](https://github.com/whosonfirst/go-whosonfirst-browser) project was a by-product of the [Great Mapzen Shutdown](https://www.whosonfirst.org/blog/2018/01/02/chapter-two/) of 2018. At the time there was some question about whether we'd be able to keep the [Spelunker](https://spelunker.whosonfirst.org) running without the support of Mapzen.
+
+In the end everything worked out. The Spelunker is still running but the experience highlighted the importance of having an inexpensive and easy-to-maintain service that, absent a searchable index, made sure there were still [human, machine readable and graphical representations](https://whosonfirst.org/blog/2019/12/20/browser/) for every Who's On First ID, with links to their relations, available on the web.
+
+This blog is about some recent, optional, features we've added to that tool: The ability to run it as a [Tailscale virtual private service](https://tailscale.com/blog/tsnet-virtual-private-services/) and to use [Protomaps](https://protomaps.com) for display maps.
 
 ### A quick recap
 
-The basic requirements for that service for the service were three-fold. 1) It would be written in Go. 2) It could be run as a standalone web server or as an AWS Lambda function attached to an AWS API Gateway instance. 3) It would read and render individual records from any valid "reader" source, typically the local file system or something like an AWS S3 bucket. For example:
+The basic requirements for the Who's On First Browser were:
+
+* It would be written in Go.
+
+* It could be run as a standalone web server or as an AWS Lambda function attached to an AWS API Gateway instance.
+
+* It would read and render individual records from any valid "reader" source, typically the local file system or something like an AWS S3 bucket.
+
+For example, something that could be started as easily as:
 
 ```
 $> bin/whosonfirst-browser \
+	-enable-all \
 	-reader-uri repo:///usr/local/data/sfomuseum-data-architecture \
-	-enable-all -nextzen-api-key {NEXTZEN_APIKEY}
+	-nextzen-api-key {NEXTZEN_APIKEY}
 ```
 
-And then when I visit `http://localhost:8080/id/1477855657`, which is the ID for [Harvey Milk Terminal 1 building](https://millsfield.sfomuseum.org/terminals/1477855657/) at the San Francisco International Airport, I'll see this:
+_The `sfomuseum-data-architecture` repository is not part of the [core Who's On First dataset](https://github.com/whosonfirst-data) but is instead a data from the [SFO Museum](https://github.com/sfomuseum-data) modeled after and compatible with Who's On First._
+
+When I visit `http://localhost:8080/id/1477855657`, which is the ID for [Harvey Milk Terminal 1](https://millsfield.sfomuseum.org/terminals/1477855657/) building at the San Francisco International Airport, the Browser application will render that ID like this:
 
 <img src="images/wof-browser-harvey-milk-1.png" style="max-height: none !important;" />
 
-If you look closely at that screenshot you'll see that most of the other places that terminal building is associated with don't have names. The exceptions are the terminal complex and the airport itself. That's because both of those records are part of the [sfomuseum-data-architecture](https://github.com/sfomuseum-data/sfomuseum-data-architecture) repository which we've referenced in the `-reader-uri` flag at startup.
+If you look closely at that screenshot you'll see that most of the other places the terminal building is associated with don't have names. The exceptions are the terminal complex and the airport itself. That's because both of those records are part of the [sfomuseum-data-architecture](https://github.com/sfomuseum-data/sfomuseum-data-architecture) repository which we've referenced in the `-reader-uri` flag at startup.
 
 ![](images/wof-browser-without-names.png)
 
@@ -39,11 +54,11 @@ $> bin/whosonfirst-browser \
 	-enable-all -nextzen-api-key {NEXTZEN_APIKEY}
 ```
 
-I'll see the same thing but all those pointers to other places referenced by the Harvey Milk Terminal have names:
+I'll see the same thing but all those pointers to other places referenced by the Harvey Milk Terminal will have names:
 
 ![](images/wof-browser-with-names.png)
 
-There are a number of [different "readers" for consuming Who's On First data from a variety of sources](https://github.com/whosonfirst/?q=go-reader) and we'll write more about in the detail future blog posts.
+There are a number of [different "readers" for consuming Who's On First data from a variety of sources](https://github.com/whosonfirst/?q=go-reader) and we'll write more about them, in detail, in future blog posts.
 
 Under the hood the Who's On First Browser uses a library called [go-http-server](https://github.com/aaronland/go-http-server) to abstract away the details of how it is configured to serve requuests. Specific server implementations are defined using URIs. For example to start the server as a standalone web server you would specify the following command-line flag:
 
@@ -67,7 +82,7 @@ At the beginning of November, 2022 the [Tailscale](https://tailscale.com/) group
 
 > Tailscale lets you connect to your computers from anywhere in the world. We call this setup a virtual private network. Any device on the tailnet (our term for a Tailscale network) can connect directly to any other device on the tailnet. This isn’t limited to your computers, phones, and servers, though. You can use Tailscale as a library in Go programs to allow them to connect to your tailnet as though it were a separate computer. You can also use Tailscale to run multiple services with different confidentiality levels on the same machine. Today I’m going to explain more about how you can use tsnet to make your internal services easier to run, access, and secure by transforming them into virtual private services on your tailnet.
 
-Basically what all of this means it that it's possible to write an implementation of the `go-http-server` interfaces which would allow web services to be started as standalone web servers, Lambda functions or Tailscale virtual private services. Instead of starting an instance of the Who's On First Browser like this:
+Basically what all of this means it that it's possible to write an implementation of the `go-http-server` interfaces which allows web services to be started as standalone web servers, Lambda functions or Tailscale virtual private services. Instead of starting an instance of the Who's On First Browser like this:
 
 ```
 -server-uri http://localhost:8080/
@@ -95,13 +110,25 @@ Yes!
 
 ### Protomaps
 
-Protomaps is a framwork for web-based maps that consists of two parts:
+Protomaps is a suite of tool for producing digital maps consisting of two parts:
 
-* A single static data file containing vector tile data for a geographic region (or even the whole world) that can be served from a variety of cloud-based storage providers or just a plain old web server.
+* A single static data file containing vector tile data, derived from [OpenStreetMap](https://openstreetmap.org), for a geographic region (or even the whole world) that can be served from a variety of cloud-based storage providers or just a plain old web server.
 
 * Software which reads which that vector data by translating `{Z}/{X}/{Y}` map tile requests in to [HTTP Range requests](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Range) (so you don't have to download the whole data file) and styling the responses (using the HTML [Canvas](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API) APIs rather than WebGL).
 
-Where do these data files come from? You can either create your own, [pay for global data files](https://app.protomaps.com/store) or use the [Protomaps Small Map tool](https://app.protomaps.com/store) to generate data files for small geographic areas for free. Here's what that looks like for the area around SFO:
+This is interesting for a few reasons:
+
+* You might not want to use a third-party service, even Nextzen, to host your maps.
+
+* You don't want to depend on a third-party service for maps but you also don't want to manage the burden a large map-tile infrastructure.
+
+* You don't want WebGL to be a requirement for rendering display maps.
+
+* The Nextzen base tiles haven't been updated since 2019 which is a problem for places like SFO and SFO Museum since entire buildings that were there in 2019 have been demolished and replaced, for example the old Boarding Area B wing which is now the Harvey Milk Terminal 1 concourse. This is not just a Nextzen issue, either; this same problem exists today, in 2022, [in both Apple Maps and Google Maps](https://millsfield.sfomuseum.org/blog/2022/08/08/maps/).
+
+![](images/wof-browser-nextzen-t1.png)
+
+So, where do these data files come from? You can either create your own, [pay for global data files](https://app.protomaps.com/store) or use the [Protomaps Small Map tool](https://app.protomaps.com/store) to generate data files for small geographic areas for free. Here's what that looks like for the area around SFO:
 
 ![](images/wof-browser-protomaps-download.png)
 
@@ -153,3 +180,5 @@ $> bin/whosonfirst-browser/main.go \
 And here are the map tiles being display as expected in a mobile client connected to a Tailscale VPN visiting `http://whosonfirst`:
 
 <img src="images/wof-browser-tsnet-sm.png" style="max-height: none !important;" />
+
+Protomaps has [its own styling language](https://protomaps.com/docs/frontends/leaflet#custom-vector-data) for defining how map should be displayed. As of this writing custom styles are not supported by the Who's On First Browser but only because I haven't decided the best way to import them. If you have some ideas or thoughts about how that should work [we'd love your input](https://github.com/whosonfirst/go-whosonfirst-browser).
