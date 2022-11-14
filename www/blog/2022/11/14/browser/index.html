@@ -210,7 +210,7 @@
 
 <p>In point of fact, to start the server as a Lambda function you would actually set the <code>BROWSER_SERVER_URI=lambda://</code> environment variable which is then used to assign the <code>-server-uri</code> flag behind the scenes. But the idea is still the same: It should be easy to switch between deployment environments simply by changing the <code>-server-uri</code> flag.</p>
 
-<p>And that&rsquo;s pretty much the story of the Who&rsquo;s On First Browser for the last few years. Every once in a while a new &ldquo;representation&rdquo; endpoint is added to the server, like the ability to produce <a href="https://github.com/whosonfirst/go-whosonfirst-browser#iiif-navplace">IIIF navPlace</a> records so you can reference Who&rsquo;s On First IDs in all your <a href="https://preview.iiif.io/api/navplace_extension/api/extension/navplace/">IIIF manifests</a>, but otherwise there hasn&rsquo;t been the need to change anything.</p>
+<p>And that&rsquo;s pretty much the story of the Who&rsquo;s On First Browser for the last few years. Every once in a while a new &ldquo;representation&rdquo; endpoint is added to the server, like the ability to produce <a href="https://github.com/whosonfirst/go-whosonfirst-browser#iiif-navplace">IIIF navPlace</a> records so you can reference places in Who&rsquo;s On First IDs from all your <a href="https://preview.iiif.io/api/navplace_extension/api/extension/navplace/">IIIF manifests</a>, but otherwise it hasn&rsquo;t been necessary to change anything.</p>
 
 <h3>Tailscale</h3>
 
@@ -303,7 +303,7 @@
 2022/11/11 22:25:47 Listening on http://whosonfirst:80
 </code></pre>
 
-<p>And here are the map tiles being display as expected in a mobile client connecting to <code>http://whosonfirst</code>:</p>
+<p>And here are the map tiles being display as expected in a mobile client connected to a Tailscale VPN visiting <code>http://whosonfirst</code>:</p>
 
 <p><img src="images/wof-browser-tsnet-sm.png" style="max-height: none !important;" /></p>
 
