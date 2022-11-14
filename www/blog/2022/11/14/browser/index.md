@@ -118,7 +118,7 @@ And then, while running the Who's On First browser on one computer and loading `
 
 ![](images/wof-browser-tsnet-nextzen.jpg)
 
-What happened to the [Nextzen](https://nextzen.org) map tiles? Were tiles not being displayed because the mobile device in question had [Lockdown Mode](https://support.apple.com/en-us/HT212650) enabled and wouldn't enable WebGL (required to render Nextzen tiles using [Tangram.js](https://github.com/tangrams/tangram))? Were tile not being displayed because of [networking or DNS issues](https://tailscale.com/learn/why-split-dns/) in Tailscale? Or... was this, instead, an opportunity to solve a completely different problem like adding support for [Protomaps](https://protomaps.com) map tiles to the Who's On First Browser?
+What happened to the [Nextzen](https://nextzen.org) map tiles? Were tiles not being displayed because the mobile device in question had [Lockdown Mode](https://support.apple.com/en-us/HT212650) enabled and wouldn't enable WebGL (required to render Nextzen tiles using [Tangram.js](https://github.com/tangrams/tangram))? Were tiles not being displayed because of [networking or DNS issues](https://tailscale.com/learn/why-split-dns/) in Tailscale? Or... was this, instead, an opportunity to solve a completely different problem like adding support for [Protomaps](https://protomaps.com) map tiles to the Who's On First Browser?
 
 Yes!
 
