@@ -8,7 +8,7 @@ category: blog
 excerpt: "The Who's On First Spelunker is still running, today, but the experience highlighted the importance of having a ready alternative on hand. Something inexpensive and easy-to-maintain which, absent a searchable index, made sure there were still human, machine readable and graphical representations for every Who’s On First ID, with links to their relations, available on the web. That tool was the Who's On First Browser. This post is about some recent, optional, features we’ve added to that tool: The ability to run it as a Tailscale virtual private service and to use Protomaps for display maps."
 authors: [thisisaaronland]
 image: "images/1527852859_LFfdzGSIqfJVdMVgBsyYITpcVkFXswn7_b.jpg)"
-tag: []
+tag: [whosonfirst,golang,browser,tailscale,protomaps,sfomuseum,wof]
 ---
 [![](images/1527852859_LFfdzGSIqfJVdMVgBsyYITpcVkFXswn7_b.jpg)](https://collection.sfomuseum.org/objects/1511941919/#1527852859)
 
@@ -146,7 +146,7 @@ This is interesting for a few reasons:
 
 * You want map data that is updated at the speed of the OpenStreetMap project.
 
-The Nextzen base tiles haven't been updated since 2019 which is a problem for places like SFO and SFO Museum since entire buildings that were there in 2019 have been demolished and replaced; for example the old Boarding Area B wing which is now the Harvey Milk Terminal 1 concourse. This is not just a Nextzen issue, either; this same problem exists today, in 2022, [in both Apple Maps and Google Maps](https://millsfield.sfomuseum.org/blog/2022/08/08/maps/).
+The Nextzen base tiles haven't been updated since 2019 which is a problem for places like SFO and SFO Museum since entire buildings that were there in 2019 have been demolished and replaced; for example the old Terminal 1 with its distinctive round boarding areas which is now the Harvey Milk Terminal 1 concourse. This is not just a Nextzen issue, either; this same problem exists today, in 2022, [in both Apple Maps and Google Maps](https://millsfield.sfomuseum.org/blog/2022/08/08/maps/).
 
 ![](images/wof-browser-nextzen-t1.png)
 
