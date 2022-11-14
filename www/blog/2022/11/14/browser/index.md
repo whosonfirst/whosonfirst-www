@@ -89,11 +89,23 @@ And then, running the Who's On First browser on one computer and loading `http:/
 
 ![](images/wof-browser-tsnet-nextzen.jpg)
 
-What happened to the [Nextzen](https://nextzen.org) map tiles? Were they not being displayed because the mobile device in question had [Lockdown Mode](https://support.apple.com/en-us/HT212650) enabled and wouldn't enable WebGL (required to render Nextzen tiles using [Tangram.js](https://github.com/tangrams/tangram))? Were they not being displayed of networking or DNS issues in Tailscale?
+What happened to the [Nextzen](https://nextzen.org) map tiles? Were they not being displayed because the mobile device in question had [Lockdown Mode](https://support.apple.com/en-us/HT212650) enabled and wouldn't enable WebGL (required to render Nextzen tiles using [Tangram.js](https://github.com/tangrams/tangram))? Were they not being displayed of networking or DNS issues in Tailscale? Or was this, instead, an opportunity to solve a completely different problem like adding support for [Protomaps](https://protomaps.com) map tiles to the Who's On First Browser?
 
-Or was this, instead, an opportunity to solve a completely different problem like adding support for [Protomaps](https://protomaps.com) map tiles to the Who's On First Browser? Yes!
+Yes!
 
 ### Protomaps
+
+Protomaps is a framwork for web-based maps that consists of two parts:
+
+* A single static data file containing vector tile data for a geographic region (or even the whole world) that can be served from a variety of cloud-based storage providers or just a plain old web server.
+
+* Software which reads which that vector data by translating `{Z}/{X}/{Y}` map tile requests in to [HTTP Range requests](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Range) (so you don't have to download the whole data file) and styling the responses (using the HTML [Canvas](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API) APIs rather than WebGL).
+
+Where do these data files come from? You can either create your own, [pay for global data files](https://app.protomaps.com/store) or use the [Protomaps Small Map tool](https://app.protomaps.com/store) to generate data files for small geographic areas for free. Here's what that looks like for the area around SFO:
+
+![](images/wof-browser-protomaps-download.png)
+
+This will produce a file called `sfo.pmtiles`. To use that data file with the Who's On First browser you would specify the following command-line options:
 
 ```
 $> bin/whosonfirst-browser/main.go \
@@ -103,7 +115,41 @@ $> bin/whosonfirst-browser/main.go \
 	-map-provider protomaps \
 	-protomaps-bucket-uri file:///usr/local/data/ \
 	-protomaps-tiles-database sfo
-	-server-uri 'tsnet://whosonfirst:80?auth-key={TAILSCALE_AUTH_KEY}'
+```
+
+Do you see the various "protomaps" flags? This is what they mean:
+
+* `-map-provider protomaps` overrides the default map provider (Nextzen).
+
+* `-protomaps-bucket-uri file:///usr/local/data/` is fully-qualified URI where Protomaps data files are located.
+
+* `-protomaps-tiles-database` is the name of the Protomaps data files to use for display maps.
+
+When configured this way the Who's On First Browser is serving tile requests using the data file specified by `protomaps-bucket-uri` and `protomaps-tiles-database`. For example:
+
+![](images/wof-browser-protomaps.png)
+
+Remember: There are only tiles for the immediate area around SFO because that's all the data the `sfo.pmtiles` file contains.
+
+![](images/wof-browser-protomaps-sfo.png)
+
+In these examples tiles are being served from data stored on the local disk but it is also possible to serve data stored in any remote location that can be read using the [GoCloud Blob](https://gocloud.dev/howto/blob/) package, for example an [AWS S3 bucket](https://gocloud.dev/howto/blob/#s3).
+
+Finally, to make it all work on a Tailscale network just add a `-server-uri tsnet://...` command-line flag:
+
+```
+$> bin/whosonfirst-browser/main.go \
+	-enable-all \
+	-reader-uri repo:///usr/local/data/sfomuseum-data-architecture \
+	-reader-uri repo:///usr/local/data/sfomuseum-data-whosonfirst \
+	-map-provider protomaps \
+	-protomaps-bucket-uri file:///usr/local/data/ \
+	-protomaps-tiles-database sfo \
+	-server-uri tsnet://whosonfirst:80?auth-key={TAILSCALE_AUTH_KEY}
 
 2022/11/11 22:25:47 Listening on http://whosonfirst:80
 ```
+
+And here are the map tiles being display as expected in a mobile client connecting to `http://whosonfirst`:
+
+<img src="images/wof-browser-tsnet-sm.png" style="max-height: none !important;" />
