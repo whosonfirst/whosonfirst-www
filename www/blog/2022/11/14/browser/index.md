@@ -203,7 +203,7 @@ And here are the map tiles being displayed as expected in a mobile client connec
 
 <img src="images/wof-browser-tsnet-sm.png" style="max-height: none !important;" />
 
-Protomaps has [its own styling language](https://protomaps.com/docs/frontends/leaflet#custom-vector-data) for defining how map should be displayed. As of this writing custom styles are not supported by the Who's On First Browser but only because I haven't decided the best way to import them. If you have some ideas or thoughts about how that should work [we'd love your input](https://github.com/whosonfirst/go-whosonfirst-browser).
+Protomaps has [its own styling language](https://protomaps.com/docs/frontends/leaflet#custom-vector-data) for defining how maps should be displayed. As of this writing custom styles are not supported by the Who's On First Browser but only because I haven't decided on the best way to import them. If you have some ideas or thoughts about how that should work [we'd love your input](https://github.com/whosonfirst/go-whosonfirst-browser).
 
 [![](images/1762711397_RXlKTYFvhqmYXfsemnFxDhMn0INl1pHF_z.jpg)](https://collection.sfomuseum.org/objects/1762688329/)
 
@@ -211,4 +211,4 @@ Protomaps has [its own styling language](https://protomaps.com/docs/frontends/le
 Postcard: Los Angeles International Airport 1960s. Gift of Thomas G. Dragges. <a href="https://collection.sfomuseum.org/objects/1762688329/">Collection of SFO Museum</a>. 2015.166.2054
 </div>
 
-As mentioned at the top of the post both of these features, running the Who's On First Browser as a Tailscale virtual private service and using Protomaps for display maps, are disabled by default but we hope they are ready to be enabled when the circumstances present themselves.
+As mentioned at the top of the post both of these features, running the Who's On First Browser as a Tailscale virtual private service and using Protomaps for display maps, are disabled by default but they are ready to be enabled when the circumstances present themselves.
