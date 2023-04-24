@@ -110,7 +110,7 @@ min_lat: 40.496133999999998
 min_lon: -74.255590999999995
 max_lat: 40.915533000000003
 max_lon: -73.700008999999994
-modified: 2021-02-20
+modified: 2023-04-10
 ```
 
 _NOTE: The Spelunker sometimes shows outdated records, use [Github.com](https://raw.githubusercontent.com/whosonfirst-data/whosonfirst-data-admin-us/master/data/859/775/39/85977539.geojson) for source of truth.__
@@ -269,11 +269,11 @@ Back to our New York city example:
 
 ```
 population: 8405837
-is_funky:
-min_zoom:
-max_zoom:
-min_label:
-max_label:
+is_funky: NULL
+min_zoom: 1.7
+max_zoom: NULL
+min_label: 5
+max_label: 12
 geom_src: whosonfirst
 ```
 
@@ -282,17 +282,20 @@ geom_src: whosonfirst
 Sadly our earlier [Boundary Issues](https://whosonfirst.org/blog/2016/10/05/boundary-issues-properties/) web app for data edits in Who’s On First went offline when Mapzen shut down. In the intervening years we’ve developed [Write Field](https://writefield.nextzen.org/), an web app for making quick data edits to a smaller set of WOF record properties commonly used in map display and search. You’ll need a Github.com account to login and propose edits, which are then reviewed using the Github pull request process.
 
 Example loading the New York city record:
-https://writefield.nextzen.org/place/edit?url=https://raw.githubusercontent.com/whosonfirst-data/whosonfirst-data-admin-us/master/data/859/775/39/85977539.geojson
+
+- [https://writefield.nextzen.org/place/edit?url=https://raw.githubusercontent.com/whosonfirst-data/whosonfirst-data-admin-us/master/data/859/775/39/85977539.geojson](https://writefield.nextzen.org/place/edit?url=https://raw.githubusercontent.com/whosonfirst-data/whosonfirst-data-admin-us/master/data/859/775/39/85977539.geojson)
 
 << insert screenshot of Write Field >>
 
 Edits using the tool generates a Github PR for review using the standard WOF process:
-https://github.com/whosonfirst-data/whosonfirst-data-admin-us/pull/143
+
+- [https://github.com/whosonfirst-data/whosonfirst-data-admin-us/pull/143](https://github.com/whosonfirst-data/whosonfirst-data-admin-us/pull/143)
 
 << insert screenshot of Write Field pull request >>
 
 We’ve enhanced the Spelunker to include a new “Edit” link in the right sidebar when browning a place.
-https://spelunker.whosonfirst.org/id/85977539/
+
+- [https://spelunker.whosonfirst.org/id/85977539/](https://spelunker.whosonfirst.org/id/85977539/)
 
 << insert screenshot of Spelunker sidebar >>
 
