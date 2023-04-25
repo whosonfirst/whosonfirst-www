@@ -327,7 +327,9 @@ We hope you enjoy data from the Who's On First gazetteer!
 
 If you have feedback please submit a [new issue](https://github.com/whosonfirst-data/whosonfirst-data/issues/new) or [discussion](https://github.com/whosonfirst-data/whosonfirst-data/discussions/new/choose) topic via Github.
 
-If you prefer email, TK TK TK...
+If you prefer email:
 
+- [Subscribe to WOF Announcements](http://eepurl.com/ipOxd2) for "big news", via Mailchimp. Frequency is a few times per year. Subscribe now and you'll be first to know about our big India locality data drop!
+- Join our new [WOF Gazetteer discussion group](https://groups.google.com/g/wof-gazetteer) on Google to ask questions and share updates on your country's latest changes to it's internal administrative subdivisions. If you're a geography geek, this one's for you.
 
 _Photo Credit: [Umbra Desktop Utensils in Case, Cooper Hewitt Design Museum](https://collection.cooperhewitt.org/objects/18622933/)_
