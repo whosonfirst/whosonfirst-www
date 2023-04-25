@@ -338,4 +338,8 @@ If you prefer email:
 - [Subscribe to WOF Announcements](http://eepurl.com/ipOxd2) for "big news", via Mailchimp. Frequency is a few times per year. Subscribe now and you'll be first to know about our big India locality data drop!
 - Join our new [WOF Gazetteer discussion group](https://groups.google.com/g/wof-gazetteer) on Google to ask questions and share updates on your country's latest changes to it's internal administrative subdivisions. If you're a geography geek, this one's for you.
 
+Or on social media:
+
+- Follow us on Mastadon at [mapstodon/@whosonfirst](https://mapstodon.space/@whosonfirst)
+
 _Photo Credit: [Umbra Desktop Utensils in Case, Cooper Hewitt Design Museum](https://collection.cooperhewitt.org/objects/18622933/)_
