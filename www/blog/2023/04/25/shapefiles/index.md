@@ -5,13 +5,13 @@ published: false
 date: 2023-04-25
 permalink: /blog/2023/04/25/shapefiles/
 category: blog
-excerpt: "Building on the global locality coverage in Who's On, we've updated our megacities."
+excerpt: "Shapefiles improve accessibility to the Who's On First gazetteer for GIS users for a core set of standard place response properties, and discussion of making simple edits, bulk imports, and knowledge sharing in our community."
 authors: [nvkelso]
-image: "images/jakarta.jpg"
-tag: [shapefiles,download,whosonfirst,wof,data]
+image: "images/cooper-hewitt-umbra-utensils-206287_2a2f3d9f5d2761bf_b.jpeg"
+tag: [shapefile,download,whosonfirst,wof,data]
 ---
 
-<img src="images/jakarta.jpg" style="max-height:none !important;" />
+<img src="images/cooper-hewitt-umbra-utensils-206287_2a2f3d9f5d2761bf_b.jpeg" style="max-height:none !important;" />
 
 One of our founding principles when the Who’s On First gazetteer launched in [2015](https://whosonfirst.org/blog/2015/08/18/who-s-on-first/) was data **portability** – that our data should work in any database. By publishing our gazetteer in GeoJSON, CSV, and SQLite formats we allowed you to decide how you wanted to import the data into your software stack of choice.
 
@@ -328,3 +328,6 @@ We hope you enjoy data from the Who's On First gazetteer!
 If you have feedback please submit a [new issue](https://github.com/whosonfirst-data/whosonfirst-data/issues/new) or [discussion](https://github.com/whosonfirst-data/whosonfirst-data/discussions/new/choose) topic via Github.
 
 If you prefer email, TK TK TK...
+
+
+_Photo Credit: [Umbra Desktop Utensils in Case, Cooper Hewitt Design Museum](https://collection.cooperhewitt.org/objects/18622933/)_
