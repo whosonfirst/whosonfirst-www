@@ -47,12 +47,11 @@ For example:
 - whosonfirst-data-admin-us-locality-polygon.shp
 - Whosonfirst-data-admin-us-locality-point.shp
 
-Since "shapefiles" are actually a collection of individual files (like `{shp,shx,dbf,prj,cpg}`), we group them into a single compressed ZIP archive for downloading and name the ZIP using same "latest" convention used for the SQLite downloads. If you're using QGIS you can add the ZIP directly to your project without uncompressing it.
+Since "shapefiles" are actually a collection of individual files (with extensions like: `shp`, `shx`, `dbf`, `prj`, and `cpg`), we group them into a single compressed ZIP archive for downloading and name the ZIP using same "latest" convention used for the SQLite downloads. If you're using QGIS you can add the ZIP directly to your project without uncompressing it.
 
 For example:
 
 - [whosonfirst-data-admin-us-latest.zip](https://data.geocode.earth/wof/dist/shapefile/whosonfirst-data-admin-us-latest.zip)
-
 
 To limit the file size of shapefile downloads (which have a 2 GB per file component limit), exported features are a limited subset of Who’s On First data, which:
 
@@ -317,16 +316,14 @@ We’re hopeful that the complexity of reverse geocoding to determine a place’
 
 ## Get the data
 
-Downloads are kindly processed and hosted by [Geocode Earth](https://geocode.earth/data/whosonfirst/), including SQLite and now Shapefiles by country.
+Downloads are kindly processed and hosted by [Geocode Earth](https://geocode.earth/data/whosonfirst/), including SQLite and now Shapefiles by country. Particular thanks to [Peter Johnson](https://www.linkedin.com/in/missinglink/) there for getting the new format setup.
 
 - Load [Data Downloads](https://geocode.earth/data/whosonfirst/) page
-- Click on the desired 2-character country code button in the top matrix
+- Click on the desired 2-character country code button in the top matrix (eg `US` for United States)
 - Confirm your country's name and flag below the top matrix
-- Scroll down to the Shapefiles section, "administrative" boundaries" section, click the name of the ZIP file to download it (eg [whosonfirst-data-admin-us-latest.zip](https://data.geocode.earth/wof/dist/shapefile/whosonfirst-data-admin-us-latest.zip))
+- Scroll down to the Shapefiles section, `Administrative" Boundaries` section, and click the name of the ZIP file to download it (eg [whosonfirst-data-admin-us-latest.zip](https://data.geocode.earth/wof/dist/shapefile/whosonfirst-data-admin-us-latest.zip))
 
-_NOTE: There's also an [inventory.json](https://data.geocode.earth/wof/dist/shapefile/inventory.json) file available for programatic use._
-
-Particular thanks to [Peter Johnson](https://www.linkedin.com/in/missinglink/) there for getting the new format setup.
+_NOTE: There's also an [inventory.json](https://data.geocode.earth/wof/dist/shapefile/inventory.json) file available for programmatic use._
 
 ![screenshot of Shapefile downloads from Geocode Earth](images/geocode-earth-shapefile-downloads.png)
 
