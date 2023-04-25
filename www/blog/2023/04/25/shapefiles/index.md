@@ -306,9 +306,19 @@ To do bulk edits we often extract, transform, and load the the new open data in 
 
 This work flow continues to evolve, and has been documented in several blog posts, including:
 
-- Tk tk tk
-- Tk tk tk
-- Tk tk tk
+- [Guide](https://www.whosonfirst.org/blog/2016/06/24/sf-neighbourhood-updates/) for editing neighbourhoods with San Francisco as test city, including a [step-by-step](https://github.com/whosonfirst/whosonfirst-cookbook/blob/main/issue_workflows/sf_neighbourhood_updates_pt_1.md) workflow
+- Several neighbourhood shapes improvement projects, including initial [blog post](https://www.whosonfirst.org/blog/2017/04/20/neighbourhood-updates-two/) and followup to [shrink](https://www.whosonfirst.org/blog/2017/12/14/updating-whosonfirst/) overly big Zetashapes neighbourhood polygons in the United States, and [global](https://www.whosonfirst.org/blog/2017/12/22/neighbourhood-updates-three/) polygon rebuilds for major cities.
+- [WOF Cookbook](https://github.com/whosonfirst/whosonfirst-cookbook), including [Park City (Utah) neighbourhood](https://github.com/whosonfirst/whosonfirst-cookbook/blob/main/scripts/1264_parkcity_neighbourhoods.py) import Python script, and separate script for [importing new localadmin](https://github.com/whosonfirst/whosonfirst-cookbook/blob/main/scripts/1878_import_new_localadmin.py) features.
+
+Example Github issues and pull requests:
+
+- **Estonia:** Update county and localadmin records in [ee/#11](https://github.com/whosonfirst-data/whosonfirst-data-admin-ee/pull/11)
+- **France:** Updated to localadmin and locality records in [#1343](https://github.com/whosonfirst-data/whosonfirst-data/pull/1343)
+- **Germany:** Updates to localadmin & locality records [de/#1](https://github.com/whosonfirst-data/whosonfirst-data-admin-de/pull/1)
+- **Netherlands:** Updates to neighbourhood records, including in Amsterdam [#625](https://github.com/whosonfirst-data/whosonfirst-data/issues/625) and Rotterdam/The Hague [#633](https://github.com/whosonfirst-data/whosonfirst-data/issues/633)
+- **Norway:** Update region and localadmin records in [no/#8](https://github.com/whosonfirst-data/whosonfirst-data-admin-no/pull/8)
+- **Singapore:** Update country, region, county, locality, borough, macrohood, and neighbourhood records in [sg/#9]()
+- **Switzerland:** Major rebuild of region, county, localadmin, locality, and neighbourhood records – including evaluating and setting properties like `wof:coterminious`, `mz:hiearchy_label`, and `mz:is_funky`, with new Wikidata names, from SwissTopo. [#1334](https://github.com/whosonfirst-data/whosonfirst-data/issues/1334) and [ch/#4](https://github.com/whosonfirst-data/whosonfirst-data-admin-ch/pull/4)
 
 Often bulk imports take some time to discuss, coordinate, implement, and review. To simplify the workflow and make it easier to review, larger imports for a new source in a country are commonly split into smaller Pull Requests by placetype or group of placetypes (like country, region, and county features in one PR, and localadmin and/or locality features in another PR).
 
@@ -329,7 +339,7 @@ _NOTE: There's also an [inventory.json](https://data.geocode.earth/wof/dist/shap
 
 ## Feedback
 
-We hope you enjoy data from the Who's On First gazetteer!
+We hope you enjoy open data from the Who's On First gazetteer!
 
 If you have feedback please submit a [new issue](https://github.com/whosonfirst-data/whosonfirst-data/issues/new) or [discussion](https://github.com/whosonfirst-data/whosonfirst-data/discussions/new/choose) topic via Github.
 
