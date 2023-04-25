@@ -317,9 +317,18 @@ We’re hopeful that the complexity of reverse geocoding to determine a place’
 
 ## Get the data
 
-Downloads are kindly processed and hosted by [Geocode Earth](https://geocode.earth/data/whosonfirst/), including SQLite and now Shapefile. Particular thanks to [Peter Johnson](https://www.linkedin.com/in/missinglink/) there for getting the new format setup.
+Downloads are kindly processed and hosted by [Geocode Earth](https://geocode.earth/data/whosonfirst/), including SQLite and now Shapefiles by country.
 
-<<screenshot>>
+- Load [Data Downloads](https://geocode.earth/data/whosonfirst/) page
+- Click on the desired 2-character country code button in the top matrix
+- Confirm your country's name and flag below the top matrix
+- Scroll down to the Shapefiles section, "administrative" boundaries" section, click the name of the ZIP file to download it (eg [whosonfirst-data-admin-us-latest.zip](https://data.geocode.earth/wof/dist/shapefile/whosonfirst-data-admin-us-latest.zip))
+
+_NOTE: There's also an [inventory.json](https://data.geocode.earth/wof/dist/shapefile/inventory.json) file available for programatic use._
+
+Particular thanks to [Peter Johnson](https://www.linkedin.com/in/missinglink/) there for getting the new format setup.
+
+![screenshot of Shapefile downloads from Geocode Earth](images/geocode-earth-shapefile-downloads.png)
 
 ## Feedback
 
