@@ -278,25 +278,21 @@ geom_src: whosonfirst
 
 ## Simple data edits
 
-Sadly our earlier [Boundary Issues](https://whosonfirst.org/blog/2016/10/05/boundary-issues-properties/) web app for data edits in Who’s On First went offline when Mapzen shut down. In the intervening years we’ve developed [Write Field](https://writefield.nextzen.org/), an web app for making quick data edits to a smaller set of WOF record properties commonly used in map display and search. You’ll need a Github.com account to login and propose edits, which are then reviewed using the Github pull request process.
+Sadly our earlier [Boundary Issues](https://whosonfirst.org/blog/2016/10/05/boundary-issues-properties/) web app for data edits in Who’s On First went offline when Mapzen shut down. In the intervening years we’ve developed [Write Field](https://writefield.nextzen.org/), an web app for making quick data edits to a smaller set of WOF record properties commonly used in map display and search. You’ll need a [Github.com account](https://github.com/signup) to login and propose edits, which are then reviewed using the Github pull request process.
 
-Example loading the New York city record:
+Example workflow:
 
-- [https://writefield.nextzen.org/place/edit?url=https://raw.githubusercontent.com/whosonfirst-data/whosonfirst-data-admin-us/master/data/859/775/39/85977539.geojson](https://writefield.nextzen.org/place/edit?url=https://raw.githubusercontent.com/whosonfirst-data/whosonfirst-data-admin-us/master/data/859/775/39/85977539.geojson)
+- Load the **New York city** record into Write Field by determining it's `wof:id` (`85977539`) and locating it's [source GeoJSON record](https://raw.githubusercontent.com/whosonfirst-data/whosonfirst-data-admin-us/master/data/859/775/39/85977539.geojson) from Github's raw file view
+    - [https://writefield.nextzen.org/place/edit?url=https://raw.githubusercontent.com/whosonfirst-data/whosonfirst-data-admin-us/master/data/859/775/39/85977539.geojson](https://writefield.nextzen.org/place/edit?url=https://raw.githubusercontent.com/whosonfirst-data/whosonfirst-data-admin-us/master/data/859/775/39/85977539.geojson)
+    - ![Write Field editing screenshot](images/write-field-new-york-city.png)
+- Once property and value editing is complete, Write Field will generates a pull request (or "PR"") for human review, using the standard WOF workflow in Github. This includes the web app running [Exportify](https://github.com/whosonfirst/go-whosonfirst-exportify) for you to format the record as WOF GeoJSON (with property key, value pairs on new lines, geometry on the last line, and an updated time stamp to ease PR diff generation and human review).
+    - View example pull request: [us/#143](https://github.com/whosonfirst-data/whosonfirst-data-admin-us/pull/143)
+    - ![Github pull request screenshot](images/new-york-city-pr.png)
+- To make this easier, we’ve enhanced the Spelunker to include a new “Edit” link in the right sidebar when browsing a place
+    - [https://spelunker.whosonfirst.org/id/85977539/](https://spelunker.whosonfirst.org/id/85977539/)
+    - ![View in Spelunker now with edit link screenshot](images/spelunker-new-york-city-edit-link.png)
 
-<< insert screenshot of Write Field >>
-
-Edits using the tool generates a Github PR for review using the standard WOF process:
-
-- [https://github.com/whosonfirst-data/whosonfirst-data-admin-us/pull/143](https://github.com/whosonfirst-data/whosonfirst-data-admin-us/pull/143)
-
-<< insert screenshot of Write Field pull request >>
-
-We’ve enhanced the Spelunker to include a new “Edit” link in the right sidebar when browning a place.
-
-- [https://spelunker.whosonfirst.org/id/85977539/](https://spelunker.whosonfirst.org/id/85977539/)
-
-<< insert screenshot of Spelunker sidebar >>
+Although this process is working for us, your feedback and engineering contributions will make it easier for more people to contribute over time. Thank you :)
 
 ## Bulk data imports
 
