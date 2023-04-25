@@ -177,7 +177,7 @@ name_urd   | urd    | ur     | Urdu       | اردو
 name_vie   | vie    | vi     | Vietnamese | Tiếng Việt
 name_zho   | zho    | zh     | Chinese    | 中文
 
-NOTE: Chinese names may include a mix of simplified and/or traditional Chinese characters. The SQLite file tries to imply Simplified or Traditional characters with additional country tags.
+_NOTE: Chinese names may include a mix of simplified and/or traditional Chinese characters. The SQLite file tries to imply Simplified or Traditional characters with additional country tags._
 
 Back to our New York city example:
 
