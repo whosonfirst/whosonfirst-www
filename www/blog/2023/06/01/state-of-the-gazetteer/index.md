@@ -135,7 +135,7 @@ Who’s On First tracks `countries` and `dependencies` as equal top-level placet
 
 “[What are…](https://www.jeopardy.com/jbuzz/behind-scenes/what-are-some-questions-about-jeopardy)” in WOF: the United Kingdom has 4 `macroregion` and 334 `region` records; France has 29 `macroregion` and 101 `region` records; the United States has 51 `region` records (including the [District of Columbia](https://spelunker.whosonfirst.org/id/85688741/) which is marked in `label:eng_x_preferred_placetype` as a “federal district”). Puerto Rico is a dependency of the United States empire. Naming placetypes in inherently controversial so we also provide an optional and localized “[label:{lang}_x_preferred_placetype](https://github.com/whosonfirst/whosonfirst-properties/blob/main/properties/label/README.md#lang_x_preferred_placetype)” property on records that carries the specific word used for that place in its country and translated to English (including the region of [Riyadh](https://spelunker.whosonfirst.org/id/85676813/) in Arabic script, latinized Arabic, and English).
 
-_NOTE: Feature counts for each placetype are included in the legend. Every feature on the map below has a polygon geometry, but is represented as a point for visualization purposes._
+_(below) Feature counts for each placetype are included in the legend. Every feature on the map below has a polygon geometry, but is represented as a point for visualization purposes._
 
 ![Who's On First primary administrative hierarchy coverage map](images/wof-main-admin-with-dependency.png "Who's On First primary administrative hierarchy coverage map")
 
@@ -255,7 +255,7 @@ Order | Placetype | Total Features | Points | Multi + Polygons | Alt geoms | Alt
 20 | marketarea | 210 |  | 210 |  |  |  | 8.5M | 86.30% | 9.8M | countries in ('US')
 21 | campus | 24,452 | 21,916 | 2,536 | 33 | 0.10% | 0.0K | 346.8K | 0.20% | 147.1M | all country and dependency
 22 | unknown | 1 |  | 1 | 1 | 100.00% |  |  | 0.00% | 510.1M | planet
- | TOTALS | 5,018,244 | 4,566,656 | 451,588 | 447,063 | 8.90% | 95.3K | 1.7B |  |  |
+23 | TOTALS | 5,018,244 | 4,566,656 | 451,588 | 447,063 | 8.90% | 95.3K | 1.7B |  |  |
 
 _NOTE: Postalcodes are not tracked in this table. See Postalcode coverage section above._
 
@@ -1469,8 +1469,8 @@ Even though most countries are limited to locality points past the county polygo
 
 Looking at “administrative” placetype features by country (country code), the trend mostly follows population density.
 
-rank | country | count |  | rank | country | count |  | rank | country | count
----- | ------- | ----: |  | ---- | ------- | ----: |  | ---- | ------- | ----:
+rank | country | count | .  | rank | country | count | .  | rank | country | count
+---- | ------- | ----: | -- | ---- | ------- | ----: | -- | ---- | ------- | ----:
 1 | China (CN) | 679,207 |  | 21 | Bangladesh (BD) | 48,696 |  | 41 | Austria (AT) | 23,458
 2 | India (IN) | 509,567 |  | 22 | Philippines (PH) | 45,819 |  | 42 | Iraq (IQ) | 22,900
 3 | United States (US) | 293,571 |  | 23 | Morocco (MA) | 45,577 |  | 43 | Mozambique (MZ) | 22,782
@@ -1554,8 +1554,8 @@ A few areas stand out for future work: county zooms should be spread out (mostly
 
 _(below) This chart counts available min_zoom values on WOF records grouped by placetype. Course placetypes group features that are suitable for labeling on a low-zoom world map as “countries” or their 1st and 2nd order subdivisions, generally from zooms 0 thru 8 (though some counties should label later). Settlement placetypes include both locality and localadmin and are rarely labeled at low zooms, typically coming in the mid-zooms of 9, 10, 11, 12, and 13. Neighbourhood placetypes are subdivisions of settlements and generally should only be displayed at high-zooms of 11 thru 17._
 
-Course placetypes | `min_zoom` | count |  | Settlement placetypes | `min_zoom` | count |  | Neighbourhood placetypes | `min_zoom` | count
------------------ | :--------- | ----: |  | --------------------- | :--------- | ----: |  | ------------------------ | :--------- | ----:
+Course placetypes | `min_zoom` | count | . | Settlement placetypes | `min_zoom` | count | . | Neighbourhood placetypes | `min_zoom` | count
+----------------- | :--------- | ----: | -- | --------------------- | :--------- | ----: | -- | ------------------------ | :--------- | ----:
 continent | 0 | 7 |  | localadmin | 3 | 5 |  | borough | 9 | 2
 continent | 1 | 1 |  | localadmin | 4 | 50 |  | borough | 10 | 204
 country | 0 | 4 |  | localadmin | 4.7 | 1 |  | borough | 11 | 63
@@ -1798,14 +1798,18 @@ The results of a search can then be pipped to **[Valhalla](https://valhalla.gith
 
 * **Routing** with polygon navigation and label “centroids” that are close to a place’s urban center rather than the math centroid of the polygon, and guaranteed to be on land.
 
-All these [Mapzen](https://www.mapzen.com/) projects ([Who’s On First](https://www.whosonfirst.org/), [Pelias](https://pelias.io/), and [Valhalla](https://valhalla.github.io/valhalla/)) are now part of the [Linux Foundation](https://www.linuxfoundation.org/) and are free for anyone to use and adapt.
+Places can also be added to vector tiles **[Tilezen](https://tilezen.readthedocs.io/en/latest/layers/)**, another [Mapzen](https://www.mapzen.com/) project for:
+
+* **Basemap** with label “centroids” for neighbourhood polygons.
+
+All these [Mapzen](https://www.mapzen.com/) projects ([Who’s On First](https://www.whosonfirst.org/), [Pelias](https://pelias.io/), [Valhalla](https://valhalla.github.io/valhalla/)), and [Tilezen](https://tilezen.readthedocs.io/en/latest/layers/) are now part of the [Linux Foundation](https://www.linuxfoundation.org/) and are free for anyone to use and adapt.
 
 
 ### Future applications looking for collaboration and funding
 
 * **Map display for label points**
     * **Label min zoom and label max zooms** exist but can to be fine tuned for global, multi-zoom basemaps (especially for county and locality placetypes)
-    * **Population estimate** coverage expansion to determine relative label zoom and townspot size grading
+    * **Population estimate** coverage expansion to determine relative label zoom and townspot size grading (for latest census counts)
 * **Map display for thematic polygons**
     * **Min zoom and max zoom** variable per placetype and per country with area grading for a composite global, multi-zoom basemap
     * **Vector tilesets** (global and per placetype) with newer tools like [Tippicanoe](https://github.com/felt/tippecanoe) and [Planetiler](https://github.com/onthegomap/planetiler) delivered as serverless [PMTiles](https://protomaps.com/docs/pmtiles) archives
@@ -1839,8 +1843,7 @@ When decomposing address data into placetypes (using [libPostal](https://www.map
 
 Decomposing Data... | ...into Data Sources
 ------------------- | --------------------
-![Who's On First addresses](images/wof-address-default.png "Who's On First addresses")
- | ![Who's On First addresses highlighted](images/wof-address-highlighted.png "Who's On First addresses highlighted")
+![Who's On First addresses](images/wof-address-default.png "Who's On First addresses") | ![Who's On First addresses highlighted](images/wof-address-highlighted.png "Who's On First addresses highlighted")
 
 Who’s On First is a “coarse” geocoder meaning it doesn’t provide street level features. But WOF data can be complemented (as [Pelias](https://pelias.io/) does) with data from other open data projects, including: [OpenAddresses](https://openaddresses.io/), [All The Places](https://www.alltheplaces.xyz/), [Natural Earth](https://www.naturalearthdata.com/), and even the ODbL licensed [OpenStreetMap](https://www.openstreetmap.org/) for a complete geocoding solution.
 
