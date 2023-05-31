@@ -3447,13 +3447,11 @@ Who’s On First indicates if a geometry is from an aggregator in the main “[s
 
 ### Country scorecards
 
-** \
-**We rate 87 countries with good to great polygon coverage at both locality and parent administrative subdivisions, including country, region (state/province), and county, in the **A-AA-AAA-AAAA** range. Our `disputed` territory polygon coverage also falls in this “great” data grouping.
+We rate 87 countries with good to great polygon coverage at both locality and parent administrative subdivisions, including country, region (state/province), and county, in the **A-AA-AAA-AAAA** range. Our `disputed` territory polygon coverage also falls in this “great” data grouping.
 
 We rate 177 countries that are mostly limited to point locality coverage and basic polygon administrative subdivisions in the **B-BB-BBB-BBBB** range. We almost always have “complete” coverage in these countries, however, often tens of thousands and sometimes with hundreds of thousands of features are point geometries only.
 
 _Breakdowns of each of these classes are available below the map…_
-
 
 
 <p id="gdcalert12" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image12.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert13">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
@@ -3462,16 +3460,15 @@ _Breakdowns of each of these classes are available below the map…_
 ![alt_text](images/image12.png "image_tooltip")
 
 
-
 #### A range coverage by country
 
 **AAAA:** Starting in 2017, we have rebuilt priority countries by importing authoritative, polygon-based records at all placetypes from region down to locality to provide **AAAA data quality** and coverage in: _Australia, Austria, Canada, Estonia, France, Germany, Hong Kong, Italy, Netherlands, New Zealand, Poland, Romania, Singapore, Spain, Switzerland, United Kingdom, and United States._
 
-**AAA: **Other countries in North America, Europe, Middle East, Asia, and elsewhere have had selective rebuilds at a mix of placetypes to provide **AAA data quality** and coverage using national mapping agency data – though possibly of an older vintage that may not reflect all recent administrative updates. _These include: Akrotiri Sovereign Base Area, Aland, Albania, Bahrain, Belgium, Brazil, Bulgaria, Croatia, Cyprus, Czechia, Denmark, Dhekelia Sovereign Base Area, Faroe Islands, Finland, Greece, Greenland, Guernsey, Hungary, Iceland, Ireland, Isle of Man, Kuwait, Latvia, Liechtenstein, Lithuania, Luxembourg, Moldova, North Macedonia, Northern Cyprus, Norway, Portugal, Puerto Rico, Qatar, San Marino, Saudi Arabia, Slovakia, Slovenia, South Africa, Sweden, Turkey, Ukraine, United Arab Emirates, and Vatican._
+**AAA:** Other countries in North America, Europe, Middle East, Asia, and elsewhere have had selective rebuilds at a mix of placetypes to provide **AAA data quality** and coverage using national mapping agency data – though possibly of an older vintage that may not reflect all recent administrative updates. _These include: Akrotiri Sovereign Base Area, Aland, Albania, Bahrain, Belgium, Brazil, Bulgaria, Croatia, Cyprus, Czechia, Denmark, Dhekelia Sovereign Base Area, Faroe Islands, Finland, Greece, Greenland, Guernsey, Hungary, Iceland, Ireland, Isle of Man, Kuwait, Latvia, Liechtenstein, Lithuania, Luxembourg, Moldova, North Macedonia, Northern Cyprus, Norway, Portugal, Puerto Rico, Qatar, San Marino, Saudi Arabia, Slovakia, Slovenia, South Africa, Sweden, Turkey, Ukraine, United Arab Emirates, and Vatican._
 
-**AA: **WOF provides **AA data quality** with extensive (but not universal) polygon coverage at locality level in _Chile, India, Indonesia, Iraq, Israel, Mexico, Morocco, Nigeria, Pakistan, Palestine, Philipeans, South Korea, and Taiwan._ These polygons often date back to 2013 and represent the largest urban settlements.
+**AA:** WOF provides **AA data quality** with extensive (but not universal) polygon coverage at locality level in _Chile, India, Indonesia, Iraq, Israel, Mexico, Morocco, Nigeria, Pakistan, Palestine, Philipeans, South Korea, and Taiwan._ These polygons often date back to 2013 and represent the largest urban settlements.
 
-**A: **WOF provides **A data quality** with approximate locality polygons in _China, Japan, Malaysia, Russia, and Thailand_. Several countries with extensive and higher quality point locality coverage, including: _Columbia and Honduras_.
+**A:** WOF provides **A data quality** with approximate locality polygons in _China, Japan, Malaysia, Russia, and Thailand_. Several countries with extensive and higher quality point locality coverage, including: _Columbia and Honduras_.
 
 
 #### B range coverage by country
