@@ -34,14 +34,14 @@ _Eager to play with the data yourself? Jump to the [downloads](#Downloads) secti
 ## Who’s On First gazetteer at a glance
 
 * A single source of truth across a minimalist common set of [placetypes](https://github.com/whosonfirst/whosonfirst-placetypes), spanning the entire globe, and supplemented as-needed on a regional level
-* Global coverage for 5M (million) administrative places, including 4.5M localities
-* More than 25M additional places are available, including: 3.9M postal codes, 7K (thousand) constituencies, and 21M venues
-* 452K features have detailed polygons, with complete coverage at country, region, and county placetypes and exhaustive coverage for localadmin and large localities in major industrialized economies, with exhaustive coverage as point geometries for remaining features. We store 447K alternate geometries.
+* Global coverage for `5M` (million) administrative places, including `4.5M` localities
+* More than `25M` additional places are available, including: `3.9M` postal codes, `7K` (thousand) constituencies, and `21M` venues
+* `452K` features have detailed polygons, with complete coverage at country, region, and county placetypes and exhaustive coverage for localadmin and large localities in major industrialized economies, with exhaustive coverage as point geometries for remaining features. We also store `447K` alternate geometries.
 * Names are localized into hundreds of languages, using internet standard language codes
 * Population values, min_zoom ranking, and polygon label centroids enable sophisticated map designs with beautiful and informative cartography
 * Internationalized with disputed territory boundaries for global audiences and compliance with local regulations
 * Includes original work and data aggregated from [360+ authoritative sources](https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/README.md). Our source data licenses have been vetted by multiple corporate attorneys at large, publicly traded companies.
-* Holds hands with 60+ datasets via linked unique identifiers to allow crosswalk across 6.5M feature-level concordances.
+* Holds hands with 60+ datasets via linked unique identifiers to allow crosswalk across `6.5M` feature-level concordances.
 * Open license (CC-BY attribution) means you’re free to use the data for commercial purposes, including derivative rights, as long as you credit the project and our sources
 * Spelunker web app for viewing formatted data with a map  ([browse New York city record](https://spelunker.whosonfirst.org/id/85921881/))
 * Write Field web editor for quick property edits  ([edit New York city record](https://writefield.nextzen.org/place/edit?url=https://raw.githubusercontent.com/whosonfirst-data/whosonfirst-data-admin-us/master/data/859/775/39/85977539.geojson)) with human review
@@ -73,21 +73,22 @@ LEGEND for tables below
 #### Gazetteer data competitive analysis table
 
 Project | Started | License | Admin records | Locality subtotal | Other records | Unique IDs (stable) | L10n | i18n | Admin polygons | Admin points | Links
-------- | ------- | ------- | ------------- | ----------------- | ------------- | ------------------- | ---- | ----️ | -------------- | ------------ | -----
-Who’s On First | 2015 | CC-BY | 5.0M | 4.5M | 25.0M | ✅ | ✅ | ☑️ | ✅ 0.4M | ✅ 4.6M | ✅
-GeoNames | 2005 | CC-BY | 5.1M | 4.6M | 5.8M | ✅ | ✅ | ❌ | "❌ $$$ | 💰 0.5M | ✅ 4.6M | ✅
-geoBoundaries | 2017 | License varies, can be ODbL | 1.0M | 0.0M | 0.0M | ❌ | ❌ | ❌ | ✅1.0M | ❌ | ❌
-GADM | 2009 | CC-BY-NC | 0.4M | 0.0M | 0.0M | ❌ | ☑️ | ❌ | ✅ 0.4M | ❌ | ❌
-All The Places | 2017 | CC-0 | 0.0M | 0.0M | 2.5M | ☑️ | ❌ | ❌ | ❌ | ❌ | ☑️
+-------------- | ---- | -------- | ---: | ---: | ----: | -- | -- | -️- | ----- | ------- | -----
+Who's On First | 2015 | CC-BY    | 5.0M | 4.5M | 25.0M | ✅ | ✅ | ☑️ | ✅ 0.4M  | ✅ 4.6M | ✅
+GeoNames       | 2005 | CC-BY    | 5.1M | 4.6M | 5.8M  | ✅ | ✅ | ❌ | ❌ $$$ (💰 0.5M) | ✅ 4.6M | ✅
+geoBoundaries  | 2017 | `*` ODbL | 1.0M | 0.0M | 0.0M  | ❌ | ❌ | ❌ | ✅ 1.0M | ❌ | ❌
+GADM           | 2009 | CC-BY-NC | 0.4M | 0.0M | 0.0M  | ❌ | ☑️ | ❌ | ✅ 0.4M  | ❌ | ❌
+All The Places | 2017 | CC-0     | 0.0M | 0.0M | 2.5M  | ☑️  | ❌ | ❌ | ❌      | ❌ | ☑️
 
-_NOTE: The above table represents a good faith effort to compare open gazetteer projects with nominally CC-BY and more permissive licenses in May 2023. Each project has its own motivations, use cases, and update frequencies. Major respect for everyone involved (and to [OpenStreetMap](https://www.openstreetmap.org/) and their ODbL effort)._
+_TABLE NOTE `*`: geoBoundaries contains multiple sources, many of which are ODbL and some of which are CC-BY. Use discretion._
+_DISCLAIMER: The above table represents a good faith effort to compare open gazetteer projects with nominally CC-BY and more permissive licenses in May 2023. Each project has its own motivations, use cases, and update frequencies. Major respect for everyone involved (and to [OpenStreetMap](https://www.openstreetmap.org/) and their ODbL effort)._
 
 
 #### Gazetteer applications competitive analysis table
 
 Project | Search | Reverse Geocoding | Map Display | Routing | Metrics logging | Venues | Postcodes | Constituencies | Tooling
 ------- | ------ | ----------------- | ----------- | ------- | --------------- | ------ | --------- | -------------- | -------
-Who’s On First | ✅ | ✅ | ✅ | ✅ | ✅ | ☑ ️21M | ✅ 3.9M | ☑ ️7K | Web & CLI
+Who's On First | ✅ | ✅ | ✅ | ✅ | ✅ | ☑ ️21M | ✅ 3.9M | ☑ ️7K | Web & CLI
 GeoNames | ✅ | ❌ $$$ | ☑️ | ✅ | ✅ | ☑️ 1.1M | ✅ 1.5M | ❌ | API
 geoBoundaries | ☑️ | ☑️ | ☑️ | ❌ | ❌ | ❌ | ❌ | ❌ | Web & API
 GADM | ☑️ | ☑️ | ☑️ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
