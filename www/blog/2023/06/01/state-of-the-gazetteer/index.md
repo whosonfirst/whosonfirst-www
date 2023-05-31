@@ -82,7 +82,7 @@ We recognize our WOF gazetteer is one of many open gazetteers, let’s look at f
 
 * **[Who’s On First](https://whosonfirst.org/):** Open data project with both administrative and non-administrative data like postal codes, constituencies, and venues. The CC-BY license allows commercial use. Includes polygons, fully localized names, disputed territory handling for reverse geocoding, navigation centroids, and unique IDs to capture value from metrics. The data is used in applications with over 300 million monthly active users.
 * **[GeoNames](https://www.geonames.org/):** Commercial project across a range of administrative and non-administrative placetypes including postal codes and venues. Premium polygons can be licensed for a fee. Great locality coverage!
-* **[geoBoundaries](https://www.geoboundaries.org/): **Academic project focused exclusively on administrative hierarchy. A complicated license that mixes in ODbL and other non-commercial data sources with CC-BY data. Names are not localized, no disputed territories, no label centroids, and no unique IDs.
+* **[geoBoundaries](https://www.geoboundaries.org/):** Academic project focused exclusively on administrative hierarchy. A complicated license that mixes in ODbL and other non-commercial data sources with CC-BY data. Names are not localized, no disputed territories, no label centroids, and no unique IDs.
 * **[GADM](https://gadm.org/):** Academic project focused exclusively on administrative hierarchy. Non-commercial use license although a custom commercial license is available on request. Names include latin, variants, and local script but not in a machine readable way. No disputed territories, no label centroids, and no unique IDs.
 * **[All The Places](https://www.alltheplaces.xyz/):** Open data project with CC-0 license focused exclusively on venues.
 
@@ -4585,7 +4585,7 @@ placetypes
    </td>
    <td>
    </td>
-   <td>Neighbourhoodplacetypes
+   <td>Neighbourhood placetypes
    </td>
    <td>min_zoom
    </td>
@@ -7276,12 +7276,9 @@ We have sourced for import in 2023 new data from national mapping agencies in 12
 ![alt_text](images/image17.png "image_tooltip")
 
 
+For densely populated countries with complex administrative subdivisions (like in China and India), we may consider adding an optional `microcounty` placetype between county and localadmin.
 
-## For densely populated countries with complex administrative subdivisions (like in China and India), we may consider adding an optional `microcounty` placetype between county and localadmin.
-
-
-## While we don’t have concrete plans for expanding `postalcode` or `constituency` coverage, if those are important to you please reach out. Two tractable problems are importing newer open polygon data for `postalcode` features in Europe and rescuing point geometry `postalcode` records that are visiting Null Island.
-
+While we don’t have concrete plans for expanding `postalcode` or `constituency` coverage, if those are important to you please reach out. Two tractable problems are importing newer open polygon data for `postalcode` features in Europe and rescuing point geometry `postalcode` records that are visiting Null Island.
 
 ## Localization
 
@@ -7289,9 +7286,7 @@ Who’s On First includes name localizations ([L10n](https://en.wikipedia.org/wi
 
 While the source GeoJSON and SQLite distribution include all languages, for Shapefiles we provide a more ergonomic experience by pre-joining the SPR to the names table to include the default and 25 more localized names, when available, for:
 
-
-
-* _Arabic, Bengali, Chinese (simplified and/or traditional), Dutch, English, Farsi, French, German, Greek, Hebrew, Hindi, Hungarian, Indonesian, Italian, Japanese, Korean, Polish, Portuguese, Russian, Spanish, Swedish, Turkish, Ukrainian, Urdu, and Vietnamese_
+> Arabic, Bengali, Chinese (simplified and/or traditional), Dutch, English, Farsi, French, German, Greek, Hebrew, Hindi, Hungarian, Indonesian, Italian, Japanese, Korean, Polish, Portuguese, Russian, Spanish, Swedish, Turkish, Ukrainian, Urdu, and Vietnamese
 
 Who’s On First [uses](https://github.com/whosonfirst/whosonfirst-names#rfc-5646-bcp-47-comformance) the RFC 5646 / BCP-47 [language indications](https://www.loc.gov/standards/iso639-2/php/code_list.php) for names to specify a 3-character code for the name translations, like `name:{language}_x_preferred` in the GeoJSON and `name_{locale}` in the Shapefiles. For example, English is stored as `name:eng_x_preferred` in the GeoJSON and `name_eng` in the Shapefiles.
 
@@ -7301,13 +7296,11 @@ If you need to discern the “local” name for a given place record, the parent
 
 By current WOF convention, a feature’s default name is stored in ASCII-7 English. For latin script based languages you can maximize localized name coverage by coalescing `name:{lang}_x_preferred`, `name:eng_x_preferred`, and `wof:name`. Specific coalesce logic depends on your application and the locale(s) used by your audience.
 
-
 ### Localized name coverage by placetype
 
 By convention, Who’s On First tracks a single “preferred” name spelling per language for a place. Because of the many different ways to [translate and/or transliterate](https://www.oneskyapp.com/blog/translation-vs-transliteration-vs-transcription/#:~:text=The%20sole%20purpose%20of%20translation,that%20make%20up%20each%20word.) a place’s name from one language into another WOF also allows multiple “variant” names per language. Some languages have formalized rules for transliterating into another, but those rules can evolve over longer spans of time (e.g. romanization of [Chinese](https://en.wikipedia.org/wiki/Romanization_of_Chinese)) and generate time and system variants. Languages without formalized transliteration rules can organically generate even more variants.
 
 The large variation in names is one of the reasons gazetteers like Who’s On First assign unique IDs for our features and, when we discern a match in another gazetteer, provide ID crosswalk between the “this is the same as that” features.
-
 
 <table>
   <tr>
@@ -7962,9 +7955,9 @@ All these [Mapzen](https://www.mapzen.com/) projects ([Who’s On First](https:/
     * **Label min zoom and label max zooms** exist but can to be fine tuned for global, multi-zoom basemaps (especially for county and locality placetypes)
     * **Population estimate** coverage expansion to determine relative label zoom and townspot size grading
 * **Map display for thematic polygons**
-    * **Min zoom and max zoom **variable per placetype and per country with area grading for a composite global, multi-zoom basemap
+    * **Min zoom and max zoom** variable per placetype and per country with area grading for a composite global, multi-zoom basemap
     * **Vector tilesets** (global and per placetype) with newer tools like [Tippicanoe](https://github.com/felt/tippecanoe) and [Planetiler](https://github.com/onthegomap/planetiler) delivered as serverless [PMTiles](https://protomaps.com/docs/pmtiles) archives
-    * **Edge matching **of boundaries between countries
+    * **Edge matching**of boundaries between countries
     * **Land clipping** of boundaries inside countries for terrestrial land mass. This is a partially addressed problem in the USA for data from the US Census, and sometimes occurs in Europe
     * **Quality checks** to ensure no feature dupes between placetypes (e.g. `localadmin` paired with `locality,` and `neighbourhood` paired with `localadmin`) and that historical features are marked not current
 * **Single feature display**
