@@ -17,9 +17,6 @@ Catalog: John S. Cox & Son, aeronautical supplies c. 1934. Purchase. <a href="ht
 </div>
 
 
-<p style="color: red; font-weight: bold">>>>>>  gd2md-html alert:  ERRORs: 0; WARNINGs: 0; ALERTS: 23.</p>
-<ul style="color: red; font-weight: bold"><li>See top comment block for details on ERRORs and WARNINGs. <li>In the converted Markdown or HTML, search for inline alerts that start with >>>>>  gd2md-html alert:  for specific instances that need correction.</ul>
-
 <p style="color: red; font-weight: bold">Links to alert messages:</p><a href="#gdcalert1">alert1</a>
 <a href="#gdcalert2">alert2</a>
 <a href="#gdcalert3">alert3</a>
@@ -43,9 +40,6 @@ Catalog: John S. Cox & Son, aeronautical supplies c. 1934. Purchase. <a href="ht
 <a href="#gdcalert21">alert21</a>
 <a href="#gdcalert22">alert22</a>
 <a href="#gdcalert23">alert23</a>
-
-<p style="color: red; font-weight: bold">>>>>> PLEASE check and correct alert issues and delete this message and the inline alerts.<hr></p>
-
 
 ## State of the Gazetteer in 2023
 
@@ -642,7 +636,7 @@ Who’s On First has a range of postalcode types and geometry types with a preci
 
 A sizable number of postal codes exist in other countries – but their locations are approximate (or [are visiting](https://spelunker.whosonfirst.org/nullisland/) [Null Island](https://www.wsj.com/articles/if-you-cant-follow-directions-youll-end-up-on-null-island-1468422251)) and are not shown in the map below based on the [shapefile distribution](https://geocode.earth/data/whosonfirst/) – but they are included in the [SQLite distribution](https://geocode.earth/data/whosonfirst/). If you’re interested in mapping postalcodes to the post office / locality names, we provide that for the United States in the `mz:postal_locality` property. If you need global mapping, see [Pelias’ postal cities](https://github.com/pelias/postal-cities) project.
 
-_NOTE: The United Kingdom and Australia receive regular updates, the rest are an older vintage and could use a refresh. _
+_NOTE: The United Kingdom and Australia receive regular updates, the rest are an older vintage and could use a refresh._
 
 Several detailed map views are provided farther below for the more unusual cases.
 
@@ -733,7 +727,7 @@ The WOF gazetteer also stores nearly 0.5 million alternate geometries. This can 
 
 Every default polygon feature includes a [label centroid](https://github.com/whosonfirst/whosonfirst-properties/tree/main/properties/lbl) geometry suitable for beautiful cartographic labeling derived either from [MapShaper](https://github.com/mbloch/mapshaper) or manual curation. Sometimes [navigation](https://github.com/whosonfirst/whosonfirst-properties/tree/main/properties/nav), [reverse geocoding](https://github.com/whosonfirst/whosonfirst-properties/tree/main/properties/reversegeo), and other specialized centroids are also provided.
 
-_(below) The count of WOF features grouped by placetype, how many of those have default point or polygon geometry, how many have alternate geometries (and the ratio of alternate geometries to the count of features in that placetype), a point area indicates an WOF error mostly from us add or remove neighbourhood polygon geometries, the polygon area in equal area square kilometers, and the ratio of that area compared with the scope of the globe the placetype should cover. _
+_(below) The count of WOF features grouped by placetype, how many of those have default point or polygon geometry, how many have alternate geometries (and the ratio of alternate geometries to the count of features in that placetype), a point area indicates an WOF error mostly from us add or remove neighbourhood polygon geometries, the polygon area in equal area square kilometers, and the ratio of that area compared with the scope of the globe the placetype should cover._
 
 
 <table>
@@ -3490,7 +3484,7 @@ _Breakdowns of each of these classes are available below the map…_
 
 **B:** WOF provides B quality date with basic density point locality coverage in_ Algeria, Azerbaijan, Belize, Benin, Bhutan, Botswana, Chad, Djibouti, El Salvador, Equatorial Guinea, Eritrea, eSwatini, Gambia, Georgia, Guinea, Guinea-Bissau, Guyana, Jamaica, Jordan, Kenya, Lesotho, Liberia, Libya, Malawi, Mauritania, Nicaragua, Niger, Oman, Senegal, Somalia, Somaliland, Suriname, Tajikistan, Togo, Turkmenistan, Uzbekistan, and Zimbabwe. This category also includes several smaller island countries._
 
-NOTE: We still provide detailed region and county polygon coverage for all these to generate full administrative hierarchies, except counties in _Namibia, Botswana, Belarus, Bulgaria, Turkmenistan, and Uzbekistan_. _Greenland, Iceland, and Western Sahara do not have county subdivisions IRL._
+NOTE: We still provide detailed region and county polygon coverage for all these to generate full administrative hierarchies, except counties in _Namibia, Botswana, Belarus, Bulgaria, Turkmenistan, and Uzbekistan. Greenland, Iceland, and Western Sahara do not have county subdivisions IRL._
 
 
 ### Data size by country
@@ -4298,7 +4292,7 @@ By tracking population (and the related population_rank), similarly named places
 
 For global coverage placetypes like continent, country (and dependency), region, county, and locality the population should eventually sum to the planet’s population – modulo import vintage and population growth and the “per global” provides an coverage &/or accuracy scoring. For other placetypes like macroregion and localadmin they should sum to the population in the covered countries (not included in the table). Other placetypes are not available globally so the “per global” indicates the global significance of that placetype when viewed by population instead of feature count.
 
-_(below) This chart sums available population values on WOF records grouped by placetype. Some placetypes that have global coverage should sum to the current “per global” population estimate of 7.888 billion people but currently may not because (a) the vintage of per feature population estimates either lags behind actual population growth or may over-estimate population and (b) some features lack population entirely. _
+_(below) This chart sums available population values on WOF records grouped by placetype. Some placetypes that have global coverage should sum to the current “per global” population estimate of 7.888 billion people but currently may not because (a) the vintage of per feature population estimates either lags behind actual population growth or may over-estimate population and (b) some features lack population entirely._
 
 
 <table>
@@ -7879,7 +7873,7 @@ The table below only includes the top 37 languages. A total of 63 languages have
 ![alt_text](images/image18.png "image_tooltip")
 
 
-_NOTE: The default language for `wof:name` is English, so almost all records include an implicit default English name and many also include an explicit localized English name. The Cebuano localizations are largely from a Wikipedia bot and are suspect so not included in the stats above. The Norwegian language uses multiple codes, including: `nno`, `nob`, and `nor`. _
+_NOTE: The default language for `wof:name` is English, so almost all records include an implicit default English name and many also include an explicit localized English name. The Cebuano localizations are largely from a Wikipedia bot and are suspect so not included in the stats above. The Norwegian language uses multiple codes, including: `nno`, `nob`, and `nor`._
 
 
 ## Internationalization
