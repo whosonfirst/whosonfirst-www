@@ -72,13 +72,13 @@ LEGEND for tables below
 
 #### Gazetteer data competitive analysis table
 
-Project | Started | License | Admin records | Locality subtotal | Other records | Unique IDs (stable) | L10n | i18n | Admin polygons | Admin points | Links
--------------- | ---- | -------- | ---: | ---: | ----: | -- | -- | -️- | ----- | ------- | -----
-Who's On First | 2015 | CC-BY    | 5.0M | 4.5M | 25.0M | ✅ | ✅ | ☑️ | ✅ 0.4M  | ✅ 4.6M | ✅
-GeoNames       | 2005 | CC-BY    | 5.1M | 4.6M | 5.8M  | ✅ | ✅ | ❌ | ❌ $$$ (💰 0.5M) | ✅ 4.6M | ✅
-geoBoundaries  | 2017 | `*` ODbL | 1.0M | 0.0M | 0.0M  | ❌ | ❌ | ❌ | ✅ 1.0M | ❌ | ❌
-GADM           | 2009 | CC-BY-NC | 0.4M | 0.0M | 0.0M  | ❌ | ☑️ | ❌ | ✅ 0.4M  | ❌ | ❌
-All The Places | 2017 | CC-0     | 0.0M | 0.0M | 2.5M  | ☑️  | ❌ | ❌ | ❌      | ❌ | ☑️
+Project      | Started | License | Admin records | Locality subtotal | Other records | Unique IDs (stable) | L10n | i18n | Admin polygons | Admin points | Links
+-------------- | ---- | -------- | ---: | ---: | ----: | -- | -- | -️- | -------------- | -------- | -----
+[Who’s On First](https://whosonfirst.org/) | 2015 | CC-BY    | 5.0M | 4.5M | 25.0M | ✅ | ✅ | ☑️ | ✅ 0.4M          | ✅ 4.6M | ✅
+[GeoNames](https://www.geonames.org/)       | 2005 | CC-BY    | 5.1M | 4.6M | 5.8M  | ✅ | ✅ | ❌ | ❌ $$$ (💰 0.5M) | ✅ 4.6M | ✅
+[geoBoundaries](https://www.geoboundaries.org/)  | 2017 | `*` ODbL | 1.0M | 0.0M | 0.0M  | ❌ | ❌ | ❌ | ✅ 1.0M         | ❌       | ❌
+[GADM](https://gadm.org/)           | 2009 | CC-BY-NC | 0.4M | 0.0M | 0.0M  | ❌ | ☑️ | ❌ | ✅ 0.4M          | ❌       | ❌
+[All The Places](https://www.alltheplaces.xyz/) | 2017 | CC-0     | 0.0M | 0.0M | 2.5M  | ☑️  | ❌ | ❌ | ❌              | ❌       | ☑️
 
 _TABLE NOTE `*`: geoBoundaries contains multiple sources, many of which are ODbL and some of which are CC-BY. Use discretion._
 _DISCLAIMER: The above table represents a good faith effort to compare open gazetteer projects with nominally CC-BY and more permissive licenses in May 2023. Each project has its own motivations, use cases, and update frequencies. Major respect for everyone involved (and to [OpenStreetMap](https://www.openstreetmap.org/) and their ODbL effort)._
@@ -88,11 +88,11 @@ _DISCLAIMER: The above table represents a good faith effort to compare open gaze
 
 Project | Search | Reverse Geocoding | Map Display | Routing | Metrics logging | Venues | Postcodes | Constituencies | Tooling
 ------- | ------ | ----------------- | ----------- | ------- | --------------- | ------ | --------- | -------------- | -------
-Who's On First | ✅ | ✅ | ✅ | ✅ | ✅ | ☑ ️21M | ✅ 3.9M | ☑ ️7K | Web & CLI
-GeoNames | ✅ | ❌ $$$ | ☑️ | ✅ | ✅ | ☑️ 1.1M | ✅ 1.5M | ❌ | API
-geoBoundaries | ☑️ | ☑️ | ☑️ | ❌ | ❌ | ❌ | ❌ | ❌ | Web & API
-GADM | ☑️ | ☑️ | ☑️ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
-All The Places | ✅ | ❌ | ✅ | ✅ | ☑️ | ✅ 2.5M | ❌ | ❌ | Web
+[Who’s On First](https://whosonfirst.org/) | ✅ | ✅ | ✅ | ✅ | ✅ | ☑ ️21M | ✅ 3.9M | ☑ ️7K | Web & CLI
+[GeoNames](https://www.geonames.org/) | ✅ | ❌ $$$ | ☑️ | ✅ | ✅ | ☑️ 1.1M | ✅ 1.5M | ❌ | API
+[geoBoundaries](https://www.geoboundaries.org/) | ☑️ | ☑️ | ☑️ | ❌ | ❌ | ❌ | ❌ | ❌ | Web & API
+[GADM](https://gadm.org/) | ☑️ | ☑️ | ☑️ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
+[All The Places](https://www.alltheplaces.xyz/) | ✅ | ❌ | ✅ | ✅ | ☑️ | ✅ 2.5M | ❌ | ❌ | Web
 
 _NOTE: geoBoundaries has a great web viewer to [compare data](https://www.geoboundaries.org/geoContrast.html?country=BHR&mainSource=geoBoundaries+%28Open%29&comparisonSource=Natural+Earth+v5.0.1&mainLevel=1&comparisonLevel=1) for countries and their subdivisions across projects – including those here in WOF and from the lower geometry precision [Natural Earth](https://www.naturalearthdata.com/)._
 
