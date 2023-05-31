@@ -556,13 +556,7 @@ Additional coverage is available in the WOF gazetteer for 3.9M postal codes, 7K 
 
 Localities form the bulk of place records in the WOF gazetteer. Of those 4.5 million records, 95% have point geometries and 5% have polygons. Distribution of our localities follows population density. See the “Scorecards” section below for a description of which countries have locality polygon coverage.
 
-
-
-<p id="gdcalert1" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image1.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert2">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/image1.png "image_tooltip")
-
+![Who's On First locality coverage map](images/wof-localities.png "Who's On First locality coverage map")
 
 
 #### Primary administrative hierarchy coverage
@@ -577,52 +571,28 @@ Who’s On First tracks `countries` and `dependencies` as equal top-level placet
 
 _NOTE: Feature counts for each placetype are included in the legend. Every feature on the map below has a polygon geometry, but is represented as a point for visualization purposes._
 
-
-
-<p id="gdcalert2" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image2.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert3">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/image2.png "image_tooltip")
-
+![Who's On First primary administrative hierarchy coverage map](images/wof-main-admin-with-dependency.png "Who's On First primary administrative hierarchy coverage map")
 
 
 #### Localadmin coverage
 
 Most of the 230K localadmin placetype features have polygon geometries. See the “Depth of administrative levels”, “By geometry type”, and “Improving WOF data coverage and quality (a more detailed look)” sections below for more information.
 
-
-
-<p id="gdcalert3" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image3.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert4">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/image3.png "image_tooltip")
-
+![Who's On First localadmin coverage map](images/wof-localadmin.png "Who's On First localadmin coverage map")
 
 
 #### Campus coverage
 
 Most of the 24K campus placetype features are airports, but we include national park polygons in select countries, and in the USA there are ~ 20k mobile home parks.
 
-
-
-<p id="gdcalert4" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image4.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert5">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/image4.png "image_tooltip")
-
+![Who's On First campus coverage map](images/wof-campus.png "Who's On First campus coverage map")
 
 
 #### Other core “administrative” placetypes coverage
 
 Additional placetypes in the “admin” repos are included for convenience to name and/or reverse geocode for continents, oceans, marine areas, time zones, and more exotic features like empires and market areas. We’re also wondering what those 2 unknown features are!
 
-
-
-<p id="gdcalert5" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image5.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert6">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/image5.png "image_tooltip")
-
+![Who's On First other core placetypes coverage map](images/wof-others.png "Who's On First other core placetypes coverage map")
 
 
 #### Postalcode coverage
@@ -640,76 +610,42 @@ _NOTE: The United Kingdom and Australia receive regular updates, the rest are an
 
 Several detailed map views are provided farther below for the more unusual cases.
 
-
-<p id="gdcalert6" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image6.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert7">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/image6.png "image_tooltip")
+![Who's On First postalcodes coverage map](images/wof-postalcode.png "Who's On First postalcodes coverage map")
 
 
 ##### Vancouver, Canada postalcodes
 
 When precise locations for postalcodes (like the “[V5K 1A2](https://spelunker.whosonfirst.org/id/521319439/)” delivery route) are not available they are sometimes mapped to the polygon centroids of their parent postal area (e.g. “[V5K](https://spelunker.whosonfirst.org/id/504805001/)” postal aggregation area) in Vancouver, Canada shown below.
 
-
-
-<p id="gdcalert7" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image7.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert8">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/image7.png "image_tooltip")
-
+![Who's On First postalcodes coverage map detail for Vancouver, Canada](images/wof-postalcode-canada-vancouver-bc-detail.png "Who's On First postalcodes coverage map detail for Vancouver, Canada")
 
 
 ##### London postalcodes
 
 Detailed point locations for specific delivery routes like “[SW1A 1AA](https://spelunker.whosonfirst.org/id/487748609/)” are available in the United Kingdom, updated approximately quarterly, with the London metro area shown below.
 
-
-
-<p id="gdcalert8" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image8.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert9">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/image8.png "image_tooltip")
-
+![Who's On First postalcodes coverage map detail for London, United Kingdom](images/wof-postalcode-united-kingdom-london-detail.png "Who's On First postalcodes coverage map detail for London, United Kingdom")
 
 
 ##### Tokyo, Japan postalcodes
 
 Similar point geometries are available in Japan, with the Tokyo metro area shown below.
 
-
-
-<p id="gdcalert9" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image9.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert10">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/image9.png "image_tooltip")
-
+![Who's On First postalcodes coverage map detail for Tokyo, Japan](images/wof-postalcode-japan-tokyo-detail.png "Who's On First postalcodes coverage map detail for Tokyo, Japan")
 
 
 ##### Amsterdam, Netherlands postalcodes
 
 Several experiments have created [alphashapes](https://en.wikipedia.org/wiki/Alpha_shape) from WOF venues address data, including in the Netherlands. These approximate polygons are marked “[mz:is_approximate](https://github.com/whosonfirst/whosonfirst-properties/tree/main/properties/mz#is_approximate)” and capture the bounding box extent of the zipcode and the label centroid in search and even reverse geocoding, but are not suitable for display in a thematic map.
 
-
-
-<p id="gdcalert10" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image10.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert11">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/image10.png "image_tooltip")
-
+![Who's On First postalcodes coverage map detail for Amsterdam, Netherlands](images/wof-postalcode-netherlands-amsterdam-detail.png "Who's On First postalcodes coverage map detail for Amsterdam, Netherlands")
 
 
 #### Constituency coverage
 
 For national and regional legislative bodies, including upper and lower chamber indication via “[wof:association](https://github.com/whosonfirst/whosonfirst-properties/blob/main/properties/wof/README.md#association)”. These will need a refresh for the 2023 redistricting in the United States. Canada includes data in British Columbia only.
 
-
-
-<p id="gdcalert11" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image11.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert12">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/image11.png "image_tooltip")
-
+![Who's On First constituency coverage map](images/wof-constituency.png "Who's On First constituency coverage map")
 
 
 #### Venue coverage
@@ -3453,11 +3389,7 @@ We rate 177 countries that are mostly limited to point locality coverage and bas
 
 _Breakdowns of each of these classes are available below the map…_
 
-
-<p id="gdcalert12" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image12.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert13">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/image12.png "image_tooltip")
+![Who's On First score card map](images/wof-grades.png "Who's On First score card map")
 
 
 #### A range coverage by country
@@ -3486,17 +3418,10 @@ NOTE: We still provide detailed region and county polygon coverage for all these
 
 ### Data size by country
 
-
-
-<p id="gdcalert13" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image13.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert14">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/image13.png "image_tooltip")
-
+![Who's On First data size map](images/wof-size-in-bytes.png "Who's On First data size map")
 
 _NOTE: Methodology: [https://data.geocode.earth/wof/dist/shapefile/inventory.json](https://data.geocode.earth/wof/dist/shapefile/inventory.json) to get sizes per country._
 
- \
 Even though most countries are limited to locality points past the county polygon level, those features (and their properties including name localizations) can add up to sizable downloads, especially when mixed in with the polygon features.
 
 
@@ -4252,26 +4177,14 @@ Looking at “administrative” placetype features by country (country code), th
 
 ### Depth of administrative levels by country
 
-
-
-<p id="gdcalert14" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image14.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert15">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/image14.png "image_tooltip")
-
+![Who's On First admin levels depth map](images/wof-levels-deep-and-local-admin.png "Who's On First admin levels depth map")
 
 Who’s On First tracks 1st and 2nd order administrative divisions for most countries and dependencies (so three levels deep including county, region, and county). A handful only have 1st order divisions (2 levels). Around 39 countries include 4 to 7 administrative levels. Around 24 of those include features at the municipality (“localadmin”) level. We have point records only for “localadmin” in another 19 countries, and anticipate polygon features for this placetype can be imported for another 53 countries (see “Future Directions” section below).
 
 
 ### Vintage of data by country
 
-
-
-<p id="gdcalert15" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image15.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert16">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/image15.png "image_tooltip")
-
+![Who's On First data vintage map](images/wof-vintage.png "Who's On First data vintage map")
 
 While 2013-era Quattroshapes is the skeleton for Who’s On First, we’ve substantially updated the gazetteer in the last decade. In 2015, we imported the original Quattroshapes polygon features to normalize them and otherwise clean them up. In 2016, we added polygons for 2nd order administrative divisions (“county”) for almost every country and dependency in the world. In 2017, we imported Quattroshapes point gazetteer and GeoNames “locality” points to provide global coverage at that placetype in all countries. Most country and dependency capitals and major metropolitan centers were updated with approximate polygons in 2021. Select countries have been rebuilt in whole or partially since 2017, including 42 countries in North America, Europe, and elsewhere.
 
@@ -4281,7 +4194,6 @@ When Who’s On First observes a change in a country’s administrative subdivis
 
 
 ### Select data properties
-
 
 ##### Population by placetype
 
@@ -7244,8 +7156,6 @@ As human population grows (and declines) so the world’s heart beats, and so ou
 
 Our top two priorities in 2023 are:
 
-
-
 1. Improve locality coverage in India, and
 2. expand localadmin coverage globally
 
@@ -7255,26 +7165,14 @@ Our localadmin efforts are largely focused on achieving complete coverage in Eur
 
 Priority countries (blue outlines below) include: Indonesia, Mexico, Ireland, Portugal, Belgium, and Luxembourg. An additional 26 countries (black outlines below) have been prioritized for minor edits or more complete imports &/or rebuilds. Please reach out to help :)
 
-
-
-<p id="gdcalert16" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image16.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert17">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/image16.png "image_tooltip")
-
+![Who's On First data 2023 priority map](images/wof-priority.png "Who's On First 2023 priority map")
 
 
 #### Detailed plan for 2023
 
 We have sourced for import in 2023 new data from national mapping agencies in 12 countries, potential NMA data in another 7 countries, 39 countries at the localadmin level via the geoBoundaries project, and need to review licenses on another 17 localadmin geoBoundaries countries. We’re still searching for data in several priority countries, including Costa Rica, Egypt, Peru, and Thailand.
 
-
-
-<p id="gdcalert17" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image17.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert18">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/image17.png "image_tooltip")
-
+![Who's On First data 2023 plans map](images/wof-localadmin-plans.png "Who's On First 2023 plans map")
 
 For densely populated countries with complex administrative subdivisions (like in China and India), we may consider adding an optional `microcounty` placetype between county and localadmin.
 
@@ -8149,13 +8047,7 @@ _NOTE: While our WOF gazetteer does include 21M venue records they are of an old
 
 Most people engage with the project by downloading and “reading” the data. In the course of using the data, you might find a few tools helpful both for finding specific records and for editing them to fix small problems in the data (like a misspelled name).
 
-
-
-<p id="gdcalert23" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image23.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert24">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/image23.png "image_tooltip")
-
+![Who's On First collaborate spelunker screenshot](images/wof-spelunker-collaboration.png "Who's On First collaborate spelunker screenshot")
 
 
 ### View Who’s On First records
@@ -8176,8 +8068,6 @@ For more complex and bulk imports we use **[QGIS](https://qgis.org/)** and scrip
 
 Who’s On First data is available to download in several formats, including:
 
-
-
 * [Shapefiles](https://geocode.earth/data/whosonfirst/) - for GIS mappers in applications like QGIS and ArcGIS
 * [SQLite](https://geocode.earth/data/whosonfirst/) - for database driven applications
 
@@ -8195,8 +8085,6 @@ While we manage Who’s On First place records as individual text files in git r
 A large project like Who’s On First relies on good will to function, some amount of organization to sustain it year to year, and funding to pay data curation, engineering development, and internet server bills.
 
 If you or your organization relies on Who’s On First please considering sponsoring us with a recurring or one-time donation:
-
-
 
 * [Open Collective](https://opencollective.com/whosonfirst)
 * [Github Sponsorship](https://github.com/sponsors/whosonfirst)
