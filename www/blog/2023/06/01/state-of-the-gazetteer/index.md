@@ -66,13 +66,14 @@ LEGEND for tables below
 * ✅ Great coverage and usability
 * ☑️ Basic coverage or usability
 * ❌ No coverage or usability (unless noted)
+* Unique IDs must also be stable
 * L10n = Localized names
 * i18n = Internationalized features
 * Links = Concordance 🔗with other gazetteer projects
 
 #### Gazetteer data competitive analysis table
 
-Project        | Started | License | Admin records | Locality subtotal | Other records | Unique IDs (stable) | L10n | i18n | Admin polygons | Admin points | Links
+Project        | Started | License | Admin records | Localities | Others | Unique IDs | L10n | i18n | Admin polygons | Admin points | Links
 -------------- | ---- | ----- | ---- | ---- | ----- | --- | --- | ---️ | ---- | ---- | ---
 [Who’s On First](https://whosonfirst.org/)      | 2015 | CC-BY    | 5.0M | 4.5M | 25.0M | ✅ | ✅ | ☑️ | ✅ 0.4M          | ✅ 4.6M | ✅
 [GeoNames](https://www.geonames.org/)           | 2005 | CC-BY    | 5.1M | 4.6M | 5.8M  | ✅ | ✅ | ❌ | ❌ $$$ (💰 0.5M) | ✅ 4.6M | ✅
