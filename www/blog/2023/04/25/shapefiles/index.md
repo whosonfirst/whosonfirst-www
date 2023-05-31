@@ -2,8 +2,8 @@
 layout: page
 title: Making Who’s On First more accessible
 published: false
-date: 2023-04-25
-permalink: /blog/2023/04/25/shapefiles/
+date: 2023-05-31
+permalink: /blog/2023/05/31/shapefiles/
 category: blog
 excerpt: "Shapefiles improve accessibility to the Who's On First gazetteer for GIS users for a core set of standard place response properties, and discussion of making simple edits, bulk imports, and knowledge sharing in our community."
 authors: [nvkelso]
@@ -40,7 +40,6 @@ While the shapefile format is more familiar for GIS technicians using desktop ap
 > If you’re new to Who’s On First the new shapefile option will provide an easy way to get up and going, and we hope make you hungry for the full range of data in the SQLite databases.
 
 Since shapefiles don’t support mixed geometry types, there’s 2 shapefiles for every WOF placetype, like “locality-points” and “locality-polygons”.
-
 
 For example:
 
