@@ -1,0 +1,1036 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="x-ua-compatible" content="ie=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Who’s On First | Making Who’s On First more accessible</title>
+		<meta name="description" content="Who’s on First is a gazetteer of places." />
+		<link rel="apple-touch-icon" href="/images/favicons/apple-touch-icon.png" sizes="180x180" />
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-16x16.png" sizes="16x16" />
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-32x32.png" sizes="32x32" />
+		<link rel="manifest" href="/images/favicons/manifest.json" />
+		<link rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg" color="#2C1E3F" />
+		<link rel="stylesheet" href="/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="/css/mapzen.whosonfirst.css" />
+		
+		<link rel="stylesheet" href="/css/styles/grayscale.css" />
+
+		<link rel="alternate" type="application/atom+xml" title="Who's On First Atom feed" href="/blog/atom_10.xml"/>		
+		<link rel="alternate" type="application/rss+xml" title="Who's On First RSS 2.0 feed" href="/blog/rss_20.xml"/>
+
+		
+		<meta property="og:type" content="article" />
+		<meta property="og:site_name" content="Who's On First" />
+		<meta property="og:title" content="Making Who’s On First more accessible" />
+		<meta property="og:description" content="Shapefiles improve accessibility to the Who&#39;s On First gazetteer for GIS users for a core set of standard place response properties, and discussion of making simple edits, bulk imports, and knowledge sharing in our community." />
+		<meta property="og:image" content="https://www.whosonfirst.org/blog/2023/05/31/shapefiles/images/cooper-hewitt-umbra-utensils-206287_2a2f3d9f5d2761bf_b.jpeg" />
+
+		
+		
+		
+
+	</head>
+	<body>
+		<div class="whosonfirst-wrapper">
+
+			<nav class="navbar navbar-default navbar-fixed-top whosonfirst-fixed-subpage-navbar">
+				<div class="container">
+
+					
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="/">Who’s On First</a>
+					</div>
+
+					
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					  <ul class="nav navbar-nav navbar-right">
+
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/browse/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">browse</a>
+							</li>
+					    
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/docs/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">documentation</a>
+							</li>
+							
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/code/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">code</a>
+							</li>
+
+							
+							
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/download/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">download</a>
+							</li>
+							
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/blog/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">blog</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+
+
+		<style type="text/css">
+		  body {
+		  font-family: serif;
+		  font-size: 1.3em;
+		  line-height: 1.5em;
+		  }
+
+		  h2 small {
+		  display: block;
+		  margin-top:.10em;
+		  font-weight: 100;
+		  font-size: .5em;
+		  line-height: 1.3em;
+		  }
+
+		  p {
+		  line-height: 1.5em !important;
+		  }
+
+		  ul {
+		  font-size:1.3em;
+		  line-height:1.5em;
+		  margin-top:1em !important;
+		  }
+
+		  li {
+		  list-style-type: circle;
+		  margin-bottom: .5em;
+		  }
+
+		  img {
+		  max-width: 640px !important;
+		  max-height: 480px !important;
+		  border: 1px dotted #ccc;
+		  padding: .5em;
+		  margin-bottom:1em;
+		  margin-top: 1em;
+		  display:block;
+		  min-width: 320px;
+		  margin: 0 auto;
+		  }
+
+		  blockquote {
+		  background-color:#ededed;
+		  margin-top:1em;
+		  padding-top:.05em !important;
+		  padding-bottom:1.75em !important;
+		  }
+
+		  .hey-look {
+		  font-weight: 700;
+		  }
+
+		  @media (min-width: 320px) and (max-width: 400px) {
+
+		  ul {
+		  margin:0px;
+	  	  margin-left:15px;
+		  padding:0px;
+		  }
+
+		  pre {
+		  max-width:250px;
+		  overflow:scroll;
+		  }
+
+		  img {
+		  max-width: 250px !important;
+		  max-height: 200px !important;
+		  min-width: 75px;
+		  }
+		  }
+
+		</style>
+
+			<div class="container whosonfirst-subpage-container">
+			  <div class="row">
+			    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-0">
+ 			    </div>
+			    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+			      <article>
+
+	  
+	  
+	  <h2>
+	    Making Who’s On First more accessible
+	    <small>This is a blog post by
+	      <span class="hey-look">nvkelso</span>
+	      that was published on <span class="pubdate"><a href="/blog/2023/05/">May</a> <a href="/blog/2023/05/31">31</a>, <a href="/blog/2023/">2023</a></span>
+	       and tagged <span class="hey-look">shapefile</span>, <span class="hey-look">download</span>, <span class="hey-look">whosonfirst</span>, <span class="hey-look">wof</span> and <span class="hey-look">data</span></small>
+	  </h2>
+
+<style type="text/css">
+table { margin-top: 2rem; font-size: 17px; font-family: sans-serif; font-weight: 300; }
+thead { border-bottom: solid thin; }
+th { padding-bottom: 1rem; padding-right: 2rem; }
+td { padding: 1rem; padding-left:0px !important; padding-right: 2rem !important; vertical-align: top; }
+ol { font-family: sans-serif; font-weight: 300; font-size: 17px; margin-top: 2rem !important; list-style-type: decimal !important; }
+ul { font-family: sans-serif; font-weight: 300;  }
+</style>
+
+<p><img src="images/cooper-hewitt-umbra-utensils-206287_2a2f3d9f5d2761bf_b.jpeg" style="max-height:none !important;" /></p>
+
+<p>One of our founding principles when the Who’s On First gazetteer launched in <a href="https://whosonfirst.org/blog/2015/08/18/who-s-on-first/">2015</a> was data <strong>portability</strong> – that our data should work in any database. By publishing our gazetteer in GeoJSON, CSV, and SQLite formats we allowed you to decide how you wanted to import the data into your software stack of choice.</p>
+
+<p>However, in conversation with the mapping community we’ve heard that data portability should be paired with <strong>accessibility</strong> by a wider audience who are more familiar with accessing geographic data in the <a href="https://en.wikipedia.org/wiki/Shapefile">shapefile</a> format widely used by GIS practitioners and supported by almost all GIS software packages.</p>
+
+<p>Accessibility is actually one of the core tenants of the <a href="https://en.wikipedia.org/wiki/International_Open_Data_Charter">International Open Data Charter</a> which pairs accessibility with usability in the same principle. Over time, the Who’s On First <a href="https://github.com/whosonfirst/whosonfirst-properties/">properties</a> schema has grown more complicated both in breadth and depth – including nested GeoJSON properties that don’t play nice with other formats. While this richness in properties holds space for managing multiple viewpoints about a place, the many hundreds of properties can be daunting for a first time user.</p>
+
+<p>We’ve also heard that reading from and <strong>writing</strong> to the WOF gazetteer should be equally important.  The <a href="https://spelunker.whosonfirst.org/">Spelunker</a> has long provided an easy way to preview place records on the web. Adding Shapefile downloads, along with the existing SQLite downloads, makes it easier to read the data in bulk. There is also growing community interest in providing quick <strong>edits</strong> and more extensive bulk <strong>imports</strong> to keep the data fresh. This post will detail ongoing efforts in the “write” direction.</p>
+
+<p>Our goal with this new work is three fold:</p>
+
+<ol>
+<li>broaden the audience for the WOF gazetteer with a new Shapefile distribution format</li>
+<li>make it more approachable with a small set of core properties</li>
+<li>encourage more community engagement via simple edits, bulk imports, and knowledge sharing</li>
+</ol>
+
+<h2>Downloads</h2>
+
+<p>While we manage Who’s On First place records as individual text files in git repos hosted on Github, from the early days we’ve made “bundled” distributions available. Those distributions were more geared for software engineers than for a more general audience of map makers and cartographers.</p>
+
+<p><strong>SQLite</strong> databases contain the full firehose of Who&rsquo;s On First data, including mixed geometry types and full set of nested GeoJSON properties. Unlike the raw GeoJSON files in the git repos, data in the SQLite databases are organized into several tables, including: spr, names, concordances, ancestors, and geojson. Geometries (default and alternate) are stored in the geojson table. The field layout of the spr table is explained in the Standard Place Response section below.</p>
+
+<p><strong>Shapefile</strong> downloads for the Who’s On First gazetteer are immediately available as per-country ZIP archives including admin (country, region, county, locality, neighbourhood &amp; more), postalcode, and constituency placetypes.</p>
+
+<p>While the shapefile format is more familiar for GIS technicians using desktop applications like <a href="https://qgis.org/en/site/">QGIS</a> or <a href="https://pro.arcgis.com/en/pro-app/latest/get-started/get-started.htm#:~:text=ArcGIS%20Pro%20is%20a%20full,or%20your%20ArcGIS%20Enterprise%20portal.">ArcGIS Pro</a>, it has several significant limitations which means the downloads will lack the full range of Who’s On First features, properties, names, and geometries for a given place. They only include “active” features with a small set of essential properties.</p>
+
+<blockquote>
+<p>If you’re new to Who’s On First the new shapefile option will provide an easy way to get up and going, and we hope make you hungry for the full range of data in the SQLite databases.</p>
+</blockquote>
+
+<p>Since shapefiles don’t support mixed geometry types, there’s 2 shapefiles for every WOF placetype, like “locality-points” and “locality-polygons”.</p>
+
+<p>For example:</p>
+
+<ul>
+<li>whosonfirst-data-admin-us-locality-polygon.shp</li>
+<li>Whosonfirst-data-admin-us-locality-point.shp</li>
+</ul>
+
+<p>Since &ldquo;shapefiles&rdquo; are actually a collection of individual files (with extensions like: <code>shp</code>, <code>shx</code>, <code>dbf</code>, <code>prj</code>, and <code>cpg</code>), we group them into a single compressed ZIP archive for downloading and name the ZIP using same &ldquo;latest&rdquo; convention used for the SQLite downloads. If you&rsquo;re using QGIS you can add the ZIP directly to your project without uncompressing it.</p>
+
+<p>For example:</p>
+
+<ul>
+<li><a href="https://data.geocode.earth/wof/dist/shapefile/whosonfirst-data-admin-us-latest.zip">whosonfirst-data-admin-us-latest.zip</a></li>
+</ul>
+
+<p>To limit the file size of shapefile downloads (which have a 2 GB per file component limit), exported features are a limited subset of Who’s On First data, which:</p>
+
+<ul>
+<li>only includes one row per id</li>
+<li>excludes alt geometries</li>
+<li>excludes id=1 (planet earth)</li>
+<li>excludes non-current records</li>
+<li>excludes unnamed records</li>
+<li>excludes null island records (with point geometries at 0,0)</li>
+</ul>
+
+<p>Shapefiles also have a 10-character limitation on DBF field name length, which often truncates longer WOF property names into ambiguous field (column) names. We provide a mapping of shorter shapefile field names with the full WOF property names below.</p>
+
+<p><strong>Other formats?</strong> We may contemplate adding additional downloads in GeoPackage, GeoParquet, or other formats for the Who’s On First gazetteer, if there is interest. Please reach out!</p>
+
+<h2>Data Schema</h2>
+
+<h3>Standard Place Response (SPR) fields</h3>
+
+<p>The Who&rsquo;s On First “<a href="https://github.com/whosonfirst/go-whosonfirst-spr/blob/main/spr.go#L8">standard place response</a>” (or SPR) provides just the essential properties with simple field names that sometimes coalesce values from multiple source properties.</p>
+
+<p>Distributions like SQLite include SPR properties by default while also making the full set of original and nested GeoJSON properties, alternate geometries, and all name translations available.</p>
+
+<p>With Shapefile we export most of the core SPR properties, and a few other goodies. Because of Shapefile&rsquo;s 10-character limitation on DBF field name length (which would truncate some column names in an ambiguous way) we rename them explicitly, as noted below in the &ldquo;field&rdquo; column, with the &ldquo;field_full&rdquo; indicating the full SPR field name in the other formats, or full WOF property name.</p>
+
+<table>
+<thead>
+<tr>
+<th>field</th>
+<th>field_full</th>
+<th>type</th>
+<th>description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>id</td>
+<td>Id</td>
+<td>integer</td>
+<td>The unique ID of the place</td>
+</tr>
+
+<tr>
+<td>parent_id</td>
+<td>ParentId</td>
+<td>integer</td>
+<td>The unique parent ID of the place. Negative values indicate &ldquo;<a href="https://github.com/whosonfirst/whosonfirst-properties/tree/main/properties/wof#parent_id">complicated</a>&rdquo;.</td>
+</tr>
+
+<tr>
+<td>name</td>
+<td>Name</td>
+<td>string</td>
+<td>The default name of the place (mostly English, mostly ASCII-7)</td>
+</tr>
+
+<tr>
+<td>placetype</td>
+<td>Placetype</td>
+<td>string</td>
+<td>The Who&rsquo;s On First placetype of the place</td>
+</tr>
+
+<tr>
+<td>country</td>
+<td>Country</td>
+<td>string</td>
+<td>The two-letter country code of the place</td>
+</tr>
+
+<tr>
+<td>repo</td>
+<td>Repo</td>
+<td>string</td>
+<td>The (Git) repository name where the source record for the place is stored.</td>
+</tr>
+
+<tr>
+<td>lat</td>
+<td>Latitude</td>
+<td>float</td>
+<td>The latitude for the principal centroid (typically &ldquo;label&rdquo;) of the place</td>
+</tr>
+
+<tr>
+<td>lon</td>
+<td>Longitude</td>
+<td>float</td>
+<td>The longitude for the principal centroid (typically &ldquo;label&rdquo;) of the place</td>
+</tr>
+
+<tr>
+<td>min_lat</td>
+<td>MinLatitude</td>
+<td>float</td>
+<td>The minimum latitude of the bounding box of the place</td>
+</tr>
+
+<tr>
+<td>min_lon</td>
+<td>MinLongitude</td>
+<td>float</td>
+<td>The minimum longitude of the bounding box of the place</td>
+</tr>
+
+<tr>
+<td>max_lat</td>
+<td>MaxLatitude</td>
+<td>float</td>
+<td>The maximum latitude of the bounding box of the place</td>
+</tr>
+
+<tr>
+<td>max_lon</td>
+<td>MaxLongitude</td>
+<td>float</td>
+<td>The maximum longitude of the bounding box of the place</td>
+</tr>
+
+<tr>
+<td>modified</td>
+<td>LastModified</td>
+<td>integer</td>
+<td>The Unix timestamp indicating when the place was last modified</td>
+</tr>
+</tbody>
+</table>
+<p><em>NOTE: In the Shapefile format, last “modified” is a date instead of the original Unix timestamp in integer seconds. In GIS software like QGIS this field will display in your local date-time system settings, like 2019-08-24.)</em></p>
+
+<p>Basic properties for New York city (<a href="https://spelunker.whosonfirst.org/id/85977539/">view on Spelunker</a>):</p>
+
+<pre><code>id: 85977539
+parent_id: -4
+name: New York
+placetype: locality
+country: US
+repo: whosonfirst-data-admin-us
+lat: 40.682949999999998
+lon: -73.970799999999997
+min_lat: 40.496133999999998
+min_lon: -74.255590999999995
+max_lat: 40.915533000000003
+max_lon: -73.700008999999994
+modified: 2023-04-10
+</code></pre>
+
+<p>_NOTE: The Spelunker sometimes shows outdated records, use <a href="https://raw.githubusercontent.com/whosonfirst-data/whosonfirst-data-admin-us/master/data/859/775/39/85977539.geojson">Github.com</a> for source of truth.__</p>
+
+<h3>Other SPR fields</h3>
+
+<p>Formats besides Shapefile will include the other core SPR fields. They are excluded from Shapefiles because of the format&rsquo;s 2GB file size limit, and because the export filter can imply their value.</p>
+
+<table>
+<thead>
+<tr>
+<th>field_full</th>
+<th>type</th>
+<th>description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>BelongsTo</td>
+<td>integer</td>
+<td>The list of Who&rsquo;s On First IDs that are ancestors of the place</td>
+</tr>
+
+<tr>
+<td>IsCurrent</td>
+<td>boolean</td>
+<td>The Who&rsquo;s On First &ldquo;existential&rdquo; flag denoting whether the place is &ldquo;current&rdquo; or not</td>
+</tr>
+
+<tr>
+<td>IsCeased</td>
+<td>boolean</td>
+<td>The Who&rsquo;s On First &ldquo;existential&rdquo; flag denoting whether the place is &ldquo;ceased&rdquo; or not</td>
+</tr>
+
+<tr>
+<td>IsDeprecated</td>
+<td>boolean</td>
+<td>The Who&rsquo;s On First &ldquo;existential&rdquo; flag denoting whether the place is superseded or not</td>
+</tr>
+
+<tr>
+<td>IsSuperseded</td>
+<td>boolean</td>
+<td>The Who&rsquo;s On First &ldquo;existential&rdquo; flag denoting whether the place has been superseded</td>
+</tr>
+
+<tr>
+<td>IsSuperseding</td>
+<td>boolean</td>
+<td>The Who&rsquo;s On First &ldquo;existential&rdquo; flag denoting whether the place supersedes other records</td>
+</tr>
+
+<tr>
+<td>Inception</td>
+<td>string</td>
+<td>The EDTF inception date of the place</td>
+</tr>
+
+<tr>
+<td>Cessation</td>
+<td>string</td>
+<td>The EDTF cessation date of the place</td>
+</tr>
+
+<tr>
+<td>SupersededBy</td>
+<td>integer</td>
+<td>The list of Who&rsquo;s On First IDs that supersede the place</td>
+</tr>
+
+<tr>
+<td>Supersedes</td>
+<td>integer</td>
+<td>The list of Who&rsquo;s On First IDs that are superseded by the place</td>
+</tr>
+
+<tr>
+<td>Path</td>
+<td>string</td>
+<td>The relative path for the Who&rsquo;s On First record associated with the place</td>
+</tr>
+
+<tr>
+<td>URI</td>
+<td>string</td>
+<td>The fully-qualified URI (URL) for the Who&rsquo;s On First record associated with the place</td>
+</tr>
+</tbody>
+</table>
+<p>But Who’s On First is more than just basic properties, it’s also about names, holding hands with other data sources, contextualizing a place’s hierarchy, and a few other goodies we’ve found useful in our regular work with the gazetteer.</p>
+
+<h3>Names</h3>
+
+<p>To provide a more ergonomic Shapefile experience, we&rsquo;ve pre-joined the SPR to the names table to include 25 more localized names, when available, for:</p>
+
+<blockquote>
+<p>Arabic, Bengali, Chinese (simplified and/or traditional), Dutch, English, Farsi, French, German, Greek, Hebrew, Hindi, Hungarian, Indonesian, Italian, Japanese, Korean, Polish, Portuguese, Russian, Spanish, Swedish, Turkish, Ukrainian, Urdu, and Vietnamese</p>
+</blockquote>
+
+<p>Who’s On First <a href="https://github.com/whosonfirst/whosonfirst-names#rfc-5646-bcp-47-comformance">uses</a> the RFC 5646/ BCP-47 <a href="https://www.loc.gov/standards/iso639-2/php/code_list.php">language indications</a> for names to specify a 3-character code for the following preferred locales as <code>name_{locale}</code> properties (so <code>name_eng</code> for English).</p>
+
+<p>The list of supported Shapefile languages is adapted from <a href="https://github.com/nvkelso/natural-earth-vector/tree/master/tools/wikidata#supported-languages--now-26">Natural Earth</a> and <a href="https://github.com/tilezen/vector-datasource/blob/master/docs/SEMANTIC-VERSIONING.md#languages-are-not-versioned">Tilezen&rsquo;s</a> list of core languages. Arabic, Chinese, English, French, Russian and Spanish are used by the United Nations for meetings and official documents. The other languages listed are either proposed as an official language of the United Nations (Bengali, Hindi, Portuguese, and Turkish) or frequently used in OpenStreetMap, Who&rsquo;s On First, or Wikipedia.</p>
+
+<p>Several hundred other languages are supported in the SQLite distributions in the “names” table.</p>
+
+<h4>Languages and their name fields</h4>
+
+<table>
+<thead>
+<tr>
+<th>field</th>
+<th>3-char</th>
+<th>2-char</th>
+<th>language</th>
+<th>native script</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>name_ara</td>
+<td>ara</td>
+<td>ar</td>
+<td>Arabic</td>
+<td>العربية</td>
+</tr>
+
+<tr>
+<td>name_ben</td>
+<td>ben</td>
+<td>bn</td>
+<td>Bengali</td>
+<td>বাংলা</td>
+</tr>
+
+<tr>
+<td>name_deu</td>
+<td>deu</td>
+<td>de</td>
+<td>German</td>
+<td>Deutsch</td>
+</tr>
+
+<tr>
+<td>name_eng</td>
+<td>eng</td>
+<td>en</td>
+<td>English</td>
+<td>English</td>
+</tr>
+
+<tr>
+<td>name_ell</td>
+<td>ell</td>
+<td>el</td>
+<td>Greek</td>
+<td>ελληνικά</td>
+</tr>
+
+<tr>
+<td>name_fas</td>
+<td>fas</td>
+<td>fa</td>
+<td>Farsi</td>
+<td>فارسی</td>
+</tr>
+
+<tr>
+<td>name_fra</td>
+<td>fra</td>
+<td>fr</td>
+<td>French</td>
+<td>français</td>
+</tr>
+
+<tr>
+<td>name_heb</td>
+<td>heb</td>
+<td>he</td>
+<td>Hebrew</td>
+<td>עִבְרִית‎</td>
+</tr>
+
+<tr>
+<td>name_hin</td>
+<td>hin</td>
+<td>hi</td>
+<td>Hindi</td>
+<td>हिन्दी</td>
+</tr>
+
+<tr>
+<td>name_hun</td>
+<td>hun</td>
+<td>hu</td>
+<td>Hungarian</td>
+<td>magyar</td>
+</tr>
+
+<tr>
+<td>name_ind</td>
+<td>ind</td>
+<td>id</td>
+<td>Indonesian</td>
+<td>Bahasa Indonesia</td>
+</tr>
+
+<tr>
+<td>name_ita</td>
+<td>ita</td>
+<td>it</td>
+<td>Italian</td>
+<td>italiano</td>
+</tr>
+
+<tr>
+<td>name_jpn</td>
+<td>jpn</td>
+<td>ja</td>
+<td>Japanese</td>
+<td>日本語</td>
+</tr>
+
+<tr>
+<td>name_kor</td>
+<td>kor</td>
+<td>ko</td>
+<td>Korean</td>
+<td>한국어</td>
+</tr>
+
+<tr>
+<td>name_nld</td>
+<td>nld</td>
+<td>nl</td>
+<td>Dutch</td>
+<td>Nederlands</td>
+</tr>
+
+<tr>
+<td>name_pol</td>
+<td>pol</td>
+<td>pl</td>
+<td>Polish</td>
+<td>Polski</td>
+</tr>
+
+<tr>
+<td>name_por</td>
+<td>por</td>
+<td>pt</td>
+<td>Portuguese</td>
+<td>Português</td>
+</tr>
+
+<tr>
+<td>name_rus</td>
+<td>rus</td>
+<td>ru</td>
+<td>Russian</td>
+<td>Русский</td>
+</tr>
+
+<tr>
+<td>name_spa</td>
+<td>spa</td>
+<td>es</td>
+<td>Spanish</td>
+<td>español</td>
+</tr>
+
+<tr>
+<td>name_swe</td>
+<td>swe</td>
+<td>sv</td>
+<td>Swedish</td>
+<td>Svenska</td>
+</tr>
+
+<tr>
+<td>name_tur</td>
+<td>tur</td>
+<td>tr</td>
+<td>Turkish</td>
+<td>Türkçe</td>
+</tr>
+
+<tr>
+<td>name_ukr</td>
+<td>ukr</td>
+<td>uk</td>
+<td>Ukrainian</td>
+<td>українська</td>
+</tr>
+
+<tr>
+<td>name_urd</td>
+<td>urd</td>
+<td>ur</td>
+<td>Urdu</td>
+<td>اردو</td>
+</tr>
+
+<tr>
+<td>name_vie</td>
+<td>vie</td>
+<td>vi</td>
+<td>Vietnamese</td>
+<td>Tiếng Việt</td>
+</tr>
+
+<tr>
+<td>name_zho</td>
+<td>zho</td>
+<td>zh</td>
+<td>Chinese</td>
+<td>中文</td>
+</tr>
+</tbody>
+</table>
+<p><em>NOTE: Chinese names may include a mix of simplified and/or traditional Chinese characters. The SQLite file tries to imply Simplified or Traditional characters with additional country tags.</em></p>
+
+<p>Back to our New York city example:</p>
+
+<pre><code>name_ara: نيويورك
+name_ben: নিউ ইয়র্ক সিটি
+name_deu: New York City
+name_eng: New York
+name_ell: Νέα Υόρκη
+name_fas: نیویورک
+name_fra: New York
+name_heb: ניו יורק
+name_hin: न्यूयॉर्क नगर
+name_hun: New York
+name_ind: Kota New York
+name_ita: New York
+name_jpn: ニューヨーク
+name_kor: 뉴욕
+name_nld: New York
+name_pol: Nowy Jork
+name_por: Nova Iorque
+name_rus: Нью-Йорк
+name_spa: Nueva York
+name_swe: New York
+name_tur: New York
+name_ukr: Нью-Йорк
+name_urd: نیویارک شہر
+name_vie: Thành phố New York
+name_zho: 纽约
+</code></pre>
+
+<h3>Concordances</h3>
+
+<p>To provide a more ergonomic Shapefile experience, we&rsquo;ve pre-joined the SPR to the “concordances” table in the SQLite database and shorted the full WOF property names in the original GeoJSON:</p>
+
+<table>
+<thead>
+<tr>
+<th>field</th>
+<th>field_full</th>
+<th>type</th>
+<th>description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>gn_id</td>
+<td>gn:id</td>
+<td>integer</td>
+<td>GeoNames unique identifier</td>
+</tr>
+
+<tr>
+<td>wd_id</td>
+<td>wd:id</td>
+<td>string</td>
+<td>Wikidata unique identifier</td>
+</tr>
+
+<tr>
+<td>usgeo_id</td>
+<td>uscensus:geoid</td>
+<td>string</td>
+<td>US Census unique identifier</td>
+</tr>
+
+<tr>
+<td>hasc_id</td>
+<td>hasc:id</td>
+<td>string</td>
+<td>Statoids Hierarchical Set of Subdivision Codes</td>
+</tr>
+</tbody>
+</table>
+<p>Back to our New York city example:</p>
+
+<pre><code>gn_id: 5128581
+wd_id: Q60
+usgeo_id: 3651000
+hasc_id: NULL
+</code></pre>
+
+<h3>Hierarchy</h3>
+
+<p>To provide a more ergonomic Shapefile experience, we&rsquo;ve pre-joined the SPR to the “ancestors” table in the SQLite database, keyed off ancestor_placetype:</p>
+
+<table>
+<thead>
+<tr>
+<th>field</th>
+<th>field_full</th>
+<th>type</th>
+<th>description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>country_id</td>
+<td>country</td>
+<td>integer</td>
+<td>The unique ID of the place&rsquo;s country ancestor</td>
+</tr>
+
+<tr>
+<td>region_id</td>
+<td>region</td>
+<td>integer</td>
+<td>The unique ID of the place&rsquo;s region ancestor</td>
+</tr>
+
+<tr>
+<td>county_id</td>
+<td>county</td>
+<td>integer</td>
+<td>The unique ID of the place&rsquo;s county ancestor</td>
+</tr>
+</tbody>
+</table>
+<p><span style="font-style:italic;">NOTE: Some <code>country_id</code> properties will be empty in the case of dependencies.</span></p>
+
+<p>Back to our New York city example:</p>
+
+<pre><code>country_id: 85633793
+region_id: 85688543
+county_id: 102082361
+</code></pre>
+
+<h3>Other goodies</h3>
+
+<p>To provide a more ergonomic Shapefile experience, we&rsquo;ve extracted several GeoJSON properties from the SPR table in the SQLite database and shorted the full WOF property names in the original GeoJSON:</p>
+
+<table>
+<thead>
+<tr>
+<th>field</th>
+<th>field_full</th>
+<th>type</th>
+<th>description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>population</td>
+<td>wof:population</td>
+<td>integer</td>
+<td>An integer value to represent the most current, known population of a place</td>
+</tr>
+
+<tr>
+<td>is_funky</td>
+<td>mz:is_funky</td>
+<td>integer</td>
+<td>An integer value used when the record is suspect, bad, or inappropriate but additional confirmation is needed before the feature is deprecated. Records with a 1 value are recommended to be hidden from map display and search unless explicitly asked for by name.</td>
+</tr>
+
+<tr>
+<td>min_zoom</td>
+<td>mz:min_zoom</td>
+<td>float</td>
+<td>Float values (though in practice mosts are integer values) that match to web map zoom schema. Common range is 0.0 to 18.0, though they can be greater.</td>
+</tr>
+
+<tr>
+<td>max_zoom</td>
+<td>mz:max_zoom</td>
+<td>float</td>
+<td>Float values (though in practice mosts are integer values) that match to web map zoom schema. Common range is 0.0 to 18.0, though they can be greater.</td>
+</tr>
+
+<tr>
+<td>min_label</td>
+<td>lbl:min_zoom</td>
+<td>float</td>
+<td>When the feature&rsquo;s label should first appear. Float values (though in practice mosts are integer values) that match to web map zoom schema. Common range is 0.0 to 18.0, though they can be greater.</td>
+</tr>
+
+<tr>
+<td>max_label</td>
+<td>lbl:max_zoom</td>
+<td>float</td>
+<td>When the feature&rsquo;s label should be removed (or switched to a different representation like exterior ring labels). Float values (though in practice mosts are integer values) that match to web map zoom schema. Common range is 0.0 to 18.0, though they can be greater.</td>
+</tr>
+
+<tr>
+<td>geom_src</td>
+<td>src:geom</td>
+<td>string</td>
+<td>The data source of a record&rsquo;s geometry. Valid property values are listed in the <a href="https://github.com/whosonfirst/whosonfirst-sources/tree/master/sources"><code>whosonfirst-sources</code></a> repository</td>
+</tr>
+</tbody>
+</table>
+<p>Back to our New York city example:</p>
+
+<pre><code>population: 8405837
+is_funky: NULL
+min_zoom: 1.7
+max_zoom: NULL
+min_label: 5
+max_label: 12
+geom_src: whosonfirst
+</code></pre>
+
+<h2>Simple data edits</h2>
+
+<p>Sadly our earlier <a href="https://whosonfirst.org/blog/2016/10/05/boundary-issues-properties/">Boundary Issues</a> web app for data edits in Who’s On First went offline when Mapzen shut down. In the intervening years we’ve developed <a href="https://writefield.nextzen.org/">Write Field</a>, an web app for making quick data edits to a smaller set of WOF record properties commonly used in map display and search. You’ll need a <a href="https://github.com/signup">Github.com account</a> to login and propose edits, which are then reviewed using the Github pull request process.</p>
+
+<p>Example workflow:</p>
+
+<ul>
+<li>Load the <strong>New York city</strong> record into Write Field by determining it&rsquo;s <code>wof:id</code> (<code>85977539</code>) and locating it&rsquo;s <a href="https://raw.githubusercontent.com/whosonfirst-data/whosonfirst-data-admin-us/master/data/859/775/39/85977539.geojson">source GeoJSON record</a> from Github&rsquo;s raw file view
+
+<ul>
+<li><a href="https://writefield.nextzen.org/place/edit?url=https://raw.githubusercontent.com/whosonfirst-data/whosonfirst-data-admin-us/master/data/859/775/39/85977539.geojson">https://writefield.nextzen.org/place/edit?url=https://raw.githubusercontent.com/whosonfirst-data/whosonfirst-data-admin-us/master/data/859/775/39/85977539.geojson</a></li>
+<li><img src="images/write-field-new-york-city.png" alt="Write Field editing screenshot" /></li>
+</ul></li>
+<li>Once property and value editing is complete, Write Field will generates a pull request (or &ldquo;PR&rdquo;&ldquo;) for human review, using the standard WOF workflow in Github. This includes the web app running <a href="https://github.com/whosonfirst/go-whosonfirst-exportify">Exportify</a> for you to format the record as WOF GeoJSON (with property key, value pairs on new lines, geometry on the last line, and an updated time stamp to ease PR diff generation and human review).
+
+<ul>
+<li>View example pull request: <a href="https://github.com/whosonfirst-data/whosonfirst-data-admin-us/pull/143">us/#143</a></li>
+<li><img src="images/new-york-city-pr.png" alt="Github pull request screenshot" /></li>
+</ul></li>
+<li>To make this easier, we’ve enhanced the Spelunker to include a new “Edit” link in the right sidebar when browsing a place
+
+<ul>
+<li><a href="https://spelunker.whosonfirst.org/id/85977539/">https://spelunker.whosonfirst.org/id/85977539/</a></li>
+<li><img src="images/spelunker-new-york-city-edit-link.png" alt="View in Spelunker now with edit link screenshot" /></li>
+</ul></li>
+</ul>
+
+<p>Although this process is working for us, your feedback and engineering contributions will make it easier for more people to contribute over time. Thank you :)</p>
+
+<h2>Bulk data imports</h2>
+
+<p>The great thing about the open data movement is more and better data about the places is released every year. We are grateful for efforts like <a href="https://inspire.ec.europa.eu/about-inspire/563">INSPIRE</a> in Europe and many other efforts elsewhere. Sometimes that means updating existing Who’s On First records and their properties. Often it means editing more than one record at a time, or even importing thousands of new records into our gazetteer which we have done for many countries as better open data comes online. The benefit of incorporating new data into Who’s On First is it’s immediately available in all downstream applications that rely on Who’s On First.</p>
+
+<p>To do bulk edits we often extract, transform, and load the the new open data in the QGIS desktop application, and then use a script to loop thru the final aggregate product to update existing individual WOF records in the git repos, or to create new records (when appropriate) with a minimum set of properties. Exportifying the record in single line per property formatted GeoJSON which allows easy visual diff’ing of changes, setting the lastmodified date, and setting the hierarchy via reverse geocoding are extra steps in this bulk data import workflow. But the final result is a Github PR that can be easily reviewed and linked with any accompanying property or source definitions.</p>
+
+<p>This work flow continues to evolve, and has been documented in several blog posts, including:</p>
+
+<ul>
+<li><a href="https://www.whosonfirst.org/blog/2016/06/24/sf-neighbourhood-updates/">Guide</a> for editing neighbourhoods with San Francisco as test city, including a <a href="https://github.com/whosonfirst/whosonfirst-cookbook/blob/main/issue_workflows/sf_neighbourhood_updates_pt_1.md">step-by-step</a> workflow</li>
+<li>Several neighbourhood shapes improvement projects, including initial <a href="https://www.whosonfirst.org/blog/2017/04/20/neighbourhood-updates-two/">blog post</a> and followup to <a href="https://www.whosonfirst.org/blog/2017/12/14/updating-whosonfirst/">shrink</a> overly big Zetashapes neighbourhood polygons in the United States, and <a href="https://www.whosonfirst.org/blog/2017/12/22/neighbourhood-updates-three/">global</a> polygon rebuilds for major cities.</li>
+<li><a href="https://github.com/whosonfirst/whosonfirst-cookbook">WOF Cookbook</a>, including <a href="https://github.com/whosonfirst/whosonfirst-cookbook/blob/main/scripts/1264_parkcity_neighbourhoods.py">Park City (Utah) neighbourhood</a> import Python script, and separate script for <a href="https://github.com/whosonfirst/whosonfirst-cookbook/blob/main/scripts/1878_import_new_localadmin.py">importing new localadmin</a> features.</li>
+</ul>
+
+<p>Example Github issues and pull requests:</p>
+
+<ul>
+<li><strong>Estonia:</strong> Update county and localadmin records in <a href="https://github.com/whosonfirst-data/whosonfirst-data-admin-ee/pull/11">ee/#11</a></li>
+<li><strong>France:</strong> Updated to localadmin and locality records in <a href="https://github.com/whosonfirst-data/whosonfirst-data/pull/1343">#1343</a></li>
+<li><strong>Germany:</strong> Updates to localadmin &amp; locality records <a href="https://github.com/whosonfirst-data/whosonfirst-data-admin-de/pull/1">de/#1</a></li>
+<li><strong>Netherlands:</strong> Updates to neighbourhood records, including in Amsterdam <a href="https://github.com/whosonfirst-data/whosonfirst-data/issues/625">#625</a> and Rotterdam/The Hague <a href="https://github.com/whosonfirst-data/whosonfirst-data/issues/633">#633</a></li>
+<li><strong>Norway:</strong> Update region and localadmin records in <a href="https://github.com/whosonfirst-data/whosonfirst-data-admin-no/pull/8">no/#8</a></li>
+<li><strong>Singapore:</strong> Update country, region, county, locality, borough, macrohood, and neighbourhood records in [sg/#9]()</li>
+<li><strong>Switzerland:</strong> Major rebuild of region, county, localadmin, locality, and neighbourhood records – including evaluating and setting properties like <code>wof:coterminious</code>, <code>mz:hiearchy_label</code>, and <code>mz:is_funky</code>, with new Wikidata names, from SwissTopo. <a href="https://github.com/whosonfirst-data/whosonfirst-data/issues/1334">#1334</a> and <a href="https://github.com/whosonfirst-data/whosonfirst-data-admin-ch/pull/4">ch/#4</a></li>
+</ul>
+
+<p>Often bulk imports take some time to discuss, coordinate, implement, and review. To simplify the workflow and make it easier to review, larger imports for a new source in a country are commonly split into smaller Pull Requests by placetype or group of placetypes (like country, region, and county features in one PR, and localadmin and/or locality features in another PR).</p>
+
+<p>We’re hopeful that the complexity of reverse geocoding to determine a place’s ancestor hierarchy can be simplified by new technologies like PMTiles, as Aaron has been <a href="https://millsfield.sfomuseum.org/blog/2022/12/19/pmtiles-pip/">exploring</a> at the SFO Museum.</p>
+
+<h2>Get the data</h2>
+
+<p>Downloads are kindly processed and hosted by <a href="https://geocode.earth/data/whosonfirst/">Geocode Earth</a>, including SQLite and now Shapefiles by country. Particular thanks to <a href="https://www.linkedin.com/in/missinglink/">Peter Johnson</a> there for getting the new format setup.</p>
+
+<ul>
+<li>Load <a href="https://geocode.earth/data/whosonfirst/">Data Downloads</a> page</li>
+<li>Click on the desired 2-character country code button in the top matrix (eg <code>US</code> for United States)</li>
+<li>Confirm your country&rsquo;s name and flag below the top matrix</li>
+<li>Scroll down to the Shapefiles section, <code>Administrative&quot; Boundaries</code> section, and click the name of the ZIP file to download it (eg <a href="https://data.geocode.earth/wof/dist/shapefile/whosonfirst-data-admin-us-latest.zip">whosonfirst-data-admin-us-latest.zip</a>)</li>
+</ul>
+
+<p><em>NOTE: There&rsquo;s also an <a href="https://data.geocode.earth/wof/dist/shapefile/inventory.json">inventory.json</a> file available for programmatic use.</em></p>
+
+<p><img src="images/geocode-earth-shapefile-downloads.png" alt="screenshot of Shapefile downloads from Geocode Earth" /></p>
+
+<h2>Feedback</h2>
+
+<p>We hope you enjoy open data from the Who&rsquo;s On First gazetteer!</p>
+
+<p>If you have feedback please submit a <a href="https://github.com/whosonfirst-data/whosonfirst-data/issues/new">new issue</a> or <a href="https://github.com/whosonfirst-data/whosonfirst-data/discussions/new/choose">discussion</a> topic via Github.</p>
+
+<p>If you prefer email:</p>
+
+<ul>
+<li><a href="http://eepurl.com/ipOxd2">Subscribe to WOF Announcements</a> for &ldquo;big news&rdquo;, via Mailchimp. Frequency is a few times per year. Subscribe now and you&rsquo;ll be first to know about our big India locality data drop!</li>
+<li>Join our new <a href="https://groups.google.com/g/wof-gazetteer">WOF Gazetteer discussion group</a> on Google to ask questions and share updates on your country&rsquo;s latest changes to it&rsquo;s internal administrative subdivisions. If you&rsquo;re a geography geek, this one&rsquo;s for you.</li>
+</ul>
+
+<p>Or on social media:</p>
+
+<ul>
+<li>Follow us on Mastadon at <a href="https://mapstodon.space/@whosonfirst">mapstodon/@whosonfirst</a></li>
+</ul>
+
+<p><em>Photo Credit: <a href="https://collection.cooperhewitt.org/objects/18622933/">Umbra Desktop Utensils in Case, Cooper Hewitt Design Museum</a></em></p>
+
+		</article>
+		</div>
+		</div>	
+		</div>	
+
+		<footer>
+			<nav class="navbar navbar-default navbar-bottom">
+				<div class="container">
+					
+					<ul class="nav navbar-nav navbar-right whosonfirst-footer">
+						<li><a href="/docs/contributing/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">contributing</a></li>
+						<li><a href="/docs/licenses/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">license</a></li>
+						
+						<li><a href="https://mapstodon.space/@whosonfirst" class="whosonfirst-nav-link whosonfirst-footer-nav-link">mastodon</a></li>			
+					</ul>
+				</div>
+			</nav>
+		</footer>
+
+		
+		<script src="/javascript/jquery.min.js"></script>
+		
+		<script src="/javascript/bootstrap.min.js"></script>
+		<script src="/javascript/mapzen.whosonfirst.home.js"></script>
+		<script src="/javascript/mapzen.whosonfirst.subpage.js"></script>
+		
+		<script src="/javascript/highlightpack.js"></script>
+		<script>
+		  try {
+		  	hljs.initHighlightingOnLoad();
+		  } catch (e) {
+		  	console.log("HLJS", e);
+		  }
+		</script>
+	</body>
+</html>
+
