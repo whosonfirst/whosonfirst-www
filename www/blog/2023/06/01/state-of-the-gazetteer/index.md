@@ -22,9 +22,9 @@ The Who’s On First (WOF) gazetteer is a big list of places, each with a stable
 
 Since we [launched](https://whosonfirst.org/blog/2015/08/18/who-s-on-first/) in 2015, the project has grown in coverage, complexity, and supported applications. In this this post I will summarize Who’s On First’s key advantages, offer a comparative analysis of WOF and other open gazetteers, quantify our global coverage by [placetype](https://github.com/whosonfirst/whosonfirst-placetypes), offer score cards by country, dive into name localization, look at internationalization through the lens of disputed territories, and quantify geometry types and sources of those polygon and points, hold hands with and thank our [sources](https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/README.md), and invite collaboration.
 
-WOF gazetteer’s focus on [localities](https://en.wikipedia.org/wiki/Human_settlement) and unique identifiers sets us apart from many other projects. We choose to approach geography at a personal level – starting with the `locality` (or populated place) where people play, study, work, and sleep – and `countries` for when people need a passport to cross a frontier and experience something new and exciting.
+WOF gazetteer’s focus on [localities](https://en.wikipedia.org/wiki/Human_settlement) and unique identifiers sets us apart from many other projects. We choose to approach geography at a personal level – starting with the `locality` (or populated place) where people play, study, work, and sleep – and `country` for when people need a passport to cross a frontier and experience something new and exciting.
 
-Between those “top” and “bottom” placetypes in the administrative hierarchy, countries choose to order their geography in many varied and nested subdivisions. Who’s On First doesn’t judge, but we do align them into common “region” (1st order subdivisions, tracked by the ISO), “county” (2nd order subdivisions), and “localadmin” (municipalities) placetypes. Most localities aren’t legally incorporated, and may or may not be coincidental with a parent localadmin. Many urban localities are further subdivided into boroughs and neighbourhoods. There are even more optional [placetypes](https://github.com/whosonfirst/whosonfirst-placetypes) to allow for intermediate levels and other edge cases.
+Between those “top” and “bottom” placetypes in the administrative hierarchy, countries choose to order their geography in many varied and nested subdivisions. Who’s On First doesn’t judge, but we do align them into common `region` (1st order subdivisions, tracked by the ISO), “county” (2nd order subdivisions), and `localadmin` (municipalities) placetypes. Most localities aren’t legally incorporated, and may or may not be coincidental with a parent localadmin. Many urban localities are further subdivided into `borough` and `neighbourhood` areas. There are even more optional [placetypes](https://github.com/whosonfirst/whosonfirst-placetypes) to allow for intermediate levels and other edge cases.
 
 This common structure allows us to track all the places in the world. Or at least those places we’ve learned about thus far. We hope it provides you an easier mental model to integrate the data into your own application.
 
@@ -38,11 +38,11 @@ _Eager to play with the data yourself? Jump to the [downloads](#Downloads) secti
 * More than `25M` additional places are available, including: `3.9M` postal codes, `7K` (thousand) constituencies, and `21M` venues
 * `452K` features have detailed polygons, with complete coverage at country, region, and county placetypes and exhaustive coverage for localadmin and large localities in major industrialized economies, with exhaustive coverage as point geometries for remaining features. We also store `447K` alternate geometries.
 * Names are localized into hundreds of languages, using internet standard language codes
-* Population values, min_zoom ranking, and polygon label centroids enable sophisticated map designs with beautiful and informative cartography
+* Population values, `min_zoom` ranking, and polygon label centroids enable sophisticated map designs with beautiful and informative cartography
 * Internationalized with disputed territory boundaries for global audiences and compliance with local regulations
+* Open license (CC-BY attribution) means you’re free to use the data for commercial purposes, including derivative rights, as long as you credit the project and our sources
 * Includes original work and data aggregated from [360+ authoritative sources](https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/README.md). Our source data licenses have been vetted by multiple corporate attorneys at large, publicly traded companies.
 * Holds hands with 60+ datasets via linked unique identifiers to allow crosswalk across `6.5M` feature-level concordances.
-* Open license (CC-BY attribution) means you’re free to use the data for commercial purposes, including derivative rights, as long as you credit the project and our sources
 * Spelunker web app for viewing formatted data with a map  ([browse New York city record](https://spelunker.whosonfirst.org/id/85921881/))
 * Write Field web editor for quick property edits  ([edit New York city record](https://writefield.nextzen.org/place/edit?url=https://raw.githubusercontent.com/whosonfirst-data/whosonfirst-data-admin-us/master/data/859/775/39/85977539.geojson)) with human review
 * View raw data on Github ([view New York city example](https://github.com/whosonfirst-data/whosonfirst-data-admin-us/blob/master/data/859/218/81/85921881.geojson))
@@ -99,7 +99,7 @@ _NOTE: geoBoundaries has a great web viewer to [compare data](https://www.geobou
 
 ## Who’s On First global coverage deep dive
 
-Who’s On First has 5M administrative places, including 4.5M localities. Detailed breakdowns by placetype, geometry type, country & etc are available farther down in the “By Geometry Type” section.
+Who’s On First has `5M` administrative places, including `4.5M` localities. Detailed breakdowns by placetype, geometry type, country & etc are available farther down in the “[By Geometry Type](#by-geometry-type)” section.
 
 placetype | count
 --------- | -----:
@@ -114,14 +114,14 @@ dependency | 43
 (other admin) | 29,934
 TOTAL | 5,018,244
 
-Additional coverage is available in the WOF gazetteer for 3.9M postal codes, 7K constituencies, and 21M venues, but they are largely excluded from the “administrative” tables below, although descriptions and coverage maps are provided.
+Additional coverage is available in the WOF gazetteer for `3.9M` postal codes, `7K` constituencies, and `21M` venues, but they are largely excluded from the “administrative” tables below, although descriptions and coverage maps are provided.
 
 
 ### Coverage by placetype
 
 #### Locality coverage
 
-Localities form the bulk of place records in the WOF gazetteer. Of those 4.5 million records, 95% have point geometries and 5% have polygons. Distribution of our localities follows population density. See the “Scorecards” section below for a description of which countries have locality polygon coverage.
+Localities form the bulk of place records in the WOF gazetteer. Of those `4.5` million records, 95% have point geometries and 5% have polygons. Distribution of our localities follows population density. See the “Scorecards” section below for a description of which countries have locality polygon coverage.
 
 ![Who's On First locality coverage map](images/wof-localities.png "Who's On First locality coverage map")
 
@@ -143,14 +143,14 @@ _(below) Feature counts for each placetype are included in the legend. Every fea
 
 #### Localadmin coverage
 
-Most of the 230K localadmin placetype features have polygon geometries. See the “Depth of administrative levels”, “By geometry type”, and “Improving WOF data coverage and quality (a more detailed look)” sections below for more information.
+Most of the `230K` localadmin placetype features have polygon geometries. See the “[Depth of administrative levels](#depth-of-administrative-levels-by-country)”, “[By geometry type](#by-geometry-type)”, and “[Improving WOF data coverage and quality (a more detailed look)](#improving-wof-data-coverage-and-quality)” sections below for more information.
 
 ![Who's On First localadmin coverage map](images/wof-localadmin.png "Who's On First localadmin coverage map")
 
 
 #### Campus coverage
 
-Most of the 24K campus placetype features are airports, but we include national park polygons in select countries, and in the USA there are ~ 20k mobile home parks.
+Most of the `24K` campus placetype features are airports, but we include national park polygons in select countries, and in the USA there are ~ `20K` mobile home parks.
 
 ![Who's On First campus coverage map](images/wof-campus.png "Who's On First campus coverage map")
 
@@ -164,14 +164,14 @@ Additional placetypes in the “admin” repos are included for convenience to n
 
 #### Postalcode coverage
 
-Who’s On First has a range of postalcode types and geometry types with a precision gradient:
+Who’s On First has `3.4M` postalcodes with a range spatial aggregations, geometry types, and polygon accuracies:
 
 1. Polygons for fully qualified postalcodes (e.g. “[95501](https://spelunker.whosonfirst.org/id/554784877/)” in the United States sourced from the US Census Zip code tabulation areas, and also available in Australia, Australia, Finland, France, and Switzerland)
 2. Polygons for postal aggregation areas (Canada, Netherlands). Think “955” in the United States which is useful for calculating regional statistics.
 3. Point locations for specific delivery routes, like “[SW1A 1AA](https://spelunker.whosonfirst.org/id/487748609/)” in the United Kingdom (think ZIP+4 in the United States) which have a precise location (the same situation is true for Japan) or an approximate location mapped to the nearest available polygon centroid (like in Canada which has a combination of precise and official 3-character “forward sorting area” aggregation polygons and approximate centroids for the 6-character postal codes).
 4. In the Netherlands we also have a 4th type of polygon created from the alphashape of the postalcode attributes on WOF venue point locations.
 
-A sizable number of postal codes exist in other countries – but their locations are approximate (or [are visiting](https://spelunker.whosonfirst.org/nullisland/) [Null Island](https://www.wsj.com/articles/if-you-cant-follow-directions-youll-end-up-on-null-island-1468422251)) and are not shown in the map below based on the [shapefile distribution](https://geocode.earth/data/whosonfirst/) – but they are included in the [SQLite distribution](https://geocode.earth/data/whosonfirst/). If you’re interested in mapping postalcodes to the post office / locality names, we provide that for the United States in the `mz:postal_locality` property. If you need global mapping, see [Pelias’ postal cities](https://github.com/pelias/postal-cities) project.
+The majority of WOF postalcode records exist in other countries – but their locations are approximate (or [are visiting](https://spelunker.whosonfirst.org/nullisland/) [Null Island](https://www.wsj.com/articles/if-you-cant-follow-directions-youll-end-up-on-null-island-1468422251)) and are not shown in the map below based on the [shapefile distribution](https://geocode.earth/data/whosonfirst/) – but they are included in the [SQLite distribution](https://geocode.earth/data/whosonfirst/). If you’re interested in mapping postalcodes to the post office / locality names, we provide that for the United States in the `mz:postal_locality` property. If you need global mapping, see [Pelias’ postal cities](https://github.com/pelias/postal-cities) project.
 
 _NOTE: The United Kingdom and Australia receive regular updates, the rest are an older vintage and could use a refresh._
 
@@ -222,11 +222,11 @@ Back in 2015 and 2016 we imported 21 million venues in 63 countries from the [Si
 
 ### By Geometry Type
 
-Nearly 10% of Who’s On First’s 5 million administrative records have polygons, with complete global coverage at the `country` and `dependency` (collectively the “top administrative level”), and `region` (1st order administrative subdivision) levels. Nearly continuous global coverage is provided at the `county` (2nd order administrative subdivision) level. Many countries also include complete polygon coverage at the `localadmin` level.
+Nearly 10% of Who’s On First’s `5M` administrative records have polygons, with complete global coverage at the `country` and `dependency` (collectively the “top administrative level”), and `region` (1st order administrative subdivision) levels. Nearly continuous global coverage is provided at the `county` (2nd order administrative subdivision) level. Many countries also include complete polygon coverage at the `localadmin` level.
 
-Countries with any coloring in the “Country scorecards” map in the next section include complete locality polygon coverage. Other “gray” colored countries in that map will only include approximate locality polygons for the country capital and a handful of other regionally important localities.
+Countries with any coloring in the “[Country scorecards](#country-scorecards)” map in the next section include complete locality polygon coverage. Other “gray” colored countries in that map will only include approximate locality polygons for the country capital and a handful of other regionally important localities.
 
-The WOF gazetteer also stores nearly 0.5 million alternate geometries. This can occur when we upgrade point geometries to polygons, have multiple polygons to choose from but we designate just one the default and store the others as alternates, deal with coastline clipping for display versus territorial waters for reverse geocoding, or need to manually curate a custom polygon (and store the original as an alternate geometry).
+The WOF gazetteer also stores nearly `0.5M` alternate geometries. This can occur when we upgrade point geometries to polygons, have multiple polygons to choose from but we designate just one the default and store the others as alternates, deal with coastline clipping for display versus territorial waters for reverse geocoding, or need to manually curate a custom polygon (and store the original as an alternate geometry).
 
 Every default polygon feature includes a [label centroid](https://github.com/whosonfirst/whosonfirst-properties/tree/main/properties/lbl) geometry suitable for beautiful cartographic labeling derived either from [MapShaper](https://github.com/mbloch/mapshaper) or manual curation. Sometimes [navigation](https://github.com/whosonfirst/whosonfirst-properties/tree/main/properties/nav), [reverse geocoding](https://github.com/whosonfirst/whosonfirst-properties/tree/main/properties/reversegeo), and other specialized centroids are also provided.
 
@@ -1498,14 +1498,16 @@ rank | country | count | .  | rank | country | count | .  | rank | country | cou
 
 ![Who's On First admin levels depth map](images/wof-levels-deep-and-local-admin.png "Who's On First admin levels depth map")
 
-Who’s On First tracks 1st and 2nd order administrative divisions for most countries and dependencies (so three levels deep including county, region, and county). A handful only have 1st order divisions (2 levels). Around 39 countries include 4 to 7 administrative levels. Around 24 of those include features at the municipality (“localadmin”) level. We have point records only for “localadmin” in another 19 countries, and anticipate polygon features for this placetype can be imported for another 53 countries (see “Future Directions” section below).
+Who’s On First tracks 1st and 2nd order administrative divisions for most countries and dependencies (so three levels deep including `country` (and/or `dependency` and `empire`), `region`, and `county`). A handful only have 1st order divisions (2 levels). Around 39 countries include 4 to 7 administrative levels. Around 24 of those include features at the municipality (`localadmin`) level. We have point records only for `localadmin` in another 19 countries, and anticipate polygon features for this placetype can be imported for another 53 countries (see “[Future Directions](#improving-wof-data-coverage-and-quality)” section below).
+
+_NOTE: All the countries in the map above also include `locality` points and polygons but because those don't form a continuous in-country or global fabric this level is excluded from the counts above._
 
 
 ### Vintage of data by country
 
 ![Who's On First data vintage map](images/wof-vintage.png "Who's On First data vintage map")
 
-While 2013-era Quattroshapes is the skeleton for Who’s On First, we’ve substantially updated the gazetteer in the last decade. In 2015, we imported the original Quattroshapes polygon features to normalize them and otherwise clean them up. In 2016, we added polygons for 2nd order administrative divisions (“county”) for almost every country and dependency in the world. In 2017, we imported Quattroshapes point gazetteer and GeoNames “locality” points to provide global coverage at that placetype in all countries. Most country and dependency capitals and major metropolitan centers were updated with approximate polygons in 2021. Select countries have been rebuilt in whole or partially since 2017, including 42 countries in North America, Europe, and elsewhere.
+While 2013-era Quattroshapes is the skeleton for Who’s On First, we’ve substantially updated the gazetteer in the last decade. In 2015, we imported the original Quattroshapes polygon features to normalize them and otherwise clean them up. In 2016, we added polygons for 2nd order administrative divisions (“`county`”) for almost every country and dependency in the world. In 2017, we imported Quattroshapes point gazetteer and GeoNames “`locality`” points to provide global coverage at that placetype in all countries. Most country and dependency capitals and major metropolitan centers were updated with approximate `locality` polygons in 2021. Select countries have been rebuilt in whole or partially since 2017, including 42 countries in North America, Europe, and elsewhere.
 
 Most of the **AAAA** and **AAA** countries (see section above) have a 5- or 10-year census, and we attempt to incorporate polygon data from their most recent census &/or INSPIRE-related open data efforts. Some eastern European countries have earlier 2013 vintage locality polygons. Generally region and county level changes less per year, with the localadmin level experiencing more consolidation and occasional splits on an annual basis (~1% change per year).
 
@@ -1520,7 +1522,7 @@ By tracking population (and the related population_rank), similarly named places
 
 For global coverage placetypes like continent, country (and dependency), region, county, and locality the population should eventually sum to the planet’s population – modulo import vintage and population growth and the “per global” provides an coverage &/or accuracy scoring. For other placetypes like macroregion and localadmin they should sum to the population in the covered countries (not included in the table). Other placetypes are not available globally so the “per global” indicates the global significance of that placetype when viewed by population instead of feature count.
 
-_(below) This chart sums available population values on WOF records grouped by placetype. Some placetypes that have global coverage should sum to the current “per global” population estimate of 7.888 billion people but currently may not because (a) the vintage of per feature population estimates either lags behind actual population growth or may over-estimate population and (b) some features lack population entirely._
+_(below) This chart sums available population values on WOF records grouped by placetype. Some placetypes that have global coverage should sum to the current “per global” population estimate of 7.888 billion people but currently may not because (a) the vintage of per feature population estimates either lags behind actual population growth or may over-estimate population e.g. because of disputed territories and (b) some features lack population entirely._
 
 placetype | population | per global
 --------- | ---------: | ---------:
@@ -1654,14 +1656,14 @@ We expect to land the India locality coverage by June this year with polygons fo
 
 Our localadmin efforts are largely focused on achieving complete coverage in Europe, introducing localadmin coverage in Africa, and expand localadmin coverage in Asia and South America.
 
-Priority countries (blue outlines below) include: Indonesia, Mexico, Ireland, Portugal, Belgium, and Luxembourg. An additional 26 countries (black outlines below) have been prioritized for minor edits or more complete imports &/or rebuilds. Please reach out to help :)
+Priority countries (blue outlines below) include: Indonesia, Mexico, Ireland, Portugal, Belgium, and Luxembourg. An additional 26 countries (black outlines below) have been prioritized for minor edits or more complete imports &/or rebuilds. Please [reach out](#contact-whos-on-first) to help :)
 
 ![Who's On First data 2023 priority map](images/wof-priority.png "Who's On First 2023 priority map")
 
 
 #### Detailed plan for 2023
 
-We have sourced for import in 2023 new data from national mapping agencies in 12 countries, potential NMA data in another 7 countries, 39 countries at the localadmin level via the geoBoundaries project, and need to review licenses on another 17 localadmin geoBoundaries countries. We’re still searching for data in several priority countries, including Costa Rica, Egypt, Peru, and Thailand.
+We have sourced for import in 2023 new data from national mapping agencies in 12 countries, potential NMA data in another 7 countries, 39 countries at the localadmin level via the [geoBoundaries](https://www.geoboundaries.org/) project, and need to review licenses on another 17 localadmin geoBoundaries countries. We’re still searching for data in several priority countries, including Costa Rica, Egypt, Peru, and Thailand.
 
 ![Who's On First data 2023 plans map](images/wof-localadmin-plans.png "Who's On First 2023 plans map")
 
@@ -1725,14 +1727,14 @@ The table below only includes the top 37 languages. A total of 63 languages have
 ![Who's On First name localization chart](images/wof-name-localization-chart.png "Who's On First name localization chart")
 
 
-_NOTE: The default language for `wof:name` is English, so almost all records include an implicit default English name and many also include an explicit localized English name. The Cebuano localizations are largely from a Wikipedia bot and are suspect so not included in the stats above. The Norwegian language uses multiple codes, including: `nno`, `nob`, and `nor`._
+_NOTE: The default language for `wof:name` is English, so almost all records include an implicit default English name and many also include an explicit localized English name. The Cebuano `ceb` localizations are largely from a Wikipedia bot and are suspect so not included in the stats above. The Norwegian language uses multiple codes, including: `nno`, `nob`, and `nor`._
 
 
 ## Internationalization
 
 For internationalization ([i18n](https://en.wikipedia.org/wiki/Internationalization_and_localization)), we track 104 “disputed” territories (polygons between countries for contested areas) around the world, and Who’s On First hold hands with Natural Earth allowing you to make use of their extensive catalog of pairwise points-of-view.
 
-Disputed placetype records include an optional [`mz:hieararchy_label`](https://github.com/whosonfirst/whosonfirst-properties/tree/main/properties/mz#hierarchy_label)” property (and related properties for each ancestor level in the placetype hierarchy) to indicate if place records that reverse geocode within the disputed area should include full, any, or partial text strings for that record's ancestors. For example, [Western Sahara](https://spelunker.whosonfirst.org/id/1159339507/) which, assuming a reverse geocoder like Pelias has implemented the flag, won’t include text for country or region ancestors but will allow showing locality names. We recommend using the Natural Earth point-of-views to localize the hierarchy label properties (e.g. to allow viewers within Morocco to also see country and region ancestor details).
+Disputed placetype records include an optional [`mz:hieararchy_label`](https://github.com/whosonfirst/whosonfirst-properties/tree/main/properties/mz#hierarchy_label) property (and related properties for each ancestor level in the placetype hierarchy) to indicate if place records that reverse geocode within the disputed area should include full, any, or partial text strings for that record's ancestors. For example, [Western Sahara](https://spelunker.whosonfirst.org/id/1159339507/) which, assuming a reverse geocoder like Pelias has implemented the flag, won’t include text for country or region ancestors but will allow showing locality names. We recommend using the Natural Earth point-of-views to localize the hierarchy label properties (e.g. to allow viewers within Morocco to also see country and region ancestor details).
 
 ![Who's On First disputed coverage map](images/wof-disputed.png "Who's On First disputed coverage map")
 
@@ -1803,7 +1805,7 @@ Places can also be added to vector tiles **[Tilezen](https://tilezen.readthedocs
 
 * **Basemap** with label “centroids” for neighbourhood polygons.
 
-All these [Mapzen](https://www.mapzen.com/) projects ([Who’s On First](https://www.whosonfirst.org/), [Pelias](https://pelias.io/), [Valhalla](https://valhalla.github.io/valhalla/)), and [Tilezen](https://tilezen.readthedocs.io/en/latest/layers/) are now part of the [Linux Foundation](https://www.linuxfoundation.org/) and are free for anyone to use and adapt.
+All these [Mapzen](https://www.mapzen.com/) projects ([Who’s On First](https://www.whosonfirst.org/), [Pelias](https://pelias.io/), [Valhalla](https://valhalla.github.io/valhalla/), and [Tilezen](https://tilezen.readthedocs.io/en/latest/layers/)) are now part of the [Linux Foundation](https://www.linuxfoundation.org/) and are free for anyone to use and adapt.
 
 
 ### Future applications looking for collaboration and funding
@@ -1848,7 +1850,7 @@ Decomposing Data... | ...into Data Sources
 
 Who’s On First is a “coarse” geocoder meaning it doesn’t provide street level features. But WOF data can be complemented (as [Pelias](https://pelias.io/) does) with data from other open data projects, including: [OpenAddresses](https://openaddresses.io/), [All The Places](https://www.alltheplaces.xyz/), [Natural Earth](https://www.naturalearthdata.com/), and even the ODbL licensed [OpenStreetMap](https://www.openstreetmap.org/) for a complete geocoding solution.
 
-If you need to process and deduplicate venue data using latitude, longitude, name, and address information we also recommend **Lieu** ([code repo](https://www.google.com/url?q=https://github.com/openvenues/lieu&sa=D&source=docs&ust=1683617097731000&usg=AOvVaw2SUCPfeg6V2psGlnlqVhpV) and [blog post](https://www.google.com/url?q=https://www.mapzen.com/blog/whosonfirst-sotmus-2017/&sa=D&source=docs&ust=1683617042484978&usg=AOvVaw1tGT3BA6tT-9cyb-aqOwsb)).
+If you need to process and deduplicate venue data using latitude, longitude, name, and address information we also recommend **Lieu** ([code repo](https://github.com/openvenues/lieu) and [blog post](https://www.mapzen.com/blog/whosonfirst-sotmus-2017)).
 
 Source                                              | Precision | Component | Example
 --------------------------------------------------- | --------- | --------- | -----------------
@@ -1873,7 +1875,7 @@ Most people engage with the project by downloading and “reading” the data. I
 
 ### View Who’s On First records
 
-The **[Spelunker](https://spelunker.whosonfirst.org/)** is a web tool for browsing Who’s On First and includes search functionality. For example: [view New York](https://spelunker.whosonfirst.org/id/85977539/) city.
+The **[Spelunker](https://spelunker.whosonfirst.org/)** is a web tool for browsing Who’s On First (shown in the screenshot immediately above) and includes search functionality. For example: [view New York](https://spelunker.whosonfirst.org/id/85977539/) city.
 
 You can also View raw data on **[Github](https://github.com/whosonfirst-data/)**. Because navigating the many `whosonfirst-data` repos can be overwhelming, each individual WOF record self describes in which repo it can be found. For example, [view New York](https://github.com/whosonfirst-data/whosonfirst-data-admin-us/blob/master/data/859/775/39/85977539.geojson) city as raw GeoJSON.
 
@@ -1882,7 +1884,7 @@ You can also View raw data on **[Github](https://github.com/whosonfirst-data/)**
 
 We use **[Write Field](https://writefield.nextzen.org/)** for quick property data edits. For example, [load New York city for editing](https://writefield.nextzen.org/place/edit?url=https://raw.githubusercontent.com/whosonfirst-data/whosonfirst-data-admin-us/master/data/859/775/39/85977539.geojson). This requires a Github account to create a pull request which can be reviewed by the WOF team.
 
-For more complex and bulk imports we use **[QGIS](https://qgis.org/)** and scripts to iterate over files managed in git. This workflow is described in more detail in our recent Shapefiles blog post.
+For more complex and bulk imports we use **[QGIS](https://qgis.org/)** and scripts to iterate over files managed in git. This workflow is described in more detail in our recent [Shapefiles](https://whosonfirst.org/blog/2023/05/31/shapefiles/) blog post.
 
 
 ## Downloads
@@ -1898,7 +1900,7 @@ While we manage Who’s On First place records as individual text files in git r
 
 **[Shapefile](https://geocode.earth/data/whosonfirst/)** downloads for the Who’s On First gazetteer were added in April 2023 as per-country ZIP archives including admin (country, region, county, locality, neighbourhood & more), postalcode, and constituency placetypes. They only contain basic properties, names, and geometries.
 
-**[SQLite](https://geocode.earth/data/whosonfirst/)** databases contain the full firehose of Who's On First data, including mixed geometry types and full set of nested GeoJSON properties. Unlike the raw GeoJSON files in the git repos, data in the SQLite databases are organized into several tables, including: _spr, names, concordances, ancestors, and geojson_. Geometries (default and alternate) are stored as properties in the _geojson_ table. The field layout of the spr table is explained in the Standard Place Response section of this blog post.
+**[SQLite](https://geocode.earth/data/whosonfirst/)** databases contain the full firehose of Who's On First data, including mixed geometry types and full set of nested GeoJSON properties. Unlike the raw GeoJSON files in the git repos, data in the SQLite databases are organized into several tables, including: _spr, names, concordances, ancestors, and geojson_. Geometries (default and alternate) are stored as properties in the _geojson_ table. The field layout of the spr table is explained in the Standard Place Response section of the [Shapefiles](https://whosonfirst.org/blog/2023/05/31/shapefiles/) blog post.
 
 
 ## Sponsor Who’s On First
@@ -1925,8 +1927,10 @@ Join our new [WOF Gazetteer discussion group](https://groups.google.com/g/wof-ga
 
 Open gazetteers, including Who’s On First, have come a long way in the last 10 years – largely because of the success of the global open data movement. To the many people who have advocated with your local or national government to “free” this bounty of data, thank you!
 
-Administrative borders are rarely “visible on the ground” and gazetteers that aggregate this data remain relevant by providing important and broad access to this type of map data. Each open gazetteer project has its particular license that reflects origin stories and day-to-day workflows. At Who’s On First we’re proud to offer our data as CC-BY attribution allows both read access and commercial use – with polygons, localization, and internationalization.
+Administrative borders are rarely “visible on the ground” and gazetteers that aggregate this data remain relevant by providing important and broad access to this type of map data. Each open gazetteer project has its particular license that reflects origin stories and day-to-day workflows.
 
-Who’s On First holds hands with 360 datasets, has great name translations, with unique IDs, and has been confirmed to work in a wide range of applications, several of which have more than 300 million monthly active users globally.
+At Who’s On First we’re proud to offer our over `5M` administrative places and another `25M` places with `CC-BY` attribution – allowing you to both read access and commercial use – with polygons, localization, and internationalization.
+
+Who’s On First holds hands with 360 datasets, has great name translations, with unique IDs, and has been confirmed to work in a wide range of applications, several of which have more than `300M` monthly active users globally.
 
 While we can and will add even more data, we think there’s enough in Who’s On First for you to get started making a map or building an app today. We’re excited to see what you build!
