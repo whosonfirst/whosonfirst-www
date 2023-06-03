@@ -13,8 +13,7 @@ tag: [whosonfirst,wof,data,analysis]
 [![](images/194688_adaf9e38b251ee92_b.jpeg)](https://collection.cooperhewitt.org/objects/18673263/)
 
 <div style="font-size:small;font-style:italic;text-align:center;">
-Drawing, Screen Design: "Heads of State," Front Side, by Dan Friedman. <a href="https://collection.cooperhewitt.org/objects/18673263/">Collection of Cooper Hewitt  Museum, published by the Smithsonian Institution</a>. 2002.064.041 a e
-</div>
+Drawing, Screen Design: "Heads of State," Front Side, by Dan Friedman. <a href="https://collection.cooperhewitt.org/objects/18673263/">Collection of Cooper Hewitt  Museum, published by the Smithsonian Institution</a>.</div>
 
 ## State of the Gazetteer in 2023
 
@@ -69,7 +68,7 @@ LEGEND for tables below
 * Unique IDs must also be stable
 * L10n = Localized names
 * i18n = Internationalized features
-* Links = Concordance 🔗with other gazetteer projects
+* Links = Concordance 🔗 with other gazetteer projects
 
 #### Gazetteer data competitive analysis table
 
@@ -121,7 +120,7 @@ Additional coverage is available in the WOF gazetteer for `3.9M` postal codes, `
 
 #### Locality coverage
 
-Localities form the bulk of place records in the WOF gazetteer. Of those `4.5` million records, 95% have point geometries and 5% have polygons. Distribution of our localities follows population density. See the “Scorecards” section below for a description of which countries have locality polygon coverage.
+Localities form the bulk of place records in the WOF gazetteer. Of those `4.5` million records, 95% have point geometries and 5% have polygons. Distribution of our localities follows population density. See the “[Scorecards](#country-scorecards)” section below for a description of which countries have locality polygon coverage.
 
 ![Who's On First locality coverage map](images/wof-localities.png "Who's On First locality coverage map")
 
@@ -1512,6 +1511,8 @@ While 2013-era Quattroshapes is the skeleton for Who’s On First, we’ve subst
 Most of the **AAAA** and **AAA** countries (see section above) have a 5- or 10-year census, and we attempt to incorporate polygon data from their most recent census &/or INSPIRE-related open data efforts. Some eastern European countries have earlier 2013 vintage locality polygons. Generally region and county level changes less per year, with the localadmin level experiencing more consolidation and occasional splits on an annual basis (~1% change per year).
 
 When Who’s On First observes a change in a country’s administrative subdivisions we add the new or changed features with an [inception](https://github.com/whosonfirst/whosonfirst-properties/blob/main/properties/edtf/README.md#inception) date, and mark the old ones with a [cessation](https://github.com/whosonfirst/whosonfirst-properties/blob/main/properties/edtf/README.md#cessation) date using the expressive U.S. [Library of Congress' Extended Date/Time Format](https://github.com/whosonfirst/whosonfirst-dates) (EDTF) syntax. When possible, we also point back and forth between new and old with [supersedes](https://github.com/whosonfirst/whosonfirst-properties/blob/main/properties/wof/README.md#supersedes) and [supersedes_by](https://github.com/whosonfirst/whosonfirst-properties/blob/main/properties/wof/README.md#superseded_by) properties. This allows older administrative units to be queried within a date range in the SQLite distribution (while the Shapefile distribution excludes non-current records). We’ve also experimented with the same for countries, like the former [Yugoslavia](https://whosonfirst.org/blog/2017/06/29/tackling-space-and-time-in-whosonfirst/), which we discussed in an earlier blog post, and for the 2016 French “region” level consolidation (for example the WOF `macroregion` of [Rhone-Alpes](https://spelunker.whosonfirst.org/id/404227439/) was consolidated into the new  [Auvergne-Rhone-Alpes](https://spelunker.whosonfirst.org/id/1108826389/) WOF `macroregion`).
+
+We catalog changes to our place data in the [CHANGELOG](https://github.com/whosonfirst-data/whosonfirst-data/blob/master/CHANGELOG.md) by year, month, and country.
 
 
 ### Select data properties
