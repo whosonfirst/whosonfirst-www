@@ -1641,12 +1641,12 @@ region |  | 0 |  |  |  |  |  |  |  |
 timezone |  | 0 |  |  |  |  |  |  |  |
 unknown |  | 0 |  |  |  |  |  |  |  |
 
-_NOTE: The zoom ranges in the table above are for standard 256 px sized tiles, which map to the following [natural scales](https://kelsocartography.com/blog/?p=2407) and match Leaflet and Google Maps. When viewed in the Mapbox or MapLibre rendering library the zooms will be offset by 1 due to their assumption about 512 px size._
+_NOTE: The zoom ranges in the table above are for standard 256 px sized tiles, which map to the following [natural scales](https://web.archive.org/web/20230329004638/https://kelsocartography.com/blog/?p=2407) and match Leaflet and Google Maps. When viewed in the Mapbox or MapLibre rendering library the zooms will be offset by 1 due to their assumption about 512 px size._
 
 
 ### Improving WOF data coverage and quality
 
-As human population grows (and declines) so the world’s heart beats, and so our work as gazetteer maintainers carries on – by both “[repainting](https://www.goldengate.org/bridge/bridge-maintenance/painting-the-bridge/)” and “touching up” the data.
+As human population grows (and declines) so the world’s heart beats, and so our work as gazetteer maintainers carries on – by both [repainting](https://www.goldengate.org/bridge/bridge-maintenance/painting-the-bridge/) and “touching up” the data.
 
 Our top two priorities in 2023 are:
 
@@ -1824,6 +1824,8 @@ All these [Mapzen](https://www.mapzen.com/) projects ([Who’s On First](https:/
     * **Preview polygons** with pre-cached, small “200 kb” display ready alternate geometries as existing default polygon geometries vary widely in size from a few KB to more than 50 MB. These are useful for displaying search results with a polygon (not just with a centroid zoomed to the bounding box).
 * **Hierarchy**
     * **Disputed point-of-view:** For administrative hierarchy, further work to power “point-of-view” on the hierarchy masks, can be adapted from [Natural Earth](https://github.com/nvkelso/natural-earth-vector)’s efforts for automated reverse geocoding so users in various countries get locally adjusted polygon data instead of globally masked data
+* **Names and Concordances**
+    * **U.S. Board on Geographic Names:** Adding concordance IDs and toponymic information from the [Geographic Names Database](https://geonames.nga.mil/geonames/GNSHome/index.html), containing official standard names approved by the United States Board on Geographic Names (BGN) and maintained by the National Geospatial-Intelligence Agency.
 * **Routing**
     * **Intersect with urbanized landcover** to ensure feature point geometries are inside urban areas and polygon feature’s navigation points are in the place’s urban center (ideally downtown)
 * **Placetypes**
@@ -1855,14 +1857,14 @@ If you need to process and deduplicate venue data using latitude, longitude, nam
 
 Source                                              | Precision | Component | Example
 --------------------------------------------------- | --------- | --------- | -----------------
-Who's On First and All The Places and OpenStreetMap | Exact  | Venue         | `Some Business`
-OpenAddresses and All The Places and  OpenStreetMap | Exact  | Street number | `155`
-OpenStreetMap                                       | Fine   | Street name   | `9th Street`
-Who's On First                                      | Course | Locality      | `San Francisco`
-Who's On First and Natural Earth                    | Course | Region        | `CA` _(short code for California)_
-Who's On First                                      | Course | Postcode      | `94131`
-OpenAddresses                                       | Fine   | Postcode+4    | `1234`
-Who's On First and Natural Earth                    | Course | Country       | `USA` _(short code for United States of America)_
+[Who’s On First](https://whosonfirst.org/) and [All The Places](https://www.alltheplaces.xyz/) and [OpenStreetMap](https://www.openstreetmap.org/) | Exact  | Venue         | `Some Business`
+[OpenAddresses](https://openaddresses.io/) and [All The Places](https://www.alltheplaces.xyz/) and  [OpenStreetMap](https://www.openstreetmap.org/) | Exact  | Street number | `155`
+[OpenStreetMap](https://www.openstreetmap.org/)                                       | Fine   | Street name   | `9th Street`
+[Who’s On First](https://whosonfirst.org/)                                      | Course | Locality      | `San Francisco`
+[Who’s On First](https://whosonfirst.org/) and [Natural Earth](https://www.naturalearthdata.com/)                    | Course | Region        | `CA` _(short code for California)_
+[Who’s On First](https://whosonfirst.org/)                                      | Course | Postcode      | `94131`
+[OpenAddresses](https://openaddresses.io/)                                       | Fine   | Postcode+4    | `1234`
+[Who’s On First](https://whosonfirst.org/) and [Natural Earth](https://www.naturalearthdata.com/)                    | Course | Country       | `USA` _(short code for United States of America)_
 
 _NOTE: While our WOF gazetteer does include 21M venue records they are of an older vintage and do not reflect closed venues or recently opened venues. Depending on your needs, it may be better to use _[All The Places](https://www.alltheplaces.xyz/)_ (scraper project for international, national, and regional chains), _[OpenStreetMap](https://www.openstreetmap.org/)_ (caveat ODbL license restrictions), or license data from proprietary sources including [Foursquare](https://foursquare.com/)_, _[SafeGraph](https://www.safegraph.com/)_, [TripAdvisor](https://www.tripadvisor.com/) or [others](https://www.safegraph.com/guides/openstreetmap-api-alternative). Postalcode polygon country coverage can be augmented with proprietary sources like [MBI](https://www.mbi-geodata.com/en/area-boundaries/postcode-zip-boundary-maps/).
 
