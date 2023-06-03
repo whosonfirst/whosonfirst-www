@@ -80,13 +80,13 @@ Project        | Started | License | Admin records | Localities | Others | Uniqu
 [GADM](https://gadm.org/)                       | 2009 | CC-BY-NC | 0.4M | 0.0M | 0.0M  | ❌ | ☑️ | ❌ | ✅ 0.4M          | ❌       | ❌
 [All The Places](https://www.alltheplaces.xyz/) | 2017 | CC-0     | 0.0M | 0.0M | 2.5M  | ☑️  | ❌ | ❌ | ❌              | ❌       | ☑️
 
-Project        | Started | License | Admin records | Localities | Others | Unique IDs | L10n | i18n | Admin polygons
--------------- | ---- | ----- | ---- | ---- | ----- | --- | --- | --- | ---
-[Who’s On First](https://whosonfirst.org/)      | 2015 | CC-BY    | 5.0M | 4.5M | 25.0M | ✅ | ✅  | ️️️☑️ | ✅ 0.4M
-[GeoNames](https://www.geonames.org/)           | 2005 | CC-BY    | 5.1M | 4.6M | 5.8M  | ✅ | ✅ | ❌ | ❌ $$$ (💰 0.5M)
-[geoBoundaries](https://www.geoboundaries.org/) | 2017 | `*` ODbL | 1.0M | 0.0M | 0.0M  | ❌ | ❌ | ❌ | ✅ 1.0M
-[GADM](https://gadm.org/)                       | 2009 | CC-BY-NC | 0.4M | 0.0M | 0.0M  | ❌ | ☑️ | ❌  | ✅ 0.4M
-[All The Places](https://www.alltheplaces.xyz/) | 2017 | CC-0     | 0.0M | 0.0M | 2.5M  | ☑️  | ❌ | ❌ | ❌
+Project        | Started | License | Admin records | Localities | Others | Unique IDs | L10n | i18n | Admin polygons | Admin points | Links
+-------------- | ---- | ----- | ---- | ---- | ----- | --- | --- | --- | ---  | ---- | ---
+[Who’s On First](https://whosonfirst.org/)      | 2015 | CC-BY    | 5.0M | 4.5M | 25.0M | ✅ | ✅  | ️️️☑️ | ✅ 0.4M | ✅ 4.6M | ✅
+[GeoNames](https://www.geonames.org/)           | 2005 | CC-BY    | 5.1M | 4.6M | 5.8M  | ✅ | ✅ | ❌ | ❌ $$$ (💰 0.5M) | ✅ 4.6M | ✅
+[geoBoundaries](https://www.geoboundaries.org/) | 2017 | `*` ODbL | 1.0M | 0.0M | 0.0M  | ❌ | ❌ | ❌ | ✅ 1.0M | ❌       | ❌
+[GADM](https://gadm.org/)                       | 2009 | CC-BY-NC | 0.4M | 0.0M | 0.0M  | ❌ | ☑️ | ❌  | ✅ 0.4M | ❌       | ❌
+[All The Places](https://www.alltheplaces.xyz/) | 2017 | CC-0     | 0.0M | 0.0M | 2.5M  | ☑️  | ❌ | ❌ | ❌      | ❌       | ☑️
 
 
 _`*` WARNING: geoBoundaries contains multiple sources, many of which are ODbL and some of which are CC-BY. Discretion is advised!_
