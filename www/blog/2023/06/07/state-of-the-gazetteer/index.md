@@ -72,7 +72,7 @@ LEGEND for tables below
 
 #### Gazetteer data competitive analysis table
 
-Project        | Started | License | Admin records | Localities | Others | Unique IDs | L10n | i18n | Admin polygons | Admin points | Links
+Project        | Started | License | Admin records | Locality subtotal | Others | Unique IDs | L10n | i18n | Admin polygons | Admin points | Links
 -------------- | ---- | ----- | ---- | ---- | ----- | --- | --- | --- | ---  | ---- | ---
 [Who’s On First](https://whosonfirst.org/)      | 2015 | CC-BY    | 5.0M | 4.5M | 25.0M | ✅ | ✅  | ️️️☑️ | ✅ 0.4M | ✅ 4.6M | ✅
 [GeoNames](https://www.geonames.org/)           | 2005 | CC-BY    | 5.1M | 4.6M | 5.8M  | ✅ | ✅ | ❌ | ❌ $$$ 💰 0.5M | ✅ 4.6M | ✅
@@ -82,6 +82,7 @@ Project        | Started | License | Admin records | Localities | Others | Uniqu
 
 
 _`*` WARNING: geoBoundaries contains multiple sources, many of which are ODbL and some of which are CC-BY. Discretion is advised!_
+
 _DISCLAIMER: The above table represents a good faith effort to compare open gazetteer projects with nominally CC-BY and more permissive licenses in May 2023. Each project has its own motivations, use cases, and update frequencies. Major respect for everyone involved (and to [OpenStreetMap](https://www.openstreetmap.org/) and their ODbL effort)._
 
 
