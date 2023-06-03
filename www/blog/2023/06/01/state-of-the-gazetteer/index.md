@@ -1,19 +1,19 @@
 ---
 layout: page
-title: State of the WOF Gazetteer in 2023
+title: State of the Gazetteer in 2023
 published: true
-date: 2023-06-01
-permalink: /blog/2023/06/01/state-of-the-wof-gazetteer-2023/
+date: 2023-06-07
+permalink: /blog/2023/06/07/state-of-the-gazetteer/
 category: blog
-excerpt: "Short summary"
+excerpt: "Since we launched in 2015, the Who's On First places gazetteer project has grown in coverage, complexity, and supported applications. In this this post I will summarize Who’s On First’s key advantages, offer a comparative analysis of WOF and other open gazetteers, quantify our global coverage by placetype, offer score cards by country, dive into name localization, look at internationalization through the lens of disputed territories, and quantify geometry types and sources of those polygon and points, hold hands with and thank our sources, and invite collaboration."
 authors: [nvkelso]
-image: "images/1527852859_LFfdzGSIqfJVdMVgBsyYITpcVkFXswn7_b.jpg)"
-tag: [whosonfirst,wof]
+image: "images/194688_adaf9e38b251ee92_b.jpeg)"
+tag: [whosonfirst,wof,data,analysis]
 ---
-[![](images/1527852859_LFfdzGSIqfJVdMVgBsyYITpcVkFXswn7_b.jpg)](https://collection.sfomuseum.org/objects/1511941919/#1527852859)
+[![](images/194688_adaf9e38b251ee92_b.jpeg)](https://collection.cooperhewitt.org/objects/18673263/)
 
 <div style="font-size:small;font-style:italic;text-align:center;">
-Catalog: John S. Cox & Son, aeronautical supplies c. 1934. Purchase. <a href="https://collection.sfomuseum.org/objects/1511941919">Collection of SFO Museum</a>. 2002.064.041 a e
+Drawing, Screen Design: "Heads of State," Front Side, by Dan Friedman. <a href="https://collection.cooperhewitt.org/objects/18673263/">Collection of Cooper Hewitt  Museum, published by the Smithsonian Institution</a>. 2002.064.041 a e
 </div>
 
 ## State of the Gazetteer in 2023
@@ -81,7 +81,7 @@ Project        | Started | License | Admin records | Localities | Others | Uniqu
 [GADM](https://gadm.org/)                       | 2009 | CC-BY-NC | 0.4M | 0.0M | 0.0M  | ❌ | ☑️ | ❌ | ✅ 0.4M          | ❌       | ❌
 [All The Places](https://www.alltheplaces.xyz/) | 2017 | CC-0     | 0.0M | 0.0M | 2.5M  | ☑️  | ❌ | ❌ | ❌              | ❌       | ☑️
 
-_`*` WARNING: geoBoundaries contains multiple sources, many of which are ODbL and some of which are CC-BY. Use discretion!_
+_`*` WARNING: geoBoundaries contains multiple sources, many of which are ODbL and some of which are CC-BY. Discretion is advised!_
 _DISCLAIMER: The above table represents a good faith effort to compare open gazetteer projects with nominally CC-BY and more permissive licenses in May 2023. Each project has its own motivations, use cases, and update frequencies. Major respect for everyone involved (and to [OpenStreetMap](https://www.openstreetmap.org/) and their ODbL effort)._
 
 
@@ -1918,6 +1918,7 @@ If you have feedback, please submit a [new issue](https://github.com/whosonfirst
 
 Join our new [WOF Gazetteer discussion group](https://groups.google.com/g/wof-gazetteer) on Google to ask questions and share updates on your country's latest changes to its internal administrative subdivisions. If you're a geography geek, this one's for you.
 
+Need to reach out privately? Email [wofgazetteer@gmail.com](mailto:wofgazetteer@gmail.com).
 
 ## Conclusion
 
@@ -1927,6 +1928,6 @@ Administrative borders are rarely “visible on the ground” and gazetteers tha
 
 At Who’s On First we’re proud to offer our over `5M` administrative places and another `25M` supplemental places – all with `CC-BY` attribution – allowing you to both read access and commercial use – with polygons, localization, and internationalization.
 
-Who’s On First holds hands with 360 datasets, has great name translations, with unique IDs, and has been confirmed to work in a wide range of applications, several of which have more than `300M` monthly active users globally.
+Who’s On First holds hands with 360 sources, has great name translations, with unique IDs, and has been confirmed to work in a wide range of applications, several of which have more than `300M` monthly active users globally.
 
 While we can and will add even more data, we think there’s enough in Who’s On First for you to get started making a map or building an app today. We’re excited to see what you build!
