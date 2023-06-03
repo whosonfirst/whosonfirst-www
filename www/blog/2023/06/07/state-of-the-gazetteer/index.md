@@ -90,8 +90,8 @@ _DISCLAIMER: The above table represents a good faith effort to compare open gaze
 
 Project | Search | Reverse Geocoding | Map Display | Routing | Metrics logging | Venues | Postcodes | Constituencies | Tooling
 ------- | ------ | ----------------- | ----------- | ------- | --------------- | ------ | --------- | -------------- | -------
-[Who’s On First](https://whosonfirst.org/) | ✅ | ✅ | ✅ | ✅ | ✅ | ☑ ️21M | ✅ 3.9M | ☑ ️7K | Web & CLI (`*` API)
-[GeoNames](https://www.geonames.org/) | ✅ | ❌ $$$ | ☑️ | ✅ | ✅ | ☑️ 1.1M | ✅ 1.5M | ❌ | API
+[Who’s On First](https://whosonfirst.org/) | ✅ | ✅ | ✅ | ✅ | ✅ | ☑ ️21M | ✅ 3.9M | ☑ ️7K | Web, CLI & API `*`)
+[GeoNames](https://www.geonames.org/) | ✅ | ❌ $$$ | ☑️ | ✅ | ✅ | ☑️ 1.1M | ✅ 1.5M | ❌ | Web & API
 [geoBoundaries](https://www.geoboundaries.org/) | ☑️ | ☑️ | ☑️ | ❌ | ❌ | ❌ | ❌ | ❌ | Web & API
 [GADM](https://gadm.org/) | ☑️ | ☑️ | ☑️ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
 [All The Places](https://www.alltheplaces.xyz/) | ✅ | ❌ | ✅ | ✅ | ☑️ | ✅ 2.5M | ❌ | ❌ | Web
