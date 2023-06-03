@@ -90,12 +90,13 @@ _DISCLAIMER: The above table represents a good faith effort to compare open gaze
 
 Project | Search | Reverse Geocoding | Map Display | Routing | Metrics logging | Venues | Postcodes | Constituencies | Tooling
 ------- | ------ | ----------------- | ----------- | ------- | --------------- | ------ | --------- | -------------- | -------
-[Who’s On First](https://whosonfirst.org/) | ✅ | ✅ | ✅ | ✅ | ✅ | ☑ ️21M | ✅ 3.9M | ☑ ️7K | Web & CLI
+[Who’s On First](https://whosonfirst.org/) | ✅ | ✅ | ✅ | ✅ | ✅ | ☑ ️21M | ✅ 3.9M | ☑ ️7K | Web & CLI (`*` API)
 [GeoNames](https://www.geonames.org/) | ✅ | ❌ $$$ | ☑️ | ✅ | ✅ | ☑️ 1.1M | ✅ 1.5M | ❌ | API
 [geoBoundaries](https://www.geoboundaries.org/) | ☑️ | ☑️ | ☑️ | ❌ | ❌ | ❌ | ❌ | ❌ | Web & API
 [GADM](https://gadm.org/) | ☑️ | ☑️ | ☑️ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
 [All The Places](https://www.alltheplaces.xyz/) | ✅ | ❌ | ✅ | ✅ | ☑️ | ✅ 2.5M | ❌ | ❌ | Web
 
+_`*` Who's On First includes an optional [API](https://github.com/orgs/whosonfirst/repositories?q=api&type=all&language=&sort=) but is not currently hosted online._
 _NOTE: geoBoundaries has a great web viewer to [compare data](https://www.geoboundaries.org/geoContrast.html?country=BHR&mainSource=geoBoundaries+%28Open%29&comparisonSource=Natural+Earth+v5.0.1&mainLevel=1&comparisonLevel=1) for countries and their subdivisions across projects – including those here in WOF and from the lower geometry precision [Natural Earth](https://www.naturalearthdata.com/)._
 
 ## Who’s On First global coverage deep dive
