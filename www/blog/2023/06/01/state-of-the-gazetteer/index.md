@@ -46,7 +46,7 @@ _Eager to play with the data yourself? Jump to the [downloads](#Downloads) secti
 * Spelunker web app for viewing formatted data with a map  ([browse New York city record](https://spelunker.whosonfirst.org/id/85921881/))
 * Write Field web editor for quick property edits  ([edit New York city record](https://writefield.nextzen.org/place/edit?url=https://raw.githubusercontent.com/whosonfirst-data/whosonfirst-data-admin-us/master/data/859/775/39/85977539.geojson)) with human review
 * View raw data on Github ([view New York city example](https://github.com/whosonfirst-data/whosonfirst-data-admin-us/blob/master/data/859/218/81/85921881.geojson))
-* Downloadable SQLite and Shapefile distributions from geocode.earth (thanks!)
+* Downloadable SQLite and Shapefile distributions from [geocode.earth](https://geocode.earth) (thanks!)
 * Collaborative project started in 2015 and remains active, including contributions from Snapchat
 * The Who’s On First project is hosted by the Linux Foundation
 
@@ -1907,11 +1907,7 @@ While we manage Who’s On First place records as individual text files in git r
 
 A large project like Who’s On First relies on good will to function, some amount of organization to sustain it year to year, and funding to pay data curation, engineering development, and internet server bills.
 
-If you or your organization relies on Who’s On First please considering sponsoring us with a recurring or one-time donation:
-
-* [Open Collective](https://opencollective.com/whosonfirst)
-* [Github Sponsorship](https://github.com/sponsors/whosonfirst)
-* [Linux Foundation Crowdfunding](https://crowdfunding.lfx.linuxfoundation.org/projects/whosonfirst) can also process custom corporate donations
+If you or your organization relies on Who’s On First please considering sponsoring us with a recurring or one-time donation. Please reach out to Nathaniel at [wofgazetteer@gmail.com](mailto:wofgazetteer@gmail.com?subject=Sponsor Who's On First places gazetteer) to discuss options.
 
 
 ## Contact Who’s On First
@@ -1929,7 +1925,7 @@ Open gazetteers, including Who’s On First, have come a long way in the last 10
 
 Administrative borders are rarely “visible on the ground” and gazetteers that aggregate this data remain relevant by providing important and broad access to this type of map data. Each open gazetteer project has its particular license that reflects origin stories and day-to-day workflows.
 
-At Who’s On First we’re proud to offer our over `5M` administrative places and another `25M` places with `CC-BY` attribution – allowing you to both read access and commercial use – with polygons, localization, and internationalization.
+At Who’s On First we’re proud to offer our over `5M` administrative places and another `25M` supplemental places – all with `CC-BY` attribution – allowing you to both read access and commercial use – with polygons, localization, and internationalization.
 
 Who’s On First holds hands with 360 datasets, has great name translations, with unique IDs, and has been confirmed to work in a wide range of applications, several of which have more than `300M` monthly active users globally.
 
