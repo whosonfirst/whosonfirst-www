@@ -1907,7 +1907,7 @@ While we manage Who’s On First place records as individual text files in git r
 
 A large project like Who’s On First relies on good will to function, some amount of organization to sustain it year to year, and funding to pay data curation, engineering development, and internet server bills.
 
-If you or your organization relies on Who’s On First please considering sponsoring us with a recurring or one-time donation. Please reach out to Nathaniel at [wofgazetteer@gmail.com](mailto:wofgazetteer@gmail.com?subject=Sponsor&nbsp;Who&#39;s&nbsp;On&nbsp;First&nbsp;places&nbsp;gazetteer) to discuss options.
+If you or your organization relies on Who’s On First please considering sponsoring us with a recurring or one-time donation. Please reach out to Nathaniel at [wofgazetteer@gmail.com](mailto:wofgazetteer@gmail.com?subject=Sponsoring&nbsp;the&nbsp;Who&#39;s&nbsp;On&nbsp;First&nbsp;places&nbsp;gazetteer) to discuss options.
 
 
 ## Contact Who’s On First
