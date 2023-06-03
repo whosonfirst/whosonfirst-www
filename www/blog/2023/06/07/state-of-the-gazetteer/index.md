@@ -13,7 +13,7 @@ tag: [whosonfirst,wof,data,analysis]
 [![](images/194688_adaf9e38b251ee92_b.jpeg)](https://collection.cooperhewitt.org/objects/18673263/)
 
 <div style="font-size:small;font-style:italic;text-align:center;">
-Drawing, Screen Design: "Heads of State," Front Side, by Dan Friedman. <a href="https://collection.cooperhewitt.org/objects/18673263/">Collection of Cooper Hewitt  Museum, published by the Smithsonian Institution</a>.</div>
+Drawing, Screen Design: "Heads of State," Front Side, by Dan Friedman. <a href="https://collection.cooperhewitt.org/objects/18673263/">Collection of Cooper Hewitt  Museum</a>.</div>
 
 ## State of the Gazetteer in 2023
 
