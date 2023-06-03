@@ -80,6 +80,15 @@ Project        | Started | License | Admin records | Localities | Others | Uniqu
 [GADM](https://gadm.org/)                       | 2009 | CC-BY-NC | 0.4M | 0.0M | 0.0M  | ❌ | ☑️ | ❌ | ✅ 0.4M          | ❌       | ❌
 [All The Places](https://www.alltheplaces.xyz/) | 2017 | CC-0     | 0.0M | 0.0M | 2.5M  | ☑️  | ❌ | ❌ | ❌              | ❌       | ☑️
 
+Project        | Started | License | Admin records | Localities | Others | Unique IDs | L10n | i18n | Admin polygons | Admin points
+-------------- | ---- | ----- | ---- | ---- | ----- | --- | --- | ---️ | ---- | ----
+[Who’s On First](https://whosonfirst.org/)      | 2015 | CC-BY    | 5.0M | 4.5M | 25.0M | ✅ | ✅ | ☑️ | ✅ 0.4M          | ✅ 4.6M
+[GeoNames](https://www.geonames.org/)           | 2005 | CC-BY    | 5.1M | 4.6M | 5.8M  | ✅ | ✅ | ❌ | ❌ $$$ (💰 0.5M) | ✅ 4.6M
+[geoBoundaries](https://www.geoboundaries.org/) | 2017 | `*` ODbL | 1.0M | 0.0M | 0.0M  | ❌ | ❌ | ❌ | ✅ 1.0M         | ❌
+[GADM](https://gadm.org/)                       | 2009 | CC-BY-NC | 0.4M | 0.0M | 0.0M  | ❌ | ☑️ | ❌ | ✅ 0.4M          | ❌
+[All The Places](https://www.alltheplaces.xyz/) | 2017 | CC-0     | 0.0M | 0.0M | 2.5M  | ☑️  | ❌ | ❌ | ❌              | ❌
+
+
 _`*` WARNING: geoBoundaries contains multiple sources, many of which are ODbL and some of which are CC-BY. Discretion is advised!_
 _DISCLAIMER: The above table represents a good faith effort to compare open gazetteer projects with nominally CC-BY and more permissive licenses in May 2023. Each project has its own motivations, use cases, and update frequencies. Major respect for everyone involved (and to [OpenStreetMap](https://www.openstreetmap.org/) and their ODbL effort)._
 
@@ -1855,7 +1864,7 @@ Who’s On First is a “coarse” geocoder meaning it doesn’t provide street 
 
 If you need to process and deduplicate venue data using latitude, longitude, name, and address information we also recommend **Lieu** ([code repo](https://github.com/openvenues/lieu) and [blog post](https://www.mapzen.com/blog/whosonfirst-sotmus-2017)).
 
-Source                                              | Precision | Component | Example
+Sources                                             | Precision | Component | Example
 --------------------------------------------------- | --------- | --------- | -----------------
 [Who’s On First](https://whosonfirst.org/) and [All The Places](https://www.alltheplaces.xyz/) and [OpenStreetMap](https://www.openstreetmap.org/) | Exact  | Venue         | `Some Business`
 [OpenAddresses](https://openaddresses.io/) and [All The Places](https://www.alltheplaces.xyz/) and  [OpenStreetMap](https://www.openstreetmap.org/) | Exact  | Street number | `155`
