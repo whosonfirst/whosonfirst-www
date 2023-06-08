@@ -1,0 +1,4727 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="x-ua-compatible" content="ie=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Who’s On First | State of the Gazetteer in 2023</title>
+		<meta name="description" content="Who’s on First is a gazetteer of places." />
+		<link rel="apple-touch-icon" href="/images/favicons/apple-touch-icon.png" sizes="180x180" />
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-16x16.png" sizes="16x16" />
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-32x32.png" sizes="32x32" />
+		<link rel="manifest" href="/images/favicons/manifest.json" />
+		<link rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg" color="#2C1E3F" />
+		<link rel="stylesheet" href="/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="/css/mapzen.whosonfirst.css" />
+		
+		<link rel="stylesheet" href="/css/styles/grayscale.css" />
+
+		<link rel="alternate" type="application/atom+xml" title="Who's On First Atom feed" href="/blog/atom_10.xml"/>		
+		<link rel="alternate" type="application/rss+xml" title="Who's On First RSS 2.0 feed" href="/blog/rss_20.xml"/>
+
+		
+		<meta property="og:type" content="article" />
+		<meta property="og:site_name" content="Who's On First" />
+		<meta property="og:title" content="State of the Gazetteer in 2023" />
+		<meta property="og:description" content="Since we launched in 2015, the Who&#39;s On First places gazetteer project has grown in coverage, complexity, and supported applications. In this this post I will summarize Who’s On First’s key advantages, offer a comparative analysis of WOF and other open gazetteers, quantify our global coverage by placetype, offer score cards by country, dive into name localization, look at internationalization through the lens of disputed territories, and quantify geometry types and sources of those polygon and points, hold hands with and thank our sources, and invite collaboration." />
+		<meta property="og:image" content="https://www.whosonfirst.org/blog/2023/06/07/state-of-the-gazetteer/images/194688_adaf9e38b251ee92_b.jpeg)" />
+
+		
+		
+		
+
+	</head>
+	<body>
+		<div class="whosonfirst-wrapper">
+
+			<nav class="navbar navbar-default navbar-fixed-top whosonfirst-fixed-subpage-navbar">
+				<div class="container">
+
+					
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="/">Who’s On First</a>
+					</div>
+
+					
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					  <ul class="nav navbar-nav navbar-right">
+
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/browse/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">browse</a>
+							</li>
+					    
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/docs/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">documentation</a>
+							</li>
+							
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/code/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">code</a>
+							</li>
+
+							
+							
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/download/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">download</a>
+							</li>
+							
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/blog/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">blog</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+
+
+		<style type="text/css">
+		  body {
+		  font-family: serif;
+		  font-size: 1.3em;
+		  line-height: 1.5em;
+		  }
+
+		  h2 small {
+		  display: block;
+		  margin-top:.10em;
+		  font-weight: 100;
+		  font-size: .5em;
+		  line-height: 1.3em;
+		  }
+
+		  p {
+		  line-height: 1.5em !important;
+		  }
+
+		  ul {
+		  font-size:1.3em;
+		  line-height:1.5em;
+		  margin-top:1em !important;
+		  }
+
+		  li {
+		  list-style-type: circle;
+		  margin-bottom: .5em;
+		  }
+
+		  img {
+		  max-width: 640px !important;
+		  max-height: 480px !important;
+		  border: 1px dotted #ccc;
+		  padding: .5em;
+		  margin-bottom:1em;
+		  margin-top: 1em;
+		  display:block;
+		  min-width: 320px;
+		  margin: 0 auto;
+		  }
+
+		  blockquote {
+		  background-color:#ededed;
+		  margin-top:1em;
+		  padding-top:.05em !important;
+		  padding-bottom:1.75em !important;
+		  }
+
+		  .hey-look {
+		  font-weight: 700;
+		  }
+
+		  @media (min-width: 320px) and (max-width: 400px) {
+
+		  ul {
+		  margin:0px;
+	  	  margin-left:15px;
+		  padding:0px;
+		  }
+
+		  pre {
+		  max-width:250px;
+		  overflow:scroll;
+		  }
+
+		  img {
+		  max-width: 250px !important;
+		  max-height: 200px !important;
+		  min-width: 75px;
+		  }
+		  }
+
+		</style>
+
+			<div class="container whosonfirst-subpage-container">
+			  <div class="row">
+			    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-0">
+ 			    </div>
+			    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+			      <article>
+
+	  
+	  
+	  <h2>
+	    State of the Gazetteer in 2023
+	    <small>This is a blog post by
+	      <span class="hey-look">nvkelso</span>
+	      that was published on <span class="pubdate"><a href="/blog/2023/06/">Jun</a> <a href="/blog/2023/06/07">07</a>, <a href="/blog/2023/">2023</a></span>
+	       and tagged <span class="hey-look">whosonfirst</span>, <span class="hey-look">wof</span>, <span class="hey-look">data</span> and <span class="hey-look">analysis</span></small>
+	  </h2>
+
+<style type="text/css">
+table { margin-top: 2rem; font-size: 17px; font-family: sans-serif; font-weight: 300; }
+thead { border-bottom: solid thin; }
+th { padding-bottom: 1rem; padding-right: 2rem; }
+td { padding: 1rem; padding-left:0px !important; padding-right: 2rem !important; vertical-align: top; }
+ol { font-family: sans-serif; font-weight: 300; font-size: 17px; margin-top: 2rem !important; list-style-type: decimal !important; }
+ul { font-family: sans-serif; font-weight: 300;  }
+</style>
+
+<p><a href="https://collection.cooperhewitt.org/objects/18673263/"><img src="images/194688_adaf9e38b251ee92_b.jpeg" alt="" /></a></p>
+
+<div style="font-size:small;font-style:italic;text-align:center;">
+Drawing, Screen Design: "Heads of State," Front Side, by Dan Friedman. <a href="https://collection.cooperhewitt.org/objects/18673263/">Collection of Cooper Hewitt  Museum</a>.</div>
+
+<h2>State of the Gazetteer in 2023</h2>
+
+<p>The Who’s On First (WOF) gazetteer is a big list of places, each with a stable identifier, and a set of common and optional descriptive properties about that location. Like any product, Who’s On First is made by people, and we’ve collectively spent about “20 years” building WOF as an original work and as an aggregation of many other open data projects.</p>
+
+<p>Since we <a href="https://whosonfirst.org/blog/2015/08/18/who-s-on-first/">launched</a> in 2015, the project has grown in coverage, complexity, and supported applications. In this this post I will summarize Who’s On First’s key advantages, offer a comparative analysis of WOF and other open gazetteers, quantify our global coverage by <a href="https://github.com/whosonfirst/whosonfirst-placetypes">placetype</a>, offer score cards by country, dive into name localization, look at internationalization through the lens of disputed territories, and quantify geometry types and sources of those polygon and points, hold hands with and thank our <a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/README.md">sources</a>, and invite collaboration.</p>
+
+<p>WOF gazetteer’s focus on <a href="https://en.wikipedia.org/wiki/Human_settlement">localities</a> and unique identifiers sets us apart from many other projects. We choose to approach geography at a personal level – starting with the <code>locality</code> (or populated place) where people play, study, work, and sleep – and <code>country</code> for when people need a passport to cross a frontier and experience something new and exciting.</p>
+
+<p>Between those “top” and “bottom” placetypes in the administrative hierarchy, countries choose to order their geography in many varied and nested subdivisions. Who’s On First doesn’t judge, but we do align them into common <code>region</code> (1st order subdivisions, tracked by the ISO), “county” (2nd order subdivisions), and <code>localadmin</code> (municipalities) placetypes. Most localities aren’t legally incorporated, and may or may not be coincidental with a parent localadmin. Many urban localities are further subdivided into <code>borough</code> and <code>neighbourhood</code> areas. There are even more optional <a href="https://github.com/whosonfirst/whosonfirst-placetypes">placetypes</a> to allow for intermediate levels and other edge cases.</p>
+
+<p>This common structure allows us to track all the places in the world. Or at least those places we’ve learned about thus far. We hope it provides you an easier mental model to integrate the data into your own application.</p>
+
+<p><em>Eager to play with the data yourself? Jump to the <a href="#Downloads">downloads</a> section below&hellip;</em></p>
+
+<h2>Who’s On First gazetteer at a glance</h2>
+
+<ul>
+<li>A single source of truth across a minimalist common set of <a href="https://github.com/whosonfirst/whosonfirst-placetypes">placetypes</a>, spanning the entire globe, and supplemented as-needed on a regional level</li>
+<li>Global coverage for <code>5M</code> (million) administrative places, including <code>4.5M</code> localities</li>
+<li>More than <code>25M</code> additional places are available, including: <code>3.9M</code> postal codes, <code>7K</code> (thousand) constituencies, and <code>21M</code> venues</li>
+<li><code>452K</code> features have detailed polygons, with complete coverage at country, region, and county placetypes and exhaustive coverage for localadmin and large localities in major industrialized economies, with exhaustive coverage as point geometries for remaining features. We also store <code>447K</code> alternate geometries.</li>
+<li>Names are localized into hundreds of languages, using internet standard language codes</li>
+<li>Population values, <code>min_zoom</code> ranking, and polygon label centroids enable sophisticated map designs with beautiful and informative cartography</li>
+<li>Internationalized with disputed territory boundaries for global audiences and compliance with local regulations</li>
+<li>Open license (CC-BY attribution) means you’re free to use the data for commercial purposes, including derivative rights, as long as you credit the project and our sources</li>
+<li>Includes original work and data aggregated from <a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/README.md">360+ authoritative sources</a>. Our source data licenses have been vetted by multiple corporate attorneys at large, publicly traded companies.</li>
+<li>Holds hands with 60+ datasets via linked unique identifiers to allow crosswalk across <code>6.5M</code> feature-level concordances.</li>
+<li>Spelunker web app for viewing formatted data with a map  (<a href="https://spelunker.whosonfirst.org/id/85921881/">browse New York city record</a>)</li>
+<li>Write Field web editor for quick property edits  (<a href="https://writefield.nextzen.org/place/edit?url=https://raw.githubusercontent.com/whosonfirst-data/whosonfirst-data-admin-us/master/data/859/775/39/85977539.geojson">edit New York city record</a>) with human review</li>
+<li>View raw data on Github (<a href="https://github.com/whosonfirst-data/whosonfirst-data-admin-us/blob/master/data/859/218/81/85921881.geojson">view New York city example</a>)</li>
+<li>Downloadable SQLite and Shapefile distributions from <a href="https://geocode.earth">geocode.earth</a> (thanks!)</li>
+<li>Collaborative project started in 2015 and remains active, including contributions from Snapchat</li>
+<li>The Who’s On First project is hosted by the Linux Foundation</li>
+</ul>
+
+<h2>Comparative Analysis of Open Gazetteers</h2>
+
+<p>We recognize our WOF gazetteer is one of many open gazetteers, let’s look at five, including Who’s On First:</p>
+
+<ul>
+<li><strong><a href="https://whosonfirst.org/">Who’s On First</a>:</strong> Open data project with both administrative and non-administrative data like postal codes, constituencies, and venues. The CC-BY license allows commercial use. Includes polygons, fully localized names, disputed territory handling for reverse geocoding, navigation centroids, and unique IDs to capture value from metrics. The data is used in applications with over 300 million monthly active users.</li>
+<li><strong><a href="https://www.geonames.org/">GeoNames</a>:</strong> Commercial project across a range of administrative and non-administrative placetypes including postal codes and venues. Premium polygons can be licensed for a fee. Great locality coverage!</li>
+<li><strong><a href="https://www.geoboundaries.org/">geoBoundaries</a>:</strong> Academic project focused exclusively on administrative hierarchy. A complicated license that mixes in ODbL and other non-commercial data sources with CC-BY data. Names are not localized, no disputed territories, no label centroids, and no unique IDs.</li>
+<li><strong><a href="https://gadm.org/">GADM</a>:</strong> Academic project focused exclusively on administrative hierarchy. Non-commercial use license although a custom commercial license is available on request. Names include latin, variants, and local script but not in a machine readable way. No disputed territories, no label centroids, and no unique IDs.</li>
+<li><strong><a href="https://www.alltheplaces.xyz/">All The Places</a>:</strong> Open data project with CC-0 license focused exclusively on venues.</li>
+</ul>
+
+<p>LEGEND for tables below</p>
+
+<ul>
+<li>✅ Great coverage and usability</li>
+<li>☑️ Basic coverage or usability</li>
+<li>❌ No coverage or usability (unless noted)</li>
+<li>Unique IDs must also be stable</li>
+<li>L10n = Localized names</li>
+<li>i18n = Internationalized features</li>
+<li>Links = Concordance 🔗 with other gazetteer projects</li>
+</ul>
+
+<h4>Gazetteer data competitive analysis table</h4>
+
+<table>
+<thead>
+<tr>
+<th>Project</th>
+<th>Started</th>
+<th>License</th>
+<th>Admin records</th>
+<th>Locality subtotal</th>
+<th>Others</th>
+<th>Unique IDs</th>
+<th>L10n</th>
+<th>i18n</th>
+<th>Admin polygons</th>
+<th>Admin points</th>
+<th>Links</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><a href="https://whosonfirst.org/">Who’s On First</a></td>
+<td>2015</td>
+<td>CC-BY</td>
+<td>5.0M</td>
+<td>4.5M</td>
+<td>25.0M</td>
+<td>✅</td>
+<td>✅</td>
+<td>️️️☑️</td>
+<td>✅ 0.4M</td>
+<td>✅ 4.6M</td>
+<td>✅</td>
+</tr>
+
+<tr>
+<td><a href="https://www.geonames.org/">GeoNames</a></td>
+<td>2005</td>
+<td>CC-BY</td>
+<td>5.1M</td>
+<td>4.6M</td>
+<td>5.8M</td>
+<td>✅</td>
+<td>✅</td>
+<td>❌</td>
+<td>❌ $$$ 💰 0.5M</td>
+<td>✅ 4.6M</td>
+<td>✅</td>
+</tr>
+
+<tr>
+<td><a href="https://www.geoboundaries.org/">geoBoundaries</a></td>
+<td>2017</td>
+<td><code>*</code> ODbL</td>
+<td>1.0M</td>
+<td>0.0M</td>
+<td>0.0M</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+<td>✅ 1.0M</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+
+<tr>
+<td><a href="https://gadm.org/">GADM</a></td>
+<td>2009</td>
+<td>CC-BY-NC</td>
+<td>0.4M</td>
+<td>0.0M</td>
+<td>0.0M</td>
+<td>❌</td>
+<td>☑️</td>
+<td>❌</td>
+<td>✅ 0.4M</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+
+<tr>
+<td><a href="https://www.alltheplaces.xyz/">All The Places</a></td>
+<td>2017</td>
+<td>CC-0</td>
+<td>0.0M</td>
+<td>0.0M</td>
+<td>2.5M</td>
+<td>☑️</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+<td>☑️</td>
+</tr>
+</tbody>
+</table>
+<p><em><code>*</code> WARNING: geoBoundaries contains multiple sources, many of which are ODbL and some of which are CC-BY. Discretion is advised!</em></p>
+
+<p><em>DISCLAIMER: The above table represents a good faith effort to compare open gazetteer projects with nominally CC-BY and more permissive licenses in May 2023. Each project has its own motivations, use cases, and update frequencies. Major respect for everyone involved (and to <a href="https://www.openstreetmap.org/">OpenStreetMap</a> and their ODbL effort).</em></p>
+
+<h4>Gazetteer applications competitive analysis table</h4>
+
+<table>
+<thead>
+<tr>
+<th>Project</th>
+<th>Search</th>
+<th>Reverse Geocoding</th>
+<th>Map Display</th>
+<th>Routing</th>
+<th>Metrics logging</th>
+<th>Venues</th>
+<th>Postcodes</th>
+<th>Constituencies</th>
+<th>Tooling</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><a href="https://whosonfirst.org/">Who’s On First</a></td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>☑ ️21M</td>
+<td>✅ 3.9M</td>
+<td>☑ ️7K</td>
+<td>Web, CLI &amp; API <code>*</code></td>
+</tr>
+
+<tr>
+<td><a href="https://www.geonames.org/">GeoNames</a></td>
+<td>✅</td>
+<td>❌ $$$</td>
+<td>☑️</td>
+<td>✅</td>
+<td>✅</td>
+<td>☑️ 1.1M</td>
+<td>✅ 1.5M</td>
+<td>❌</td>
+<td>Web &amp; API</td>
+</tr>
+
+<tr>
+<td><a href="https://www.geoboundaries.org/">geoBoundaries</a></td>
+<td>☑️</td>
+<td>☑️</td>
+<td>☑️</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+<td>Web &amp; API</td>
+</tr>
+
+<tr>
+<td><a href="https://gadm.org/">GADM</a></td>
+<td>☑️</td>
+<td>☑️</td>
+<td>☑️</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+
+<tr>
+<td><a href="https://www.alltheplaces.xyz/">All The Places</a></td>
+<td>✅</td>
+<td>❌</td>
+<td>✅</td>
+<td>✅</td>
+<td>☑️</td>
+<td>✅ 2.5M</td>
+<td>❌</td>
+<td>❌</td>
+<td>Web</td>
+</tr>
+</tbody>
+</table>
+<p><em><code>*</code> While Who&rsquo;s On First does includes an optional <a href="https://github.com/orgs/whosonfirst/repositories?q=api&amp;type=all&amp;language=&amp;sort=">API</a> it is not currently hosted online.</em></p>
+
+<p><em>NOTE: geoBoundaries has a great web viewer to <a href="https://www.geoboundaries.org/geoContrast.html?country=BHR&amp;mainSource=geoBoundaries+%28Open%29&amp;comparisonSource=Natural+Earth+v5.0.1&amp;mainLevel=1&amp;comparisonLevel=1">compare data</a> for countries and their subdivisions across projects – including those here in WOF and from the lower geometry precision <a href="https://www.naturalearthdata.com/">Natural Earth</a>.</em></p>
+
+<h2>Who’s On First global coverage deep dive</h2>
+
+<p>Who’s On First has <code>5M</code> administrative places, including <code>4.5M</code> localities. Detailed breakdowns by placetype, geometry type, country &amp; etc are available farther down in the “<a href="#by-geometry-type">By Geometry Type</a>” section.</p>
+
+<table>
+<thead>
+<tr>
+<th>placetype</th>
+<th align="right">count</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>locality</td>
+<td align="right">4,498,136</td>
+</tr>
+
+<tr>
+<td>neighbourhood</td>
+<td align="right">233,712</td>
+</tr>
+
+<tr>
+<td>localadmin</td>
+<td align="right">203,513</td>
+</tr>
+
+<tr>
+<td>county</td>
+<td align="right">47,431</td>
+</tr>
+
+<tr>
+<td>region</td>
+<td align="right">5,139</td>
+</tr>
+
+<tr>
+<td>country</td>
+<td align="right">232</td>
+</tr>
+
+<tr>
+<td>disputed</td>
+<td align="right">104</td>
+</tr>
+
+<tr>
+<td>dependency</td>
+<td align="right">43</td>
+</tr>
+
+<tr>
+<td>(other admin)</td>
+<td align="right">29,934</td>
+</tr>
+
+<tr>
+<td>TOTAL</td>
+<td align="right">5,018,244</td>
+</tr>
+</tbody>
+</table>
+<p>Additional coverage is available in the WOF gazetteer for <code>3.9M</code> postal codes, <code>7K</code> constituencies, and <code>21M</code> venues, but they are largely excluded from the “administrative” tables below, although descriptions and coverage maps are provided.</p>
+
+<h3>Coverage by placetype</h3>
+
+<h4>Locality coverage</h4>
+
+<p>Localities form the bulk of place records in the WOF gazetteer. Of those <code>4.5</code> million records, 95% have point geometries and 5% have polygons. Distribution of our localities follows population density. See the “<a href="#country-scorecards">Scorecards</a>” section below for a description of which countries have locality polygon coverage.</p>
+
+<p><img src="images/wof-localities.png" alt="Who&rsquo;s On First locality coverage map" title="Who's On First locality coverage map" /></p>
+
+<h4>Primary administrative hierarchy coverage</h4>
+
+<p>Gazetteer projects must decide how to set up 1st order administrative divisions around the world, and this decision has repercussions in calculating the depth of administrative levels in a country.</p>
+
+<p>Take for example the United Kingdom of Great Britain and Northern Ireland. Are the 4 “constituent countries” of the U.K. the 1st order subdivisions or are their 334 subdivisions? Are the 101 provinces of France the 1st order subdivisions, or the 29 regions? Are the “overseas” regions and provinces of France part of the main country or different countries? What about the United Kingdom, France, and other country’s dependencies? What about Belgium and its federal system? Or the United States and it’s dependencies?</p>
+
+<p>Who’s On First tracks <code>countries</code> and <code>dependencies</code> as equal top-level placetypes and group them into <code>empires</code> as appropriate. WOF chooses to represent all ISO 1st order subdivisions as “region” placetype features in a continuous fabric of global coverage. When the ISO also provides groupings of those, as reported by the country itself for administrative (versus statistical) use, we import those as an optional <code>macroregion</code> with complete in-country coverage but sparse global coverage. This situation (and others like in Belgium) impact over a dozen countries globally.</p>
+
+<p>“<a href="https://www.jeopardy.com/jbuzz/behind-scenes/what-are-some-questions-about-jeopardy">What are…</a>” in WOF: the United Kingdom has 4 <code>macroregion</code> and 334 <code>region</code> records; France has 29 <code>macroregion</code> and 101 <code>region</code> records; the United States has 51 <code>region</code> records (including the <a href="https://spelunker.whosonfirst.org/id/85688741/">District of Columbia</a> which is marked in <code>label:eng_x_preferred_placetype</code> as a “federal district”). Puerto Rico is a dependency of the United States empire. Naming placetypes in inherently controversial so we also provide an optional and localized “<a href="https://github.com/whosonfirst/whosonfirst-properties/blob/main/properties/label/README.md#lang_x_preferred_placetype">label:{lang}_x_preferred_placetype</a>” property on records that carries the specific word used for that place in its country and translated to English (including the region of <a href="https://spelunker.whosonfirst.org/id/85676813/">Riyadh</a> in Arabic script, latinized Arabic, and English).</p>
+
+<p><em>(below) Feature counts for each placetype are included in the legend. Every feature on the map below has a polygon geometry, but is represented as a point for visualization purposes.</em></p>
+
+<p><img src="images/wof-main-admin-with-dependency.png" alt="Who&rsquo;s On First primary administrative hierarchy coverage map" title="Who's On First primary administrative hierarchy coverage map" /></p>
+
+<h4>Localadmin coverage</h4>
+
+<p>Most of the <code>230K</code> localadmin placetype features have polygon geometries. See the “<a href="#depth-of-administrative-levels-by-country">Depth of administrative levels</a>”, “<a href="#by-geometry-type">By geometry type</a>”, and “<a href="#improving-wof-data-coverage-and-quality">Improving WOF data coverage and quality (a more detailed look)</a>” sections below for more information.</p>
+
+<p><img src="images/wof-localadmin.png" alt="Who&rsquo;s On First localadmin coverage map" title="Who's On First localadmin coverage map" /></p>
+
+<h4>Campus coverage</h4>
+
+<p>Most of the <code>24K</code> campus placetype features are airports, but we include national park polygons in select countries, and in the USA there are ~ <code>20K</code> mobile home parks.</p>
+
+<p><img src="images/wof-campus.png" alt="Who&rsquo;s On First campus coverage map" title="Who's On First campus coverage map" /></p>
+
+<h4>Other core “administrative” placetypes coverage</h4>
+
+<p>Additional placetypes in the “admin” repos are included for convenience to name and/or reverse geocode for continents, oceans, marine areas, time zones, and more exotic features like empires and market areas. We’re also wondering what those 2 unknown features are!</p>
+
+<p><img src="images/wof-others.png" alt="Who&rsquo;s On First other core placetypes coverage map" title="Who's On First other core placetypes coverage map" /></p>
+
+<h4>Postalcode coverage</h4>
+
+<p>Who’s On First has <code>3.4M</code> postalcodes with a range spatial aggregations, geometry types, and polygon accuracies:</p>
+
+<ol>
+<li>Polygons for fully qualified postalcodes (e.g. “<a href="https://spelunker.whosonfirst.org/id/554784877/">95501</a>” in the United States sourced from the US Census Zip code tabulation areas, and also available in Australia, Australia, Finland, France, and Switzerland)</li>
+<li>Polygons for postal aggregation areas (Canada, Netherlands). Think “955” in the United States which is useful for calculating regional statistics.</li>
+<li>Point locations for specific delivery routes, like “<a href="https://spelunker.whosonfirst.org/id/487748609/">SW1A 1AA</a>” in the United Kingdom (think ZIP+4 in the United States) which have a precise location (the same situation is true for Japan) or an approximate location mapped to the nearest available polygon centroid (like in Canada which has a combination of precise and official 3-character “forward sorting area” aggregation polygons and approximate centroids for the 6-character postal codes).</li>
+<li>In the Netherlands we also have a 4th type of polygon created from the alphashape of the postalcode attributes on WOF venue point locations.</li>
+</ol>
+
+<p>The majority of WOF postalcode records exist in other countries – but their locations are approximate (or <a href="https://spelunker.whosonfirst.org/nullisland/">are visiting</a> <a href="https://www.wsj.com/articles/if-you-cant-follow-directions-youll-end-up-on-null-island-1468422251">Null Island</a>) and are not shown in the map below based on the <a href="https://geocode.earth/data/whosonfirst/">shapefile distribution</a> – but they are included in the <a href="https://geocode.earth/data/whosonfirst/">SQLite distribution</a>. If you’re interested in mapping postalcodes to the post office / locality names, we provide that for the United States in the <code>mz:postal_locality</code> property. If you need global mapping, see <a href="https://github.com/pelias/postal-cities">Pelias’ postal cities</a> project.</p>
+
+<p><em>NOTE: The United Kingdom and Australia receive regular updates, the rest are an older vintage and could use a refresh.</em></p>
+
+<p>Several detailed map views are provided farther below for the more unusual cases.</p>
+
+<p><img src="images/wof-postalcode.png" alt="Who&rsquo;s On First postalcodes coverage map" title="Who's On First postalcodes coverage map" /></p>
+
+<h5>Vancouver, Canada postalcodes</h5>
+
+<p>When precise locations for postalcodes (like the “<a href="https://spelunker.whosonfirst.org/id/521319439/">V5K 1A2</a>” delivery route) are not available they are sometimes mapped to the polygon centroids of their parent postal area (e.g. “<a href="https://spelunker.whosonfirst.org/id/504805001/">V5K</a>” postal aggregation area) in Vancouver, Canada shown below.</p>
+
+<p><img src="images/wof-postalcode-canada-vancouver-bc-detail.png" alt="Who&rsquo;s On First postalcodes coverage map detail for Vancouver, Canada" title="Who's On First postalcodes coverage map detail for Vancouver, Canada" /></p>
+
+<h5>London postalcodes</h5>
+
+<p>Detailed point locations for specific delivery routes like “<a href="https://spelunker.whosonfirst.org/id/487748609/">SW1A 1AA</a>” are available in the United Kingdom, updated approximately quarterly, with the London metro area shown below.</p>
+
+<p><img src="images/wof-postalcode-united-kingdom-london-detail.png" alt="Who&rsquo;s On First postalcodes coverage map detail for London, United Kingdom" title="Who's On First postalcodes coverage map detail for London, United Kingdom" /></p>
+
+<h5>Tokyo, Japan postalcodes</h5>
+
+<p>Similar point geometries are available in Japan, with the Tokyo metro area shown below.</p>
+
+<p><img src="images/wof-postalcode-japan-tokyo-detail.png" alt="Who&rsquo;s On First postalcodes coverage map detail for Tokyo, Japan" title="Who's On First postalcodes coverage map detail for Tokyo, Japan" /></p>
+
+<h5>Amsterdam, Netherlands postalcodes</h5>
+
+<p>Several experiments have created <a href="https://en.wikipedia.org/wiki/Alpha_shape">alphashapes</a> from WOF venues address data, including in the Netherlands. These approximate polygons are marked “<a href="https://github.com/whosonfirst/whosonfirst-properties/tree/main/properties/mz#is_approximate">mz:is_approximate</a>” and capture the bounding box extent of the zipcode and the label centroid in search and even reverse geocoding, but are not suitable for display in a thematic map.</p>
+
+<p><img src="images/wof-postalcode-netherlands-amsterdam-detail.png" alt="Who&rsquo;s On First postalcodes coverage map detail for Amsterdam, Netherlands" title="Who's On First postalcodes coverage map detail for Amsterdam, Netherlands" /></p>
+
+<h4>Constituency coverage</h4>
+
+<p>For national and regional legislative bodies, including upper and lower chamber indication via “<a href="https://github.com/whosonfirst/whosonfirst-properties/blob/main/properties/wof/README.md#association">wof:association</a>”. These will need a refresh for the 2023 redistricting in the United States. Canada includes data in British Columbia only.</p>
+
+<p><img src="images/wof-constituency.png" alt="Who&rsquo;s On First constituency coverage map" title="Who's On First constituency coverage map" /></p>
+
+<h4>Venue coverage</h4>
+
+<p>Back in 2015 and 2016 we imported 21 million venues in 63 countries from the <a href="https://web.archive.org/web/20120314172738/http://blog.simplegeo.com/2011/08/01/august-updates/">SimpleGeo CC0 venues</a> dataset. We added place hierarchy by reverse geocoding these points against the WOF administrative polygons, and otherwise normalized them into the WOF schema. But venues come and go – they are more ephemeral than administrative data – especially the last few years during the COVID pandemic. So the WOF venue coverage will lack newer businesses and still include businesses that have closed IRL. A separate analysis of WOF venues is available in an <a href="https://whosonfirst.org/blog/2017/10/24/whosonfirst-sotmus-2017/">earlier blog post</a>.</p>
+
+<h3>By Geometry Type</h3>
+
+<p>Nearly 10% of Who’s On First’s <code>5M</code> administrative records have polygons, with complete global coverage at the <code>country</code> and <code>dependency</code> (collectively the “top administrative level”), and <code>region</code> (1st order administrative subdivision) levels. Nearly continuous global coverage is provided at the <code>county</code> (2nd order administrative subdivision) level. Many countries also include complete polygon coverage at the <code>localadmin</code> level.</p>
+
+<p>Countries with any coloring in the “<a href="#country-scorecards">Country scorecards</a>” map in the next section include complete locality polygon coverage. Other “gray” colored countries in that map will only include approximate locality polygons for the country capital and a handful of other regionally important localities.</p>
+
+<p>The WOF gazetteer also stores nearly <code>0.5M</code> alternate geometries. This can occur when we upgrade point geometries to polygons, have multiple polygons to choose from but we designate just one the default and store the others as alternates, deal with coastline clipping for display versus territorial waters for reverse geocoding, or need to manually curate a custom polygon (and store the original as an alternate geometry).</p>
+
+<p>Every default polygon feature includes a <a href="https://github.com/whosonfirst/whosonfirst-properties/tree/main/properties/lbl">label centroid</a> geometry suitable for beautiful cartographic labeling derived either from <a href="https://github.com/mbloch/mapshaper">MapShaper</a> or manual curation. Sometimes <a href="https://github.com/whosonfirst/whosonfirst-properties/tree/main/properties/nav">navigation</a>, <a href="https://github.com/whosonfirst/whosonfirst-properties/tree/main/properties/reversegeo">reverse geocoding</a>, and other specialized centroids are also provided.</p>
+
+<p><em>(below) The count of WOF features grouped by placetype, how many of those have default point or polygon geometry, how many have alternate geometries (and the ratio of alternate geometries to the count of features in that placetype), a point area indicates an WOF error mostly from us add or remove neighbourhood polygon geometries, the polygon area in equal area square kilometers, and the ratio of that area compared with the scope of the globe the placetype should cover.</em></p>
+
+<table>
+<thead>
+<tr>
+<th>Order</th>
+<th>Placetype</th>
+<th align="right">Total Features</th>
+<th align="right">Points</th>
+<th align="right">Multi + Polygons</th>
+<th align="right">Alt geoms</th>
+<th align="right">Alt %</th>
+<th align="right">Point Areas</th>
+<th align="right">Poly Area SQ KM</th>
+<th align="right">Area %</th>
+<th align="right">Area Denom</th>
+<th>Area Scope</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>1</td>
+<td>country</td>
+<td align="right">232</td>
+<td align="right">5</td>
+<td align="right">227</td>
+<td align="right">670</td>
+<td align="right">288.80%</td>
+<td align="right">0.0K</td>
+<td align="right">147.0M</td>
+<td align="right">99.90%</td>
+<td align="right">147.1M</td>
+<td>all country and dependency</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>dependency</td>
+<td align="right">43</td>
+<td align="right"></td>
+<td align="right">43</td>
+<td align="right">52</td>
+<td align="right">120.90%</td>
+<td align="right"></td>
+<td align="right">83.3K</td>
+<td align="right">0.10%</td>
+<td align="right">147.1M</td>
+<td>all country and dependency</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>disputed</td>
+<td align="right">104</td>
+<td align="right"></td>
+<td align="right">104</td>
+<td align="right">110</td>
+<td align="right">105.80%</td>
+<td align="right"></td>
+<td align="right">1.2M</td>
+<td align="right">0.80%</td>
+<td align="right">147.1M</td>
+<td>all country and dependency</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>macroregion</td>
+<td align="right">117</td>
+<td align="right"></td>
+<td align="right">117</td>
+<td align="right">1</td>
+<td align="right">0.90%</td>
+<td align="right"></td>
+<td align="right">3.3M</td>
+<td align="right">29.80%</td>
+<td align="right">10.9M</td>
+<td>countries in (&lsquo;AU&rsquo;, &lsquo;DE&rsquo;, &lsquo;FR&rsquo;, &lsquo;GF&rsquo;, &lsquo;TW&rsquo;)</td>
+</tr>
+
+<tr>
+<td>5</td>
+<td>region</td>
+<td align="right">5,139</td>
+<td align="right">169</td>
+<td align="right">4,970</td>
+<td align="right">2,404</td>
+<td align="right">46.80%</td>
+<td align="right">0.0K</td>
+<td align="right">150.0M</td>
+<td align="right">102.00%</td>
+<td align="right">147.1M</td>
+<td>all country and dependency</td>
+</tr>
+
+<tr>
+<td>6</td>
+<td>macrocounty</td>
+<td align="right">482</td>
+<td align="right"></td>
+<td align="right">482</td>
+<td align="right">21</td>
+<td align="right">4.40%</td>
+<td align="right"></td>
+<td align="right">882.5K</td>
+<td align="right">10.00%</td>
+<td align="right">8.8M</td>
+<td>countries in (&lsquo;AZ&rsquo;, &lsquo;BE&rsquo;, &lsquo;BR&rsquo;, &lsquo;ES&rsquo;, &lsquo;FI&rsquo;, &lsquo;FR&rsquo;, &lsquo;GB&rsquo;, &lsquo;HK&rsquo;, &lsquo;HU&rsquo;, &lsquo;IT&rsquo;, &lsquo;RS&rsquo;, &lsquo;TW&rsquo;)</td>
+</tr>
+
+<tr>
+<td>7</td>
+<td>county</td>
+<td align="right">47,431</td>
+<td align="right">2,412</td>
+<td align="right">45,019</td>
+<td align="right">7,292</td>
+<td align="right">15.40%</td>
+<td align="right">0.0K</td>
+<td align="right">125.7M</td>
+<td align="right">85.50%</td>
+<td align="right">147.1M</td>
+<td>all country and dependency</td>
+</tr>
+
+<tr>
+<td>8</td>
+<td>localadmin</td>
+<td align="right">203,513</td>
+<td align="right">73,198</td>
+<td align="right">130,315</td>
+<td align="right">107,619</td>
+<td align="right">52.90%</td>
+<td align="right">0.0K</td>
+<td align="right">18.1M</td>
+<td align="right">12.30%</td>
+<td align="right">147.1M</td>
+<td>all country and dependency</td>
+</tr>
+
+<tr>
+<td>9</td>
+<td>locality</td>
+<td align="right">4,498,136</td>
+<td align="right">4,274,056</td>
+<td align="right">224,080</td>
+<td align="right">200,106</td>
+<td align="right">4.40%</td>
+<td align="right">0.5K</td>
+<td align="right">7.1M</td>
+<td align="right">4.80%</td>
+<td align="right">147.1M</td>
+<td>all country and dependency</td>
+</tr>
+
+<tr>
+<td>10</td>
+<td>borough</td>
+<td align="right">467</td>
+<td align="right">18</td>
+<td align="right">449</td>
+<td align="right">9</td>
+<td align="right">1.90%</td>
+<td align="right">0.0K</td>
+<td align="right">16.0K</td>
+<td align="right">0.20%</td>
+<td align="right">7.1M</td>
+<td>locality</td>
+</tr>
+
+<tr>
+<td>11</td>
+<td>macrohood</td>
+<td align="right">1,272</td>
+<td align="right">4</td>
+<td align="right">1,268</td>
+<td align="right">2</td>
+<td align="right">0.20%</td>
+<td align="right">0.0K</td>
+<td align="right">15.9K</td>
+<td align="right">0.20%</td>
+<td align="right">7.1M</td>
+<td>locality</td>
+</tr>
+
+<tr>
+<td>12</td>
+<td>neighbourhood</td>
+<td align="right">233,712</td>
+<td align="right">194,713</td>
+<td align="right">38,999</td>
+<td align="right">128,733</td>
+<td align="right">55.10%</td>
+<td align="right">94.8K</td>
+<td align="right">144.3K</td>
+<td align="right">2.00%</td>
+<td align="right">7.1M</td>
+<td>locality</td>
+</tr>
+
+<tr>
+<td>13</td>
+<td>microhood</td>
+<td align="right">2,127</td>
+<td align="right">165</td>
+<td align="right">1,962</td>
+<td align="right">2</td>
+<td align="right">0.10%</td>
+<td align="right">0.0K</td>
+<td align="right">1.9K</td>
+<td align="right">0.00%</td>
+<td align="right">7.1M</td>
+<td>locality</td>
+</tr>
+
+<tr>
+<td>14</td>
+<td>planet</td>
+<td align="right">1</td>
+<td align="right"></td>
+<td align="right">1</td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right">510.1M</td>
+<td align="right">100.00%</td>
+<td align="right">510.1M</td>
+<td>planet</td>
+</tr>
+
+<tr>
+<td>16</td>
+<td>ocean</td>
+<td align="right">7</td>
+<td align="right"></td>
+<td align="right">7</td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right">293.1M</td>
+<td align="right">57.50%</td>
+<td align="right">510.1M</td>
+<td>planet</td>
+</tr>
+
+<tr>
+<td>15</td>
+<td>continent</td>
+<td align="right">8</td>
+<td align="right"></td>
+<td align="right">8</td>
+<td align="right">5</td>
+<td align="right">62.50%</td>
+<td align="right"></td>
+<td align="right">146.7M</td>
+<td align="right">28.80%</td>
+<td align="right">510.1M</td>
+<td>planet</td>
+</tr>
+
+<tr>
+<td>17</td>
+<td>marinearea</td>
+<td align="right">402</td>
+<td align="right"></td>
+<td align="right">402</td>
+<td align="right">3</td>
+<td align="right">0.70%</td>
+<td align="right"></td>
+<td align="right">72.7M</td>
+<td align="right">24.80%</td>
+<td align="right">293.1M</td>
+<td>ocean</td>
+</tr>
+
+<tr>
+<td>18</td>
+<td>empire</td>
+<td align="right">12</td>
+<td align="right"></td>
+<td align="right">12</td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right">47.2M</td>
+<td align="right">32.10%</td>
+<td align="right">147.1M</td>
+<td>all country and dependency</td>
+</tr>
+
+<tr>
+<td>19</td>
+<td>timezone</td>
+<td align="right">376</td>
+<td align="right"></td>
+<td align="right">376</td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right">134.4M</td>
+<td align="right">91.40%</td>
+<td align="right">147.1M</td>
+<td>all country and dependency</td>
+</tr>
+
+<tr>
+<td>20</td>
+<td>marketarea</td>
+<td align="right">210</td>
+<td align="right"></td>
+<td align="right">210</td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right">8.5M</td>
+<td align="right">86.30%</td>
+<td align="right">9.8M</td>
+<td>countries in (&lsquo;US&rsquo;)</td>
+</tr>
+
+<tr>
+<td>21</td>
+<td>campus</td>
+<td align="right">24,452</td>
+<td align="right">21,916</td>
+<td align="right">2,536</td>
+<td align="right">33</td>
+<td align="right">0.10%</td>
+<td align="right">0.0K</td>
+<td align="right">346.8K</td>
+<td align="right">0.20%</td>
+<td align="right">147.1M</td>
+<td>all country and dependency</td>
+</tr>
+
+<tr>
+<td>22</td>
+<td>unknown</td>
+<td align="right">1</td>
+<td align="right"></td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">100.00%</td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right">0.00%</td>
+<td align="right">510.1M</td>
+<td>planet</td>
+</tr>
+
+<tr>
+<td>23</td>
+<td>TOTALS</td>
+<td align="right">5,018,244</td>
+<td align="right">4,566,656</td>
+<td align="right">451,588</td>
+<td align="right">447,063</td>
+<td align="right">8.90%</td>
+<td align="right">95.3K</td>
+<td align="right">1.7B</td>
+<td align="right"></td>
+<td align="right"></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><em>NOTE: Postalcodes are not tracked in this table. See Postalcode coverage section above.</em></p>
+
+<h3>By Geometry Source</h3>
+
+<h4>Geometries directly imported by Who’s On First from source</h4>
+
+<p>Who’s On First both makes our own data and imports data directly from governments and other reputable sources. WOF tracks sources for each geometry in the “<a href="https://github.com/whosonfirst/whosonfirst-properties/blob/main/properties/src/README.md#geom">src:geom</a>” property, with values being a source’s “name” in the <a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/README.md">sources</a> repo, while imported property’s from that source will have their name prepended with the “prefix” in the source’s JSON file. Hyperlinks are provided in the table below directly to that source’s JSON file (while the sources link above is human readable formatted text).</p>
+
+<table>
+  <tr>
+   <td>directly by
+   </td>
+   <td>source
+   </td>
+   <td>count
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/geonames.json">geonames</a>
+   </td>
+   <td><p style="text-align: right">
+4192805</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/qs_pg.json">qs_pg</a>
+   </td>
+   <td><p style="text-align: right">
+213815</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/quattroshapes.json">quattroshapes</a>
+   </td>
+   <td><p style="text-align: right">
+202739</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/frgov.json">frgov</a>
+   </td>
+   <td><p style="text-align: right">
+70551</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/unknown.json">unknown</a>
+   </td>
+   <td><p style="text-align: right">
+70371</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/mz.json">mz</a>
+   </td>
+   <td><p style="text-align: right">
+57396</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/whosonfirst.json">whosonfirst</a>
+   </td>
+   <td><p style="text-align: right">
+47435</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/uscensus.json">uscensus</a>
+   </td>
+   <td><p style="text-align: right">
+36473</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/meso.json">meso</a>
+   </td>
+   <td><p style="text-align: right">
+27675</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/de-bkg.json">de-bkg</a>
+   </td>
+   <td><p style="text-align: right">
+16290</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/cbsnl.json">cbsnl</a>
+   </td>
+   <td><p style="text-align: right">
+14243</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/ro-ancpi.json">ro-ancpi</a>
+   </td>
+   <td><p style="text-align: right">
+13753</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/ch-cadastre.json">ch-cadastre</a>
+   </td>
+   <td><p style="text-align: right">
+6397</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/nz-linz.json">nz-linz</a>
+   </td>
+   <td><p style="text-align: right">
+5942</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/ee-mamt.json">ee-mamt</a>
+   </td>
+   <td><p style="text-align: right">
+5045</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/pl-gugik.json">pl-gugik</a>
+   </td>
+   <td><p style="text-align: right">
+4658</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/zetashapes.json">zetashapes</a>
+   </td>
+   <td><p style="text-align: right">
+4372</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/ourairports.json">ourairports</a>
+   </td>
+   <td><p style="text-align: right">
+3326</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/pt-dgt.json">pt-dgt</a>
+   </td>
+   <td><p style="text-align: right">
+3092</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/se-lant.json">se-lant</a>
+   </td>
+   <td><p style="text-align: right">
+2813</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/austriaod.json">austriaod</a>
+   </td>
+   <td><p style="text-align: right">
+2194</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/naturalearth.json">naturalearth</a>
+   </td>
+   <td><p style="text-align: right">
+1858</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/wikidata.json">wikidata</a>
+   </td>
+   <td><p style="text-align: right">
+1742</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/woedb.json">woedb</a>
+   </td>
+   <td><p style="text-align: right">
+1472</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/esp-cicgc.json">esp-cicgc</a>
+   </td>
+   <td><p style="text-align: right">
+950</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/ie-gov.json">ie-gov</a>
+   </td>
+   <td><p style="text-align: right">
+816</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/au-capad.json">au-capad</a>
+   </td>
+   <td><p style="text-align: right">
+716</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/amsgis.json">amsgis</a>
+   </td>
+   <td><p style="text-align: right">
+695</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/no-geonorge.json">no-geonorge</a>
+   </td>
+   <td><p style="text-align: right">
+493</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/us-nps.json">us-nps</a>
+   </td>
+   <td><p style="text-align: right">
+419</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/hkigis.json">hkigis</a>
+   </td>
+   <td><p style="text-align: right">
+409</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/sg-sggov.json">sg-sggov</a>
+   </td>
+   <td><p style="text-align: right">
+396</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/can-edmdsd.json">can-edmdsd</a>
+   </td>
+   <td><p style="text-align: right">
+333</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/figov.json">figov</a>
+   </td>
+   <td><p style="text-align: right">
+323</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/begov.json">begov</a>
+   </td>
+   <td><p style="text-align: right">
+308</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/baltomoit.json">baltomoit</a>
+   </td>
+   <td><p style="text-align: right">
+288</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/statcan.json">statcan</a>
+   </td>
+   <td><p style="text-align: right">
+272</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/can-abog.json">can-abog</a>
+   </td>
+   <td><p style="text-align: right">
+264</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/pedia.json">pedia</a>
+   </td>
+   <td><p style="text-align: right">
+254</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/atldpcd.json">atldpcd</a>
+   </td>
+   <td><p style="text-align: right">
+235</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/svn-sma.json">svn-sma</a>
+   </td>
+   <td><p style="text-align: right">
+224</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/lu-act.json">lu-act</a>
+   </td>
+   <td><p style="text-align: right">
+216</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/za-mdb.json">za-mdb</a>
+   </td>
+   <td><p style="text-align: right">
+213</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/wapo.json">wapo</a>
+   </td>
+   <td><p style="text-align: right">
+213</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/zolk.json">zolk</a>
+   </td>
+   <td><p style="text-align: right">
+207</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/aus-psma.json">aus-psma</a>
+   </td>
+   <td><p style="text-align: right">
+193</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/mx-conanp.json">mx-conanp</a>
+   </td>
+   <td><p style="text-align: right">
+182</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/dk-geodk.json">dk-geodk</a>
+   </td>
+   <td><p style="text-align: right">
+179</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/azavea.json">azavea</a>
+   </td>
+   <td><p style="text-align: right">
+158</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/can-calcai.json">can-calcai</a>
+   </td>
+   <td><p style="text-align: right">
+152</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/esp-aytomad.json">esp-aytomad</a>
+   </td>
+   <td><p style="text-align: right">
+151</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/can-wpgppd.json">can-wpgppd</a>
+   </td>
+   <td><p style="text-align: right">
+148</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/sdgis.json">sdgis</a>
+   </td>
+   <td><p style="text-align: right">
+136</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/tkugov.json">tkugov</a>
+   </td>
+   <td><p style="text-align: right">
+129</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/oakced.json">oakced</a>
+   </td>
+   <td><p style="text-align: right">
+124</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/ssuberlin.json">ssuberlin</a>
+   </td>
+   <td><p style="text-align: right">
+108</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/tmpgov.json">tmpgov</a>
+   </td>
+   <td><p style="text-align: right">
+106</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/oulugov.json">oulugov</a>
+   </td>
+   <td><p style="text-align: right">
+106</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/porbps.json">porbps</a>
+   </td>
+   <td><p style="text-align: right">
+102</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/sfgov.json">sfgov</a>
+   </td>
+   <td><p style="text-align: right">
+96</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/os.json">os</a>
+   </td>
+   <td><p style="text-align: right">
+91</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/seagv.json">seagv</a>
+   </td>
+   <td><p style="text-align: right">
+88</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/denvercpd.json">denvercpd</a>
+   </td>
+   <td><p style="text-align: right">
+87</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/torsdfa.json">torsdfa</a>
+   </td>
+   <td><p style="text-align: right">
+85</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/nolagis.json">nolagis</a>
+   </td>
+   <td><p style="text-align: right">
+83</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/esp-cartobcn.json">esp-cartobcn</a>
+   </td>
+   <td><p style="text-align: right">
+83</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/can-gatsudd.json">can-gatsudd</a>
+   </td>
+   <td><p style="text-align: right">
+74</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/fivgov.json">fivgov</a>
+   </td>
+   <td><p style="text-align: right">
+70</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/arg-caba.json">arg-caba</a>
+   </td>
+   <td><p style="text-align: right">
+65</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/can-mtlsmvt.json">can-mtlsmvt</a>
+   </td>
+   <td><p style="text-align: right">
+61</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/can-saskodp.json">can-saskodp</a>
+   </td>
+   <td><p style="text-align: right">
+55</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/kuogov.json">kuogov</a>
+   </td>
+   <td><p style="text-align: right">
+47</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/can-clab.json">can-clab</a>
+   </td>
+   <td><p style="text-align: right">
+47</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/lacity.json">lacity</a>
+   </td>
+   <td><p style="text-align: right">
+40</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/can-dnvgov.json">can-dnvgov</a>
+   </td>
+   <td><p style="text-align: right">
+37</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/can-ons.json">can-ons</a>
+   </td>
+   <td><p style="text-align: right">
+36</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/minitenders.json">minitenders</a>
+   </td>
+   <td><p style="text-align: right">
+35</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/gbr-datalondon.json">gbr-datalondon</a>
+   </td>
+   <td><p style="text-align: right">
+33</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/santabar.json">santabar</a>
+   </td>
+   <td><p style="text-align: right">
+32</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/can-bbygov.json">can-bbygov</a>
+   </td>
+   <td><p style="text-align: right">
+32</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/eu-cdda.json">eu-cdda</a>
+   </td>
+   <td><p style="text-align: right">
+27</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/can-qcodp.json">can-qcodp</a>
+   </td>
+   <td><p style="text-align: right">
+27</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/bra.json">bra</a>
+   </td>
+   <td><p style="text-align: right">
+27</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/hk-gov.json">hk-gov</a>
+   </td>
+   <td><p style="text-align: right">
+21</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/burritojustice.json">burritojustice</a>
+   </td>
+   <td><p style="text-align: right">
+19</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/wikipedia.json">wikipedia</a>
+   </td>
+   <td><p style="text-align: right">
+16</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/stpaulgov.json">stpaulgov</a>
+   </td>
+   <td><p style="text-align: right">
+16</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/wof.json">wof</a>
+   </td>
+   <td><p style="text-align: right">
+15</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/SIJ.json">SIJ</a>
+   </td>
+   <td><p style="text-align: right">
+15</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/ni-os.json">ni-os</a>
+   </td>
+   <td><p style="text-align: right">
+12</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/can-rodca.json">can-rodca</a>
+   </td>
+   <td><p style="text-align: right">
+12</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/mapzen.json">mapzen</a>
+   </td>
+   <td><p style="text-align: right">
+11</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/ausstat.json">ausstat</a>
+   </td>
+   <td><p style="text-align: right">
+11</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/uk-datagov.json">uk-datagov</a>
+   </td>
+   <td><p style="text-align: right">
+10</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/canvec-hydro.json">canvec-hydro</a>
+   </td>
+   <td><p style="text-align: right">
+9</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/can-nwds.json">can-nwds</a>
+   </td>
+   <td><p style="text-align: right">
+9</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/vanpds.json">vanpds</a>
+   </td>
+   <td><p style="text-align: right">
+7</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/camgov.json">camgov</a>
+   </td>
+   <td><p style="text-align: right">
+7</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/can-surgis.json">can-surgis</a>
+   </td>
+   <td><p style="text-align: right">
+5</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/us-dshiu.json">us-dshiu</a>
+   </td>
+   <td><p style="text-align: right">
+3</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/sjp.json">sjp</a>
+   </td>
+   <td><p style="text-align: right">
+3</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/sfomuseum.json">sfomuseum</a>
+   </td>
+   <td><p style="text-align: right">
+3</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/can-lvlsu.json">can-lvlsu</a>
+   </td>
+   <td><p style="text-align: right">
+3</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/quattroshapes_pg.json">quattroshapes_pg</a>
+   </td>
+   <td><p style="text-align: right">
+2</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/nullisland.json">nullisland</a>
+   </td>
+   <td><p style="text-align: right">
+2</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/simplegeo.json">simplegeo</a>
+   </td>
+   <td><p style="text-align: right">
+1</p>
+
+   </td>
+  </tr>
+  <tr>
+   <td>whosonfirst
+   </td>
+   <td><a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/ccsf-sfo.json">ccsf-sfo</a>
+   </td>
+   <td><p style="text-align: right">
+1</p>
+
+   </td>
+  </tr>
+</table>
+
+<h4>Quattroshapes geometries imported to WOF from aggregator</h4>
+
+<p>These are the <a href="https://www.urbandictionary.com/define.php?term=OG">OG</a> polygons that WOF launched with in 2015 thanks to Foursquare’s open data Quattroshapes gazetteer. They range across all administrative placetypes from country to locality to neighbourhood.</p>
+
+<p>Who’s On First indicates if a geometry is from an aggregator in the main “<a href="https://github.com/whosonfirst/whosonfirst-properties/blob/main/properties/src/README.md#geom">src:geom</a>” property, and lists out those sources the <a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/README.md">sources</a> repo. Per record fidelity is available by dipping into the “<a href="https://github.com/whosonfirst/whosonfirst-properties/blob/main/properties/qs/README.md#qssource">qs:source</a>” property; we plan to promote that information into a new and generic top-level WOF property.</p>
+
+<table>
+<thead>
+<tr>
+<th>source</th>
+<th>src_via</th>
+<th align="right">count</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>quattroshapes</td>
+<td>Australia Census</td>
+<td align="right">558</td>
+</tr>
+
+<tr>
+<td>quattroshapes</td>
+<td>Australian Bureau Of Statistics</td>
+<td align="right">8253</td>
+</tr>
+
+<tr>
+<td>quattroshapes</td>
+<td>Australian Bureau Of Statistics: state suburbs file selection</td>
+<td align="right">4175</td>
+</tr>
+
+<tr>
+<td>quattroshapes</td>
+<td>Australian Bureau Of Statistics: state suburbs file with customization</td>
+<td align="right">232</td>
+</tr>
+
+<tr>
+<td>quattroshapes</td>
+<td>Australian Bureau Of Statistics: urban areas and localities selection</td>
+<td align="right">925</td>
+</tr>
+
+<tr>
+<td>quattroshapes</td>
+<td>Brasil IBGE</td>
+<td align="right">35559</td>
+</tr>
+
+<tr>
+<td>quattroshapes</td>
+<td>Canada Census</td>
+<td align="right">5771</td>
+</tr>
+
+<tr>
+<td>quattroshapes</td>
+<td>Custom EuroGlobalMap + UMZ Urban Polygons + Geonames + GeoPlanet</td>
+<td align="right">30639</td>
+</tr>
+
+<tr>
+<td>quattroshapes</td>
+<td>EuroGlobalMap</td>
+<td align="right">2000</td>
+</tr>
+
+<tr>
+<td>quattroshapes</td>
+<td>France IGN</td>
+<td align="right">5502</td>
+</tr>
+
+<tr>
+<td>quattroshapes</td>
+<td>GlobalMap</td>
+<td align="right">4970</td>
+</tr>
+
+<tr>
+<td>quattroshapes</td>
+<td>Italy IGN</td>
+<td align="right">8223</td>
+</tr>
+
+<tr>
+<td>quattroshapes</td>
+<td>Mexico IGN</td>
+<td align="right">7028</td>
+</tr>
+
+<tr>
+<td>quattroshapes</td>
+<td>Natural Earth</td>
+<td align="right">1741</td>
+</tr>
+
+<tr>
+<td>quattroshapes</td>
+<td>NBC Gov</td>
+<td align="right">152</td>
+</tr>
+
+<tr>
+<td>quattroshapes</td>
+<td>New Zealand LINZ</td>
+<td align="right">19</td>
+</tr>
+
+<tr>
+<td>quattroshapes</td>
+<td>NLD Kadaster</td>
+<td align="right">119</td>
+</tr>
+
+<tr>
+<td>quattroshapes</td>
+<td>quattroshapes</td>
+<td align="right">4824</td>
+</tr>
+
+<tr>
+<td>quattroshapes</td>
+<td>Spain IGN</td>
+<td align="right">7318</td>
+</tr>
+
+<tr>
+<td>quattroshapes</td>
+<td>SwissTopo</td>
+<td align="right">604</td>
+</tr>
+
+<tr>
+<td>quattroshapes</td>
+<td>UK OS</td>
+<td align="right">14550</td>
+</tr>
+
+<tr>
+<td>quattroshapes</td>
+<td>Unknown (multiple sources)</td>
+<td align="right">8378</td>
+</tr>
+
+<tr>
+<td>quattroshapes</td>
+<td>US Census</td>
+<td align="right">20089</td>
+</tr>
+
+<tr>
+<td>quattroshapes</td>
+<td>US State Department, with Natural Earth mods</td>
+<td align="right">171</td>
+</tr>
+</tbody>
+</table>
+
+<h4>Mesoshapes geometries imported to WOF from aggregator</h4>
+
+<p>These are mostly <code>county</code> placetype default geometries.</p>
+
+<p>Who’s On First indicates if a geometry is from an aggregator in the main “<a href="https://github.com/whosonfirst/whosonfirst-properties/blob/main/properties/src/README.md#geom">src:geom</a>” property, and lists out those sources the <a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/README.md">sources</a> repo. Per record fidelity is available by dipping into the “<a href="https://github.com/whosonfirst/whosonfirst-properties/blob/main/properties/meso/README.md#source">meso:source</a>” property; we plan to promote that information into a new and generic top-level WOF property.</p>
+
+<table>
+<thead>
+<tr>
+<th>source</th>
+<th>src_via</th>
+<th>via_name</th>
+<th align="right">count</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>meso</td>
+<td>ACE</td>
+<td>Armenia: Acopian Center for the Environment</td>
+<td align="right">913</td>
+</tr>
+
+<tr>
+<td>meso</td>
+<td>AOTM</td>
+<td>Global: Art of the Mappable (AOTM) for Mapzen</td>
+<td align="right">14785</td>
+</tr>
+
+<tr>
+<td>meso</td>
+<td>CLNC</td>
+<td>Chilean National Library of Congress</td>
+<td align="right">51</td>
+</tr>
+
+<tr>
+<td>meso</td>
+<td>DATAMEET</td>
+<td>India: DataMeet</td>
+<td align="right">607</td>
+</tr>
+
+<tr>
+<td>meso</td>
+<td>DGEEC</td>
+<td>Paraguay: DGEEC</td>
+<td align="right">246</td>
+</tr>
+
+<tr>
+<td>meso</td>
+<td>EGM</td>
+<td>Europe: Euro Global Map (EGM)</td>
+<td align="right">155</td>
+</tr>
+
+<tr>
+<td>meso</td>
+<td>ESOC</td>
+<td>Global: Empirical Study of Conflict (ESOC)</td>
+<td align="right">109</td>
+</tr>
+
+<tr>
+<td>meso</td>
+<td>ESRI_OPEN</td>
+<td>Global and Costa Rica: ESRI Open Data (Daticos)</td>
+<td align="right">81</td>
+</tr>
+
+<tr>
+<td>meso</td>
+<td>FIGN</td>
+<td>France: French IGN (FIGN)</td>
+<td align="right">22</td>
+</tr>
+
+<tr>
+<td>meso</td>
+<td>GSIJ</td>
+<td>Japan: Geospatial Information Authority of Japan (GSI)</td>
+<td align="right">3063</td>
+</tr>
+
+<tr>
+<td>meso</td>
+<td>IDE_EFP</td>
+<td>Bolivia: IDE-EPB GeoBolivia data portal (IDE_EPB)</td>
+<td align="right">198</td>
+</tr>
+
+<tr>
+<td>meso</td>
+<td>ISCGM</td>
+<td>Global, Azerbaijan, Georgia, Honduras, Indonesia, Mauritius, Mozambique, Nicaragua, Papua, Togo: International Steering Committee for Global Mapping (ISCGM)</td>
+<td align="right">854</td>
+</tr>
+
+<tr>
+<td>meso</td>
+<td>meso</td>
+<td>Mapzen</td>
+<td align="right">6</td>
+</tr>
+
+<tr>
+<td>meso</td>
+<td>mz</td>
+<td>Mapzen</td>
+<td align="right">22</td>
+</tr>
+
+<tr>
+<td>meso</td>
+<td>NISR</td>
+<td>Rwanda: National Institute of Statistics of Rwanda (NISR)</td>
+<td align="right">30</td>
+</tr>
+
+<tr>
+<td>meso</td>
+<td>NREL</td>
+<td>Bangladesh: National Renewable Energy Laboratory (NREL)</td>
+<td align="right">64</td>
+</tr>
+
+<tr>
+<td>meso</td>
+<td>OCHA_OPEN</td>
+<td>Global: OCHA_OPEN</td>
+<td align="right">1608</td>
+</tr>
+
+<tr>
+<td>meso</td>
+<td>SAMDB</td>
+<td>South Africa: South Africa Municipal Demarcation Board (SAMDB)</td>
+<td align="right">52</td>
+</tr>
+
+<tr>
+<td>meso</td>
+<td>SH</td>
+<td>Colombia: Sala Humanitaria (SH)</td>
+<td align="right">1122</td>
+</tr>
+
+<tr>
+<td>meso</td>
+<td>SNZ</td>
+<td>New Zealand: Statistics New Zealand (SNZ)</td>
+<td align="right">67</td>
+</tr>
+
+<tr>
+<td>meso</td>
+<td>STATOIDS</td>
+<td>Global: Statoids</td>
+<td align="right">1</td>
+</tr>
+
+<tr>
+<td>meso</td>
+<td>TNBS</td>
+<td>Tanzania: Tanzania National Bureau of Statistics (TNBS)</td>
+<td align="right">169</td>
+</tr>
+
+<tr>
+<td>meso</td>
+<td>TNLSMC</td>
+<td>Asia: National Land Surveying and Mapping Center (TNLSMC)</td>
+<td align="right">30</td>
+</tr>
+
+<tr>
+<td>meso</td>
+<td>USAID</td>
+<td>Global: USAID - GIST with USAID as originator, Egypt: USAID via FOIA, Ethiopia, Liberia: USAID</td>
+<td align="right">445</td>
+</tr>
+
+<tr>
+<td>meso</td>
+<td>WRI</td>
+<td>Global: World Resource Institute (WRI), Cameroon, Ethiopia: WRI</td>
+<td align="right">103</td>
+</tr>
+
+<tr>
+<td>meso</td>
+<td>ZIMSTAT</td>
+<td>Zimbabwe: Zimbabwe Central Statistics Office (ZimStat)</td>
+<td align="right">44</td>
+</tr>
+
+<tr>
+<td>meso</td>
+<td></td>
+<td>Multiple sources</td>
+<td align="right">2828</td>
+</tr>
+</tbody>
+</table>
+
+<h2>WOF Gazetteer Data Scorecards</h2>
+
+<h3>Country scorecards</h3>
+
+<p>We rate 87 countries with good to great polygon coverage at both locality and parent administrative subdivisions, including country, region (state/province), and county, in the <strong>A-AA-AAA-AAAA</strong> range. Our <code>disputed</code> territory polygon coverage also falls in this “great” data grouping.</p>
+
+<p>We rate 177 countries that are mostly limited to point locality coverage and basic polygon administrative subdivisions in the <strong>B-BB-BBB-BBBB</strong> range. We almost always have “complete” coverage in these countries, however, often tens of thousands and sometimes with hundreds of thousands of features are point geometries only.</p>
+
+<p><em>Breakdowns of each of these classes are available below the map…</em></p>
+
+<p><img src="images/wof-grades.png" alt="Who&rsquo;s On First score card map" title="Who's On First score card map" /></p>
+
+<h4>A range coverage by country</h4>
+
+<p><strong>AAAA:</strong> Starting in 2017, we have rebuilt priority countries by importing authoritative, polygon-based records at all placetypes from region down to locality to provide <strong>AAAA data quality</strong> and coverage in: <em>Australia, Austria, Canada, Estonia, France, Germany, Hong Kong, Italy, Netherlands, New Zealand, Poland, Romania, Singapore, Spain, Switzerland, United Kingdom, and United States.</em></p>
+
+<p><strong>AAA:</strong> Other countries in North America, Europe, Middle East, Asia, and elsewhere have had selective rebuilds at a mix of placetypes to provide <strong>AAA data quality</strong> and coverage using national mapping agency data – though possibly of an older vintage that may not reflect all recent administrative updates. <em>These include: Akrotiri Sovereign Base Area, Aland, Albania, Bahrain, Belgium, Brazil, Bulgaria, Croatia, Cyprus, Czechia, Denmark, Dhekelia Sovereign Base Area, Faroe Islands, Finland, Greece, Greenland, Guernsey, Hungary, Iceland, Ireland, Isle of Man, Kuwait, Latvia, Liechtenstein, Lithuania, Luxembourg, Moldova, North Macedonia, Northern Cyprus, Norway, Portugal, Puerto Rico, Qatar, San Marino, Saudi Arabia, Slovakia, Slovenia, South Africa, Sweden, Turkey, Ukraine, United Arab Emirates, and Vatican.</em></p>
+
+<p><strong>AA:</strong> WOF provides <strong>AA data quality</strong> with extensive (but not universal) polygon coverage at locality level in <em>Chile, India, Indonesia, Iraq, Israel, Mexico, Morocco, Nigeria, Pakistan, Palestine, Philipeans, South Korea, and Taiwan.</em> These polygons often date back to 2013 and represent the largest urban settlements.</p>
+
+<p><strong>A:</strong> WOF provides <strong>A data quality</strong> with approximate locality polygons in <em>China, Japan, Malaysia, Russia, and Thailand</em>. Several countries with extensive and higher quality point locality coverage, including: <em>Columbia and Honduras</em>.</p>
+
+<h4>B range coverage by country</h4>
+
+<p><strong>BBBB:</strong> WOF provides BBBB quality data with dense point locality coverage in <em>Afghanistan, Argentina, Bangladesh, Baykonur, Bolivia, Iran, Kazakhstan, Mozambique, Myanmar, Nepal, Paraguay, Peru, Tanzania, Venezuela, and Vietnam.</em></p>
+
+<p><strong>BBB:</strong> WOF provides BBB quality data with dense point locality coverage in  <em>Angola, Belarus, Bosnia and Herzegovina, Congo (DRC), Costa Rica, Gabon, Madagascar, Mongolia, North Korea, Rwanda, Uganda, and Yemen.</em></p>
+
+<p><strong>BB:</strong> WOF provides BB quality date with medium density point locality coverage in <em>Armenia, Burkina Faso, Burundi, Cambodia, Cameroon, Central African Republic, Congo (ROC), Cuba, Dominican Republic, Ecuador, Egypt, Ethiopia, Ghana, Guatemala, Haiti, Ivory Coast, Kosovo, Kyrgyzstan, Laos, Mali, Montenegro, Namibia, Panama, Papua New Guinea, Serbia, Sierra Leone, South Sudan, Sri Lanka, Sudan, Syria, Tunisia, Uruguay, and Zambia.</em></p>
+
+<p><strong>B:</strong> WOF provides B quality date with basic density point locality coverage in_ Algeria, Azerbaijan, Belize, Benin, Bhutan, Botswana, Chad, Djibouti, El Salvador, Equatorial Guinea, Eritrea, eSwatini, Gambia, Georgia, Guinea, Guinea-Bissau, Guyana, Jamaica, Jordan, Kenya, Lesotho, Liberia, Libya, Malawi, Mauritania, Nicaragua, Niger, Oman, Senegal, Somalia, Somaliland, Suriname, Tajikistan, Togo, Turkmenistan, Uzbekistan, and Zimbabwe. This category also includes several smaller island countries._</p>
+
+<p>NOTE: We still provide detailed region and county polygon coverage for all these to generate full administrative hierarchies, except counties in <em>Namibia, Botswana, Belarus, Bulgaria, Turkmenistan, and Uzbekistan. Greenland, Iceland, and Western Sahara do not have county subdivisions IRL.</em></p>
+
+<h3>Data size by country</h3>
+
+<p><img src="images/wof-size-in-bytes.png" alt="Who&rsquo;s On First data size map" title="Who's On First data size map" /></p>
+
+<p><em>NOTE: Methodology: <a href="https://data.geocode.earth/wof/dist/shapefile/inventory.json">https://data.geocode.earth/wof/dist/shapefile/inventory.json</a> to get sizes per country.</em></p>
+
+<p>Even though most countries are limited to locality points past the county polygon level, those features (and their properties including name localizations) can add up to sizable downloads, especially when mixed in with the polygon features.</p>
+
+<h3>Features by country</h3>
+
+<p>Looking at “administrative” placetype features by country (country code), the trend mostly follows population density.</p>
+
+<table>
+<thead>
+<tr>
+<th>rank</th>
+<th>country</th>
+<th>count</th>
+<th></th>
+<th>rank</th>
+<th>country</th>
+<th>count</th>
+<th></th>
+<th>rank</th>
+<th>country</th>
+<th>count</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>1</td>
+<td>China (CN)</td>
+<td>679,207</td>
+<td></td>
+<td>21</td>
+<td>Bangladesh (BD)</td>
+<td>48,696</td>
+<td></td>
+<td>41</td>
+<td>Austria (AT)</td>
+<td>23,458</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>India (IN)</td>
+<td>509,567</td>
+<td></td>
+<td>22</td>
+<td>Philippines (PH)</td>
+<td>45,819</td>
+<td></td>
+<td>42</td>
+<td>Iraq (IQ)</td>
+<td>22,900</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>United States (US)</td>
+<td>293,571</td>
+<td></td>
+<td>23</td>
+<td>Morocco (MA)</td>
+<td>45,577</td>
+<td></td>
+<td>43</td>
+<td>Mozambique (MZ)</td>
+<td>22,782</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>Indonesia (ID)</td>
+<td>256,068</td>
+<td></td>
+<td>24</td>
+<td>Viet Nam (VN)</td>
+<td>41,889</td>
+<td></td>
+<td>44</td>
+<td>Bosnia &amp; Herz. (BA)</td>
+<td>22,147</td>
+</tr>
+
+<tr>
+<td>5</td>
+<td>Mexico (MX)</td>
+<td>232,389</td>
+<td></td>
+<td>25</td>
+<td>Spain (ES)</td>
+<td>41,443</td>
+<td></td>
+<td>45</td>
+<td>Netherlands (NL)</td>
+<td>21,912</td>
+</tr>
+
+<tr>
+<td>6</td>
+<td>Russia (RU)</td>
+<td>203,058</td>
+<td></td>
+<td>26</td>
+<td>Peru (PE)</td>
+<td>40,653</td>
+<td></td>
+<td>46</td>
+<td>Malaysia (MY)</td>
+<td>21,102</td>
+</tr>
+
+<tr>
+<td>7</td>
+<td>Germany (DE)</td>
+<td>167,516</td>
+<td></td>
+<td>27</td>
+<td>Myanmar (MM)</td>
+<td>39,287</td>
+<td></td>
+<td>47</td>
+<td>Portugal (PT)</td>
+<td>20,519</td>
+</tr>
+
+<tr>
+<td>8</td>
+<td>Pakistan (PK)</td>
+<td>135,126</td>
+<td></td>
+<td>28</td>
+<td>Yemen (YE)</td>
+<td>39,204</td>
+<td></td>
+<td>48</td>
+<td>Lithuania (LT)</td>
+<td>19,988</td>
+</tr>
+
+<tr>
+<td>9</td>
+<td>France (FR)</td>
+<td>122,484</td>
+<td></td>
+<td>29</td>
+<td>Congo (CD)</td>
+<td>36,677</td>
+<td></td>
+<td>49</td>
+<td>Taiwan (TW)</td>
+<td>18,687</td>
+</tr>
+
+<tr>
+<td>10</td>
+<td>Thailand (TH)</td>
+<td>87,191</td>
+<td></td>
+<td>30</td>
+<td>Ukraine (UA)</td>
+<td>35,145</td>
+<td></td>
+<td>50</td>
+<td>Sri Lanka (LK)</td>
+<td>17,956</td>
+</tr>
+
+<tr>
+<td>11</td>
+<td>Nepal (NP)</td>
+<td>80,713</td>
+<td></td>
+<td>31</td>
+<td>Colombia (CO)</td>
+<td>33,723</td>
+<td></td>
+<td>51</td>
+<td>Czechia (CZ)</td>
+<td>17,341</td>
+</tr>
+
+<tr>
+<td>12</td>
+<td>Iran (IR)</td>
+<td>78,355</td>
+<td></td>
+<td>32</td>
+<td>Afghanistan (AF)</td>
+<td>32,419</td>
+<td></td>
+<td>52</td>
+<td>Romania (RO)</td>
+<td>16,666</td>
+</tr>
+
+<tr>
+<td>13</td>
+<td>Brazil (BR)</td>
+<td>76,335</td>
+<td></td>
+<td>33</td>
+<td>Sweden (SE)</td>
+<td>31,859</td>
+<td></td>
+<td>53</td>
+<td>Angola (AO)</td>
+<td>16,585</td>
+</tr>
+
+<tr>
+<td>14</td>
+<td>Italy (IT)</td>
+<td>73,273</td>
+<td></td>
+<td>34</td>
+<td>Korea (DPR) (KP)</td>
+<td>31,755</td>
+<td></td>
+<td>54</td>
+<td>Greece (GR)</td>
+<td>15,855</td>
+</tr>
+
+<tr>
+<td>15</td>
+<td>Japan (JP)</td>
+<td>56,979</td>
+<td></td>
+<td>35</td>
+<td>Australia (AU)</td>
+<td>28,204</td>
+<td></td>
+<td>55</td>
+<td>Bolivia (BO)</td>
+<td>15,495</td>
+</tr>
+
+<tr>
+<td>16</td>
+<td>Nigeria (NG)</td>
+<td>55,893</td>
+<td></td>
+<td>36</td>
+<td>Canada (CA)</td>
+<td>28,097</td>
+<td></td>
+<td>56</td>
+<td>South Africa (ZA)</td>
+<td>15,402</td>
+</tr>
+
+<tr>
+<td>17</td>
+<td>Türkiye (TR)</td>
+<td>54,420</td>
+<td></td>
+<td>37</td>
+<td>Switzerland (CH)</td>
+<td>25,691</td>
+<td></td>
+<td>57</td>
+<td>Laos (LA)</td>
+<td>15,262</td>
+</tr>
+
+<tr>
+<td>18</td>
+<td>Korea (KR)</td>
+<td>53,030</td>
+<td></td>
+<td>38</td>
+<td>Belarus (BY)</td>
+<td>25,276</td>
+<td></td>
+<td>58</td>
+<td>Finland (FI)</td>
+<td>15,143</td>
+</tr>
+
+<tr>
+<td>19</td>
+<td>United Kingdom (GB)</td>
+<td>52,950</td>
+<td></td>
+<td>39</td>
+<td>Madagascar (MG)</td>
+<td>24,260</td>
+<td></td>
+<td></td>
+<td>Others</td>
+<td>659,904</td>
+</tr>
+
+<tr>
+<td>20</td>
+<td>Poland (PL)</td>
+<td>51,522</td>
+<td></td>
+<td>40</td>
+<td>Venezuela (VE)</td>
+<td>23,819</td>
+<td></td>
+<td></td>
+<td>TOTAL</td>
+<td>5,018,244</td>
+</tr>
+</tbody>
+</table>
+
+<h3>Depth of administrative levels by country</h3>
+
+<p><img src="images/wof-levels-deep-and-local-admin.png" alt="Who&rsquo;s On First admin levels depth map" title="Who's On First admin levels depth map" /></p>
+
+<p>Who’s On First tracks 1st and 2nd order administrative divisions for most countries and dependencies (so three levels deep including <code>country</code> (and/or <code>dependency</code> and <code>empire</code>), <code>region</code>, and <code>county</code>). A handful only have 1st order divisions (2 levels). Around 39 countries include 4 to 7 administrative levels. Around 24 of those include features at the municipality (<code>localadmin</code>) level. We have point records only for <code>localadmin</code> in another 19 countries, and anticipate polygon features for this placetype can be imported for another 53 countries (see “<a href="#improving-wof-data-coverage-and-quality">Future Directions</a>” section below).</p>
+
+<p><em>NOTE: All the countries in the map above also include <code>locality</code> points and polygons but because those don&rsquo;t form a continuous in-country or global fabric this level is excluded from the counts above.</em></p>
+
+<h3>Vintage of data by country</h3>
+
+<p><img src="images/wof-vintage.png" alt="Who&rsquo;s On First data vintage map" title="Who's On First data vintage map" /></p>
+
+<p>While 2013-era Quattroshapes is the skeleton for Who’s On First, we’ve substantially updated the gazetteer in the last decade. In 2015, we imported the original Quattroshapes polygon features to normalize them and otherwise clean them up. In 2016, we added polygons for 2nd order administrative divisions (“<code>county</code>”) for almost every country and dependency in the world. In 2017, we imported Quattroshapes point gazetteer and GeoNames “<code>locality</code>” points to provide global coverage at that placetype in all countries. Most country and dependency capitals and major metropolitan centers were updated with approximate <code>locality</code> polygons in 2021. Select countries have been rebuilt in whole or partially since 2017, including 42 countries in North America, Europe, and elsewhere.</p>
+
+<p>Most of the <strong>AAAA</strong> and <strong>AAA</strong> countries (see section above) have a 5- or 10-year census, and we attempt to incorporate polygon data from their most recent census &amp;/or INSPIRE-related open data efforts. Some eastern European countries have earlier 2013 vintage locality polygons. Generally region and county level changes less per year, with the localadmin level experiencing more consolidation and occasional splits on an annual basis (~1% change per year).</p>
+
+<p>When Who’s On First observes a change in a country’s administrative subdivisions we add the new or changed features with an <a href="https://github.com/whosonfirst/whosonfirst-properties/blob/main/properties/edtf/README.md#inception">inception</a> date, and mark the old ones with a <a href="https://github.com/whosonfirst/whosonfirst-properties/blob/main/properties/edtf/README.md#cessation">cessation</a> date using the expressive U.S. <a href="https://github.com/whosonfirst/whosonfirst-dates">Library of Congress&rsquo; Extended Date/Time Format</a> (EDTF) syntax. When possible, we also point back and forth between new and old with <a href="https://github.com/whosonfirst/whosonfirst-properties/blob/main/properties/wof/README.md#supersedes">supersedes</a> and <a href="https://github.com/whosonfirst/whosonfirst-properties/blob/main/properties/wof/README.md#superseded_by">supersedes_by</a> properties. This allows older administrative units to be queried within a date range in the SQLite distribution (while the Shapefile distribution excludes non-current records). We’ve also experimented with the same for countries, like the former <a href="https://whosonfirst.org/blog/2017/06/29/tackling-space-and-time-in-whosonfirst/">Yugoslavia</a>, which we discussed in an earlier blog post, and for the 2016 French “region” level consolidation (for example the WOF <code>macroregion</code> of <a href="https://spelunker.whosonfirst.org/id/404227439/">Rhone-Alpes</a> was consolidated into the new  <a href="https://spelunker.whosonfirst.org/id/1108826389/">Auvergne-Rhone-Alpes</a> WOF <code>macroregion</code>).</p>
+
+<p>We catalog changes to our place data in the <a href="https://github.com/whosonfirst-data/whosonfirst-data/blob/master/CHANGELOG.md">CHANGELOG</a> by year, month, and country.</p>
+
+<h3>Select data properties</h3>
+
+<h5>Population by placetype</h5>
+
+<p>By tracking population (and the related population_rank), similarly named places can be ranked and disambiguated in search and visually distinguished in map display. For example, there are many places named <a href="https://spelunker.whosonfirst.org/search/?q=san+francisco">San Francisco</a> in the world, but only <a href="https://spelunker.whosonfirst.org/id/85922583/">one</a> with an exact name match also with the largest population located in the California region of the United States.</p>
+
+<p>For global coverage placetypes like continent, country (and dependency), region, county, and locality the population should eventually sum to the planet’s population – modulo import vintage and population growth and the “per global” provides an coverage &amp;/or accuracy scoring. For other placetypes like macroregion and localadmin they should sum to the population in the covered countries (not included in the table). Other placetypes are not available globally so the “per global” indicates the global significance of that placetype when viewed by population instead of feature count.</p>
+
+<p><em>(below) This chart sums available population values on WOF records grouped by placetype. Some placetypes that have global coverage should sum to the current “per global” population estimate of 7.888 billion people but currently may not because (a) the vintage of per feature population estimates either lags behind actual population growth or may over-estimate population e.g. because of disputed territories and (b) some features lack population entirely.</em></p>
+
+<table>
+<thead>
+<tr>
+<th>placetype</th>
+<th align="right">population</th>
+<th align="right">per global</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>borough</td>
+<td align="right">29,474,816</td>
+<td align="right">0.40%</td>
+</tr>
+
+<tr>
+<td>campus</td>
+<td align="right">133,650</td>
+<td align="right">0.00%</td>
+</tr>
+
+<tr>
+<td>continent</td>
+<td align="right">7,627,184,440</td>
+<td align="right">96.70%</td>
+</tr>
+
+<tr>
+<td>country</td>
+<td align="right">7,175,089,564</td>
+<td align="right">91.00%</td>
+</tr>
+
+<tr>
+<td>county</td>
+<td align="right">4,934,055,579</td>
+<td align="right">62.60%</td>
+</tr>
+
+<tr>
+<td>dependency</td>
+<td align="right">16,724,919</td>
+<td align="right">0.20%</td>
+</tr>
+
+<tr>
+<td>disputed</td>
+<td align="right">461,098,876</td>
+<td align="right">5.80%</td>
+</tr>
+
+<tr>
+<td>empire</td>
+<td align="right">2,009,661,518</td>
+<td align="right">25.50%</td>
+</tr>
+
+<tr>
+<td>localadmin</td>
+<td align="right">963,706,749</td>
+<td align="right">12.20%</td>
+</tr>
+
+<tr>
+<td>locality</td>
+<td align="right">5,717,437,257</td>
+<td align="right">72.50%</td>
+</tr>
+
+<tr>
+<td>macrocounty</td>
+<td align="right">231,167</td>
+<td align="right">0.00%</td>
+</tr>
+
+<tr>
+<td>macrohood</td>
+<td align="right">4,034,954</td>
+<td align="right">0.10%</td>
+</tr>
+
+<tr>
+<td>macroregion</td>
+<td align="right">94,515,886</td>
+<td align="right">1.20%</td>
+</tr>
+
+<tr>
+<td>marinearea</td>
+<td align="right"></td>
+<td align="right">0.00%</td>
+</tr>
+
+<tr>
+<td>marketarea</td>
+<td align="right"></td>
+<td align="right">0.00%</td>
+</tr>
+
+<tr>
+<td>microhood</td>
+<td align="right">51,741</td>
+<td align="right">0.00%</td>
+</tr>
+
+<tr>
+<td>neighbourhood</td>
+<td align="right">411,640,484</td>
+<td align="right">5.20%</td>
+</tr>
+
+<tr>
+<td>ocean</td>
+<td align="right"></td>
+<td align="right">0.00%</td>
+</tr>
+
+<tr>
+<td>planet</td>
+<td align="right"></td>
+<td align="right">0.00%</td>
+</tr>
+
+<tr>
+<td>region</td>
+<td align="right">9,300,891,860</td>
+<td align="right">117.90%</td>
+</tr>
+
+<tr>
+<td>timezone</td>
+<td align="right"></td>
+<td align="right">0.00%</td>
+</tr>
+
+<tr>
+<td>unknown</td>
+<td align="right"></td>
+<td align="right">0.00%</td>
+</tr>
+</tbody>
+</table>
+
+<h5>Zoom ranges by placetype</h5>
+
+<p>Some records should be displayed earlier on a map and some later, and not all features within the same placetype are equal. For example, region subdivisions in the United States are large geographically compared regions in Albania so the former should be shown earlier and the latter shown later. This is especially true of localities where most localities can be labeled on a zoom 12 map – but only a few shown on a zoom 2 map (especially considering name translations within a limited vector tile budget).</p>
+
+<p>A few areas stand out for future work: county zooms should be spread out (mostly increasing them from zoom 6 to later zooms and as an offset for their parent region’s zoom), some localadmin are visible too early, some macrohood are visible too late, and some neighbourhood and microhood are visible too early – this can be mitigated in application logic when using the data but we should clean it up at the source.</p>
+
+<p><em>(below) This chart counts available <code>min_zoom</code> values on WOF records grouped by placetype. Course placetypes group features that are suitable for labeling on a low-zoom world map as “countries” or their 1st and 2nd order subdivisions, generally from zooms 0 thru 8 (though some counties should label later). Settlement placetypes include both locality and localadmin and are rarely labeled at low zooms, typically coming in the mid-zooms of 9, 10, 11, 12, and 13. Neighbourhood placetypes are subdivisions of settlements and generally should only be displayed at high-zooms of 11 thru 17.</em></p>
+
+<table>
+<thead>
+<tr>
+<th>Course placetypes</th>
+<th><code>min_zoom</code></th>
+<th>count</th>
+<th>.</th>
+<th>Settlement placetypes</th>
+<th><code>min_zoom</code></th>
+<th>count</th>
+<th>.</th>
+<th>Neighbourhood placetypes</th>
+<th><code>min_zoom</code></th>
+<th>count</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>continent</td>
+<td>0</td>
+<td>7</td>
+<td></td>
+<td>localadmin</td>
+<td>3</td>
+<td>5</td>
+<td></td>
+<td>borough</td>
+<td>9</td>
+<td>2</td>
+</tr>
+
+<tr>
+<td>continent</td>
+<td>1</td>
+<td>1</td>
+<td></td>
+<td>localadmin</td>
+<td>4</td>
+<td>50</td>
+<td></td>
+<td>borough</td>
+<td>10</td>
+<td>204</td>
+</tr>
+
+<tr>
+<td>country</td>
+<td>0</td>
+<td>4</td>
+<td></td>
+<td>localadmin</td>
+<td>4.7</td>
+<td>1</td>
+<td></td>
+<td>borough</td>
+<td>11</td>
+<td>63</td>
+</tr>
+
+<tr>
+<td>country</td>
+<td>1.7</td>
+<td>19</td>
+<td></td>
+<td>localadmin</td>
+<td>5</td>
+<td>60</td>
+<td></td>
+<td>borough</td>
+<td>12</td>
+<td>60</td>
+</tr>
+
+<tr>
+<td>country</td>
+<td>2</td>
+<td>26</td>
+<td></td>
+<td>localadmin</td>
+<td>5.1</td>
+<td>1</td>
+<td></td>
+<td>borough</td>
+<td>13</td>
+<td>39</td>
+</tr>
+
+<tr>
+<td>country</td>
+<td>2.5</td>
+<td>5</td>
+<td></td>
+<td>localadmin</td>
+<td>5.6</td>
+<td>3</td>
+<td></td>
+<td>borough</td>
+<td>14</td>
+<td>20</td>
+</tr>
+
+<tr>
+<td>country</td>
+<td>3</td>
+<td>54</td>
+<td></td>
+<td>localadmin</td>
+<td>6</td>
+<td>182</td>
+<td></td>
+<td>borough</td>
+<td>15</td>
+<td>3</td>
+</tr>
+
+<tr>
+<td>country</td>
+<td>4</td>
+<td>60</td>
+<td></td>
+<td>localadmin</td>
+<td>6.7</td>
+<td>13</td>
+<td></td>
+<td>borough</td>
+<td>18</td>
+<td>4</td>
+</tr>
+
+<tr>
+<td>country</td>
+<td>4.5</td>
+<td>11</td>
+<td></td>
+<td>localadmin</td>
+<td>7</td>
+<td>297</td>
+<td></td>
+<td>borough</td>
+<td></td>
+<td>0</td>
+</tr>
+
+<tr>
+<td>country</td>
+<td>5</td>
+<td>34</td>
+<td></td>
+<td>localadmin</td>
+<td>8</td>
+<td>681</td>
+<td></td>
+<td>campus</td>
+<td>0</td>
+<td>1</td>
+</tr>
+
+<tr>
+<td>country</td>
+<td>6</td>
+<td>1</td>
+<td></td>
+<td>localadmin</td>
+<td>9</td>
+<td>2054</td>
+<td></td>
+<td>campus</td>
+<td>12</td>
+<td>165</td>
+</tr>
+
+<tr>
+<td>country</td>
+<td></td>
+<td>0</td>
+<td></td>
+<td>localadmin</td>
+<td>10</td>
+<td>2302</td>
+<td></td>
+<td>campus</td>
+<td>13</td>
+<td>22705</td>
+</tr>
+
+<tr>
+<td>county</td>
+<td>5.6</td>
+<td>1</td>
+<td></td>
+<td>localadmin</td>
+<td>11</td>
+<td>26558</td>
+<td></td>
+<td>campus</td>
+<td>14</td>
+<td>1</td>
+</tr>
+
+<tr>
+<td>county</td>
+<td>6</td>
+<td>37206</td>
+<td></td>
+<td>localadmin</td>
+<td>12</td>
+<td>68889</td>
+<td></td>
+<td>campus</td>
+<td></td>
+<td>0</td>
+</tr>
+
+<tr>
+<td>county</td>
+<td>6.1</td>
+<td>1</td>
+<td></td>
+<td>localadmin</td>
+<td></td>
+<td>0</td>
+<td></td>
+<td>macrohood</td>
+<td>11</td>
+<td>9</td>
+</tr>
+
+<tr>
+<td>county</td>
+<td>6.7</td>
+<td>6</td>
+<td></td>
+<td>locality</td>
+<td>1.7</td>
+<td>8</td>
+<td></td>
+<td>macrohood</td>
+<td>12</td>
+<td>78</td>
+</tr>
+
+<tr>
+<td>county</td>
+<td>7</td>
+<td>9</td>
+<td></td>
+<td>locality</td>
+<td>2</td>
+<td>8</td>
+<td></td>
+<td>macrohood</td>
+<td>13</td>
+<td>970</td>
+</tr>
+
+<tr>
+<td>county</td>
+<td>8</td>
+<td>33</td>
+<td></td>
+<td>locality</td>
+<td>2.1</td>
+<td>14</td>
+<td></td>
+<td>macrohood</td>
+<td>14</td>
+<td>89</td>
+</tr>
+
+<tr>
+<td>county</td>
+<td>8.7</td>
+<td>5</td>
+<td></td>
+<td>locality</td>
+<td>2.5</td>
+<td>3</td>
+<td></td>
+<td>macrohood</td>
+<td>15</td>
+<td>46</td>
+</tr>
+
+<tr>
+<td>county</td>
+<td>9</td>
+<td>76</td>
+<td></td>
+<td>locality</td>
+<td>2.7</td>
+<td>3</td>
+<td></td>
+<td>macrohood</td>
+<td>16</td>
+<td>9</td>
+</tr>
+
+<tr>
+<td>county</td>
+<td>10</td>
+<td>112</td>
+<td></td>
+<td>locality</td>
+<td>3</td>
+<td>34</td>
+<td></td>
+<td>macrohood</td>
+<td>17</td>
+<td>1</td>
+</tr>
+
+<tr>
+<td>county</td>
+<td></td>
+<td>0</td>
+<td></td>
+<td>locality</td>
+<td>3.7</td>
+<td>30</td>
+<td></td>
+<td>macrohood</td>
+<td>21</td>
+<td>3</td>
+</tr>
+
+<tr>
+<td>dependency</td>
+<td>0</td>
+<td>4</td>
+<td></td>
+<td>locality</td>
+<td>4</td>
+<td>312</td>
+<td></td>
+<td>macrohood</td>
+<td></td>
+<td>0</td>
+</tr>
+
+<tr>
+<td>dependency</td>
+<td>3</td>
+<td>3</td>
+<td></td>
+<td>locality</td>
+<td>4.7</td>
+<td>27</td>
+<td></td>
+<td>microhood</td>
+<td>11</td>
+<td>1</td>
+</tr>
+
+<tr>
+<td>dependency</td>
+<td>3.5</td>
+<td>1</td>
+<td></td>
+<td>locality</td>
+<td>5</td>
+<td>450</td>
+<td></td>
+<td>microhood</td>
+<td>12</td>
+<td>14</td>
+</tr>
+
+<tr>
+<td>dependency</td>
+<td>4</td>
+<td>10</td>
+<td></td>
+<td>locality</td>
+<td>5.1</td>
+<td>165</td>
+<td></td>
+<td>microhood</td>
+<td>13</td>
+<td>81</td>
+</tr>
+
+<tr>
+<td>dependency</td>
+<td>4.5</td>
+<td>10</td>
+<td></td>
+<td>locality</td>
+<td>5.6</td>
+<td>400</td>
+<td></td>
+<td>microhood</td>
+<td>14</td>
+<td>255</td>
+</tr>
+
+<tr>
+<td>dependency</td>
+<td>5</td>
+<td>10</td>
+<td></td>
+<td>locality</td>
+<td>5.7</td>
+<td>2</td>
+<td></td>
+<td>microhood</td>
+<td>15</td>
+<td>604</td>
+</tr>
+
+<tr>
+<td>dependency</td>
+<td>6.5</td>
+<td>2</td>
+<td></td>
+<td>locality</td>
+<td>6</td>
+<td>1787</td>
+<td></td>
+<td>microhood</td>
+<td>16</td>
+<td>102</td>
+</tr>
+
+<tr>
+<td>dependency</td>
+<td>7</td>
+<td>2</td>
+<td></td>
+<td>locality</td>
+<td>6.1</td>
+<td>563</td>
+<td></td>
+<td>microhood</td>
+<td>17</td>
+<td>33</td>
+</tr>
+
+<tr>
+<td>dependency</td>
+<td></td>
+<td>0</td>
+<td></td>
+<td>locality</td>
+<td>6.7</td>
+<td>2044</td>
+<td></td>
+<td>microhood</td>
+<td>18</td>
+<td>25</td>
+</tr>
+
+<tr>
+<td>disputed</td>
+<td>0</td>
+<td>35</td>
+<td></td>
+<td>locality</td>
+<td>7</td>
+<td>2512</td>
+<td></td>
+<td>microhood</td>
+<td>19</td>
+<td>89</td>
+</tr>
+
+<tr>
+<td>disputed</td>
+<td>3.7</td>
+<td>7</td>
+<td></td>
+<td>locality</td>
+<td>8</td>
+<td>3294</td>
+<td></td>
+<td>microhood</td>
+<td></td>
+<td>0</td>
+</tr>
+
+<tr>
+<td>disputed</td>
+<td>4</td>
+<td>3</td>
+<td></td>
+<td>locality</td>
+<td>9</td>
+<td>12118</td>
+<td></td>
+<td>neighbourhood</td>
+<td>0</td>
+<td>70</td>
+</tr>
+
+<tr>
+<td>disputed</td>
+<td>4.7</td>
+<td>2</td>
+<td></td>
+<td>locality</td>
+<td>10</td>
+<td>10441</td>
+<td></td>
+<td>neighbourhood</td>
+<td>2</td>
+<td>2</td>
+</tr>
+
+<tr>
+<td>disputed</td>
+<td>5</td>
+<td>16</td>
+<td></td>
+<td>locality</td>
+<td>11</td>
+<td>295462</td>
+<td></td>
+<td>neighbourhood</td>
+<td>2.5</td>
+<td>1</td>
+</tr>
+
+<tr>
+<td>disputed</td>
+<td>6</td>
+<td>5</td>
+<td></td>
+<td>locality</td>
+<td>12</td>
+<td>3845767</td>
+<td></td>
+<td>neighbourhood</td>
+<td>3</td>
+<td>1</td>
+</tr>
+
+<tr>
+<td>disputed</td>
+<td>6.7</td>
+<td>1</td>
+<td></td>
+<td>locality</td>
+<td>13</td>
+<td>73875</td>
+<td></td>
+<td>neighbourhood</td>
+<td>4</td>
+<td>4</td>
+</tr>
+
+<tr>
+<td>disputed</td>
+<td>7</td>
+<td>34</td>
+<td></td>
+<td>locality</td>
+<td>14</td>
+<td>84</td>
+<td></td>
+<td>neighbourhood</td>
+<td>5</td>
+<td>3</td>
+</tr>
+
+<tr>
+<td>disputed</td>
+<td></td>
+<td>0</td>
+<td></td>
+<td>locality</td>
+<td>15</td>
+<td>110</td>
+<td></td>
+<td>neighbourhood</td>
+<td>5.1</td>
+<td>4</td>
+</tr>
+
+<tr>
+<td>empire</td>
+<td></td>
+<td>0</td>
+<td></td>
+<td>locality</td>
+<td>16</td>
+<td>9</td>
+<td></td>
+<td>neighbourhood</td>
+<td>5.6</td>
+<td>4</td>
+</tr>
+
+<tr>
+<td>macrocounty</td>
+<td>5</td>
+<td>148</td>
+<td></td>
+<td>locality</td>
+<td>17</td>
+<td>1</td>
+<td></td>
+<td>neighbourhood</td>
+<td>6</td>
+<td>6</td>
+</tr>
+
+<tr>
+<td>macrocounty</td>
+<td></td>
+<td>0</td>
+<td></td>
+<td>locality</td>
+<td>20</td>
+<td>792</td>
+<td></td>
+<td>neighbourhood</td>
+<td>6.1</td>
+<td>1</td>
+</tr>
+
+<tr>
+<td>macroregion</td>
+<td>3</td>
+<td>78</td>
+<td></td>
+<td>locality</td>
+<td>30</td>
+<td>18702</td>
+<td></td>
+<td>neighbourhood</td>
+<td>6.7</td>
+<td>11</td>
+</tr>
+
+<tr>
+<td>macroregion</td>
+<td>11</td>
+<td>3</td>
+<td></td>
+<td>locality</td>
+<td></td>
+<td>0</td>
+<td></td>
+<td>neighbourhood</td>
+<td>7</td>
+<td>15</td>
+</tr>
+
+<tr>
+<td>macroregion</td>
+<td></td>
+<td>0</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>neighbourhood</td>
+<td>8</td>
+<td>16</td>
+</tr>
+
+<tr>
+<td>marinearea</td>
+<td>2</td>
+<td>24</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>neighbourhood</td>
+<td>9</td>
+<td>79</td>
+</tr>
+
+<tr>
+<td>marinearea</td>
+<td>4</td>
+<td>32</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>neighbourhood</td>
+<td>10</td>
+<td>43</td>
+</tr>
+
+<tr>
+<td>marinearea</td>
+<td>5</td>
+<td>13</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>neighbourhood</td>
+<td>11</td>
+<td>741</td>
+</tr>
+
+<tr>
+<td>marinearea</td>
+<td>5.7</td>
+<td>44</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>neighbourhood</td>
+<td>12</td>
+<td>14937</td>
+</tr>
+
+<tr>
+<td>marinearea</td>
+<td>6</td>
+<td>74</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>neighbourhood</td>
+<td>13</td>
+<td>11515</td>
+</tr>
+
+<tr>
+<td>marinearea</td>
+<td>7</td>
+<td>13</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>neighbourhood</td>
+<td>14</td>
+<td>21666</td>
+</tr>
+
+<tr>
+<td>marinearea</td>
+<td>7.6</td>
+<td>59</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>neighbourhood</td>
+<td>14.5</td>
+<td>189</td>
+</tr>
+
+<tr>
+<td>marinearea</td>
+<td>7.7</td>
+<td>36</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>neighbourhood</td>
+<td>15</td>
+<td>162012</td>
+</tr>
+
+<tr>
+<td>marinearea</td>
+<td>7.8</td>
+<td>23</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>neighbourhood</td>
+<td>15.2</td>
+<td>776</td>
+</tr>
+
+<tr>
+<td>marinearea</td>
+<td></td>
+<td>0</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>neighbourhood</td>
+<td>15.5</td>
+<td>350</td>
+</tr>
+
+<tr>
+<td>marketarea</td>
+<td></td>
+<td>0</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>neighbourhood</td>
+<td>16</td>
+<td>6556</td>
+</tr>
+
+<tr>
+<td>ocean</td>
+<td>1</td>
+<td>7</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>neighbourhood</td>
+<td>16.5</td>
+<td>761</td>
+</tr>
+
+<tr>
+<td>planet</td>
+<td></td>
+<td>0</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>neighbourhood</td>
+<td>17</td>
+<td>1499</td>
+</tr>
+
+<tr>
+<td>region</td>
+<td>2</td>
+<td>72</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>neighbourhood</td>
+<td>18</td>
+<td>372</td>
+</tr>
+
+<tr>
+<td>region</td>
+<td>3</td>
+<td>28</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>neighbourhood</td>
+<td>19</td>
+<td>279</td>
+</tr>
+
+<tr>
+<td>region</td>
+<td>4</td>
+<td>121</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>neighbourhood</td>
+<td>20</td>
+<td>71</td>
+</tr>
+
+<tr>
+<td>region</td>
+<td>4.5</td>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>neighbourhood</td>
+<td>21</td>
+<td>17</td>
+</tr>
+
+<tr>
+<td>region</td>
+<td>4.6</td>
+<td>112</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>neighbourhood</td>
+<td>26</td>
+<td>1</td>
+</tr>
+
+<tr>
+<td>region</td>
+<td>4.7</td>
+<td>83</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>neighbourhood</td>
+<td></td>
+<td>0</td>
+</tr>
+
+<tr>
+<td>region</td>
+<td>5</td>
+<td>10</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>region</td>
+<td>6</td>
+<td>130</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>region</td>
+<td>6.6</td>
+<td>335</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>region</td>
+<td>6.7</td>
+<td>301</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>region</td>
+<td>7</td>
+<td>272</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>region</td>
+<td>7.7</td>
+<td>516</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>region</td>
+<td>8</td>
+<td>821</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>region</td>
+<td>8.7</td>
+<td>323</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>region</td>
+<td>9</td>
+<td>503</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>region</td>
+<td>10</td>
+<td>715</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>region</td>
+<td>11</td>
+<td>647</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>region</td>
+<td>18</td>
+<td>113</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>region</td>
+<td></td>
+<td>0</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>timezone</td>
+<td></td>
+<td>0</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>unknown</td>
+<td></td>
+<td>0</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><em>NOTE: The zoom ranges in the table above are for standard 256 px sized tiles, which map to the following <a href="https://web.archive.org/web/20230329004638/https://kelsocartography.com/blog/?p=2407">natural scales</a> and match Leaflet and Google Maps. When viewed in the Mapbox or MapLibre rendering library the zooms will be offset by 1 due to their assumption about 512 px size.</em></p>
+
+<h3>Improving WOF data coverage and quality</h3>
+
+<p>As human population grows (and declines) so the world’s heart beats, and so our work as gazetteer maintainers carries on – by both <a href="https://www.goldengate.org/bridge/bridge-maintenance/painting-the-bridge/">repainting</a> and “touching up” the data.</p>
+
+<p>Our top two priorities in 2023 are:</p>
+
+<ol>
+<li>Improve locality coverage in India, and</li>
+<li>expand localadmin coverage globally</li>
+</ol>
+
+<p>We expect to land the India locality coverage by June this year with polygons for most localities and points for smaller rural villages.</p>
+
+<p>Our localadmin efforts are largely focused on achieving complete coverage in Europe, introducing localadmin coverage in Africa, and expand localadmin coverage in Asia and South America.</p>
+
+<p>Priority countries (blue outlines below) include: Indonesia, Mexico, Ireland, Portugal, Belgium, and Luxembourg. An additional 26 countries (black outlines below) have been prioritized for minor edits or more complete imports &amp;/or rebuilds. Please <a href="#contact-whos-on-first">reach out</a> to help :)</p>
+
+<p><img src="images/wof-priority.png" alt="Who&rsquo;s On First data 2023 priority map" title="Who's On First 2023 priority map" /></p>
+
+<h4>Detailed plan for 2023</h4>
+
+<p>We have sourced for import in 2023 new data from national mapping agencies in 12 countries, potential NMA data in another 7 countries, 39 countries at the localadmin level via the <a href="https://www.geoboundaries.org/">geoBoundaries</a> project, and need to review licenses on another 17 localadmin geoBoundaries countries. We’re still searching for data in several priority countries, including Costa Rica, Egypt, Peru, and Thailand.</p>
+
+<p><img src="images/wof-localadmin-plans.png" alt="Who&rsquo;s On First data 2023 plans map" title="Who's On First 2023 plans map" /></p>
+
+<p>For densely populated countries with complex administrative subdivisions (like in China and India), we may consider adding an optional <code>microcounty</code> placetype between county and localadmin.</p>
+
+<p>While we don’t have concrete plans for expanding <code>postalcode</code> or <code>constituency</code> coverage, if those are important to you please reach out. Two tractable problems are importing newer open polygon data for <code>postalcode</code> features in Europe and rescuing point geometry <code>postalcode</code> records that are visiting Null Island.</p>
+
+<h2>Localization</h2>
+
+<p>Who’s On First includes name localizations (<a href="https://en.wikipedia.org/wiki/Internationalization_and_localization">L10n</a>) into 494 languages. Individual language coverage ranges from rich to sparse. Major cities like <a href="https://spelunker.whosonfirst.org/id/85977539/">New York</a> are translated into most of the languages, but a rural locality is probably only provided in the local language and translated into English and/or the latin character set.</p>
+
+<p>While the source GeoJSON and SQLite distribution include all languages, for Shapefiles we provide a more ergonomic experience by pre-joining the SPR to the names table to include the default and 25 more localized names, when available, for:</p>
+
+<blockquote>
+<p>Arabic, Bengali, Chinese (simplified and/or traditional), Dutch, English, Farsi, French, German, Greek, Hebrew, Hindi, Hungarian, Indonesian, Italian, Japanese, Korean, Polish, Portuguese, Russian, Spanish, Swedish, Turkish, Ukrainian, Urdu, and Vietnamese</p>
+</blockquote>
+
+<p>Who’s On First <a href="https://github.com/whosonfirst/whosonfirst-names#rfc-5646-bcp-47-comformance">uses</a> the RFC 5646 / BCP-47 <a href="https://www.loc.gov/standards/iso639-2/php/code_list.php">language indications</a> for names to specify a 3-character code for the name translations, like <code>name:{language}_x_preferred</code> in the GeoJSON and <code>name_{locale}</code> in the Shapefiles. For example, English is stored as <code>name:eng_x_preferred</code> in the GeoJSON and <code>name_eng</code> in the Shapefiles.</p>
+
+<p>The list of supported Shapefile languages is adapted from <a href="https://github.com/nvkelso/natural-earth-vector/tree/master/tools/wikidata#supported-languages--now-26">Natural Earth</a> and <a href="https://github.com/tilezen/vector-datasource/blob/master/docs/SEMANTIC-VERSIONING.md#languages-are-not-versioned">Tilezen&rsquo;s</a> list of core languages. Arabic, Chinese, English, French, Russian and Spanish are used by the United Nations for meetings and official documents. The other languages listed are either proposed as an official language of the United Nations (Bengali, Hindi, Portuguese, and Turkish) or frequently used in OpenStreetMap, Who&rsquo;s On First, or Wikipedia.</p>
+
+<p>If you need to discern the “local” name for a given place record, the parent <code>country</code> record indicates <a href="https://github.com/whosonfirst/whosonfirst-properties/tree/main/properties/wof#lang_x_official">official</a> and/or <a href="https://github.com/whosonfirst/whosonfirst-properties/tree/main/properties/wof#lang_x_spoken">spoken language</a> codes. In some countries the parent <code>region</code> (or <code>macroregion</code>) record will also indicate language preferences (like <a href="https://spelunker.whosonfirst.org/id/404227379/">Catalonia</a> in <a href="https://spelunker.whosonfirst.org/id/85633129/">Spain</a>), which can allow for local variations.</p>
+
+<p>By current WOF convention, a feature’s default name is stored in ASCII-7 English. For latin script based languages you can maximize localized name coverage by coalescing <code>name:{lang}_x_preferred</code>, <code>name:eng_x_preferred</code>, and <code>wof:name</code>. Specific coalesce logic depends on your application and the locale(s) used by your audience.</p>
+
+<h3>Localized name coverage by placetype</h3>
+
+<p>By convention, Who’s On First tracks a single “preferred” name spelling per language for a place. Because of the many different ways to <a href="https://www.oneskyapp.com/blog/translation-vs-transliteration-vs-transcription/#:~:text=The%20sole%20purpose%20of%20translation,that%20make%20up%20each%20word.">translate and/or transliterate</a> a place’s name from one language into another WOF also allows multiple “variant” names per language. Some languages have formalized rules for transliterating into another, but those rules can evolve over longer spans of time (e.g. romanization of <a href="https://en.wikipedia.org/wiki/Romanization_of_Chinese">Chinese</a>) and generate time and system variants. Languages without formalized transliteration rules can organically generate even more variants.</p>
+
+<p>The large variation in names is one of the reasons gazetteers like Who’s On First assign unique IDs for our features and, when we discern a match in another gazetteer, provide ID crosswalk between the “this is the same as that” features.</p>
+
+<table>
+<thead>
+<tr>
+<th>placetype</th>
+<th align="right">feature count</th>
+<th align="right">Preferred names in all locales</th>
+<th align="right">Preferred in Shapefile locales</th>
+<th align="right">Alternate names in all locales</th>
+<th align="right">Alternate names in Shapefile locales</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>borough</td>
+<td align="right">467</td>
+<td align="right">5,897</td>
+<td align="right">3,225</td>
+<td align="right">881</td>
+<td align="right">847</td>
+</tr>
+
+<tr>
+<td>campus</td>
+<td align="right">24,452</td>
+<td align="right">106,282</td>
+<td align="right">75,138</td>
+<td align="right">39,862</td>
+<td align="right">39,066</td>
+</tr>
+
+<tr>
+<td>continent</td>
+<td align="right">8</td>
+<td align="right">1,887</td>
+<td align="right">270</td>
+<td align="right">91</td>
+<td align="right">22</td>
+</tr>
+
+<tr>
+<td>country</td>
+<td align="right">232</td>
+<td align="right">53,977</td>
+<td align="right">7,756</td>
+<td align="right">13,493</td>
+<td align="right">4,218</td>
+</tr>
+
+<tr>
+<td>county</td>
+<td align="right">47,431</td>
+<td align="right">1,046,479</td>
+<td align="right">481,357</td>
+<td align="right">125,178</td>
+<td align="right">108,200</td>
+</tr>
+
+<tr>
+<td>dependency</td>
+<td align="right">43</td>
+<td align="right">5,228</td>
+<td align="right">1,214</td>
+<td align="right">1,702</td>
+<td align="right">908</td>
+</tr>
+
+<tr>
+<td>disputed</td>
+<td align="right">104</td>
+<td align="right">6,088</td>
+<td align="right">2,379</td>
+<td align="right">914</td>
+<td align="right">604</td>
+</tr>
+
+<tr>
+<td>empire</td>
+<td align="right">12</td>
+<td align="right">2,370</td>
+<td align="right">237</td>
+<td align="right">12</td>
+<td align="right">12</td>
+</tr>
+
+<tr>
+<td>localadmin</td>
+<td align="right">203,513</td>
+<td align="right">2,170,698</td>
+<td align="right">1,187,815</td>
+<td align="right">259,808</td>
+<td align="right">243,505</td>
+</tr>
+
+<tr>
+<td>locality</td>
+<td align="right">4,498,136</td>
+<td align="right">22,396,047</td>
+<td align="right">12,908,288</td>
+<td align="right">6,869,767</td>
+<td align="right">5,000,119</td>
+</tr>
+
+<tr>
+<td>macrocounty</td>
+<td align="right">482</td>
+<td align="right">13,908</td>
+<td align="right">6,965</td>
+<td align="right">1,281</td>
+<td align="right">1,251</td>
+</tr>
+
+<tr>
+<td>macrohood</td>
+<td align="right">1,272</td>
+<td align="right">10,067</td>
+<td align="right">5,882</td>
+<td align="right">1,641</td>
+<td align="right">1,616</td>
+</tr>
+
+<tr>
+<td>macroregion</td>
+<td align="right">117</td>
+<td align="right">9,227</td>
+<td align="right">2,600</td>
+<td align="right">789</td>
+<td align="right">418</td>
+</tr>
+
+<tr>
+<td>marinearea</td>
+<td align="right">402</td>
+<td align="right">16,438</td>
+<td align="right">7,264</td>
+<td align="right">1,609</td>
+<td align="right">1,063</td>
+</tr>
+
+<tr>
+<td>marketarea</td>
+<td align="right">210</td>
+<td align="right">4,771</td>
+<td align="right">1,577</td>
+<td align="right">433</td>
+<td align="right">433</td>
+</tr>
+
+<tr>
+<td>microhood</td>
+<td align="right">2,127</td>
+<td align="right">9,316</td>
+<td align="right">6,669</td>
+<td align="right">2,910</td>
+<td align="right">2,859</td>
+</tr>
+
+<tr>
+<td>neighbourhood</td>
+<td align="right">233,712</td>
+<td align="right">1,482,405</td>
+<td align="right">852,647</td>
+<td align="right">318,119</td>
+<td align="right">288,618</td>
+</tr>
+
+<tr>
+<td>ocean</td>
+<td align="right">7</td>
+<td align="right">1,504</td>
+<td align="right">238</td>
+<td align="right">107</td>
+<td align="right">37</td>
+</tr>
+
+<tr>
+<td>planet</td>
+<td align="right">1</td>
+<td align="right">258</td>
+<td align="right">26</td>
+<td align="right">29</td>
+<td align="right">17</td>
+</tr>
+
+<tr>
+<td>region</td>
+<td align="right">5,139</td>
+<td align="right">269,007</td>
+<td align="right">109,135</td>
+<td align="right">33,508</td>
+<td align="right">23,478</td>
+</tr>
+
+<tr>
+<td>timezone</td>
+<td align="right">376</td>
+<td align="right">753</td>
+<td align="right">752</td>
+<td align="right">380</td>
+<td align="right">380</td>
+</tr>
+
+<tr>
+<td>TOTALS</td>
+<td align="right">5,018,243</td>
+<td align="right">27,612,607</td>
+<td align="right">15,661,434</td>
+<td align="right">7,672,514</td>
+<td align="right">5,717,671</td>
+</tr>
+</tbody>
+</table>
+
+<h3>Localized name coverage by language</h3>
+
+<p>The most common language in Who’s On First is English, followed by Chinese, and French. Rounding out the top 10 in ranked order are Russian, German, Dutch, Swedish, Spanish, Italian, and Polish.</p>
+
+<p>The table below only includes the top 37 languages. A total of 63 languages have more than 100,000 preferred names. Another 45 languages have more than 50,000 preferred names.</p>
+
+<p><img src="images/wof-name-localization-chart.png" alt="Who&rsquo;s On First name localization chart" title="Who's On First name localization chart" /></p>
+
+<p><em>NOTE: The default language for <code>wof:name</code> is English, so almost all records include an implicit default English name and many also include an explicit localized English name. The Cebuano <code>ceb</code> localizations are largely from a Wikipedia bot and are suspect so not included in the stats above. The Norwegian language uses multiple codes, including: <code>nno</code>, <code>nob</code>, and <code>nor</code>.</em></p>
+
+<h2>Internationalization</h2>
+
+<p>For internationalization (<a href="https://en.wikipedia.org/wiki/Internationalization_and_localization">i18n</a>), we track 104 “disputed” territories (polygons between countries for contested areas) around the world, and Who’s On First hold hands with Natural Earth allowing you to make use of their extensive catalog of pairwise points-of-view.</p>
+
+<p>Disputed placetype records include an optional <a href="https://github.com/whosonfirst/whosonfirst-properties/tree/main/properties/mz#hierarchy_label"><code>mz:hieararchy_label</code></a> property (and related properties for each ancestor level in the placetype hierarchy) to indicate if place records that reverse geocode within the disputed area should include full, any, or partial text strings for that record&rsquo;s ancestors. For example, <a href="https://spelunker.whosonfirst.org/id/1159339507/">Western Sahara</a> which, assuming a reverse geocoder like Pelias has implemented the flag, won’t include text for country or region ancestors but will allow showing locality names. We recommend using the Natural Earth point-of-views to localize the hierarchy label properties (e.g. to allow viewers within Morocco to also see country and region ancestor details).</p>
+
+<p><img src="images/wof-disputed.png" alt="Who&rsquo;s On First disputed coverage map" title="Who's On First disputed coverage map" /></p>
+
+<p><em>NOTE: The <a href="https://en.wikipedia.org/wiki/Whisky_War">Hans Island</a> disputed between Canada and Denmark has been resolved and needs to be updated. Huzzah diplomacy!</em></p>
+
+<h2>Open Data</h2>
+
+<p>Who’s On First’s permissive, <a href="https://github.com/whosonfirst-data/whosonfirst-data/blob/master/LICENSE.md">attribution required</a> (<a href="https://creativecommons.org/licenses/by/4.0/">CC-BY</a> equivalent) open license means you can use the data however you want (including for commercial purposes), as long as you provide credit somewhere in your map or app.</p>
+
+<p>Crediting the Who&rsquo;s On First project is required because some of the open data projects that WOF aggregates require attribution. Linking back to the License is required in <a href="https://en.wikipedia.org/wiki/Hypermedia">hypermedia</a> projects.</p>
+
+<p>For example, on a website or in an app’s about page, you should also include the License hyperlink:</p>
+
+<blockquote>
+<p>Data from Who&rsquo;s On First. <a href="https://whosonfirst.org/docs/licenses/">License</a>.</p>
+</blockquote>
+
+<p>For example, in a web map’s sources (displayed on the map), hyperlinked to the License:</p>
+
+<blockquote>
+<p><a href="https://whosonfirst.org/docs/licenses/">Who&rsquo;s On First</a></p>
+</blockquote>
+
+<p>Where the “License” text (or project name) hyperlinks either to the whosonfirst.org hosted license page, or to a detailed data licenses page (or section of your terms of service) on your web site or in your app. At that location, you must credit the Who’s On First sources that require attribution. It may be more practical to credit both Who’s On First and all of our sources – it’s the kind thing to do.</p>
+
+<p>For stand alone print maps, a simple text credit to the project will suffice:</p>
+
+<blockquote>
+<p>Who&rsquo;s On First</p>
+</blockquote>
+
+<p>If the map is included in a book or atlas publication then the data credits section should also repeat the Who’s On First credit and the web link (<a href="https://whosonfirst.org/docs/licenses/">https://whosonfirst.org/docs/licenses/</a>).</p>
+
+<h2>Sources</h2>
+
+<p>The Who&rsquo;s On First dataset is both an original work and a modification of existing open data. The WOF gazetteer includes data from 360 sources. There are 139 primary sources, 188 additional sources via Quattroshapes, Mesoshapes, and other aggregators, and 33 concordance-only sources.</p>
+
+<p>Sources include national mapping agencies in: <a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/README.md#united-states-census-bureau">United States</a> (US Census), <a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/README.md#australian-government-open-data-portal">Australia</a> (PSMA and ABS), <a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/README.md#austria-open-data">Austria</a>, <a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/README.md#voorlopig-referentiebestand-gemeentegrenzen">Belgium</a> (Geopunt), Brazil (IBGE via <a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/README.md#quattroshapes">Quattroshapes</a>), Canada (multiple, including Census Canada and Statistics Canada), <a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/README.md#geodanmark">Denmark</a>, <a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/README.md#republic-of-estonias-land-board-geoportal">Estonia</a> (Land Board), <a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/README.md#nls-national-land-survey-of-finland">Finland</a> (National Land Survey), <a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/README.md#open-data-france">France</a> (IGN), <a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/README.md#bundesamt-fur-kartographie-und-geodasie">Germany</a> (BKG), <a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/README.md#ordnance-survey-ireland">Ireland</a> (Ordnance Survey), Italy (IGN via <a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/README.md#quattroshapes">Quattroshapes</a>), <a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/README.md#mesoshapes">Japan</a> (GSI), <a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/README.md#instituto-nacional-de-estad%C3%ADstica-y-geograf%C3%ADa-inegi">Mexico</a> (INEGI and IGN), <a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/README.md#centraal-bureau-voor-de-statistiek">Netherlands</a> (CBS and NLD Kadaster), <a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/README.md#land-information-new-zealand">New Zealand</a> (LINZ), <a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/README.md#geonorge-norway">Norway</a> (Geonorge), <a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/README.md#office-of-geodesy-and-cartography-poland">Poland</a> (GUGIK), <a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/README.md#directorate-general-for-the-territorial-development-of-portugal">Portugal</a> (DG Territorio), <a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/README.md#romanian-national-agency-for-cadastre-and-land-registration-ancpi">Romania</a> (ANCPI), Spain (IGN via <a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/README.md#quattroshapes">Quattroshapes</a>), <a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/README.md#lantmateriet-sweden">Sweden</a> (Lantmateriet), <a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/README.md#singapore-open-data-portal">Singapore</a>, <a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/README.md#surveying-and-mapping-authority-of-the-republic-of-slovenia">Slovenia</a> (EPG), <a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/README.md#the-municipal-demarcation-board-of-south-africa">South Africa</a> (NBC and Municipal Demarcation Board), <a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/README.md#swisstopo">Switzerland</a> (SwissTopo), and <a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/README.md#ordnance-survey">United Kingdom</a> (Ordnance Survey).</p>
+
+<p>Other global sources include: <a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/README.md#geonames">GeoNames</a>, Yahoo’s <a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/README.md#yahoo-geoplanet">GeoPlanet</a>, Foursquare’s <a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/README.md#quattroshapes">Quattroshapes</a>, and Mapzen’s <a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/README.md#mesoshapes">Mesoshapes</a>. Several of our founders and core contributors were instrumental in these other projects.</p>
+
+<p>We detail all sources and their specific license, usage, and vintage metadata in the full <a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/README.md">sources list</a>.</p>
+
+<h2>Concordances</h2>
+
+<p>WOF includes a large number of concordances to allow our project to “hold hands” with other datasets – individual WOF records link to specific features in other open and closed gazetteer projects.</p>
+
+<p>Not all sources include concordances, but when they do we indicate in the condances section the dataset prefix (like <code>gn</code> for GeoNames and <code>wd</code> for Wikidata) and the name of the unique identifier that project uses (mostly <code>id</code>, so put together <code>gn:id</code> and <code>wd:id</code> fully qualified property names).</p>
+
+<p>Who’s On First tracks our sources in the <a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/README.md">sources</a> repo. Besides the concordances, WOF also notes the source for each geometry in the “<a href="https://github.com/whosonfirst/whosonfirst-properties/blob/main/properties/src/README.md#geom">src:geom</a>” property (using the JSON “name” of the source) and imported properties from that source will have their name prepended with the “prefix” in the source’s JSON file. This is <em>mostly</em> machine readable today and we’re working to make it fully machine readable soon.</p>
+
+<p><em>(below) Use the <a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/README.md">sources list</a> to decode the source project prefixes used in the following table.</em></p>
+
+<p><img src="images/wof-concordances-chart.png" alt="Who&rsquo;s On First source concordances chart" title="Who's On First source concordances chart" /></p>
+
+<h2>Applications</h2>
+
+<p>When the Who’s On First (WOF) gazetteer started in 2015 we partnered closely with <strong><a href="https://pelias.io/">Pelias</a></strong>, another <a href="https://www.mapzen.com/">Mapzen</a> project, to ensure our big list of places could power:</p>
+
+<ul>
+<li><strong>Search</strong> for forward geocoding based on full name string input and type-ahead “autocomplete” based on partial string matching per keystroke</li>
+<li><strong>Hierarchy</strong> lookup allowing a place’s parent and other ancestors to be reverse geocoding from a given latitude, longitude input. Specific attention was paid to disputed territories and which hierarchy components should be masked in a reverse geocoding lookup.</li>
+<li><strong>Single feature display</strong> with label centroids for polygons, label bounding boxes, detailed polygons.</li>
+<li><strong>Metrics logging</strong> is possible because of WOF’s stable unique IDs – to turn data exhaust into insights about customer usage patterns.</li>
+</ul>
+
+<p>The results of a search can then be pipped to <strong><a href="https://valhalla.github.io/valhalla/">Valhalla</a></strong>, another <a href="https://www.mapzen.com/">Mapzen</a> project for:</p>
+
+<ul>
+<li><strong>Routing</strong> with polygon navigation and label “centroids” that are close to a place’s urban center rather than the math centroid of the polygon, and guaranteed to be on land.</li>
+</ul>
+
+<p>Places can also be added to vector tiles <strong><a href="https://tilezen.readthedocs.io/en/latest/layers/">Tilezen</a></strong>, another <a href="https://www.mapzen.com/">Mapzen</a> project for:</p>
+
+<ul>
+<li><strong>Basemap</strong> with label “centroids” for neighbourhood polygons.</li>
+</ul>
+
+<p>All these <a href="https://www.mapzen.com/">Mapzen</a> projects (<a href="https://www.whosonfirst.org/">Who’s On First</a>, <a href="https://pelias.io/">Pelias</a>, <a href="https://valhalla.github.io/valhalla/">Valhalla</a>, and <a href="https://tilezen.readthedocs.io/en/latest/layers/">Tilezen</a>) are now part of the <a href="https://www.linuxfoundation.org/">Linux Foundation</a> and are free for anyone to use and adapt.</p>
+
+<h3>Future applications looking for collaboration and funding</h3>
+
+<h4>Map display for label points</h4>
+
+<ul>
+<li><strong>Label min zoom and label max zooms</strong> exist but can to be fine tuned for global, multi-zoom basemaps (especially for county and locality placetypes)</li>
+<li><strong>Population estimate</strong> coverage expansion to determine relative label zoom and townspot size grading (for latest census counts)</li>
+</ul>
+
+<h4>Map display for thematic polygons</h4>
+
+<ul>
+<li><strong>Min zoom and max zoom</strong> variable per placetype and per country with area grading for a composite global, multi-zoom basemap</li>
+<li><strong>Vector tilesets</strong> (global and per placetype) with newer tools like <a href="https://github.com/felt/tippecanoe">Tippicanoe</a> and <a href="https://github.com/onthegomap/planetiler">Planetiler</a> delivered as serverless <a href="https://protomaps.com/docs/pmtiles">PMTiles</a> archives</li>
+<li><strong>Edge matching</strong>of boundaries between countries</li>
+<li><strong>Land clipping</strong> of boundaries inside countries for terrestrial land mass. This is a partially addressed problem in the USA for data from the US Census, and sometimes occurs in Europe</li>
+<li><strong>Quality checks</strong> to ensure no feature dupes between placetypes (e.g. <code>localadmin</code> paired with <code>locality,</code> and <code>neighbourhood</code> paired with <code>localadmin</code>) and that historical features are marked not current</li>
+</ul>
+
+<h4>Single feature display</h4>
+
+<ul>
+<li><strong>Preview polygons</strong> with pre-cached, small “200 kb” display ready alternate geometries as existing default polygon geometries vary widely in size from a few KB to more than 50 MB. These are useful for displaying search results with a polygon (not just with a centroid zoomed to the bounding box).</li>
+</ul>
+
+<h4>Hierarchy</h4>
+
+<ul>
+<li><strong>Disputed point-of-view:</strong> For administrative hierarchy, further work to power “point-of-view” on the hierarchy masks, can be adapted from <a href="https://github.com/nvkelso/natural-earth-vector">Natural Earth</a>’s efforts for automated reverse geocoding so users in various countries get locally adjusted polygon data instead of globally masked data</li>
+</ul>
+
+<h4>Names and Concordances</h4>
+
+<ul>
+<li><strong>U.S. Board on Geographic Names:</strong> Adding concordance IDs and toponymic information from the <a href="https://geonames.nga.mil/geonames/GNSHome/index.html">Geographic Names Database</a>, containing official standard names approved by the United States Board on Geographic Names (BGN) and maintained by the National Geospatial-Intelligence Agency.</li>
+</ul>
+
+<h4>Routing</h4>
+
+<ul>
+<li><strong>Intersect with urbanized landcover</strong> to ensure feature point geometries are inside urban areas and polygon feature’s navigation points are in the place’s urban center (ideally downtown)</li>
+</ul>
+
+<h4>Placetypes</h4>
+
+<ul>
+<li>Expand <strong>localadmin</strong> placetypes globally (see section above)</li>
+<li>Update <strong>United States</strong> placetypes for Census 2020 data releases</li>
+<li>Update <strong>European</strong> placetypes for newer data releases, including in Germany, France, and Netherlands.</li>
+<li>Add <strong>Indonesia</strong> placetypes for newer data releases</li>
+<li>Add <strong>Vietnam</strong> placetypes for newer data releases</li>
+<li>Update <strong>Brazil</strong> placetypes for newer data releases</li>
+<li>Update <strong>Mexico</strong> placetypes for newer data releases</li>
+<li>Expand <strong>postalcode</strong> polygon coverage using latest open map data, especially in Europe</li>
+<li>Expand <strong>constituency</strong> coverage outside of the USA using latest open map data</li>
+<li>Add <strong>statistical aggregations</strong> like NUTS and US Census</li>
+<li>Add <strong>metropolitan/micropolitan/rural area</strong> globally using original research</li>
+<li>Add <strong>colloquial areas</strong> (like <a href="https://en.wikipedia.org/wiki/Outer_Banks">Outer Banks</a>) via crowdsourcing</li>
+</ul>
+
+<h3>Example applications by placetype</h3>
+
+<p>When decomposing address data into placetypes (using <a href="https://www.mapzen.com/blog/inside-libpostal/">libPostal</a>, an <a href="https://help.openai.com/en/articles/6654000-best-practices-for-prompt-engineering-with-openai-api">OpenAI prompt</a>, or another tool), it can be helpful to think how those strings can geo match to Who’s On First records.</p>
+
+<table>
+<thead>
+<tr>
+<th>Decomposing Data&hellip;</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><img src="images/wof-address-default.png" alt="Who&rsquo;s On First addresses" title="Who's On First addresses" /></td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr>
+<th>&hellip;into Data Sources</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><img src="images/wof-address-highlighted.png" alt="Who&rsquo;s On First addresses highlighted" title="Who's On First addresses highlighted" /></td>
+</tr>
+</tbody>
+</table>
+<p>Who’s On First is a “coarse” geocoder meaning it doesn’t provide street level features. But WOF data can be complemented (as <a href="https://pelias.io/">Pelias</a> does) with data from other open data projects, including: <a href="https://openaddresses.io/">OpenAddresses</a>, <a href="https://www.alltheplaces.xyz/">All The Places</a>, <a href="https://www.naturalearthdata.com/">Natural Earth</a>, and even the ODbL licensed <a href="https://www.openstreetmap.org/">OpenStreetMap</a> for a complete geocoding solution.</p>
+
+<p>If you need to process and deduplicate venue data using latitude, longitude, name, and address information we also recommend <strong>Lieu</strong> (<a href="https://github.com/openvenues/lieu">code repo</a> and <a href="https://www.mapzen.com/blog/whosonfirst-sotmus-2017">blog post</a>).</p>
+
+<table>
+<thead>
+<tr>
+<th>Sources</th>
+<th>Precision</th>
+<th>Component</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><a href="https://whosonfirst.org/">Who’s On First</a> and <a href="https://www.alltheplaces.xyz/">All The Places</a> and <a href="https://www.openstreetmap.org/">OpenStreetMap</a></td>
+<td>Exact</td>
+<td>Venue</td>
+<td><code>Some Business</code></td>
+</tr>
+
+<tr>
+<td><a href="https://openaddresses.io/">OpenAddresses</a> and <a href="https://www.alltheplaces.xyz/">All The Places</a> and  <a href="https://www.openstreetmap.org/">OpenStreetMap</a></td>
+<td>Exact</td>
+<td>Street number</td>
+<td><code>155</code></td>
+</tr>
+
+<tr>
+<td><a href="https://www.openstreetmap.org/">OpenStreetMap</a></td>
+<td>Fine</td>
+<td>Street name</td>
+<td><code>9th Street</code></td>
+</tr>
+
+<tr>
+<td><a href="https://whosonfirst.org/">Who’s On First</a></td>
+<td>Course</td>
+<td>Locality</td>
+<td><code>San Francisco</code></td>
+</tr>
+
+<tr>
+<td><a href="https://whosonfirst.org/">Who’s On First</a> and <a href="https://www.naturalearthdata.com/">Natural Earth</a></td>
+<td>Course</td>
+<td>Region</td>
+<td><code>CA</code> <em>(short code for California)</em></td>
+</tr>
+
+<tr>
+<td><a href="https://whosonfirst.org/">Who’s On First</a></td>
+<td>Course</td>
+<td>Postcode</td>
+<td><code>94131</code></td>
+</tr>
+
+<tr>
+<td><a href="https://openaddresses.io/">OpenAddresses</a></td>
+<td>Fine</td>
+<td>Postcode+4</td>
+<td><code>1234</code></td>
+</tr>
+
+<tr>
+<td><a href="https://whosonfirst.org/">Who’s On First</a> and <a href="https://www.naturalearthdata.com/">Natural Earth</a></td>
+<td>Course</td>
+<td>Country</td>
+<td><code>USA</code> <em>(short code for United States of America)</em></td>
+</tr>
+</tbody>
+</table>
+<p>_NOTE: While our WOF gazetteer does include 21M venue records they are of an older vintage and do not reflect closed venues or recently opened venues. Depending on your needs, it may be better to use <em><a href="https://www.alltheplaces.xyz/">All The Places</a></em> (scraper project for international, national, and regional chains), <em><a href="https://www.openstreetmap.org/">OpenStreetMap</a></em> (caveat ODbL license restrictions), or license data from proprietary sources including <a href="https://foursquare.com/">Foursquare</a>_, <em><a href="https://www.safegraph.com/">SafeGraph</a></em>, <a href="https://www.tripadvisor.com/">TripAdvisor</a> or <a href="https://www.safegraph.com/guides/openstreetmap-api-alternative">others</a>. Postalcode polygon country coverage can be augmented with proprietary sources like <a href="https://www.mbi-geodata.com/en/area-boundaries/postcode-zip-boundary-maps/">MBI</a>.</p>
+
+<h2>Collaboration</h2>
+
+<p>Most people engage with the project by downloading and “reading” the data. In the course of using the data, you might find a few tools helpful both for finding specific records and for editing them to fix small problems in the data (like a misspelled name).</p>
+
+<p><img src="images/wof-spelunker-collaboration.png" alt="Who&rsquo;s On First collaborate spelunker screenshot" title="Who's On First collaborate spelunker screenshot" /></p>
+
+<h3>View Who’s On First records</h3>
+
+<p>The <strong><a href="https://spelunker.whosonfirst.org/">Spelunker</a></strong> is a web tool for browsing Who’s On First (shown in the screenshot immediately above) and includes search functionality. For example: <a href="https://spelunker.whosonfirst.org/id/85977539/">view New York</a> city.</p>
+
+<p>You can also View raw data on <strong><a href="https://github.com/whosonfirst-data/">Github</a></strong>. Because navigating the many <code>whosonfirst-data</code> repos can be overwhelming, each individual WOF record self describes in which repo it can be found. For example, <a href="https://github.com/whosonfirst-data/whosonfirst-data-admin-us/blob/master/data/859/775/39/85977539.geojson">view New York</a> city as raw GeoJSON.</p>
+
+<h3>Editing of Who’s On First records</h3>
+
+<p>We use <strong><a href="https://writefield.nextzen.org/">Write Field</a></strong> for quick property data edits. For example, <a href="https://writefield.nextzen.org/place/edit?url=https://raw.githubusercontent.com/whosonfirst-data/whosonfirst-data-admin-us/master/data/859/775/39/85977539.geojson">load New York city for editing</a>. This requires a Github account to create a pull request which can be reviewed by the WOF team.</p>
+
+<p>For more complex and bulk imports we use <strong><a href="https://qgis.org/">QGIS</a></strong> and scripts to iterate over files managed in git. This workflow is described in more detail in our recent <a href="https://whosonfirst.org/blog/2023/05/31/shapefiles/">Shapefiles</a> blog post.</p>
+
+<h2>Downloads</h2>
+
+<p>Accessibility facilitates access for all and Who’s On First data is available to download in several formats, including:</p>
+
+<ul>
+<li><a href="https://geocode.earth/data/whosonfirst/">Shapefiles</a> - for GIS mappers in applications like QGIS and ArcGIS</li>
+<li><a href="https://geocode.earth/data/whosonfirst/">SQLite</a> - for database driven applications</li>
+</ul>
+
+<p><em>Thanks to <a href="https://geocode.earth/">Geocode Earth</a> for sponsoring processing and hosting of the downloads.</em></p>
+
+<p>While we manage Who’s On First place records as individual text files in git repos hosted on Github, from the early days we’ve made “bundled” distributions available. Those distributions were more geared for software engineers than for a more general audience of map makers and cartographers.</p>
+
+<p><strong><a href="https://geocode.earth/data/whosonfirst/">Shapefile</a></strong> downloads for the Who’s On First gazetteer were added in April 2023 as per-country ZIP archives including admin (country, region, county, locality, neighbourhood &amp; more), postalcode, and constituency placetypes. They only contain basic properties, names, and geometries.</p>
+
+<p><strong><a href="https://geocode.earth/data/whosonfirst/">SQLite</a></strong> databases contain the full firehose of Who&rsquo;s On First data, including mixed geometry types and full set of nested GeoJSON properties. Unlike the raw GeoJSON files in the git repos, data in the SQLite databases are organized into several tables, including: <em>spr, names, concordances, ancestors, and geojson</em>. Geometries (default and alternate) are stored as properties in the <em>geojson</em> table. The field layout of the spr table is explained in the Standard Place Response section of the <a href="https://whosonfirst.org/blog/2023/05/31/shapefiles/">Shapefiles</a> blog post.</p>
+
+<h2>Sponsor Who’s On First</h2>
+
+<p>A large project like Who’s On First relies on good will to function, some amount of organization to sustain it year to year, and funding to pay data curation, engineering development, and internet server bills.</p>
+
+<p>If you or your organization relies on Who’s On First please considering sponsoring us with a recurring or one-time donation. Please reach out to Nathaniel at <a href="mailto:wofgazetteer@gmail.com?subject=Sponsoring the Who's On First places gazetteer">wofgazetteer@gmail.com</a> to discuss options.</p>
+
+<h2>Contact Who’s On First</h2>
+
+<p>If you have feedback, please submit a <a href="https://github.com/whosonfirst-data/whosonfirst-data/issues/new">new issue</a> or <a href="https://github.com/whosonfirst-data/whosonfirst-data/discussions/new/choose">discussion</a> topic via Github.</p>
+
+<p><a href="http://eepurl.com/ipOxd2">Subscribe to WOF Announcements</a> for &ldquo;big news&rdquo;, via Mailchimp. Frequency is a few times per year. Subscribe now and you&rsquo;ll be first to know about our big India locality data drop!</p>
+
+<p>Join our new <a href="https://groups.google.com/g/wof-gazetteer">WOF Gazetteer discussion group</a> on Google to ask questions and share updates on your country&rsquo;s latest changes to its internal administrative subdivisions. If you&rsquo;re a geography geek, this one&rsquo;s for you.</p>
+
+<p>Need to reach out privately? Email <a href="mailto:wofgazetteer@gmail.com">wofgazetteer@gmail.com</a>.</p>
+
+<h2>Conclusion</h2>
+
+<p>Open gazetteers, including Who’s On First, have come a long way in the last 10 years – largely because of the success of the global open data movement. To the many people who have advocated with your local or national government to “free” this bounty of data, thank you!</p>
+
+<p>Administrative borders are rarely “visible on the ground” and gazetteers that aggregate this data remain relevant by providing important and broad access to this type of map data. Each open gazetteer project has its particular license that reflects origin stories and day-to-day workflows.</p>
+
+<p>At Who’s On First we’re proud to offer our over <code>5M</code> administrative places and another <code>25M</code> supplemental places – all with <code>CC-BY</code> attribution – allowing you to both read access and commercial use – with polygons, localization, and internationalization.</p>
+
+<p>Who’s On First holds hands with 360 sources, has great name translations, with unique IDs, and has been confirmed to work in a wide range of applications, several of which have more than <code>300M</code> monthly active users globally.</p>
+
+<p>While we can and will add even more data, we think there’s enough in Who’s On First for you to get started making a map or building an app today. We’re excited to see what you build!</p>
+
+		</article>
+		</div>
+		</div>	
+		</div>	
+
+		<footer>
+			<nav class="navbar navbar-default navbar-bottom">
+				<div class="container">
+					
+					<ul class="nav navbar-nav navbar-right whosonfirst-footer">
+						<li><a href="/docs/contributing/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">contributing</a></li>
+						<li><a href="/docs/licenses/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">license</a></li>
+						
+						<li><a href="https://mapstodon.space/@whosonfirst" class="whosonfirst-nav-link whosonfirst-footer-nav-link">mastodon</a></li>			
+					</ul>
+				</div>
+			</nav>
+		</footer>
+
+		
+		<script src="/javascript/jquery.min.js"></script>
+		
+		<script src="/javascript/bootstrap.min.js"></script>
+		<script src="/javascript/mapzen.whosonfirst.home.js"></script>
+		<script src="/javascript/mapzen.whosonfirst.subpage.js"></script>
+		
+		<script src="/javascript/highlightpack.js"></script>
+		<script>
+		  try {
+		  	hljs.initHighlightingOnLoad();
+		  } catch (e) {
+		  	console.log("HLJS", e);
+		  }
+		</script>
+	</body>
+</html>
+
