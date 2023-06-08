@@ -24,8 +24,6 @@ ul { font-family: sans-serif; font-weight: 300;  }
 <div style="font-size:small;font-style:italic;text-align:center;">
 Drawing, Screen Design: "Heads of State," Front Side, by Dan Friedman. <a href="https://collection.cooperhewitt.org/objects/18673263/">Collection of Cooper Hewitt  Museum</a>.</div>
 
-## State of the Gazetteer in 2023
-
 The Who’s On First (WOF) gazetteer is a big list of places, each with a stable identifier, and a set of common and optional descriptive properties about that location. Like any product, Who’s On First is made by people, and we’ve collectively spent about “20 years” building WOF as an original work and as an aggregation of many other open data projects.
 
 Since we [launched](https://whosonfirst.org/blog/2015/08/18/who-s-on-first/) in 2015, the project has grown in coverage, complexity, and supported applications. In this this post I will summarize Who’s On First’s key advantages, offer a comparative analysis of WOF and other open gazetteers, quantify our global coverage by [placetype](https://github.com/whosonfirst/whosonfirst-placetypes), offer score cards by country, dive into name localization, look at internationalization through the lens of disputed territories, and quantify geometry types and sources of those polygon and points, hold hands with and thank our [sources](https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/README.md), and invite collaboration.
