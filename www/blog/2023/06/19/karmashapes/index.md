@@ -11,7 +11,7 @@ image: "images/coverage_overview.png)"
 tag: [whosonfirst,wof,data,import,india]
 ---
 
-[![](images/images/coverage_overview.png)]()
+[![](images/coverage_overview.png)]()
 
 <div style="font-size:small;font-style:italic;text-align:center;">
 Printing Block (India); wood; 1957-123-6 <a href="https://collection.cooperhewitt.org/objects/18412045/">Collection of Cooper Hewitt Museum</a>.</div>
@@ -21,7 +21,7 @@ Printing Block (India); wood; 1957-123-6 <a href="https://collection.cooperhewit
 
 Who’s On First now provides the best open data for towns and villages in India, with 915,468 locality records, thanks to the Karmashapes initiative.
 
-[![](images/images/coverage_overview.png)]()
+![Who's On First India locality coverage](images/coverage_overview.png "Who's On First India locality coverage")
 _(above) Locality coverage of India, visualized. Polygon coverage shown in black, point coverage in blue._
 
 In the Who’s on First gazetteer, a [locality](https://github.com/whosonfirst/whosonfirst-placetypes/tree/main#locality) represents an individual populated place regardless of population or size. While the number of villages in India is often quoted as being closer to 500,000 or 600,000 in total, the number of locality records is higher than this because localities are not limited to certain local government areas. As mentioned in the [State of the Gazetteer](https://whosonfirst.org/blog/2023/06/07/state-of-the-gazetteer/) blog post:
@@ -52,13 +52,13 @@ We recently finished importing Karmashpes into WOF to generally improve coverage
 
 Importing Karmashapes also allows any downstream consumer of WOF, like [Pelias](https://pelias.io/) via [Geocode.Earth](https://geocode.earth/) to benefit from the full scope of data Karmashapes provides. Let’s take a look at the locality and neighbourhood coverage now available in WOF:
 
-[![](images/images/kerala.png)]()
+![Locality coverage in Kerala](images/kerala.png "Locality coverage in Kerala")
 _(above) Locality (blue) and neighbourhood (orange) coverage along the northern Kerala coast_
 
-[![](images/images/dehradun.png)]()
+![Locality coverage in Dehradun](images/dehradun.png "Locality coverage in Dehradun")
 _(above) Locality (blue) and neighbourhood (orange) coverage northwest of Dehradun_
 
-[![](images/images/chandigarh.png)]()
+![Locality coverage in Chandigarh](images/chandigarh.png "Locality coverage in Chandigarh")
 _(above) Locality (blue) and neighbourhood (orange) coverage in and around Chandigarh_
 
 Above, you can see three areas of India - the northern Kerala coast, areas of Dehradun, and the greater Chandigarh area - with orange representing the neighbourhood placetype and blue representing the locality placetype. These example areas illustrate the complexity, density, and coverage that Karmashapes has added to Who’s On First.
@@ -81,52 +81,39 @@ Below are two charts - the first is a per-placetype feature count in WOF before 
 <p>
 <em>1 polygon geometry</em>
    </td>
-   <td><strong><em>1 total;  \
-1 polygon geometry</em></strong>
+   <td><strong><em>1 total; 1 polygon geometry</em></strong>
    </td>
   </tr>
   <tr>
    <td><em>Region</em>
    </td>
-   <td><strong><em>37 total;  \
-37 polygons</em></strong>
+   <td><strong><em>37 total; 37 polygons</em></strong>
    </td>
-   <td><strong><em>37 total;  \
-37 polygons</em></strong>
+   <td><strong><em>37 total; 37 polygons</em></strong>
    </td>
   </tr>
   <tr>
    <td><em>County</em>
    </td>
-   <td><strong><em>640 total;  \
-640 polygons</em></strong>
+   <td><strong><em>640 total; 640 polygons</em></strong>
    </td>
-   <td><strong><em>640 total;  \
-640 polygon</em></strong>
+   <td><strong><em>640 total; 640 polygon</em></strong>
    </td>
   </tr>
   <tr>
    <td><em>Locality</em>
    </td>
-   <td><strong><em>497,880 total;  \
-1,546 polygons \
-496,334 points</em></strong>
+   <td><strong><em>497,880 total; 1,546 polygons, 496,334 points</em></strong>
    </td>
-   <td><strong><em>915,468 total;  \
-553,804 polygons,  \
-361,664 point</em></strong>
+   <td><strong><em>915,468 total; 553,804 polygons, 361,664 point</em></strong>
    </td>
   </tr>
   <tr>
    <td><em>Neighbourhood</em>
    </td>
-   <td><strong><em>9,679 total:  \
-1,302 polygons, \
-8,377 points</em></strong>
+   <td><strong><em>9,679 total:  1,302 polygons, 8,377 points</em></strong>
    </td>
-   <td><strong><em>190,397 total;  \
-25,312 polygons, \
-165,067 points</em></strong>
+   <td><strong><em>190,397 total; 25,312 polygons, 165,067 points</em></strong>
    </td>
   </tr>
 </table>
@@ -596,7 +583,7 @@ _(above) A chart, per placetype, with pre and post Karmashapes feature counts, s
 
 Karmashapes was a journey into mapping India; it took years of patience, hundreds of emails and months to fully develop. But what exactly _is_ Karmashapes and _how_ was it developed?
 
-[![](images/images/placetypes.png)]()
+![India's placetype structure](images/placetypes.png "India's placetype structure")
 _(above) This image shows the placetype structure in India. The placetypes circled in red (village, habitations, and urban) are the placetypes that Karmashapes catalogs as `locality` records._
 
 Well, this build wasn't possible until 2022, when five openly-licensed datasets were each available and combined to create Karmashapes; this included three vector datasets and two raster datasets.
@@ -605,7 +592,8 @@ Last year, the Indian Ministry of Rural Development ([PMGSY](https://geosadak-pm
 
 Once a single cleaned and verified vector dataset was created, “unique candidate” urban area polygons were synthesized from two additional global raster datasets: the World Settlement Footprint ([WSFEVO](https://download.geoservice.dlr.de/WSF_EVO/)) Evolution from the German Aerospace Center (DLR) at 10m resolution and a global map of land use/land cover (LULC) derived from the European Space Agency’s (ESA) [Sentinel-2 imagery](https://www.arcgis.com/apps/instant/media/index.html?appid=fc92d38533d440078f17678ebc20e8e2), also at 10m resolution. These raster layers were converted to two additional vector datasets, which were used for an additional cross-reference for the primary vector datasets listed below.
 
-[![](images/images/pmgsy.png)]()
+![Pradhan Mantri Gram Sadak Yojana example](images/pmgsy.png "Pradhan Mantri Gram Sadak Yojana example")
+
 **[Pradhan Mantri Gram Sadak Yojana (PMGSY)](https://geosadak-pmgsy.nic.in/opendata/)**
 
 * **Coverage:** 1,084,413 points
@@ -613,15 +601,19 @@ Once a single cleaned and verified vector dataset was created, “unique candida
 * **Description**: Used for locality points across India. Population data may be gathered from this source.
 * **Data Type**: Vector data.
 
-[![](images/images/nga.png)]()
+![National Geospatial Intelligence Agency example](images/nga.png "National Geospatial Intelligence Agency example")
+
 **[National Geospatial Intelligence Agency (NGA)](https://geonames.nga.mil/geonames/GNSHome/welcome.html)**
+
 * **Coverage:** 573,007 points
 * **License**: Public Domain
 * **Description**: These are settlement points, and actually exist in Verrazano today as GeoNames-sourced localities. We may be sourcing new localities from NGA, since the initial GeoNames import occurred in ~2018. We may also get names from this source.
 * **Data Type**: Vector data.
 
-[![](images/images/wsfevo.png)]()
+![World Settlement Footprint (WSF) Evolution example](images/wsfevo.png "World Settlement Footprint (WSF) Evolution example")
+
 **[World Settlement Footprint (WSF) Evolution - Landsat-5/7 Dataset (WSFEVO)](https://download.geoservice.dlr.de/WSF_EVO/)**
+
 * **Coverage:** 2,323,907 polygons
 * **License**: CC-BY 4.0
 * **Description**: Raw raster data, being converted into vector data. Place counts represent cell count from raster > vector conversion.
@@ -651,10 +643,10 @@ Once a single cleaned and verified vector dataset was created, “unique candida
 
 **Honorable mention:** After the Karmashapes data initiative was completed and as we were importing Karamashapes into Who’s On First, the [SHRUG](https://www.devdatalab.org/shrug) version 2 (Socioeconomic High-resolution Rural-Urban Geographic Platform for India) dataset from Development Data Lab was released. SHRUG includes 500,000 villages and 8,000 towns with data attributes covering a span of 25 years, all linked together with a set of common geographic identifiers. While the SHURG v2 CC-BY-NC-SA license limits it for non-commercial projects or direct import into Who’s On First, this could be an area of future collaboration.
 
-[![](images/images/baralu1.png)]()
+![Combined Karmashapes input datasets](images/baralu1.png "Combined Karmashapes input datasets")
 _(above) All data sources for Baralu/Barahalu/Barahallu overlaid in QGIS_
 
-[![](images/images/baralu2.png)]()
+![Example of final place data for Baralu](images/baralu2.png "Example of final place data for Baralu")
 _(above) The final polygon and label position for the place of Baralu_
 
 Numerous geoprocessing tools in QGIS were used to analyze and combine these five datasets, resulting in composite polygons and points for habitations and villages in India. Each of these input datasets helped to create detailed feature attributes of Karmashapes, including:
@@ -671,16 +663,16 @@ On their own, each of these datasets is busy, messy, and don’t represent locat
 
 All of this was done through dozens of detailed matching steps, edit sessions, refining poor-quality data, cleaning/scrubbing data attributes, and squeezing out every drop of potential from each data source.
 
-[![](images/images/pre-ks-coverage-1.png)]()
+![Pre-Karmashapes polygon coverage](images/pre-ks-coverage-1.png "Pre-Karmashapes polygon coverage")
 _(above) Example polygon coverage, WOF (pre-Karmashapes import)_
 
-[![](images/images/post-ks-coverage-1.png)]()
+![Post-Karmashapes polygon coverage](images/post-ks-coverage-1.png "Post-Karmashapes polygon coverage")
 _(above) Example polygon coverage, Karmashapes_
 
-[![](images/images/pre-ks-coverage-2.png)]()
+![Pre-Karmashapes polygon coverage](images/pre-ks-coverage-2.png "Pre-Karmashapes polygon coverage")
 _(above) Example polygon coverage, WOF (pre-Karmashapes import)_
 
-[![](images/images/post-ks-coverage-2.png)]()
+![Post-Karmashapes polygon coverage](images/post-ks-coverage-2.png "Post-Karmashapes polygon coverage")
 _(above) Example polygon coverage, Karmashapes_
 
 # Merging into Who’s On First
@@ -774,9 +766,11 @@ Because the village and habitation data in India often overlaps, especially near
 Some of the input sources used to create Karmashapes use population estimates from before the last census and those vintage population values for localities and neighbourhoods may also need to be updated.
 
 [![](images/images/next-steps-1.png)]()
+![Next Steps](images/next-steps-1.png "Next Steps")
 _(above) Ahmedabad locality extent with curated neighbourhood boundaries and a few new, funky Karamashapes neighbourhoods on the margins_
 
 [![](images/images/next-steps-2.png)]()
+![Next Steps](images/next-steps-2.png "Next Steps")
 _(above) Delhi metropolitan area with pink locality polygons and blue neighbourhood polygons (original Quattroshapes neighbourhood polygons are contained in the urban core and Karmashapes neighbourhood polygons are visible on the margins)._
 
 So, reviewing the placetypes and geometries of records at the edge of large locality polygons like those shown in the above screenshots will be an important next step when updating WOF records.
