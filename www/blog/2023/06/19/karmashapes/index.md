@@ -65,519 +65,55 @@ Above, you can see three areas of India - the northern Kerala coast, areas of De
 
 Below are two charts - the first is a per-placetype feature count in WOF before and after the Karmashapes import, the second is a more detailed breakdown of neighbourhood and locality placetype counts per region of India.
 
-<table>
-  <tr>
-   <td><strong>Placetype</strong>
-   </td>
-   <td><strong>WOF feature count, pre-Karmashapes</strong>
-   </td>
-   <td><strong>WOF feature count, post-Karmashapes</strong>
-   </td>
-  </tr>
-  <tr>
-   <td><em>Country</em>
-   </td>
-   <td><strong><em>1 total;</em></strong>
-<p>
-<em>1 polygon geometry</em>
-   </td>
-   <td><strong><em>1 total; 1 polygon geometry</em></strong>
-   </td>
-  </tr>
-  <tr>
-   <td><em>Region</em>
-   </td>
-   <td><strong><em>37 total; 37 polygons</em></strong>
-   </td>
-   <td><strong><em>37 total; 37 polygons</em></strong>
-   </td>
-  </tr>
-  <tr>
-   <td><em>County</em>
-   </td>
-   <td><strong><em>640 total; 640 polygons</em></strong>
-   </td>
-   <td><strong><em>640 total; 640 polygon</em></strong>
-   </td>
-  </tr>
-  <tr>
-   <td><em>Locality</em>
-   </td>
-   <td><strong><em>497,880 total; 1,546 polygons, 496,334 points</em></strong>
-   </td>
-   <td><strong><em>915,468 total; 553,804 polygons, 361,664 point</em></strong>
-   </td>
-  </tr>
-  <tr>
-   <td><em>Neighbourhood</em>
-   </td>
-   <td><strong><em>9,679 total:  1,302 polygons, 8,377 points</em></strong>
-   </td>
-   <td><strong><em>190,397 total; 25,312 polygons, 165,067 points</em></strong>
-   </td>
-  </tr>
-</table>
+**Placetype** | **WOF feature count, pre-Karmashapes** | **WOF feature count, post-Karmashapes**
+---|---|---
+**Country** | **1 total**; 1 polygon geometry | **1 total**; 1 polygon geometry
+**Region** | **37 total**; 37 polygons | **37 total**; 37 polygons
+**County** | **640 total**; 640 polygons | **640 total**; 640 polygon
+**Locality** | **497,880 total**;  1,546 polygons, 496,334 points | **915,468** total; 553,804 polygons, 361,664 point
+**Neighbourhood** | **9,679 total**: 1,302 polygons, 8,377 points | **190,397** total; 25,312 polygons, 165,067 points
 
 _(above) A chart, per placetype, with pre and post Karmashapes feature counts, split by geometry type_
 
-<table>
-  <tr>
-   <td><strong>State / Union Territory</strong>
-   </td>
-   <td><strong>Neighbourhood Feature Count, pre-Karmashapes import</strong>
-   </td>
-   <td><strong>Neighbourhood Feature Count, post-Karmashapes import</strong>
-   </td>
-   <td><strong>Locality Feature Count, pre-Karmashapes import</strong>
-   </td>
-   <td><strong>Locality Feature Count, post-Karmashapes import</strong>
-   </td>
-  </tr>
-  <tr>
-   <td><em>Andaman and Nicobar Islands</em>
-   </td>
-   <td><strong><em>3</em></strong>
-   </td>
-   <td><strong><em>8</em></strong>
-   </td>
-   <td><strong><em>96</em></strong>
-   </td>
-   <td><strong><em>166</em></strong>
-   </td>
-  </tr>
-  <tr>
-   <td><em>Andhra Pradesh</em>
-   </td>
-   <td><strong><em>239</em></strong>
-   </td>
-   <td><strong><em>8,433</em></strong>
-   </td>
-   <td><strong><em>23,567</em></strong>
-   </td>
-   <td><strong><em>43,563</em></strong>
-   </td>
-  </tr>
-  <tr>
-   <td><em>Arunachal Pradesh</em>
-   </td>
-   <td><strong><em>2</em></strong>
-   </td>
-   <td><strong><em>5</em></strong>
-   </td>
-   <td><strong><em>304</em></strong>
-   </td>
-   <td><strong><em>351</em></strong>
-   </td>
-  </tr>
-  <tr>
-   <td><em>Assam</em>
-   </td>
-   <td><strong><em>29</em></strong>
-   </td>
-   <td><strong><em>7,502</em></strong>
-   </td>
-   <td><strong><em>1,077</em></strong>
-   </td>
-   <td><strong><em>23,517</em></strong>
-   </td>
-  </tr>
-  <tr>
-   <td><em>Bihar</em>
-   </td>
-   <td><strong><em>366</em></strong>
-   </td>
-   <td><strong><em>20,781</em></strong>
-   </td>
-   <td><strong><em>37,075</em></strong>
-   </td>
-   <td><strong><em>56,473</em></strong>
-   </td>
-  </tr>
-  <tr>
-   <td><em>Chandigarh</em>
-   </td>
-   <td><strong><em>103</em></strong>
-   </td>
-   <td><strong><em>104</em></strong>
-   </td>
-   <td><strong><em>1</em></strong>
-   </td>
-   <td><strong><em>1</em></strong>
-   </td>
-  </tr>
-  <tr>
-   <td><em>Chhattisgarh</em>
-   </td>
-   <td><strong><em>84</em></strong>
-   </td>
-   <td><strong><em>2,400</em></strong>
-   </td>
-   <td><strong><em>15,551</em></strong>
-   </td>
-   <td><strong><em>29,401</em></strong>
-   </td>
-  </tr>
-  <tr>
-   <td><em>Dadra and Nagar Haveli</em>
-   </td>
-   <td><strong><em>1</em></strong>
-   </td>
-   <td><strong><em>4</em></strong>
-   </td>
-   <td><strong><em>32</em></strong>
-   </td>
-   <td><strong><em>46</em></strong>
-   </td>
-  </tr>
-  <tr>
-   <td><em>Daman and Diu</em>
-   </td>
-   <td><strong><em>3</em></strong>
-   </td>
-   <td><strong><em>5</em></strong>
-   </td>
-   <td><strong><em>21</em></strong>
-   </td>
-   <td><strong><em>20</em></strong>
-   </td>
-  </tr>
-  <tr>
-   <td><em>Delhi</em>
-   </td>
-   <td><strong><em>583</em></strong>
-   </td>
-   <td><strong><em>623</em></strong>
-   </td>
-   <td><strong><em>1</em></strong>
-   </td>
-   <td><strong><em>12</em></strong>
-   </td>
-  </tr>
-  <tr>
-   <td><em>Goa</em>
-   </td>
-   <td><strong><em>62</em></strong>
-   </td>
-   <td><strong><em>88</em></strong>
-   </td>
-   <td><strong><em>379</em></strong>
-   </td>
-   <td><strong><em>507</em></strong>
-   </td>
-  </tr>
-  <tr>
-   <td><em>Gujarat</em>
-   </td>
-   <td><strong><em>194</em></strong>
-   </td>
-   <td><strong><em>2,422</em></strong>
-   </td>
-   <td><strong><em>3,991</em></strong>
-   </td>
-   <td><strong><em>30,946</em></strong>
-   </td>
-  </tr>
-  <tr>
-   <td><em>Haryana</em>
-   </td>
-   <td><strong><em>307</em></strong>
-   </td>
-   <td><strong><em>1,393</em></strong>
-   </td>
-   <td><strong><em>6,908</em></strong>
-   </td>
-   <td><strong><em>7,712</em></strong>
-   </td>
-  </tr>
-  <tr>
-   <td><em>Himachal Pradesh</em>
-   </td>
-   <td><strong><em>125</em></strong>
-   </td>
-   <td><strong><em>138</em></strong>
-   </td>
-   <td><strong><em>19,426</em></strong>
-   </td>
-   <td><strong><em>20,845</em></strong>
-   </td>
-  </tr>
-  <tr>
-   <td><em>Jammu and Kashmir</em>
-   </td>
-   <td><strong><em>205</em></strong>
-   </td>
-   <td><strong><em>205</em></strong>
-   </td>
-   <td><strong><em>10,845</em></strong>
-   </td>
-   <td><strong><em>11,359</em></strong>
-   </td>
-  </tr>
-  <tr>
-   <td><em>Jharkhand</em>
-   </td>
-   <td><strong><em>39</em></strong>
-   </td>
-   <td><strong><em>4,245</em></strong>
-   </td>
-   <td><strong><em>6,934</em></strong>
-   </td>
-   <td><strong><em>36,023</em></strong>
-   </td>
-  </tr>
-  <tr>
-   <td><em>Karnataka</em>
-   </td>
-   <td><strong><em>906</em></strong>
-   </td>
-   <td><strong><em>7,004</em></strong>
-   </td>
-   <td><strong><em>28,462</em></strong>
-   </td>
-   <td><strong><em>62,045</em></strong>
-   </td>
-  </tr>
-  <tr>
-   <td><em>Kerala</em>
-   </td>
-   <td><strong><em>448</em></strong>
-   </td>
-   <td><strong><em>3,099</em></strong>
-   </td>
-   <td><strong><em>5,580</em></strong>
-   </td>
-   <td><strong><em>17,768</em></strong>
-   </td>
-  </tr>
-  <tr>
-   <td><em>Ladakh</em>
-   </td>
-   <td><strong><em>0</em></strong>
-   </td>
-   <td><strong><em>0</em></strong>
-   </td>
-   <td><strong><em>0</em></strong>
-   </td>
-   <td><strong><em>352</em></strong>
-   </td>
-  </tr>
-  <tr>
-   <td><em>Lakshadweep</em>
-   </td>
-   <td><strong><em>0</em></strong>
-   </td>
-   <td><strong><em>0</em></strong>
-   </td>
-   <td><strong><em>2</em></strong>
-   </td>
-   <td><strong><em>11</em></strong>
-   </td>
-  </tr>
-  <tr>
-   <td><em>Madhya Pradesh</em>
-   </td>
-   <td><strong><em>273</em></strong>
-   </td>
-   <td><strong><em>8,431</em></strong>
-   </td>
-   <td><strong><em>43,739</em></strong>
-   </td>
-   <td><strong><em>66,683</em></strong>
-   </td>
-  </tr>
-  <tr>
-   <td><em>Maharashtra</em>
-   </td>
-   <td><strong><em>708</em></strong>
-   </td>
-   <td><strong><em>7,253</em></strong>
-   </td>
-   <td><strong><em>20,402</em></strong>
-   </td>
-   <td><strong><em>76,022</em></strong>
-   </td>
-  </tr>
-  <tr>
-   <td><em>Manipur</em>
-   </td>
-   <td><strong><em>5</em></strong>
-   </td>
-   <td><strong><em>9</em></strong>
-   </td>
-   <td><strong><em>187</em></strong>
-   </td>
-   <td><strong><em>197</em></strong>
-   </td>
-  </tr>
-  <tr>
-   <td><em>Meghalaya</em>
-   </td>
-   <td><strong><em>3</em></strong>
-   </td>
-   <td><strong><em>14</em></strong>
-   </td>
-   <td><strong><em>187</em></strong>
-   </td>
-   <td><strong><em>238</em></strong>
-   </td>
-  </tr>
-  <tr>
-   <td><em>Mizoram</em>
-   </td>
-   <td><strong><em>2</em></strong>
-   </td>
-   <td><strong><em>2</em></strong>
-   </td>
-   <td><strong><em>164</em></strong>
-   </td>
-   <td><strong><em>184</em></strong>
-   </td>
-  </tr>
-  <tr>
-   <td><em>Nagaland</em>
-   </td>
-   <td><strong><em>2</em></strong>
-   </td>
-   <td><strong><em>13</em></strong>
-   </td>
-   <td><strong><em>132</em></strong>
-   </td>
-   <td><strong><em>150</em></strong>
-   </td>
-  </tr>
-  <tr>
-   <td><em>Odisha</em>
-   </td>
-   <td><strong><em>63</em></strong>
-   </td>
-   <td><strong><em>5,954</em></strong>
-   </td>
-   <td><strong><em>10,645</em></strong>
-   </td>
-   <td><strong><em>57,759</em></strong>
-   </td>
-  </tr>
-  <tr>
-   <td><em>Puducherry</em>
-   </td>
-   <td><strong><em>7</em></strong>
-   </td>
-   <td><strong><em>51</em></strong>
-   </td>
-   <td><strong><em>36</em></strong>
-   </td>
-   <td><strong><em>88</em></strong>
-   </td>
-  </tr>
-  <tr>
-   <td><em>Punjab</em>
-   </td>
-   <td><strong><em>327</em></strong>
-   </td>
-   <td><strong><em>2,021</em></strong>
-   </td>
-   <td><strong><em>11,234</em></strong>
-   </td>
-   <td><strong><em>13,922</em></strong>
-   </td>
-  </tr>
-  <tr>
-   <td><em>Rajasthan</em>
-   </td>
-   <td><strong><em>451</em></strong>
-   </td>
-   <td><strong><em>6,152</em></strong>
-   </td>
-   <td><strong><em>18,288</em></strong>
-   </td>
-   <td><strong><em>48,302</em></strong>
-   </td>
-  </tr>
-  <tr>
-   <td><em>Sikkim</em>
-   </td>
-   <td><strong><em>9</em></strong>
-   </td>
-   <td><strong><em>9</em></strong>
-   </td>
-   <td><strong><em>328</em></strong>
-   </td>
-   <td><strong><em>352</em></strong>
-   </td>
-  </tr>
-  <tr>
-   <td><em>Tamil Nadu</em>
-   </td>
-   <td><strong><em>879</em></strong>
-   </td>
-   <td><strong><em>10,859</em></strong>
-   </td>
-   <td><strong><em>17,807</em></strong>
-   </td>
-   <td><strong><em>48,330</em></strong>
-   </td>
-  </tr>
-  <tr>
-   <td><em>Telangana</em>
-   </td>
-   <td><strong><em>438</em></strong>
-   </td>
-   <td><strong><em>4,417</em></strong>
-   </td>
-   <td><strong><em>11,700</em></strong>
-   </td>
-   <td><strong><em>6,888</em></strong>
-   </td>
-  </tr>
-  <tr>
-   <td><em>Tripura</em>
-   </td>
-   <td><strong><em>1</em></strong>
-   </td>
-   <td><strong><em>972</em></strong>
-   </td>
-   <td><strong><em>72</em></strong>
-   </td>
-   <td><strong><em>6,102</em></strong>
-   </td>
-  </tr>
-  <tr>
-   <td><em>Uttar Pradesh</em>
-   </td>
-   <td><strong><em>2,198</em></strong>
-   </td>
-   <td><strong><em>72,163</em></strong>
-   </td>
-   <td><strong><em>140,462</em></strong>
-   </td>
-   <td><strong><em>176,615</em></strong>
-   </td>
-  </tr>
-  <tr>
-   <td><em>Uttarakhand</em>
-   </td>
-   <td><strong><em>246</em></strong>
-   </td>
-   <td><strong><em>1,679</em></strong>
-   </td>
-   <td><strong><em>10,425</em></strong>
-   </td>
-   <td><strong><em>21,072</em></strong>
-   </td>
-  </tr>
-  <tr>
-   <td><em>West Bengal</em>
-   </td>
-   <td><strong><em>372</em></strong>
-   </td>
-   <td><strong><em>10,612</em></strong>
-   </td>
-   <td><strong><em>3,562</em></strong>
-   </td>
-   <td><strong><em>43,286</em></strong>
-   </td>
-  </tr>
-</table>
+**State / Union Territory** | **Neighbourhood Feature Count, pre-Karmashapes import** | **Neighbourhood Feature Count, post-Karmashapes import** | **Locality Feature Count, pre-Karmashapes import** | **Locality Feature Count, post-Karmashapes import**
+---|---|---|---|---
+**Andaman and Nicobar Islands** | 3 | 8 | 96 | 166
+**Andhra Pradesh** | 239 | 8,433 | 23,567 | 43,563
+**Arunachal Pradesh** | 2 | 5 | 304 | 351
+**Assam** | 29 | 7,502 | 1,077 | 23,517
+**Bihar** | 366 | 20,781 | 37,075 | 56,473
+**Chandigarh** | 103 | 104 | 1 | 1
+**Chhattisgarh** | 84 | 2,400 | 15,551 | 29,401
+**Dadra and Nagar Haveli** | 1 | 4 | 32 | 46
+**Daman and Diu** | 3 | 5 | 21 | 20
+**Delhi** | 583 | 623 | 1 | 12
+**Goa** | 62 | 88 | 379 | 507
+**Gujarat** | 194 | 2,422 | 3,991 | 30,946
+**Haryana** | 307 | 1,393 | 6,908 | 7,712
+**Himachal Pradesh** | 125 | 138 | 19,426 | 20,845
+**Jammu and Kashmir** | 205 | 205 | 10,845 | 11,359
+**Jharkhand** | 39 | 4,245 | 6,934 | 36,023
+**Karnataka** | 906 | 7,004 | 28,462 | 62,045
+**Kerala** | 448 | 3,099 | 5,580 | 17,768
+**Ladakh** | 0 | 0 | 0 | 352
+**Lakshadweep** | 0 | 0 | 2 | 11
+**Madhya Pradesh** | 273 | 8,431 | 43,739 | 66,683
+**Maharashtra** | 708 | 7,253 | 20,402 | 76,022
+**Manipur** | 5 | 9 | 187 | 197
+**Meghalaya** | 3 | 14 | 187 | 238
+**Mizoram** | 2 | 2 | 164 | 184
+**Nagaland** | 2 | 13 | 132 | 150
+**Odisha** | 63 | 5,954 | 10,645 | 57,759
+**Puducherry** | 7 | 51 | 36 | 88
+**Punjab** | 327 | 2,021 | 11,234 | 13,922
+**Rajasthan** | 451 | 6,152 | 18,288 | 48,302
+**Sikkim** | 9 | 9 | 328 | 352
+**Tamil Nadu** | 879 | 10,859 | 17,807 | 48,330
+**Telangana** | 438 | 4,417 | 11,700 | 6,888
+**Tripura** | 1 | 972 | 72 | 6,102
+**Uttar Pradesh** | 2,198 | 72,163 | 140,462 | 176,615
+**Uttarakhand** | 246 | 1,679 | 10,425 | 21,072
+**West Bengal** | 372 | 10,612 | 3,562 | 43,286
 
 # Creating Karmashapes
 
@@ -685,66 +221,14 @@ If a Karmashape record fell inside a town, for example, it was imported as a WOF
 
 Below, you’ll find a chart that maps the “core” admin levels in India’s administrative hierarchy to current (and proposed) Who’s On First placetypes.
 
-
-<table>
-  <tr>
-   <td><strong>Indian Admin Level</strong>
-   </td>
-   <td><strong>WOF placetype</strong>
-   </td>
-   <td><strong>Notes</strong>
-   </td>
-  </tr>
-  <tr>
-   <td><em>State</em>
-   </td>
-   <td><em>Region</em>
-   </td>
-   <td><em>In WOF pre-Karmashapes</em>
-   </td>
-  </tr>
-  <tr>
-   <td><em>Union territory</em>
-   </td>
-   <td><em>Region</em>
-   </td>
-   <td><em>In WOF pre-Karmashapes</em>
-   </td>
-  </tr>
-  <tr>
-   <td><em>District</em>
-   </td>
-   <td><em>County</em>
-   </td>
-   <td><em>In WOF pre-Karmashapes</em>
-   </td>
-  </tr>
-  <tr>
-   <td><em>Sub-district</em>
-   </td>
-   <td><em>N/A</em>
-   </td>
-   <td><em>Speculative new WOF placetype, a followup to the Karmashapes import</em>
-   </td>
-  </tr>
-  <tr>
-   <td><em>Village</em>
-   </td>
-   <td><em>Localadmin and locality</em>
-   </td>
-   <td><em>Significant WOF upgrade post-Karmashapes</em>
-   </td>
-  </tr>
-  <tr>
-   <td><em>Urban</em>
-   </td>
-   <td><em>Localadmin and locality (sometimes coterminous with county)</em>
-   </td>
-   <td><em>In WOF pre-Karmashapes</em>
-   </td>
-  </tr>
-</table>
-
+Indian Admin Level | WOF placetype | Notes
+---|---|---
+State | Region | In WOF pre-Karmashapes
+Union territory | Region | In WOF pre-Karmashapes
+District | County | In WOF pre-Karmashapes
+Sub-district | N/A | Speculative new WOF placetype, a followup to the Karmashapes import
+Village | Localadmin and locality | Significant WOF upgrade post-Karmashapes
+Urban | Localadmin and locality (sometimes coterminous with county) | In WOF pre-Karmashapes
 
 Additional localization work was done in WOF once Karmashapes geometries and properties were imported. Hindi translations were added to any locality record with a population of 50,000 or more and additional localizations were added based on regional language patterns. WOF maintains official and spoken language by region, so each locality’s parent region was evaluated to prompt additional relevant localizations to match local expectations and supplement the Hindi localizations. In total, name translations were added to over 17,000 records over what was provided by Karmashapes.
 
