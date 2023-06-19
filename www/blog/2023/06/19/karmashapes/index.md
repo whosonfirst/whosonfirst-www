@@ -7,24 +7,25 @@ permalink: /blog/2023/06/19/introducting-karmashapes/
 category: blog
 excerpt: "Thanks to the Karmashapes initiative, Who’s On First now provides the best open data for towns and villages in India."
 authors: [Justin Meyers, stepps00, nvkelso]
-image: "images/coverage_overview.png)"
+image: "images/coverage_overview.png"
 tag: [whosonfirst,wof,data,import,india]
 ---
 
-[![](images/coverage_overview.png)]()
+[![](images/249689_3cfb5bacb30f607a_b.jpg)](https://collection.cooperhewitt.org/objects/18412045/)
 
 <div style="font-size:small;font-style:italic;text-align:center;">
 Printing Block (India); wood; 1957-123-6 <a href="https://collection.cooperhewitt.org/objects/18412045/">Collection of Cooper Hewitt Museum</a>.</div>
 
 
-# Improving Locality Coverage in India
+# Introducing Karmashapes
 
-Who’s On First now provides the best open data for towns and villages in India, with 915,468 locality records, thanks to the Karmashapes initiative.
+Who’s On First now provides the best open data for towns and villages in India, with 915,468 locality records and 190,397 neighbourhoods records (with 579,116 detailed polygons), thanks to the Karmashapes initiative.
 
 ![Who's On First India locality coverage](images/coverage_overview.png "Who's On First India locality coverage")
+
 _(above) Locality coverage of India, visualized. Polygon coverage shown in black, point coverage in blue._
 
-In the Who’s on First gazetteer, a [locality](https://github.com/whosonfirst/whosonfirst-placetypes/tree/main#locality) represents an individual populated place regardless of population or size. While the number of villages in India is often quoted as being closer to 500,000 or 600,000 in total, the number of locality records is higher than this because localities are not limited to certain local government areas. As mentioned in the [State of the Gazetteer](https://whosonfirst.org/blog/2023/06/07/state-of-the-gazetteer/) blog post:
+In the Who’s on First gazetteer, a [locality](https://github.com/whosonfirst/whosonfirst-placetypes/tree/main#locality) represents an individual populated place regardless of population or size. While the number of villages in India is often quoted as being closer to 500,000 or 600,000 in total, the number of locality records in Who's On First is significantly larger because WOF localities include both incorporated local government areas and unincorporated settlements. As mentioned in the [State of the Gazetteer](https://whosonfirst.org/blog/2023/06/07/state-of-the-gazetteer/) blog post:
 
 _“WOF gazetteer’s focus on localities and unique identifiers sets us apart from many other projects. We choose to approach geography at a personal level – starting with the locality (or populated place) where people play, study, work, and sleep – and country for when people need a passport to cross a frontier and experience something new and exciting."_
 
@@ -39,90 +40,91 @@ Even with those earlier efforts, WOF heard consistent feedback from our users:
 
 These data gaps create challenges when operating location service applications like search and reverse geocoding for India. When a place is missing, it can’t be searched by name using a partial or complete text string. And the absence of places, incorrect centroids, and incorrect polygons for existing WOF places can cause reverse geocoding services to [hallucinate](https://en.wikipedia.org/wiki/Hallucination_(artificial_intelligence)#:~:text=In%20artificial%20intelligence%20(AI)%2C,insufficient%2C%20biased%20or%20too%20specialised.) when answering the question of _“What locality is here?”_
 
-As anyone who’s searched for Indian map data knows, the sheer number of people and populated places, combined with the historic paucity of openly licensed and/or authoritative government data, has presented significant challenges. India recently [surpassed](https://www.un.org/development/desa/dpad/publication/un-desa-policy-brief-no-153-india-overtakes-china-as-the-worlds-most-populous-country/#:~:text=In%20April%202023%2C%20India's%20population,to%20grow%20for%20several%20decades.) China to become the most populous country on Earth with over 1.4 billion people; most are clustered in over 500,000 rural villages, yet some of the towns and urban areas have incredible density themselves.
+As anyone who’s searched for Indian map data knows, the sheer number of people and populated places, combined with the historic paucity of openly licensed and/or authoritative government data, has presented significant challenges. India recently [surpassed](https://www.un.org/development/desa/dpad/publication/un-desa-policy-brief-no-153-india-overtakes-china-as-the-worlds-most-populous-country/#:~:text=In%20April%202023%2C%20India's%20population,to%20grow%20for%20several%20decades.) China to become the most populous country on Earth with over 1.4 billion people. According to the [World Bank](https://data.worldbank.org/indicator/SP.URB.TOTL.IN.ZS?locations=IN), around 65% of people in India are spread out in hundreds of thousands of rural villages with populations less than 5,000; the remaining 35% urbanized population is concentrated in towns with incredible density themselves.
 
 The Karmashapes project was initiated to solve the data gap by mashing up several new and existing datasets, like the Indian Ministry of Rural Development’s recently released _Habitations_ open data layer. This work was done in partnership with [Justin Meyers](https://www.linkedin.com/in/justin--meyers/) at Revolutionary GIS.
 
 After a year’s worth of development, we’re excited to announce a step change improvement for India locality coverage in Who’s On First – as openly licensed, CC-BY data.
 
 
-# By the Numbers
+## By the Numbers
 
 We recently finished importing Karmashpes into WOF to generally improve coverage and address common user feedback. Doing so allows Karmashapes to also benefit from WOF’s [stable identifiers](https://github.com/whosonfirst/whosonfirst-properties/blob/main/properties/wof/id.json), [Github](https://github.com/whosonfirst-data/whosonfirst-data/) (as well as Github’s [issue tracking](https://github.com/whosonfirst-data/whosonfirst-data/issues) for future improvements), and to supplement with the [existing sources](https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/README.md) that WOF already maintains to fill in any coverage or localization gaps that the raw Karmashapes dataset might have.
 
 Importing Karmashapes also allows any downstream consumer of WOF, like [Pelias](https://pelias.io/) via [Geocode.Earth](https://geocode.earth/) to benefit from the full scope of data Karmashapes provides. Let’s take a look at the locality and neighbourhood coverage now available in WOF:
 
 ![Locality coverage in Kerala](images/kerala.png "Locality coverage in Kerala")
-_(above) Locality (blue) and neighbourhood (orange) coverage along the northern Kerala coast_
+_(above) Locality (blue polygons and blue dots) and neighbourhood (orange lines and orange dots) coverage along the northern Kerala coast_
 
 ![Locality coverage in Dehradun](images/dehradun.png "Locality coverage in Dehradun")
-_(above) Locality (blue) and neighbourhood (orange) coverage northwest of Dehradun_
+_(above) Locality (blue polygons and blue dots) and neighbourhood (orange lines and orange dots) coverage northwest of Dehradun_
 
 ![Locality coverage in Chandigarh](images/chandigarh.png "Locality coverage in Chandigarh")
-_(above) Locality (blue) and neighbourhood (orange) coverage in and around Chandigarh_
+_(above) Locality (blue polygons and blue dots) and neighbourhood (orange lines and orange dots) coverage in and around Chandigarh. Note some neighbourhood polygons in Chandigarh were curated pre-Karmashapes import and have been retained._
 
-Above, you can see three areas of India - the northern Kerala coast, areas of Dehradun, and the greater Chandigarh area - with orange representing the neighbourhood placetype and blue representing the locality placetype. These example areas illustrate the complexity, density, and coverage that Karmashapes has added to Who’s On First.
-
-Below are two charts - the first is a per-placetype feature count in WOF before and after the Karmashapes import, the second is a more detailed breakdown of neighbourhood and locality placetype counts per region of India.
+In the three example above – the northern Kerala coast, areas of Dehradun, and the greater Chandigarh area - with orange representing the neighbourhood placetype and blue representing the locality placetype. These example areas illustrate the complexity, density, and coverage that Karmashapes has added to Who’s On First.
 
 **Placetype** | **WOF feature count, pre-Karmashapes** | **WOF feature count, post-Karmashapes**
 ---|---|---
-**Country** | **1 total**; 1 polygon geometry | **1 total**; 1 polygon geometry
-**Region** | **37 total**; 37 polygons | **37 total**; 37 polygons
-**County** | **640 total**; 640 polygons | **640 total**; 640 polygon
-**Locality** | **497,880 total**;  1,546 polygons, 496,334 points | **915,468** total; 553,804 polygons, 361,664 point
-**Neighbourhood** | **9,679 total**: 1,302 polygons, 8,377 points | **190,397** total; 25,312 polygons, 165,067 points
+**Country** | 1 total; 1 polygon geometry | 1 total; 1 polygon geometry
+**Region** | 37 total; 37 polygons | 37 total; 37 polygons
+**County** | 640 total; 640 polygons | 640 total; 640 polygon
+**Locality** | 497,880 total;  1,546 polygons, 496,334 points | 915,468 total; 553,804 polygons, 361,664 point
+**Neighbourhood** | 9,679 total: 1,302 polygons, 8,377 points | 190,397 total; 25,312 polygons, 165,067 points
 
 _(above) A chart, per placetype, with pre and post Karmashapes feature counts, split by geometry type_
 
-**State / Union Territory** | **Neighbourhood Feature Count, pre-Karmashapes import** | **Neighbourhood Feature Count, post-Karmashapes import** | **Locality Feature Count, pre-Karmashapes import** | **Locality Feature Count, post-Karmashapes import**
----|---|---|---|---
-**Andaman and Nicobar Islands** | 3 | 8 | 96 | 166
-**Andhra Pradesh** | 239 | 8,433 | 23,567 | 43,563
-**Arunachal Pradesh** | 2 | 5 | 304 | 351
-**Assam** | 29 | 7,502 | 1,077 | 23,517
-**Bihar** | 366 | 20,781 | 37,075 | 56,473
-**Chandigarh** | 103 | 104 | 1 | 1
-**Chhattisgarh** | 84 | 2,400 | 15,551 | 29,401
-**Dadra and Nagar Haveli** | 1 | 4 | 32 | 46
-**Daman and Diu** | 3 | 5 | 21 | 20
-**Delhi** | 583 | 623 | 1 | 12
-**Goa** | 62 | 88 | 379 | 507
-**Gujarat** | 194 | 2,422 | 3,991 | 30,946
-**Haryana** | 307 | 1,393 | 6,908 | 7,712
-**Himachal Pradesh** | 125 | 138 | 19,426 | 20,845
-**Jammu and Kashmir** | 205 | 205 | 10,845 | 11,359
-**Jharkhand** | 39 | 4,245 | 6,934 | 36,023
-**Karnataka** | 906 | 7,004 | 28,462 | 62,045
-**Kerala** | 448 | 3,099 | 5,580 | 17,768
-**Ladakh** | 0 | 0 | 0 | 352
-**Lakshadweep** | 0 | 0 | 2 | 11
-**Madhya Pradesh** | 273 | 8,431 | 43,739 | 66,683
-**Maharashtra** | 708 | 7,253 | 20,402 | 76,022
-**Manipur** | 5 | 9 | 187 | 197
-**Meghalaya** | 3 | 14 | 187 | 238
-**Mizoram** | 2 | 2 | 164 | 184
-**Nagaland** | 2 | 13 | 132 | 150
-**Odisha** | 63 | 5,954 | 10,645 | 57,759
-**Puducherry** | 7 | 51 | 36 | 88
-**Punjab** | 327 | 2,021 | 11,234 | 13,922
-**Rajasthan** | 451 | 6,152 | 18,288 | 48,302
-**Sikkim** | 9 | 9 | 328 | 352
-**Tamil Nadu** | 879 | 10,859 | 17,807 | 48,330
-**Telangana** | 438 | 4,417 | 11,700 | 6,888
-**Tripura** | 1 | 972 | 72 | 6,102
-**Uttar Pradesh** | 2,198 | 72,163 | 140,462 | 176,615
-**Uttarakhand** | 246 | 1,679 | 10,425 | 21,072
-**West Bengal** | 372 | 10,612 | 3,562 | 43,286
+**State / Union Territory** | **Locality Feature Count, pre-Karmashapes import** | **Locality Feature Count, post-Karmashapes import** | **Neighbourhood Feature Count, pre-Karmashapes import** | **Neighbourhood Feature Count, post-Karmashapes import**
+--|--|--|--|--
+**Andaman and Nicobar Islands** | 96 | 166 | 3 | 8
+**Andhra Pradesh** | 23,567 | 43,563 | 239 | 8,433
+**Arunachal Pradesh** | 304 | 351 | 2 | 5
+**Assam** | 1,077 | 23,517 | 29 | 7,502
+**Bihar** | 37,075 | 56,473 | 366 | 20,781
+**Chandigarh** | 1 | 1 | 103 | 104
+**Chhattisgarh** | 15,551 | 29,401 | 84 | 2,400
+**Dadra and Nagar Haveli** | 32 | 46 | 1 | 4
+**Daman and Diu** | 21 | 20 | 3 | 5
+**Delhi** | 1 | 12 | 583 | 623
+**Goa** | 379 | 507 | 62 | 88
+**Gujarat** | 3,991 | 30,946 | 194 | 2,422
+**Haryana** | 6,908 | 7,712 | 307 | 1,393
+**Himachal Pradesh** | 19,426 | 20,845 | 125 | 138
+**Jammu and Kashmir** | 10,845 | 11,359 | 205 | 205
+**Jharkhand** | 6,934 | 36,023 | 39 | 4,245
+**Karnataka** | 28,462 | 62,045 | 906 | 7,004
+**Kerala** | 5,580 | 17,768 | 448 | 3,099
+**Ladakh** | 0 | 352 | 0 | 0
+**Lakshadweep** | 2 | 11 | 0 | 0
+**Madhya Pradesh** | 43,739 | 66,683 | 273 | 8,431
+**Maharashtra** | 20,402 | 76,022 | 708 | 7,253
+**Manipur** | 187 | 197 | 5 | 9
+**Meghalaya** | 187 | 238 | 3 | 14
+**Mizoram** | 164 | 184 | 2 | 2
+**Nagaland** | 132 | 150 | 2 | 13
+**Odisha** | 10,645 | 57,759 | 63 | 5,954
+**Puducherry** | 36 | 88 | 7 | 51
+**Punjab** | 11,234 | 13,922 | 327 | 2,021
+**Rajasthan** | 18,288 | 48,302 | 451 | 6,152
+**Sikkim** | 328 | 352 | 9 | 9
+**Tamil Nadu** | 17,807 | 48,330 | 879 | 10,859
+**Telangana** | 11,700 | 6,888 | 438 | 4,417
+**Tripura** | 72 | 6,102 | 1 | 972
+**Uttar Pradesh** | 140,462 | 176,615 | 2,198 | 72,163
+**Uttarakhand** | 10,425 | 21,072 | 246 | 1,679
+**West Bengal** | 3,562 | 43,286 | 372 | 10,612
 
-# Creating Karmashapes
+_(above) a detailed breakdown of neighbourhood and locality placetype counts, per region of India, both before and after the Karmashapes import. NOTE: Numbers may not completely add up due to partial overlaps with disputed territories._
+
+
+## Creating Karmashapes
 
 Karmashapes was a journey into mapping India; it took years of patience, hundreds of emails and months to fully develop. But what exactly _is_ Karmashapes and _how_ was it developed?
 
 ![India's placetype structure](images/placetypes.png "India's placetype structure")
-_(above) This image shows the placetype structure in India. The placetypes circled in red (village, habitations, and urban) are the placetypes that Karmashapes catalogs as `locality` records._
+_(above) This image shows the placetype structure in India. The placetypes circled in red (village, habitations, and urban) are the placetypes that Karmashapes catalogs as `locality` records. Generally, villages are populated places with less than 5,000 people and urban towns have at least 5,000 and often millions of people. Credits: https://lgdirectory.gov.in/_
 
-Well, this build wasn't possible until 2022, when five openly-licensed datasets were each available and combined to create Karmashapes; this included three vector datasets and two raster datasets.
+This build wasn't possible until 2022, when five openly-licensed datasets were each available and combined to create Karmashapes; this included three vector datasets and two raster datasets.
 
 Last year, the Indian Ministry of Rural Development ([PMGSY](https://geosadak-pmgsy.nic.in/opendata/)) openly released its ‘Habitations’ dataset. This was the first localities dataset released in India with a clear and friendly license. Geospatial census data from Columbia University’s Socioeconomic Data and Applications Center ([SEDAC](https://sedac.ciesin.columbia.edu/data/set/india-india-village-level-geospatial-socio-econ-1991-2001/data-download)) for all Indian villages helped confirm and verify the locations in the PMGSY dataset. Lastly, a vector dataset from the Geographic Names Server created by the National Geospatial-Intelligence Agency ([NGA](https://geonames.nga.mil/geonames/GNSHome/welcome.html)) was used to cross-reference PMGSY and SEDAC data.
 
@@ -143,7 +145,7 @@ Once a single cleaned and verified vector dataset was created, “unique candida
 
 * **Coverage:** 573,007 points
 * **License**: Public Domain
-* **Description**: These are settlement points, and actually exist in Verrazano today as GeoNames-sourced localities. We may be sourcing new localities from NGA, since the initial GeoNames import occurred in ~2018. We may also get names from this source.
+* **Description**: These are settlement points, and actually exist in Who's On First today as GeoNames-sourced localities. We may be sourcing new localities from NGA in the future, since the initial GeoNames import occurred in 2018. GeoNames also provides names in dozens of languages, which have been imported into Who's On First.
 * **Data Type**: Vector data.
 
 ![World Settlement Footprint (WSF) Evolution example](images/wsfevo.png "World Settlement Footprint (WSF) Evolution example")
@@ -159,7 +161,7 @@ Once a single cleaned and verified vector dataset was created, “unique candida
 
 * **Coverage:** 627,199 polygons
 * **License**: CC-BY
-* **Description**: Used for locality polygons across India (1991 & 2001 vintage). Population data may be gathered from this source.
+* **Description**: Used for locality polygons across India (1991 & 2001 vintage). Population counts may be gathered from this source.
 * **Data Type**: Vector data.
 
 **[Sentinel-2 10m Land Use/Land Cover (ESRI, Microsoft, National Geographic)](https://www.arcgis.com/apps/instant/media/index.html?appid=fc92d38533d440078f17678ebc20e8e2)**
@@ -187,7 +189,7 @@ _(above) The final polygon and label position for the place of Baralu_
 
 Numerous geoprocessing tools in QGIS were used to analyze and combine these five datasets, resulting in composite polygons and points for habitations and villages in India. Each of these input datasets helped to create detailed feature attributes of Karmashapes, including:
 
-* _Population values_
+* _Population counts_
 * _Population vintage_
 * _Name (Latin-based)_
 * _Name variants (Latin-based and limited local script names)_
@@ -203,17 +205,17 @@ All of this was done through dozens of detailed matching steps, edit sessions, r
 _(above) Example polygon coverage, WOF (pre-Karmashapes import)_
 
 ![Post-Karmashapes polygon coverage](images/post-ks-coverage-1.png "Post-Karmashapes polygon coverage")
-_(above) Example polygon coverage, Karmashapes_
+_(above) Example polygon coverage, raw Karmashapes_
 
 ![Pre-Karmashapes polygon coverage](images/pre-ks-coverage-2.png "Pre-Karmashapes polygon coverage")
 _(above) Example polygon coverage, WOF (pre-Karmashapes import)_
 
 ![Post-Karmashapes polygon coverage](images/post-ks-coverage-2.png "Post-Karmashapes polygon coverage")
-_(above) Example polygon coverage, Karmashapes_
+_(above) Example polygon coverage, raw Karmashapes_
 
-# Merging into Who’s On First
+## Merging into Who’s On First
 
-Before Karmashapes, locality coverage in WOF was mainly represented using publicly available [GeoNames](https://www.geonames.org/) Point data and roughly 1,500 hand-curated polygons for large, populous localities. In WOF, urban and village-level places in India were imported at the locality placetype. Habitations were imported at the neighbourhood placetype.
+Before Karmashapes, locality coverage in WOF was mainly represented using publicly available [GeoNames](https://www.geonames.org/) point data and roughly 1,500 hand-curated polygons for large, populous localities. In WOF, urban towns and village-level places in India were imported at the locality placetype. Habitations were imported at the neighbourhood placetype.
 
 However, because Karmashapes was developed using several input datasets, each of different vintage, some geographic overlap between town and village polygons is present in the dataset. To solve this overlap issue, WOF relied on Karmashapes attributes and spatial geoprocessing tools to move some villages to the neighbourhood placetype.
 
@@ -230,20 +232,20 @@ Sub-district | N/A | Speculative new WOF placetype, a followup to the Karmashape
 Village | Localadmin and locality | Significant WOF upgrade post-Karmashapes
 Urban | Localadmin and locality (sometimes coterminous with county) | In WOF pre-Karmashapes
 
-Additional localization work was done in WOF once Karmashapes geometries and properties were imported. Hindi translations were added to any locality record with a population of 50,000 or more and additional localizations were added based on regional language patterns. WOF maintains official and spoken language by region, so each locality’s parent region was evaluated to prompt additional relevant localizations to match local expectations and supplement the Hindi localizations. In total, name translations were added to over 17,000 records over what was provided by Karmashapes.
+Additional localization work was done in WOF once Karmashapes geometries and properties were imported. Hindi name translations were added to any locality record with a population of 50,000 or more and additional localizations were added based on regional language patterns. WOF maintains official and spoken language by region, so each locality’s parent region was evaluated to prompt additional relevant localizations to match local expectations and supplement the Hindi localizations. In total, name translations were added to over 17,000 records over what was provided by Karmashapes.
 
 Using openly-licensed data at each step of the build process allows Karmashapes to be released under a simple CC-BY license and, in turn, allows Who’s On First to import the full Karmashapes dataset. Without openly licensed data, this build would not have been possible.
 
-# Get the Data
+## Get the Data
 
 Karmashapes and Who’s On First data are available in several file formats and through various endpoints. You can access and browse data here:
 
 * [Browse](https://spelunker.whosonfirst.org/placetypes/locality/?&iso=in) Who’s On First records in the Spelunker
 * [Download](https://geocode.earth/data/whosonfirst/#IN) Who’s On First data in Shapefile and SQLite formats, via Geocode.Earth: 
 * [Learn](https://whosonfirst.org/blog/2023/05/31/shapefiles/) more about downloading Who’s On First data in various formats
-* Want the raw Karmashapes files? Full Karmashapes downloads are [available](https://karmashapes.wordpress.com/) on Justin’s blog. 
+* Want the raw Karmashapes files? Full Karmashapes downloads are [available](https://karmashapes.wordpress.com/2023/03/05/karmashapes-v0/) on Justin’s blog. 
 
-# Next Steps
+## Next Steps
 
 Because the village and habitation data in India often overlaps, especially near the largest metro areas in the country, Karmashapes records were imported into Who’s On First most often as locality records and sometimes as neighbourhood records when they fell in an existing WOF locality. Practically speaking, this means many of the Who’s On First records in and around the ~1,500 largest metropolitan areas in India should be reviewed.
 
@@ -251,21 +253,21 @@ Some of the input sources used to create Karmashapes use population estimates fr
 
 [![](images/images/next-steps-1.png)]()
 ![Next Steps](images/next-steps-1.png "Next Steps")
-_(above) Ahmedabad locality extent with curated neighbourhood boundaries and a few new, funky Karamashapes neighbourhoods on the margins_
+_(above) Ahmedabad locality extent with curated neighbourhood boundaries and a few new, funky Karamashapes neighbourhoods on the margins in darker blue._
 
 [![](images/images/next-steps-2.png)]()
 ![Next Steps](images/next-steps-2.png "Next Steps")
 _(above) Delhi metropolitan area with pink locality polygons and blue neighbourhood polygons (original Quattroshapes neighbourhood polygons are contained in the urban core and Karmashapes neighbourhood polygons are visible on the margins)._
 
-So, reviewing the placetypes and geometries of records at the edge of large locality polygons like those shown in the above screenshots will be an important next step when updating WOF records.
+Reviewing the placetypes and geometries of records at the edge of large locality polygons like those shown in the above screenshots will be an important next step when updating WOF records.
 
 Improving neighborhood coverage within locality polygons and reviewing the hierarchies of all WOF records in India will also be a priority. In some cases, Karmashapes has created village and urban polygons that span slightly outside of expected parent region boundaries. We’ll want to review these polygons to ensure they’re extent is accurate and their hierarchies are expected.
 
-And, while Karmashapes provided English names for the villages, habitations, and urban areas of India, name localization into official and spoken languages for many places is a work in progress. While the most populous places that were already in WOF have good name localization coverage, thanks to Karmashapes over one million place records are now available in India and it is challenging to localize all place names into all local languages. We’re open to contributions if you have them!
+Although Karmashapes provided English names for the villages, habitations, and urban areas of India, name localization into official and spoken languages for many places is a work in progress. While the most populous places that were already in WOF have good name localization coverage, thanks to Karmashapes over one million place records are now available in India and it is challenging to localize all place names into all local languages. We’re open to contributions if you have them!
 
-Lastly, if updates to PMGSY data become available (or any future dataset for localities in India are released under an open license), we’ll want to review those sources to keep WOF as up to date as possible - which it turns out can be quite tricky.
+Lastly, if updates to PMGSY data become available (or any future dataset for localities in India are released under an open license), we’ll want to review those sources to keep WOF as up to date as possible - which it turns out can be quite tricky. We're also curious about updated population statistics from the long delayed 2021 Census.
 
-# Contact Who’s On First
+## Contact Who’s On First
 
 Do you have suggestions for data improvements in India? Please file a [new issue](https://github.com/whosonfirst-data/whosonfirst-data/issues/new) or [discussion topic](https://github.com/whosonfirst-data/whosonfirst-data/discussions/new/choose) in Github about improving place records and coverage. [Subscribe to WOF Announcements](http://eepurl.com/ipOxd2) for “big news”, via Mailchimp. Frequency is a few times per year. Subscribers are the first to know about change like this big India locality data drop!
 
