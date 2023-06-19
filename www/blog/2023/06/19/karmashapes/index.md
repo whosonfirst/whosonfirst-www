@@ -6,7 +6,7 @@ date: 2023-06-19
 permalink: /blog/2023/06/19/introducting-karmashapes/
 category: blog
 excerpt: "Thanks to the Karmashapes initiative, Who’s On First now provides the best open data for towns and villages in India."
-authors: [nvkelso]
+authors: [Justin Meyers, stepps00, nvkelso]
 image: "images/coverage_overview.png)"
 tag: [whosonfirst,wof,data,import,india]
 ---
