@@ -24,9 +24,6 @@ ul { font-family: sans-serif; font-weight: 300;  }
 <div style="font-size:small;font-style:italic;text-align:center;">
 Printing Block (India); wood; 1957-123-6 <a href="https://collection.cooperhewitt.org/objects/18412045/">Collection of Cooper Hewitt Museum</a>.</div>
 
-
-# Introducing Karmashapes
-
 Who’s On First now provides the best open data for towns and villages in India, with 915,468 locality records and 190,397 neighbourhoods records (with 579,116 detailed polygons), thanks to the Karmashapes initiative.
 
 ![Who's On First India locality coverage](images/coverage_overview.png "Who's On First India locality coverage")
@@ -221,7 +218,7 @@ _(above) Example polygon coverage, WOF (pre-Karmashapes import)_
 ![Post-Karmashapes polygon coverage](images/post-ks-coverage-2.png "Post-Karmashapes polygon coverage")
 _(above) Example polygon coverage, raw Karmashapes_
 
-## Merging into Who’s On First
+## Merging Karmashapes into Who’s On First
 
 Before Karmashapes, locality coverage in WOF was mainly represented using publicly available [GeoNames](https://www.geonames.org/) point data and roughly 1,500 hand-curated polygons for large, populous localities. In WOF, urban towns and village-level places in India were imported at the locality placetype. Habitations were imported at the neighbourhood placetype.
 
@@ -269,7 +266,7 @@ _(above) Delhi metropolitan area with pink locality polygons and blue neighbourh
 
 Reviewing the placetypes and geometries of records at the edge of large locality polygons like those shown in the above screenshots will be an important next step when updating WOF records.
 
-Improving neighborhood coverage within locality polygons and reviewing the hierarchies of all WOF records in India will also be a priority. In some cases, Karmashapes has created village and urban polygons that span slightly outside of expected parent region boundaries. We’ll want to review these polygons to ensure they’re extent is accurate and their hierarchies are expected.
+Improving neighborhood coverage within locality polygons and reviewing the hierarchies of all WOF records in India will also be a priority. In some cases, Karmashapes has created village and urban polygons that span slightly outside of expected parent region boundaries. We’ll want to review these polygons to ensure they’re extent is accurate and their hierarchies are expected. We may also consider adding a new WOF placetype to capture detail at the Indian sub-district level (proposed as WOF `microcounty`) as such a new placetype level could be useful in other highly populated countries like China.
 
 Although Karmashapes provided English names for the villages, habitations, and urban areas of India, name localization into official and spoken languages for many places is a work in progress. While the most populous places that were already in WOF have good name localization coverage, thanks to Karmashapes over one million place records are now available in India and it is challenging to localize all place names into all local languages. We’re open to contributions if you have them!
 
