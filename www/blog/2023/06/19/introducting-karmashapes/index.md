@@ -10,6 +10,14 @@ authors: [justinelliotmeyers, stepps00, nvkelso]
 image: "images/coverage_overview.png"
 tag: [whosonfirst,wof,data,import,india]
 ---
+<style type="text/css">
+table { margin-top: 2rem; font-size: 17px; font-family: sans-serif; font-weight: 300; }
+thead { border-bottom: solid thin; }
+th { padding-bottom: 1rem; padding-right: 2rem; }
+td { padding: 1rem; padding-left:0px !important; padding-right: 2rem !important; vertical-align: top; }
+ol { font-family: sans-serif; font-weight: 300; font-size: 17px; margin-top: 2rem !important; list-style-type: decimal !important; }
+ul { font-family: sans-serif; font-weight: 300;  }
+</style>
 
 [![](images/249689_3cfb5bacb30f607a_b.jpg)](https://collection.cooperhewitt.org/objects/18412045/)
 
@@ -38,7 +46,7 @@ Even with those earlier efforts, WOF heard consistent feedback from our users:
 3. _Some polygon localities in WOF have the wrong shape compared with their real ground position (too small, too large, too coarse, or otherwise misshapen)_
 4. _Existing locality data is sometimes miscategorized/misclassified and would be better represented as instead with a different WOF placetype of neighbourhood or borough_
 
-These data gaps create challenges when operating location service applications like search and reverse geocoding for India. When a place is missing, it can’t be searched by name using a partial or complete text string. And the absence of places, incorrect centroids, and incorrect polygons for existing WOF places can cause reverse geocoding services to [hallucinate](https://en.wikipedia.org/wiki/Hallucination_(artificial_intelligence)#:~:text=In%20artificial%20intelligence%20(AI)%2C,insufficient%2C%20biased%20or%20too%20specialised.) when answering the question of _“What locality is here?”_
+These data gaps create challenges when operating location service applications like search and reverse geocoding for India. When a place is missing, it can’t be searched by name using a partial or complete text string. And the absence of places, incorrect centroids, and incorrect polygons for existing WOF places can cause reverse geocoding services to [hallucinate](https://en.wikipedia.org/wiki/Hallucination_(artificial_intelligence) when answering the question of _“What locality is here?”_
 
 As anyone who’s searched for Indian map data knows, the sheer number of people and populated places, combined with the historic paucity of openly licensed and/or authoritative government data, has presented significant challenges. India recently [surpassed](https://www.un.org/development/desa/dpad/publication/un-desa-policy-brief-no-153-india-overtakes-china-as-the-worlds-most-populous-country/#:~:text=In%20April%202023%2C%20India's%20population,to%20grow%20for%20several%20decades.) China to become the most populous country on Earth with over 1.4 billion people. According to the [World Bank](https://data.worldbank.org/indicator/SP.URB.TOTL.IN.ZS?locations=IN), around 65% of people in India are spread out in hundreds of thousands of rural villages with populations less than 5,000; the remaining 35% urbanized population is concentrated in towns with incredible density themselves.
 
@@ -64,55 +72,55 @@ _(above) Locality (blue polygons and blue dots) and neighbourhood (orange lines 
 
 In the three example above – the northern Kerala coast, areas of Dehradun, and the greater Chandigarh area - with orange representing the neighbourhood placetype and blue representing the locality placetype. These example areas illustrate the complexity, density, and coverage that Karmashapes has added to Who’s On First.
 
-**Placetype** | **WOF feature count, pre-Karmashapes** | **WOF feature count, post-Karmashapes**
----|---|---
-**Country** | 1 total; 1 polygon geometry | 1 total; 1 polygon geometry
-**Region** | 37 total; 37 polygons | 37 total; 37 polygons
-**County** | 640 total; 640 polygons | 640 total; 640 polygon
-**Locality** | 497,880 total;  1,546 polygons, 496,334 points | 915,468 total; 553,804 polygons, 361,664 point
-**Neighbourhood** | 9,679 total: 1,302 polygons, 8,377 points | 190,397 total; 25,312 polygons, 165,067 points
+| Placetype | WOF feature count, pre-Karmashapes | WOF feature count, post-Karmashapes |
+| ---|---|--- |
+| **Country** | 1 total; 1 polygon geometry | 1 total; 1 polygon geometry |
+| **Region** | 37 total; 37 polygons | 37 total; 37 polygons |
+| **County** | 640 total; 640 polygons | 640 total; 640 polygon |
+| **Locality** | 497,880 total;  1,546 polygons, 496,334 points | 915,468 total; 553,804 polygons, 361,664 point |
+| **Neighbourhood** | 9,679 total: 1,302 polygons, 8,377 points | 190,397 total; 25,312 polygons, 165,067 points |
 
 _(above) A chart, per placetype, with pre and post Karmashapes feature counts, split by geometry type_
 
-**State / Union Territory** | **Locality Feature Count, pre-Karmashapes import** | **Locality Feature Count, post-Karmashapes import** | **Neighbourhood Feature Count, pre-Karmashapes import** | **Neighbourhood Feature Count, post-Karmashapes import**
---|--|--|--|--
-**Andaman and Nicobar Islands** | 96 | 166 | 3 | 8
-**Andhra Pradesh** | 23,567 | 43,563 | 239 | 8,433
-**Arunachal Pradesh** | 304 | 351 | 2 | 5
-**Assam** | 1,077 | 23,517 | 29 | 7,502
-**Bihar** | 37,075 | 56,473 | 366 | 20,781
-**Chandigarh** | 1 | 1 | 103 | 104
-**Chhattisgarh** | 15,551 | 29,401 | 84 | 2,400
-**Dadra and Nagar Haveli** | 32 | 46 | 1 | 4
-**Daman and Diu** | 21 | 20 | 3 | 5
-**Delhi** | 1 | 12 | 583 | 623
-**Goa** | 379 | 507 | 62 | 88
-**Gujarat** | 3,991 | 30,946 | 194 | 2,422
-**Haryana** | 6,908 | 7,712 | 307 | 1,393
-**Himachal Pradesh** | 19,426 | 20,845 | 125 | 138
-**Jammu and Kashmir** | 10,845 | 11,359 | 205 | 205
-**Jharkhand** | 6,934 | 36,023 | 39 | 4,245
-**Karnataka** | 28,462 | 62,045 | 906 | 7,004
-**Kerala** | 5,580 | 17,768 | 448 | 3,099
-**Ladakh** | 0 | 352 | 0 | 0
-**Lakshadweep** | 2 | 11 | 0 | 0
-**Madhya Pradesh** | 43,739 | 66,683 | 273 | 8,431
-**Maharashtra** | 20,402 | 76,022 | 708 | 7,253
-**Manipur** | 187 | 197 | 5 | 9
-**Meghalaya** | 187 | 238 | 3 | 14
-**Mizoram** | 164 | 184 | 2 | 2
-**Nagaland** | 132 | 150 | 2 | 13
-**Odisha** | 10,645 | 57,759 | 63 | 5,954
-**Puducherry** | 36 | 88 | 7 | 51
-**Punjab** | 11,234 | 13,922 | 327 | 2,021
-**Rajasthan** | 18,288 | 48,302 | 451 | 6,152
-**Sikkim** | 328 | 352 | 9 | 9
-**Tamil Nadu** | 17,807 | 48,330 | 879 | 10,859
-**Telangana** | 11,700 | 6,888 | 438 | 4,417
-**Tripura** | 72 | 6,102 | 1 | 972
-**Uttar Pradesh** | 140,462 | 176,615 | 2,198 | 72,163
-**Uttarakhand** | 10,425 | 21,072 | 246 | 1,679
-**West Bengal** | 3,562 | 43,286 | 372 | 10,612
+| State / Union Territory | Locality Feature Count, pre-Karmashapes import | Locality Feature Count, post-Karmashapes import | Neighbourhood Feature Count, pre-Karmashapes import | Neighbourhood Feature Count, post-Karmashapes import |
+| --- | --- | --- | --- | --- |
+| **Andaman and Nicobar Islands** | 96 | 166 | 3 | 8 |
+| **Andhra Pradesh** | 23,567 | 43,563 | 239 | 8,433 |
+| **Arunachal Pradesh** | 304 | 351 | 2 | 5 |
+| **Assam** | 1,077 | 23,517 | 29 | 7,502 |
+| **Bihar** | 37,075 | 56,473 | 366 | 20,781 |
+| **Chandigarh** | 1 | 1 | 103 | 104 |
+| **Chhattisgarh** | 15,551 | 29,401 | 84 | 2,400 |
+| **Dadra and Nagar Haveli** | 32 | 46 | 1 | 4 |
+| **Daman and Diu** | 21 | 20 | 3 | 5 |
+| **Delhi** | 1 | 12 | 583 | 623 |
+| **Goa** | 379 | 507 | 62 | 88 |
+| **Gujarat** | 3,991 | 30,946 | 194 | 2,422 |
+| **Haryana** | 6,908 | 7,712 | 307 | 1,393 |
+| **Himachal Pradesh** | 19,426 | 20,845 | 125 | 138 |
+| **Jammu and Kashmir** | 10,845 | 11,359 | 205 | 205 |
+| **Jharkhand** | 6,934 | 36,023 | 39 | 4,245 |
+| **Karnataka** | 28,462 | 62,045 | 906 | 7,004 |
+| **Kerala** | 5,580 | 17,768 | 448 | 3,099 |
+| **Ladakh** | 0 | 352 | 0 | 0 |
+| **Lakshadweep** | 2 | 11 | 0 | 0 |
+| **Madhya Pradesh** | 43,739 | 66,683 | 273 | 8,431 |
+| **Maharashtra** | 20,402 | 76,022 | 708 | 7,253 |
+| **Manipur** | 187 | 197 | 5 | 9 |
+| **Meghalaya** | 187 | 238 | 3 | 14 |
+| **Mizoram** | 164 | 184 | 2 | 2 |
+| **Nagaland** | 132 | 150 | 2 | 13 |
+| **Odisha** | 10,645 | 57,759 | 63 | 5,954 |
+| **Puducherry** | 36 | 88 | 7 | 51 |
+| **Punjab** | 11,234 | 13,922 | 327 | 2,021 |
+| **Rajasthan** | 18,288 | 48,302 | 451 | 6,152 |
+| **Sikkim** | 328 | 352 | 9 | 9 |
+| **Tamil Nadu** | 17,807 | 48,330 | 879 | 10,859 |
+| **Telangana** | 11,700 | 6,888 | 438 | 4,417 |
+| **Tripura** | 72 | 6,102 | 1 | 972 |
+| **Uttar Pradesh** | 140,462 | 176,615 | 2,198 | 72,163 |
+| **Uttarakhand** | 10,425 | 21,072 | 246 | 1,679 |
+| **West Bengal** | 3,562 | 43,286 | 372 | 10,612 |
 
 _(above) a detailed breakdown of neighbourhood and locality placetype counts, per region of India, both before and after the Karmashapes import. NOTE: Numbers may not completely add up due to partial overlaps with disputed territories._
 
@@ -148,7 +156,7 @@ Once a single cleaned and verified vector dataset was created, “unique candida
 * **Description**: These are settlement points, and actually exist in Who's On First today as GeoNames-sourced localities. We may be sourcing new localities from NGA in the future, since the initial GeoNames import occurred in 2018. GeoNames also provides names in dozens of languages, which have been imported into Who's On First.
 * **Data Type**: Vector data.
 
-![World Settlement Footprint (WSF) Evolution example](images/wsfevo.png "World Settlement Footprint (WSF) Evolution example")
+![World Settlement Footprint (WSF) Evolution example](images/wsfevo.png)
 
 **[World Settlement Footprint (WSF) Evolution - Landsat-5/7 Dataset (WSFEVO)](https://download.geoservice.dlr.de/WSF_EVO/)**
 
@@ -251,12 +259,12 @@ Because the village and habitation data in India often overlaps, especially near
 
 Some of the input sources used to create Karmashapes use population estimates from before the last census and those vintage population values for localities and neighbourhoods may also need to be updated.
 
-[![](images/images/next-steps-1.png)]()
 ![Next Steps](images/next-steps-1.png "Next Steps")
+
 _(above) Ahmedabad locality extent with curated neighbourhood boundaries and a few new, funky Karamashapes neighbourhoods on the margins in darker blue._
 
-[![](images/images/next-steps-2.png)]()
 ![Next Steps](images/next-steps-2.png "Next Steps")
+
 _(above) Delhi metropolitan area with pink locality polygons and blue neighbourhood polygons (original Quattroshapes neighbourhood polygons are contained in the urban core and Karmashapes neighbourhood polygons are visible on the margins)._
 
 Reviewing the placetypes and geometries of records at the edge of large locality polygons like those shown in the above screenshots will be an important next step when updating WOF records.

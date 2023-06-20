@@ -1,0 +1,838 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="x-ua-compatible" content="ie=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Who’s On First | Introducing Karmashapes</title>
+		<meta name="description" content="Who’s on First is a gazetteer of places." />
+		<link rel="apple-touch-icon" href="/images/favicons/apple-touch-icon.png" sizes="180x180" />
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-16x16.png" sizes="16x16" />
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-32x32.png" sizes="32x32" />
+		<link rel="manifest" href="/images/favicons/manifest.json" />
+		<link rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg" color="#2C1E3F" />
+		<link rel="stylesheet" href="/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="/css/mapzen.whosonfirst.css" />
+		
+		<link rel="stylesheet" href="/css/styles/grayscale.css" />
+
+		<link rel="alternate" type="application/atom+xml" title="Who's On First Atom feed" href="/blog/atom_10.xml"/>		
+		<link rel="alternate" type="application/rss+xml" title="Who's On First RSS 2.0 feed" href="/blog/rss_20.xml"/>
+
+		
+		<meta property="og:type" content="article" />
+		<meta property="og:site_name" content="Who's On First" />
+		<meta property="og:title" content="Introducing Karmashapes" />
+		<meta property="og:description" content="Thanks to the Karmashapes initiative, Who’s On First now provides the best open data for towns and villages in India." />
+		<meta property="og:image" content="https://www.whosonfirst.org/blog/2023/06/19/introducting-karmashapes/images/coverage_overview.png" />
+
+		
+		
+		
+
+	</head>
+	<body>
+		<div class="whosonfirst-wrapper">
+
+			<nav class="navbar navbar-default navbar-fixed-top whosonfirst-fixed-subpage-navbar">
+				<div class="container">
+
+					
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="/">Who’s On First</a>
+					</div>
+
+					
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					  <ul class="nav navbar-nav navbar-right">
+
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/browse/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">browse</a>
+							</li>
+					    
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/docs/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">documentation</a>
+							</li>
+							
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/code/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">code</a>
+							</li>
+
+							
+							
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/download/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">download</a>
+							</li>
+							
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/blog/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">blog</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+
+
+		<style type="text/css">
+		  body {
+		  font-family: serif;
+		  font-size: 1.3em;
+		  line-height: 1.5em;
+		  }
+
+		  h2 small {
+		  display: block;
+		  margin-top:.10em;
+		  font-weight: 100;
+		  font-size: .5em;
+		  line-height: 1.3em;
+		  }
+
+		  p {
+		  line-height: 1.5em !important;
+		  }
+
+		  ul {
+		  font-size:1.3em;
+		  line-height:1.5em;
+		  margin-top:1em !important;
+		  }
+
+		  li {
+		  list-style-type: circle;
+		  margin-bottom: .5em;
+		  }
+
+		  img {
+		  max-width: 640px !important;
+		  max-height: 480px !important;
+		  border: 1px dotted #ccc;
+		  padding: .5em;
+		  margin-bottom:1em;
+		  margin-top: 1em;
+		  display:block;
+		  min-width: 320px;
+		  margin: 0 auto;
+		  }
+
+		  blockquote {
+		  background-color:#ededed;
+		  margin-top:1em;
+		  padding-top:.05em !important;
+		  padding-bottom:1.75em !important;
+		  }
+
+		  .hey-look {
+		  font-weight: 700;
+		  }
+
+		  @media (min-width: 320px) and (max-width: 400px) {
+
+		  ul {
+		  margin:0px;
+	  	  margin-left:15px;
+		  padding:0px;
+		  }
+
+		  pre {
+		  max-width:250px;
+		  overflow:scroll;
+		  }
+
+		  img {
+		  max-width: 250px !important;
+		  max-height: 200px !important;
+		  min-width: 75px;
+		  }
+		  }
+
+		</style>
+
+			<div class="container whosonfirst-subpage-container">
+			  <div class="row">
+			    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-0">
+ 			    </div>
+			    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+			      <article>
+
+	  
+	  
+	  <h2>
+	    Introducing Karmashapes
+	    <small>This is a blog post by
+	      <span class="hey-look">justinelliotmeyers</span>, <span class="hey-look">stepps00</span> and <span class="hey-look">nvkelso</span>
+	      that was published on <span class="pubdate"><a href="/blog/2023/06/">Jun</a> <a href="/blog/2023/06/19">19</a>, <a href="/blog/2023/">2023</a></span>
+	       and tagged <span class="hey-look">whosonfirst</span>, <span class="hey-look">wof</span>, <span class="hey-look">data</span>, <span class="hey-look">import</span> and <span class="hey-look">india</span></small>
+	  </h2>
+
+<style type="text/css">
+table { margin-top: 2rem; font-size: 17px; font-family: sans-serif; font-weight: 300; }
+thead { border-bottom: solid thin; }
+th { padding-bottom: 1rem; padding-right: 2rem; }
+td { padding: 1rem; padding-left:0px !important; padding-right: 2rem !important; vertical-align: top; }
+ol { font-family: sans-serif; font-weight: 300; font-size: 17px; margin-top: 2rem !important; list-style-type: decimal !important; }
+ul { font-family: sans-serif; font-weight: 300;  }
+</style>
+
+<p><a href="https://collection.cooperhewitt.org/objects/18412045/"><img src="images/249689_3cfb5bacb30f607a_b.jpg" alt="" /></a></p>
+
+<div style="font-size:small;font-style:italic;text-align:center;">
+Printing Block (India); wood; 1957-123-6 <a href="https://collection.cooperhewitt.org/objects/18412045/">Collection of Cooper Hewitt Museum</a>.</div>
+
+<h1>Introducing Karmashapes</h1>
+
+<p>Who’s On First now provides the best open data for towns and villages in India, with 915,468 locality records and 190,397 neighbourhoods records (with 579,116 detailed polygons), thanks to the Karmashapes initiative.</p>
+
+<p><img src="images/coverage_overview.png" alt="Who&rsquo;s On First India locality coverage" title="Who's On First India locality coverage" /></p>
+
+<p><em>(above) Locality coverage of India, visualized. Polygon coverage shown in black, point coverage in blue.</em></p>
+
+<p>In the Who’s on First gazetteer, a <a href="https://github.com/whosonfirst/whosonfirst-placetypes/tree/main#locality">locality</a> represents an individual populated place regardless of population or size. While the number of villages in India is often quoted as being closer to 500,000 or 600,000 in total, the number of locality records in Who&rsquo;s On First is significantly larger because WOF localities include both incorporated local government areas and unincorporated settlements. As mentioned in the <a href="https://whosonfirst.org/blog/2023/06/07/state-of-the-gazetteer/">State of the Gazetteer</a> blog post:</p>
+
+<p><em>“WOF gazetteer’s focus on localities and unique identifiers sets us apart from many other projects. We choose to approach geography at a personal level – starting with the locality (or populated place) where people play, study, work, and sleep – and country for when people need a passport to cross a frontier and experience something new and exciting.&rdquo;</em></p>
+
+<p>Over the last several years, we’ve improved India data coverage in Who’s On First through various projects; cleaning up <a href="https://github.com/whosonfirst-data/whosonfirst-data/pull/1341">regions</a> for Indian states and union territories (including adding the new <a href="https://github.com/whosonfirst-data/whosonfirst-data/pull/1330">Telengana</a> state and India’s many <a href="https://github.com/whosonfirst-data/whosonfirst-data/issues/496">border disputes</a>), adding and refining polygons for the <a href="https://github.com/whosonfirst-data/whosonfirst-data/issues/1589">100 largest localities</a> and then improving the <a href="https://github.com/whosonfirst-data/whosonfirst-data-admin-in/pull/124">1,000 largest localities</a>, and <a href="https://github.com/whosonfirst-data/whosonfirst-data/issues/1593">adding neighbourhood records</a> to some of the largest metropolitan areas. We’ve also added extensive <a href="https://github.com/whosonfirst-data/whosonfirst-data/issues/1763">name localization</a> in over a dozen common local languages, including Hindi, Bengali, Urdu, and Punjabi. And we’ve made many one-off fixes based on user feedback (examples: <a href="https://github.com/whosonfirst-data/whosonfirst-data/issues/1788">1</a>, <a href="https://github.com/whosonfirst-data/whosonfirst-data/issues/1838">2</a>, <a href="https://github.com/whosonfirst-data/whosonfirst-data/issues/1855">3</a>, and <a href="https://github.com/whosonfirst-data/whosonfirst-data/issues/1874">4</a>).</p>
+
+<p>Even with those earlier efforts, WOF heard consistent feedback from our users:</p>
+
+<ol>
+<li><em>Some localities are missing entirely from the WOF gazetteer</em></li>
+<li><em>Some point localities are offset in WOF compared to their real ground position</em></li>
+<li><em>Some polygon localities in WOF have the wrong shape compared with their real ground position (too small, too large, too coarse, or otherwise misshapen)</em></li>
+<li><em>Existing locality data is sometimes miscategorized/misclassified and would be better represented as instead with a different WOF placetype of neighbourhood or borough</em></li>
+</ol>
+
+<p>These data gaps create challenges when operating location service applications like search and reverse geocoding for India. When a place is missing, it can’t be searched by name using a partial or complete text string. And the absence of places, incorrect centroids, and incorrect polygons for existing WOF places can cause reverse geocoding services to <a href="https://en.wikipedia.org/wiki/Hallucination_(artificial_intelligence">hallucinate</a> when answering the question of <em>“What locality is here?”</em></p>
+
+<p>As anyone who’s searched for Indian map data knows, the sheer number of people and populated places, combined with the historic paucity of openly licensed and/or authoritative government data, has presented significant challenges. India recently <a href="https://www.un.org/development/desa/dpad/publication/un-desa-policy-brief-no-153-india-overtakes-china-as-the-worlds-most-populous-country/#:~:text=In%20April%202023%2C%20India's%20population,to%20grow%20for%20several%20decades.">surpassed</a> China to become the most populous country on Earth with over 1.4 billion people. According to the <a href="https://data.worldbank.org/indicator/SP.URB.TOTL.IN.ZS?locations=IN">World Bank</a>, around 65% of people in India are spread out in hundreds of thousands of rural villages with populations less than 5,000; the remaining 35% urbanized population is concentrated in towns with incredible density themselves.</p>
+
+<p>The Karmashapes project was initiated to solve the data gap by mashing up several new and existing datasets, like the Indian Ministry of Rural Development’s recently released <em>Habitations</em> open data layer. This work was done in partnership with <a href="https://www.linkedin.com/in/justin--meyers/">Justin Meyers</a> at Revolutionary GIS.</p>
+
+<p>After a year’s worth of development, we’re excited to announce a step change improvement for India locality coverage in Who’s On First – as openly licensed, CC-BY data.</p>
+
+<h2>By the Numbers</h2>
+
+<p>We recently finished importing Karmashpes into WOF to generally improve coverage and address common user feedback. Doing so allows Karmashapes to also benefit from WOF’s <a href="https://github.com/whosonfirst/whosonfirst-properties/blob/main/properties/wof/id.json">stable identifiers</a>, <a href="https://github.com/whosonfirst-data/whosonfirst-data/">Github</a> (as well as Github’s <a href="https://github.com/whosonfirst-data/whosonfirst-data/issues">issue tracking</a> for future improvements), and to supplement with the <a href="https://github.com/whosonfirst/whosonfirst-sources/blob/main/sources/README.md">existing sources</a> that WOF already maintains to fill in any coverage or localization gaps that the raw Karmashapes dataset might have.</p>
+
+<p>Importing Karmashapes also allows any downstream consumer of WOF, like <a href="https://pelias.io/">Pelias</a> via <a href="https://geocode.earth/">Geocode.Earth</a> to benefit from the full scope of data Karmashapes provides. Let’s take a look at the locality and neighbourhood coverage now available in WOF:</p>
+
+<p><img src="images/kerala.png" alt="Locality coverage in Kerala" title="Locality coverage in Kerala" />
+<em>(above) Locality (blue polygons and blue dots) and neighbourhood (orange lines and orange dots) coverage along the northern Kerala coast</em></p>
+
+<p><img src="images/dehradun.png" alt="Locality coverage in Dehradun" title="Locality coverage in Dehradun" />
+<em>(above) Locality (blue polygons and blue dots) and neighbourhood (orange lines and orange dots) coverage northwest of Dehradun</em></p>
+
+<p><img src="images/chandigarh.png" alt="Locality coverage in Chandigarh" title="Locality coverage in Chandigarh" />
+<em>(above) Locality (blue polygons and blue dots) and neighbourhood (orange lines and orange dots) coverage in and around Chandigarh. Note some neighbourhood polygons in Chandigarh were curated pre-Karmashapes import and have been retained.</em></p>
+
+<p>In the three example above – the northern Kerala coast, areas of Dehradun, and the greater Chandigarh area - with orange representing the neighbourhood placetype and blue representing the locality placetype. These example areas illustrate the complexity, density, and coverage that Karmashapes has added to Who’s On First.</p>
+
+<table>
+<thead>
+<tr>
+<th>Placetype</th>
+<th>WOF feature count, pre-Karmashapes</th>
+<th>WOF feature count, post-Karmashapes</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><strong>Country</strong></td>
+<td>1 total; 1 polygon geometry</td>
+<td>1 total; 1 polygon geometry</td>
+</tr>
+
+<tr>
+<td><strong>Region</strong></td>
+<td>37 total; 37 polygons</td>
+<td>37 total; 37 polygons</td>
+</tr>
+
+<tr>
+<td><strong>County</strong></td>
+<td>640 total; 640 polygons</td>
+<td>640 total; 640 polygon</td>
+</tr>
+
+<tr>
+<td><strong>Locality</strong></td>
+<td>497,880 total;  1,546 polygons, 496,334 points</td>
+<td>915,468 total; 553,804 polygons, 361,664 point</td>
+</tr>
+
+<tr>
+<td><strong>Neighbourhood</strong></td>
+<td>9,679 total: 1,302 polygons, 8,377 points</td>
+<td>190,397 total; 25,312 polygons, 165,067 points</td>
+</tr>
+</tbody>
+</table>
+<p><em>(above) A chart, per placetype, with pre and post Karmashapes feature counts, split by geometry type</em></p>
+
+<table>
+<thead>
+<tr>
+<th>State / Union Territory</th>
+<th>Locality Feature Count, pre-Karmashapes import</th>
+<th>Locality Feature Count, post-Karmashapes import</th>
+<th>Neighbourhood Feature Count, pre-Karmashapes import</th>
+<th>Neighbourhood Feature Count, post-Karmashapes import</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><strong>Andaman and Nicobar Islands</strong></td>
+<td>96</td>
+<td>166</td>
+<td>3</td>
+<td>8</td>
+</tr>
+
+<tr>
+<td><strong>Andhra Pradesh</strong></td>
+<td>23,567</td>
+<td>43,563</td>
+<td>239</td>
+<td>8,433</td>
+</tr>
+
+<tr>
+<td><strong>Arunachal Pradesh</strong></td>
+<td>304</td>
+<td>351</td>
+<td>2</td>
+<td>5</td>
+</tr>
+
+<tr>
+<td><strong>Assam</strong></td>
+<td>1,077</td>
+<td>23,517</td>
+<td>29</td>
+<td>7,502</td>
+</tr>
+
+<tr>
+<td><strong>Bihar</strong></td>
+<td>37,075</td>
+<td>56,473</td>
+<td>366</td>
+<td>20,781</td>
+</tr>
+
+<tr>
+<td><strong>Chandigarh</strong></td>
+<td>1</td>
+<td>1</td>
+<td>103</td>
+<td>104</td>
+</tr>
+
+<tr>
+<td><strong>Chhattisgarh</strong></td>
+<td>15,551</td>
+<td>29,401</td>
+<td>84</td>
+<td>2,400</td>
+</tr>
+
+<tr>
+<td><strong>Dadra and Nagar Haveli</strong></td>
+<td>32</td>
+<td>46</td>
+<td>1</td>
+<td>4</td>
+</tr>
+
+<tr>
+<td><strong>Daman and Diu</strong></td>
+<td>21</td>
+<td>20</td>
+<td>3</td>
+<td>5</td>
+</tr>
+
+<tr>
+<td><strong>Delhi</strong></td>
+<td>1</td>
+<td>12</td>
+<td>583</td>
+<td>623</td>
+</tr>
+
+<tr>
+<td><strong>Goa</strong></td>
+<td>379</td>
+<td>507</td>
+<td>62</td>
+<td>88</td>
+</tr>
+
+<tr>
+<td><strong>Gujarat</strong></td>
+<td>3,991</td>
+<td>30,946</td>
+<td>194</td>
+<td>2,422</td>
+</tr>
+
+<tr>
+<td><strong>Haryana</strong></td>
+<td>6,908</td>
+<td>7,712</td>
+<td>307</td>
+<td>1,393</td>
+</tr>
+
+<tr>
+<td><strong>Himachal Pradesh</strong></td>
+<td>19,426</td>
+<td>20,845</td>
+<td>125</td>
+<td>138</td>
+</tr>
+
+<tr>
+<td><strong>Jammu and Kashmir</strong></td>
+<td>10,845</td>
+<td>11,359</td>
+<td>205</td>
+<td>205</td>
+</tr>
+
+<tr>
+<td><strong>Jharkhand</strong></td>
+<td>6,934</td>
+<td>36,023</td>
+<td>39</td>
+<td>4,245</td>
+</tr>
+
+<tr>
+<td><strong>Karnataka</strong></td>
+<td>28,462</td>
+<td>62,045</td>
+<td>906</td>
+<td>7,004</td>
+</tr>
+
+<tr>
+<td><strong>Kerala</strong></td>
+<td>5,580</td>
+<td>17,768</td>
+<td>448</td>
+<td>3,099</td>
+</tr>
+
+<tr>
+<td><strong>Ladakh</strong></td>
+<td>0</td>
+<td>352</td>
+<td>0</td>
+<td>0</td>
+</tr>
+
+<tr>
+<td><strong>Lakshadweep</strong></td>
+<td>2</td>
+<td>11</td>
+<td>0</td>
+<td>0</td>
+</tr>
+
+<tr>
+<td><strong>Madhya Pradesh</strong></td>
+<td>43,739</td>
+<td>66,683</td>
+<td>273</td>
+<td>8,431</td>
+</tr>
+
+<tr>
+<td><strong>Maharashtra</strong></td>
+<td>20,402</td>
+<td>76,022</td>
+<td>708</td>
+<td>7,253</td>
+</tr>
+
+<tr>
+<td><strong>Manipur</strong></td>
+<td>187</td>
+<td>197</td>
+<td>5</td>
+<td>9</td>
+</tr>
+
+<tr>
+<td><strong>Meghalaya</strong></td>
+<td>187</td>
+<td>238</td>
+<td>3</td>
+<td>14</td>
+</tr>
+
+<tr>
+<td><strong>Mizoram</strong></td>
+<td>164</td>
+<td>184</td>
+<td>2</td>
+<td>2</td>
+</tr>
+
+<tr>
+<td><strong>Nagaland</strong></td>
+<td>132</td>
+<td>150</td>
+<td>2</td>
+<td>13</td>
+</tr>
+
+<tr>
+<td><strong>Odisha</strong></td>
+<td>10,645</td>
+<td>57,759</td>
+<td>63</td>
+<td>5,954</td>
+</tr>
+
+<tr>
+<td><strong>Puducherry</strong></td>
+<td>36</td>
+<td>88</td>
+<td>7</td>
+<td>51</td>
+</tr>
+
+<tr>
+<td><strong>Punjab</strong></td>
+<td>11,234</td>
+<td>13,922</td>
+<td>327</td>
+<td>2,021</td>
+</tr>
+
+<tr>
+<td><strong>Rajasthan</strong></td>
+<td>18,288</td>
+<td>48,302</td>
+<td>451</td>
+<td>6,152</td>
+</tr>
+
+<tr>
+<td><strong>Sikkim</strong></td>
+<td>328</td>
+<td>352</td>
+<td>9</td>
+<td>9</td>
+</tr>
+
+<tr>
+<td><strong>Tamil Nadu</strong></td>
+<td>17,807</td>
+<td>48,330</td>
+<td>879</td>
+<td>10,859</td>
+</tr>
+
+<tr>
+<td><strong>Telangana</strong></td>
+<td>11,700</td>
+<td>6,888</td>
+<td>438</td>
+<td>4,417</td>
+</tr>
+
+<tr>
+<td><strong>Tripura</strong></td>
+<td>72</td>
+<td>6,102</td>
+<td>1</td>
+<td>972</td>
+</tr>
+
+<tr>
+<td><strong>Uttar Pradesh</strong></td>
+<td>140,462</td>
+<td>176,615</td>
+<td>2,198</td>
+<td>72,163</td>
+</tr>
+
+<tr>
+<td><strong>Uttarakhand</strong></td>
+<td>10,425</td>
+<td>21,072</td>
+<td>246</td>
+<td>1,679</td>
+</tr>
+
+<tr>
+<td><strong>West Bengal</strong></td>
+<td>3,562</td>
+<td>43,286</td>
+<td>372</td>
+<td>10,612</td>
+</tr>
+</tbody>
+</table>
+<p><em>(above) a detailed breakdown of neighbourhood and locality placetype counts, per region of India, both before and after the Karmashapes import. NOTE: Numbers may not completely add up due to partial overlaps with disputed territories.</em></p>
+
+<h2>Creating Karmashapes</h2>
+
+<p>Karmashapes was a journey into mapping India; it took years of patience, hundreds of emails and months to fully develop. But what exactly <em>is</em> Karmashapes and <em>how</em> was it developed?</p>
+
+<p><img src="images/placetypes.png" alt="India&rsquo;s placetype structure" title="India's placetype structure" />
+<em>(above) This image shows the placetype structure in India. The placetypes circled in red (village, habitations, and urban) are the placetypes that Karmashapes catalogs as <code>locality</code> records. Generally, villages are populated places with less than 5,000 people and urban towns have at least 5,000 and often millions of people. Credits: <a href="https://lgdirectory.gov.in/">https://lgdirectory.gov.in/</a></em></p>
+
+<p>This build wasn&rsquo;t possible until 2022, when five openly-licensed datasets were each available and combined to create Karmashapes; this included three vector datasets and two raster datasets.</p>
+
+<p>Last year, the Indian Ministry of Rural Development (<a href="https://geosadak-pmgsy.nic.in/opendata/">PMGSY</a>) openly released its ‘Habitations’ dataset. This was the first localities dataset released in India with a clear and friendly license. Geospatial census data from Columbia University’s Socioeconomic Data and Applications Center (<a href="https://sedac.ciesin.columbia.edu/data/set/india-india-village-level-geospatial-socio-econ-1991-2001/data-download">SEDAC</a>) for all Indian villages helped confirm and verify the locations in the PMGSY dataset. Lastly, a vector dataset from the Geographic Names Server created by the National Geospatial-Intelligence Agency (<a href="https://geonames.nga.mil/geonames/GNSHome/welcome.html">NGA</a>) was used to cross-reference PMGSY and SEDAC data.</p>
+
+<p>Once a single cleaned and verified vector dataset was created, “unique candidate” urban area polygons were synthesized from two additional global raster datasets: the World Settlement Footprint (<a href="https://download.geoservice.dlr.de/WSF_EVO/">WSFEVO</a>) Evolution from the German Aerospace Center (DLR) at 10m resolution and a global map of land use/land cover (LULC) derived from the European Space Agency’s (ESA) <a href="https://www.arcgis.com/apps/instant/media/index.html?appid=fc92d38533d440078f17678ebc20e8e2">Sentinel-2 imagery</a>, also at 10m resolution. These raster layers were converted to two additional vector datasets, which were used for an additional cross-reference for the primary vector datasets listed below.</p>
+
+<p><img src="images/pmgsy.png" alt="Pradhan Mantri Gram Sadak Yojana example" title="Pradhan Mantri Gram Sadak Yojana example" /></p>
+
+<p><strong><a href="https://geosadak-pmgsy.nic.in/opendata/">Pradhan Mantri Gram Sadak Yojana (PMGSY)</a></strong></p>
+
+<ul>
+<li><strong>Coverage:</strong> 1,084,413 points</li>
+<li><strong>License</strong>: CC-BY (equivalent)</li>
+<li><strong>Description</strong>: Used for locality points across India. Population data may be gathered from this source.</li>
+<li><strong>Data Type</strong>: Vector data.</li>
+</ul>
+
+<p><img src="images/nga.png" alt="National Geospatial Intelligence Agency example" title="National Geospatial Intelligence Agency example" /></p>
+
+<p><strong><a href="https://geonames.nga.mil/geonames/GNSHome/welcome.html">National Geospatial Intelligence Agency (NGA)</a></strong></p>
+
+<ul>
+<li><strong>Coverage:</strong> 573,007 points</li>
+<li><strong>License</strong>: Public Domain</li>
+<li><strong>Description</strong>: These are settlement points, and actually exist in Who&rsquo;s On First today as GeoNames-sourced localities. We may be sourcing new localities from NGA in the future, since the initial GeoNames import occurred in 2018. GeoNames also provides names in dozens of languages, which have been imported into Who&rsquo;s On First.</li>
+<li><strong>Data Type</strong>: Vector data.</li>
+</ul>
+
+<p><img src="images/wsfevo.png" alt="World Settlement Footprint (WSF) Evolution example" /></p>
+
+<p><strong><a href="https://download.geoservice.dlr.de/WSF_EVO/">World Settlement Footprint (WSF) Evolution - Landsat-<sup>5</sup>&frasl;<sub>7</sub> Dataset (WSFEVO)</a></strong></p>
+
+<ul>
+<li><strong>Coverage:</strong> 2,323,907 polygons</li>
+<li><strong>License</strong>: CC-BY 4.0</li>
+<li><strong>Description</strong>: Raw raster data, being converted into vector data. Place counts represent cell count from raster &gt; vector conversion.</li>
+<li><strong>Data Type</strong>: Vectorized raster data</li>
+</ul>
+
+<p><strong><a href="https://sedac.ciesin.columbia.edu/data/set/india-india-village-level-geospatial-socio-econ-1991-2001/data-download">Socioeconomic Data and Applications Center (SEDAC) / Center for International Earth Science Information Network (CIESIN)</a></strong></p>
+
+<ul>
+<li><strong>Coverage:</strong> 627,199 polygons</li>
+<li><strong>License</strong>: CC-BY</li>
+<li><strong>Description</strong>: Used for locality polygons across India (1991 &amp; 2001 vintage). Population counts may be gathered from this source.</li>
+<li><strong>Data Type</strong>: Vector data.</li>
+</ul>
+
+<p><strong><a href="https://www.arcgis.com/apps/instant/media/index.html?appid=fc92d38533d440078f17678ebc20e8e2">Sentinel-2 10m Land Use/Land Cover (ESRI, Microsoft, National Geographic)</a></strong></p>
+
+<ul>
+<li><strong>Coverage:</strong> 3,377,461 polygons</li>
+<li><strong>License</strong>: CC-BY 4.0</li>
+<li><strong>Description</strong>: Raw raster data, being converted into vector data. Place counts represent cell count from raster &gt; vector conversion.</li>
+<li><strong>Data Type</strong>: Vectorized raster data</li>
+</ul>
+
+<p><strong><a href="https://ghsl.jrc.ec.europa.eu/ghs_stat_ucdb2015mt_r2019a.php">Global Human Settlement Layer (GHSL)</a></strong></p>
+
+<ul>
+<li><strong>Coverage:</strong> 3,242,056 polygons</li>
+<li><strong>License</strong>: CC-BY 4.0</li>
+<li><strong>Description</strong>: Raw raster data, being converted into vector data. Place counts represent cell count from raster &gt; vector conversion. Being used to “optimize” urban localities; if GHSL points fell within one of the raster data sources, a place would be considered valid.</li>
+<li><strong>Data Type</strong>: Vectorized raster data</li>
+</ul>
+
+<p><strong>Honorable mention:</strong> After the Karmashapes data initiative was completed and as we were importing Karamashapes into Who’s On First, the <a href="https://www.devdatalab.org/shrug">SHRUG</a> version 2 (Socioeconomic High-resolution Rural-Urban Geographic Platform for India) dataset from Development Data Lab was released. SHRUG includes 500,000 villages and 8,000 towns with data attributes covering a span of 25 years, all linked together with a set of common geographic identifiers. While the SHURG v2 CC-BY-NC-SA license limits it for non-commercial projects or direct import into Who’s On First, this could be an area of future collaboration.</p>
+
+<p><img src="images/baralu1.png" alt="Combined Karmashapes input datasets" title="Combined Karmashapes input datasets" />
+<em>(above) All data sources for Baralu/Barahalu/Barahallu overlaid in QGIS</em></p>
+
+<p><img src="images/baralu2.png" alt="Example of final place data for Baralu" title="Example of final place data for Baralu" />
+<em>(above) The final polygon and label position for the place of Baralu</em></p>
+
+<p>Numerous geoprocessing tools in QGIS were used to analyze and combine these five datasets, resulting in composite polygons and points for habitations and villages in India. Each of these input datasets helped to create detailed feature attributes of Karmashapes, including:</p>
+
+<ul>
+<li><em>Population counts</em></li>
+<li><em>Population vintage</em></li>
+<li><em>Name (Latin-based)</em></li>
+<li><em>Name variants (Latin-based and limited local script names)</em></li>
+<li><em>Label centroids</em></li>
+</ul>
+
+<p>Collaborating with data developers and contributors to each of these projects was very helpful. The insight and knowledge they shared helped increase Karmashape’s awareness of the local administrative structure, naming conventions and regional name spellings/localizations. It took dozens of conversations with people in the <a href="https://datameet.org/">Datameet group</a>, colleagues from OpenStreetMap (OSM), and friendly strangers on Twitter to help answer detailed questions about rural areas and the various megacities of India.</p>
+
+<p>On their own, each of these datasets is busy, messy, and don’t represent locations across India well. While the PMGSY data represents habitations (the lowest level division of people loosely accounted for by the Indian government) well, the dataset lacks larger villages, towns, and cities. Karmashapes used SEDAC data to fill in most coverage gaps, along with the NGA point data. The two vectorized raster datasets then brought urban boundaries into focus and helped flush out unique location matches or agglomerations where parent-child structures are implemented to showcase the main place of the urban fabric.</p>
+
+<p>All of this was done through dozens of detailed matching steps, edit sessions, refining poor-quality data, cleaning/scrubbing data attributes, and squeezing out every drop of potential from each data source.</p>
+
+<p><img src="images/pre-ks-coverage-1.png" alt="Pre-Karmashapes polygon coverage" title="Pre-Karmashapes polygon coverage" />
+<em>(above) Example polygon coverage, WOF (pre-Karmashapes import)</em></p>
+
+<p><img src="images/post-ks-coverage-1.png" alt="Post-Karmashapes polygon coverage" title="Post-Karmashapes polygon coverage" />
+<em>(above) Example polygon coverage, raw Karmashapes</em></p>
+
+<p><img src="images/pre-ks-coverage-2.png" alt="Pre-Karmashapes polygon coverage" title="Pre-Karmashapes polygon coverage" />
+<em>(above) Example polygon coverage, WOF (pre-Karmashapes import)</em></p>
+
+<p><img src="images/post-ks-coverage-2.png" alt="Post-Karmashapes polygon coverage" title="Post-Karmashapes polygon coverage" />
+<em>(above) Example polygon coverage, raw Karmashapes</em></p>
+
+<h2>Merging into Who’s On First</h2>
+
+<p>Before Karmashapes, locality coverage in WOF was mainly represented using publicly available <a href="https://www.geonames.org/">GeoNames</a> point data and roughly 1,500 hand-curated polygons for large, populous localities. In WOF, urban towns and village-level places in India were imported at the locality placetype. Habitations were imported at the neighbourhood placetype.</p>
+
+<p>However, because Karmashapes was developed using several input datasets, each of different vintage, some geographic overlap between town and village polygons is present in the dataset. To solve this overlap issue, WOF relied on Karmashapes attributes and spatial geoprocessing tools to move some villages to the neighbourhood placetype.</p>
+
+<p>If a Karmashape record fell inside a town, for example, it was imported as a WOF neighbourhood. The “urban” administrative level that represents some of India’s largest metropolitan areas was confusing to fit properly into WOF, due to the sprawling and often overly large polygons created during Karmashapes processing steps. In cases where WOF already maintained hand-curated, accurate polygons for large cities, Karmashapes polygons were added as <a href="https://whosonfirst.org/docs/geometries/alt/">alt-geometries</a> for these places and the existing polygons were maintained as-is.</p>
+
+<p>Below, you’ll find a chart that maps the “core” admin levels in India’s administrative hierarchy to current (and proposed) Who’s On First placetypes.</p>
+
+<table>
+<thead>
+<tr>
+<th>Indian Admin Level</th>
+<th>WOF placetype</th>
+<th>Notes</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>State</td>
+<td>Region</td>
+<td>In WOF pre-Karmashapes</td>
+</tr>
+
+<tr>
+<td>Union territory</td>
+<td>Region</td>
+<td>In WOF pre-Karmashapes</td>
+</tr>
+
+<tr>
+<td>District</td>
+<td>County</td>
+<td>In WOF pre-Karmashapes</td>
+</tr>
+
+<tr>
+<td>Sub-district</td>
+<td>N/A</td>
+<td>Speculative new WOF placetype, a followup to the Karmashapes import</td>
+</tr>
+
+<tr>
+<td>Village</td>
+<td>Localadmin and locality</td>
+<td>Significant WOF upgrade post-Karmashapes</td>
+</tr>
+
+<tr>
+<td>Urban</td>
+<td>Localadmin and locality (sometimes coterminous with county)</td>
+<td>In WOF pre-Karmashapes</td>
+</tr>
+</tbody>
+</table>
+<p>Additional localization work was done in WOF once Karmashapes geometries and properties were imported. Hindi name translations were added to any locality record with a population of 50,000 or more and additional localizations were added based on regional language patterns. WOF maintains official and spoken language by region, so each locality’s parent region was evaluated to prompt additional relevant localizations to match local expectations and supplement the Hindi localizations. In total, name translations were added to over 17,000 records over what was provided by Karmashapes.</p>
+
+<p>Using openly-licensed data at each step of the build process allows Karmashapes to be released under a simple CC-BY license and, in turn, allows Who’s On First to import the full Karmashapes dataset. Without openly licensed data, this build would not have been possible.</p>
+
+<h2>Get the Data</h2>
+
+<p>Karmashapes and Who’s On First data are available in several file formats and through various endpoints. You can access and browse data here:</p>
+
+<ul>
+<li><a href="https://spelunker.whosonfirst.org/placetypes/locality/?&amp;iso=in">Browse</a> Who’s On First records in the Spelunker</li>
+<li><a href="https://geocode.earth/data/whosonfirst/#IN">Download</a> Who’s On First data in Shapefile and SQLite formats, via Geocode.Earth:</li>
+<li><a href="https://whosonfirst.org/blog/2023/05/31/shapefiles/">Learn</a> more about downloading Who’s On First data in various formats</li>
+<li>Want the raw Karmashapes files? Full Karmashapes downloads are <a href="https://karmashapes.wordpress.com/2023/03/05/karmashapes-v0/">available</a> on Justin’s blog.</li>
+</ul>
+
+<h2>Next Steps</h2>
+
+<p>Because the village and habitation data in India often overlaps, especially near the largest metro areas in the country, Karmashapes records were imported into Who’s On First most often as locality records and sometimes as neighbourhood records when they fell in an existing WOF locality. Practically speaking, this means many of the Who’s On First records in and around the ~1,500 largest metropolitan areas in India should be reviewed.</p>
+
+<p>Some of the input sources used to create Karmashapes use population estimates from before the last census and those vintage population values for localities and neighbourhoods may also need to be updated.</p>
+
+<p><img src="images/next-steps-1.png" alt="Next Steps" title="Next Steps" /></p>
+
+<p><em>(above) Ahmedabad locality extent with curated neighbourhood boundaries and a few new, funky Karamashapes neighbourhoods on the margins in darker blue.</em></p>
+
+<p><img src="images/next-steps-2.png" alt="Next Steps" title="Next Steps" /></p>
+
+<p><em>(above) Delhi metropolitan area with pink locality polygons and blue neighbourhood polygons (original Quattroshapes neighbourhood polygons are contained in the urban core and Karmashapes neighbourhood polygons are visible on the margins).</em></p>
+
+<p>Reviewing the placetypes and geometries of records at the edge of large locality polygons like those shown in the above screenshots will be an important next step when updating WOF records.</p>
+
+<p>Improving neighborhood coverage within locality polygons and reviewing the hierarchies of all WOF records in India will also be a priority. In some cases, Karmashapes has created village and urban polygons that span slightly outside of expected parent region boundaries. We’ll want to review these polygons to ensure they’re extent is accurate and their hierarchies are expected.</p>
+
+<p>Although Karmashapes provided English names for the villages, habitations, and urban areas of India, name localization into official and spoken languages for many places is a work in progress. While the most populous places that were already in WOF have good name localization coverage, thanks to Karmashapes over one million place records are now available in India and it is challenging to localize all place names into all local languages. We’re open to contributions if you have them!</p>
+
+<p>Lastly, if updates to PMGSY data become available (or any future dataset for localities in India are released under an open license), we’ll want to review those sources to keep WOF as up to date as possible - which it turns out can be quite tricky. We&rsquo;re also curious about updated population statistics from the long delayed 2021 Census.</p>
+
+<h2>Contact Who’s On First</h2>
+
+<p>Do you have suggestions for data improvements in India? Please file a <a href="https://github.com/whosonfirst-data/whosonfirst-data/issues/new">new issue</a> or <a href="https://github.com/whosonfirst-data/whosonfirst-data/discussions/new/choose">discussion topic</a> in Github about improving place records and coverage. <a href="http://eepurl.com/ipOxd2">Subscribe to WOF Announcements</a> for “big news”, via Mailchimp. Frequency is a few times per year. Subscribers are the first to know about change like this big India locality data drop!</p>
+
+<p>You can also join our new <a href="https://groups.google.com/g/wof-gazetteer">WOF Gazetteer discussion group</a> on Google to ask questions and share updates on your country’s latest changes to its internal administrative subdivisions. If you’re a geography geek, this one’s for you.</p>
+
+<p>If you or your organization relies on Who’s On First please consider sponsoring us with a recurring or one-time donation. Please reach out to Nathaniel at <a href="mailto:wofgazetteer@gmail.com">wofgazetteer@gmail.com</a> to discuss options.</p>
+
+		</article>
+		</div>
+		</div>	
+		</div>	
+
+		<footer>
+			<nav class="navbar navbar-default navbar-bottom">
+				<div class="container">
+					
+					<ul class="nav navbar-nav navbar-right whosonfirst-footer">
+						<li><a href="/docs/contributing/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">contributing</a></li>
+						<li><a href="/docs/licenses/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">license</a></li>
+						
+						<li><a href="https://mapstodon.space/@whosonfirst" class="whosonfirst-nav-link whosonfirst-footer-nav-link">mastodon</a></li>			
+					</ul>
+				</div>
+			</nav>
+		</footer>
+
+		
+		<script src="/javascript/jquery.min.js"></script>
+		
+		<script src="/javascript/bootstrap.min.js"></script>
+		<script src="/javascript/mapzen.whosonfirst.home.js"></script>
+		<script src="/javascript/mapzen.whosonfirst.subpage.js"></script>
+		
+		<script src="/javascript/highlightpack.js"></script>
+		<script>
+		  try {
+		  	hljs.initHighlightingOnLoad();
+		  } catch (e) {
+		  	console.log("HLJS", e);
+		  }
+		</script>
+	</body>
+</html>
+
