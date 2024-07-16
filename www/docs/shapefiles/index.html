@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Who’s On First | Docs | Shapefiles</title>
+		<meta name="description" content="Who’s on First is a gazetteer of places." />
+		<link rel="apple-touch-icon" href="/images/favicons/apple-touch-icon.png" sizes="180x180">
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-16x16.png" sizes="16x16">
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-32x32.png" sizes="32x32">
+		<link rel="manifest" href="/images/favicons/manifest.json">
+		<link rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg" color="#2C1E3F">
+		<link rel="stylesheet" href="/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/css/mapzen.whosonfirst.css">
+		<!-- CSS for code styling from highlightpack.js -->
+		<link rel="stylesheet" href="/css/styles/grayscale.css">
+	</head>
+	<body>
+		<div class="whosonfirst-wrapper">
+
+			<nav class="navbar navbar-default navbar-fixed-top whosonfirst-fixed-subpage-navbar">
+				<div class="container">
+
+					<!-- Brand and toggle get grouped for better mobile display -->
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="/">Who’s On First</a>
+					</div>
+
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					  <ul class="nav navbar-nav navbar-right">
+
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/browse/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">browse</a>
+							</li>
+					    
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/docs/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">documentation</a>
+							</li>
+							
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/code/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">code</a>
+							</li>
+
+							<!--
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/api/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">api</a>
+							</li>
+							-->
+							
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/download/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">download</a>
+							</li>
+							
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/blog/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">blog</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+<div class="container whosonfirst-subpage-container">
+	<div class="row">
+		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-0">
+			<aside>
+				<div class="whosonfirst-sidenav-container">
+					<ul class="whosonfirst-sidenav-list">
+
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="/docs/uris/" class="whosonfirst-nav-link whosonfirst-sidenav-link">identifiers</a>
+						</li>
+
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="/docs/placetypes/" class="whosonfirst-nav-link whosonfirst-sidenav-link">placetypes</a>
+						</li>
+
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="/docs/hierarchies/" class="whosonfirst-nav-link whosonfirst-sidenav-link">hierarchies</a>
+						</li>
+
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="/docs/geometries/" class="whosonfirst-nav-link whosonfirst-sidenav-link">geometries</a>
+						</li>
+
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="/docs/properties/" class="whosonfirst-nav-link whosonfirst-sidenav-link">properties</a>
+						</li>
+
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="/docs/names/" class="whosonfirst-nav-link whosonfirst-sidenav-link">names</a>
+						</li>
+
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="/docs/dates/" class="whosonfirst-nav-link whosonfirst-sidenav-link">dates</a>
+						</li>
+
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="/docs/categories/" class="whosonfirst-nav-link whosonfirst-sidenav-link">categories</a>
+						</li>
+						
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="/docs/concordances/" class="whosonfirst-nav-link whosonfirst-sidenav-link">concordances</a>
+						</li>
+
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="/docs/spr/" class="whosonfirst-nav-link whosonfirst-sidenav-link">standard places response (SPR)</a>
+						</li>
+
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="/docs/shapefiles/" class="whosonfirst-nav-link whosonfirst-sidenav-link">shapefiles</a>
+						</li>
+						
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="/docs/sources/" class="whosonfirst-nav-link whosonfirst-sidenav-link">sources</a>
+						</li>
+
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="/docs/keyterms/" class="whosonfirst-nav-link whosonfirst-sidenav-link">key terms</a>
+						</li>
+
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="https://github.com/whosonfirst/whosonfirst-cookbook" class="whosonfirst-nav-link whosonfirst-sidenav-link">cookbook</a>
+						</li>
+
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="/docs/processes/" class="whosonfirst-nav-link whosonfirst-sidenav-link">processes and workflows</a>
+						</li>
+
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="/docs/tests/" class="whosonfirst-nav-link whosonfirst-sidenav-link">tests</a>
+						</li>
+
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="/docs/contributing/" class="whosonfirst-nav-link whosonfirst-sidenav-link">contributing</a>
+						</li>
+
+						<li class="whosonfirst-sidenav-list-element">
+							<a href="/docs/licenses/" class="whosonfirst-nav-link whosonfirst-sidenav-link">licensing</a>
+						</li>
+
+					</ul>
+				</div>
+			</aside>
+		</div>
+		<div class="col-lg-7 col-md-9 col-sm-9 col-xs-12">
+			<article>
+<h1 class="whosonfirst-subpage-header">
+Shapefiles
+</h1>
+<div class="whosonfirst-fulltabs-container">
+	<div class="whosonfirst-extrasmall-tabs-menu">
+		<div class="whosonfirst-extrasmall-tabs-menu-content">
+			<div class="whosonfirst-extrasmall-tabs-menu-content-header">
+				<div class="row whosonfirst-extrasmall-menu-row">
+					<div class="col-xs-11">
+						<div class="whosonfirst-extrasmall-tab-selection">Shapefiles</div>
+					</div>
+					<div class="col-xs-1 whosonfirst-extrasmall-menu-chevron-col">
+						<button type="button" class="navbar-toggle collapsed whosonfirst-extrasmall-menu-chevron-down" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2" aria-expanded="false">
+							<span id="glyphicon-one" class="glyphicon glyphicon-menu-down whosonfirst-extrasmall-menu-actual-chevron-down"></span>
+						</button>
+					</div>
+				</div>
+			</div>
+			<div class="collapse" id="bs-example-navbar-collapse-2">
+				<div class="whosonfirst-extrasmall-nav-collection">
+				</div>
+			</div><!-- /.navbar-collapse -->
+		</div>
+	</div>
+	<div class="whosonfirst-tabs-content">
+
+
+<p>
+<a href="https://whosonfirst.org/blog/2023/05/31/shapefiles/">Introduced</a> in 2023, shapefile downloads for the Who’s On First gazetteer are available as per-country ZIP archives including <b>admin</b> (with country, region, county, locality, neighbourhood & more placetypes), <b>postalcode</b>, and <b>constituency</b> bundles.
+</p>
+
+<p>The Shapefile distribution data properties are a superset of the <em>minimum</em> set of standardized place response (SPR) properties adapted to the limitations of the popular format's geometry type and DBF short column name lengths, with select commonly used properties from the SQLite distribution added and denormalized into a single DBF table.</p>
+
+<pre>
+type ShapefileSchema interface {
+	id() integer
+	parent_id() integer
+	name() string
+	placetype() string
+	country() string
+	repo() string
+	lat() float
+	lon() float
+	min_lat() float
+	min_lon() float
+	max_lat() float
+	max_lon() float
+	modified() date
+	name_ara() string
+	name_ben() string
+	name_deu() string
+	name_eng() string
+	name_ell() string
+	name_fas() string
+	name_fra() string
+	name_heb() string
+	name_hin() string
+	name_hun() string
+	name_ind() string
+	name_ita() string
+	name_jpn() string
+	name_kor() string
+	name_nld() string
+	name_pol() string
+	name_por() string
+	name_rus() string
+	name_spa() string
+	name_swe() string
+	name_tur() string
+	name_ukr() string
+	name_urd() string
+	name_vie() string
+	name_zho() string
+	gn_id() integer
+	wd_id() integer
+	concord_id() string
+	concord_ke() string
+	iso_code() string
+	hasc_id() string
+	country_id() integer
+	region_id() integer
+	county_id() integer
+	population() integer
+	placetype_local() string
+	is_funky() integer
+	min_zoom() float
+	max_zoom() float
+	min_label() float
+	max_label() float
+	geom_src() string
+}
+</pre>
+
+<h2>Shapefile ZIP archive file layout</h2>
+
+<p>
+Since shapefiles don’t support mixed geometry types, there can be 2 shapefiles for every WOF placetype, like “locality-points” and “locality-polygons” that collect the individual file components (with extensions like: shp, shx, dbf, prj, and cpg) into a single compressed ZIP archive.
+</p>
+<p>
+For example:
+</p>
+<ul>
+
+<li><a href="https://data.geocode.earth/wof/dist/shapefile/whosonfirst-data-admin-us-latest.zip">whosonfirst-data-admin-us-latest.zip</a>
+</li>
+</ul>
+<p>
+Would have two shapefiles for the locality placetype, one per geometry type:
+</p>
+
+<ul>
+<li>whosonfirst-data-admin-us-locality-polygon.shp</li>
+<li>whosonfirst-data-admin-us-locality-point.shp</li>
+</ul>
+
+<h2>Shapefile Data Schema</h2>
+
+<p>
+The shapefile format includes “<a href="https://github.com/whosonfirst/go-whosonfirst-spr/blob/main/spr.go#L8">standard place response</a>” (or SPR) and additional properties. Because of Shapefile’s 10-character limitation on DBF field name length (which would truncate some column names in an ambiguous way) we rename them explicitly, as noted below in the “field” column, with the “field_full” indicating the full SPR field name in the other formats, or full WOF property name. Some shapefile properties can coalesce values from multiple WOF source properties.
+</p>
+
+<h3>Standard Place Response (SPR) fields</h3>
+
+<p>
+With Shapefile we export most but not all of the core SPR properties.
+</p>
+
+<table style="width:100%">
+  <tr>
+   <td>field
+   </td>
+   <td>field_full
+   </td>
+   <td>type
+   </td>
+   <td>description
+   </td>
+  </tr>
+  <tr>
+   <td>id
+   </td>
+   <td>Id
+   </td>
+   <td>integer
+   </td>
+   <td>The unique ID of the place
+   </td>
+  </tr>
+  <tr>
+   <td>parent_id
+   </td>
+   <td>ParentId
+   </td>
+   <td>integer
+   </td>
+   <td>The unique parent ID of the place. Negative values indicate “<a href="https://github.com/whosonfirst/whosonfirst-properties/tree/main/properties/wof#parent_id">complicated</a>”.
+   </td>
+  </tr>
+  <tr>
+   <td>name
+   </td>
+   <td>Name
+   </td>
+   <td>string
+   </td>
+   <td>The default name of the place (mostly English, mostly ASCII-7)
+   </td>
+  </tr>
+  <tr>
+   <td>placetype
+   </td>
+   <td>Placetype
+   </td>
+   <td>string
+   </td>
+   <td>The Who’s On First placetype of the place
+   </td>
+  </tr>
+  <tr>
+   <td>country
+   </td>
+   <td>Country
+   </td>
+   <td>string
+   </td>
+   <td>The two-letter country code of the place
+   </td>
+  </tr>
+  <tr>
+   <td>repo
+   </td>
+   <td>Repo
+   </td>
+   <td>string
+   </td>
+   <td>The (Git) repository name where the source record for the place is stored.
+   </td>
+  </tr>
+  <tr>
+   <td>lat
+   </td>
+   <td>Latitude
+   </td>
+   <td>float
+   </td>
+   <td>The latitude for the principal centroid (typically “label”) of the place
+   </td>
+  </tr>
+  <tr>
+   <td>lon
+   </td>
+   <td>Longitude
+   </td>
+   <td>float
+   </td>
+   <td>The longitude for the principal centroid (typically “label”) of the place
+   </td>
+  </tr>
+  <tr>
+   <td>min_lat
+   </td>
+   <td>MinLatitude
+   </td>
+   <td>float
+   </td>
+   <td>The minimum latitude of the bounding box of the place
+   </td>
+  </tr>
+  <tr>
+   <td>min_lon
+   </td>
+   <td>MinLongitude
+   </td>
+   <td>float
+   </td>
+   <td>The minimum longitude of the bounding box of the place
+   </td>
+  </tr>
+  <tr>
+   <td>max_lat
+   </td>
+   <td>MaxLatitude
+   </td>
+   <td>float
+   </td>
+   <td>The maximum latitude of the bounding box of the place
+   </td>
+  </tr>
+  <tr>
+   <td>max_lon
+   </td>
+   <td>MaxLongitude
+   </td>
+   <td>float
+   </td>
+   <td>The maximum longitude of the bounding box of the place
+   </td>
+  </tr>
+  <tr>
+   <td>modified
+   </td>
+   <td>LastModified
+   </td>
+   <td>date
+   </td>
+   <td>The Unix timestamp indicating when the place was last modified
+   </td>
+  </tr>
+</table>
+
+
+<h3>Names</h3>
+
+
+<p>
+To provide a more ergonomic Shapefile experience, the SPR is pre-joined to the names table and includes 25 localized names, when available, for:
+</p>
+<blockquote>
+Arabic, Bengali, Chinese (simplified and/or traditional), Dutch, English, Farsi, French, German, Greek, Hebrew, Hindi, Hungarian, Indonesian, Italian, Japanese, Korean, Polish, Portuguese, Russian, Spanish, Swedish, Turkish, Ukrainian, Urdu, and Vietnamese
+</blockquote>
+<p>
+Who’s On First <a href="https://github.com/whosonfirst/whosonfirst-names#rfc-5646-bcp-47-comformance">uses</a> the RFC 5646/ BCP-47 <a href="https://www.loc.gov/standards/iso639-2/php/code_list.php">language indications</a> for names to specify a 3-character code for the following preferred locales as <code>name_{locale}</code> properties (so <code>name_eng</code> for English).
+</p>
+<p>
+The list of supported Shapefile languages is adapted from <a href="https://github.com/nvkelso/natural-earth-vector/tree/master/tools/wikidata#supported-languages--now-26">Natural Earth</a> and <a href="https://github.com/tilezen/vector-datasource/blob/master/docs/SEMANTIC-VERSIONING.md#languages-are-not-versioned">Tilezen’s</a> list of core languages. Arabic, Chinese, English, French, Russian and Spanish are used by the United Nations for meetings and official documents. The other languages listed are either proposed as an official language of the United Nations (Bengali, Hindi, Portuguese, and Turkish) or frequently used in OpenStreetMap, Who’s On First, or Wikipedia.
+</p>
+<p>
+<i>NOTE: Several hundred other languages are supported in the SQLite distributions in the “names” table.</i>
+</p>
+<p>
+Languages and their name fields
+</p>
+
+<table style="width:100%">
+  <tr>
+   <td>field
+   </td>
+   <td>3-char
+   </td>
+   <td>2-char
+   </td>
+   <td>language
+   </td>
+   <td>native script
+   </td>
+  </tr>
+  <tr>
+   <td>name_ara
+   </td>
+   <td>ara
+   </td>
+   <td>ar
+   </td>
+   <td>Arabic
+   </td>
+   <td>العربية
+   </td>
+  </tr>
+  <tr>
+   <td>name_ben
+   </td>
+   <td>ben
+   </td>
+   <td>bn
+   </td>
+   <td>Bengali
+   </td>
+   <td>বাংলা
+   </td>
+  </tr>
+  <tr>
+   <td>name_deu
+   </td>
+   <td>deu
+   </td>
+   <td>de
+   </td>
+   <td>German
+   </td>
+   <td>Deutsch
+   </td>
+  </tr>
+  <tr>
+   <td>name_eng
+   </td>
+   <td>eng
+   </td>
+   <td>en
+   </td>
+   <td>English
+   </td>
+   <td>English
+   </td>
+  </tr>
+  <tr>
+   <td>name_ell
+   </td>
+   <td>ell
+   </td>
+   <td>el
+   </td>
+   <td>Greek
+   </td>
+   <td>ελληνικά
+   </td>
+  </tr>
+  <tr>
+   <td>name_fas
+   </td>
+   <td>fas
+   </td>
+   <td>fa
+   </td>
+   <td>Farsi
+   </td>
+   <td>فارسی
+   </td>
+  </tr>
+  <tr>
+   <td>name_fra
+   </td>
+   <td>fra
+   </td>
+   <td>fr
+   </td>
+   <td>French
+   </td>
+   <td>français
+   </td>
+  </tr>
+  <tr>
+   <td>name_heb
+   </td>
+   <td>heb
+   </td>
+   <td>he
+   </td>
+   <td>Hebrew
+   </td>
+   <td>עִבְרִית‎
+   </td>
+  </tr>
+  <tr>
+   <td>name_hin
+   </td>
+   <td>hin
+   </td>
+   <td>hi
+   </td>
+   <td>Hindi
+   </td>
+   <td>हिन्दी
+   </td>
+  </tr>
+  <tr>
+   <td>name_hun
+   </td>
+   <td>hun
+   </td>
+   <td>hu
+   </td>
+   <td>Hungarian
+   </td>
+   <td>magyar
+   </td>
+  </tr>
+  <tr>
+   <td>name_ind
+   </td>
+   <td>ind
+   </td>
+   <td>id
+   </td>
+   <td>Indonesian
+   </td>
+   <td>Bahasa Indonesia
+   </td>
+  </tr>
+  <tr>
+   <td>name_ita
+   </td>
+   <td>ita
+   </td>
+   <td>it
+   </td>
+   <td>Italian
+   </td>
+   <td>italiano
+   </td>
+  </tr>
+  <tr>
+   <td>name_jpn
+   </td>
+   <td>jpn
+   </td>
+   <td>ja
+   </td>
+   <td>Japanese
+   </td>
+   <td>日本語
+   </td>
+  </tr>
+  <tr>
+   <td>name_kor
+   </td>
+   <td>kor
+   </td>
+   <td>ko
+   </td>
+   <td>Korean
+   </td>
+   <td>한국어
+   </td>
+  </tr>
+  <tr>
+   <td>name_nld
+   </td>
+   <td>nld
+   </td>
+   <td>nl
+   </td>
+   <td>Dutch
+   </td>
+   <td>Nederlands
+   </td>
+  </tr>
+  <tr>
+   <td>name_pol
+   </td>
+   <td>pol
+   </td>
+   <td>pl
+   </td>
+   <td>Polish
+   </td>
+   <td>Polski
+   </td>
+  </tr>
+  <tr>
+   <td>name_por
+   </td>
+   <td>por
+   </td>
+   <td>pt
+   </td>
+   <td>Portuguese
+   </td>
+   <td>Português
+   </td>
+  </tr>
+  <tr>
+   <td>name_rus
+   </td>
+   <td>rus
+   </td>
+   <td>ru
+   </td>
+   <td>Russian
+   </td>
+   <td>Русский
+   </td>
+  </tr>
+  <tr>
+   <td>name_spa
+   </td>
+   <td>spa
+   </td>
+   <td>es
+   </td>
+   <td>Spanish
+   </td>
+   <td>español
+   </td>
+  </tr>
+  <tr>
+   <td>name_swe
+   </td>
+   <td>swe
+   </td>
+   <td>sv
+   </td>
+   <td>Swedish
+   </td>
+   <td>Svenska
+   </td>
+  </tr>
+  <tr>
+   <td>name_tur
+   </td>
+   <td>tur
+   </td>
+   <td>tr
+   </td>
+   <td>Turkish
+   </td>
+   <td>Türkçe
+   </td>
+  </tr>
+  <tr>
+   <td>name_ukr
+   </td>
+   <td>ukr
+   </td>
+   <td>uk
+   </td>
+   <td>Ukrainian
+   </td>
+   <td>українська
+   </td>
+  </tr>
+  <tr>
+   <td>name_urd
+   </td>
+   <td>urd
+   </td>
+   <td>ur
+   </td>
+   <td>Urdu
+   </td>
+   <td>اردو
+   </td>
+  </tr>
+  <tr>
+   <td>name_vie
+   </td>
+   <td>vie
+   </td>
+   <td>vi
+   </td>
+   <td>Vietnamese
+   </td>
+   <td>Tiếng Việt
+   </td>
+  </tr>
+  <tr>
+   <td>name_zho
+   </td>
+   <td>zho
+   </td>
+   <td>zh
+   </td>
+   <td>Chinese
+   </td>
+   <td>中文
+   </td>
+  </tr>
+</table>
+
+<p>
+<i>NOTE: Chinese names may include a mix of simplified and/or traditional Chinese characters. The SQLite file tries to imply Simplified or Traditional characters with additional country tags.</i>
+</p>
+
+
+<h3>Concordances</h3>
+
+<p>
+To provide a more ergonomic Shapefile experience, the SPR is pre-joined with the “concordances” table in the SQLite database and shorted the full WOF property names in the original GeoJSON:
+</p>
+
+<table style="width:100%">
+  <tr>
+   <td>field
+   </td>
+   <td>field_full
+   </td>
+   <td>type
+   </td>
+   <td>description
+   </td>
+  </tr>
+  <tr>
+   <td>gn_id
+   </td>
+   <td>gn:id
+   </td>
+   <td>integer
+   </td>
+   <td>GeoNames unique identifier
+   </td>
+  </tr>
+  <tr>
+   <td>wd_id
+   </td>
+   <td>wd:id
+   </td>
+   <td>string
+   </td>
+   <td>Wikidata unique identifier
+   </td>
+  </tr>
+  <tr>
+   <td>concord_id
+   </td>
+   <td>wof:concordances[“concord_ke”]
+   </td>
+   <td>string
+   </td>
+   <td>Official government statistical or census unique ID, useful for data joins
+   </td>
+  </tr>
+  <tr>
+   <td>concord_ke
+   </td>
+   <td>wof:concordances_official
+   </td>
+   <td>string
+   </td>
+   <td>A valid wof:concordances key namespace indicating the source of the official concordance ID
+   </td>
+  </tr>
+  <tr>
+   <td>iso_code
+   </td>
+   <td>iso:code
+   </td>
+   <td>string
+   </td>
+   <td>International Standards Organization Country and Subdivision Codes
+   </td>
+  </tr>
+  <tr>
+   <td>hasc_id
+   </td>
+   <td>hasc:id
+   </td>
+   <td>string
+   </td>
+   <td>Statoids Hierarchical Set of Subdivision Codes
+   </td>
+  </tr>
+</table>
+
+
+<h3>Hierarchy</h3>
+
+<p>
+To provide a more ergonomic Shapefile experience, the SPR is pre-joined with the “ancestors” table in the SQLite database, keyed off ancestor_placetype:
+</p>
+
+<table style="width:100%">
+  <tr>
+   <td>field
+   </td>
+   <td>field_full
+   </td>
+   <td>type
+   </td>
+   <td>description
+   </td>
+  </tr>
+  <tr>
+   <td>country_id
+   </td>
+   <td>country
+   </td>
+   <td>integer
+   </td>
+   <td>The unique ID of the place’s country (or dependency) ancestor
+   </td>
+  </tr>
+  <tr>
+   <td>region_id
+   </td>
+   <td>region
+   </td>
+   <td>integer
+   </td>
+   <td>The unique ID of the place’s region ancestor
+   </td>
+  </tr>
+  <tr>
+   <td>county_id
+   </td>
+   <td>county
+   </td>
+   <td>integer
+   </td>
+   <td>The unique ID of the place’s county ancestor
+   </td>
+  </tr>
+</table>
+
+
+<p>
+<em>NOTE: Sometimes the <code>country_id</code> property will be backfilled with the dependency ID (shapefile only).</em>
+</p>
+
+<h3>Other goodies</h3>
+
+<p>
+To provide a more ergonomic Shapefile experience, several GeoJSON properties from the SPR table in the SQLite database are extracted and shorted the full WOF property names in the original GeoJSON:
+</p>
+
+<table style="width:100%">
+  <tr>
+   <td>field
+   </td>
+   <td>field_full
+   </td>
+   <td>type
+   </td>
+   <td>description
+   </td>
+  </tr>
+  <tr>
+   <td>population
+   </td>
+   <td>wof:population
+   </td>
+   <td>integer
+   </td>
+   <td>An integer value to represent the most current, known population of a place
+   </td>
+  </tr>
+  <tr>
+   <td>placetype_local
+   </td>
+   <td>label:{lang}_x_preferred_placetype
+   </td>
+   <td>string
+   </td>
+   <td>An string value to represent the most localized placetype, falling back to wof:placetype_local in English (so US “state” instead of WOF “region”)
+   </td>
+  </tr>
+  <tr>
+   <td>is_funky
+   </td>
+   <td>mz:is_funky
+   </td>
+   <td>integer
+   </td>
+   <td>An integer value used when the record is suspect, bad, or inappropriate but additional confirmation is needed before the feature is deprecated. Records with a 1 value are recommended to be hidden from map display and search unless explicitly asked for by name.
+   </td>
+  </tr>
+  <tr>
+   <td>min_zoom
+   </td>
+   <td>mz:min_zoom
+   </td>
+   <td>float
+   </td>
+   <td>Float values (though in practice mosts are integer values) that match to web map zoom schema for when the geometry should be shown. Common range is 0.0 to 18.0, though they can be greater.
+   </td>
+  </tr>
+  <tr>
+   <td>max_zoom
+   </td>
+   <td>mz:max_zoom
+   </td>
+   <td>float
+   </td>
+   <td>Float values (though in practice mosts are integer values) that match to web map zoom schema for when the geometry should be hidden. Common range is 0.0 to 18.0, though they can be greater.
+   </td>
+  </tr>
+  <tr>
+   <td>min_label
+   </td>
+   <td>lbl:min_zoom
+   </td>
+   <td>float
+   </td>
+   <td>When the feature’s label should first appear. Float values (though in practice most are integer values) that match to web map zoom schema. Common range is 0.0 to 18.0, though they can be greater.
+   </td>
+  </tr>
+  <tr>
+   <td>max_label
+   </td>
+   <td>lbl:max_zoom
+   </td>
+   <td>float
+   </td>
+   <td>When the feature’s label should be removed (or switched to a different representation like exterior ring line labels). Float values (though in practice most are integer values) that match to web map zoom schema. Common range is 0.0 to 18.0, though they can be greater.
+   </td>
+  </tr>
+  <tr>
+   <td>geom_src
+   </td>
+   <td>src:geom
+   </td>
+   <td>string
+   </td>
+   <td>The data source of a record’s geometry. Valid property values are listed in the <code><a href="https://github.com/whosonfirst/whosonfirst-sources/tree/master/sources">whosonfirst-sources</a></code> repository
+   </td>
+  </tr>
+</table>
+
+
+  
+					</div>
+				</div>
+			</article>
+		</div>
+		<div class="col-lg-2 col-md-0 col-sm-0 col-xs-0"></div>
+	</div>
+</div>
+			<!-- START footer.html -->
+
+		</div>
+		<footer>
+			<nav class="navbar navbar-default navbar-bottom">
+				<div class="container">
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<ul class="nav navbar-nav navbar-right whosonfirst-footer">
+						<li><a href="/docs/contributing/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">contributing</a></li>
+						<li><a href="/docs/licenses/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">license</a></li>
+						<li><a rel="me" class="whosonfirst-nav-link whosonfirst-footer-nav-link" href="https://mapstodon.space/@whosonfirst">whosonfirst@mapstodon.space</a></li>
+					</ul>
+				</div>
+			</nav>
+		</footer>
+
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="/javascript/jquery.min.js"></script>
+		<!-- Include all compiled plugins (below), or include individual files as needed -->
+		<script src="/javascript/bootstrap.min.js"></script>
+		<script src="/javascript/mapzen.whosonfirst.home.js"></script>
+		<script src="/javascript/mapzen.whosonfirst.subpage.js"></script>
+		<!-- JavaScript for code styling from highlightpack.js -->
+		<script src="/javascript/highlightpack.js"></script>
+		<script>
+		  try {
+		  	hljs.initHighlightingOnLoad();
+		  } catch (e) {
+		  	console.log("HLJS", e);
+		  }
+		</script>
+	</body>
+</html>
+
+<!-- END footer.html -->
