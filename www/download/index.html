@@ -79,6 +79,10 @@
 						</li>
 
 						<li class="whosonfirst-sidenav-list-element">
+						  <a href="#shapefile" class="whosonfirst-nav-link whosonfirst-sidenav-link">shapefile</a>
+						</li>
+
+						<li class="whosonfirst-sidenav-list-element">
 						  <a href="#bundles" class="whosonfirst-nav-link whosonfirst-sidenav-link">bundles</a>
 						  </li>
 
@@ -131,19 +135,37 @@ Downloading Who&#39;s On First
 
 <h2 id="distributions">Distributions</h2>
 
-<p>Distributions produced by the Who's On First project have been put on hold for the time being. Data distributions are currently sponsored by <a href="https://geocode.earth/">Geocode Earth</a>:</p>
+<p>Who's On First data distributions are currently sponsored by <a href="https://geocode.earth/">Geocode Earth</a>, thank you!</p>
 
 <p style="font-size:2em; text-align:center;font-weight:700;"><a href="https://geocode.earth/data/whosonfirst">https://geocode.earth/data/whosonfirst</a></p>
 
+This data is made available under the terms of the <a href="https://whosonfirst.org/docs/licenses/">Who's On First License</a>.
+
+<p>In order to talk about distributions we need to take a moment to talk about how the raw data is stored and organized.
+
+<em>If you haven't already read the <a href="#repos">How the Who's On First data repositories are organized</a> section below, now would be a good time to take a look because its informs how we are currently building the distributions listed here. Go ahead, we'll wait...</em></p>
+
+<p>All distributions are derived from individual per-country repositories in the <a href="">whosonfirst-data</a> GitHub organization.</p>
+
+<h3 id="sqlite">Download SQLite databases</h3>
+
+<p style="font-style:italic;">Who's On First data exported as a set of normalized SQLite database tables: ancestors, concordances, geojson, geometries, names, spr (which is an acronym for "<a href="/docs/spr/">standard places response</a>").</p>
+
+<p>Global SQLite downloads:</p>
+
+<ul>
+<li><a href="https://data.geocode.earth/wof/dist/sqlite/whosonfirst-data-admin-latest.db.bz2">Admin placetypes</a></li>
+<li><a href="https://data.geocode.earth/wof/dist/sqlite/whosonfirst-data-postalcode-latest.db.bz2">Postcode features</a></li>
+<li><a href="https://data.geocode.earth/wof/dist/sqlite/whosonfirst-data-constituency-latest.db.bz2">Constituency features</a></li>
+</ul>
+
+<label for="country-sqlite-select">Per-country SQLite admin downloads:</label>
+    <select id="country-sqlite-select">
+        <option value="">Select a country</option>
+    </select>
+    <button id="download-sqlite-button" onclick="downloadSqlite()">Download</button>
+
 <!--
-<p>In order to talk about distributions we need to take a moment to talk about how the raw data is stored and organized. <em>If you haven't already read the <a href="#repos">How the Who's On First data repositories are organized</a> section below, now would be a good time to take a look because its informs how we are currently building the distributions listed here. Go ahead, we'll wait...</em></p>
-
-<p>Eventually we will have a variety of smaller data distributions grouped by country and placetype and other properties, but as of this writing all distributions are derived from individual repositories in the <a href="">whosonfirst-data</a> GitHub organization.</p>
-
-<h3 id="sqlite">SQLite databases</h3>
-
-<p>Who's On First data exported as a set of SQLite database tables: ancestors, concordances, geojson, geometries, names, spr (which is an acronym for "<a href="/docs/spr/">standard places response</a>").</p>
-
 <p>SQLite databases are available from:</p>
 
 <ul class="downloads-list">
@@ -151,11 +173,29 @@ Downloading Who&#39;s On First
 </ul>
 
 <small>SQLite databases are generated using the <a href="https://github.com/whosonfirst/go-whosonfirst-sqlite">go-whosonfirst-sqlite</a> package.</small>
+-->
 
-<h3 id="bundles">"Bundles"</h3>
+<h3 id="shapefiles">Download Shapefiles</h3>
 
-<p>"Bundles" are basically Who's On First Git repositories without the <code>.git</code> directories (because they often very large and of little use to people who just want to work with the raw data).</p>
+<p style="font-style:italic;">Shapefile format includes most SPR properties and additional denormalized properties from the other SQLite tables.</p>
 
+<label for="country-shapefile-select">Per-country Shapefile admin downloads:</label>
+    <select id="country-shapefile-select">
+        <option value="">Select a country</option>
+    </select>
+    <button id="download-shapefile-button" onclick="downloadShapefile()">Download</button>
+
+<h3 id="bundles">Download "Bundles"</h3>
+
+<p style="font-style:italic;">"Bundles" are basically Who's On First Git repositories without the <code>.git</code> directories (because they often very large and of little use to people who just want to work with the raw data).</p>
+
+<label for="country-bundle-select">Per-country "bundle" admin downloads:</label>
+    <select id="country-bundle-select">
+        <option value="">Select a country</option>
+    </select>
+    <button id="download-bundle-button" onclick="downloadBundle()">Download</button>
+
+<!--
 <p>Bundles are available from:</p>
   
 <ul class="downloads-list">
@@ -163,13 +203,9 @@ Downloading Who&#39;s On First
 </ul>
 
 <small>Bundles are generated using the <a href="https://github.com/whosonfirst/go-whosonfirst-bundles">go-whosonfirst-bundles</a> package.</small>
-
-<h3 id="shapefiles">Shapefiles</h3>
-
-<p style="font-style:italic;">Shapefile distributions are not yet available but will be soon.</p>
 -->
 
-<h2 id="github">Git(Hub)</h2>
+<h2 id="github">Raw GeoJSON files in GitHub repositories</h2>
 
 <p>All the Who's On First data and its complete edit history is available on GitHub:</p>
   
@@ -290,6 +326,64 @@ Downloading Who&#39;s On First
 		  	console.log("HLJS", e);
 		  }
 		</script>
+		<script>
+			const countryShort = ['ad','ae','af','ag','ai','al','am','ao','aq','ar','as','at','au','aw','ax','az','ba','bb','bd','be','bf','bg','bh','bi','bj','bl','bm','bn','bo','bq','br','bs','bt','bw','by','bz','ca','cc','cd','cf','cg','ch','ci','ck','cl','cm','cn','co','cr','cu','cv','cw','cx','cy','cz','de','dj','dk','dm','do','dz','ec','ee','eg','eh','er','es','et','fi','fj','fk','fm','fo','fr','ga','gb','gd','ge','gf','gg','gh','gi','gl','gm','gn','gp','gq','gr','gs','gt','gu','gw','gy','hk','hn','hr','ht','hu','id','ie','il','im','in','io','iq','ir','is','it','je','jm','jo','jp','ke','kg','kh','ki','km','kn','kp','kr','kw','ky','kz','la','lb','lc','li','lk','lr','ls','lt','lu','lv','ly','ma','mc','md','me','mf','mg','mh','mk','ml','mm','mn','mo','mp','mq','mr','ms','mt','mu','mv','mw','mx','my','mz','na','nc','ne','nf','ng','ni','nl','no','np','nr','nu','nz','om','pa','pe','pf','pg','ph','pk','pl','pm','pn','pr','ps','pt','pw','py','qa','re','ro','rs','ru','rw','sa','sb','sc','sd','se','sg','sh','si','sj','sk','sl','sm','sn','so','sr','ss','st','sv','sx','sy','sz','tc','td','tf','tg','th','tj','tk','tl','tm','tn','to','tr','tt','tv','tw','tz','ua','ug','um','un','us','uy','uz','va','vc','ve','vg','vi','vn','vu','wf','ws','xk','xs','xx','xy','xz','ye','yt','za','zm','zw'];
+			const country = ["Andorra","United Arab Emirates (الإمارات العربيّة المتّحدة)","Afghanistan (افغانستان)","Antigua and Barbuda","Anguilla","Albania (Shqipëria)","Armenia (Hayastán / Հայաստան)","Angola (Ngola)","Antarctica","Argentina","American Samoa (Amerika Sāmoa)","Austria (Österreich)","Australia","Aruba","Åland Islands (Åland / Ahvenanmaa)","Azerbaijan (Azərbaycan)","Bosnia and Herzegovina (Босна и Херцеговина)","Barbados","Bangladesh (বাংলাদেশ)","Belgium (België / Belgique / Belgien)","Burkina Faso","Bulgaria (Bălgariya / България)","Bahrain (البحرين)","Burundi (Uburundi)","Benin (Bénin)","Saint Barthélemy (Saint-Barthélemy)","Bermuda","Brunei (بروني)","Bolivia (Buliwya / Wuliwya / Volívia)","Bonaire, Sint Eustatius, Saba","Brazil (Brasil)","Bahamas (The Bahamas)","Bhutan (Druk Yul / འབྲུག་ཡུལ)","Botswana","Belarus (Bielaruś / Беларусь)","Belize","Canada","Cocos (Keeling) Islands","Congo (DRC) (République démocratique du Congo)","Central African Republic (Centrafrique / Bêafrîka)","Congo (République du Congo / Repubilika ya Kôngo)","Switzerland (Schweiz / Suisse / Svizzera / Svizra)","Côte d'Ivoire (Ivory Coast)","Cook Islands (Kūki 'Āirani)","Chile","Cameroon (Cameroun)","China (中国)","Colombia","Costa Rica","Cuba","Cabo Verde (Cape Verde)","Curaçao (Kòrsou)","Christmas Island","Cyprus (Κύπρος / Kıbrıs)","Czechia (Česká republika / Česko)","Germany (Deutschland)","Djibouti (جيبوتي)","Denmark (Danmark)","Dominica","Dominican Republic (República Dominicana)","Algeria (ⴷⵣⴰⵢⴻⵔ / الجزائر)","Ecuador","Estonia (Eesti)","Egypt (مصر)","Western Sahara (الجمهورية العربية الصحراوية الديمقراطية)","Eritrea ( إرتريا / ኤርትራ)","Spain (España / Espanya / Espainia)","Ethiopia (ኢትዮጵያ)","Finland (Suomi)","Fiji (Viti / फ़िजी)","Falkland Islands / Malvinas","Micronesia","Faroe Islands (Føroyar / Færøerne)","France","Gabon (République gabonaise)","United Kingdom","Grenada","Georgia (საქართველო)","French Guiana (Guyane)","Guernsey","Ghana (Gaana / Gana)","Gibraltar","Greenland (Kalaallit Nunaat / Grønland)","Gambia (the) (The Gambia)","Guinea (Guinée / Gine)","Guadeloupe","Equatorial Guinea (Guinea Ecuatorial / Guinée équatoriale / Guiné Equatorial)","Greece (Ελλάδα)","South Georgia and the South Sandwich Islands","Guatemala","Guam (Guåhån)","Guinea-Bissau (Guiné-Bissau)","Guyana","Hong Kong (香港)","Honduras","Croatia (Hrvatska)","Haiti (Haïti / Ayiti)","Hungary (Magyarország)","Indonesia","Ireland (Éire)","Israel (ישראל / إسرائيل)","Isle of Man (Ellan Vannin)","India (ભારત / भारत / ಭಾರತ)","British Indian Ocean Territory","Iraq (العراق / عێراق)","Iran (ایران)","Iceland (Ísland)","Italy (Italia)","Jersey (Jèrri)","Jamaica","Jordan (الأردن)","Japan (日本)","Kenya","Kyrgyzstan (Кыргызстан)","Cambodia (កម្ពុជា)","Kiribati","Comoros ( Komori / Comores / جزر القمر)","Saint Kitts and Nevis","Korea (DPR) (조선 / 북조선 / 朝鮮)","Korea (ROK) (한국 / 남한 / 韓國)","Kuwait (دولة الكويت / الكويت)","Cayman Islands","Kazakhstan (Қазақстан)","Laos (ປະເທດລາວ)","Lebanon (لبنان)","Saint Lucia","Liechtenstein","Sri Lanka (ශ්‍රී ලංකාව / இலங்கை)","Liberia","Lesotho","Lithuania (Lietuva)","Luxembourg (Lëtzebuerg / Luxemburg)","Latvia (Latvija)","Libya (ⵍⵉⴱⵢⴰ / ليبيا)","Morocco (ⴰⵎⵔⵔⵓⴽ / ⵍⵎⵖⵔⵉⴱ / المغرب)","Monaco (Múnegu)","Moldova","Montenegro (Црна Гора)","Saint Martin (French part) (Saint-Martin)","Madagascar (Madagasikara)","Marshall Islands (Aorōkin Ṃajeḷ)","North Macedonia (Северна Македонија / Maqedonia e Veriut)","Mali","Myanmar (မြန်မာ)","Mongolia (Монгол Улс / ᠮᠤᠩᠭᠤᠯ / ᠤᠯᠤᠰ)","Macao (澳門)","Northern Mariana Islands (Notte Mariånas)","Martinique","Mauritania (ⵎⵓⵔⵉⵜⴰⵏ / ⴰⴳⴰⵡⵛ / موريتانيا)","Montserrat","Malta","Mauritius (Maurice / Moris)","Maldives (ދިވެހިރާއްޖެ)","Malawi (Malaŵi)","Mexico (México / Mēxihco)","Malaysia","Mozambique (Moçambique)","Namibia (Namibië)","New Caledonia (Nouvelle-Calédonie)","Niger","Norfolk Island (Norf'k Ailen)","Nigeria (Nijeriya / Naìjíríyà / Nàìjíríà)","Nicaragua","Netherlands (Nederland / Nederlân)","Norway (Norge / Noreg / Norga / Vuodna / Nöörje)","Nepal (नेपाल)","Nauru (Naoero)","Niue (Niuē)","New Zealand (Aotearoa)","Oman (عُمان)","Panama (Panamá)","Peru (Perú / Piruw)","French Polynesia (Polynésie française)","Papua New Guinea (Papua New Guinea / Papua Niugini / Papua Niu Gini)","Philippines (Pilipinas)","Pakistan (پاکستان)","Poland (Polska)","Saint Pierre and Miquelon (Saint-Pierre et Miquelon)","Pitcairn (Pitkern Ailen)","Puerto Rico","Palestine (فلسطين)","Portugal","Palau (Belau)","Paraguay (Paraguái)","Qatar (قطر)","Réunion (La Réunion)","Romania (România)","Serbia (Србија)","Russia (Россия)","Rwanda","Saudi Arabia (المملكة العربية السعودية)","Solomon Islands (Solomon Aelan)","Seychelles (Sesel)","Sudan (the) (السودان)","Sweden (Sverige)","Singapore (Singapura / 新加坡 / சிங்கப்பூர்)","Saint Helena, Ascension Island, Tristan da Cunha","Slovenia (Slovenija)","Svalbard and Jan Mayen","Slovakia (Slovensko)","Sierra Leone","San Marino","Senegal (Sénégal / Senegaal)","Somalia (Soomaaliya / الصومال)","Suriname","South Sudan (Sudan Kusini / Paguot Thudän)","Sao Tome and Principe (São Tomé e Príncipe)","El Salvador","Sint Maarten (Dutch part)","Syria (سورية)","Eswatini (eSwatini)","Turks and Caicos Islands","Chad (Tchad / تشاد)","French Southern Territories (Terres australes françaises)","Togo","Thailand (ไทย, ประเทศไทย, ราชอาณาจักรไทย)","Tajikistan (Тоҷикистон)","Tokelau","Timor-Leste (Timor Lorosa'e)","Turkmenistan (Türkmenistan)","Tunisia (ⵜⵓⵏⵙ / تونس)","Tonga","Türkiye (Türkiye)","Trinidad and Tobago","Tuvalu","Taiwan (中華民國 / 臺灣/台灣)","Tanzania","Ukraine (Україна)","Uganda","U.S. Minor Outlying Islands","United Nations (Les Nations Unies)","United States of America (Estados Unidos / ‘Amelika Hui Pū ‘ia)","Uruguay","Uzbekistan (Ўзбекистон)","Holy See (Civitas Vaticana / Città del Vaticano)","Saint Vincent and the Grenadines","Venezuela","Virgin Islands (British)","Virgin Islands (U.S.)","Viet Nam (Việt Nam)","Vanuatu","Wallis and Futuna (Wallis-et-Futuna / ʻUvea mo Futuna)","Samoa (Sāmoa)","Kosovo (Kosova / Косово)","Somaliland (Soomaaliland / جمهورية صوماليلاند )","Disputed territories (Territoires contestés)","Undetermined country (Pays indéterminé)","Multiple ISO country parents (Parents de plusieurs pays ISO)","Yemen (اليمن)","Mayotte (Maore)","South Africa (Suid-Afrika / iNingizimu Afrika / uMzantsi Afrika / Afrika-Borwa)","Zambia","Zimbabwe"];
+			const countrySqliteSelect = document.getElementById('country-sqlite-select');
+
+			// Populate the dropdown menu
+			for (let i = 0; i < countryShort.length; i++) {
+				const option = document.createElement('option');
+				option.value = countryShort[i];
+				option.textContent = country[i];
+				countrySqliteSelect.appendChild(option);
+			}
+
+			function downloadSqlite() {
+				const selectedCountry = countrySqliteSelect.value;
+				if (selectedCountry) {
+					const url = `https://data.geocode.earth/wof/dist/sqlite/whosonfirst-data-admin-${selectedCountry}-latest.db.bz2`;
+					window.location.href = url;
+				}
+			}
+
+			const countryShapefileSelect = document.getElementById('country-shapefile-select');
+
+			// Populate the dropdown menu
+			for (let i = 0; i < countryShort.length; i++) {
+				const option = document.createElement('option');
+				option.value = countryShort[i];
+				option.textContent = country[i];
+				countryShapefileSelect.appendChild(option);
+			}
+
+			function downloadShapefile() {
+				const selectedCountry = countryShapefileSelect.value;
+				if (selectedCountry) {
+					const url = `https://data.geocode.earth/wof/dist/shapefile/whosonfirst-data-admin-${selectedCountry}-latest.zip`;
+					window.location.href = url;
+				}
+			}
+
+			const countryBundleSelect = document.getElementById('country-bundle-select');
+
+			// Populate the dropdown menu
+			for (let i = 0; i < countryShort.length; i++) {
+				const option = document.createElement('option');
+				option.value = countryShort[i];
+				option.textContent = country[i];
+				countryBundleSelect.appendChild(option);
+			}
+
+			function downloadBundle() {
+				const selectedCountry = countryBundleSelect.value;
+				if (selectedCountry) {
+					const url = `https://data.geocode.earth/wof/dist/bundles/whosonfirst-data-admin-${selectedCountry}-latest.tar.bz2`;
+					window.location.href = url;
+				}
+			}
+		</script>
+
 	</body>
 </html>
 
