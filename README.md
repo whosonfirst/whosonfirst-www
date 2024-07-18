@@ -67,6 +67,8 @@ $> make debug
 2024/07/18 09:09:50 Listening on http://localhost:8080
 ```
 
+You can view the blog by visiting `http://localhost:8080/blog/` in your web browser.
+
 Templates for the blog are stored in the [templates](templates) directory.
 
 ## Editing the site
