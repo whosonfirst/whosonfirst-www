@@ -137,14 +137,14 @@ The original Who’s On First data downloads are still kindly processed and host
 * Load the [Data Downloads](https://geocode.earth/data/whosonfirst/) page
 * Click on the desired 2-character country code button in the top matrix (eg `US` for United States)
 * Confirm your country’s name and flag below the top matrix
-* Scroll down to the Shapefiles section, `Administrative" Boundaries` section, and click the name of the ZIP file to download it (eg [whosonfirst-data-admin-us-latest.zip](https://data.geocode.earth/wof/dist/shapefile/whosonfirst-data-admin-us-latest.zip))
+* Scroll down to the Shapefiles section, `Administrative Boundaries` section, and click the name of the ZIP file to download it (eg [whosonfirst-data-admin-us-latest.zip](https://data.geocode.earth/wof/dist/shapefile/whosonfirst-data-admin-us-latest.zip))
 
 _NOTE: There’s also an [inventory.json](https://data.geocode.earth/wof/dist/shapefile/inventory.json) file available for programmatic use._
 
 
 ## Updated shapefile documentation
 
-To recap our [post](https://whosonfirst.org/blog/2023/05/31/shapefiles/) from last year, shapefile downloads for the Who’s On First gazetteer are available as per-country ZIP archives including admin (including country, region, county, locality, neighbourhood & more), postalcode, and constituency placetype bundles.
+To recap our [post](https://whosonfirst.org/blog/2023/05/31/shapefiles/) from last year, shapefile downloads for the Who’s On First gazetteer are available as per-country ZIP archives including admin (with country, region, county, locality, neighbourhood & more), postalcode, and constituency placetype bundles.
 
 Since first publishing shapefiles last year, we’ve modified the shapefile schema and filtering a bit based on user feedback. 
 
@@ -160,7 +160,7 @@ Since first publishing shapefiles last year, we’ve modified the shapefile sche
 ### Shapefile filtering updates
 
 * Removes the `name` constraint as some records (especially statistical gores) purposely don’t have names but are needed to form a continuous fabric at a placetype level within a country
-* `placetype_alt` features are now included in all their `placetype` and `placetype_alt` layers, filling gaps as this is common for “unitary authority" type features in many countries
+* `placetype_alt` features are now included in all their `placetype` and `placetype_alt` layers, filling gaps as this is common for “unitary authority" type features in many countries. This means features with the same WOF ID can be present in multiple placetype-based shapefiles.
 
 Our new [shapefile documentation](https://whosonfirst.org/docs/shapefiles/) fully summarizes the current state of play.
 
