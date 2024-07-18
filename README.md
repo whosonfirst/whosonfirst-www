@@ -30,7 +30,7 @@ There are really only two "rules" for blog posts:
 
 `/blog/2024/07/18/more-shapefiles/`
 
-2) They are expected to contain Jekyll-style "front-matter" supplemented with a hand full for Who's On First specific properties. For example:
+* They are expected to contain Jekyll-style "front-matter" supplemented with a hand full for Who's On First specific properties. For example:
 
 ```
 layout: page
