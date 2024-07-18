@@ -6,14 +6,25 @@ OS := $(shell uname -s | tr '[:upper:]' '[:lower:]')
 # 	OS:= $(OSTYPE)
 # endif
 
+# https://github.com/ericchiang/pup
 PUP="utils/$(OS)/pup"
+
+# Ummm... I forget. Let that be a lesson.
 WOF_CLONE_WEBSITE="utils/$(OS)/wof-clone-website"
+
+# https://github.com/whosonfirst/go-blog
 WOF_MD2HTML="utils/$(OS)/wof-md2html"
 WOF_MD2FEED="utils/$(OS)/wof-md2feed"
 WOF_MD2IDX="utils/$(OS)/wof-md2idx"
 
 local:
 	utils/$(OS)/fileserver -root ./www
+
+debug: blog local
+
+# The weblog which is handled separately from the rest of the site content.
+# tl;dr is "Markdown files and Golang templates that are converted to HTML
+# using the whosonfirst/go-blog package (above).
 
 blog:
 	$(WOF_MD2HTML) -templates templates/common -templates templates/blog/post -header blog_post_header -footer blog_post_footer -writer fs=./www -mode directory www/blog/
@@ -23,7 +34,11 @@ blog:
 	$(WOF_MD2FEED) -templates templates/blog/feed -format rss_20 www/blog/
 	$(WOF_MD2FEED) -templates templates/blog/feed -format atom_10 www/blog/
 
-debug: blog local
+
+# The not-weblog parts of the website. Remember there were valid reasons for doing it
+# this way at the time this code was written. Those reasons may not really track anymore
+# but there hasn't been the time or the space to refactor everything. See README.md for
+# details.
 
 all: mapzen favicons js css home docs tools
 
