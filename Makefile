@@ -12,24 +12,8 @@ WOF_MD2HTML="utils/$(OS)/wof-md2html"
 WOF_MD2FEED="utils/$(OS)/wof-md2feed"
 WOF_MD2IDX="utils/$(OS)/wof-md2idx"
 
-# WOF_MD2IDX="$(HOME)/whosonfirst/go-whosonfirst-markdown/bin/wof-md2idx"
-
-sync:
-	aws --profile whosonfirst-www s3 sync --acl public-read --exclude '*~' www s3://www.whosonfirst.org/
-
-sync-blog:
-	aws --profile whosonfirst-www s3 sync --acl public-read --exclude '*~' www/blog s3://www.whosonfirst.org/blog/
-
 local:
 	utils/$(OS)/fileserver -root ./www
-
-iamhere:
-	if test -d tmp; then rm -rf tmp; fi
-	if test -d www/iamhere; then rm -rf www/iamhere; fi
-	mkdir tmp
-	git clone git@github.com:whosonfirst/whosonfirst-www-iamhere.git ./tmp/iamhere
-	mv tmp/iamhere/www www/iamhere
-	rm -rf tmp
 
 blog:
 	$(WOF_MD2HTML) -templates templates/common -templates templates/blog/post -header blog_post_header -footer blog_post_footer -writer fs=./www -mode directory www/blog/
