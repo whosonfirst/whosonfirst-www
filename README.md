@@ -20,6 +20,55 @@ This is one of those static website generators, with lowest-common-denominator d
 * `content/` - what it sounds like, these HTML files define what you see in the main part of the page.
 * `www/` - where everything gets built to.
 
+## Blog posts
+
+The `/blog` part of the website is handled differently from the rest of the Who's On First website. The "tl;dr" is: Jekyll-like Markdown files and Golang templates that are rendered using the [whosonfirst/go-blog](https://github.com/whosonfirst/go-blog) package.
+
+There are really only two "rules" for blog posts:
+
+* They are expected to live in a nested `YYYY/MM/DD/TITLE` directory structure. For example:
+
+`/blog/2024/07/18/more-shapefiles/`
+
+2) They are expected to contain Jekyll-style "front-matter" supplemented with a hand full for Who's On First specific properties. For example:
+
+```
+layout: page
+title: Who’s On First shapefile downloads in QGIS and on HDX
+published: false
+date: 2024-07-18
+permalink: /blog/2024/07/18/more-shapefiles/
+category: blog
+excerpt: "Shapefiles are the resurgent vinyl music format for digital mapping"
+authors: [nvkelso]
+image: "images/88663_58c7addb90c5c93a_b.png"
+tag: [shapefile,download,whosonfirst,wof,data]
+```
+
+After that it's just plain-old Markdown.
+
+To render the blog in to its HTML format run the `blog` Makefile target. For example:
+
+```
+$> make blog
+"utils/darwin/wof-md2html" -templates templates/common -templates templates/blog/post -header blog_post_header -footer blog_post_footer -writer fs=./www -mode directory www/blog/
+"utils/darwin/wof-md2idx" -templates templates/common -templates templates/blog/index -header blog_index_header -footer blog_index_footer -writer fs=. www/blog/
+"utils/darwin/wof-md2idx" -templates templates/common -templates templates/blog/index -header blog_index_header -footer blog_index_footer -writer fs=. -mode authors www/blog/
+"utils/darwin/wof-md2idx" -templates templates/common -templates templates/blog/index -header blog_index_header -footer blog_index_footer -writer fs=. -mode tags www/blog/
+"utils/darwin/wof-md2feed" -templates templates/blog/feed -format rss_20 www/blog/
+"utils/darwin/wof-md2feed" -templates templates/blog/feed -format atom_10 www/blog/
+```
+
+To render the blog in to its HTML format and serve those pages from a local webserver run the `debug` Makefile target. For example:
+
+```
+$> make debug
+...render blog here
+2024/07/18 09:09:50 Listening on http://localhost:8080
+```
+
+Templates for the blog are stored in the [templates](templates) directory.
+
 ## Editing the site
 
 * Some files are downloaded from GitHub, so you should edit them there.
@@ -129,53 +178,6 @@ make docs-foo
 
 You should see your new page here: `www/docs/foo/index.html`
 
-## Adding a blog post
-
-To add a blog post:
-
-1. Open [content/blog/blog.html](https://github.com/whosonfirst/whosonfirst-www/blob/master/content/blog/blog.html) file.
-2. Scroll to the bottom of that file.
-3. If it is a new year, add a h6 element with updated content and id.  
-    ````html
-    <h6 id="2017" class="whosonfirst-deemphasized-subpageheader">2017</h6>
-    ````
-4. If you added a h6 element, also add a new unordered list.  
-    ````html
-    <ul class="whosonfirst-nonbullet-list whosonfirst-sole-links-container">
-    </ul>
-    ````
-5. If you added a new unordered list, add a list item in that new list.  
-    ````html
-    <ul class="whosonfirst-nonbullet-list whosonfirst-sole-links-container">
-        <li class="whosonfirst-nonbullet-list-item">
-        </li>
-    </ul>
-    ````
-
-    If you did not add a new unordered list, add the list item after the last list item in the last existing unordered list.
-
-    ```html
-    <ul class="whosonfirst-nonbullet-list whosonfirst-sole-links-container">
-        <li class="whosonfirst-nonbullet-list-item">
-            <a href="https://mapzen.com/blog/geotagging-wof-venues/" class="whosonfirst-sole-link whosonfirst-dynamically-generated-post" data-pubdate="2017-08-01" title="Geotagging WOF venues" data-au="0.44" data-word-count="2392">Geotagging WOF venues</a>
-        </li>
-        <li class="whosonfirst-nonbullet-list-item">
-        </li>
-    </ul>
-    ```
-6. Add a link to the new list item, be sure sure to include the link url and whosonfirst-sole-link and whosonfirst-dynamically-generated-post as classes.  
-    ```html
-    <ul class="whosonfirst-nonbullet-list whosonfirst-sole-links-container">
-        <li class="whosonfirst-nonbullet-list-item">
-            <a href="https://mapzen.com/blog/geotagging-wof-venues/" class="whosonfirst-sole-link whosonfirst-dynamically-generated-post" data-pubdate="2017-08-01" title="Geotagging WOF venues" data-au="0.44" data-word-count="2392">Geotagging WOF venues</a>
-        </li>
-        <li class="whosonfirst-nonbullet-list-item">
-            <a href="https://mapzen.com/blog/wof-website-redesign/" class="whosonfirst-sole-link whosonfirst-dynamically-generated-post" data-pubdate="2017-07-28" title="Redesigning and Rebuilding the Who's On First website" data-au="0.40" data-word-count="2194">Redesigning and Rebuilding the Who's On First website</a>
-        </li>
-    </ul>
-    ```
-7. Run `make blog` from the command line. The blog page should now be updated with the new blog post.
-
 ### Updating the subnav
 
 In our last example we created a new page "foo" in the "docs" section. Let's add a link to it in the subnav files.
@@ -237,17 +239,6 @@ For example, here's how the `properties` subsubnav gets placed within `component
 ```
 make www
 ```
-
-Or, if you want to deploy to just dev or prod S3 buckets:
-
-```
-make www-dev
-make www-prod
-```
-
-### Cloning to S3
-
-We are using a home-grown tool called `wof-clone-website` which is part of the [go-whosonfirst-www](https://github.com/whosonfirst/go-whosonfirst-www) repo, mostly so that file permissions are set correctly. There is a binary copy for OS X included in this repo so if you're trying to deploy things from not-a-Mac then you will need to build an OS-specific version of the tool, which is left as an exercise to the reader.
 
 ## Props
 
