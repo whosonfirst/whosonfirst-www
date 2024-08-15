@@ -172,9 +172,9 @@ Card, Karrie Jacobs: Change of Address; offset lithograph on paper; 11.8 x 16.3 
 <p>If address parsing is where you go to cry then address de-duplication is where you go to give up.</p>
 </blockquote>
 
-<p>I said that in 2017 as part of <a href="https://whosonfirst.org/blog/2017/10/24/whosonfirst-sotmus-2017/">a talk I did at State of the Map US</a> about the work the Who&rsquo;s On First project was around publishing venue records, including <a href="https://github.com/openvenues/lieu">Al Barrantine&rsquo;s work to de-deplicate those records</a>. Unfortunately, a few months later <a href="https://whosonfirst.org/blog/2018/01/02/chapter-two/">Mapzen shut down</a> so all of that work stalled out.</p>
+<p>I said that in 2017 as part of <a href="https://whosonfirst.org/blog/2017/10/24/whosonfirst-sotmus-2017/">a talk I did at State of the Map US</a> about the work the Who&rsquo;s On First project was around publishing venue records, including <a href="https://github.com/openvenues/lieu">Al Barrantine&rsquo;s work to de-deplicate those records</a>. Unfortunately, a few months later <a href="https://whosonfirst.org/blog/2018/01/02/chapter-two/">Mapzen shut down</a> so all of that work stalled out after that.</p>
 
-<p>Earlier this year I started to wonder whether it would be possible to use the vector embeddings for texts produced by, and for, large language models to restart some of that work. The short answer is: We can. The longer answer is: Nothing is especially &ldquo;fast&rdquo; yes and preferences (relative) ease of use, modularity and reproducability in favour of speed and other optimizations.</p>
+<p>Earlier this year I started to wonder whether it would be possible to use the vector embeddings for texts produced by, and for, large language models to restart some of that work. The short answer is: We can. The longer answer is: Nothing is especially &ldquo;fast&rdquo; yet and the code preferences (relative) ease of use, modularity and reproducability in favour of speed and other optimizations.</p>
 
 <p>So far, I have been able to first deprecate about 50,000 duplicate records in four Who&rsquo;s On First venue repositories (&hellip;) and then derive 70,000 concordances with <a href="#">Overture Data</a> place records, 10, 000 concordances with <a href="#">All The Places</a> venues and another (N) concordances with <a href="#">ILMS museum records</a>. There are almost certainly still bugs, or at least &ldquo;gotchas&rdquo;, but importantly the work so far passes the &ldquo;better than yesterday&rdquo; test.</p>
 
@@ -210,7 +210,20 @@ Card, Karrie Jacobs: Change of Address; offset lithograph on paper; 11.8 x 16.3 
 <li>Matching records are emitted as CSV-encoded rows.</li>
 </ul>
 
-<p>What happens with those CSV rows of matching records is left for implementors to decide. For a concrete example, have a look at the code in <a href="app/locations/index">app/locations/index</a>, <a href="app/locations/compare">app/locations/compare</a> and the <a href="compare">compare</a> package.</p>
+<p>What happens with those CSV rows of matching records is left for implementors to decide. For example:</p>
+
+<pre>
+$> tail -f /usr/local/data/wof-wof-ny.csv
+dr5rr,wof:id=353594351,wof:id=353593911,"Cogliano Angelo Jr, 9407 101st Ave Ozone Park NY 11416","Cogliano Angelo Acctnt Jr, 9407 101st Avenue Ozone Park NY 11416",3.018408
+dr5xg,wof:id=572126199,wof:id=287214377,"Prosthodontic Associates PC, 1 Hollow Ln Ste 202 New Hyde Park NY 11042","Prosthodontic Associates, 1 Hollow Ln New Hyde Park NY 11042",3.716114
+dr5x6,wof:id=303812969,wof:id=269602859,"Hudson Shipping Lines Corp, 20 W Lincoln Ave Valley Stream NY 11580","Hudson Shipping Lines Corp, 20 E Lincoln Ave Valley Stream NY 11580",0.795845
+dr7b3,wof:id=370248145,wof:id=253556813,"Pisciotta Capital, 775 Park Dr Huntington Station NY 11793","Pisciotta Capital, 775 Park Ave Huntington NY 11743",3.776641
+dr8v9,wof:id=387002999,wof:id=320123265,"Gray Cpa Pc, 16 E Main St Ste 400 Rochester NY 14614","Gray CPA PC, 16 Main St W Rochester NY 14614",2.519037
+dr5xq,wof:id=353801261,wof:id=270152357,"Maurice Fur Designer, 69 Merrick Ave Merrick NY 11566","Maurice Fur Designer-Merrick, 69 Merrick Rd North Merrick NY 11566",3.880814
+dr5xq,wof:id=555197305,wof:id=253237525,"Matteo's Cafe, 412 Bedford Ave Bellmore NY 11710","Matteos Cafe, 416 Bedford Ave Bellmore NY 11710",3.053007
+</pre>
+
+<p>And so on.</p>
 
 <p><img src="images/209192_293a68417192660f_b.jpg" alt="" /></p>
 
