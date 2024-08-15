@@ -1,0 +1,267 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="x-ua-compatible" content="ie=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Who’s On First | De-duplicating venues with vector embeddings</title>
+		<meta name="description" content="Who’s on First is a gazetteer of places." />
+		<link rel="apple-touch-icon" href="/images/favicons/apple-touch-icon.png" sizes="180x180" />
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-16x16.png" sizes="16x16" />
+		<link rel="icon" type="image/png" href="/images/favicons/favicon-32x32.png" sizes="32x32" />
+		<link rel="manifest" href="/images/favicons/manifest.json" />
+		<link rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg" color="#2C1E3F" />
+		<link rel="stylesheet" href="/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="/css/mapzen.whosonfirst.css" />
+		
+		<link rel="stylesheet" href="/css/styles/grayscale.css" />
+
+		<link rel="alternate" type="application/atom+xml" title="Who's On First Atom feed" href="/blog/atom_10.xml"/>		
+		<link rel="alternate" type="application/rss+xml" title="Who's On First RSS 2.0 feed" href="/blog/rss_20.xml"/>
+
+		
+
+	</head>
+	<body>
+		<div class="whosonfirst-wrapper">
+
+			<nav class="navbar navbar-default navbar-fixed-top whosonfirst-fixed-subpage-navbar">
+				<div class="container">
+
+					
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="/">Who’s On First</a>
+					</div>
+
+					
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					  <ul class="nav navbar-nav navbar-right">
+
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/browse/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">browse</a>
+							</li>
+					    
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/docs/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">documentation</a>
+							</li>
+							
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/code/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">code</a>
+							</li>
+
+							
+							
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/download/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">download</a>
+							</li>
+							
+							<li class="whosonfirst-navbar-element-collapsed">
+								<a href="/blog/" class="whosonfirst-nav-link whosonfirst-nav-link-collapsed">blog</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+
+
+		<style type="text/css">
+		  body {
+		  font-family: serif;
+		  font-size: 1.3em;
+		  line-height: 1.5em;
+		  }
+
+		  h2 small {
+		  display: block;
+		  margin-top:.10em;
+		  font-weight: 100;
+		  font-size: .5em;
+		  line-height: 1.3em;
+		  }
+
+		  p {
+		  line-height: 1.5em !important;
+		  }
+
+		  ul {
+		  font-size:1.3em;
+		  line-height:1.5em;
+		  margin-top:1em !important;
+		  }
+
+		  li {
+		  list-style-type: circle;
+		  margin-bottom: .5em;
+		  }
+
+		  img {
+		  max-width: 640px !important;
+		  max-height: 480px !important;
+		  border: 1px dotted #ccc;
+		  padding: .5em;
+		  margin-bottom:1em;
+		  margin-top: 1em;
+		  display:block;
+		  min-width: 320px;
+		  margin: 0 auto;
+		  }
+
+		  blockquote {
+		  background-color:#ededed;
+		  margin-top:1em;
+		  padding-top:.05em !important;
+		  padding-bottom:1.75em !important;
+		  }
+
+		  .hey-look {
+		  font-weight: 700;
+		  }
+
+		  @media (min-width: 320px) and (max-width: 400px) {
+
+		  ul {
+		  margin:0px;
+	  	  margin-left:15px;
+		  padding:0px;
+		  }
+
+		  pre {
+		  max-width:250px;
+		  overflow:scroll;
+		  }
+
+		  img {
+		  max-width: 250px !important;
+		  max-height: 200px !important;
+		  min-width: 75px;
+		  }
+		  }
+
+		</style>
+
+			<div class="container whosonfirst-subpage-container">
+			  <div class="row">
+			    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-0">
+ 			    </div>
+			    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+			      <article>
+
+	  
+	  
+	  <h2>
+	    De-duplicating venues with vector embeddings
+	    <small>This is a blog post by
+	      <span class="hey-look">thisisaaronland</span>
+	      that was published on <span class="pubdate"><a href="/blog/2024/08/">Aug</a> <a href="/blog/2024/08/16">16</a>, <a href="/blog/2024/">2024</a></span>
+	       and tagged <span class="hey-look">venues</span>, <span class="hey-look">download</span>, <span class="hey-look">whosonfirst</span>, <span class="hey-look">wof</span> and <span class="hey-look">data</span></small>
+	  </h2>
+
+<p><img src="images/200157_a2963607223a77cf_b.jpg" alt="" /></p>
+
+<div style="font-size:small;font-style:italic;text-align:center;">
+Card, Karrie Jacobs: Change of Address; offset lithograph on paper; 11.8 x 16.3 cm (4 5/8 x 6 5/8 in.); Tibor Kalman <a href="https://collection.cooperhewitt.org/objects/18644345/">Collection of Cooper Hewitt Museum</a>.</div>
+
+<blockquote>
+<p>If address parsing is where you go to cry then address de-duplication is where you go to give up.</p>
+</blockquote>
+
+<p>I said that in 2017 as part of <a href="https://whosonfirst.org/blog/2017/10/24/whosonfirst-sotmus-2017/">a talk I did at State of the Map US</a> about the work the Who&rsquo;s On First project was around publishing venue records, including <a href="https://github.com/openvenues/lieu">Al Barrantine&rsquo;s work to de-deplicate those records</a>. Unfortunately, a few months later <a href="https://whosonfirst.org/blog/2018/01/02/chapter-two/">Mapzen shut down</a> so all of that work stalled out.</p>
+
+<p>Earlier this year I started to wonder whether it would be possible to use the vector embeddings for texts produced by, and for, large language models to restart some of that work. The short answer is: We can. The longer answer is: Nothing is especially &ldquo;fast&rdquo; yes and preferences (relative) ease of use, modularity and reproducability in favour of speed and other optimizations.</p>
+
+<p>So far, I have been able to first deprecate about 50,000 duplicate records in four Who&rsquo;s On First venue repositories (&hellip;) and then derive 70,000 concordances with <a href="#">Overture Data</a> place records, 10, 000 concordances with <a href="#">All The Places</a> venues and another (N) concordances with <a href="#">ILMS museum records</a>. There are almost certainly still bugs, or at least &ldquo;gotchas&rdquo;, but importantly the work so far passes the &ldquo;better than yesterday&rdquo; test.</p>
+
+<p><img src="images/91579_eee532aad4b0955d_b.jpg" alt="" /></p>
+
+<p><a href="https://collection.cooperhewitt.org/objects/18653089/">https://collection.cooperhewitt.org/objects/18653089/</a></p>
+
+<p>This code works around (1) common struct and (5) interfaces, and their provider-specific implementations. They are:</p>
+
+<ul>
+<li><p><a href="location/README.md#locationlocation">location.Location</a> – A Go language struct containing a normalized representation of a place or venue.</p></li>
+
+<li><p><a href="location/README.md#locationparser">location.Parser</a> – A Go language interface for parsing JSON-encoded GeoJSON records and producing <code>location.Location</code> instances.</p></li>
+
+<li><p><a href="location/README.md#locationdatabase">location.Database</a> – A Go language interface for storing and querying <code>location.Location</code> records.</p></li>
+
+<li><p><a href="iterator/README.md">iterator.Iterator</a> – A Go language interface for iterating through arbirtrary database sources and emiting JSON-encoded GeoJSON records.</p></li>
+
+<li><p><a href="embeddings/README.md">embeddings.Embedder</a> – A Go language interface for generating vector embeddings from input text.</p></li>
+
+<li><p><a href="vector/README.md">vector.Database</a> – A Go language interface for storing and querying vector embeddings.</p></li>
+</ul>
+
+<p>The basic working model is as follows:</p>
+
+<ul>
+<li>Given a data source or provider, iterate through its records generating and storing <code>location.Location</code> records.</li>
+<li>Given two databases of <code>location.Location</code> records, one of them the &ldquo;source&rdquo; and the other the &ldquo;target&rdquo;:</li>
+<li>Derive the set of unique 5-character geohashes from the records in the &ldquo;target&rdquo; database.</li>
+<li>For each of those geohashes, find all the <code>location.Location</code> records in the &ldquo;source&rdquo; database which a matching geohash and index each record in a vector database.</li>
+<li>Store each matching (&ldquo;source&rdquo;) <code>location.Location</code> record in a vector database deriving its embeddings using an <code>embeddings.Embedder</code> instance.</li>
+<li>Query each of the (&ldquo;target&rdquo;) records matching a given geohash against the records in the vector database; as with the records in the second database, embeddings for each record in the first database are derived using an <code>embeddings.Embedder</code> instance.</li>
+<li>Matching records are emitted as CSV-encoded rows.</li>
+</ul>
+
+<p>What happens with those CSV rows of matching records is left for implementors to decide. For a concrete example, have a look at the code in <a href="app/locations/index">app/locations/index</a>, <a href="app/locations/compare">app/locations/compare</a> and the <a href="compare">compare</a> package.</p>
+
+<p><img src="images/209192_293a68417192660f_b.jpg" alt="" /></p>
+
+<p><a href="https://collection.cooperhewitt.org/objects/152749803/">https://collection.cooperhewitt.org/objects/152749803/</a></p>
+
+<p>There are a few things to note about this approach:</p>
+
+<ul>
+<li>A 5-character geohash represents an area of approximately 2.4 km. In the future it may be the case that a longer geohash will be stored (in the location database) and a variable length geohash will be queried based on properties that can be derived about a location. For example, a venue in the center of Manhattan might use a longer, more precise geohash, versus a venue in a rural area might use a shorter, more inclusive, geohash.</li>
+<li>Likewise, if <code>location.Location</code> records have been supplemented with Who&rsquo;s On First hierarchies (on ingest or at runtime) then they might also be filtered by geohash <em>and</em> region to account for the fact that the same geohash can span multiple administrative boundaries (for example <code>dr5re</code>).</li>
+<li>This code works best with small and short-lived (temporary) vector databases on disk or in memory. Storing and querying millions of venue records and their embeddings on consumer grade hardware (my laptop) is generally slow and impractical. Many (but not all, yet) of the <code>vector.Database</code> implementations have been configured with the ability to create (and remove) temporary databases automatically.</li>
+</ul>
+
+<p><img src="images/50841_91faa27aa6285c00_b.jpg" alt="" /></p>
+
+<p><a href="https://collection.cooperhewitt.org/objects/18446851/">https://collection.cooperhewitt.org/objects/18446851/</a></p>
+
+		</article>
+		</div>
+		</div>	
+		</div>	
+
+		<footer>
+			<nav class="navbar navbar-default navbar-bottom">
+				<div class="container">
+					
+					<ul class="nav navbar-nav navbar-right whosonfirst-footer">
+						<li><a href="/docs/contributing/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">contributing</a></li>
+						<li><a href="/docs/licenses/" class="whosonfirst-nav-link whosonfirst-footer-nav-link">license</a></li>
+						
+						<li><a href="https://mapstodon.space/@whosonfirst" class="whosonfirst-nav-link whosonfirst-footer-nav-link">mastodon</a></li>			
+					</ul>
+				</div>
+			</nav>
+		</footer>
+
+		
+		<script src="/javascript/jquery.min.js"></script>
+		
+		<script src="/javascript/bootstrap.min.js"></script>
+		<script src="/javascript/mapzen.whosonfirst.home.js"></script>
+		<script src="/javascript/mapzen.whosonfirst.subpage.js"></script>
+		
+		<script src="/javascript/highlightpack.js"></script>
+		<script>
+		  try {
+		  	hljs.initHighlightingOnLoad();
+		  } catch (e) {
+		  	console.log("HLJS", e);
+		  }
+		</script>
+	</body>
+</html>
+
