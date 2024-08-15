@@ -21,6 +21,15 @@
 		<link rel="alternate" type="application/rss+xml" title="Who's On First RSS 2.0 feed" href="/blog/rss_20.xml"/>
 
 		
+		<meta property="og:type" content="article" />
+		<meta property="og:site_name" content="Who's On First" />
+		<meta property="og:title" content="De-duplicating venues with vector embeddings" />
+		<meta property="og:description" content="..." />
+		<meta property="og:image" content="https://www.whosonfirst.org/blog/2024/08/16/dedupe/images/219609_e312862475b94323_b.jpg" />
+
+		
+		
+		
 
 	</head>
 	<body>
@@ -160,13 +169,8 @@
 	    <small>This is a blog post by
 	      <span class="hey-look">thisisaaronland</span>
 	      that was published on <span class="pubdate"><a href="/blog/2024/08/">Aug</a> <a href="/blog/2024/08/16">16</a>, <a href="/blog/2024/">2024</a></span>
-	       and tagged <span class="hey-look">venues</span>, <span class="hey-look">download</span>, <span class="hey-look">whosonfirst</span>, <span class="hey-look">wof</span> and <span class="hey-look">data</span></small>
+	       and tagged <span class="hey-look">venues</span>, <span class="hey-look">download</span>, <span class="hey-look">whosonfirst</span>, <span class="hey-look">wof</span>, <span class="hey-look">data</span>, <span class="hey-look">overture</span> and <span class="hey-look">alltheplaces</span></small>
 	  </h2>
-
-<p><img src="images/200157_a2963607223a77cf_b.jpg" alt="" /></p>
-
-<div style="font-size:small;font-style:italic;text-align:center;">
-Card, Karrie Jacobs: Change of Address; offset lithograph on paper; 11.8 x 16.3 cm (4 5/8 x 6 5/8 in.); Tibor Kalman <a href="https://collection.cooperhewitt.org/objects/18644345/">Collection of Cooper Hewitt Museum</a>.</div>
 
 <blockquote>
 <p>If address parsing is where you go to cry then address de-duplication is where you go to give up.</p>
@@ -176,13 +180,27 @@ Card, Karrie Jacobs: Change of Address; offset lithograph on paper; 11.8 x 16.3 
 
 <p>Earlier this year I started to wonder whether it would be possible to use the vector embeddings for texts produced by, and for, large language models to restart some of that work. The short answer is: We can. The longer answer is: Nothing is especially &ldquo;fast&rdquo; yet and the code preferences (relative) ease of use, modularity and reproducability in favour of speed and other optimizations.</p>
 
-<p>So far, I have been able to first deprecate about 50,000 duplicate records in four Who&rsquo;s On First venue repositories (&hellip;) and then derive 70,000 concordances with <a href="#">Overture Data</a> place records, 10, 000 concordances with <a href="#">All The Places</a> venues and another (N) concordances with <a href="#">ILMS museum records</a>. There are almost certainly still bugs, or at least &ldquo;gotchas&rdquo;, but importantly the work so far passes the &ldquo;better than yesterday&rdquo; test.</p>
+<p>So far, I have been able to first deprecate about 50,000 duplicate records in the four Who&rsquo;s On First venue repositories I&rsquo;ve been testing with and then derive 100,000 concordances with <a href="#">Overture Data</a> place records, 8,000 concordances with <a href="#">All The Places</a> venues and another 5,000 concordances with <a href="#">ILMS museum records</a>. Specifically:</p>
+
+<ul>
+<li>Overture Data concordances: 70,000 in <a href="https://github.com/whosonfirst-data/whosonfirst-data-venue-us-ca">whosonfirst-data-venue-us-ca</a>, 25,000 in <a href="https://github.com/whosonfirst-data/whosonfirst-data-venue-us-ny">whosonfirst-data-venue-us-ny</a>, 5,000 in <a href="https://github.com/whosonfirst-data/whosonfirst-data-venue-ca">whosonfirst-data-venue-ca</a></li>
+<li>All The Places concordances: 6,000 in <a href="https://github.com/whosonfirst-data/whosonfirst-data-venue-us-ca">whosonfirst-data-venue-us-ca</a>, 2,000 in <a href="https://github.com/whosonfirst-data/whosonfirst-data-us-ny">whosonfirst-data-venue-us-ny</a></li>
+<li>ILMS concordances: &hellip;</li>
+</ul>
+
+<p>There are almost certainly still bugs, or at least &ldquo;gotchas&rdquo;, but importantly the work so far passes the &ldquo;better than yesterday&rdquo; test.</p>
 
 <p><img src="images/91579_eee532aad4b0955d_b.jpg" alt="" /></p>
 
-<p><a href="https://collection.cooperhewitt.org/objects/18653089/">https://collection.cooperhewitt.org/objects/18653089/</a></p>
+<div style="font-size:small;font-style:italic;text-align:center;">
+... <a href="https://collection.cooperhewitt.org/objects/18653089/">Collection of Cooper Hewitt Museum</a>.
+</div>
 
-<p>This code works around (1) common struct and (5) interfaces, and their provider-specific implementations. They are:</p>
+<p>All of the code to do this work is part of the <a href="https://github.com/whosonfirst/go-dedupe">whosonfirst/go-dedupe</a> package. Although the code was written by and for the Who&rsquo;s On First project but many of the tools are data source (or provider) agnostic. The package is designed to be modular and extensible so that it can be tested against a variety of data providers, data models and database engines.</p>
+
+<p>To date the bulk of the work has been done using Alex Garcia&rsquo;s <a href="https://alexgarcia.xyz/blog/2024/sqlite-vec-stable-release/index.html">sqlite-vec extension</a> for storing and querying locations alongside the <a href="https://github.com/ollama/ollama?tab=readme-ov-file#rest-api">Ollama REST API</a> and the <a href="https://huggingface.co/mixedbread-ai/mxbai-embed-large-v1">mxbai-embed-large</a> model for deriving embeddings. There may well be better, easier and faster ways to do this and this code is meant to help facilitate those investigations.</p>
+
+<p>The <code>whosonfirst/go-dedupe</code> package is structured around around (1) common struct and (5) interfaces, and their provider-specific implementations. They are:</p>
 
 <ul>
 <li><p><a href="location/README.md#locationlocation">location.Location</a> – A Go language struct containing a normalized representation of a place or venue.</p></li>
@@ -223,11 +241,13 @@ dr5xq,wof:id=353801261,wof:id=270152357,"Maurice Fur Designer, 69 Merrick Ave Me
 dr5xq,wof:id=555197305,wof:id=253237525,"Matteo's Cafe, 412 Bedford Ave Bellmore NY 11710","Matteos Cafe, 416 Bedford Ave Bellmore NY 11710",3.053007
 </pre>
 
-<p>And so on.</p>
+<p>And so on&hellip;</p>
 
-<p><img src="images/209192_293a68417192660f_b.jpg" alt="" /></p>
+<p><img src="images/219609_e312862475b94323_b.jpg" alt="" /></p>
 
-<p><a href="https://collection.cooperhewitt.org/objects/152749803/">https://collection.cooperhewitt.org/objects/152749803/</a></p>
+<div style="font-size:small;font-style:italic;text-align:center;">
+... <a href="https://collection.cooperhewitt.org/objects/18701879/">Collection of Cooper Hewitt Museum</a>.
+</div>
 
 <p>There are a few things to note about this approach:</p>
 
@@ -239,7 +259,25 @@ dr5xq,wof:id=555197305,wof:id=253237525,"Matteo's Cafe, 412 Bedford Ave Bellmore
 
 <p><img src="images/50841_91faa27aa6285c00_b.jpg" alt="" /></p>
 
-<p><a href="https://collection.cooperhewitt.org/objects/18446851/">https://collection.cooperhewitt.org/objects/18446851/</a></p>
+<div style="font-size:small;font-style:italic;text-align:center;">
+... <a href="https://collection.cooperhewitt.org/objects/18446851/">Collection of Cooper Hewitt Museum</a>.
+</div>
+
+<p>Records that have been with concordances will also contain <code>label</code> and <code>similarity</code> properties for their corresponding data source. For example:</p>
+
+<pre><code>...
+</code></pre>
+
+<p>In some cases it&rsquo;s also been possible to update a record&rsquo;s <code>mz:is_current</code> property, based on a concordance, to signal whether that venue is considered to be a comptemporary and active. I haven&rsquo;t done this for the Overture Data concordances because I&rsquo;ve been working with a database of records with a confidence level of 0.95 and higher (approximately 7 million out of the total 60 million available records) and Overture only says they are sure about something if it has a confidence level of 1.</p>
+
+<p>The way things stand today a data provider&rsquo;s confidence level is not stored in the location databases (described above) but that may change in the future to allow for logic to automatically determine whether a (Who&rsquo;s On First) record should be marked as &ldquo;current&rdquo;.</p>
+
+<p>This is on-going work so there&rsquo;s a lot left to do including better tooling for sourcing and visualizing venues. That will come in and, in the meantime, <a href="https://github.com/orgs/whosonfirst-data/discussions">suggestions or contributions are welcome</a>. In the meantime things are (a little bit) better than they were yesterday which is always nice.</p>
+
+<p><img src="images/200157_a2963607223a77cf_b.jpg" alt="" /></p>
+
+<div style="font-size:small;font-style:italic;text-align:center;">
+Card, Karrie Jacobs: Change of Address; offset lithograph on paper; 11.8 x 16.3 cm (4 5/8 x 6 5/8 in.); Tibor Kalman <a href="https://collection.cooperhewitt.org/objects/18644345/">Collection of Cooper Hewitt Museum</a>.</div>
 
 		</article>
 		</div>
