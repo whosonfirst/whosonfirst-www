@@ -12,11 +12,11 @@ tag: [venues,download,whosonfirst,wof,data,overture,alltheplaces]
 ---
 > If address parsing is where you go to cry then address de-duplication is where you go to give up.
 
-I said that in 2017 as part of [a talk I did at State of the Map US](https://whosonfirst.org/blog/2017/10/24/whosonfirst-sotmus-2017/) about the work the Who's On First project was around publishing venue records, including [Al Barrantine's work to de-deplicate those records](https://github.com/openvenues/lieu). Unfortunately, a few months later [Mapzen shut down](https://whosonfirst.org/blog/2018/01/02/chapter-two/) so all of that work stalled out after that.
+I said that in 2017 as part of [a talk I did at State of the Map US](https://whosonfirst.org/blog/2017/10/24/whosonfirst-sotmus-2017/) about the work the Who's On First project was doing around publishing venue records, including [Al Barrantine's work to de-deplicate those records](https://github.com/openvenues/lieu). Unfortunately, a few months later [Mapzen shut down](https://whosonfirst.org/blog/2018/01/02/chapter-two/) so all that work pretty much stalled out afterwards.
 
-Earlier this year I started to wonder whether it would be possible to use the vector embeddings for texts produced by, and for, large language models to restart some of that work. The short answer is: We can. The longer answer is: Nothing is especially "fast" yet and the code preferences (relative) ease of use, modularity and reproducability in favour of speed and other optimizations.
+Earlier this year I started to wonder whether it would be possible to use the vector embeddings for texts produced by, and for, large language models to restart some of that de-duplication work. The short answer is: We can. The longer answer is: Nothing is especially "fast" yet and the code that has been written, to date, preferences (relative) ease of use, modularity and reproducability in favour of speed and other optimizations.
 
-So far, I have been able to first deprecate about 50,000 duplicate records in the four Who's On First venue repositories I've been testing with and then derive 100,000 concordances with [Overture Data](#) place records, 8,000 concordances with [All The Places](#) venues and another 5,000 concordances with [ILMS museum records](#). Specifically:
+So far, I have been able to first deprecate about 50,000 duplicate records in the four Who's On First venue repositories I've been testing with and then derive 100,000 concordances with [Overture Data](https://overturemaps.org/) place records, 8,000 concordances with [All The Places](https://www.alltheplaces.xyz/) venues and another 5,000 concordances with [ILMS museum records](https://www.imls.gov/research-evaluation/data-collection/museum-data-files). Specifically:
 
 * Overture Data concordances: 70,000 in [whosonfirst-data-venue-us-ca](https://github.com/whosonfirst-data/whosonfirst-data-venue-us-ca), 25,000 in [whosonfirst-data-venue-us-ny](https://github.com/whosonfirst-data/whosonfirst-data-venue-us-ny), 5,000 in [whosonfirst-data-venue-ca](https://github.com/whosonfirst-data/whosonfirst-data-venue-ca)
 * All The Places concordances: 6,000 in [whosonfirst-data-venue-us-ca](https://github.com/whosonfirst-data/whosonfirst-data-venue-us-ca), 2,000 in [whosonfirst-data-venue-us-ny](https://github.com/whosonfirst-data/whosonfirst-data-us-ny)
@@ -27,7 +27,7 @@ There are almost certainly still bugs, or at least "gotchas", but importantly th
 ![](images/91579_eee532aad4b0955d_b.jpg)
 
 <div style="font-size:small;font-style:italic;text-align:center;">
-... <a href="https://collection.cooperhewitt.org/objects/18653089/">Collection of Cooper Hewitt Museum</a>.
+Rolodex Open Rotary Card File; bent tubular metal, molded plastic, rubber, paper; Gift of Rolodex Corporation; <a href="https://collection.cooperhewitt.org/objects/18653089/">Collection of Cooper Hewitt Museum</a>.
 </div>
 
 All of the code to do this work is part of the [whosonfirst/go-dedupe](https://github.com/whosonfirst/go-dedupe) package. Although the code was written by and for the Who's On First project but many of the tools are data source (or provider) agnostic. The package is designed to be modular and extensible so that it can be tested against a variety of data providers, data models and database engines.
@@ -36,16 +36,17 @@ To date the bulk of the work has been done using Alex Garcia's [sqlite-vec exten
 
 The `whosonfirst/go-dedupe` package is structured around around (1) common struct and (5) interfaces, and their provider-specific implementations. They are:
 
-* [location.Location](location/README.md#locationlocation) – A Go language struct containing a normalized representation of a place or venue.
+* [location.Location](https://github.com/whosonfirst/go-dedupe/blob/main/location/README.md#locationlocation) – A Go language struct containing a normalized representation of a place or venue.
 
-* [location.Parser](location/README.md#locationparser) – A Go language interface for parsing JSON-encoded GeoJSON records and producing `location.Location` instances.
+* [location.Parser](https://github.com/whosonfirst/go-dedupe/blob/main/location/README.md#locationparser) – A Go language interface for parsing JSON-encoded GeoJSON records and producing `location.Location` instances.
 
-* [location.Database](location/README.md#locationdatabase) – A Go language interface for storing and querying `location.Location` records.
+* [location.Database](https://github.com/whosonfirst/go-dedupe/blob/main/location/README.md#locationdatabase) – A Go language interface for storing and querying `location.Location` records.
 
-* [iterator.Iterator](iterator/README.md) – A Go language interface for iterating through arbirtrary database sources and emiting JSON-encoded GeoJSON records.
+* [iterator.Iterator](https://github.com/whosonfirst/go-dedupe/blob/main/iterator/README.md) – A Go language interface for iterating through arbirtrary database sources and emiting JSON-encoded GeoJSON records.
 
-* [embeddings.Embedder](embeddings/README.md) – A Go language interface for generating vector embeddings from input text.
-* [vector.Database](vector/README.md) – A Go language interface for storing and querying vector embeddings.
+* [embeddings.Embedder](https://github.com/whosonfirst/go-dedupe/blob/main/embeddings/README.md) – A Go language interface for generating vector embeddings from input text.
+
+* [vector.Database](https://github.com/whosonfirst/go-dedupe/blob/main/vector/README.md) – A Go language interface for storing and querying vector embeddings.
 
 The basic working model is as follows:
 
@@ -75,7 +76,7 @@ And so on...
 ![](images/219609_e312862475b94323_b.jpg)
 
 <div style="font-size:small;font-style:italic;text-align:center;">
-... <a href="https://collection.cooperhewitt.org/objects/18701879/">Collection of Cooper Hewitt Museum</a>.
+Panel, #5; silk; Museum purchase through gift of Anonymous Donor; <a href="https://collection.cooperhewitt.org/objects/18701879/">Collection of Cooper Hewitt Museum</a>.
 </div>
 
 There are a few things to note about this approach:
@@ -87,7 +88,7 @@ There are a few things to note about this approach:
 ![](images/50841_91faa27aa6285c00_b.jpg)
 
 <div style="font-size:small;font-style:italic;text-align:center;">
-... <a href="https://collection.cooperhewitt.org/objects/18446851/">Collection of Cooper Hewitt Museum</a>.
+Drawing, Design for a Composition, Cube with Leaf; brush and gouache, graphite on paper; Gift of Mrs. E. McKnight Kauffer; <a href="https://collection.cooperhewitt.org/objects/18446851/">Collection of Cooper Hewitt Museum</a>.
 </div>
 
 Records that have been with concordances will also contain `label` and `similarity` properties for their corresponding data source. For example:
@@ -105,5 +106,5 @@ This is on-going work so there's a lot left to do including better tooling for s
 ![](images/200157_a2963607223a77cf_b.jpg)
 
 <div style="font-size:small;font-style:italic;text-align:center;">
-Card, Karrie Jacobs: Change of Address; offset lithograph on paper; 11.8 x 16.3 cm (4 5/8 x 6 5/8 in.); Tibor Kalman <a href="https://collection.cooperhewitt.org/objects/18644345/">Collection of Cooper Hewitt Museum</a>.</div>
+Card, Karrie Jacobs: Change of Address; offset lithograph on paper; 11.8 x 16.3 cm (4 5/8 x 6 5/8 in.); Gift of Tibor Kalman <a href="https://collection.cooperhewitt.org/objects/18644345/">Collection of Cooper Hewitt Museum</a>.</div>
 

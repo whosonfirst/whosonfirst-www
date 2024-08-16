@@ -176,11 +176,11 @@
 <p>If address parsing is where you go to cry then address de-duplication is where you go to give up.</p>
 </blockquote>
 
-<p>I said that in 2017 as part of <a href="https://whosonfirst.org/blog/2017/10/24/whosonfirst-sotmus-2017/">a talk I did at State of the Map US</a> about the work the Who&rsquo;s On First project was around publishing venue records, including <a href="https://github.com/openvenues/lieu">Al Barrantine&rsquo;s work to de-deplicate those records</a>. Unfortunately, a few months later <a href="https://whosonfirst.org/blog/2018/01/02/chapter-two/">Mapzen shut down</a> so all of that work stalled out after that.</p>
+<p>I said that in 2017 as part of <a href="https://whosonfirst.org/blog/2017/10/24/whosonfirst-sotmus-2017/">a talk I did at State of the Map US</a> about the work the Who&rsquo;s On First project was doing around publishing venue records, including <a href="https://github.com/openvenues/lieu">Al Barrantine&rsquo;s work to de-deplicate those records</a>. Unfortunately, a few months later <a href="https://whosonfirst.org/blog/2018/01/02/chapter-two/">Mapzen shut down</a> so all that work pretty much stalled out afterwards.</p>
 
-<p>Earlier this year I started to wonder whether it would be possible to use the vector embeddings for texts produced by, and for, large language models to restart some of that work. The short answer is: We can. The longer answer is: Nothing is especially &ldquo;fast&rdquo; yet and the code preferences (relative) ease of use, modularity and reproducability in favour of speed and other optimizations.</p>
+<p>Earlier this year I started to wonder whether it would be possible to use the vector embeddings for texts produced by, and for, large language models to restart some of that de-duplication work. The short answer is: We can. The longer answer is: Nothing is especially &ldquo;fast&rdquo; yet and the code that has been written, to date, preferences (relative) ease of use, modularity and reproducability in favour of speed and other optimizations.</p>
 
-<p>So far, I have been able to first deprecate about 50,000 duplicate records in the four Who&rsquo;s On First venue repositories I&rsquo;ve been testing with and then derive 100,000 concordances with <a href="#">Overture Data</a> place records, 8,000 concordances with <a href="#">All The Places</a> venues and another 5,000 concordances with <a href="#">ILMS museum records</a>. Specifically:</p>
+<p>So far, I have been able to first deprecate about 50,000 duplicate records in the four Who&rsquo;s On First venue repositories I&rsquo;ve been testing with and then derive 100,000 concordances with <a href="https://overturemaps.org/">Overture Data</a> place records, 8,000 concordances with <a href="https://www.alltheplaces.xyz/">All The Places</a> venues and another 5,000 concordances with <a href="https://www.imls.gov/research-evaluation/data-collection/museum-data-files">ILMS museum records</a>. Specifically:</p>
 
 <ul>
 <li>Overture Data concordances: 70,000 in <a href="https://github.com/whosonfirst-data/whosonfirst-data-venue-us-ca">whosonfirst-data-venue-us-ca</a>, 25,000 in <a href="https://github.com/whosonfirst-data/whosonfirst-data-venue-us-ny">whosonfirst-data-venue-us-ny</a>, 5,000 in <a href="https://github.com/whosonfirst-data/whosonfirst-data-venue-ca">whosonfirst-data-venue-ca</a></li>
@@ -193,7 +193,7 @@
 <p><img src="images/91579_eee532aad4b0955d_b.jpg" alt="" /></p>
 
 <div style="font-size:small;font-style:italic;text-align:center;">
-... <a href="https://collection.cooperhewitt.org/objects/18653089/">Collection of Cooper Hewitt Museum</a>.
+Rolodex Open Rotary Card File; bent tubular metal, molded plastic, rubber, paper; Gift of Rolodex Corporation; <a href="https://collection.cooperhewitt.org/objects/18653089/">Collection of Cooper Hewitt Museum</a>.
 </div>
 
 <p>All of the code to do this work is part of the <a href="https://github.com/whosonfirst/go-dedupe">whosonfirst/go-dedupe</a> package. Although the code was written by and for the Who&rsquo;s On First project but many of the tools are data source (or provider) agnostic. The package is designed to be modular and extensible so that it can be tested against a variety of data providers, data models and database engines.</p>
@@ -203,17 +203,17 @@
 <p>The <code>whosonfirst/go-dedupe</code> package is structured around around (1) common struct and (5) interfaces, and their provider-specific implementations. They are:</p>
 
 <ul>
-<li><p><a href="location/README.md#locationlocation">location.Location</a> – A Go language struct containing a normalized representation of a place or venue.</p></li>
+<li><p><a href="https://github.com/whosonfirst/go-dedupe/blob/main/location/README.md#locationlocation">location.Location</a> – A Go language struct containing a normalized representation of a place or venue.</p></li>
 
-<li><p><a href="location/README.md#locationparser">location.Parser</a> – A Go language interface for parsing JSON-encoded GeoJSON records and producing <code>location.Location</code> instances.</p></li>
+<li><p><a href="https://github.com/whosonfirst/go-dedupe/blob/main/location/README.md#locationparser">location.Parser</a> – A Go language interface for parsing JSON-encoded GeoJSON records and producing <code>location.Location</code> instances.</p></li>
 
-<li><p><a href="location/README.md#locationdatabase">location.Database</a> – A Go language interface for storing and querying <code>location.Location</code> records.</p></li>
+<li><p><a href="https://github.com/whosonfirst/go-dedupe/blob/main/location/README.md#locationdatabase">location.Database</a> – A Go language interface for storing and querying <code>location.Location</code> records.</p></li>
 
-<li><p><a href="iterator/README.md">iterator.Iterator</a> – A Go language interface for iterating through arbirtrary database sources and emiting JSON-encoded GeoJSON records.</p></li>
+<li><p><a href="https://github.com/whosonfirst/go-dedupe/blob/main/iterator/README.md">iterator.Iterator</a> – A Go language interface for iterating through arbirtrary database sources and emiting JSON-encoded GeoJSON records.</p></li>
 
-<li><p><a href="embeddings/README.md">embeddings.Embedder</a> – A Go language interface for generating vector embeddings from input text.</p></li>
+<li><p><a href="https://github.com/whosonfirst/go-dedupe/blob/main/embeddings/README.md">embeddings.Embedder</a> – A Go language interface for generating vector embeddings from input text.</p></li>
 
-<li><p><a href="vector/README.md">vector.Database</a> – A Go language interface for storing and querying vector embeddings.</p></li>
+<li><p><a href="https://github.com/whosonfirst/go-dedupe/blob/main/vector/README.md">vector.Database</a> – A Go language interface for storing and querying vector embeddings.</p></li>
 </ul>
 
 <p>The basic working model is as follows:</p>
@@ -246,7 +246,7 @@ dr5xq,wof:id=555197305,wof:id=253237525,"Matteo's Cafe, 412 Bedford Ave Bellmore
 <p><img src="images/219609_e312862475b94323_b.jpg" alt="" /></p>
 
 <div style="font-size:small;font-style:italic;text-align:center;">
-... <a href="https://collection.cooperhewitt.org/objects/18701879/">Collection of Cooper Hewitt Museum</a>.
+Panel, #5; silk; Museum purchase through gift of Anonymous Donor; <a href="https://collection.cooperhewitt.org/objects/18701879/">Collection of Cooper Hewitt Museum</a>.
 </div>
 
 <p>There are a few things to note about this approach:</p>
@@ -260,7 +260,7 @@ dr5xq,wof:id=555197305,wof:id=253237525,"Matteo's Cafe, 412 Bedford Ave Bellmore
 <p><img src="images/50841_91faa27aa6285c00_b.jpg" alt="" /></p>
 
 <div style="font-size:small;font-style:italic;text-align:center;">
-... <a href="https://collection.cooperhewitt.org/objects/18446851/">Collection of Cooper Hewitt Museum</a>.
+Drawing, Design for a Composition, Cube with Leaf; brush and gouache, graphite on paper; Gift of Mrs. E. McKnight Kauffer; <a href="https://collection.cooperhewitt.org/objects/18446851/">Collection of Cooper Hewitt Museum</a>.
 </div>
 
 <p>Records that have been with concordances will also contain <code>label</code> and <code>similarity</code> properties for their corresponding data source. For example:</p>
@@ -277,7 +277,7 @@ dr5xq,wof:id=555197305,wof:id=253237525,"Matteo's Cafe, 412 Bedford Ave Bellmore
 <p><img src="images/200157_a2963607223a77cf_b.jpg" alt="" /></p>
 
 <div style="font-size:small;font-style:italic;text-align:center;">
-Card, Karrie Jacobs: Change of Address; offset lithograph on paper; 11.8 x 16.3 cm (4 5/8 x 6 5/8 in.); Tibor Kalman <a href="https://collection.cooperhewitt.org/objects/18644345/">Collection of Cooper Hewitt Museum</a>.</div>
+Card, Karrie Jacobs: Change of Address; offset lithograph on paper; 11.8 x 16.3 cm (4 5/8 x 6 5/8 in.); Gift of Tibor Kalman <a href="https://collection.cooperhewitt.org/objects/18644345/">Collection of Cooper Hewitt Museum</a>.</div>
 
 		</article>
 		</div>
