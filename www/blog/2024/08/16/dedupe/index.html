@@ -24,7 +24,7 @@
 		<meta property="og:type" content="article" />
 		<meta property="og:site_name" content="Who's On First" />
 		<meta property="og:title" content="De-duplicating venues with vector embeddings" />
-		<meta property="og:description" content="..." />
+		<meta property="og:description" content="So far, testing with four Who’s On First venue repositories, I have been able to use that code to first deprecate about 45,000 duplicate records and then, second, derive over 100,000 concordances with Overture Data place records, 8,000 concordances with All The Places venues and another 500 concordances with ILMS museum records. There are almost certainly still bugs, or at least “gotchas”, but importantly the work so far passes the “better than yesterday” test." />
 		<meta property="og:image" content="https://www.whosonfirst.org/blog/2024/08/16/dedupe/images/219609_e312862475b94323_b.jpg" />
 
 		
@@ -172,20 +172,22 @@
 	       and tagged <span class="hey-look">venues</span>, <span class="hey-look">download</span>, <span class="hey-look">whosonfirst</span>, <span class="hey-look">wof</span>, <span class="hey-look">data</span>, <span class="hey-look">overture</span> and <span class="hey-look">alltheplaces</span></small>
 	  </h2>
 
+<p><img src="images/probability.jpg" alt="" /></p>
+
 <blockquote>
 <p>If address parsing is where you go to cry then address de-duplication is where you go to give up.</p>
 </blockquote>
 
-<p>I said that in 2017 as part of <a href="https://whosonfirst.org/blog/2017/10/24/whosonfirst-sotmus-2017/">a talk I did at State of the Map US</a> about the work the Who&rsquo;s On First project was doing around publishing venue records, including <a href="https://github.com/openvenues/lieu">Al Barrantine&rsquo;s work to de-deplicate those records</a>. Unfortunately, a few months later <a href="https://whosonfirst.org/blog/2018/01/02/chapter-two/">Mapzen shut down</a> so all that work pretty much stalled out afterwards.</p>
+<p>I said that in 2017 as part of <a href="https://whosonfirst.org/blog/2017/10/24/whosonfirst-sotmus-2017/">a talk I did at State of the Map US</a> about the work the Who&rsquo;s On First project was doing around publishing venue records, including <a href="https://github.com/openvenues/lieu">Al Barrantine&rsquo;s work to de-deplicate those records</a>. Unfortunately, a few months later <a href="https://whosonfirst.org/blog/2018/01/02/chapter-two/">Mapzen shut down</a> so everything pretty much stalled out afterwards.</p>
 
-<p>Earlier this year I started to wonder whether it would be possible to use the vector embeddings for texts produced by, and for, large language models to restart some of that de-duplication work. The short answer is: We can. The longer answer is: Nothing is especially &ldquo;fast&rdquo; yet and the code that has been written, to date, preferences (relative) ease of use, modularity and reproducability in favour of speed and other optimizations.</p>
+<p>Earlier this year I started to wonder whether it would be possible to use the <a href="https://simonwillison.net/2023/Oct/23/embeddings/">vector embeddings produced by, and for, large language models</a> to restart some of that de-duplication work. The short answer is: Yes, it is possible. The longer answer is: Nothing is especially &ldquo;fast&rdquo; yet and, to date, the code which has been written preferences (relative) ease of use, modularity and reproducability in favour of speed and other optimizations.</p>
 
-<p>So far, I have been able to first deprecate about 50,000 duplicate records in the four Who&rsquo;s On First venue repositories I&rsquo;ve been testing with and then derive 100,000 concordances with <a href="https://overturemaps.org/">Overture Data</a> place records, 8,000 concordances with <a href="https://www.alltheplaces.xyz/">All The Places</a> venues and another 5,000 concordances with <a href="https://www.imls.gov/research-evaluation/data-collection/museum-data-files">ILMS museum records</a>. Specifically:</p>
+<p>So far, testing with four <a href="https://github.com/whosonfirst-data">Who&rsquo;s On First venue repositories</a>, I have been able to use that code to first <a href="https://github.com/whosonfirst-data/whosonfirst-data-deprecated-venue">deprecate about 45,000 duplicate records</a> and then, second, derive over 100,000 concordances with <a href="https://overturemaps.org/">Overture Data</a> place records, 8,000 concordances with <a href="https://www.alltheplaces.xyz/">All The Places</a> venues and another 500 concordances with <a href="https://www.imls.gov/research-evaluation/data-collection/museum-data-files">Institute of Library and Museum Studies (ILMS) museum records</a>. Specifically:</p>
 
 <ul>
-<li>Overture Data concordances: 70,000 in <a href="https://github.com/whosonfirst-data/whosonfirst-data-venue-us-ca">whosonfirst-data-venue-us-ca</a>, 25,000 in <a href="https://github.com/whosonfirst-data/whosonfirst-data-venue-us-ny">whosonfirst-data-venue-us-ny</a>, 5,000 in <a href="https://github.com/whosonfirst-data/whosonfirst-data-venue-ca">whosonfirst-data-venue-ca</a></li>
-<li>All The Places concordances: 6,000 in <a href="https://github.com/whosonfirst-data/whosonfirst-data-venue-us-ca">whosonfirst-data-venue-us-ca</a>, 2,000 in <a href="https://github.com/whosonfirst-data/whosonfirst-data-us-ny">whosonfirst-data-venue-us-ny</a></li>
-<li>ILMS concordances: &hellip;</li>
+<li>Overture Data concordances: 73,939 in <a href="https://github.com/whosonfirst-data/whosonfirst-data-venue-us-ca">whosonfirst-data-venue-us-ca</a>, 25,190 in <a href="https://github.com/whosonfirst-data/whosonfirst-data-venue-us-ny">whosonfirst-data-venue-us-ny</a>, 5,099 in <a href="https://github.com/whosonfirst-data/whosonfirst-data-venue-ca">whosonfirst-data-venue-ca</a>, 4,265 in <a href="https://github.com/whosonfirst-data/whosonfirst-data-venue-gb">whosonfirst-data-venue-gb</a></li>
+<li>All The Places concordances: 6,108 in <a href="https://github.com/whosonfirst-data/whosonfirst-data-venue-us-ca">whosonfirst-data-venue-us-ca</a>, 1,985 in <a href="https://github.com/whosonfirst-data/whosonfirst-data-us-ny">whosonfirst-data-venue-us-ny</a></li>
+<li>ILMS concordances: 326 in <a href="https://github.com/whosonfirst-data/whosonfirst-data-venue-us-ca">whosonfirst-data-venue-us-ca</a>, 171 in <a href="https://github.com/whosonfirst-data/whosonfirst-data-venue-us-ny">whosonfirst-data-venue-us-ny</a></li>
 </ul>
 
 <p>There are almost certainly still bugs, or at least &ldquo;gotchas&rdquo;, but importantly the work so far passes the &ldquo;better than yesterday&rdquo; test.</p>
@@ -196,11 +198,11 @@
 Rolodex Open Rotary Card File; bent tubular metal, molded plastic, rubber, paper; Gift of Rolodex Corporation; <a href="https://collection.cooperhewitt.org/objects/18653089/">Collection of Cooper Hewitt Museum</a>.
 </div>
 
-<p>All of the code to do this work is part of the <a href="https://github.com/whosonfirst/go-dedupe">whosonfirst/go-dedupe</a> package. Although the code was written by and for the Who&rsquo;s On First project but many of the tools are data source (or provider) agnostic. The package is designed to be modular and extensible so that it can be tested against a variety of data providers, data models and database engines.</p>
+<p>All of the code to do this work is contained in the <a href="https://github.com/whosonfirst/go-dedupe">whosonfirst/go-dedupe</a> package. Although the code was written by and for the <a href="https://whosonfirst.org">Who&rsquo;s On First</a> project many of the tools are data source (or provider) agnostic. The package is designed to be modular and extensible so that it can be tested against a variety of data providers, data models and database engines.</p>
 
 <p>To date the bulk of the work has been done using Alex Garcia&rsquo;s <a href="https://alexgarcia.xyz/blog/2024/sqlite-vec-stable-release/index.html">sqlite-vec extension</a> for storing and querying locations alongside the <a href="https://github.com/ollama/ollama?tab=readme-ov-file#rest-api">Ollama REST API</a> and the <a href="https://huggingface.co/mixedbread-ai/mxbai-embed-large-v1">mxbai-embed-large</a> model for deriving embeddings. There may well be better, easier and faster ways to do this and this code is meant to help facilitate those investigations.</p>
 
-<p>The <code>whosonfirst/go-dedupe</code> package is structured around around (1) common struct and (5) interfaces, and their provider-specific implementations. They are:</p>
+<p>The <code>whosonfirst/go-dedupe</code> package is structured around around (1) common date structure and (5) interfaces, and their provider-specific implementations. They are:</p>
 
 <ul>
 <li><p><a href="https://github.com/whosonfirst/go-dedupe/blob/main/location/README.md#locationlocation">location.Location</a> – A Go language struct containing a normalized representation of a place or venue.</p></li>
@@ -219,27 +221,30 @@ Rolodex Open Rotary Card File; bent tubular metal, molded plastic, rubber, paper
 <p>The basic working model is as follows:</p>
 
 <ul>
-<li>Given a data source or provider, iterate through its records generating and storing <code>location.Location</code> records.</li>
-<li>Given two databases of <code>location.Location</code> records, one of them the &ldquo;source&rdquo; and the other the &ldquo;target&rdquo;:</li>
-<li>Derive the set of unique 5-character geohashes from the records in the &ldquo;target&rdquo; database.</li>
-<li>For each of those geohashes, find all the <code>location.Location</code> records in the &ldquo;source&rdquo; database which a matching geohash and index each record in a vector database.</li>
-<li>Store each matching (&ldquo;source&rdquo;) <code>location.Location</code> record in a vector database deriving its embeddings using an <code>embeddings.Embedder</code> instance.</li>
-<li>Query each of the (&ldquo;target&rdquo;) records matching a given geohash against the records in the vector database; as with the records in the second database, embeddings for each record in the first database are derived using an <code>embeddings.Embedder</code> instance.</li>
-<li>Matching records are emitted as CSV-encoded rows.</li>
+<li><p>Given a data source or provider, iterate through its records generating and storing <code>location.Location</code> records.</p></li>
+
+<li><p>Given two databases of <code>location.Location</code> records, one of them the &ldquo;source&rdquo; and the other the &ldquo;target&rdquo;:</p></li>
+
+<li><p>Derive the set of unique 5-character geohashes from the records in the &ldquo;target&rdquo; database.</p></li>
+
+<li><p>For each of those geohashes, find all the <code>location.Location</code> records in the &ldquo;source&rdquo; database which a matching geohash and index each record in a vector database using an <code>embeddings.Embedder</code> instance to generate the vectors to store.</p></li>
+
+<li><p>Query each of the (&ldquo;target&rdquo;) records matching a given geohash against the records in the vector database; as with the records in the second database, embeddings for each record in the first database are derived using an <code>embeddings.Embedder</code> instance.</p></li>
+
+<li><p>Matching records are emitted as CSV-encoded rows to <code>STDOUT</code>. Eventually there will be some sort of formal &ldquo;publish&rdquo; and &ldquo;subscribe&rdquo; mechanism for matching records but today there are only CSV rows.</p></li>
 </ul>
 
 <p>What happens with those CSV rows of matching records is left for implementors to decide. For example:</p>
 
-<pre>
-$> tail -f /usr/local/data/wof-wof-ny.csv
-dr5rr,wof:id=353594351,wof:id=353593911,"Cogliano Angelo Jr, 9407 101st Ave Ozone Park NY 11416","Cogliano Angelo Acctnt Jr, 9407 101st Avenue Ozone Park NY 11416",3.018408
-dr5xg,wof:id=572126199,wof:id=287214377,"Prosthodontic Associates PC, 1 Hollow Ln Ste 202 New Hyde Park NY 11042","Prosthodontic Associates, 1 Hollow Ln New Hyde Park NY 11042",3.716114
-dr5x6,wof:id=303812969,wof:id=269602859,"Hudson Shipping Lines Corp, 20 W Lincoln Ave Valley Stream NY 11580","Hudson Shipping Lines Corp, 20 E Lincoln Ave Valley Stream NY 11580",0.795845
-dr7b3,wof:id=370248145,wof:id=253556813,"Pisciotta Capital, 775 Park Dr Huntington Station NY 11793","Pisciotta Capital, 775 Park Ave Huntington NY 11743",3.776641
-dr8v9,wof:id=387002999,wof:id=320123265,"Gray Cpa Pc, 16 E Main St Ste 400 Rochester NY 14614","Gray CPA PC, 16 Main St W Rochester NY 14614",2.519037
-dr5xq,wof:id=353801261,wof:id=270152357,"Maurice Fur Designer, 69 Merrick Ave Merrick NY 11566","Maurice Fur Designer-Merrick, 69 Merrick Rd North Merrick NY 11566",3.880814
-dr5xq,wof:id=555197305,wof:id=253237525,"Matteo's Cafe, 412 Bedford Ave Bellmore NY 11710","Matteos Cafe, 416 Bedford Ave Bellmore NY 11710",3.053007
-</pre>
+<pre><code>$&gt; tail -f /usr/local/data/wof-wof-ny.csv
+dr5rr,wof:id=353594351,wof:id=353593911,&quot;Cogliano Angelo Jr, 9407 101st Ave Ozone Park NY 11416&quot;,&quot;Cogliano Angelo Acctnt Jr, 9407 101st Avenue Ozone Park NY 11416&quot;,3.018408
+dr5xg,wof:id=572126199,wof:id=287214377,&quot;Prosthodontic Associates PC, 1 Hollow Ln Ste 202 New Hyde Park NY 11042&quot;,&quot;Prosthodontic Associates, 1 Hollow Ln New Hyde Park NY 11042&quot;,3.716114
+dr5x6,wof:id=303812969,wof:id=269602859,&quot;Hudson Shipping Lines Corp, 20 W Lincoln Ave Valley Stream NY 11580&quot;,&quot;Hudson Shipping Lines Corp, 20 E Lincoln Ave Valley Stream NY 11580&quot;,0.795845
+dr7b3,wof:id=370248145,wof:id=253556813,&quot;Pisciotta Capital, 775 Park Dr Huntington Station NY 11793&quot;,&quot;Pisciotta Capital, 775 Park Ave Huntington NY 11743&quot;,3.776641
+dr8v9,wof:id=387002999,wof:id=320123265,&quot;Gray Cpa Pc, 16 E Main St Ste 400 Rochester NY 14614&quot;,&quot;Gray CPA PC, 16 Main St W Rochester NY 14614&quot;,2.519037
+dr5xq,wof:id=353801261,wof:id=270152357,&quot;Maurice Fur Designer, 69 Merrick Ave Merrick NY 11566&quot;,&quot;Maurice Fur Designer-Merrick, 69 Merrick Rd North Merrick NY 11566&quot;,3.880814
+dr5xq,wof:id=555197305,wof:id=253237525,&quot;Matteo's Cafe, 412 Bedford Ave Bellmore NY 11710&quot;,&quot;Matteos Cafe, 416 Bedford Ave Bellmore NY 11710&quot;,3.053007
+</code></pre>
 
 <p>And so on&hellip;</p>
 
@@ -249,12 +254,14 @@ dr5xq,wof:id=555197305,wof:id=253237525,"Matteo's Cafe, 412 Bedford Ave Bellmore
 Panel, #5; silk; Museum purchase through gift of Anonymous Donor; <a href="https://collection.cooperhewitt.org/objects/18701879/">Collection of Cooper Hewitt Museum</a>.
 </div>
 
-<p>There are a few things to note about this approach:</p>
+<p>Some things to note about this approach:</p>
 
 <ul>
-<li>A 5-character geohash represents an area of approximately 2.4 km. In the future it may be the case that a longer geohash will be stored (in the location database) and a variable length geohash will be queried based on properties that can be derived about a location. For example, a venue in the center of Manhattan might use a longer, more precise geohash, versus a venue in a rural area might use a shorter, more inclusive, geohash.</li>
-<li>Likewise, if <code>location.Location</code> records have been supplemented with Who&rsquo;s On First hierarchies (on ingest or at runtime) then they might also be filtered by geohash <em>and</em> region to account for the fact that the same geohash can span multiple administrative boundaries (for example <code>dr5re</code>).</li>
-<li>This code works best with small and short-lived (temporary) vector databases on disk or in memory. Storing and querying millions of venue records and their embeddings on consumer grade hardware (my laptop) is generally slow and impractical. Many (but not all, yet) of the <code>vector.Database</code> implementations have been configured with the ability to create (and remove) temporary databases automatically.</li>
+<li><p>A 5-character geohash represents an area of approximately 2.4 km. In the future it may be the case that a longer geohash will be stored (in the location database) and a variable length geohash will be queried based on properties that can be derived about a location. For example, a venue in the center of Manhattan might use a longer, more precise geohash, versus a venue in a rural area might use a shorter, more inclusive, geohash.</p></li>
+
+<li><p>Likewise, if <code>location.Location</code> records have been <a href="https://github.com/whosonfirst/go-overture?tab=readme-ov-file#append-wof">supplemented with Who&rsquo;s On First hierarchies</a> (on ingest or at runtime) then they might also be filtered by geohash <em>and</em> region to account for the fact that the same geohash can span multiple administrative boundaries (for example <code>dr5re</code>).</p></li>
+
+<li><p>This code works best with small and short-lived (temporary) vector databases on disk or in memory. Storing and querying millions of venue records and their embeddings on consumer grade hardware (my laptop) has proven to be slow and impractical. Many (but not all, yet) of the <code>vector.Database</code> implementations have been configured with the ability to create (and remove) temporary databases automatically.</p></li>
 </ul>
 
 <p><img src="images/50841_91faa27aa6285c00_b.jpg" alt="" /></p>
@@ -268,11 +275,11 @@ Drawing, Design for a Composition, Cube with Leaf; brush and gouache, graphite o
 <pre><code>...
 </code></pre>
 
-<p>In some cases it&rsquo;s also been possible to update a record&rsquo;s <code>mz:is_current</code> property, based on a concordance, to signal whether that venue is considered to be a comptemporary and active. I haven&rsquo;t done this for the Overture Data concordances because I&rsquo;ve been working with a database of records with a confidence level of 0.95 and higher (approximately 7 million out of the total 60 million available records) and Overture only says they are sure about something if it has a confidence level of 1.</p>
+<p>In some cases it&rsquo;s also been possible to update a record&rsquo;s <code>mz:is_current</code> property, based on a concordance, to signal whether that venue is considered to be a comptemporary and active. I haven&rsquo;t done this for the Overture Data concordances because I&rsquo;ve been working with a database of records with a confidence level of 0.95 or higher (approximately 7 million out of the total 60 million available records) and Overture only says they are sure about something if it has a confidence level of 1.</p>
 
-<p>The way things stand today a data provider&rsquo;s confidence level is not stored in the location databases (described above) but that may change in the future to allow for logic to automatically determine whether a (Who&rsquo;s On First) record should be marked as &ldquo;current&rdquo;.</p>
+<p>The way things stand today a data provider&rsquo;s confidence level is not stored in the location databases (described above) but that may change in the future to allow for logic to automatically determine whether a (Who&rsquo;s On First) record should be marked as &ldquo;current&rdquo; or at least &ldquo;vetted&rdquo;.</p>
 
-<p>This is on-going work so there&rsquo;s a lot left to do including better tooling for sourcing and visualizing venues. That will come in and, in the meantime, <a href="https://github.com/orgs/whosonfirst-data/discussions">suggestions or contributions are welcome</a>. In the meantime things are (a little bit) better than they were yesterday which is always nice.</p>
+<p>This is on-going work so there&rsquo;s a lot left to do including better tools for sourcing, distributing and visualizing venues. That will come in and, in the meantime, <a href="https://github.com/orgs/whosonfirst-data/discussions">suggestions or contributions are welcome</a>. In the meantime things are (a little bit) better than they were yesterday which is always nice.</p>
 
 <p><img src="images/200157_a2963607223a77cf_b.jpg" alt="" /></p>
 
