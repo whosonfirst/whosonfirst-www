@@ -1,6 +1,6 @@
 ---
 layout: page
-title: De-duplicating venues with vector embeddings
+title: De-duplicating Who's On First venues with vector embeddings
 published: false
 date: 2024-08-16
 permalink: /blog/2024/08/16/dedupe/
@@ -99,10 +99,21 @@ Some things to note about this approach:
 Drawing, Design for a Composition, Cube with Leaf; brush and gouache, graphite on paper; Gift of Mrs. E. McKnight Kauffer; <a href="https://collection.cooperhewitt.org/objects/18446851/">Collection of Cooper Hewitt Museum</a>.
 </div>
 
-Records that have been with concordances will also contain `label` and `similarity` properties for their corresponding data source. For example:
+Records that have been with concordances will also contain `label` and `similarity` properties for their corresponding data source. [For example](https://github.com/whosonfirst-data/whosonfirst-data-venue-ca/blob/585cf6178cf49b632626890c43f0bc2d30754a04/data/974/692/285/974692285.geojson#L25):
 
 ```
-...
+    "ovtr:label": "Foufounes Electriques, 87 Rue Ste-Catherine E Montréal QC CA",
+    "ovtr:similarity": 3.9585158824920654,
+    ...
+    "wof:concordances": {
+      "4sq:id": "4ad4c06bf964a5208bf920e3",
+      "ovtr:id": "08f2baa46acf386e03da5ca94237203e",
+      "sg:id": "SG_56tBn4ravrIrQi02NJruOl_45.510967_-73.562973@1293573121",
+      "wk:page": "Les_Foufounes_Électriques"
+    },
+    ...
+    "wof:id": 974692285,
+    "wof:name": "Foufounes Electriques",    
 ```
 
 In some cases it's also been possible to update a record's `mz:is_current` property, based on a concordance, to signal whether that venue is considered to be a comptemporary and active. I haven't done this for the Overture Data concordances because I've been working with a database of records with a confidence level of 0.95 or higher (approximately 7 million out of the total 60 million available records) and Overture only says they are sure about something if it has a confidence level of 1.
@@ -114,5 +125,5 @@ This is on-going work so there's a lot left to do including better tools for sou
 ![](images/200157_a2963607223a77cf_b.jpg)
 
 <div style="font-size:small;font-style:italic;text-align:center;">
-Card, Karrie Jacobs: Change of Address; offset lithograph on paper; 11.8 x 16.3 cm (4 5/8 x 6 5/8 in.); Gift of Tibor Kalman <a href="https://collection.cooperhewitt.org/objects/18644345/">Collection of Cooper Hewitt Museum</a>.</div>
+Card, Karrie Jacobs: Change of Address; offset lithograph on paper; Gift of Tibor Kalman; <a href="https://collection.cooperhewitt.org/objects/18644345/">Collection of Cooper Hewitt Museum</a>.</div>
 

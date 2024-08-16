@@ -5,7 +5,7 @@
 		<meta charset="utf-8" />
 		<meta http-equiv="x-ua-compatible" content="ie=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<title>Who’s On First | De-duplicating venues with vector embeddings</title>
+		<title>Who’s On First | De-duplicating Who&#39;s On First venues with vector embeddings</title>
 		<meta name="description" content="Who’s on First is a gazetteer of places." />
 		<link rel="apple-touch-icon" href="/images/favicons/apple-touch-icon.png" sizes="180x180" />
 		<link rel="icon" type="image/png" href="/images/favicons/favicon-16x16.png" sizes="16x16" />
@@ -23,7 +23,7 @@
 		
 		<meta property="og:type" content="article" />
 		<meta property="og:site_name" content="Who's On First" />
-		<meta property="og:title" content="De-duplicating venues with vector embeddings" />
+		<meta property="og:title" content="De-duplicating Who&#39;s On First venues with vector embeddings" />
 		<meta property="og:description" content="So far, testing with four Who’s On First venue repositories, I have been able to use that code to first deprecate about 45,000 duplicate records and then, second, derive over 100,000 concordances with Overture Data place records, 8,000 concordances with All The Places venues and another 500 concordances with ILMS museum records. There are almost certainly still bugs, or at least “gotchas”, but importantly the work so far passes the “better than yesterday” test." />
 		<meta property="og:image" content="https://www.whosonfirst.org/blog/2024/08/16/dedupe/images/219609_e312862475b94323_b.jpg" />
 
@@ -165,7 +165,7 @@
 	  
 	  
 	  <h2>
-	    De-duplicating venues with vector embeddings
+	    De-duplicating Who&#39;s On First venues with vector embeddings
 	    <small>This is a blog post by
 	      <span class="hey-look">thisisaaronland</span>
 	      that was published on <span class="pubdate"><a href="/blog/2024/08/">Aug</a> <a href="/blog/2024/08/16">16</a>, <a href="/blog/2024/">2024</a></span>
@@ -270,9 +270,20 @@ Panel, #5; silk; Museum purchase through gift of Anonymous Donor; <a href="https
 Drawing, Design for a Composition, Cube with Leaf; brush and gouache, graphite on paper; Gift of Mrs. E. McKnight Kauffer; <a href="https://collection.cooperhewitt.org/objects/18446851/">Collection of Cooper Hewitt Museum</a>.
 </div>
 
-<p>Records that have been with concordances will also contain <code>label</code> and <code>similarity</code> properties for their corresponding data source. For example:</p>
+<p>Records that have been with concordances will also contain <code>label</code> and <code>similarity</code> properties for their corresponding data source. <a href="https://github.com/whosonfirst-data/whosonfirst-data-venue-ca/blob/585cf6178cf49b632626890c43f0bc2d30754a04/data/974/692/285/974692285.geojson#L25">For example</a>:</p>
 
-<pre><code>...
+<pre><code>    &quot;ovtr:label&quot;: &quot;Foufounes Electriques, 87 Rue Ste-Catherine E Montréal QC CA&quot;,
+    &quot;ovtr:similarity&quot;: 3.9585158824920654,
+    ...
+    &quot;wof:concordances&quot;: {
+      &quot;4sq:id&quot;: &quot;4ad4c06bf964a5208bf920e3&quot;,
+      &quot;ovtr:id&quot;: &quot;08f2baa46acf386e03da5ca94237203e&quot;,
+      &quot;sg:id&quot;: &quot;SG_56tBn4ravrIrQi02NJruOl_45.510967_-73.562973@1293573121&quot;,
+      &quot;wk:page&quot;: &quot;Les_Foufounes_Électriques&quot;
+    },
+    ...
+    &quot;wof:id&quot;: 974692285,
+    &quot;wof:name&quot;: &quot;Foufounes Electriques&quot;,    
 </code></pre>
 
 <p>In some cases it&rsquo;s also been possible to update a record&rsquo;s <code>mz:is_current</code> property, based on a concordance, to signal whether that venue is considered to be a comptemporary and active. I haven&rsquo;t done this for the Overture Data concordances because I&rsquo;ve been working with a database of records with a confidence level of 0.95 or higher (approximately 7 million out of the total 60 million available records) and Overture only says they are sure about something if it has a confidence level of 1.</p>
@@ -284,7 +295,7 @@ Drawing, Design for a Composition, Cube with Leaf; brush and gouache, graphite o
 <p><img src="images/200157_a2963607223a77cf_b.jpg" alt="" /></p>
 
 <div style="font-size:small;font-style:italic;text-align:center;">
-Card, Karrie Jacobs: Change of Address; offset lithograph on paper; 11.8 x 16.3 cm (4 5/8 x 6 5/8 in.); Gift of Tibor Kalman <a href="https://collection.cooperhewitt.org/objects/18644345/">Collection of Cooper Hewitt Museum</a>.</div>
+Card, Karrie Jacobs: Change of Address; offset lithograph on paper; Gift of Tibor Kalman; <a href="https://collection.cooperhewitt.org/objects/18644345/">Collection of Cooper Hewitt Museum</a>.</div>
 
 		</article>
 		</div>
