@@ -5,7 +5,7 @@ published: false
 date: 2024-08-16
 permalink: /blog/2024/08/16/dedupe/
 category: blog
-excerpt: "Using four Who’s On First different venue repositories for testing, I have been able to first deprecate about 45,000 duplicate records and then, second, derive over 100,000 concordances with Overture Data place records, 8,000 concordances with All The Places venues and another 500 concordances with ILMS museum records. There are almost certainly still bugs, or at least “gotchas”, but importantly the work so far passes the “better than yesterday” test."
+excerpt: "Using four different Who’s On First venue repositories for testing, I have been able to first deprecate about 45,000 duplicate records and then, second, derive over 100,000 concordances with Overture Data place records, 8,000 concordances with All The Places venues and another 500 concordances with ILMS museum records. There are almost certainly still bugs, or at least “gotchas”, but importantly the work so far passes the “better than yesterday” test."
 authors: [thisisaaronland]
 image: "images/219609_e312862475b94323_b.jpg"
 tag: [venues,download,whosonfirst,wof,data,overture,alltheplaces]
